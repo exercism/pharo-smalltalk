@@ -2,10 +2,9 @@
   "track_id": "pharo",
   "language": "Pharo",
   "active": false,
+  "blurb": "",
   "ignore_pattern": "[Ee]xample",
   "solution_pattern": "[Ee]xample",
   "test_pattern": "[Tt]est",
-  "foregone": [],
-  "exercises": null,
-  "deprecated": []
+  "exercises": null
 }
