@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "SamuelWilson 7/13/2018 22:42",
+	"super" : "TestCase",
+	"category" : "ExercismDev-HelloWorld",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "HelloWorldTest",
+	"type" : "normal"
+}

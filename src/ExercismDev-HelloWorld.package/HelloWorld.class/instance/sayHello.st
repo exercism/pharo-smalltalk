@@ -1,0 +1,3 @@
+greeting
+sayHello
+	^ 'Hello, World!'.
