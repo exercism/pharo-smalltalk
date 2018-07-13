@@ -1,3 +1,0 @@
-greeting
-sayHello
-	^ 'Hello, World!'.

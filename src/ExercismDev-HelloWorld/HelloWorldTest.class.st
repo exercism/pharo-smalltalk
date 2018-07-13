@@ -1,3 +1,4 @@
+"
 # Running Tests
 
 Tests can be run directly from the test class. The test class is normally named after the class under test e.g.
@@ -8,3 +9,16 @@ yellow for fail, and red for error.
 All the tests in a class can be run by clicking the button next to the test class name. Larger groups of tests
 can be run using the Test Runner tool from the world menu. `ctrl + OU` opens the Test Runner 
 (`cmd + OU` for MacOS).
+"
+Class {
+	#name : #HelloWorldTest,
+	#superclass : #TestCase,
+	#category : 'ExercismDev-HelloWorld'
+}
+
+{ #category : #tests }
+HelloWorldTest >> testHello [
+	| greeter |
+	greeter := HelloWorld new.
+	self assert: greeter sayHello equals: 'Hello, World!'.
+]
