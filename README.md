@@ -4,16 +4,16 @@
 
 Exercism exercises in Pharo.
 
-## Setup
+## Initial Setup
 
 The simplest way to install Pharo is is to use [zero conf](http://pharo.org/download#//*[@id="main"]/div/h2[3]) from a terminal command line.
 
-Enter:
+Simply enter:
 ```$xslt
 curl https://get.pharo.org | bash
 ```
 
-Then launch Pharo by typing:
+Then launch Pharo and load some initial tools by typing:
 ```$xslt
 ./pharo-ui Pharo.image eval "Metacello new 
 baseline: 'Exercism'; 
@@ -22,10 +22,16 @@ load.
 (RPackageOrganizer default packageNamed: 'Exercism') browse"
 ```
 
-To load the Exercism IDE tools, open a Playground window and evaluate:
+***NOTE:** If you exit Pharo and save your changes (left click on the Pharo Desktop, and select "Save and Quit") then you do NOT need
+to repeat the tool loading step above, and can simply type:*
 ```$xslt
-to be filled out
+./pharo-ui Pharo.image
 ```
+
+***Aside:** When you launch Pharo, you are actually restoring an execution image snapshot - similar to a VMWare Operating System image. This
+is a powerful concept, as it allows you to suspend work mid operation, possibly even when you are in the middle of debugging
+something. When you relaunch Pharo, you could then continue stepping through code in the restored debugger, or even continue a refactoring step.*
+
 ## Contributing
 
 We are keen to improve this track and show developers a different way of thinking about coding! :tada:
@@ -55,7 +61,7 @@ At the most basic level, Exercism is all about the tests. You can read more abou
 
 All Pharo exercises must be compatible with SUnit.
 
-To test a single exercise run it from the built in test runner by clicking on the test orb. Alternatively you can use the playbround and evaluate:
+To test a single exercise run it from the built in test runner by clicking on the test orb. Alternatively you can use the playground and evaluate:
 ```
 MyExercismPackage suite run.
 ```
