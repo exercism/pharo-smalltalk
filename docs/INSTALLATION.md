@@ -11,7 +11,7 @@ When complete, launch Pharo and load some initial tools by typing:
 ```$xslt
 ./pharo-ui Pharo.image eval "Metacello new 
 baseline: 'Exercism'; 
-repository: 'gitlab://macta/Exercism:master/src'; 
+repository: 'github://exercism/pharo:master/dev/src'; 
 load.
 (RPackageOrganizer default packageNamed: 'Exercism') browse"
 ```
