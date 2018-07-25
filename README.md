@@ -40,8 +40,6 @@ Please read about how to [get involved in a track](https://github.com/exercism/d
 
 We welcome pull requests of all kinds. No contribution is too small, particularly contributions that provide fixes and improvements to existing exercises. Please note that this track's exercises must conform to the Exercism-wide standards described in the [documentation](https://github.com/exercism/docs/tree/master/language-tracks/exercises). If you're unsure about how to make a change, then open a GitHub issue, and we'll discuss it.
 
-## Exercise Tests
-
 
 ## Working on the Exercises
 
@@ -87,13 +85,14 @@ Before submitting your pull request, you'll want to verify the changes in two wa
 * Run all the tests for the Pharo exercises
 * Run an Exercism-specific linter to verify the track
 
-All the tests for Pharo exercises can be run from the top level of the repo with
+All the tests for Pharo exercises can be run from the top level of the repo with:
 
 ```
-# add this command
+"TBA - this still needs to be determined, probably something like:"
+Exercism suite run.
 ```
 
-For the Exercism-specific linting, please see [the documentation](https://github.com/exercism/docs/blob/master/language-tracks/configuration/linting.md).
+For the Exercism specific linting, please see [the documentation](https://github.com/exercism/docs/blob/master/language-tracks/configuration/linting.md).
 
 ## Contributing a New Exercise
 
