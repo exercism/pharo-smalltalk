@@ -22,13 +22,13 @@ load.
 (RPackageOrganizer default packageNamed: 'Exercism') browse"
 ```
 
-***NOTE:** If you exit Pharo and save your changes (left click on the Pharo Desktop, and select "Save and Quit") then you do NOT need
-to repeat the tool loading step above, and can simply type:*
+**NOTE:** If you exit Pharo and save your changes (left click on the Pharo Desktop, and select "Save and Quit") then you do NOT need
+to repeat the tool loading step above, and can simply type:
 ```$xslt
 ./pharo-ui Pharo.image
 ```
 
-***Aside:** When you launch Pharo, you are actually restoring an execution image snapshot - similar to a VMWare Operating System image. This
+***Did you know:** When you launch Pharo, you are actually restoring an execution image snapshot - similar to a VMWare Operating System image. This
 is a powerful concept, as it allows you to suspend work mid operation, possibly even when you are in the middle of debugging
 something. When you relaunch Pharo, you could then continue stepping through code in the restored debugger, or even continue a refactoring step.*
 
@@ -51,7 +51,7 @@ A list of missing exercise can be found here: http://exercism.io/languages/pharo
 
 ### Conventions
 
-- We use `sunit` (the original xUnit libary) and no additional 3rd-party-frameworks.
+- We use [SUunit](https://en.wikipedia.org/wiki/SUnit) (the original xUnit libary) and no additional 3rd-party-frameworks.
 - We use the parameter order `self assert: actual equals: expected)` 
 
 
