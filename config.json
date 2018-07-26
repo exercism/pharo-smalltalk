@@ -3,8 +3,8 @@
   "language": "Pharo",
   "active": false,
   "blurb": "Pharo is a pure open source object-oriented programming language and a powerful environment, focused on simplicity and immediate feedback (think IDE and OS rolled into one).  It has an elegant syntax that is natural to read and write.",
-  "ignore_pattern": "[Ee]xample\\.class\\.st",
-  "solution_pattern": "[Ee]xample\\.class\\.st",
+  "ignore_pattern": "\\w+([^T][^e][^s][^t])\\.class\\.st",
+  "solution_pattern": "\\w+([^T][^e][^s][^t])\\.class\\.st",
   "test_pattern": "[Tt]est\\.class\\.st",
   "exercises": [
     {
@@ -15,7 +15,7 @@
       "unlocked_by": null,
       "difficulty": 1,
       "topics": [
-        "text_formatting"
+        "introduction"
       ]
     }
   ]

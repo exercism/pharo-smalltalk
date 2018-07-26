@@ -15,15 +15,26 @@ curl https://get.pharo.org | bash
 
 Then launch Pharo and load some initial tools by typing:
 ```$xslt
-./pharo-ui Pharo.image eval "Metacello new 
-baseline: 'Exercism'; 
-repository: 'github://exercism/pharo:master/dev/src';
-load.
-(RPackageOrganizer default packageNamed: 'Exercism') browse"
+./pharo-ui Pharo.image eval "
+Metacello new 
+ baseline: 'Exercism'; 
+ repository: 'github://exercism/pharo:master/dev/src';
+ load.
+(RPackageOrganizer default packageNamed: 'Exercism') browse
+"
 ```
 
-**NOTE:** If you exit Pharo and save your changes (left click on the Pharo Desktop, and select "Save and Quit") then you do NOT need
-to repeat the tool loading step above, and can simply type:
+If you have any TIMEOUT problems when loading the initial tools (some corporate firewalls block git access), you can add an additional command to 
+the beginning of the eval script like this:
+ ```
+./pharo-ui Pharo.image eval "
+Iceberg remoteTypeSelector: #httpsUrl.
+Metacello new 
+...
+```
+
+**NOTE:** When you exit Pharo, save your changes (left click on the Pharo Desktop, and select "Save and Quit") then you DO NOT need
+to repeat the tool loading step above, and should simply type:
 ```$xslt
 ./pharo-ui Pharo.image
 ```
