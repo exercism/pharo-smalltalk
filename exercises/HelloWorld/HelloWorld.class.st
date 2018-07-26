@@ -7,6 +7,6 @@ Class {
 }
 
 { #category : #exercism }
-HelloWorldExample class >> sayHello [
+HelloWorld class >> sayHello [
 	^ 'Hello, World!'
 ]
