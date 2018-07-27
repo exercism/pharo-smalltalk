@@ -1,12 +1,12 @@
 "A sample test to kickstart the track"
 
 Class {
-	#name : #HelloWorldExample,
+	#name : #HelloWorld,
 	#superclass : #Object,
 	#category : #'Exercism-HelloWorld'
 }
 
 { #category : #exercism }
-HelloWorldExample class >> sayHello [
+HelloWorld class >> sayHello [
 	^ 'Hello, World!'
 ]
