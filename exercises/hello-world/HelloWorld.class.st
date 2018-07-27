@@ -1,5 +1,3 @@
-"A sample test to kickstart the track"
-
 Class {
 	#name : #HelloWorld,
 	#superclass : #Object,
@@ -8,5 +6,6 @@ Class {
 
 { #category : #exercism }
 HelloWorld class >> sayHello [
-	^ 'Hello, World!'
+
+	^'Hello, World!'
 ]
