@@ -34,12 +34,12 @@ Class {
 	#category : #'ExercismDev-TwoFer'
 }
 
-{ #category : #'two fer' }
+{ #category : #exercism }
 TwoFer >> who [
 	^ 'One for you, one for me.'
 ]
 
-{ #category : #'two fer' }
+{ #category : #exercism }
 TwoFer >> who: aString [ 
 	^ 'One for ', aString, ', one for me.'
 ]
