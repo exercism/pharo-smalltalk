@@ -1,19 +1,24 @@
+"
+I am  responsible for managing the interaction with the lower level Execercism command line tool.
+"
 Class {
 	#name : #ExercismManager,
 	#superclass : #Object,
-	#category : #XercismTools
+	#category : #ExercismTools
 }
 
 { #category : #exercism }
-ExercismManager class >> fetchNextExercism: package [ 
+ExercismManager class >> fetchFromExercismTo: package [ 
 
-	| result cmd project tonelLocator reader |
+	| result cmd exercise project tonelLocator reader |
 	
-	cmd := 'exercism fetch'.
+	(exercise := UIManager default request: 'Enter an exercise name') ifNil: [ ^self ].
+	
+	cmd := 'exercism download --track=pharo --exercise=', exercise.
 	result := PipeableOSProcess waitForCommand: cmd.
 	project := self parseExercismFetchString: result output.
 	
-	tonelLocator := ('./', project) asFileReference.
+	tonelLocator := ('./', exercise) asFileReference.
 	(reader := TonelReader on: tonelLocator fileName: tonelLocator pathString ) loadDefinitions.
 	reader definitions do: [ :def | def load ].
 	
@@ -46,4 +51,14 @@ ExercismManager class >> submitToExercism: packageOrTag [
 				
 	result := PipeableOSProcess waitForCommand: cmd.
 	UIManager default inform: cmd, ' -> ',result output, '.'
+]
+
+{ #category : #exercism }
+ExercismManager class >> welcome [
+	"Setup the initial environment for a new user"
+
+	| pkg |
+	(pkg := RPackageOrganizer default packageNamed: 'Exercism') 
+		moveClass: Welcome toTag: (RPackageTag package: pkg name: 'Welcome');
+		browse
 ]
