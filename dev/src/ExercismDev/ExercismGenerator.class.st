@@ -28,7 +28,7 @@ ExercismGenerator class >> generate [
 
 { #category : #helper }
 ExercismGenerator class >> generateFilesFor: packageOrTag to: filePathString [ 
-	| writer pkgName |
+	| writer exerciseDirectory |
 	
 	"Note: could create the writer on a memory stream to then pick what should be stored on disk
 	e.g.
@@ -36,13 +36,17 @@ ExercismGenerator class >> generateFilesFor: packageOrTag to: filePathString [
 		writer := ExTonelWriter on: mem."
 	
 	writer := ExTonelWriter new.
-	writer packageDir: (pkgName := self kebabCase: packageOrTag name).
+	writer packageDir: (exerciseDirectory := self kebabCase: packageOrTag name).
 	writer
 		sourceDir: filePathString asFileReference;
 		writeSnapshot: (MCPackage named: packageOrTag package name) snapshot.
 		
 	"Remove the extra package file created due to the strange kebabCase name"
-	(filePathString asFileReference / pkgName / 'package.st')  delete.
+	(filePathString asFileReference / exerciseDirectory / 'package.st')  delete.
+	
+	packageOrTag classes detect: [ :c | c isTestCase ] ifFound: [  :c |
+		 (filePathString asFileReference / exerciseDirectory / 'README.md') writeStream
+				nextPutAll: c comment]
 ]
 
 { #category : #generation }
