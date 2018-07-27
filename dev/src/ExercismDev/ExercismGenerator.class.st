@@ -41,7 +41,7 @@ ExercismGenerator class >> generateFilesFor: packageOrTag to: filePathString [
 		sourceDir: filePathString asFileReference;
 		writeSnapshot: (MCPackage named: packageOrTag package name) snapshot.
 		
-	"Remove the extra package file created due to the strange kebabCase name"
+	"Remove the extra package file as its not needed for Exercism"
 	(filePathString asFileReference / exerciseDirectory / 'package.st')  delete.
 	
 	packageOrTag classes detect: [ :c | c isTestCase ] ifFound: [  :c |
@@ -57,23 +57,23 @@ ExercismGenerator class >> generateTo: filePathString [
 
 { #category : #helper }
 ExercismGenerator class >> kebabCase: aString [
-	"Answer an array of the keywords that compose the receiver."
+	"Answer a String that converts the CamelCase input to camel-case kebab output"
 
-	| keywords str |
-	str := aString uncapitalized.
-	keywords := String
-		streamContents: [ :kwds | 
-			| kwd |
-			kwd := (String new: 16) writeStream.
-			str
-				do: [ :char | 
+	| kebabSring inputString |
+	
+	inputString := aString uncapitalized.
+	kebabSring := String streamContents: [ :kebabStream | 
+			| wordStream |
+			wordStream := (String new: 16) writeStream.
+			inputString 	do: [ :char | 
 					char isUppercase
-						ifTrue: [ kwds
-								nextPutAll: kwd contents;
+						ifTrue: [ 
+							kebabStream
+								nextPutAll: wordStream contents;
 								nextPut: $-.
-							kwd reset ].
-					kwd nextPut: char asLowercase].
-			kwd position = 0
-				ifFalse: [ kwds nextPutAll: kwd contents ] ].
-	^ keywords
+							wordStream reset ].
+					wordStream nextPut: char asLowercase].
+			wordStream position > 0
+				ifTrue: [ kebabStream nextPutAll: wordStream contents ] ].
+	^ kebabSring
 ]

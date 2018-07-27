@@ -31,7 +31,7 @@ ExercismManager class >> parseExercismFetchString: osOutputString [
 	osOutputString regex: '\/\w*-?\w+$' matchesDo: [ :m |  ^m allButFirst ].
 	
 	"self error: 'Could not find exercism result'"
-	^'HelloWorld'
+	^'hello-world'
 ]
 
 { #category : #exercism }
