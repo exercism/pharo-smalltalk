@@ -8,8 +8,8 @@
   "test_pattern": "[Tt]est\\.class\\.st",
   "exercises": [
     {
-      "slug": "HelloWorld",
-      "uuid": "f458c48a-4a05-4809-9168-8edd55179349",
+      "slug": "hello-world",
+      "uuid": "a1812b5e-2788-4ea6-b948-bfe54edeb0da",
       "core": true,
       "auto_approve": true,
       "unlocked_by": null,
