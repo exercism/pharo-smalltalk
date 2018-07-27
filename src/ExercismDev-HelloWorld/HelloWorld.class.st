@@ -33,7 +33,7 @@ Class {
 	#category : #'ExercismDev-HelloWorld'
 }
 
-{ #category : #greeting }
-HelloWorld >> sayHello [
-	^ 'Hello, World!'.
+{ #category : #exercism }
+HelloWorld class >> sayHello [
+	^ 'Hello, World!'
 ]
