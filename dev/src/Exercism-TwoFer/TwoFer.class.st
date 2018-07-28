@@ -31,7 +31,7 @@ It's possible to submit an incomplete solution so you can see how others have co
 Class {
 	#name : #TwoFer,
 	#superclass : #Object,
-	#category : #'ExercismDev-TwoFer'
+	#category : #'Exercism-TwoFer'
 }
 
 { #category : #exercism }
