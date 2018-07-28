@@ -1,13 +1,13 @@
 Class {
 	#name : #ExercismManagerTests,
 	#superclass : #TestCase,
-	#category : #XercismTools
+	#category : #'ExercismDev-Tests'
 }
 
 { #category : #tests }
 ExercismManagerTests >> testManagerProcessParsing [
 	| result |
-	result := AbstractNautilusUI new parseExercismFetchString: 
+	result := ExercismManager parseExercismFetchString: 
 		'Not Submitted:          1 problem
 python (Reverse String) /Users/macta/Dev/Exercism/pharo/reverse-string
 

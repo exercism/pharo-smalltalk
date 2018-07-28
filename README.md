@@ -20,7 +20,7 @@ Metacello new
  baseline: 'Exercism'; 
  repository: 'github://exercism/pharo:master/dev/src';
  load.
-(RPackageOrganizer default packageNamed: 'Exercism') browse
+ExercismManager welcome
 "
 ```
 

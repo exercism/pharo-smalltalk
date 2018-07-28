@@ -1,7 +1,10 @@
+"
+I am a TonelWriter that provides finer level control of writing Tonel files for Exercism
+"
 Class {
 	#name : #ExTonelWriter,
 	#superclass : #TonelWriter,
-	#category : #XercismTools
+	#category : #ExercismTools
 }
 
 { #category : #writing }
@@ -11,7 +14,7 @@ ExTonelWriter >> packageDir: aString [
 
 { #category : #writing }
 ExTonelWriter >> writePackage: aDefinition [
-	"I'm assuming first category is actually the package"
+	"Overriden to allow a packageDir to be specified"
 	
 	self packageDir ifNil: [ self packageDir: aDefinition categories first ].
 	self flag: #todo. "this is lame... removing and rewriting full package needs to be rethink :)"
