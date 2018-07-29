@@ -1,16 +1,17 @@
 "
-# Hello World
+# Two Fer
 
-The classical introductory exercise. Just say ""Hello, World!"".
+`Two-fer` or `2-fer` is short for two for one. One for you and one for me.
 
-[""Hello, World!""](http://en.wikipedia.org/wiki/%22Hello,_world!%22_program) is the traditional first program for beginning programming in a new language or environment.
+```text
+""One for X, one for me.""
+```
 
-The objectives are simple:
+When X is a name or ""you"".
 
-Write a function that returns the string ""Hello, World!"".
-Run the test suite and make sure that it succeeds.
-Submit your solution and check it at the website.
-If everything goes well, you will be ready to fetch your first real exercise.
+If the given name is ""Alice"", the result should be ""One for Alice, one for me.""
+If no name is given, the result should be ""One for you, one for me.""
+
 
 * * * *
 
@@ -22,7 +23,7 @@ Runner tool from the World menu `ctrl + OU` (MacOS `cmd + OU`).
 
 ## Source
 
-This is an exercise to introduce users to using Exercism [Hello World at Wikipedia](http://en.wikipedia.org/wiki/%22Hello,_world!%22_program)
+This is an exercise to introduce users to basic programming constructs, just after Hello World. [https://en.wikipedia.org/wiki/Two-fer](https://en.wikipedia.org/wiki/Two-fer)
 
 ## Submitting Incomplete Solutions
 It's possible to submit an incomplete solution so you can see how others have completed the exercise.
@@ -40,15 +41,34 @@ can be run using the Test Runner tool from the world menu. `ctrl + OU` opens the
 
 ### Problem Specification
 
-Tests adapted from **problem-specifications//canoncial-data.json** @ v1.1.0.
+Tests adapted from **problem-specifications//canoncial-data.json** @ v1.2.0.
 "
 Class {
-	#name : #HelloWorldTest,
+	#name : #TwoFerTest,
 	#superclass : #TestCase,
-	#category : #'Exercism-HelloWorld'
+	#instVars : [
+		'twoFer'
+	],
+	#category : #'Exercism-TwoFer'
 }
 
+{ #category : #running }
+TwoFerTest >> setUp [
+	twoFer := TwoFer new.
+]
+
 { #category : #tests }
-HelloWorldTest >> testHello [
-	self assert: HelloWorld sayHello equals: 'Hello, World!'
+TwoFerTest >> testWithAnotherName [
+	self assert: (twoFer who: 'Bob') equals: 'One for Bob, one for me.' 
+]
+
+{ #category : #tests }
+TwoFerTest >> testWithName [
+	self assert: (twoFer who: 'Alice') equals: 'One for Alice, one for me.'
+]
+
+{ #category : #tests }
+TwoFerTest >> testWithNoName [
+	self assert: twoFer who equals: 'One for you, one for me.' 
+	
 ]
