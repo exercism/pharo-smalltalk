@@ -14,11 +14,16 @@ BaselineOfExercism >> baseline: spec [
 			spec
 				package: 'Exercism'
 					with: [ ];
-				package: 'XercismTools'
+				package: 'ExercismDev'
+					with: [ spec requires: #('Exercism' 'ExercismTools')];
+				package: 'ExercismTools'
 					with: [ spec requires: #('OSProcess' ) ];
 				group: 'default'
 					with:
-					#('Exercism' 'XercismTools') ]
+					#('Exercism' 'ExercismTools');
+				group: 'dev'
+					with:
+					#('ExercismDev')]
 ]
 
 { #category : #baselines }
