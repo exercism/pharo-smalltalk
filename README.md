@@ -49,6 +49,18 @@ We are keen to improve this track and show developers a different way of thinkin
 
 Please read about how to [get involved in a track](https://github.com/exercism/docs/tree/master/contributing-to-language-tracks). Be sure to read the Exercism [Code of Conduct](https://github.com/exercism/exercism.io/blob/master/CODE_OF_CONDUCT.md).
 
+To install Pharo for contributing to exercises, you need to load a slightly different baseline as follows:
+
+```$xslt
+./pharo-ui Pharo.image eval "
+Metacello new 
+ baseline: 'Exercism'; 
+ repository: 'github://exercism/pharo:master/dev/src';
+ load: 'dev'.
+```
+***Alternatively:** you can load a clean Pharo image and use the Iceberg tool to load the repository ```github://exercism/pharo:master```, and set 
+the src directory to ```dev/src```.*
+
 We welcome pull requests of all kinds. No contribution is too small, particularly contributions that provide fixes and improvements to existing exercises. Please note that this track's exercises must conform to the Exercism-wide standards described in the [documentation](https://github.com/exercism/docs/tree/master/language-tracks/exercises). If you're unsure about how to make a change, then open a GitHub issue, and we'll discuss it.
 
 
@@ -70,9 +82,10 @@ At the most basic level, Exercism is all about the tests. You can read more abou
 
 All Pharo exercises must be compatible with SUnit.
 
-To test a single exercise run it from the built in test runner by clicking on the test orb. Alternatively you can use the playground and evaluate:
+To test a single exercise run it from the built in test runner by clicking on the test orb next to your exercise TestCase. 
+To run all tests you can click on the orb next to AllExercismTests. Alternatively you can use the playground and evaluate:
 ```
-MyExercismPackage suite run.
+AllExercismTests suite run.
 ```
 
 ### Code Style
