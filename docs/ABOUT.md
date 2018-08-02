@@ -4,5 +4,5 @@ It features an environment that is:
 
 - **Simple & Powerful:** No constructors, no type declarations, no interfaces and no primitive types. Yet it's a powerful and elegant language with a full syntax that fits on a postcard! It's magic is objects and messages all the way down.
 - **Live & Immersive:** Immediate feedback at any moment of your development: Developing, testing, debugging. Even in production environments, you will never be stuck waiting for compilation and deployment!
-- **Amazing Debugging:** The environment includes a debugger unlike anything you've seen before. It allows you to step through code, restart the execution of methods, create methods on the fly, and much more!
-- **Thoughtful Community:** Pharo is yours, made by an incredible community, with more than 100 contributors for the last revision and many more contributing constantly with frameworks and libraries.
+- **Amazing for Debugging:** The environment includes a debugger unlike anything you've seen before. It allows you to step through code, restart the execution of methods, create methods on the fly, and much more!
+- **Helpful Community:** Pharo is yours, made by an incredible community, with more than 100 contributors on the last revision and many more contributing constantly with frameworks, libraries and advice.
