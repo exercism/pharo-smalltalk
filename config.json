@@ -3,8 +3,8 @@
   "language": "Pharo",
   "active": false,
   "blurb": "The immersive Smalltalk programming experience",
-  "solution_pattern": "([^T][^e][^s][^t])\\.class\\.st",
-  "test_pattern": "[Tt]est\\.class\\.st",
+  "solution_pattern": "\\w+([^T][^e][^s][^t])\\.class\\.st",
+  "test_pattern": "\\w+Test\\.class\\.st",
   "exercises": [
     {
       "slug": "hello-world",
