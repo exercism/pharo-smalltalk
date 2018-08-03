@@ -49,7 +49,7 @@ ExercismGenerator class >> generateSourceFilesFor: packageOrTag to: filePathStri
 	e.g.
 		mem := FileSystem memory root.
 		writer := ExTonelWriter on: mem."
-		
+
 	writer := ExTonelWriter new.
 	writer
 		packageDir: (exerciseDirectory := self kebabCase: packageOrTag name);
@@ -59,10 +59,10 @@ ExercismGenerator class >> generateSourceFilesFor: packageOrTag to: filePathStri
 	destinationDirectory := filePathString asFileReference	/ exerciseDirectory.
 
 	self generatedReadmeFor: packageOrTag to: destinationDirectory.
-	
+
 	"Remove the extra package file as its not needed for Exercism"
 	(destinationDirectory / 'package.st') delete.
-	
+
 ]
 
 { #category : #generation }
@@ -84,9 +84,9 @@ ExercismGenerator class >> kebabCase: aString [
 	"Answer a String that converts the CamelCase input to camel-case kebab output"
 
 	^ String
-		streamContents: [ :kebabStream | 
+		streamContents: [ :kebabStream |
 			aString uncapitalized
-				do: [ :char | 
+				do: [ :char |
 					char isUppercase
 						ifTrue: [ kebabStream nextPut: $- ].
 					kebabStream nextPut: char asLowercase ] ]
@@ -100,7 +100,7 @@ ExercismGenerator class >> tagSnapshotFor: packageOrTag [
 	tagSnapshot := MCSnapshot
 		fromDefinitions:
 			(parentSnapshot definitions
-				select: [ :mc | 
+				select: [ :mc |
 					mc className isNil
 						or: [ mc actualClass category endsWith: packageOrTag name ] ]).
 	^ tagSnapshot
