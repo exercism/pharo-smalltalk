@@ -5,5 +5,7 @@ Class {
 
 { #category : #tests }
 HelloWorldTest >> testSayHello [
-	self assert: HelloWorld sayHello equals: 'Hello, World!'
-]
+    "A sample SUnit test"
+	self
+	    assert: HelloWorld sayHello
+	    equals: 'Hello, World!'. ]

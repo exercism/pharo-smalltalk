@@ -2,7 +2,7 @@
   "track_id": "pharo",
   "language": "Pharo",
   "active": false,
-  "blurb": "The immersive Smalltalk programming experience",
+  "blurb": "The immersive, modern, Smalltalk programming experience",
   "solution_pattern": "\\w+([^T][^e][^s][^t])\\.class\\.st",
   "test_pattern": "\\w+Test\\.class\\.st",
   "exercises": [
