@@ -2,10 +2,9 @@ Class {
 	#name : #HelloWorldTest,
 	#superclass : #TestCase,
 	#category : #'Exercism-HelloWorld' }
-
+"A sample SUnit test"
 { #category : #tests }
 HelloWorldTest >> testSayHello [
-    "A sample SUnit test"
 	self
 	    assert: HelloWorld sayHello
 	    equals: 'Hello, World!'. ]
