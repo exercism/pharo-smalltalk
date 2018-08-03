@@ -1,6 +1,7 @@
 
 ## Recommended Resources
 
+The following are useful starting points for getting more detailed information about Pharo and its community.
 * [Pharo Main Site](http://pharo.org/documentation)
 * [Pharo Syntax Cheatsheet](http://files.pharo.org/media/pharoCheatSheet.pdf)
 

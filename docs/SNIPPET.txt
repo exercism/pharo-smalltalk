@@ -1,12 +1,10 @@
-"This is a sample Pharo class in Tonel format"
-
 Class {
 	#name : #HelloWorldTest,
 	#superclass : #TestCase,
-	#category : #'Exercism-HelloWorld'
-}
-
+	#category : #'Exercism-HelloWorld' }
+"A sample SUnit test"
 { #category : #tests }
 HelloWorldTest >> testSayHello [
-	self assert: HelloWorld sayHello equals: 'Hello, World!'
-]
+	self
+	    assert: HelloWorld sayHello
+	    equals: 'Hello, World!'. ]
