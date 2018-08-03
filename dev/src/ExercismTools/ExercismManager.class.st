@@ -58,7 +58,7 @@ ExercismManager class >> welcome [
 	"Setup the initial environment for a new user"
 
 	| pkg |
-	(pkg := RPackageOrganizer default packageNamed: 'Exercism') 
+	(pkg := RPackage organizer packageNamed: 'Exercism')
 		moveClass: Welcome toTag: (RPackageTag package: pkg name: 'Welcome');
 		browse
 ]

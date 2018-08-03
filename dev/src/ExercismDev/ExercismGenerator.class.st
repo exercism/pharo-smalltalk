@@ -12,68 +12,96 @@ ExercismGenerator generateTo: (FileLocator home / 'Dev/Exercism/pharo-git') path
 Class {
 	#name : #ExercismGenerator,
 	#superclass : #Object,
+	#classVars : [
+		'DefaultPath'
+	],
 	#category : #'ExercismDev-Generator'
 }
 
-{ #category : #generation }
-ExercismGenerator class >> generate [
-	<example>
-	| path |
-	path := UIManager default chooseDirectory: 'Select the location of Exercism git project' path: (FileLocator home ) pathString.
-	
-	path ifNotNil: [ self generateTo: path ].
-	path
-
+{ #category : #helper }
+ExercismGenerator class >> defaultPath [
+	^ DefaultPath ifNil: [ self defaultPath: FileLocator home pathString]
 ]
 
 { #category : #helper }
-ExercismGenerator class >> generateFilesFor: packageOrTag to: filePathString [ 
-	| writer exerciseDirectory |
+ExercismGenerator class >> defaultPath: pathString [
+	^ DefaultPath := pathString
+]
+
+{ #category : #generation }
+ExercismGenerator class >> generate [
+	"self generate"
+
+	<example>
+	| path |
+	path := UIManager default
+		chooseDirectory: 'Select the location of Exercism git project'
+		path: self defaultPath.
+	path ifNotNil: [ self generateTo: (self defaultPath: path) ].
+	path
+]
+
+{ #category : #helper }
+ExercismGenerator class >> generateSourceFilesFor: packageOrTag to: filePathString [
+	| writer exerciseDirectory destinationDirectory |
 	
 	"Note: could create the writer on a memory stream to then pick what should be stored on disk
 	e.g.
 		mem := FileSystem memory root.
 		writer := ExTonelWriter on: mem."
-	
+
 	writer := ExTonelWriter new.
-	writer packageDir: (exerciseDirectory := self kebabCase: packageOrTag name).
 	writer
+		packageDir: (exerciseDirectory := self kebabCase: packageOrTag name);
 		sourceDir: filePathString asFileReference;
-		writeSnapshot: (MCPackage named: packageOrTag package name) snapshot.
-		
+		writeSnapshot: (self tagSnapshotFor: packageOrTag).
+
+	destinationDirectory := filePathString asFileReference	/ exerciseDirectory.
+
+	self generatedReadmeFor: packageOrTag to: destinationDirectory.
+
 	"Remove the extra package file as its not needed for Exercism"
-	(filePathString asFileReference / exerciseDirectory / 'package.st')  delete.
-	
-	packageOrTag classes detect: [ :c | c isTestCase ] ifFound: [  :c |
-		 (filePathString asFileReference / exerciseDirectory / 'README.md') writeStream
-				nextPutAll: c comment]
+	(destinationDirectory / 'package.st') delete.
+
 ]
 
 { #category : #generation }
 ExercismGenerator class >> generateTo: filePathString [
-	(RPackageOrganizer default packageNamed: 'Exercism') packages do: [:pkg |
-			self generateFilesFor: pkg to: filePathString ]
+	(RPackage organizer packageNamed: 'Exercism') packages do: [:pkg |
+			self generateSourceFilesFor: pkg to: filePathString ]
+]
+
+{ #category : #helper }
+ExercismGenerator class >> generatedReadmeFor: packageOrTag to: destinationDirectory [
+	packageOrTag classes
+		detect: [ :c | c isTestCase ]
+		ifFound:
+			[ :c | (destinationDirectory / 'README.md') writeStream nextPutAll: c comment ]
 ]
 
 { #category : #helper }
 ExercismGenerator class >> kebabCase: aString [
 	"Answer a String that converts the CamelCase input to camel-case kebab output"
 
-	| kebabSring inputString |
-	
-	inputString := aString uncapitalized.
-	kebabSring := String streamContents: [ :kebabStream | 
-			| wordStream |
-			wordStream := (String new: 16) writeStream.
-			inputString 	do: [ :char | 
+	^ String
+		streamContents: [ :kebabStream |
+			aString uncapitalized
+				do: [ :char |
 					char isUppercase
-						ifTrue: [ 
-							kebabStream
-								nextPutAll: wordStream contents;
-								nextPut: $-.
-							wordStream reset ].
-					wordStream nextPut: char asLowercase].
-			wordStream position > 0
-				ifTrue: [ kebabStream nextPutAll: wordStream contents ] ].
-	^ kebabSring
+						ifTrue: [ kebabStream nextPut: $- ].
+					kebabStream nextPut: char asLowercase ] ]
+]
+
+{ #category : #helper }
+ExercismGenerator class >> tagSnapshotFor: packageOrTag [
+	| parentSnapshot tagSnapshot |
+	parentSnapshot := (MCPackage named: packageOrTag package name)
+		snapshot.
+	tagSnapshot := MCSnapshot
+		fromDefinitions:
+			(parentSnapshot definitions
+				select: [ :mc |
+					mc className isNil
+						or: [ mc actualClass category endsWith: packageOrTag name ] ]).
+	^ tagSnapshot
 ]

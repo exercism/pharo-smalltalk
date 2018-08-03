@@ -1,8 +1,8 @@
-Class {
+Class { "A sample SUnit test"
 	#name : #HelloWorldTest,
 	#superclass : #TestCase,
 	#category : #'Exercism-HelloWorld' }
-"A sample SUnit test"
+
 { #category : #tests }
 HelloWorldTest >> testSayHello [
 	self
