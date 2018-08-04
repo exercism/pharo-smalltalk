@@ -9,7 +9,7 @@ ExercismManagerTests >> testManagerProcessParsing [
 	| result |
 	result := ExercismManager parseExercismFetchString: 
 		'Downloaded to
-/Users/macta/Exercism/python/rna-transcription
+/Users/demo/Exercism/pharo/rna-transcription
 '.
 	self assert: result equals: 'rna-transcription'
 ]
