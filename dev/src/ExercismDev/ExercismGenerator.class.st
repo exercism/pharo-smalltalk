@@ -19,6 +19,19 @@ Class {
 }
 
 { #category : #helper }
+ExercismGenerator class >> createTagSnapshotFor: packageOrTag [
+	| parentSnapshot |
+	
+	parentSnapshot := (MCPackage named: packageOrTag package name) snapshot.
+	
+	^ MCSnapshot
+		fromDefinitions:
+			(parentSnapshot definitions
+				select:
+					[ :mc | mc className isNil or: [ mc actualClass category endsWith: packageOrTag name ] ])
+]
+
+{ #category : #helper }
 ExercismGenerator class >> defaultPath [
 	^ DefaultPath ifNil: [ self defaultPath: FileLocator home pathString]
 ]
@@ -30,15 +43,24 @@ ExercismGenerator class >> defaultPath: pathString [
 
 { #category : #generation }
 ExercismGenerator class >> generate [
-	"self generate"
-
+	"Thi is the entry point for generating exercism compatible source files that can be checked into
+	the exercism/pharo project. e.g. self generate"
 	<example>
+	
 	| path |
 	path := UIManager default
-		chooseDirectory: 'Select the location of Exercism git project'
+		chooseDirectory: 'Select the /exercises location in a full Exercism/Pharo git project'
 		path: self defaultPath.
-	path ifNotNil: [ self generateTo: (self defaultPath: path) ].
-	path
+	path ifNotNil: [ self generateTo: (self defaultPath: path) ]
+]
+
+{ #category : #helper }
+ExercismGenerator class >> generateReadmeHintFor: packageOrTag to: destinationDirectory [
+	packageOrTag classes
+		detect: [ :c | c isTestCase ]
+		ifFound: [ :c | 
+			((destinationDirectory / '.meta') ensureCreateDirectory / 'hints.md') writeStream
+				nextPutAll: c comment ]
 ]
 
 { #category : #helper }
@@ -54,11 +76,11 @@ ExercismGenerator class >> generateSourceFilesFor: packageOrTag to: filePathStri
 	writer
 		packageDir: (exerciseDirectory := self kebabCase: packageOrTag name);
 		sourceDir: filePathString asFileReference;
-		writeSnapshot: (self tagSnapshotFor: packageOrTag).
+		writeSnapshot: (self createTagSnapshotFor: packageOrTag).
 
 	destinationDirectory := filePathString asFileReference	/ exerciseDirectory.
 
-	self generatedReadmeFor: packageOrTag to: destinationDirectory.
+	self generateReadmeHintFor: packageOrTag to: destinationDirectory.
 
 	"Remove the extra package file as its not needed for Exercism"
 	(destinationDirectory / 'package.st') delete.
@@ -68,26 +90,19 @@ ExercismGenerator class >> generateSourceFilesFor: packageOrTag to: filePathStri
 { #category : #generation }
 ExercismGenerator class >> generateTo: filePathReference [
 	| cmd result |
+	
 	(RPackage organizer packageNamed: 'Exercism') packages do: [:pkg |
 			self generateSourceFilesFor: pkg to: filePathReference ].
 		
-	cmd := 'configlet generate ', (filePathReference resolveString: '..') pathString.
-				
+	cmd := 'configlet generate ', (filePathReference resolveString: '..') pathString.		
 	result := PipeableOSProcess waitForCommand: cmd.
 	
 ]
 
 { #category : #helper }
-ExercismGenerator class >> generatedReadmeFor: packageOrTag to: destinationDirectory [
-	packageOrTag classes
-		detect: [ :c | c isTestCase ]
-		ifFound:
-			[ :c | ((destinationDirectory / '.meta') ensureCreateDirectory / 'hints.md') writeStream nextPutAll: c comment ]
-]
-
-{ #category : #helper }
 ExercismGenerator class >> kebabCase: aString [
-	"Answer a String that converts the CamelCase input to camel-case kebab output"
+	"Answer a String that converts the CamelCase input to camel-case kebab output 
+	used by exercism"
 
 	^ String
 		streamContents: [ :kebabStream |
@@ -96,18 +111,4 @@ ExercismGenerator class >> kebabCase: aString [
 					char isUppercase
 						ifTrue: [ kebabStream nextPut: $- ].
 					kebabStream nextPut: char asLowercase ] ]
-]
-
-{ #category : #helper }
-ExercismGenerator class >> tagSnapshotFor: packageOrTag [
-	| parentSnapshot tagSnapshot |
-	parentSnapshot := (MCPackage named: packageOrTag package name)
-		snapshot.
-	tagSnapshot := MCSnapshot
-		fromDefinitions:
-			(parentSnapshot definitions
-				select: [ :mc |
-					mc className isNil
-						or: [ mc actualClass category endsWith: packageOrTag name ] ]).
-	^ tagSnapshot
 ]

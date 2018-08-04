@@ -1,32 +1,11 @@
 "
-# Two Fer
+This is a sample solution for Exercism students.
 
-`Two-fer` or `2-fer` is short for two for one. One for you and one for me.
+Of interest, in this example is that classes can define instance methods with the same name, but taking different numbers of parameters.
 
-```text
-""One for X, one for me.""
-```
+A method which has no parameters, is called a unary method, and a method taking multiple parameters, each deliniated by a 'word ending with a ':', is called a keyword method.
 
-When X is a name or ""you"".
-
-If the given name is ""Alice"", the result should be ""One for Alice, one for me.""
-If no name is given, the result should be ""One for you, one for me.""
-
-
-* * * *
-
-For installation and learning resources, refer to the
-[exercism help page](http://exercism.io/languages/pharo).
-
-The provided tests can be run directly from the test class or the Test 
-Runner tool from the World menu `ctrl + OU` (MacOS `cmd + OU`).
-
-## Source
-
-This is an exercise to introduce users to basic programming constructs, just after Hello World. [https://en.wikipedia.org/wiki/Two-fer](https://en.wikipedia.org/wiki/Two-fer)
-
-## Submitting Incomplete Solutions
-It's possible to submit an incomplete solution so you can see how others have completed the exercise.
+There is a thrid type of method, which takes only 1 parameter but uses  a symbol (s) for a name (typically a mathematical one like: +, -, & etc) which is called a binary method.
 "
 Class {
 	#name : #TwoFer,
