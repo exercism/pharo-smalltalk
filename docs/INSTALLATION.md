@@ -36,6 +36,6 @@ You can then always start Pharo by typing:
 ./pharo-ui Pharo.image
 ```
 
-***Did you know:** When you launch Pharo, you are actually restoring an execution image snapshot - similar to a VMWare Operating System image. This
+**Did you know:** *When you launch Pharo, you are actually restoring an execution image snapshot - similar to a VMWare Operating System image. This
 is a powerful concept that allows you to suspend work mid operation, possibly even when debugging
 something. When you next relaunch Pharo, you can then continue stepping through code in the restored debugger, or possibly continue a refactoring step.*

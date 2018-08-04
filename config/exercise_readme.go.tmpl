@@ -2,15 +2,29 @@
 
 {{ .Spec.Description -}}
 {{- with .Hints }}
+## Hint
 {{ . }}
 {{ end }}
-{{- with .TrackInsert }}
-{{ . }}
-{{ end }}
-{{- with .Spec.Credits -}}
+
+## Running The Tests
+
+Tests can be run directly from the Pharo IDE, by clicking on the test orb next to any test.
+The SUnit convention is that the provided TestCase, `{{ .Spec.MixedCaseName }}Test`, is expected
+to test the functionality of `{{ .Spec.MixedCaseName }}`.
+
+If you are still stuck, there is more [detailed help on running tests](https://exercism.io/tracks/pharo/tests).
+
+## Language and Environment Help
+
+For Pharo installation and learning resources, refer to the [track help page](https://exercism.io/tracks/pharo/learning).
+
+{{ with .Spec.Credits }}
 ## Source
 
 {{ . }}
 {{ end }}
+
 ## Submitting Incomplete Solutions
-It's possible to submit an incomplete solution so you can see how others have completed the exercise.
+
+Remember, it's also possible to submit an incomplete solution so you can see how others have completed the exercise
+and can learn from their approach.
