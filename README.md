@@ -14,10 +14,9 @@ To setup for contributing to the Pharo Exercism exercises, you need to load a de
 1. Using an existing Pharo image (or PharoLauncher) and cloning `github://exercism/pharo:master` with a specified src directory of `dev/src`. You should then load the Metacello baseline `dev` from Iceberg project window.
 ***OR***
 1. From a terminal command line, entering:
-
-   ```bash
-curl https://get.pharo.org | bash
-```
+  ```bash
+  curl https://get.pharo.org | bash
+  ```
 
    and then launch Pharo with the development baseline by typing:
 
