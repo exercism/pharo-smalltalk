@@ -14,6 +14,29 @@ The objectives are simple:
 
 If everything goes well, you will be ready to fetch your first real exercise.
 
-* * * *
+## Hint
+In Smalltalk you can run code (including tests) with broken methods andmissing classes. When the VM encounters broken code, it raises a debuggerwhich lets you explore the problem a little better.  You also have the option to press a button to create a missing class or method, as well as correct any code that causes an error. When you doso, the debugger will backup and let you resume execution with yournew changes.Try doing this with your HelloWorld example, by simply running the tests.
 
-NOTE: This readme will be replaced with an official one
+
+## Running The Tests
+
+Tests can be run directly from the Pharo IDE, by clicking on the test orb next to any test.
+The SUnit convention is that the provided TestCase, `HelloWorldTest`, is expected
+to test the functionality of `HelloWorld`.
+
+If you are still stuck, there is more [detailed help on running tests](https://exercism.io/tracks/pharo/tests).
+
+## Language and Environment Help
+
+For Pharo installation and learning resources, refer to the [track help page](https://exercism.io/tracks/pharo/learning).
+
+
+## Source
+
+This is an exercise to introduce users to using Exercism [http://en.wikipedia.org/wiki/%22Hello,_world!%22_program](http://en.wikipedia.org/wiki/%22Hello,_world!%22_program)
+
+
+## Submitting Incomplete Solutions
+
+Remember, it's also possible to submit an incomplete solution so you can see how others have completed the exercise
+and can learn from their approach.
