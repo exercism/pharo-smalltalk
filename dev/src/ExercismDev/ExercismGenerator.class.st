@@ -66,9 +66,15 @@ ExercismGenerator class >> generateSourceFilesFor: packageOrTag to: filePathStri
 ]
 
 { #category : #generation }
-ExercismGenerator class >> generateTo: filePathString [
+ExercismGenerator class >> generateTo: filePathReference [
+	| cmd result |
 	(RPackage organizer packageNamed: 'Exercism') packages do: [:pkg |
-			self generateSourceFilesFor: pkg to: filePathString ]
+			self generateSourceFilesFor: pkg to: filePathReference ].
+		
+	cmd := 'configlet generate ', (filePathReference resolveString: '..') pathString.
+				
+	result := PipeableOSProcess waitForCommand: cmd.
+	
 ]
 
 { #category : #helper }
@@ -76,7 +82,7 @@ ExercismGenerator class >> generatedReadmeFor: packageOrTag to: destinationDirec
 	packageOrTag classes
 		detect: [ :c | c isTestCase ]
 		ifFound:
-			[ :c | (destinationDirectory / 'README.md') writeStream nextPutAll: c comment ]
+			[ :c | ((destinationDirectory / '.meta') ensureCreateDirectory / 'hints.md') writeStream nextPutAll: c comment ]
 ]
 
 { #category : #helper }

@@ -1,20 +1,13 @@
 "
-# Hello World
+In Smalltalk you can run code (including tests) with broken methods and
+missing classes. When the VM encounters broken code, it raises a debugger
+which lets you explore the problem a little better.  
 
-The classical introductory exercise. Just say ""Hello, World!"".
+You also have the option to press a button to create a missing class or method, as well as correct any code that causes an error. When you do
+so, the debugger will backup and let you resume execution with your
+new changes.
 
-[""Hello, World!""](http://en.wikipedia.org/wiki/%22Hello,_world!%22_program) is the traditional first program for beginning programming in a new language or environment.
-
-The objectives are simple:
-
-Write a function that returns the string ""Hello, World!"".
-Run the test suite and make sure that it succeeds.
-Submit your solution and check it at the website.
-If everything goes well, you will be ready to fetch your first real exercise.
-
-* * * *
-
-
+Try doing this with your HelloWorld example, by simply running the tests.
 "
 Class {
 	#name : #HelloWorldTest,

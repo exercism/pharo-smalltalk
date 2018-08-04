@@ -53,6 +53,17 @@ ExercismManager class >> submitToExercism: packageOrTag [
 ]
 
 { #category : #exercism }
+ExercismManager class >> viewOnExercism: packageOrTag [ 
+
+	|  cmd result |
+		
+	cmd := 'open https://exercism.io/my/tracks/pharo'.
+				
+	result := PipeableOSProcess waitForCommand: cmd.
+	
+]
+
+{ #category : #exercism }
 ExercismManager class >> welcome [
 	"Setup the initial environment for a new user"
 
