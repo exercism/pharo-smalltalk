@@ -12,39 +12,47 @@ ExercismManager class >> fetchFromExercismTo: package [
 
 	| result cmd exercise tonelLocator reader |
 	
-	(exercise := UIManager default request: 'Enter an exercise name') ifNil: [ ^self ].
+	(exercise := UIManager default request: 'Enter a valid exercism exercise name') ifNil: [ ^self ].
 	
 	cmd := 'exercism download --track=pharo --exercise=', exercise.
-	UIManager default inform: 'Running: ', exercise.
+	UIManager default inform: 'Loading: ', exercise.
 	result := PipeableOSProcess waitForCommand: cmd.
 	self verifyExercismResult: result.
 	
-	UIManager default inform: 'Loading: ', exercise.
 	tonelLocator := FileLocator cwd / exercise.
 	(reader := TonelReader on: tonelLocator fileName: tonelLocator pathString ) loadDefinitions.
 	reader definitions do: [ :def | def load ].
 	
+	"RPackageOrganizer default registerPackageNamed: ?"
 	UIManager default inform: 'Success, Happy Coding'
+]
+
+{ #category : #exercism }
+ExercismManager class >> pathStringFor: aFileReference [
+	| aPath |
+	aPath := aFileReference path.
+	^ String streamContents: [ :stream | aPath printOn: stream delimiter: aPath delimiter ]
 ]
 
 { #category : #exercism }
 ExercismManager class >> submitToExercism: packageOrTag [
 	| files writer result cmd kebabName filesToSubmit |
 	
-	kebabName := packageOrTag package name asKebabCase.
+	kebabName := packageOrTag name asKebabCase.
+	kebabName = 'exercism' ifTrue: [ self error: 'Select the sub-package with your exercise' ].
 	
 	writer := ExTonelWriter new.
 	writer
-		packageDir: packageOrTag name;
+		packageDir: kebabName;
 		sourceDir: '.' asFileReference;
-		writeSnapshot: (MCPackage named: kebabName) snapshot.
+		writeSnapshot: packageOrTag snapshot.
 		
 	files := packageOrTag classes reject: [ :cls | cls isTestCase ].
 	filesToSubmit := Character space
 		join:
 			(files
 				collect: [ :cls | 
-					(FileLocator cwd / kebabName / (writer fileNameFor: cls asClassDefinition)) path pathString ]).
+					self pathStringFor: (FileLocator cwd / kebabName / (writer fileNameFor: cls asClassDefinition)) ]).
 				
 	cmd := 'exercism submit ' , filesToSubmit.
 	result := PipeableOSProcess waitForCommand: cmd.
