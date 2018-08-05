@@ -21,7 +21,7 @@
     {
       "slug": "two-fer",
       "uuid": "9806fcc0-8505-4012-bd64-3f7468014df5",
-      "core": true,
+      "core": false,
       "auto_approve": false,
       "unlocked_by": "hello-world",
       "difficulty": 1,
