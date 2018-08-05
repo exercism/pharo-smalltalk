@@ -3,10 +3,11 @@ Extension { #name : #AbstractNautilusUI }
 { #category : #'*ExercismTools' }
 AbstractNautilusUI class >> packagesExercismMenu: aBuilder [
 	<nautilusGlobalPackageMenu>
-	| package target |
+	| package  target packageTree |
 	target := aBuilder model.
-	(package := target selectedPackage) ifNil: [ ^ target ].
-	((package name beginsWith: 'Exercism') or: [ package package name beginsWith: 'Exercism' ]) ifFalse: [ ^ target ].
+	(packageTree := target selectedPackage) ifNil: [ ^ target ].
+	package := packageTree node item. 
+	(package root name beginsWith: 'Exercism') ifFalse: [ ^ target ].
 	
 	(aBuilder item: #'Exercism')
 		label: 'Exercism...';
