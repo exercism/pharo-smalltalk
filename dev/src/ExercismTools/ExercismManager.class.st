@@ -8,22 +8,29 @@ Class {
 }
 
 { #category : #exercism }
-ExercismManager class >> fetchFromExercismTo: package [ 
-
-	| result cmd exercise tonelLocator reader |
+ExercismManager class >> fetchFromExercismTo: package [
+	| result cmd exercise tonelLocator reader pkgName root exercisePkg |
 	
-	(exercise := UIManager default request: 'Enter a valid exercism exercise name') ifNil: [ ^self ].
+	(exercise := UIManager default request: 'Enter a valid exercism exercise name') ifNil: [ ^ self ].
+	cmd := 'exercism download --track=pharo --exercise=' , exercise.
 	
-	cmd := 'exercism download --track=pharo --exercise=', exercise.
-	UIManager default inform: 'Loading: ', exercise.
+	UIManager default inform: 'Loading: ' , exercise.
+	
 	result := PipeableOSProcess waitForCommand: cmd.
 	self verifyExercismResult: result.
 	
 	tonelLocator := FileLocator cwd / exercise.
-	(reader := TonelReader on: tonelLocator fileName: tonelLocator pathString ) loadDefinitions.
-	reader definitions do: [ :def | def load ].
+	(reader := TonelReader on: tonelLocator fileName: tonelLocator pathString) loadDefinitions.
+	reader definitions
+		do: [ :def | 
+			def load.
+			def isOrganizationDefinition
+				ifTrue: [ pkgName := def categories first ] ].
+			
+	root := RPackageOrganizer default packageNamed: 'Exercism'.
+	exercisePkg := root packages detect: [ :p | p categoryName = pkgName ].
 	
-	"RPackageOrganizer default registerPackageNamed: ?"
+	SystemAnnouncer uniqueInstance announce: (RPackageRegistered to: exercisePkg).
 	UIManager default inform: 'Success, Happy Coding'
 ]
 
@@ -56,8 +63,9 @@ ExercismManager class >> submitToExercism: packageOrTag [
 				
 	cmd := 'exercism submit ' , filesToSubmit.
 	result := PipeableOSProcess waitForCommand: cmd.
+	result succeeded ifFalse: [ self error: 'Unable to submit exercism result' ].
 	
-	UIManager default inform: cmd , ' -> ' , result output , '.'
+	UIManager default inform: 'Successfully submitted solution!'
 ]
 
 { #category : #helper }
