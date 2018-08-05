@@ -16,13 +16,13 @@ Metacello new
  baseline: 'Exercism'; 
  repository: 'github://exercism/pharo:master/dev/src';
  load.
-(RPackageOrganizer default packageNamed: 'Exercism') browse
+ExercismManager welcome.
 "
 ```
 
 If you have any TIMEOUT problems when loading the initial tools (some corporate firewalls block git access), you can add an additional command to the beginning of the eval script like this:
 
- ```smalltalk
+```smalltalk
 ./pharo-ui Pharo.image eval "
 Iceberg remoteTypeSelector: #httpsUrl.
 Metacello new 

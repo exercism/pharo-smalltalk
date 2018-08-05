@@ -4,7 +4,7 @@ To start your Exercism journey, right click on the Exercism package and select '
 Class {
 	#name : #Welcome,
 	#superclass : #TestCase,
-	#category : #'ExercismDev-Welcome'
+	#category : #'ExercismTools-Welcome'
 }
 
 { #category : #tests }
