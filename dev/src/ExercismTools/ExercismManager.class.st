@@ -10,27 +10,21 @@ Class {
 { #category : #exercism }
 ExercismManager class >> fetchFromExercismTo: package [ 
 
-	| result cmd exercise project tonelLocator reader |
+	| result cmd exercise tonelLocator reader |
 	
 	(exercise := UIManager default request: 'Enter an exercise name') ifNil: [ ^self ].
 	
 	cmd := 'exercism download --track=pharo --exercise=', exercise.
+	UIManager default inform: 'Running: ', exercise.
 	result := PipeableOSProcess waitForCommand: cmd.
-	project := self parseExercismFetchString: result output.
+	self verifyExercismResult: result.
 	
+	UIManager default inform: 'Loading: ', exercise.
 	tonelLocator := ('./', exercise) asFileReference.
 	(reader := TonelReader on: tonelLocator fileName: tonelLocator pathString ) loadDefinitions.
 	reader definitions do: [ :def | def load ].
 	
-	UIManager default inform: cmd, ' -> ',result output, '.'
-]
-
-{ #category : #helper }
-ExercismManager class >> parseExercismFetchString: osOutputString [
-	
-	osOutputString regex: '\/\w*-?\w+$' matchesDo: [ :m |  ^m allButFirst ].
-	
-	self error: 'Could not find exercism result in: ', osOutputString
+	UIManager default inform: 'Success, Happy Coding'
 ]
 
 { #category : #exercism }
@@ -50,6 +44,17 @@ ExercismManager class >> submitToExercism: packageOrTag [
 				
 	result := PipeableOSProcess waitForCommand: cmd.
 	UIManager default inform: cmd, ' -> ',result output, '.'
+]
+
+{ #category : #helper }
+ExercismManager class >> verifyExercismResult: osProcessResult [
+
+	osProcessResult succeeded
+		ifTrue: [ (osProcessResult output beginsWith: FileLocator cwd pathString)
+				ifFalse: [ self error: 'Pharo must be run from the default exercism directory!' ].
+			^ true ].
+		
+	self error: 'failure running exercism command: ' , osProcessResult printString
 ]
 
 { #category : #exercism }
