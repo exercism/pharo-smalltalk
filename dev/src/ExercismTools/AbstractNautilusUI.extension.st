@@ -13,12 +13,12 @@ AbstractNautilusUI class >> packagesExercismMenu: aBuilder [
 		order: 3000;
 		help: 'Exercism commands'.
 		
-	(aBuilder item: #'Fetch Next')
+	(aBuilder item: #'Fetch Exercise')
 		parent: #'Exercism';
 		action: [ ExercismManager fetchFromExercismTo: package ];
 		order: 3000;
 		help: 'Fetch next Exercism example from exercism.io'.
-	(aBuilder item: #'Submit')
+	(aBuilder item: #'Submit Solution')
 		parent: #'Exercism';
 		action: [ ExercismManager submitToExercism: package ];
 		order: 3001;
