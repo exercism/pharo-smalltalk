@@ -30,8 +30,7 @@ ExercismManager class >> parseExercismFetchString: osOutputString [
 	
 	osOutputString regex: '\/\w*-?\w+$' matchesDo: [ :m |  ^m allButFirst ].
 	
-	"self error: 'Could not find exercism result'"
-	^'hello-world'
+	self error: 'Could not find exercism result in: ', osOutputString
 ]
 
 { #category : #exercism }
@@ -51,6 +50,17 @@ ExercismManager class >> submitToExercism: packageOrTag [
 				
 	result := PipeableOSProcess waitForCommand: cmd.
 	UIManager default inform: cmd, ' -> ',result output, '.'
+]
+
+{ #category : #exercism }
+ExercismManager class >> viewOnExercism: packageOrTag [ 
+
+	|  cmd result |
+		
+	cmd := 'open https://exercism.io/my/tracks/pharo'.
+				
+	result := PipeableOSProcess waitForCommand: cmd.
+	
 ]
 
 { #category : #exercism }

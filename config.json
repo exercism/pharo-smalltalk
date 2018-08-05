@@ -16,6 +16,18 @@
       "topics": [
         "introduction"
       ]
+    },
+    {
+      "slug": "two-fer",
+      "uuid": "9806fcc0-8505-4012-bd64-3f7468014df5",
+      "core": true,
+      "auto_approve": false,
+      "unlocked_by": null,
+      "difficulty": 1,
+      "topics": [
+        "strings",
+        "text-formatting"
+      ]
     }
   ]
 }

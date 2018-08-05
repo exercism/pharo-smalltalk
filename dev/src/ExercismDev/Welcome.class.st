@@ -1,5 +1,5 @@
 "
-To start your Exercism journey, right click on the Exercism package and select 'Fetch Exercism'
+To start your Exercism journey, right click on the Exercism package and select 'Exercism | Fetch  Next'
 "
 Class {
 	#name : #Welcome,

@@ -5,7 +5,7 @@ Of interest, in this example is that classes can define instance methods with th
 
 A method which has no parameters, is called a unary method, and a method taking multiple parameters, each deliniated by a 'word ending with a ':', is called a keyword method.
 
-There is a thrid type of method, which takes only 1 parameter but uses  a symbol (s) for a name (typically a mathematical one like: +, -, & etc) which is called a binary method.
+There is a third type of method, which takes only 1 parameter but uses a symbol(s) for a name (typically a mathematical one like: +, -, & etc) which is called a binary method.
 "
 Class {
 	#name : #TwoFer,
