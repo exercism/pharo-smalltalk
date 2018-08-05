@@ -20,7 +20,7 @@ BaselineOfExercism >> baseline: spec [
 					with: [ spec requires: #('OSProcess' ) ];
 				group: 'default'
 					with:
-					#('Exercism' 'ExercismTools');
+					#('ExercismTools');
 				group: 'dev'
 					with:
 					#('ExercismDev')]
