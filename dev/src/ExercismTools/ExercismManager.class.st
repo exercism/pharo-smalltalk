@@ -20,7 +20,7 @@ ExercismManager class >> fetchFromExercismTo: package [
 	self verifyExercismResult: result.
 	
 	UIManager default inform: 'Loading: ', exercise.
-	tonelLocator := ('./', exercise) asFileReference.
+	tonelLocator := FileLocator cwd / exercise.
 	(reader := TonelReader on: tonelLocator fileName: tonelLocator pathString ) loadDefinitions.
 	reader definitions do: [ :def | def load ].
 	
@@ -28,22 +28,28 @@ ExercismManager class >> fetchFromExercismTo: package [
 ]
 
 { #category : #exercism }
-ExercismManager class >> submitToExercism: packageOrTag [ 
-
-	| files writer result cmd |
+ExercismManager class >> submitToExercism: packageOrTag [
+	| files writer result cmd kebabName filesToSubmit |
+	
+	kebabName := packageOrTag package name asKebabCase.
+	
 	writer := ExTonelWriter new.
-	writer packageDir: packageOrTag name.
 	writer
+		packageDir: packageOrTag name;
 		sourceDir: '.' asFileReference;
-		writeSnapshot: (MCPackage named: packageOrTag package name) snapshot.
-	files := packageOrTag classes.
+		writeSnapshot: (MCPackage named: kebabName) snapshot.
 		
-	cmd := 'exercism submit ',
-			(Character space
-				join: (files collect: [ :cls | writer fileNameFor: cls asClassDefinition ])).
+	files := packageOrTag classes reject: [ :cls | cls isTestCase ].
+	filesToSubmit := Character space
+		join:
+			(files
+				collect: [ :cls | 
+					(FileLocator cwd / kebabName / (writer fileNameFor: cls asClassDefinition)) path pathString ]).
 				
+	cmd := 'exercism submit ' , filesToSubmit.
 	result := PipeableOSProcess waitForCommand: cmd.
-	UIManager default inform: cmd, ' -> ',result output, '.'
+	
+	UIManager default inform: cmd , ' -> ' , result output , '.'
 ]
 
 { #category : #helper }

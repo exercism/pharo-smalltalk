@@ -74,7 +74,7 @@ ExercismGenerator class >> generateSourceFilesFor: packageOrTag to: filePathStri
 
 	writer := ExTonelWriter new.
 	writer
-		packageDir: (exerciseDirectory := self kebabCase: packageOrTag name);
+		packageDir: (exerciseDirectory := packageOrTag name asKebabCase);
 		sourceDir: filePathString asFileReference;
 		writeSnapshot: (self createTagSnapshotFor: packageOrTag).
 
@@ -97,18 +97,4 @@ ExercismGenerator class >> generateTo: filePathReference [
 	cmd := 'configlet generate ', (filePathReference resolveString: '..') pathString.		
 	result := PipeableOSProcess waitForCommand: cmd.
 	
-]
-
-{ #category : #helper }
-ExercismGenerator class >> kebabCase: aString [
-	"Answer a String that converts the CamelCase input to camel-case kebab output 
-	used by exercism"
-
-	^ String
-		streamContents: [ :kebabStream |
-			aString uncapitalized
-				do: [ :char |
-					char isUppercase
-						ifTrue: [ kebabStream nextPut: $- ].
-					kebabStream nextPut: char asLowercase ] ]
 ]
