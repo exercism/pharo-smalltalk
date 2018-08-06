@@ -43,7 +43,7 @@ ExercismManager class >> pathStringFor: aFileReference [
 
 { #category : #exercism }
 ExercismManager class >> submitToExercism: packageOrTag [
-	| files writer result cmd exerciseName filesToSubmit trackDirectoryRef solutionMetaFileBackup submissionDirectoryRef |
+	| files writer result cmd exerciseName filesToSubmit trackDirectoryRef submissionDirectoryRef |
 	
 	exerciseName := packageOrTag name asKebabCase.
 	exerciseName = 'exercism' ifTrue: [ self error: 'Select the sub-package with your exercise' ].
@@ -52,7 +52,7 @@ ExercismManager class >> submitToExercism: packageOrTag [
 	submissionDirectoryRef := trackDirectoryRef / '.pharo'.
 	
 	(writer := ExTonelWriter new)
-		packageDir: (submissionDirectoryRef relativeTo: trackDirectoryRef) pathString;
+		packageDir: (submissionDirectoryRef relativeTo: trackDirectoryRef) exPathString;
 		sourceDir: trackDirectoryRef;
 		writeSnapshot: packageOrTag snapshot.
 

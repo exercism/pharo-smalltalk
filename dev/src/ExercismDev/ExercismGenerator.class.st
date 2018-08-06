@@ -76,6 +76,9 @@ ExercismGenerator class >> generateSourceFilesFor: packageOrTag to: filePathStri
 	metaDirectoryRef :=  exerciseDirectoryRef / '.meta'.
 	solutionDirectoryRef := metaDirectoryRef / 'solution'.
 	
+	exerciseDirectoryRef ensureCreateDirectory.
+	exerciseDirectoryRef deleteAll.
+	
 	(writer := ExTonelWriter new)
 		packageDir: (solutionDirectoryRef relativeTo: exampleDirectoryRef) pathString;
 		sourceDir: exampleDirectoryRef;
