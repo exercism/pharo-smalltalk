@@ -43,32 +43,26 @@ ExercismManager class >> pathStringFor: aFileReference [
 
 { #category : #exercism }
 ExercismManager class >> submitToExercism: packageOrTag [
-	| files writer result cmd kebabName filesToSubmit srcDir solutionBackup |
+	| files writer result cmd exerciseName filesToSubmit trackDirectoryRef solutionMetaFileBackup submissionDirectoryRef |
 	
-	kebabName := packageOrTag name asKebabCase.
-	kebabName = 'exercism' ifTrue: [ self error: 'Select the sub-package with your exercise' ].
+	exerciseName := packageOrTag name asKebabCase.
+	exerciseName = 'exercism' ifTrue: [ self error: 'Select the sub-package with your exercise' ].
 	
-	srcDir := FileLocator cwd.
-	solutionBackup := (srcDir / kebabName / '.solution.json') contents.
+	trackDirectoryRef := FileLocator cwd / exerciseName.
+	submissionDirectoryRef := trackDirectoryRef / '.pharo'.
 	
-	writer := ExTonelWriter new.
-	writer
-		packageDir: kebabName;
-		sourceDir: srcDir;
+	(writer := ExTonelWriter new)
+		packageDir: (submissionDirectoryRef relativeTo: trackDirectoryRef) pathString;
+		sourceDir: trackDirectoryRef;
 		writeSnapshot: packageOrTag snapshot.
-		
-	"Remove the extra package file as its not needed for Exercism"
-	(srcDir / kebabName / 'package.st') delete.
-	
-	"Restore meta file"
-	(srcDir / kebabName / '.solution.json') writeStreamDo: [ :stream | stream nextPutAll: solutionBackup ].
+
 	
 	files := packageOrTag classes reject: [ :cls | cls isTestCase ].
 	filesToSubmit := Character space
 		join:
 			(files
 				collect: [ :cls | 
-					self pathStringFor: (FileLocator cwd / kebabName / (writer fileNameFor: cls asClassDefinition)) ]).
+					self pathStringFor: (submissionDirectoryRef / (writer fileNameFor: cls asClassDefinition)) ]).
 				
 	cmd := 'exercism submit ' , filesToSubmit.
 	result := PipeableOSProcess waitForCommand: cmd.
