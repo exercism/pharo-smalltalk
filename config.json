@@ -20,6 +20,18 @@
     {
       "slug": "two-fer",
       "uuid": "9806fcc0-8505-4012-bd64-3f7468014df5",
+      "core": false,
+      "auto_approve": false,
+      "unlocked_by": "hello-world",
+      "difficulty": 1,
+      "topics": [
+        "strings",
+        "text-formatting"
+      ]
+    },
+    {
+      "slug": "reverse-string",
+      "uuid": "bab40685-2f87-4d4f-8886-0a4d21a0d90d",
       "core": true,
       "auto_approve": false,
       "unlocked_by": null,

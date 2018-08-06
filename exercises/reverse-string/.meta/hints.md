@@ -1,0 +1,1 @@
+While there is a #reversed method for Strings, can you figure out how to do this with lower level iteration or streams? Pharo has a neat code finder tool, press Shift-Enter  to activate it.
