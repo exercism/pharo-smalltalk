@@ -58,32 +58,38 @@ ExercismGenerator class >> generate [
 ExercismGenerator class >> generateReadmeHintFor: packageOrTag to: destinationDirectory [
 	packageOrTag classes
 		detect: [ :c | c isTestCase ]
-		ifFound: [ :c | 
-			((destinationDirectory / '.meta') ensureCreateDirectory / 'hints.md') writeStream
-				nextPutAll: c comment ]
+		ifFound: [ :c | (destinationDirectory / 'hints.md') writeStream nextPutAll: c comment ]
 ]
 
 { #category : #helper }
 ExercismGenerator class >> generateSourceFilesFor: packageOrTag to: filePathString [
-	| writer exerciseDirectory destinationDirectory |
+	| writer exampleDirectoryRef exerciseDirectoryRef metaDirectoryRef  solutionDirectoryRef testClass testClassFilename exerciseName |
 	
 	"Note: could create the writer on a memory stream to then pick what should be stored on disk
 	e.g.
 		mem := FileSystem memory root.
 		writer := ExTonelWriter on: mem."
 
-	writer := ExTonelWriter new.
-	writer
-		packageDir: (exerciseDirectory := packageOrTag name asKebabCase);
-		sourceDir: filePathString asFileReference;
+	exerciseName := packageOrTag name asKebabCase.
+	exampleDirectoryRef := filePathString asFileReference.
+	exerciseDirectoryRef := exampleDirectoryRef / exerciseName.
+	metaDirectoryRef :=  exerciseDirectoryRef / '.meta'.
+	solutionDirectoryRef := metaDirectoryRef / 'solution'.
+	
+	(writer := ExTonelWriter new)
+		packageDir: (solutionDirectoryRef relativeTo: exampleDirectoryRef) pathString;
+		sourceDir: exampleDirectoryRef;
 		writeSnapshot: (self createTagSnapshotFor: packageOrTag).
 
-	destinationDirectory := filePathString asFileReference	/ exerciseDirectory.
-
-	self generateReadmeHintFor: packageOrTag to: destinationDirectory.
-
 	"Remove the extra package file as its not needed for Exercism"
-	(destinationDirectory / 'package.st') delete.
+	(solutionDirectoryRef / 'package.st') delete.
+	
+	self generateReadmeHintFor: packageOrTag to: metaDirectoryRef.
+	
+	"Move the test file down to the exerciseDirectory"
+	testClass := packageOrTag classes detect: [ :cls | cls isTestCase  ].
+	testClassFilename := testClass name, '.class.st'.
+	(solutionDirectoryRef / testClassFilename) moveTo: exerciseDirectoryRef / testClassFilename.
 
 ]
 
