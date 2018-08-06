@@ -43,17 +43,26 @@ ExercismManager class >> pathStringFor: aFileReference [
 
 { #category : #exercism }
 ExercismManager class >> submitToExercism: packageOrTag [
-	| files writer result cmd kebabName filesToSubmit |
+	| files writer result cmd kebabName filesToSubmit srcDir solutionBackup |
 	
 	kebabName := packageOrTag name asKebabCase.
 	kebabName = 'exercism' ifTrue: [ self error: 'Select the sub-package with your exercise' ].
 	
+	srcDir := FileLocator cwd.
+	solutionBackup := (srcDir / kebabName / '.solution.json') contents.
+	
 	writer := ExTonelWriter new.
 	writer
 		packageDir: kebabName;
-		sourceDir: '.' asFileReference;
+		sourceDir: srcDir;
 		writeSnapshot: packageOrTag snapshot.
 		
+	"Remove the extra package file as its not needed for Exercism"
+	(srcDir / kebabName / 'package.st') delete.
+	
+	"Restore meta file"
+	(srcDir / kebabName / '.solution.json') writeStreamDo: [ :stream | stream nextPutAll: solutionBackup ].
+	
 	files := packageOrTag classes reject: [ :cls | cls isTestCase ].
 	filesToSubmit := Character space
 		join:
