@@ -3,7 +3,7 @@
   "language": "Pharo",
   "active": false,
   "blurb": "The immersive, modern, Smalltalk programming experience",
-  "solution_pattern": "\\.meta/solution/w+\\.class\\.st",
+  "solution_pattern": "\\.meta/solution/\\w+\\.class\\.st",
   "test_pattern": "\\w+Test\\.class\\.st",
   "exercises": [
     {
