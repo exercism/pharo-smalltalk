@@ -1,4 +1,4 @@
-## Recommended learning resources
+## Recommended reading
 
 ### Starting Out
 * [Pharo Main Site](http://pharo.org/documentation):

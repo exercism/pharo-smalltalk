@@ -16,13 +16,13 @@ Metacello new
  baseline: 'Exercism'; 
  repository: 'github://exercism/pharo:master/dev/src';
  load.
-(RPackageOrganizer default packageNamed: 'Exercism') browse
+ExercismManager welcome.
 "
 ```
 
 If you have any TIMEOUT problems when loading the initial tools (some corporate firewalls block git access), you can add an additional command to the beginning of the eval script like this:
 
- ```smalltalk
+```smalltalk
 ./pharo-ui Pharo.image eval "
 Iceberg remoteTypeSelector: #httpsUrl.
 Metacello new 
@@ -36,6 +36,6 @@ You can then always start Pharo by typing:
 ./pharo-ui Pharo.image
 ```
 
-***Did you know:** When you launch Pharo, you are actually restoring an execution image snapshot - similar to a VMWare Operating System image. This
+**Did you know:** *When you launch Pharo, you are actually restoring an execution image snapshot - similar to a VMWare Operating System image. This
 is a powerful concept that allows you to suspend work mid operation, possibly even when debugging
 something. When you next relaunch Pharo, you can then continue stepping through code in the restored debugger, or possibly continue a refactoring step.*

@@ -3,22 +3,23 @@ Extension { #name : #AbstractNautilusUI }
 { #category : #'*ExercismTools' }
 AbstractNautilusUI class >> packagesExercismMenu: aBuilder [
 	<nautilusGlobalPackageMenu>
-	| package target |
+	| package  target packageTree |
 	target := aBuilder model.
-	(package := target selectedPackage) ifNil: [ ^ target ].
-	((package name beginsWith: 'Exercism') or: [ package package name beginsWith: 'Exercism' ]) ifFalse: [ ^ target ].
+	(packageTree := target selectedPackage) ifNil: [ ^ target ].
+	package := packageTree node item. 
+	(package root name beginsWith: 'Exercism') ifFalse: [ ^ target ].
 	
 	(aBuilder item: #'Exercism')
 		label: 'Exercism...';
 		order: 3000;
 		help: 'Exercism commands'.
 		
-	(aBuilder item: #'Fetch Next')
+	(aBuilder item: #'Fetch Exercise')
 		parent: #'Exercism';
 		action: [ ExercismManager fetchFromExercismTo: package ];
 		order: 3000;
 		help: 'Fetch next Exercism example from exercism.io'.
-	(aBuilder item: #'Submit')
+	(aBuilder item: #'Submit Solution')
 		parent: #'Exercism';
 		action: [ ExercismManager submitToExercism: package ];
 		order: 3001;
