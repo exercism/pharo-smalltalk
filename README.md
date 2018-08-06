@@ -30,15 +30,9 @@ Metacello new
 "
 ```
 
-   If you have any TIMEOUT problems when loading the tools (some corporate firewalls block git access), 
-you can add an additional command to the beginning of the script like this:
+If you have any TIMEOUT problems refer to the [user installation instructions](./docs/INSTALLATION.md).
 
-   ```smalltalk
-./pharo-ui Pharo.image eval "
-Iceberg remoteTypeSelector: #httpsUrl.
-Metacello new 
-...
-```
+You also need to install the [latest Iceberg for Pharo 6.1](https://github.com/pharo-vcs/iceberg#update-iceberg).
 
 ## Contributing
 
