@@ -70,6 +70,13 @@ To test an exercise run it from the built-in test runner by clicking on the test
 MyExercismPackage suite run.
 ```
 
+To test in a non-development image, you should follow the [user installation steps](./docs/INSTALLATION.md). If you 
+are using that image to test subsequent development baselines - you may need to delete the following development directories to
+ensure you get the latest code: 
+`./pharo/pharo-local/iceberg, ./pharo/pharo-local/package-cache`
+
+You will also need to delete any exercise directories that you have downloaded (e.g. `./hello-world, ./two-fer`).
+
 ### Coding Style
 
 The code in this repository should follow [Smalltalk with style](http://sdmeta.gforge.inria.fr/FreeBooks/WithStyle/SmalltalkWithStyle.pdf) conventions wherever possible.
