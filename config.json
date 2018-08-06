@@ -4,7 +4,6 @@
   "active": false,
   "blurb": "The immersive, modern, Smalltalk programming experience",
   "solution_pattern": "\\w+([^T][^e][^s][^t])\\.class\\.st",
-  "ignored_pattern": "\\w+([^T][^e][^s][^t])\\.class\\.st",
   "test_pattern": "\\w+Test\\.class\\.st",
   "exercises": [
     {
@@ -21,9 +20,9 @@
     {
       "slug": "two-fer",
       "uuid": "9806fcc0-8505-4012-bd64-3f7468014df5",
-      "core": false,
+      "core": true,
       "auto_approve": false,
-      "unlocked_by": "hello-world",
+      "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "strings",
