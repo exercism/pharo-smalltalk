@@ -7,5 +7,5 @@ Path >> exPathString [
 	"This is duplicate of pathString which is only available if the new Iceberg is loaded"
 
 	^String streamContents: [ :stream | 
-		self printPathOn: stream delimiter: self delimiter ]
+		self printOn: stream delimiter: self delimiter ]
 ]
