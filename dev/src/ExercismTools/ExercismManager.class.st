@@ -79,7 +79,7 @@ ExercismManager class >> verifyExercismResult: osProcessResult [
 				ifFalse: [ self error: 'Pharo must be run from the default exercism directory!' ].
 			^ true ].
 		
-	self error: 'failure running exercism command: ' , osProcessResult printString
+	self error: 'failure running exercism - ' , osProcessResult outputAndError printString
 ]
 
 { #category : #exercism }

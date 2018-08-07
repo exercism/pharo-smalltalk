@@ -43,7 +43,7 @@ ExercismGenerator class >> defaultPath: pathString [
 
 { #category : #generation }
 ExercismGenerator class >> generate [
-	"Thi is the entry point for generating exercism compatible source files that can be checked into
+	"This is the entry point for generating exercism compatible source files that can be checked into
 	the exercism/pharo project. e.g. self generate"
 	<example>
 	
@@ -63,6 +63,8 @@ ExercismGenerator class >> generateReadmeHintFor: packageOrTag to: destinationDi
 
 { #category : #helper }
 ExercismGenerator class >> generateSourceFilesFor: packageOrTag to: filePathString [
+	"Generate the Tonel source files for a package (normally a tag). Answer the exercise directory reference"
+
 	| writer exampleDirectoryRef exerciseDirectoryRef metaDirectoryRef  solutionDirectoryRef testClass testClassFilename exerciseName |
 	
 	"Note: could create the writer on a memory stream to then pick what should be stored on disk
@@ -93,6 +95,8 @@ ExercismGenerator class >> generateSourceFilesFor: packageOrTag to: filePathStri
 	testClass := packageOrTag classes detect: [ :cls | cls isTestCase  ].
 	testClassFilename := testClass name, '.class.st'.
 	(solutionDirectoryRef / testClassFilename) moveTo: exerciseDirectoryRef / testClassFilename.
+	
+	^exerciseDirectoryRef 
 
 ]
 
@@ -106,4 +110,7 @@ ExercismGenerator class >> generateTo: filePathReference [
 	cmd := 'configlet generate ', (filePathReference resolveString: '..') pathString.		
 	result := PipeableOSProcess waitForCommand: cmd.
 	
+	result succeeded
+		ifFalse: [ 
+			self error: 'failure running "configlet generate" - ' , result outputAndError printString ]
 ]
