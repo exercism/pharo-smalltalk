@@ -8,10 +8,13 @@ Exercism exercises for Pharo.
 
 This repository is for the development of [Exercism](http://exercism.io) exercises for the [Pharo](http://pharo.org) programming language. It is expected that you are [familiar](./docs/RESOURCES.md) with development in Pharo and its use of git. If however, you are new to Pharo or Exercism, consider using [Exercism to learn Pharo](./docs/INSTALLATION.md), so you can help contribute in the future.
 
- 
-To setup for contributing to the Pharo Exercism exercises, you need to load a development baseline either by:
 
-1. Using an existing Pharo image (or PharoLauncher) and cloning `github://exercism/pharo:master` with a specified src directory of `dev/src`. You should then load the Metacello baseline `dev` from Iceberg project window.
+NOTE: Pharo support for Exercism is currently in beta and so its not publicly visible, however you can still preview it through [this link](https://exercism.io/tracks/pharo).
+
+
+To setup for contributing to [Pharo Exercism](https://exercism.io/tracks/pharo) exercises, you need to load a development baseline either by:
+
+1. Using an existing Pharo image (or [PharoLauncher](https://github.com/pharo-project/pharo-launcher)) and cloning `github://exercism/pharo:master` with a specified src directory of `dev/src`. You should then load the Metacello baseline `dev` from Iceberg project window.
 ***OR***
 1. From a terminal command line, entering:
 
