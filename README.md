@@ -12,7 +12,14 @@ This repository is for the development of [Exercism](http://exercism.io) exercis
 NOTE: Pharo support for Exercism is currently in beta and so its not publicly visible, however you can still preview it through [this link](https://exercism.io/tracks/pharo).
 
 
-To setup for contributing to [Pharo Exercism](https://exercism.io/tracks/pharo) exercises, you need to load a development baseline either by:
+You first need to ensure that you have a complete exercism development environment and have installed:
+1. the [exercism command line interface](https://exercism.io/cli-walkthrough) and configured it to point to somewhere sensible for development (e.g. `exercism configure -w ~/development/exercism)
+1. the [configlet](https://github.com/exercism/configlet#usage) linter/generator
+1. the exercism/[problem specifications](https://github.com/exercism/problem-specifications) repo as subdirectory of the exercism workspace configured above (this repo is used to generate exercise readme.md files, and to refer to the suggested tests)
+1. the exercism/[pharo](https://github.com/exercism/pharo) repo, as a staging repository to generate exercises and assets to, and checkin (seperately from coding in pharo)
+
+
+Next you need to setup a Pharo environment for contributing to [Pharo Exercism](https://exercism.io/tracks/pharo) exercises, you need to load a development baseline either by:
 
 1. Using an existing Pharo image (or [PharoLauncher](https://github.com/pharo-project/pharo-launcher)) and cloning `github://exercism/pharo:master` with a specified src directory of `dev/src`. You should then load the Metacello baseline `dev` from Iceberg project window.
 ***OR***
@@ -86,10 +93,12 @@ If you plan to make significant or breaking changes, please open an issue so we 
 
 ### Verifying Your Changes
 
-Before submitting your pull request, you should your changes in two ways:
+Before submitting your pull request, you should check your changes as follows:
 
-* Run all the tests for the Pharo exercises and ensure they all pass
-* Run the Exercism-specific linter to verify the track
+1. Run all the tests for the Pharo exercises and ensure they all pass
+1. Generate the exercises and templates into your seperate pharo exercism repo (the staging repo)
+1. Run the Exercism-specific linter to verify the track
+1. Checkin your changes in a brach and genrate a pull request
 
 All the tests for Pharo exercises can be run from the top level of the repo with:
 
@@ -97,7 +106,11 @@ All the tests for Pharo exercises can be run from the top level of the repo with
 AllExercismTests suite run.
 ```
 
-For the Exercism specific linting, please see the [linter documentation](https://github.com/exercism/docs/blob/master/language-tracks/configuration/linting.md).
+To generate the templates, locate the ExercismGenerator in your Pharo image, and click on the generate triangle (class method). It prompts you for a location, which should be the `exercises` directory of the staging repo you checked out.
+
+For the Exercism specific linting, please see the [linter documentation](https://github.com/exercism/docs/blob/master/language-tracks/configuration/linting.md). You can run the linter from the command line in the exercises directory of the staging repo
+
+Finally checkin using the git command line or a tool like IntelliJ or VSCode. 
 
 ### Contributing a New Exercise
 
