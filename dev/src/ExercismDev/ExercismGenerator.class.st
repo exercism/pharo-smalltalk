@@ -56,6 +56,9 @@ ExercismGenerator class >> generate [
 
 { #category : #helper }
 ExercismGenerator class >> generateReadmeHintFor: packageOrTag to: destinationDirectory [
+	"Generate markdown hints, that exercism configlet will pickup for readme.md files
+	see: https://github.com/exercism/docs/blob/master/language-tracks/exercises/anatomy/readmes.md#generating-a-readme"
+	
 	packageOrTag classes
 		detect: [ :c | c isTestCase ]
 		ifFound: [ :c | (destinationDirectory / 'hints.md') writeStream nextPutAll: c comment ]
