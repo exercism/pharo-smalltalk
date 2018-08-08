@@ -35,7 +35,32 @@ You can then always start Pharo by typing:
 ```bash
 ./pharo-ui Pharo.image
 ```
+## Getting Started
 
+When you launch Pharo, you will see a Welcome project, in a [System Browser](https://medium.com/@richardeng/pharo-quick-start-5bab70944ce2#3099).
+The top, left most panel shows packages in your environment, and you will notice the install script has already configured
+a package called `Exercism`, which contains a sub-project tag called `Welcome`. The second panel shows classes - and again
+there is a class called `Welcome`. Underneath the classes panel there are 3 buttons, "Hier." (show a class hierachy), "Class" 
+(toggle between class and instance methods), "Com." (toggle the class comments pane).
+
+If you click on the comments button, you can see the latest instructions for using Pharo Exercism.
+
+For other file based languages you would normally jump to a terminal at this point, and use the exercism cli to fetch the
+next exercise. While Pharo can work with files in a similar manner, the environment is actually tuned to work with objects
+and code, classes and methods are all considered objects like everything else. You will learn more about this over the course of 
+this track.
+
+For now however, we have included a plugin to Pharo that will let you retrieve and submit Pharo exercises from within the IDE.
+All you need to do is right click on the the Welecome package (in the top left panel), and select the Exercism|Fetch Exercise
+menu item. This will prompt you for an exercise name (e.g. hello-world), and then retrieve it automatically for you.
+
+Exercise names can be found on your [Pharo track](https://exercism.io/my/tracks/pharo) page, where it shows you the CLI
+command for loading. Simply copy the exercise name indicated in the command, e.g. `exercism --exercise=hello-world --track=pharo`
+would be `hello-world`.
+
+When you have entered a valid exercise, the plugin will retrieve the code and dispaly it in the System Browser, ready for
+you to begin coding.
+#  
 **Did you know:** *When you launch Pharo, you are actually restoring an execution image snapshot - similar to a VMWare Operating System image. This
 is a powerful concept that allows you to suspend work mid operation, possibly even when debugging
 something. When you next relaunch Pharo, you can then continue stepping through code in the restored debugger, or possibly continue a refactoring step.*
