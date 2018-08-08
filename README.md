@@ -13,25 +13,27 @@ NOTE: Pharo support for Exercism is currently in beta and so its not publicly vi
 
 
 You first need to ensure that you have a complete exercism development environment and have installed:
-1. the [exercism command line interface](https://exercism.io/cli-walkthrough) and configured it to point to somewhere sensible for development (e.g. `exercism configure -w ~/development/exercism)
+1. the [exercism command line interface](https://exercism.io/cli-walkthrough) and configured it to point to somewhere sensible for development (e.g. `exercism configure -w ~/development/exercism`)
 1. the [configlet](https://github.com/exercism/configlet#usage) linter/generator
 1. the exercism/[problem specifications](https://github.com/exercism/problem-specifications) repo as subdirectory of the exercism workspace configured above (this repo is used to generate exercise readme.md files, and to refer to the suggested tests)
-1. the exercism/[pharo](https://github.com/exercism/pharo) repo, as a staging repository to generate exercises and assets to, and checkin (seperately from coding in pharo)
+1. the exercism/[pharo](https://github.com/exercism/pharo) repo, as a staging repository to which you will generate exercises and assets to check-in (seperately from coding in pharo)
 
 
-Next you need to setup a Pharo environment for contributing to [Pharo Exercism](https://exercism.io/tracks/pharo) exercises, you need to load a development baseline either by:
+Next you need to setup a Pharo environment for creating the actual coding examples. You need to load a development baseline either by:
 
-1. Using an existing Pharo image (or [PharoLauncher](https://github.com/pharo-project/pharo-launcher)) and cloning `github://exercism/pharo:master` with a specified src directory of `dev/src`. You should then load the Metacello baseline `dev` from Iceberg project window.
+- Use an existing Pharo image (or [PharoLauncher](https://github.com/pharo-project/pharo-launcher)) and install the [latest Iceberg for Pharo 6.1](https://github.com/pharo-vcs/iceberg#update-iceberg). Next, clone `https://exercism/pharo` (with the new v1.2.x Iceberg UI, select: "clone from github" and specify `exercism` as the owner name, `pharo` as the project name, and use `HTTPS` as the protocol. This will automatically specify a src directory of `dev/src`). You should then install the Metacello baseline `dev` (not default) from the Iceberg, Metacello context menu.
+
 ***OR***
-1. From a terminal command line, entering:
 
-  ```bash
-  curl https://get.pharo.org | bash
-  ```
+- From a terminal command line, entering:
 
-  and then launch Pharo with the development baseline by typing:
+```bash
+curl https://get.pharo.org | bash
+```
 
-  ```smalltalk
+and then launch Pharo with the development baseline by typing:
+
+```smalltalk
 ./pharo-ui Pharo.image eval "
 Metacello new 
  baseline: 'Exercism'; 
@@ -58,7 +60,7 @@ A list of missing exercise can be found at: http://exercism.io/languages/pharo/t
 
 ### Conventions
 
-- We use [SUunit](https://en.wikipedia.org/wiki/SUnit) (the original xUnit libary) and no additional 3rd-party-frameworks.
+- We use [SUnit](https://en.wikipedia.org/wiki/SUnit) (the original xUnit libary) and no additional 3rd-party-frameworks.
 - For consistency, we use the test parameter order: `self assert: actual equals: expected` 
 
 
@@ -106,11 +108,11 @@ All the tests for Pharo exercises can be run from the top level of the repo with
 AllExercismTests suite run.
 ```
 
-To generate the templates, locate the ExercismGenerator in your Pharo image, and click on the generate triangle (class method). It prompts you for a location, which should be the `exercises` directory of the staging repo you checked out.
+To generate the templates, locate the ExercismGenerator in your Pharo image, and click on the generate triangle (class method). It prompts you for a location, which should be the `exercises` directory of the staging repo you checked out seperately.
 
-For the Exercism specific linting, please see the [linter documentation](https://github.com/exercism/docs/blob/master/language-tracks/configuration/linting.md). You can run the linter from the command line in the exercises directory of the staging repo
+For the Exercism specific linting, please see the [linter documentation](https://github.com/exercism/docs/blob/master/language-tracks/configuration/linting.md). You should run the linter from the command line in the exercises directory of the staging repo
 
-Finally checkin using the git command line or a tool like IntelliJ or VSCode. 
+Finally check-in using a git cli or a tool like IntelliJ or VSCode. 
 
 ### Contributing a New Exercise
 
