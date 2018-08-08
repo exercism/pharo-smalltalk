@@ -13,6 +13,8 @@ Alternatively you can use the playground and evaluate:
 ```
 AllExercismTests suite run.
 ```
-#  
+
+<br/>
+
 **Did you know:** *[TDD](https://en.wikipedia.org/wiki/Test-driven_development) was invented in Smalltalk via the introduction of the [SUnit](https://en.wikipedia.org/wiki/SUnit) test library*
 

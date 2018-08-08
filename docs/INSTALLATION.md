@@ -60,7 +60,9 @@ would be `hello-world`.
 
 When you have entered a valid exercise, the plugin will retrieve the code and dispaly it in the System Browser, ready for
 you to begin coding.
-#  
+
+<br/>
+  
 **Did you know:** *When you launch Pharo, you are actually restoring an execution image snapshot - similar to a VMWare Operating System image. This
 is a powerful concept that allows you to suspend work mid operation, possibly even when debugging
 something. When you next relaunch Pharo, you can then continue stepping through code in the restored debugger, or possibly continue a refactoring step.*
