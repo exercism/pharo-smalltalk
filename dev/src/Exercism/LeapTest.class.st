@@ -7,27 +7,27 @@ Class {
 	#category : #'Exercism-Leap'
 }
 
-{ #category : #tests }
+{ #category : #setup }
 LeapTest >> setUp [
 	leapYearCalculator := Leap new
 ]
 
-{ #category : #tests }
+{ #category : #testing }
 LeapTest >> testYearIsDivisibleBy100NotDivisibleBy400 [
 	self deny: (leapYearCalculator isLeapYear: 2100)
 ]
 
-{ #category : #tests }
+{ #category : #testing }
 LeapTest >> testYearIsDivisibleBy400 [
 	self assert: (leapYearCalculator isLeapYear: 2000)
 ]
 
-{ #category : #tests }
+{ #category : #testing }
 LeapTest >> testYearIsDivisibleBy4NotDivisibleBy100 [
 	self assert: (leapYearCalculator isLeapYear: 1996)
 ]
 
-{ #category : #tests }
+{ #category : #testing }
 LeapTest >> testYearNotDivisibleBy4 [
 	self deny: (leapYearCalculator isLeapYear: 2015)
 ]
