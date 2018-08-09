@@ -9,7 +9,7 @@ Class {
 	#category : #'Exercism-HelloWorld'
 }
 
-{ #category : #exercism }
+{ #category : #example }
 HelloWorld class >> sayHello [
 	^ 'Hello, World!'
 ]
