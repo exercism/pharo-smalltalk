@@ -40,6 +40,19 @@
         "strings",
         "text-formatting"
       ]
+    },
+    {
+      "slug": "leap",
+      "uuid": "82b07f5c-119c-4250-8c07-a0a7e1a95458",
+      "core": true,
+      "auto_approve": false,
+      "unlocked_by": null,
+      "difficulty": 1,
+      "topics": [
+        "booleans",
+        "conditionals",
+        "logic"
+      ]
     }
   ]
 }
