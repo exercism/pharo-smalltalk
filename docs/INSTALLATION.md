@@ -46,17 +46,15 @@ there is a class called `Welcome`. Underneath the classes panel there are 3 butt
 If you click on the comments button, you can see the latest instructions for using Pharo Exercism.
 
 For other file based languages you would normally jump to a terminal at this point, and use the exercism cli to fetch the
-next exercise. While Pharo can work with files in a similar manner, the environment is actually tuned to work with objects
-and code, classes and methods are all considered objects like everything else. You will learn more about this over the course of 
-this track.
+next exercise. While Pharo can work with files in a similar manner, the environment is actually tuned to work with live objects, and classes,methods and source code are all considered objects like everything else. You will learn more about this over the course of this track.
 
-For now however, we have included a plugin to Pharo that will let you retrieve and submit Pharo exercises from within the IDE.
-All you need to do is right click on the the Welecome package (in the top left panel), and select the Exercism|Fetch Exercise
-menu item. This will prompt you for an exercise name (e.g. hello-world), and then retrieve it automatically for you.
+For Exercism, we have included a plugin to Pharo that will let you retrieve and submit Pharo exercises from within the IDE.
+All you need to do is right click on a package (in this case, the Welcome package in the top left panel), and select the Exercism|Fetch Exercise
+menu item. This will prompt you for an exercise name (e.g. hello-world), and will then retrieve it automatically for you.
 
 Exercise names can be found on your [Pharo track](https://exercism.io/my/tracks/pharo) page, where it shows you the CLI
-command for loading. Simply copy the exercise name indicated in the command, e.g. `exercism --exercise=hello-world --track=pharo`
-would be `hello-world`.
+command for loading. Simply copy the exercise name indicated in the command, e.g. for `exercism --exercise=hello-world --track=pharo`
+you would type `hello-world`.
 
 When you have entered a valid exercise, the plugin will retrieve the code and dispaly it in the System Browser, ready for
 you to begin coding.
