@@ -1,9 +1,9 @@
 Class { "A sample SUnit test"
 	#name : #HelloWorldTest,
 	#superclass : #TestCase,
-	#category : #'Exercism-HelloWorld' }
+	#category : #'Exercism-Exercises' }
 
-{ #category : #tests }
+{ #category : #testing }
 HelloWorldTest >> testSayHello [
 	self
 	    assert: HelloWorld sayHello
