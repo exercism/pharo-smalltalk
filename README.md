@@ -6,7 +6,7 @@ Exercism exercises for Pharo.
 
 ## Development Setup
 
-This repository is for the development of [Exercism](http://exercism.io) exercises for the [Pharo](http://pharo.org) programming language. It is expected that you are [familiar](./docs/RESOURCES.md) with development in Pharo and its use of git. If however, you are new to Pharo or Exercism, consider using [Exercism to learn Pharo](./docs/INSTALLATION.md), so you can help contribute in the future.
+This repository is for the development of [Exercism](http://exercism.io) exercises for the [Pharo Smalltalk](http://pharo.org) programming language. It is expected that you are [familiar](./docs/RESOURCES.md) with development in Pharo and its use of git. If however, you are new to Pharo or Exercism, consider using [Exercism to learn Pharo](./docs/INSTALLATION.md), so you can help contribute in the future.
 
 
 NOTE: Pharo support for Exercism is currently in beta and so its not publicly visible, however you can still preview it through [this link](https://exercism.io/tracks/pharo).
