@@ -12,28 +12,25 @@ DoesNotUnderstandDebugAction >> closeWindow [
 
 { #category : #'*ExercismTools' }
 DoesNotUnderstandDebugAction >> createMissingClassIn: aContext [
-	| errorNode senderContext newClassVar variableNode previousContext errorMsgNode |
+	| senderContext newClassVar variableNode previousContext errorMsgNode |
 	
 	variableNode := nil.
 	
 	[ senderContext := aContext sender.
 	errorMsgNode := senderContext method sourceNodeExecutedForPC: senderContext pc.
-	variableNode := errorMsgNode allChildren last ]
+	variableNode := self findUndeclaredVariableIn: errorMsgNode ]
 		on: Error
 		do: [ self error: 'Unable to create missing class' ].
 		
 	newClassVar := OCUndeclaredVariableWarning new
 		node: variableNode;
 		defineClass: variableNode name.
-	
+		
 	previousContext := aContext stack second.
-			
+	
 	self closeWindow.
 	
-	previousContext restart.
-		
-	
-	
+	previousContext restart
 ]
 
 { #category : #'*ExercismTools' }
@@ -61,4 +58,12 @@ DoesNotUnderstandDebugAction >> executeAction [
 		inClass: chosenClass 
 		forContext: self interruptedContext.
 	self debugger selectTopContext
+]
+
+{ #category : #'*ExercismTools' }
+DoesNotUnderstandDebugAction >> findUndeclaredVariableIn: errorMsgNode [
+	^ errorMsgNode allChildren
+		detect: [ :n | n isVariable and: [ n isUndeclared ] ]
+		ifNone: [ errorMsgNode parent allChildren
+				detect: [ :n | n isVariable and: [ n isUndeclared ] ] ]
 ]
