@@ -5,6 +5,7 @@
 has a wealth of articles and help
 * [Pharo Syntax Cheatsheet](http://files.pharo.org/media/pharoCheatSheet.pdf): 
 it fits on a postcard
+* [I Can Read C but not Smalltalk](http://www.eli.sdsu.edu/courses/spring01/cs635/readingSmalltalk.pdf): several easy steps to understanding Smalltalk
 * [Pharo By Example (5.0)](http://books.pharo.org/updated-pharo-by-example/):
 a full pdf book with step by step examples
 * [Learning OOP and TDD in Pharo](http://books.pharo.org/learning-oop/):
