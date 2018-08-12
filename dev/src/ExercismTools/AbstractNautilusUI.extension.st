@@ -18,17 +18,17 @@ AbstractNautilusUI class >> packagesExercismMenu: aBuilder [
 		
 	(aBuilder item: #'Fetch Exercise...')
 		parent: #'Exercism';
-		action: [ ExercismManager fetchFromExercismTo: package ];
+		action: [ ExercismManager default fetchFromExercismTo: package ];
 		order: 100;
 		help: 'Fetch next Exercism example from exercism.io'.
 	(aBuilder item: #'Submit Solution')
 		parent: #'Exercism';
-		action: [ ExercismManager submitToExercism: package ];
+		action: [ ExercismManager default submitToExercism: package ];
 		order: 101;
 		help: 'Submit a completed Exercism example to exercism.io'.
 	(aBuilder item: #'View Track Progress')
 		parent: #'Exercism';
-		action: [ ExercismManager viewOnExercism: package ];
+		action: [ ExercismManager default viewOnExercism: package ];
 		order: 102;
 		help: 'View the Pharo track on www.exercism.io'.
 	

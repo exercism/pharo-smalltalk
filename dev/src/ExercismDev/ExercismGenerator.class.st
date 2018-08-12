@@ -19,19 +19,6 @@ Class {
 }
 
 { #category : #helper }
-ExercismGenerator class >> createTagSnapshotFor: packageOrTag [
-	| parentSnapshot |
-	
-	parentSnapshot := (MCPackage named: packageOrTag package name) snapshot.
-	
-	^ MCSnapshot
-		fromDefinitions:
-			(parentSnapshot definitions
-				select:
-					[ :mc | mc className isNil or: [ mc actualClass category endsWith: packageOrTag name ] ])
-]
-
-{ #category : #helper }
 ExercismGenerator class >> defaultPath [
 	^ DefaultPath ifNil: [ self defaultPath: FileLocator home pathString]
 ]
@@ -45,17 +32,31 @@ ExercismGenerator class >> defaultPath: pathString [
 ExercismGenerator class >> generate [
 	"This is the entry point for generating exercism compatible source files that can be checked into
 	the exercism/pharo project. e.g. self generate"
+
 	<example>
-	
 	| path |
 	path := UIManager default
 		chooseDirectory: 'Select the /exercises location in a full Exercism/Pharo git project'
 		path: self defaultPath.
-	path ifNotNil: [ self generateTo: (self defaultPath: path) ]
+		
+	path ifNotNil: [ self new generateTo: (self defaultPath: path) ]
 ]
 
 { #category : #helper }
-ExercismGenerator class >> generateReadmeHintFor: packageOrTag to: destinationDirectory [
+ExercismGenerator >> createTagSnapshotFor: packageOrTag [
+	| parentSnapshot |
+	
+	parentSnapshot := (MCPackage named: packageOrTag package name) snapshot.
+	
+	^ MCSnapshot
+		fromDefinitions:
+			(parentSnapshot definitions
+				select:
+					[ :mc | mc className isNil or: [ mc actualClass category endsWith: packageOrTag name ] ])
+]
+
+{ #category : #helper }
+ExercismGenerator >> generateReadmeHintFor: packageOrTag to: destinationDirectory [
 	"Generate markdown hints, that exercism configlet will pickup for readme.md files
 	see: https://github.com/exercism/docs/blob/master/language-tracks/exercises/anatomy/readmes.md#generating-a-readme"
 	
@@ -65,7 +66,7 @@ ExercismGenerator class >> generateReadmeHintFor: packageOrTag to: destinationDi
 ]
 
 { #category : #helper }
-ExercismGenerator class >> generateSourceFilesFor: packageOrTag to: filePathString [
+ExercismGenerator >> generateSourceFilesFor: packageOrTag to: filePathString [
 	"Generate the Tonel source files for a package (normally a tag). Answer the exercise directory reference"
 
 	| writer exampleDirectoryRef exerciseDirectoryRef metaDirectoryRef  solutionDirectoryRef testClass testClassFilename exerciseName |
@@ -104,7 +105,7 @@ ExercismGenerator class >> generateSourceFilesFor: packageOrTag to: filePathStri
 ]
 
 { #category : #generation }
-ExercismGenerator class >> generateTo: filePathReference [
+ExercismGenerator >> generateTo: filePathReference [
 	| cmd result |
 	
 	(RPackage organizer packageNamed: 'Exercism') packages do: [:pkg |
