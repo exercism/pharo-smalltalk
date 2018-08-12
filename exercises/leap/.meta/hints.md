@@ -1,0 +1,1 @@
+While there is an #isLeapYear method for Dates, can you figure out how to do this yourself using simple math? You may also need to explore Boolean #and: and #or: conditions which are interestingly implemented as methods on the classes True and False. Try using Spotter (shift-enter) to see how they work. 
