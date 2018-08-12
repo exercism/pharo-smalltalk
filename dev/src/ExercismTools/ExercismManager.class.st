@@ -7,11 +7,30 @@ Class {
 	#category : #ExercismTools
 }
 
+{ #category : #'instance creation' }
+ExercismManager class >> default [
+	"answer a defulat manager"
+	
+	^self new
+]
+
 { #category : #exercism }
-ExercismManager class >> fetchFromExercismTo: package [
+ExercismManager class >> welcome [
+	"Setup the initial environment for a new user"
+
+	| pkg |
+	pkg := RPackageOrganizer default createPackageNamed: 'Exercism'.
+	
+	pkg
+		moveClass: Welcome toTag: (RPackageTag package: pkg name: 'Welcome');
+		browse
+]
+
+{ #category : #exercism }
+ExercismManager >> fetchFromExercismTo: package [
 	| result cmd exercise tonelLocator reader pkgName root exercisePkg |
 	
-	(exercise := UIManager default request: 'Enter a valid exercism exercise name') ifNil: [ ^ self ].
+	(exercise := UIManager default request: 'Enter a valid exercism exercise (e.g. hello-world):') ifNil: [ ^ self ].
 	cmd := 'exercism download --track=pharo --exercise=' , exercise.
 	
 	UIManager default inform: 'Loading: ' , exercise.
@@ -35,14 +54,14 @@ ExercismManager class >> fetchFromExercismTo: package [
 ]
 
 { #category : #exercism }
-ExercismManager class >> pathStringFor: aFileReference [
+ExercismManager >> pathStringFor: aFileReference [
 	| aPath |
 	aPath := aFileReference path.
 	^ String streamContents: [ :stream | aPath printOn: stream delimiter: aPath delimiter ]
 ]
 
 { #category : #exercism }
-ExercismManager class >> submitToExercism: packageOrTag [
+ExercismManager >> submitToExercism: packageOrTag [
 	| files writer result cmd exerciseName filesToSubmit trackDirectoryRef submissionDirectoryRef |
 	
 	exerciseName := packageOrTag name asKebabCase.
@@ -72,18 +91,18 @@ ExercismManager class >> submitToExercism: packageOrTag [
 ]
 
 { #category : #helper }
-ExercismManager class >> verifyExercismResult: osProcessResult [
+ExercismManager >> verifyExercismResult: osProcessResult [
 
 	osProcessResult succeeded
 		ifTrue: [ (osProcessResult output beginsWith: FileLocator cwd pathString)
 				ifFalse: [ self error: 'Pharo must be run from the default exercism directory!' ].
 			^ true ].
 		
-	self error: 'failure running exercism - ' , osProcessResult outputAndError printString
+	self error: 'Exercism CLI - ' , osProcessResult outputAndError printString
 ]
 
 { #category : #exercism }
-ExercismManager class >> viewOnExercism: packageOrTag [ 
+ExercismManager >> viewOnExercism: packageOrTag [ 
 
 	|  cmd result |
 		
@@ -91,16 +110,4 @@ ExercismManager class >> viewOnExercism: packageOrTag [
 				
 	result := PipeableOSProcess waitForCommand: cmd.
 	
-]
-
-{ #category : #exercism }
-ExercismManager class >> welcome [
-	"Setup the initial environment for a new user"
-
-	| pkg |
-	pkg := RPackageOrganizer default createPackageNamed: 'Exercism'.
-	
-	pkg
-		moveClass: Welcome toTag: (RPackageTag package: pkg name: 'Welcome');
-		browse
 ]
