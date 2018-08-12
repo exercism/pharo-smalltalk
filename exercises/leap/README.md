@@ -27,7 +27,10 @@ phenomenon, go watch [this youtube video][video].
 [video]: http://www.youtube.com/watch?v=xX96xng7sAE
 
 ## Hint
-While there is an #isLeapYear method for Dates, can you figure out how to do this yourself using simple math? You may also need to explore Boolean #and: and #or: conditions which are interestingly implemented as methods on the classes True and False. Try using Spotter (shift-enter) to see how they work. 
+While there is an #isLeapYear method for Dates, can you figure out how to do this yourself using simple math? 
+
+You may also need to explore Boolean #and: and #or: conditions which are interestingly implemented as methods on the classes True and False. Try using Spotter (shift-enter) to see how they work. 
+
 
 
 ## Downloading
