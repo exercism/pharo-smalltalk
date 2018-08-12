@@ -9,7 +9,7 @@ AbstractNautilusUI class >> packagesExercismMenu: aBuilder [
 	(packageTree := target selectedPackage) ifNil: [ ^ target ].
 	(packageTree packageName = 'Exercism') ifFalse: [ ^ target ].
 	
-	package := packageTree package.
+	package := packageTree item.
 	
 	(aBuilder item: #'Exercism')
 		label: 'Exercism';
