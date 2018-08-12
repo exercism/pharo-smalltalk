@@ -38,7 +38,21 @@
       "difficulty": 1,
       "topics": [
         "strings",
+        "iteration",
         "text-formatting"
+      ]
+    },
+    {
+      "slug": "sum-of-multiples",
+      "uuid": "34b0900f-de21-4fef-b24b-f125b608e65e",
+      "core": true,
+      "auto_approve": false,
+      "unlocked_by": null,
+      "difficulty": 1,
+      "topics": [
+        "iteration",
+        "filtering",
+        "math"
       ]
     }
   ]
