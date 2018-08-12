@@ -1,7 +1,9 @@
 "
-While there is a #reversed method for Strings, can you figure out how to do this with lower level iteration or streams? 
+While there is a #reversed method for Strings, can you figure out how to do this yourself with lower level iteration or streams? 
 
 Pharo has a neat code finder tool, press Shift-Enter  to activate it.
+
+NOTE: We have followed the Exercism convention of calling this test ReverseString, however a more Smalltalk name would be StringReverser.
 
 
 "
@@ -9,50 +11,48 @@ Class {
 	#name : #ReverseStringTest,
 	#superclass : #TestCase,
 	#instVars : [
-		'reverser'
+		'stringReverser'
 	],
 	#category : #'Exercism-ReverseString'
 }
 
-{ #category : #tests }
+{ #category : #setup }
 ReverseStringTest >> setUp [
-	reverser := ReverseString new
+	stringReverser := ReverseString new
 ]
 
-{ #category : #tests }
+{ #category : #testing }
 ReverseStringTest >> testCapitalisedWorld [
-	self
-		assert: (reverser reverse: 'Ramen')
+	self 
+		assert: (stringReverser reverse: 'Ramen') 
 		equals: 'nemaR'
-	
 ]
 
-{ #category : #tests }
+{ #category : #testing }
 ReverseStringTest >> testEmptyString [
-	self
-		assert: (reverser reverse: '')
+	self 
+		assert: (stringReverser reverse: '') 
 		equals: ''
 ]
 
-{ #category : #tests }
+{ #category : #testing }
 ReverseStringTest >> testSentenceWithPunctuation [
-	self
-		assert: (reverser reverse: 'I''m hungry!')
+	self 
+		assert: (stringReverser reverse: 'I''m hungry!') 
 		equals: '!yrgnuh m''I'
-	
 ]
 
-{ #category : #tests }
+{ #category : #testing }
 ReverseStringTest >> testSingleWorld [
 	self
-		assert: (reverser reverse: 'robot')
+		assert: (stringReverser reverse: 'robot')
 		equals: 'tobor'
 ]
 
-{ #category : #tests }
+{ #category : #testing }
 ReverseStringTest >> testWithPalindrome [
 	self
-		assert: (reverser reverse: 'racecar')
+		assert: (stringReverser reverse: 'racecar')
 		equals: 'racecar'
 
 ]
