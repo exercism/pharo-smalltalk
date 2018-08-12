@@ -65,7 +65,7 @@ ExercismManager >> submitToExercism: packageOrTag [
 	| files writer result cmd exerciseName filesToSubmit trackDirectoryRef submissionDirectoryRef |
 	
 	exerciseName := packageOrTag name asKebabCase.
-	exerciseName = 'exercism' ifTrue: [ self error: 'Select the sub-package with your exercise' ].
+	exerciseName = 'exercism' ifTrue: [ self error: 'Select the sub-package with your solution!' ].
 	
 	trackDirectoryRef := FileLocator cwd / exerciseName.
 	submissionDirectoryRef := trackDirectoryRef / '.pharo'.
@@ -77,6 +77,8 @@ ExercismManager >> submitToExercism: packageOrTag [
 
 	
 	files := packageOrTag classes reject: [ :cls | cls isTestCase ].
+	files isEmpty ifTrue: [ self error: 'No solution found to submit!' ].
+	
 	filesToSubmit := Character space
 		join:
 			(files
@@ -85,7 +87,7 @@ ExercismManager >> submitToExercism: packageOrTag [
 				
 	cmd := 'exercism submit ' , filesToSubmit.
 	result := PipeableOSProcess waitForCommand: cmd.
-	result succeeded ifFalse: [ self error: 'Unable to submit exercism result' ].
+	result succeeded ifFalse: [ self error: 'Unable to submit solution, CLI reported ', result outputAndError printString ].
 	
 	UIManager default inform: 'Successfully submitted solution!'
 ]
@@ -98,7 +100,7 @@ ExercismManager >> verifyExercismResult: osProcessResult [
 				ifFalse: [ self error: 'Pharo must be run from the default exercism directory!' ].
 			^ true ].
 		
-	self error: 'Exercism CLI - ' , osProcessResult outputAndError printString
+	self error: 'Exercism CLI reported ' , osProcessResult outputAndError printString
 ]
 
 { #category : #exercism }
