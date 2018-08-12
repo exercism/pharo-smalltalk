@@ -16,6 +16,12 @@ If no name is given, the result should be "One for you, one for me."
 In Pharo, classes are objects that can have methods, however unlike HelloWorld the tests for TwoFer have been written to call instance methods.
 
 
+## Downloading
+
+To download this exercise in Pharo, type: `two-fer` into the `Exercism | Fetch Exercise` package menu prompt
+(right click on the Exercism package in the Pharo System Browser). You can also submit your solution from the
+same menu for any selected package. You don't normally need to use the exercism cli (as indicated on the right hand panel).
+
 ## Running The Tests
 
 Tests can be run directly from the Pharo IDE, by clicking on the test orb next to any test.
@@ -36,5 +42,5 @@ For Pharo installation and learning resources, refer to the [track help page](ht
 
 ## Submitting Incomplete Solutions
 
-Remember, it's also possible to submit an incomplete solution so you can see how others have completed the exercise
+Remember, it is also possible to submit an incomplete solution so you can see how others have completed this exercise
 and can learn from their approach.
