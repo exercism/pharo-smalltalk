@@ -52,9 +52,9 @@ For Exercism, we have included a plugin to Pharo that will let you retrieve and 
 All you need to do is right click on a package (in this case, the Welcome package in the top left panel), and select the Exercism|Fetch Exercise
 menu item. This will prompt you for an exercise name (e.g. hello-world), and will then retrieve it automatically for you.
 
-Exercise names can be found on your [Pharo track](https://exercism.io/my/tracks/pharo) page, where it shows you the CLI
-command for loading. Simply copy the exercise name indicated in the command, e.g. for `exercism --exercise=hello-world --track=pharo`
-you would type `hello-world`.
+Exercise names can be found on each exercise description off your [Pharo track](https://exercism.io/my/tracks/pharo) page.
+There is a *Downloading* heading with specific details and the exercise key to to type into the Fetch prompt. You don't need 
+to use the suggested CLI command shown in the side bar.
 
 When you have entered a valid exercise, the plugin will retrieve the code and dispaly it in the System Browser, ready for
 you to begin coding.

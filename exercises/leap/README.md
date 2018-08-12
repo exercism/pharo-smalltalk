@@ -27,8 +27,17 @@ phenomenon, go watch [this youtube video][video].
 [video]: http://www.youtube.com/watch?v=xX96xng7sAE
 
 ## Hint
-Please comment me using the following template inspired by Class Responsibility Collaborator (CRC) design:For the Class part:  State a one line summary. For example, "I represent a paragraph of text".For the Responsibility part: Three sentences about my main responsibilities - what I do, what I know.For the Collaborators Part: State my main collaborators and one line about how I interact with them. Public API and Key Messages- message one   - message two - (for bonus points) how to create instances.   One simple example is simply gorgeous. Internal Representation and Key Implementation Points.    Instance Variables	leapYearCalculator:		<Object>    Implementation Points
+While there is an #isLeapYear method for Dates, can you figure out how to do this yourself using simple math? 
 
+You may also need to explore Boolean #and: and #or: conditions which are interestingly implemented as methods on the classes True and False. Try using Spotter (shift-enter) to see how they work. 
+
+
+
+## Downloading
+
+To download this exercise in Pharo, type: `leap` into the `Exercism | Fetch Exercise` package menu prompt
+(right click on the Exercism package in the Pharo System Browser). You can also submit your solution from the
+same menu for any selected package. You don't normally need to use the exercism cli (as indicated on the right hand panel).
 
 ## Running The Tests
 
@@ -50,5 +59,5 @@ JavaRanch Cattle Drive, exercise 3 [http://www.javaranch.com/leap.jsp](http://ww
 
 ## Submitting Incomplete Solutions
 
-Remember, it's also possible to submit an incomplete solution so you can see how others have completed the exercise
+Remember, it is also possible to submit an incomplete solution so you can see how others have completed this exercise
 and can learn from their approach.
