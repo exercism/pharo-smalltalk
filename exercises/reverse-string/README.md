@@ -7,7 +7,7 @@ input: "cool"
 output: "looc"
 
 ## Hint
-While there is a #reversed method for Strings, can you figure out how to do this with lower level iteration or streams? Pharo has a neat code finder tool, press Shift-Enter  to activate it.
+While there is a #reversed method for Strings, can you figure out how to do this yourself with lower level iteration or streams? Pharo has a neat code finder tool, press Shift-Enter  to activate it.NOTE: We have followed the Exercism convention of calling this test ReverseString, however a more Smalltalk name would be StringReverser.
 
 
 ## Downloading
