@@ -20,17 +20,14 @@ If you are editting this file in a text editor and not in Pharo - please review
 
 ## Downloading
 
-To download this exercise in Pharo, type: `hello-world` into the `Exercism | Fetch Exercise` package menu prompt
-(right click on the Exercism package in the Pharo System Browser). You can also submit your solution from the
-same menu for any selected package. You don't normally need to use the exercism cli (as indicated on the right hand panel).
+To download this exercise in Pharo, type: `hello-world` into the `Exercism | Fetch Exercise` package menu prompt (right click on the Exercism package in the Pharo System Browser). You can also submit your solution from the same menu for any selected package. You don't normally need to use the exercism cli (as indicated on the right hand panel).
 
 ## Running The Tests
 
 Tests can be run directly from the Pharo IDE, by clicking on the test orb next to any test.
-The SUnit convention is that the provided TestCase, `HelloWorldTest`, is expected
-to test the functionality of `HelloWorld`.
+The SUnit convention is that the provided `HelloWorldTest`, will test the functionality of `HelloWorld`.
 
-If you are still stuck, there is more [detailed help on running tests](https://exercism.io/tracks/pharo/tests).
+If you are still stuck, the track documentation has more detailed help on [running tests](https://exercism.io/tracks/pharo/tests).
 
 ## Language and Environment Help
 
@@ -44,5 +41,4 @@ This is an exercise to introduce users to using Exercism [http://en.wikipedia.or
 
 ## Submitting Incomplete Solutions
 
-Remember, it is also possible to submit an incomplete solution so you can see how others have completed this exercise
-and can learn from their approach.
+Remember, it is also possible to submit an incomplete solution so you can see how others have completed this exercise and can learn from their approach.
