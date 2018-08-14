@@ -43,6 +43,20 @@
       ]
     },
     {
+      "slug": "acronym",
+      "uuid": "dc7b1fff-f0be-460d-b146-ee84c2acc10b",
+      "core": false,
+      "auto_approve": false,
+      "unlocked_by": "reverse-string",
+      "difficulty": 1,
+      "topics": [
+        "strings",
+        "iteration",
+        "parsing",
+        "text-formatting"
+      ]
+    },
+    {
       "slug": "leap",
       "uuid": "82b07f5c-119c-4250-8c07-a0a7e1a95458",
       "core": true,
