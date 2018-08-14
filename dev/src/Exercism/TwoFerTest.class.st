@@ -16,17 +16,17 @@ TwoFerTest >> setUp [
 ]
 
 { #category : #testing }
-TwoFerTest >> testWithAnotherName [
+TwoFerTest >> testAnotherNameGiven [
 	self assert: (twoFer who: 'Bob') equals: 'One for Bob, one for me.' 
 ]
 
 { #category : #testing }
-TwoFerTest >> testWithName [
+TwoFerTest >> testANameGiven [
 	self assert: (twoFer who: 'Alice') equals: 'One for Alice, one for me.'
 ]
 
 { #category : #testing }
-TwoFerTest >> testWithNoName [
+TwoFerTest >> testNoNameGiven [
 	self assert: twoFer who equals: 'One for you, one for me.' 
 	
 ]
