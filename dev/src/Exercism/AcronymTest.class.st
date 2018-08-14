@@ -4,7 +4,7 @@ Streams available in Pharo?
 
 "
 Class {
-	#name : #,
+	#name : #AcronymTest,
 	#superclass : #TestCase,
 	#instVars : [
 		'acronymGenerator'
