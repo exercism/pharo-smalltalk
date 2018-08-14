@@ -1,6 +1,5 @@
 "
-While text processing can be achieved using methods on String, can you make use of the different
-Streams available in Pharo?
+You need to find a way to split up a String and then iterate cleanly over the resulting sections to output a result. 
 
 "
 Class {
@@ -15,6 +14,13 @@ Class {
 { #category : #setup }
 AcronymTest >> setUp [
 	acronymGenerator := Acronym new
+]
+
+{ #category : #testing }
+AcronymTest >> testAllCapsWord [
+	self
+		assert: (acronymGenerator abbreviate: 'GNU Image Manipulation Program')
+		equals: 'GIMP'
 ]
 
 { #category : #testing }
@@ -36,13 +42,6 @@ AcronymTest >> testPunctuation [
 	self 
 		assert: (acronymGenerator abbreviate: 'First In, First Out') 
 		equals: 'FIFO'
-]
-
-{ #category : #testing }
-AcronymTest >> testAllCapsWord [
-	self
-		assert: (acronymGenerator abbreviate: 'GNU Image Manipulation Program')
-		equals: 'GIMP'
 ]
 
 { #category : #testing }
