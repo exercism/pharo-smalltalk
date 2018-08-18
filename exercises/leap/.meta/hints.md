@@ -1,1 +1,1 @@
-While there is an #isLeapYear method for Dates, can you figure out how to do this yourself using simple math? You may also need to explore Boolean #and: and #or: conditions which are interestingly implemented as methods on the classes True and False. Try using Spotter (shift-enter) to see how they work. 
+In Pharo, boolean operators are defined as messages. Study how "and:" and "or:" are implented in the classes True and False. Use the context menu item - senders of... to view how other parts of Pharo use these operators.
