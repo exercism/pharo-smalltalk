@@ -14,12 +14,12 @@
     {
     "github_username": "macta",
     "alumnus": false,
-    "show_on_website": false,
+    "show_on_website": true,
     "name": "Tim Mackinnon",
     "link_text": null,
-    "link_url": null,
+    "link_url": "https://morethan.technology",
     "avatar_url": null,
-    "bio": null
+    "bio": "I'm the co-inventor of Mock Objects, Gold Cards, and many retrospective techniques, but stil a developer at heart using Pharo as a platform to explore more exciting new ideas."
     },
     {
     "github_username": "bencoman",
