@@ -2,6 +2,8 @@
 
 The simplest way to install [Pharo](http://pharo.org) is is to use [zero conf](http://pharo.org/download#//*[@id="main"]/div/h2[3]) from a terminal command line.
 
+Windows users who do not have a UNIX style shell installed should use the **Windows Installation** instructions below.
+
 In your `/Exercism/pharo` directory, type:
 
 ```bash
@@ -35,6 +37,36 @@ You can then always start Pharo by typing:
 ```bash
 ./pharo-ui Pharo.image
 ```
+
+### Windows Installation
+
+The default download for installing Pharo is the Pharo Launcher. A handy tool for managing multiple Pharo images. It can be
+found on the [Pharo.org](http://pharo.org/) website can be downloaded directly [here](https://files.pharo.org/pharo-launcher/windows). Run the downloaded installer to install the Pharo Launcher.
+
+Run the Pharo launcher. On the left of the window will be various templates of Pharo images that can be downloaded. For Exercism
+exercises Pharo 6.1 32-bit (stable) is recommended. It can be found under the Official Distributions heading in the Templates 
+tree. Click to hightlight an image template, then click the create image icon at the top middle (an orange star shape), and give
+it a name. Once the template is downloaded it will appear on the right in the Existing Images table. Click to highlight your
+image in the table, then click the launch button at the top right (a green _play_ arrow).
+
+Once the Pharo image has started open a Playground by left clicking anywhere and select _Playground_ from the World menu, or use
+`ctrl + o + w`. Copy and paste the following code snippet into the playground:
+
+```smalltalk
+Metacello new 
+ baseline: 'Exercism'; 
+ repository: 'github://exercism/pharo:master/dev/src';
+ load.
+```
+
+Evaluate the code by highlighting all of it, then right click and select _Do it_ from the menu, or use `ctrl + d`. After the
+Exercism tools have downloaded, copy and paste the following code snippet into the playground and evaluate it the same way as
+above:
+
+```smalltalk
+ExercismManager welcome.
+```
+
 ## Getting Started
 
 When you launch Pharo, you will see a Welcome project, in a [System Browser](https://medium.com/@richardeng/pharo-quick-start-5bab70944ce2#3099).
