@@ -55,9 +55,6 @@ Please read about how to [get involved in an Exercism track](https://github.com/
 We welcome pull requests of all kinds. No contribution is too small, particularly those that provide fixes and improvements to existing exercises. Note that this track's exercises must conform to the [Exercism-wide standards](https://github.com/exercism/docs/tree/master/language-tracks/exercises), but if you're unsure about how to make a change, then open a GitHub issue, and we'll discuss it.
 
 
-A list of missing exercise can be found at: http://exercism.io/languages/pharo/todo
-
-
 ### Conventions
 
 - We use [SUnit](https://en.wikipedia.org/wiki/SUnit) (the original xUnit libary) and no additional 3rd-party-frameworks.
