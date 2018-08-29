@@ -28,28 +28,26 @@ ExercismManager class >> welcome [
 
 { #category : #exercism }
 ExercismManager >> fetchFromExercismTo: package [
-	| result cmd exercise tonelLocator reader pkgName root exercisePkg |
+	| result exercise pkgName root exercisePkg |
 	
-	(exercise := UIManager default request: 'Enter a valid exercism exercise (e.g. hello-world):') ifNil: [ ^ self ].
-	cmd := 'exercism download --track=pharo --exercise=' , exercise.
+	self verifyToken ifFalse: [^self].
 	
+	(exercise := UIManager default
+		request: 'Enter a valid exercism exercise (e.g. hello-world):')
+		ifNil: [ ^ self ].
+		
 	UIManager default inform: 'Loading: ' , exercise.
-	
-	result := PipeableOSProcess waitForCommand: cmd.
-	self verifyExercismResult: result.
-	
-	tonelLocator := FileLocator cwd / exercise.
-	(reader := TonelReader on: tonelLocator fileName: tonelLocator pathString) loadDefinitions.
-	reader definitions
-		do: [ :def | 
-			def load.
-			def isOrganizationDefinition
-				ifTrue: [ pkgName := def categories first ] ].
-			
+	(result := ExercismDownloader exercise: exercise)
+		detect: [ :def | def isClassDefinition ]
+		ifFound: [ :def | pkgName := def category ].
+		
 	root := RPackageOrganizer default packageNamed: 'Exercism'.
-	exercisePkg := root packages detect: [ :p | p categoryName = pkgName ].
-	
-	SystemAnnouncer uniqueInstance announce: (RPackageRegistered to: exercisePkg).
+	exercisePkg := root packages
+		detect: [ :p | p categoryName = pkgName ].
+		
+	SystemAnnouncer uniqueInstance
+		announce: (RPackageRegistered to: exercisePkg).
+		
 	UIManager default inform: 'Success, Happy Coding'
 ]
 
@@ -93,14 +91,14 @@ ExercismManager >> submitToExercism: packageOrTag [
 ]
 
 { #category : #helper }
-ExercismManager >> verifyExercismResult: osProcessResult [
-
-	osProcessResult succeeded
-		ifTrue: [ (osProcessResult output beginsWith: FileLocator cwd pathString)
-				ifFalse: [ self error: 'Pharo must be run from the default exercism directory!' ].
-			^ true ].
-		
-	self error: 'Exercism CLI reported ' , osProcessResult outputAndError printString
+ExercismManager >> verifyToken [
+	ExercismDownloader hasToken
+		ifFalse: [ 
+			ExercismDownloader configureToken:
+					((UIManager default
+						request: 'Enter your Exercism token (see: https://exercism.io/my/settings):')
+						ifNil: [ ^ false ]) ].
+	^true
 ]
 
 { #category : #exercism }
