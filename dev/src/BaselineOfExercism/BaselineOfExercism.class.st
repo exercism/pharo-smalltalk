@@ -17,7 +17,7 @@ BaselineOfExercism >> baseline: spec [
 				package: 'ExercismDev'
 					with: [ spec requires: #('Exercism' 'ExercismTools')];
 				package: 'ExercismTools'
-					with: [ spec requires: #('OSProcess' ) ];
+					with: [ spec requires: #('OSProcess' 'ExternalWebBrowser') ];
 				group: 'default'
 					with:
 					#('ExercismTools');
@@ -35,6 +35,12 @@ BaselineOfExercism >> setUpDependencies: spec [
 				spec
 					className: #ConfigurationOfOSProcess;
 					versionString: #'stable';
-					repository: 'http://www.squeaksource.com/OSProcess' ]. 
-	
+					repository: 'http://www.squeaksource.com/OSProcess' ].
+				
+	spec
+		baseline: 'ExternalWebBrowser'
+			with: [ spec
+				repository: 'github://seandenigris/Pharo-Web-Browser:master/repository' ];
+		import: 'ExternalWebBrowser'.
+		
 ]

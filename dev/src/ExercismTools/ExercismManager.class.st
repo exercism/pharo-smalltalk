@@ -104,10 +104,10 @@ ExercismManager >> verifyToken [
 { #category : #exercism }
 ExercismManager >> viewOnExercism: packageOrTag [ 
 
-	|  cmd result |
+	|  url |
 		
-	cmd := 'open https://exercism.io/my/tracks/pharo'.
+	url := 'https://exercism.io/my/tracks/pharo'.
 				
-	result := PipeableOSProcess waitForCommand: cmd.
+	ExternalWebBrowser new open: url
 	
 ]
