@@ -13,8 +13,9 @@ AbstractNautilusUI class >> packagesExercismMenu: aBuilder [
 	
 	(aBuilder item: #'Exercism')
 		label: 'Exercism';
-		order: 5000;
-		help: 'Exercism commands'.
+		order: 0;
+		help: 'Exercism commands';
+		withSeparatorAfter.
 		
 	(aBuilder item: #'Fetch Exercise...')
 		parent: #'Exercism';
