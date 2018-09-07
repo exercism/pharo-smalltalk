@@ -92,13 +92,8 @@ ExercismManager >> submitToExercism: packageOrTag [
 
 { #category : #helper }
 ExercismManager >> verifyToken [
-	ExercismDownloader hasToken
-		ifFalse: [ 
-			ExercismDownloader configureToken:
-					((UIManager default
-						request: 'Enter your Exercism token (see: https://exercism.io/my/settings):')
-						ifNil: [ ^ false ]) ].
-	^true
+	^ ExercismDownloader verifyToken. 
+
 ]
 
 { #category : #exercism }
