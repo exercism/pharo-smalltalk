@@ -1,5 +1,25 @@
 "
-I download the source examples for an Exercism exercise and parse them into Pharo classes
+I download exercises from the Exercism servers
+
+Responsibility:  
+  I take the Tonel files supplied be the Exercism server  
+  and parse them into Pharo classes.
+
+Collaborators: 
+  ExercismCommand - superclass providing  preconfigured http client
+  STON - for parsing JSON responses from server
+
+Public API and Key Messages (class-side)
+  #exercise: - command to download Pharo track exercise
+  #track:exercise: - instance creation to download any track's exercise
+
+Examples
+  ExercismDownload exercise: 'hello-world'.
+
+Internal Representation and Key Implementation Points.
+  None yet - to conform more like Command Pattern (IIUC) 
+     maybe  should refactor to initialize parameters in ivars
+      then call an  #execute method   
 "
 Class {
 	#name : #ExercismDownload,
@@ -7,19 +27,19 @@ Class {
 	#category : #ExercismTools
 }
 
-{ #category : #'instance creation' }
+{ #category : #command }
 ExercismDownload class >> exercise: exerciseId [
 	^ self track: 'pharo' exercise: exerciseId
 ]
 
-{ #category : #'instance creation' }
+{ #category : #'instance-creation' }
 ExercismDownload class >> track: trackId exercise: exerciseId [
 	^ self new track: trackId exercise: exerciseId
 ]
 
 { #category : #internal }
 ExercismDownload >> loadFiles: fileCacheMap [ 
-	| lastResult rpo root packagesToAnnounce |
+	| rpo root packagesToAnnounce |
 	rpo := RPackageOrganizer default.
 	root := rpo packageNamed: 'Exercism'.
 	packagesToAnnounce := OrderedCollection new.
@@ -45,11 +65,11 @@ ExercismDownload >> loadFiles: fileCacheMap [
 	SystemAnnouncer uniqueInstance announce: (RPackageRegistered to: root).
 ]
 
-{ #category : #public }
+{ #category : #internal }
 ExercismDownload >> track: trackId exercise: exerciseId [
 	| client solution fileCache responseString responseJSON |
-	client := self class newClient
-		path: ApiPath;
+	client := self class newHttpClient
+		path: self path;
 		queryAt: 'exercise_id' put: exerciseId;
 		queryAt: 'track_id' put: trackId.
 		
