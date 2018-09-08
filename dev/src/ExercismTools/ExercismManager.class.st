@@ -28,8 +28,7 @@ ExercismManager class >> welcome [
 
 { #category : #exercism }
 ExercismManager >> fetchFromExercismTo: package [
-	| result exercise pkgName root exercisePkg |
-	
+	| exercise |
 	self verifyToken ifFalse: [^self].
 	
 	(exercise := UIManager default
@@ -37,17 +36,7 @@ ExercismManager >> fetchFromExercismTo: package [
 		ifNil: [ ^ self ].
 		
 	UIManager default inform: 'Loading: ' , exercise.
-	(result := ExercismDownloader exercise: exercise)
-		detect: [ :def | def isClassDefinition ]
-		ifFound: [ :def | pkgName := def category ].
-		
-	root := RPackageOrganizer default packageNamed: 'Exercism'.
-	exercisePkg := root packages
-		detect: [ :p | p categoryName = pkgName ].
-		
-	SystemAnnouncer uniqueInstance
-		announce: (RPackageRegistered to: exercisePkg).
-		
+	ExercismDownload exercise: exercise.
 	UIManager default inform: 'Success, Happy Coding'
 ]
 
@@ -92,7 +81,7 @@ ExercismManager >> submitToExercism: packageOrTag [
 
 { #category : #helper }
 ExercismManager >> verifyToken [
-	^ ExercismDownloader verifyToken. 
+	^ ExercismDownload verifyToken. 
 
 ]
 
