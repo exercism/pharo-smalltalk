@@ -35,12 +35,12 @@ Class {
 
 { #category : #command }
 ExercismDownload class >> exercise: exerciseId [
-	^ self track: 'pharo' exercise: exerciseId
+	(self new track: 'pharo' exercise: exerciseId) execute
 ]
 
 { #category : #'instance-creation' }
 ExercismDownload class >> track: trackId exercise: exerciseId [
-	^ self new track: trackId exercise: exerciseId
+	(self new track: trackId exercise: exerciseId) execute
 ]
 
 { #category : #internal }
@@ -83,11 +83,11 @@ ExercismDownload >> getSolutionData [
 	solution := response at: 'solution'.
 ]
 
-{ #category : #'as yet unclassified' }
-ExercismDownload >> installExercise: filesContentMap [
+{ #category : #internal }
+ExercismDownload >> installExercise [
 	| rpo root packagesToAnnounce |
 	rpo := RPackageOrganizer default.
-	root := rpo packageNamed: 'Exercism'.
+	root := rpo packageNamed: 'Exercism' ifAbsent: [ rpo createPackageNamed: 'Exercism' ].
 	packagesToAnnounce := OrderedCollection new.
 
 	filesContentMap keysAndValuesDo: 
@@ -116,7 +116,7 @@ ExercismDownload >> solution [
 	^ solution copy
 ]
 
-{ #category : #public }
+{ #category : #accessing }
 ExercismDownload >> track: aStringTrack exercise: aStringExercise [
 	track := aStringTrack.
 	exercise := aStringExercise.
