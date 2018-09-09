@@ -41,6 +41,9 @@ Perhaps later we should consider storing key in voltatile memory and/or external
 Class {
 	#name : #ExercismCommand,
 	#superclass : #Object,
+	#instVars : [
+		'httpclient'
+	],
 	#classVars : [
 		'ApiPath',
 		'ApiToken'
@@ -55,7 +58,7 @@ ExercismCommand class >> configureToken [
    linkText := url asText
 		addAttribute: (TextAction new actOnClickBlock: [ExternalWebBrowser new open: url]);
 		addAttribute: TextColor blue;
-		addAttribute:TextEmphasis underlined.
+		addAttribute: TextEmphasis underlined.
    requestText := 'CLI token available at  ' asText, linkText.
 	token := MorphicUIManager default requestText: requestText initialAnswer: '' title: 'Please enter your Exercism student token'.
 	token ifNil: [ ^false ].
@@ -79,18 +82,23 @@ ExercismCommand class >> hasToken [
 { #category : #internal }
 ExercismCommand class >> newHttpClient [
     ^ ZnClient new 
-          http;
+          https;
           host: 'api.exercism.io';
           headerAt: 'Authorization' put: 'Bearer ' , ApiToken
-]
-
-{ #category : #internal }
-ExercismCommand class >> path [
-	^ApiPath copy
 ]
 
 { #category : #testing }
 ExercismCommand class >> verifyToken [
 	self hasToken ifFalse: [ ^ self configureToken ].
 	^ true
+]
+
+{ #category : #internal }
+ExercismCommand >> initialize [
+	httpclient := self class newHttpClient.
+]
+
+{ #category : #internal }
+ExercismCommand >> path [
+	^ApiPath copy
 ]

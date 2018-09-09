@@ -24,6 +24,12 @@ Internal Representation and Key Implementation Points.
 Class {
 	#name : #ExercismDownload,
 	#superclass : #ExercismCommand,
+	#instVars : [
+		'track',
+		'exercise',
+		'solution',
+		'filesContentMap'
+	],
 	#category : #ExercismTools
 }
 
@@ -38,13 +44,53 @@ ExercismDownload class >> track: trackId exercise: exerciseId [
 ]
 
 { #category : #internal }
-ExercismDownload >> loadFiles: fileCacheMap [ 
+ExercismDownload >> downloadExerciseFiles [
+	|client|
+	filesContentMap := Dictionary new.
+	(solution at: 'files')
+		do: [ :filename | 
+			httpclient path: (solution at: 'file_download_base_url') , filename.
+			filesContentMap at: filename put: httpclient get ].
+	^ filesContentMap 
+]
+
+{ #category : #execution }
+ExercismDownload >> execute [
+	self getSolutionData.
+	self downloadExerciseFiles.
+	self installExercise. 
+	
+]
+
+{ #category : #accessing }
+ExercismDownload >> filesContentMap [
+	^ filesContentMap
+]
+
+{ #category : #internal }
+ExercismDownload >> getSolutionData [
+	| responseString response |
+	httpclient 
+		path: self path;
+		queryAt: 'track_id' put: track;
+		queryAt: 'exercise_id' put: exercise.
+		
+	responseString := httpclient get.
+	response := (STON fromString: responseString).
+	
+	response at: 'error' ifPresent: [ :error | self error: (error at: 'message') ].
+	
+	solution := response at: 'solution'.
+]
+
+{ #category : #'as yet unclassified' }
+ExercismDownload >> installExercise: filesContentMap [
 	| rpo root packagesToAnnounce |
 	rpo := RPackageOrganizer default.
 	root := rpo packageNamed: 'Exercism'.
 	packagesToAnnounce := OrderedCollection new.
 
-	fileCacheMap keysAndValuesDo: 
+	filesContentMap keysAndValuesDo: 
 		[:filename :contents | (filename endsWith: '.st') ifTrue: 
 			[|parser|
 				parser := TonelParser on: contents readStream.
@@ -65,24 +111,13 @@ ExercismDownload >> loadFiles: fileCacheMap [
 	SystemAnnouncer uniqueInstance announce: (RPackageRegistered to: root).
 ]
 
-{ #category : #internal }
-ExercismDownload >> track: trackId exercise: exerciseId [
-	| client solution fileCache responseString responseJSON |
-	client := self class newHttpClient
-		path: self path;
-		queryAt: 'exercise_id' put: exerciseId;
-		queryAt: 'track_id' put: trackId.
-		
-	responseString := client get.
-	responseJSON := (STON fromString: responseString).
-	
-	responseJSON at: 'error' ifPresent: [ :error | self error: (error at: 'message') ].
-	
-	solution :=  responseJSON at: 'solution'.
-	fileCache := Dictionary new.
-	(solution at: 'files')
-		do: [ :filename | 
-			client path: (solution at: 'file_download_base_url') , filename.
-			fileCache at: filename put: client get ].
-	^ self loadFiles: fileCache
+{ #category : #accessing }
+ExercismDownload >> solution [
+	^ solution copy
+]
+
+{ #category : #public }
+ExercismDownload >> track: aStringTrack exercise: aStringExercise [
+	track := aStringTrack.
+	exercise := aStringExercise.
 ]
