@@ -35,12 +35,12 @@ Class {
 
 { #category : #command }
 ExercismDownload class >> exercise: exerciseId [
-	(self new track: 'pharo' exercise: exerciseId) execute
+	^(self new track: 'pharo' exercise: exerciseId) execute
 ]
 
 { #category : #'instance-creation' }
 ExercismDownload class >> track: trackId exercise: exerciseId [
-	(self new track: trackId exercise: exerciseId) execute
+	^(self new track: trackId exercise: exerciseId) execute
 ]
 
 { #category : #internal }
