@@ -84,7 +84,12 @@ ExercismCommand class >> newHttpClient [
     ^ ZnClient new 
           https;
           host: 'api.exercism.io';
-          headerAt: 'Authorization' put: 'Bearer ' , ApiToken
+          headerAt: 'Authorization' put: 'Bearer ' , self token
+]
+
+{ #category : #'as yet unclassified' }
+ExercismCommand class >> token [
+	^ ApiToken ifNil: [ self configureToken. ApiToken ifNil: [ self error: 'No configured token' ] ] 
 ]
 
 { #category : #testing }
