@@ -28,10 +28,20 @@ Class {
 	#category : #ExercismTools
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
+ExercismSubmit class >> solutionDataForClass: aClass [ 
+	| exercismPackage classTag |
+	exercismPackage := RPackageOrganizer default 
+		packageNamed: 'Exercism' 
+		ifAbsent: [ self error: 'No exercises downloaded.' ].
+	classTag := exercismPackage classTagForClass: aClass.  
+	^ exercismPackage ensureProperties at: classTag.
+	
+]
+
+{ #category : #accessing }
 ExercismSubmit class >> solutionDataForExercise: exerciseString [ 
-	| rpo exercismPackage packagesToAnnounce |
-	rpo := RPackageOrganizer default.
+	| exercismPackage |
 	exercismPackage := RPackageOrganizer default 
 		packageNamed: 'Exercism' 
 		ifAbsent: [ self error: 'No exercises downloaded.' ].
