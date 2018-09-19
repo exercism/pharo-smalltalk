@@ -27,3 +27,17 @@ Class {
 	#superclass : #ExercismCommand,
 	#category : #ExercismTools
 }
+
+{ #category : #'as yet unclassified' }
+ExercismSubmit class >> solutionDataForExercise: exerciseString [ 
+	| rpo exercismPackage packagesToAnnounce |
+	rpo := RPackageOrganizer default.
+	exercismPackage := RPackageOrganizer default 
+		packageNamed: 'Exercism' 
+		ifAbsent: [ self error: 'No exercises downloaded.' ].
+	exercismPackage ensureProperties 
+		detect: [ :solutionData | ((solutionData at: 'exercise') at: 'id') = exerciseString ] 
+		ifFound: [ :solutionData | ^ solutionData ] 
+		ifNone: [ self error: 'Exercise ''' , exerciseString , ''' not downloaded.'].
+	
+]

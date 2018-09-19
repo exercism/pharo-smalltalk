@@ -85,30 +85,28 @@ ExercismDownload >> getSolutionData [
 
 { #category : #internal }
 ExercismDownload >> installExercise [
-	| rpo root packagesToAnnounce |
+	| rpo exercismPackage packagesToAnnounce |
 	rpo := RPackageOrganizer default.
-	root := rpo packageNamed: 'Exercism' ifAbsent: [ rpo createPackageNamed: 'Exercism' ].
+	exercismPackage := rpo packageNamed: 'Exercism' ifAbsent: [ rpo createPackageNamed: 'Exercism' ].
 	packagesToAnnounce := OrderedCollection new.
 
 	filesContentMap keysAndValuesDo: 
-		[:filename :contents | (filename endsWith: '.st') ifTrue: 
-			[|parser|
-				parser := TonelParser on: contents readStream.
+	[	:filename :contents | (filename endsWith: '.st') ifTrue: 
+		[	|parser|
+			parser := TonelParser on: contents readStream.
          		parser document do: 
-					[:def | 
-						def isClassDefinition ifTrue: "Maybe not needed, see todo-discussion"
-						[	rpo packageNamed: def category ifAbsent: [	packagesToAnnounce add: def ] 
-						].
-						def load
-					].
+			[	:def | 
+				def load.
+				def isClassDefinition ifTrue: 
+				[	|tag|	
+					"Store solution metadata."
+					tag := exercismPackage classTagNamed:  (exercismPackage toTagName:  def category).
+					exercismPackage ensureProperties at: tag put: solution.
+				].
 			].
 		].
-	
-	"TODO-DISCUSSION: Do package class-tags (which we have, i.e. not packages) need to be announced?
-	 i.e. Was the system announcement previously in fetchFromExercismTo: 
-	 only required for updating the System Browser to show the loaded tag?
-	 And will the following suffice? "
-	SystemAnnouncer uniqueInstance announce: (RPackageRegistered to: root).
+	].
+	SystemAnnouncer uniqueInstance announce: (RPackageRegistered to: exercismPackage).
 ]
 
 { #category : #accessing }
