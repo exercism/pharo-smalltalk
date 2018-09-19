@@ -10,6 +10,14 @@ ExercismSubmitTest >> setUp [
 ]
 
 { #category : #tests }
+ExercismSubmitTest >> testSolutionDataForClass [
+	|solutionData|
+	ExercismDownload exercise: 'hello-world'.
+	solutionData := ExercismSubmit solutionDataForClass: HelloWorld.
+	self assert: ((solutionData at: 'exercise') at: 'id') equals: 'hello-world'.
+]
+
+{ #category : #tests }
 ExercismSubmitTest >> testsolutionDataForExercise [
 	|solutionData|
 	ExercismDownload exercise: 'hello-world'.
