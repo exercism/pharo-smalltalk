@@ -15,15 +15,25 @@ ExercismManager class >> default [
 ]
 
 { #category : #exercism }
-ExercismManager class >> welcome [
+ExercismManager class >> initialize [
 	"Setup the initial environment for a new user"
 
-	| pkg |
+	| pkg welcomeClass|
 	pkg := RPackageOrganizer default createPackageNamed: 'Exercism'.
-	
-	pkg
-		moveClass: Welcome toTag: (RPackageTag package: pkg name: 'Welcome');
-		browse
+			
+   welcomeClass := TestCase subclass: #Welcome
+		instanceVariableNames: ''
+		classVariableNames: ''
+		package: 'Exercism-Welcome'.
+
+   welcomeClass comment: 'To start your Exercism journey, right click on the Exercism package and select ''''Exercism | Fetch  Exercise'''', and then type: hello-world'.
+   
+   welcomeClass compile: '
+testWelcome
+	"This is a sample Pharo test fixture. 
+	NOTE: Refer to the Class comment for more information on getting started."
+
+	self assert: #(''''Welcome'''' ''''to'''' ''''Pharo'''') size equals: 3'
 ]
 
 { #category : #exercism }
