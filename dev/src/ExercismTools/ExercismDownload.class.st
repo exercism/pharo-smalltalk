@@ -56,7 +56,8 @@ ExercismDownload >> downloadExerciseFiles [
 
 { #category : #execution }
 ExercismDownload >> execute [
-	[	self verifyToken.  	
+	[	httpclient := self class newHttpClient.
+		self verifyToken.  	
 		self getSolutionData.
 		self downloadExerciseFiles.
 	] on: ExUnauthorized do: [ :error |
@@ -64,6 +65,7 @@ ExercismDownload >> execute [
 			ifTrue: [ error retry ]
 			ifFalse: [ self inform: 'Aborted'. ^false ]
 		].
+	
 	self installExercise. 
 	^true
 ]

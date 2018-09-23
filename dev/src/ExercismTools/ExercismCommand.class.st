@@ -54,8 +54,8 @@ Class {
 { #category : #command }
 ExercismCommand class >> configureToken: your_CLI_token [
     "Get your_CLI_token at https://exercism.io/my/settings"
-    ApiToken := your_CLI_token.
-    ApiPath := '/v1/solutions/latest'.
+    	ApiToken := your_CLI_token.
+    	ApiPath := '/v1/solutions/latest'.
 ]
 
 { #category : #testing }
@@ -73,7 +73,7 @@ ExercismCommand class >> newHttpClient [
 
 { #category : #accessing }
 ExercismCommand class >> token [
-	^ ApiToken
+	^ ApiToken ifNil: [  'not-configured' ]
 ]
 
 { #category : #testing }
