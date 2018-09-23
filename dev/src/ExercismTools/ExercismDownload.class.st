@@ -45,21 +45,27 @@ ExercismDownload class >> track: trackId exercise: exerciseId [
 
 { #category : #internal }
 ExercismDownload >> downloadExerciseFiles [
-	|client|
 	filesContentMap := Dictionary new.
-	(solution at: 'files')
-		do: [ :filename | 
-			httpclient path: (solution at: 'file_download_base_url') , filename.
-			filesContentMap at: filename put: httpclient get ].
+	(solution at: 'files') do: [ :filename | 
+		httpclient path: (solution at: 'file_download_base_url') , filename.
+		filesContentMap at: filename put: httpclient get.
+		(httpclient response code = 401) ifTrue: [ (ExUnauthorized badToken: ApiToken) signal ].
+ 		].
 	^ filesContentMap 
 ]
 
 { #category : #execution }
 ExercismDownload >> execute [
-	self getSolutionData.
-	self downloadExerciseFiles.
+	[	self verifyToken.  	
+		self getSolutionData.
+		self downloadExerciseFiles.
+	] on: ExUnauthorized do: [ :error |
+	 	error configureToken 
+			ifTrue: [ error retry ]
+			ifFalse: [ self inform: 'Aborted'. ^false ]
+		].
 	self installExercise. 
-	
+	^true
 ]
 
 { #category : #accessing }
@@ -76,10 +82,10 @@ ExercismDownload >> getSolutionData [
 		queryAt: 'exercise_id' put: exercise.
 		
 	responseString := httpclient get.
+	(httpclient response code = 401) ifTrue: [ (ExUnauthorized badToken: ApiToken) signal ].
+	
 	response := (STON fromString: responseString).
-	
 	response at: 'error' ifPresent: [ :error | self error: (error at: 'message') ].
-	
 	solution := response at: 'solution'.
 ]
 

@@ -29,15 +29,14 @@ ExercismManager class >> welcome [
 { #category : #exercism }
 ExercismManager >> fetchFromExercismTo: package [
 	| exercise |
-	self verifyToken ifFalse: [^self].
 	
 	(exercise := UIManager default
 		request: 'Enter a valid exercism exercise (e.g. hello-world):')
 		ifNil: [ ^ self ].
 		
 	UIManager default inform: 'Loading: ' , exercise.
-	ExercismDownload exercise: exercise.
-	UIManager default inform: 'Success, Happy Coding'
+	(ExercismDownload exercise: exercise) 
+		ifTrue: [ UIManager default inform: 'Success, Happy Coding']
 ]
 
 { #category : #exercism }
@@ -81,7 +80,8 @@ ExercismManager >> submitToExercism: packageOrTag [
 
 { #category : #helper }
 ExercismManager >> verifyToken [
-	^ ExercismDownload verifyToken. 
+	 [ ExercismCommand verifyToken ] on: ExUnauthorized do: [ ^false ].
+	^true 
 
 ]
 
