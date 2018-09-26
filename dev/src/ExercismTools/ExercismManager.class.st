@@ -72,9 +72,7 @@ ExercismManager >> submitToExercism: packageOrTag [
 				collect: [ :cls | 
 					self pathStringFor: (submissionDirectoryRef / (writer fileNameFor: cls asClassDefinition)) ]).
 				
-	cmd := 'exercism submit ' , filesToSubmit.
-	result := PipeableOSProcess waitForCommand: cmd.
-	result succeeded ifFalse: [ self error: 'Unable to submit solution, CLI reported ', result outputAndError printString ].
+	ExercismSubmit exercise: exerciseName.
 	
 	UIManager default inform: 'Successfully submitted solution!'
 ]
