@@ -1,33 +1,23 @@
 "
-STUB CLASS TODO
+# Description
+I am a command for submitting an exercise back to Exercism.io.
 
-Please comment me using the following template inspired by Class Responsibility Collaborator (CRC) design:
+# Instance Variables
+* `exercise` - a string of the exercise to be submitted.
+* `exerciseMap` - a dictionary containing the source code of each exercise class in Tonel format. The keys are symbols of the class names.
 
-For the Class part:  State a one line summary. For example, ""I represent a paragraph of text"".
+# Usage
+The command can be created an used instantly with `ExercismSubmit exercise: exerciseId`, where `exercisedId` is the string of an exercise name in
+kebab case e.g. `'hello-world'`.
 
-For the Responsibility part: Three sentences about my main responsibilities - what I do, what I know.
-
-For the Collaborators Part: State my main collaborators and one line about how I interact with them. 
-
-Public API and Key Messages
-
-- message one   
-- message two 
-- (for bonus points) how to create instances.
-
-   One simple example is simply gorgeous.
- 
-Internal Representation and Key Implementation Points.
-
-
-    Implementation Points
+The command makes use of the `httpClient` instance variable from the `ExercismCommand` superclass.
 "
 Class {
 	#name : #ExercismSubmit,
 	#superclass : #ExercismCommand,
 	#instVars : [
 		'exercise',
-		'exerciseContents'
+		'exerciseMap'
 	],
 	#category : #ExercismTools
 }
@@ -64,10 +54,11 @@ ExercismSubmit class >> solutionDataForExercise: exerciseString [
 { #category : #internal }
 ExercismSubmit >> buildRequest [
 	| solutionEntity solutionPart multiPartFormDataEntity solutionId |
-	solutionEntity := ZnByteArrayEntity bytes: exerciseContents.
-	solutionPart := ZnMimePart exercismFieldName: 'files[]' fileName: 'Acronym.class.st' entity: solutionEntity.
+	"Assumption: There is only one entity to make which is from the class with the same name as the exercise."
+	solutionEntity := ZnByteArrayEntity bytes: (exerciseMap at: exercise capitalized asSymbol).
+	solutionPart := ZnMimePart exercismFieldName: 'files[]' fileName: exercise entity: solutionEntity.
 	multiPartFormDataEntity := ZnMultiPartFormDataEntity new addPart: solutionPart.
-	solutionId := (self class solutionDataForExercise: exercise) at: 'id'.
+	solutionId := (self class solutionDataForExercise: exercise capitalized) at: 'id'.
 	
 	httpclient 
 		url: ApiPath , '/' , solutionId;
@@ -83,9 +74,13 @@ ExercismSubmit >> execute [
 
 { #category : #accessing }
 ExercismSubmit >> exercise: aStringExercise [
-	| path |
 	exercise := aStringExercise.
+	self writeExercise
+]
 
-	path := (Path from: (aStringExercise asKebabCase)) / '.pharo' / aStringExercise capitalized , 'class.st'.
-	exerciseContents := (FileStream readOnlyFileNamed: path) contents.
+{ #category : #internal }
+ExercismSubmit >> writeExercise [
+	| packageTag |
+	packageTag := (RPackageOrganizer default packageNamed: 'Exercism') classTagForClass: (Smalltalk classNamed: exercise capitalized asSymbol).
+	exerciseMap := TonelWriter new mappedSnapshot: packageTag snapshot
 ]
