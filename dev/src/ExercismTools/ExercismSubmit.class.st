@@ -16,71 +16,93 @@ Class {
 	#name : #ExercismSubmit,
 	#superclass : #ExercismCommand,
 	#instVars : [
-		'exercise',
-		'exerciseMap'
+		'classes',
+		'exerciseMap',
+		'packageTag'
 	],
 	#category : #ExercismTools
 }
 
-{ #category : #accessing }
+{ #category : #command }
+ExercismSubmit class >> class: aClass [ 
+	^ self classes: { aClass }
+]
+
+{ #category : #command }
+ExercismSubmit class >> classes: classes [
+	^ (self new classes: classes) execute
+]
+
+{ #category : #command }
 ExercismSubmit class >> exercise: exerciseId [
-	^ (self new exercise: exerciseId) execute
-]
-
-{ #category : #accessing }
-ExercismSubmit class >> solutionDataForClass: aClass [ 
-	| exercismPackage classTag |
-	exercismPackage := RPackageOrganizer default 
-		packageNamed: 'Exercism' 
-		ifAbsent: [ self error: 'No exercises downloaded.' ].
-	classTag := exercismPackage classTagForClass: aClass.  
-	^ exercismPackage ensureProperties at: classTag.
-	
-]
-
-{ #category : #accessing }
-ExercismSubmit class >> solutionDataForExercise: exerciseString [ 
-	| exercismPackage |
-	exercismPackage := RPackageOrganizer default 
-		packageNamed: 'Exercism' 
-		ifAbsent: [ self error: 'No exercises downloaded.' ].
-	exercismPackage ensureProperties 
-		detect: [ :solutionData | ((solutionData at: 'exercise') at: 'id') = exerciseString ] 
-		ifFound: [ :solutionData | ^ solutionData ] 
-		ifNone: [ self error: 'Exercise ''' , exerciseString , ''' not downloaded.'].
-	
+	"Submit whole package-tag specified by exerciseId."
+	"By default, don't submit TestCases with solution (if needed use #classes: direct)"
+	|rootPackage packageTag solutionClasses|
+	rootPackage := RPackageOrganizer default packageNamed: 'Exercism'.
+	packageTag := rootPackage classTagNamed: exerciseId kebabAsCamelCase.
+	solutionClasses := packageTag classes select: [:class | (class new isKindOf: TestCase) not].
+	(solutionClasses size > 0) ifFalse: [  self error: 'No classes to submit' ].
+	^ self classes: solutionClasses
 ]
 
 { #category : #internal }
 ExercismSubmit >> buildRequest [
-	| solutionEntity solutionPart multiPartFormDataEntity solutionId |
-	"Assumption: There is only one entity to make which is from the class with the same name as the exercise."
-	solutionEntity := ZnByteArrayEntity bytes: (exerciseMap at: exercise capitalized asSymbol).
-	solutionPart := ZnMimePart exercismFieldName: 'files[]' fileName: exercise entity: solutionEntity.
-	multiPartFormDataEntity := ZnMultiPartFormDataEntity new addPart: solutionPart.
-	solutionId := (self class solutionDataForExercise: exercise capitalized) at: 'id'.
+	| solutionClasses multiPartFormDataEntity solutionId exercise |
+	multiPartFormDataEntity := ZnMultiPartFormDataEntity new.
+	classes do: [ :solutionClass | |solutionPart solutionEntity|
+		solutionEntity := ZnByteArrayEntity bytes: (exerciseMap at: solutionClass name asSymbol).
+		solutionPart := ZnMimePart exercismFieldName: 'files[]' fileName: solutionClass name, '.st' entity: solutionEntity.
+		multiPartFormDataEntity addPart: solutionPart.
+	].
+	
+	solutionId := (ExercismManager solutionData at: packageTag name asKebabCase) at: 'id'.
 	
 	httpclient 
 		url: ApiPath , '/' , solutionId;
 		entity: multiPartFormDataEntity
 ]
 
+{ #category : #accessing }
+ExercismSubmit >> classes: arrayOfClasses [
+	"Simplification - only submit classes for one exercise at a time"
+	| firstPackage rootPkg|
+	rootPkg := RPackageOrganizer default packageNamed: 'Exercism'.
+	firstPackage := nil.
+	arrayOfClasses do: [ :c | |package|
+		c isClass ifFalse: [ self error: c printString, ' is not a class.' ].
+		package := rootPkg classTagForClass: c.
+		firstPackage
+			ifNil: [ firstPackage := package ]
+			ifNotNil: [ (firstPackage = package) 
+				ifFalse: [ self error: 'Classes must belong to same package' ] 
+				]
+		].
+	classes := arrayOfClasses.
+
+]
+
 { #category : #execution }
 ExercismSubmit >> execute [
+	|status|
+	self writeExercise.
 	self buildRequest.
 	httpclient patch.
+	status := httpclient response statusLine.
+	status code = 201 ifTrue: [ self inform: 'Exercism submit solution - SUCCESS.'. ^self ].
+	status code = 400 ifTrue: [ self inform: 'Exercism submit solution - NO CHANGES.'. ^self ].
+	self error: 'Exercism submit solution - UNKNOWN ERROR (', status code printString, ' ', status reason, ')'.
 	
 ]
 
-{ #category : #accessing }
-ExercismSubmit >> exercise: aStringExercise [
-	exercise := aStringExercise.
-	self writeExercise
+{ #category : #execution }
+ExercismSubmit >> isOkay [
+	|status|
+	status := httpclient response statusLine.
+	^ (status code = 201) | (status code = 400)
 ]
 
 { #category : #internal }
 ExercismSubmit >> writeExercise [
-	| packageTag |
-	packageTag := (RPackageOrganizer default packageNamed: 'Exercism') classTagForClass: (Smalltalk classNamed: exercise capitalized asSymbol).
+	packageTag := (RPackageOrganizer default packageNamed: 'Exercism') classTagForClass: classes anyOne.
 	exerciseMap := TonelWriter new mappedSnapshot: packageTag snapshot
 ]

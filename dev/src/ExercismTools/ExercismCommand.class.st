@@ -71,7 +71,7 @@ ExercismCommand class >> configureToken [
 ExercismCommand class >> configureToken: your_CLI_token [
     "Get your_CLI_token at https://exercism.io/my/settings"
     ApiToken := your_CLI_token.
-    ApiPath := '/v1/solutions/latest'.
+    ApiPath := '/v1/solutions'.
 ]
 
 { #category : #testing }
@@ -85,6 +85,13 @@ ExercismCommand class >> newHttpClient [
           https;
           host: 'api.exercism.io';
           headerAt: 'Authorization' put: 'Bearer ' , self token
+]
+
+{ #category : #command }
+ExercismCommand class >> reset [
+	ApiPath := nil.
+	ApiToken := nil.
+	
 ]
 
 { #category : #'as yet unclassified' }
@@ -106,4 +113,9 @@ ExercismCommand >> initialize [
 { #category : #internal }
 ExercismCommand >> path [
 	^ApiPath copy
+]
+
+{ #category : #'test support' }
+ExercismCommand >> responseCode [
+	^ httpclient response code
 ]

@@ -1,9 +1,12 @@
 "
-I am  responsible for managing the interaction with the lower level Execercism command line tool.
+I am  responsible for managing the interaction with the lower level Exercism command line tool.
 "
 Class {
 	#name : #ExercismManager,
 	#superclass : #Object,
+	#classVars : [
+		'SolutionData'
+	],
 	#category : #ExercismTools
 }
 
@@ -12,6 +15,11 @@ ExercismManager class >> default [
 	"answer a defulat manager"
 	
 	^self new
+]
+
+{ #category : #exercism }
+ExercismManager class >> solutionData [
+	^ SolutionData ifNil: [ SolutionData := Dictionary new ]
 ]
 
 { #category : #exercism }
