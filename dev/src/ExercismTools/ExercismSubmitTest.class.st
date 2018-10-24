@@ -10,17 +10,21 @@ ExercismSubmitTest >> setUp [
 ]
 
 { #category : #tests }
-ExercismSubmitTest >> testSolutionDataForClass [
-	|solutionData|
-	ExercismDownload exercise: 'hello-world'.
-	solutionData := ExercismSubmit solutionDataForClass: HelloWorld.
-	self assert: ((solutionData at: 'exercise') at: 'id') equals: 'hello-world'.
+ExercismSubmitTest >> testSubmitHelloWorldClass [
+	|exercise downloadCmd|
+	exercise := 'hello-world'.
+	downloadCmd := ExercismDownload new track: 'pharo' exercise: exercise.
+	downloadCmd getSolutionData.
+	self assert: (ExercismSubmit class: HelloWorld) isOkay.
+	
 ]
 
 { #category : #tests }
-ExercismSubmitTest >> testsolutionDataForExercise [
-	|solutionData|
-	ExercismDownload exercise: 'hello-world'.
-	solutionData := ExercismSubmit solutionDataForExercise: 'hello-world'.
-	self assert: ((solutionData at: 'exercise') at: 'id') equals: 'hello-world'.
+ExercismSubmitTest >> testSubmitHelloWorldPackage [
+	|exercise downloadCmd|
+	exercise := 'hello-world'.
+	downloadCmd := ExercismDownload new track: 'pharo' exercise: exercise.
+	downloadCmd getSolutionData.
+	self assert: (ExercismSubmit exercise: exercise) isOkay.
+	
 ]

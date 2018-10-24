@@ -1,9 +1,12 @@
 "
-I am  responsible for managing the interaction with the lower level Execercism command line tool.
+I am  responsible for managing the interaction with the lower level Exercism command line tool.
 "
 Class {
 	#name : #ExercismManager,
 	#superclass : #Object,
+	#classVars : [
+		'SolutionData'
+	],
 	#category : #ExercismTools
 }
 
@@ -12,6 +15,11 @@ ExercismManager class >> default [
 	"answer a defulat manager"
 	
 	^self new
+]
+
+{ #category : #exercism }
+ExercismManager class >> solutionData [
+	^ SolutionData ifNil: [ SolutionData := Dictionary new ]
 ]
 
 { #category : #exercism }
@@ -72,9 +80,7 @@ ExercismManager >> submitToExercism: packageOrTag [
 				collect: [ :cls | 
 					self pathStringFor: (submissionDirectoryRef / (writer fileNameFor: cls asClassDefinition)) ]).
 				
-	cmd := 'exercism submit ' , filesToSubmit.
-	result := PipeableOSProcess waitForCommand: cmd.
-	result succeeded ifFalse: [ self error: 'Unable to submit solution, CLI reported ', result outputAndError printString ].
+	ExercismSubmit exercise: exerciseName.
 	
 	UIManager default inform: 'Successfully submitted solution!'
 ]
