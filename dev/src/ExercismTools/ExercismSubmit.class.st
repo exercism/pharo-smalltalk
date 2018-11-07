@@ -47,7 +47,7 @@ ExercismSubmit class >> exercise: exerciseId [
 
 { #category : #internal }
 ExercismSubmit >> buildRequest [
-	| solutionClasses multiPartFormDataEntity solutionId exercise |
+	| multiPartFormDataEntity solutionId |
 	multiPartFormDataEntity := ZnMultiPartFormDataEntity new.
 	classes do: [ :solutionClass | |solutionPart solutionEntity|
 		solutionEntity := ZnByteArrayEntity bytes: (exerciseMap at: solutionClass name asSymbol).

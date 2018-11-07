@@ -67,7 +67,7 @@ ExercismManager >> submitToExercism: packageOrTag [
 	
 	(writer := ExTonelWriter new)
 		packageDir: (submissionDirectoryRef relativeTo: trackDirectoryRef) exPathString;
-		sourceDir: trackDirectoryRef;
+		directoryReference: trackDirectoryRef;
 		writeSnapshot: packageOrTag snapshot.
 
 	
