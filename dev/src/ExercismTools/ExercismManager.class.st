@@ -57,28 +57,10 @@ ExercismManager >> pathStringFor: aFileReference [
 
 { #category : #exercism }
 ExercismManager >> submitToExercism: packageOrTag [
-	| files writer result cmd exerciseName filesToSubmit trackDirectoryRef submissionDirectoryRef |
+	| exerciseName |
 	
 	exerciseName := packageOrTag name asKebabCase.
 	exerciseName = 'exercism' ifTrue: [ self error: 'Select the sub-package with your solution!' ].
-	
-	trackDirectoryRef := FileLocator cwd / exerciseName.
-	submissionDirectoryRef := trackDirectoryRef / '.pharo'.
-	
-	(writer := ExTonelWriter new)
-		packageDir: (submissionDirectoryRef relativeTo: trackDirectoryRef) exPathString;
-		sourceDir: trackDirectoryRef;
-		writeSnapshot: packageOrTag snapshot.
-
-	
-	files := packageOrTag classes reject: [ :cls | cls isTestCase ].
-	files isEmpty ifTrue: [ self error: 'No solution found to submit!' ].
-	
-	filesToSubmit := Character space
-		join:
-			(files
-				collect: [ :cls | 
-					self pathStringFor: (submissionDirectoryRef / (writer fileNameFor: cls asClassDefinition)) ]).
 				
 	ExercismSubmit exercise: exerciseName.
 	
