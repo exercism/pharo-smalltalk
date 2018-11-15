@@ -38,7 +38,7 @@ ExercismDownload class >> exercise: exerciseId [
 	^(self new track: 'pharo' exercise: exerciseId) execute
 ]
 
-{ #category : #'instance-creation' }
+{ #category : #command }
 ExercismDownload class >> track: trackId exercise: exerciseId [
 	^(self new track: trackId exercise: exerciseId) execute
 ]
@@ -79,7 +79,7 @@ ExercismDownload >> filesContentMap [
 ExercismDownload >> getSolutionData [
 	| responseString response |
 	httpclient 
-		path: self path;
+		path: self path, '/latest';
 		queryAt: 'track_id' put: track;
 		queryAt: 'exercise_id' put: exercise.
 		
@@ -89,6 +89,7 @@ ExercismDownload >> getSolutionData [
 	response := (STON fromString: responseString).
 	response at: 'error' ifPresent: [ :error | self error: (error at: 'message') ].
 	solution := response at: 'solution'.
+	ExercismManager solutionData at: exercise put: solution.
 ]
 
 { #category : #internal }
@@ -102,16 +103,7 @@ ExercismDownload >> installExercise [
 	[	:filename :contents | (filename endsWith: '.st') ifTrue: 
 		[	|parser|
 			parser := TonelParser on: contents readStream.
-         		parser document do: 
-			[	:def | 
-				def load.
-				def isClassDefinition ifTrue: 
-				[	|tag|	
-					"Store solution metadata."
-					tag := exercismPackage classTagNamed:  (exercismPackage toTagName:  def category).
-					exercismPackage ensureProperties at: tag put: solution.
-				].
-			].
+         	parser document do: [:def | def load].
 		].
 	].
 	SystemAnnouncer uniqueInstance announce: (RPackageRegistered to: exercismPackage).
@@ -125,5 +117,5 @@ ExercismDownload >> solution [
 { #category : #accessing }
 ExercismDownload >> track: aStringTrack exercise: aStringExercise [
 	track := aStringTrack.
-	exercise := aStringExercise.
+	exercise := aStringExercise asKebabCase.
 ]

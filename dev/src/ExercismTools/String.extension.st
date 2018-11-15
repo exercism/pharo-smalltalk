@@ -13,3 +13,11 @@ String >> asKebabCase [
 						ifTrue: [ kebabStream nextPut: $- ].
 					kebabStream nextPut: char asLowercase ] ]
 ]
+
+{ #category : #'*ExercismTools' }
+String >> kebabAsCamelCase [
+	"Answer a String that converts the CamelCase input to camel-case kebab output 
+	used by exercism"
+
+	^ (self copyReplaceAll: {$-} with: {Character space}) asCamelCase.
+]
