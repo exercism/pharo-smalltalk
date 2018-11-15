@@ -51,27 +51,11 @@ Class {
 	#category : #ExercismTools
 }
 
-{ #category : #gui }
-ExercismCommand class >> configureToken [
-   |requestText linkText token url |
-	url := 'https://exercism.io/my/settings'.
-   linkText := url asText
-		addAttribute: (TextAction new actOnClickBlock: [ExternalWebBrowser new open: url]);
-		addAttribute: TextColor blue;
-		addAttribute: TextEmphasis underlined.
-   requestText := 'CLI token available at  ' asText, linkText.
-	token := MorphicUIManager default requestText: requestText initialAnswer: '' title: 'Please enter your Exercism student token'.
-	token ifNil: [ ^false ].
-	self configureToken: token.
-	^true
-	
-]
-
 { #category : #command }
 ExercismCommand class >> configureToken: your_CLI_token [
     "Get your_CLI_token at https://exercism.io/my/settings"
     ApiToken := your_CLI_token.
-    ApiPath := '/v1/solutions'.
+    ApiPath := '/v1/solutions/latest'.
 ]
 
 { #category : #testing }
@@ -87,21 +71,14 @@ ExercismCommand class >> newHttpClient [
           headerAt: 'Authorization' put: 'Bearer ' , self token
 ]
 
-{ #category : #command }
-ExercismCommand class >> reset [
-	ApiPath := nil.
-	ApiToken := nil.
-	
-]
-
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ExercismCommand class >> token [
-	^ ApiToken ifNil: [ self configureToken. ApiToken ifNil: [ self error: 'No configured token' ] ] 
+	^ ApiToken ifNil: [  'not-configured' ]
 ]
 
 { #category : #testing }
 ExercismCommand class >> verifyToken [
-	self hasToken ifFalse: [ ^ self configureToken ].
+	self hasToken ifFalse: [ (ExUnauthorized badToken: nil) signal ].
 	^ true
 ]
 
@@ -115,7 +92,7 @@ ExercismCommand >> path [
 	^ApiPath copy
 ]
 
-{ #category : #'test support' }
-ExercismCommand >> responseCode [
-	^ httpclient response code
+{ #category : #internal }
+ExercismCommand >> verifyToken [
+	^ self class verifyToken
 ]
