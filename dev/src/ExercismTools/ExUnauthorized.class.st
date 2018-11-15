@@ -12,11 +12,6 @@ ExUnauthorized class >> badToken: tokenStringOrNil [
 	^ self new badToken: tokenStringOrNil
 ]
 
-{ #category : #'instance creation' }
-ExUnauthorized class >> token: tokenStringOrNil [
-	^self new token: tokenStringOrNil
-]
-
 { #category : #accessing }
 ExUnauthorized >> badToken [
 	^badToken
