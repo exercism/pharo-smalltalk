@@ -6,7 +6,11 @@ Class {
 
 { #category : #running }
 ExercismDownloadTest >> setUp [
-	ExercismCommand verifyToken 
+	[ ExercismCommand verifyToken ] on: ExUnauthorized do: [ :error |
+	 	error configureToken 
+			ifTrue: [ error retry ]
+			ifFalse: [ self inform: 'Aborted'. ^false ]
+		].
 ]
 
 { #category : #tests }
