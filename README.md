@@ -19,32 +19,16 @@ You first need to ensure that you have a complete exercism development environme
 1. the exercism/[pharo](https://github.com/exercism/pharo) repo, as a staging repository to which you will generate exercises and assets to check-in (seperately from coding in pharo). I suggest calling it something like `~/development/exercism/pharo-staging` to avoid any confusion (note: it can reside anywhere)
 
 
-Next setup a Pharo environment for creating the actual coding examples. You need to load a development exercism baseline either by:
+Next setup a Pharo environment for creating the actual coding examples. You need to load a development exercism baseline:
 
-- Use an existing Pharo image (or [PharoLauncher](https://github.com/pharo-project/pharo-launcher)) and install the [latest Iceberg for Pharo 6.1](https://github.com/pharo-vcs/iceberg#update-iceberg). Next, clone `https://exercism/pharo` (with the new v1.2.x Iceberg UI, select: "clone from github" and specify `exercism` as the owner name, `pharo` as the project name, and use `HTTPS` as the protocol. This will automatically specify a src directory of `dev/src`). You should then install the Metacello baseline `dev` (not default) from the Iceberg, Metacello context menu.
+1. Use [PharoLauncher](https://github.com/pharo-project/pharo-launcher) to create a fresh development image, and then launch it (you can also use [zerconf](https://get.pharo.org/) if you are familiar with it)
+1. Install the [latest Iceberg for Pharo 6.1](https://github.com/pharo-vcs/iceberg#update-iceberg). 
+1. Clone `https://exercism/pharo` (with the new v1.2.x Iceberg UI, select: "clone from github" and specify `exercism` as the owner name, `pharo` as the project name. This will automatically specify a src directory of `dev/src`).
+1. Install the Metacello baseline `dev` (not default) from the Iceberg, Metacello context menu. (e.g. right click on the "pharo" project you just cloned, select the second menu option in the Metacello menu, and type ```dev```)
 
-***OR***
 
-- From a terminal command line, enter:
+If you have any TIMEOUT problems refer to the [user installation instructions](./docs/INSTALLATION.md), as you may  need to use https as a download protocol.
 
-```bash
-curl https://get.pharo.org | bash
-```
-
-and then launch Pharo with the development baseline by typing:
-
-```smalltalk
-./pharo-ui Pharo.image eval "
-Metacello new 
- baseline: 'Exercism'; 
- repository: 'github://exercism/pharo:master/dev/src';
- load: 'dev'.
-"
-```
-
-If you have any TIMEOUT problems refer to the [user installation instructions](./docs/INSTALLATION.md).
-
-You also need to install the [latest Iceberg for Pharo 6.1](https://github.com/pharo-vcs/iceberg#update-iceberg).
 
 ## Contributing
 
@@ -97,7 +81,7 @@ Before submitting your pull request, you should check your changes as follows:
 1. Run all the tests for the Pharo exercises and ensure they all pass
 1. Generate the exercises and templates into your seperate pharo exercism repo (the staging repo)
 1. Run the Exercism-specific linter to verify the track
-1. Checkin your changes in a brach and genrate a pull request
+1. Check in your changes in a branch and generate a pull request
 
 All the tests for Pharo exercises can be run from the top level of the repo with:
 
