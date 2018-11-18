@@ -85,6 +85,8 @@ ExercismDownload >> getSolutionData [
 		
 	responseString := httpclient get.
 	response := (STON fromString: responseString).
+	(httpclient response code = 401) ifTrue: [ (ExUnauthorized badToken: ApiToken) signal ].
+
 	
 	response at: 'error' ifPresent: [ :error | self error: (error at: 'message') ].
 	
