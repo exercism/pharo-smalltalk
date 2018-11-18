@@ -84,10 +84,12 @@ ExercismDownload >> getSolutionData [
 		queryAt: 'exercise_id' put: exercise.
 		
 	responseString := httpclient get.
-	(httpclient response code = 401) ifTrue: [ (ExUnauthorized badToken: ApiToken) signal ].
-	
 	response := (STON fromString: responseString).
+	(httpclient response code = 401) ifTrue: [ (ExUnauthorized badToken: ApiToken) signal ].
+
+	
 	response at: 'error' ifPresent: [ :error | self error: (error at: 'message') ].
+	
 	solution := response at: 'solution'.
 	ExercismManager solutionData at: exercise put: solution.
 ]
