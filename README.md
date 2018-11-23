@@ -5,7 +5,7 @@
 The Pharo exercism track is in alpha development. 
 
 If you'd like to help out with testing please [sign up here](https://exercism.io/my/tracks/pharo).
-Some [docs here](https://exercism.io/my/tracks/pharo).
+Until release we cannot sign up mentors, so for testing choose independent mode.  To restart testing, you can "leave" the track then rejoin. [Docs available here](https://exercism.io/my/tracks/pharo).  
 
 If you'd like to help out with development, see below.
 
