@@ -2,7 +2,12 @@
 
 ![build status](https://travis-ci.org/exercism/pharo.svg?branch=master)
 
-Exercism exercises for Pharo.
+The Pharo exercism track is in alpha development. 
+
+If you'd like to help out with testing please [sign up here](https://exercism.io/my/tracks/pharo).
+Some [docs here](https://exercism.io/my/tracks/pharo).
+
+If you'd like to help out with development, see below.
 
 ## Development Setup
 
