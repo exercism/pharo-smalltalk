@@ -43,6 +43,9 @@ Please read about how to [get involved in an Exercism track](https://github.com/
 
 We welcome pull requests of all kinds. No contribution is too small, particularly those that provide fixes and improvements to existing exercises. Note that this track's exercises must conform to the [Exercism-wide standards](https://github.com/exercism/docs/tree/master/language-tracks/exercises), but if you're unsure about how to make a change, then open a GitHub issue, and we'll discuss it.
 
+### Reading Smalltalk
+
+[I Can Read C++ and Java But I Can't Read Smalltalk](https://github.com/exercism/docs/files/2276414/readingSmalltalk.pdf) by Wilf LaLonde is a good primer on Smalltalk syntax for people more familiar with curly braced languages.
 
 ### Conventions
 
