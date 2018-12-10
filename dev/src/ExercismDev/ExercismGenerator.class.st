@@ -42,6 +42,24 @@ ExercismGenerator class >> generate [
 	path ifNotNil: [ self new generateTo: (self defaultPath: path) ]
 ]
 
+{ #category : #generation }
+ExercismGenerator class >> packagesExercismMenuGenerate: aBuilder [
+	<nautilusGlobalPackageMenu>
+	| target packageTree |
+	
+	target := aBuilder model.
+	(packageTree := target selectedPackage) ifNil: [ ^ target ].
+	(packageTree packageName = 'Exercism') ifFalse: [ ^ target ].
+	
+	(aBuilder item: #'Generate Exercises...')
+		parent: #'Exercism';
+		action: [ ExercismGenerator generate ];
+		order: 50;
+		withSeparatorAfter;
+		help: 'Generate the Exercism templates into an existing git repository'.
+	
+]
+
 { #category : #helper }
 ExercismGenerator >> createTagSnapshotFor: packageOrTag [
 	| parentSnapshot |
