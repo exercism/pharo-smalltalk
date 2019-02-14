@@ -20,7 +20,7 @@ Class {
 		'exerciseMap',
 		'packageTag'
 	],
-	#category : #ExercismTools
+	#category : #'ExercismTools-Core'
 }
 
 { #category : #command }

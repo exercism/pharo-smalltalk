@@ -4,7 +4,7 @@ I am a TonelWriter that provides finer level control of writing Tonel files for 
 Class {
 	#name : #ExTonelWriter,
 	#superclass : #TonelWriter,
-	#category : #ExercismTools
+	#category : #'ExercismTools-Core'
 }
 
 { #category : #writing }

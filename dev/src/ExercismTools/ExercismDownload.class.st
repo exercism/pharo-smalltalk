@@ -30,7 +30,7 @@ Class {
 		'solution',
 		'filesContentMap'
 	],
-	#category : #ExercismTools
+	#category : #'ExercismTools-Core'
 }
 
 { #category : #command }

@@ -1,7 +1,7 @@
 Class {
 	#name : #StaticTextMorph,
 	#superclass : #TextMorph,
-	#category : #ExercismTools
+	#category : #'ExercismTools-Core'
 }
 
 { #category : #testing }
