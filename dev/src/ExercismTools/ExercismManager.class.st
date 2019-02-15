@@ -37,8 +37,9 @@ ExercismManager class >> welcome [
 		
 	pkg
 		moveClass: Welcome
-			toTag: (RPackageTag package: pkg name: 'Welcome');
-		browse
+			toTag: (RPackageTag package: pkg name: 'Welcome').
+			
+	Smalltalk tools browser openOnClass: Welcome selector: #testWelcome.
 ]
 
 { #category : #exercism }
