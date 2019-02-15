@@ -48,7 +48,7 @@ Class {
 		'ApiPath',
 		'ApiToken'
 	],
-	#category : #ExercismTools
+	#category : #'ExercismTools-Core'
 }
 
 { #category : #command }

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'badToken'
 	],
-	#category : #ExercismTools
+	#category : #'ExercismTools-Core'
 }
 
 { #category : #'instance-creation' }
