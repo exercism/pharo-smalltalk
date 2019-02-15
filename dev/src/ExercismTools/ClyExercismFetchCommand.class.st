@@ -1,7 +1,7 @@
 Class {
 	#name : #ClyExercismFetchCommand,
 	#superclass : #ClyExercismCommand,
-	#category : #'ExercismTools-Core'
+	#category : #'ExercismTools-Menus'
 }
 
 { #category : #testing }

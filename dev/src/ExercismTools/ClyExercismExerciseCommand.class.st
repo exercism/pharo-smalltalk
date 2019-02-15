@@ -1,7 +1,10 @@
+"
+Exercism menu items that should only appear on a package tag 
+"
 Class {
 	#name : #ClyExercismExerciseCommand,
 	#superclass : #ClyExercismCommand,
-	#category : #'ExercismTools-Core'
+	#category : #'ExercismTools-Menus'
 }
 
 { #category : #activation }

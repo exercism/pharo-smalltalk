@@ -1,7 +1,7 @@
 Class {
 	#name : #ClyExercismProgressCommand,
 	#superclass : #ClyExercismExerciseCommand,
-	#category : #'ExercismTools-Core'
+	#category : #'ExercismTools-Menus'
 }
 
 { #category : #accessing }

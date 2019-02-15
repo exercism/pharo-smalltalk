@@ -1,10 +1,13 @@
+"
+Abstract class to provide menu facilties for Exercism that should only appear in the context of the Exercism package (and not other browser packages)
+"
 Class {
 	#name : #ClyExercismCommand,
 	#superclass : #SycPackageCommand,
 	#instVars : [
 		'tagGroup'
 	],
-	#category : #'ExercismTools-Core'
+	#category : #'ExercismTools-Menus'
 }
 
 { #category : #testing }

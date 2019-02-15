@@ -1,7 +1,7 @@
 Class {
 	#name : #ClyExercismMetaDataCommand,
 	#superclass : #ClyExercismExerciseCommand,
-	#category : #'ExercismTools-Core'
+	#category : #'ExercismTools-Menus'
 }
 
 { #category : #accessing }

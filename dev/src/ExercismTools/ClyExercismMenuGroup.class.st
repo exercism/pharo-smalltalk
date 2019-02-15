@@ -1,7 +1,10 @@
+"
+The Exercism menu group
+"
 Class {
 	#name : #ClyExercismMenuGroup,
 	#superclass : #CmdMenuGroup,
-	#category : #'ExercismTools-Core'
+	#category : #'ExercismTools-Menus'
 }
 
 { #category : #testing }
