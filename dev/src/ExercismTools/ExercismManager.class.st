@@ -43,15 +43,28 @@ ExercismManager class >> welcome [
 
 { #category : #exercism }
 ExercismManager >> fetchFromExercismTo: package [
-	| exercise |
+	| exerciseName |
 	
-	(exercise := UIManager default
+	exerciseName := (UIManager default
 		request: 'Enter a valid exercism exercise (e.g. hello-world):')
-		ifNil: [ ^ self ].
+			ifNil: [ ^ self ]
+			ifNotNil: [ :value | self parseExerciseName: value ].
 		
-	UIManager default inform: 'Loading: ' , exercise.
-	(ExercismDownload exercise: exercise) 
-		ifTrue: [ UIManager default inform: 'Success, Happy Coding']
+	UIManager default inform: 'Loading: ' , exerciseName.
+	(ExercismDownload exercise: exerciseName)
+		ifTrue: [ UIManager default inform: 'Success, Happy Coding' ]
+]
+
+{ #category : #helpers }
+ExercismManager >> parseExerciseName: aString [ 
+	| parsedTokens exerciseOffset |
+	parsedTokens := aString findTokens: '= '.
+	parsedTokens size = 1 ifTrue: [ ^parsedTokens first ].
+	
+	(exerciseOffset := parsedTokens indexOf: '--exercise') > 1 ifTrue: [ 
+		^parsedTokens at: exerciseOffset + 1 ].
+	
+	^nil
 ]
 
 { #category : #exercism }
