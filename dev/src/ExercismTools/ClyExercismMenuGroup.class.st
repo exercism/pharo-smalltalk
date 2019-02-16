@@ -8,11 +8,6 @@ Class {
 }
 
 { #category : #testing }
-ClyExercismMenuGroup >> isInlined [
-	^false
-]
-
-{ #category : #testing }
 ClyExercismMenuGroup >> name [
 	^'Exercism'
 ]
