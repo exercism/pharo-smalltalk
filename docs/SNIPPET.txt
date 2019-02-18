@@ -1,7 +1,6 @@
-Class { "A sample SUnit test"
+Class { "A simple SUnit test"
 	#name : #HelloWorldTest,
-	#superclass : #TestCase,
-	#category : #'Exercism-Exercises' }
+	#superclass : #TestCase }
 
 { #category : #testing }
 HelloWorldTest >> testSayHello [

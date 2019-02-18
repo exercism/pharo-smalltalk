@@ -10,13 +10,13 @@ In your `/Exercism/pharo` directory, type:
 curl https://get.pharo.org | bash
 ```
 
-Then launch Pharo and load some initial tools by typing:
+Then launch Pharo and load the exercism tools by typing:
 
 ```smalltalk
 ./pharo-ui Pharo.image eval "
 Metacello new 
  baseline: 'Exercism'; 
- repository: 'github://exercism/pharo:master/dev/src';
+ repository: 'github://exercism/pharo-smalltalk:master/dev/src';
  load.
 ExercismManager welcome.
 "
