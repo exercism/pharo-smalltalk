@@ -44,8 +44,8 @@ The default download for installing Pharo is the Pharo Launcher. A handy tool fo
 found on the [Pharo.org](http://pharo.org/) website can be downloaded directly [here](https://files.pharo.org/pharo-launcher/windows). Run the downloaded installer to install the Pharo Launcher.
 
 Run the Pharo launcher. On the left of the window will be various templates of Pharo images that can be downloaded. For Exercism
-exercises Pharo 6.1 32-bit (stable) is recommended. It can be found under the Official Distributions heading in the Templates 
-tree. Click to hightlight an image template, then click the create image icon at the top middle (an orange star shape), and give
+exercises Pharo 7.0 32-bit (development version) is recommended. It can be found under the Official Distributions heading in the Templates 
+tree. Click to highlight an image template, then click the create image icon at the top middle (an orange cog shape), and give
 it a name. Once the template is downloaded it will appear on the right in the Existing Images table. Click to highlight your
 image in the table, then click the launch button at the top right (a green _play_ arrow).
 
@@ -55,17 +55,14 @@ Once the Pharo image has started open a Playground by left clicking anywhere and
 ```smalltalk
 Metacello new 
  baseline: 'Exercism'; 
- repository: 'github://exercism/pharo:master/dev/src';
+ repository: 'github://exercism/pharo-smalltalk:master/dev/src';
  load.
+ 
+(Smalltalk at: #ExercismManager) welcome
 ```
 
 Evaluate the code by highlighting all of it, then right click and select _Do it_ from the menu, or use `ctrl + d`. After the
-Exercism tools have downloaded, copy and paste the following code snippet into the playground and evaluate it the same way as
-above:
-
-```smalltalk
-ExercismManager welcome.
-```
+Exercism tools have downloaded, you can proceed below.
 
 ## Getting Started
 
