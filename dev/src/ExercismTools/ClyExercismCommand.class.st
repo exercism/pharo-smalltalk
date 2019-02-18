@@ -12,8 +12,11 @@ Class {
 
 { #category : #testing }
 ClyExercismCommand class >> isExercismTagIn: aToolContext [
-	^ aToolContext lastSelectedClassGroup classes anyOne 
-		package name = ExercismManager exercismPackageName 
+
+	aToolContext lastSelectedClassGroup classes do: [:any |
+		^any package name = ExercismManager exercismPackageName]. 
+	
+	^false
 ]
 
 { #category : #accessing }
