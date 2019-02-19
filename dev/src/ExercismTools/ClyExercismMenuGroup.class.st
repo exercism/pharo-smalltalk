@@ -7,12 +7,12 @@ Class {
 	#category : #'ExercismTools-Menus'
 }
 
-{ #category : #testing }
+{ #category : #accessing }
 ClyExercismMenuGroup >> name [
 	^'Exercism'
 ]
 
-{ #category : #testing }
+{ #category : #accessing }
 ClyExercismMenuGroup >> order [
 	^1
 ]

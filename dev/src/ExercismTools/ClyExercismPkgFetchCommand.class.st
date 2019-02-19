@@ -5,12 +5,6 @@ Class {
 }
 
 { #category : #testing }
-ClyExercismPkgFetchCommand class >> canBeExecutedInContext: aToolContext [
-	^ (super canBeExecutedInContext: aToolContext)
-		and: [ self isExercismTagIn: aToolContext ]
-]
-
-{ #category : #testing }
 ClyExercismPkgFetchCommand class >> packageContextMenuActivation [
 	<classAnnotation>
 	
@@ -19,12 +13,12 @@ ClyExercismPkgFetchCommand class >> packageContextMenuActivation [
 		for: RPackage asCalypsoItemContext
 ]
 
-{ #category : #testing }
+{ #category : #accessing }
 ClyExercismPkgFetchCommand >> defaultMenuIconName [
 	^#book
 ]
 
-{ #category : #testing }
+{ #category : #accessing }
 ClyExercismPkgFetchCommand >> defaultMenuItemName [
 	^'Fetch new exercise...'
 ]

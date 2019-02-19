@@ -9,17 +9,17 @@ ClyExercismSubmitCommand class >> contextMenuOrder [
 		^1
 ]
 
-{ #category : #activation }
+{ #category : #accessing }
 ClyExercismSubmitCommand >> defaultMenuIconName [
 	^#smallExport
 ]
 
-{ #category : #activation }
+{ #category : #accessing }
 ClyExercismSubmitCommand >> defaultMenuItemName [
 	^'Submit exercise...'
 ]
 
-{ #category : #execution }
+{ #category : #accessing }
 ClyExercismSubmitCommand >> description [ 
 	^'Sumbit your proposed solution to Exercism for mentor review'
 ]
