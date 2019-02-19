@@ -1,22 +1,17 @@
 Class {
-	#name : #ClyExercismFetchCommand,
+	#name : #ClyExercismPkgFetchCommand,
 	#superclass : #ClyExercismCommand,
 	#category : #'ExercismTools-Menus'
 }
 
 { #category : #testing }
-ClyExercismFetchCommand class >> canBeExecutedInContext: aToolContext [
+ClyExercismPkgFetchCommand class >> canBeExecutedInContext: aToolContext [
 	^ (super canBeExecutedInContext: aToolContext)
 		and: [ self isExercismTagIn: aToolContext ]
 ]
 
 { #category : #testing }
-ClyExercismFetchCommand class >> defaultMenuItemName [
-	^'Fetch new exercise...'
-]
-
-{ #category : #testing }
-ClyExercismFetchCommand class >> packageContextMenuActivation [
+ClyExercismPkgFetchCommand class >> packageContextMenuActivation [
 	<classAnnotation>
 	
 	^ CmdContextMenuActivation
@@ -24,7 +19,17 @@ ClyExercismFetchCommand class >> packageContextMenuActivation [
 		for: RPackage asCalypsoItemContext
 ]
 
+{ #category : #testing }
+ClyExercismPkgFetchCommand >> defaultMenuIconName [
+	^#book
+]
+
+{ #category : #testing }
+ClyExercismPkgFetchCommand >> defaultMenuItemName [
+	^'Fetch new exercise...'
+]
+
 { #category : #execution }
-ClyExercismFetchCommand >> execute [
+ClyExercismPkgFetchCommand >> execute [
 	ExercismManager default fetchFromExercismTo: self packages first
 ]
