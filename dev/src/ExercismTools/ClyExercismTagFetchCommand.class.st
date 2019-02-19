@@ -14,12 +14,12 @@ ClyExercismTagFetchCommand >> defaultMenuIconName [
 	^#book
 ]
 
-{ #category : #testing }
+{ #category : #accessing }
 ClyExercismTagFetchCommand >> defaultMenuItemName [
 	^'Fetch new exercise...'
 ]
 
-{ #category : #execution }
+{ #category : #accessing }
 ClyExercismTagFetchCommand >> description [ 
 	^'Fetch a named exercise to begin solving it'
 ]
