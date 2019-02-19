@@ -4,8 +4,13 @@ Class {
 	#category : #'ExercismTools-Menus'
 }
 
+{ #category : #activation }
+ClyExercismMetaDataCommand class >> contextMenuOrder [
+		^100
+]
+
 { #category : #accessing }
-ClyExercismMetaDataCommand class >> defaultMenuItemName [
+ClyExercismMetaDataCommand >> defaultMenuItemName [
 	^'View MetaData (debug)'
 ]
 
