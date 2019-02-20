@@ -4,8 +4,18 @@ Class {
 	#category : #'ExercismTools-Menus'
 }
 
+{ #category : #activation }
+ClyExercismProgressCommand class >> contextMenuOrder [
+		^5
+]
+
+{ #category : #execution }
+ClyExercismProgressCommand >> defaultMenuIconName [
+	^#home
+]
+
 { #category : #accessing }
-ClyExercismProgressCommand class >> defaultMenuItemName [
+ClyExercismProgressCommand >> defaultMenuItemName [
 	^'View Track Progress'
 ]
 

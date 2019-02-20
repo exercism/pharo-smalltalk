@@ -14,9 +14,18 @@ ClyExercismExerciseCommand class >> canBeExecutedInContext: aToolContext [
 ]
 
 { #category : #activation }
+ClyExercismExerciseCommand class >> contextMenuOrder [
+	<classAnnotationDependency>
+	
+		^1
+]
+
+{ #category : #activation }
 ClyExercismExerciseCommand class >> packageContextMenuActivation [
 	<classAnnotation>
+	
 	^ CmdContextMenuActivation
 		byItemOf: ClyExercismMenuGroup
+		order: self contextMenuOrder
 		for: ClyTaggedClassGroup asCalypsoItemContext
 ]
