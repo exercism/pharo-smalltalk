@@ -1,7 +1,10 @@
+"
+Menu command to help debug issues
+"
 Class {
 	#name : #ClyExercismMetaDataCommand,
 	#superclass : #ClyExercismExerciseCommand,
-	#category : #'ExercismTools-Menus'
+	#category : #'ExercismDev-Menus'
 }
 
 { #category : #activation }

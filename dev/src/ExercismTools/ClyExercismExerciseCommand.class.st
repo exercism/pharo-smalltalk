@@ -15,14 +15,7 @@ ClyExercismExerciseCommand class >> contextMenuOrder [
 ]
 
 { #category : #activation }
-ClyExercismExerciseCommand class >> contextMenuOrder [
-	<classAnnotationDependency>
-	
-		^1
-]
-
-{ #category : #activation }
-ClyExercismExerciseCommand class >> packageContextMenuActivation [
+ClyExercismExerciseCommand class >> tagContextMenuActivation [
 	<classAnnotation>
 	
 	^ CmdContextMenuActivation

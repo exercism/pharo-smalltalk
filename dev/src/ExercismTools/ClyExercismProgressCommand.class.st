@@ -1,3 +1,6 @@
+"
+Menu command to view progress on the exercism website
+"
 Class {
 	#name : #ClyExercismProgressCommand,
 	#superclass : #ClyExercismExerciseCommand,
@@ -8,7 +11,6 @@ Class {
 ClyExercismProgressCommand class >> contextMenuOrder [
 		^5
 ]
-
 
 { #category : #accessing }
 ClyExercismProgressCommand >> defaultMenuIconName [
