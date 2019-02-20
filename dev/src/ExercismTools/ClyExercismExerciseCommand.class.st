@@ -8,9 +8,10 @@ Class {
 }
 
 { #category : #activation }
-ClyExercismExerciseCommand class >> canBeExecutedInContext: aToolContext [
-	^ (super canBeExecutedInContext: aToolContext)
-		and: [ self isExercismTagIn: aToolContext ]
+ClyExercismExerciseCommand class >> contextMenuOrder [
+	<classAnnotationDependency>
+	
+		^1
 ]
 
 { #category : #activation }

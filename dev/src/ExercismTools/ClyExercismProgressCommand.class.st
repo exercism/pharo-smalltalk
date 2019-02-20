@@ -9,7 +9,8 @@ ClyExercismProgressCommand class >> contextMenuOrder [
 		^5
 ]
 
-{ #category : #execution }
+
+{ #category : #accessing }
 ClyExercismProgressCommand >> defaultMenuIconName [
 	^#home
 ]
@@ -17,6 +18,11 @@ ClyExercismProgressCommand >> defaultMenuIconName [
 { #category : #accessing }
 ClyExercismProgressCommand >> defaultMenuItemName [
 	^'View Track Progress'
+]
+
+{ #category : #accessing }
+ClyExercismProgressCommand >> description [ 
+	^'Open track progress in a web browser'
 ]
 
 { #category : #execution }
