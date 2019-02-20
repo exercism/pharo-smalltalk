@@ -11,6 +11,12 @@ Class {
 }
 
 { #category : #testing }
+ClyExercismCommand class >> isAbstract [
+	
+	^self subclasses notEmpty
+]
+
+{ #category : #testing }
 ClyExercismCommand class >> isExercismTagIn: aToolContext [
 
 	aToolContext lastSelectedClassGroup classes do: [:any |
