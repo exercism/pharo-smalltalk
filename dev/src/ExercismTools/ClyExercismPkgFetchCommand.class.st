@@ -19,12 +19,12 @@ ClyExercismPkgFetchCommand class >> packageContextMenuActivation [
 		for: RPackage asCalypsoItemContext
 ]
 
-{ #category : #testing }
+{ #category : #accessing }
 ClyExercismPkgFetchCommand >> defaultMenuIconName [
 	^#book
 ]
 
-{ #category : #testing }
+{ #category : #accessing }
 ClyExercismPkgFetchCommand >> defaultMenuItemName [
 	^'Fetch new exercise...'
 ]
