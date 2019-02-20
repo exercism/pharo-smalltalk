@@ -36,28 +36,10 @@ ExercismGenerator class >> generate [
 	<example>
 	| path |
 	path := UIManager default
-		chooseDirectory: 'Select the /exercises location in a full Exercism/Pharo git project'
+		chooseDirectory: 'Select the /exercises location in a fresh Exercism/Pharo git project'
 		path: self defaultPath.
 		
 	path ifNotNil: [ self new generateTo: (self defaultPath: path) ]
-]
-
-{ #category : #generation }
-ExercismGenerator class >> packagesExercismMenuGenerate: aBuilder [
-	<nautilusGlobalPackageMenu>
-	| target packageTree |
-	
-	target := aBuilder model.
-	(packageTree := target selectedPackage) ifNil: [ ^ target ].
-	(packageTree packageName = 'Exercism') ifFalse: [ ^ target ].
-	
-	(aBuilder item: #'Generate Exercises...')
-		parent: #'Exercism';
-		action: [ ExercismGenerator generate ];
-		order: 50;
-		withSeparatorAfter;
-		help: 'Generate the Exercism templates into an existing git repository'.
-	
 ]
 
 { #category : #helper }
@@ -80,14 +62,15 @@ ExercismGenerator >> generateReadmeHintFor: packageOrTag to: destinationDirector
 	
 	packageOrTag classes
 		detect: [ :c | c isTestCase ]
-		ifFound: [ :c | (destinationDirectory / 'hints.md') writeStream nextPutAll: c comment ]
+		ifFound: [ :c | (destinationDirectory / 'hints.md') ensureCreateFile  
+				writeStreamDo:  [:stream | stream nextPutAll: c comment ]]
 ]
 
 { #category : #helper }
 ExercismGenerator >> generateSourceFilesFor: packageOrTag to: filePathString [
 	"Generate the Tonel source files for a package (normally a tag). Answer the exercise directory reference"
 
-	| writer exampleDirectoryRef exerciseDirectoryRef metaDirectoryRef  solutionDirectoryRef testClass testClassFilename exerciseName |
+	| exampleDirectoryRef exerciseDirectoryRef metaDirectoryRef  solutionDirectoryRef testClass testClassFilename exerciseName |
 	
 	"Note: could create the writer on a memory stream to then pick what should be stored on disk
 	e.g.
@@ -103,9 +86,8 @@ ExercismGenerator >> generateSourceFilesFor: packageOrTag to: filePathString [
 	exerciseDirectoryRef ensureCreateDirectory.
 	exerciseDirectoryRef deleteAll.
 	
-	(writer := ExTonelWriter new)
-		packageDir: (solutionDirectoryRef relativeTo: exampleDirectoryRef) pathString;
-		sourceDir: exampleDirectoryRef;
+	(ExTonelWriter on: exampleDirectoryRef)
+		sourceDirectory: (solutionDirectoryRef relativeTo: exampleDirectoryRef) pathString;
 		writeSnapshot: (self createTagSnapshotFor: packageOrTag).
 
 	"Remove the extra package file as its not needed for Exercism"
