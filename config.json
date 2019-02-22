@@ -81,6 +81,18 @@
         "filtering",
         "math"
       ]
+    },
+    {
+      "slug": "space-age",
+      "uuid": "d02d2eff-2534-473c-9951-d9b8c530547a",
+      "core": false,
+      "unlocked_by": null,
+      "difficulty": 1,
+      "topics": [
+        "math",
+        "class-objects",
+        "polymorphism"
+      ]
     }
   ]
 }
