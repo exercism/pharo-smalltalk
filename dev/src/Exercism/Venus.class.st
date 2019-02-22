@@ -1,3 +1,6 @@
+"
+I am Venus, from the Sol system
+"
 Class {
 	#name : #Venus,
 	#superclass : #Planet,

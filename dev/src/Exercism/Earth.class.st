@@ -1,3 +1,6 @@
+"
+I am Earth, from the Sol system
+"
 Class {
 	#name : #Earth,
 	#superclass : #Planet,

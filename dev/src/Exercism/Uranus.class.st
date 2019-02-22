@@ -1,3 +1,6 @@
+"
+I am Uranus, from the Sol system
+"
 Class {
 	#name : #Uranus,
 	#superclass : #Planet,

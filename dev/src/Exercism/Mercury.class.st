@@ -1,3 +1,6 @@
+"
+I am Mercury, from the Sol system
+"
 Class {
 	#name : #Mercury,
 	#superclass : #Planet,

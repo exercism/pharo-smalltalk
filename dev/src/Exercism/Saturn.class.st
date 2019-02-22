@@ -1,3 +1,6 @@
+"
+I am Saturn, from the Sol system
+"
 Class {
 	#name : #Saturn,
 	#superclass : #Planet,
