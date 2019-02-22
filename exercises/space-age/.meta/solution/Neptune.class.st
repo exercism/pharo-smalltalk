@@ -1,3 +1,6 @@
+"
+I am Neptune, from the Sol system
+"
 Class {
 	#name : #Neptune,
 	#superclass : #Planet,

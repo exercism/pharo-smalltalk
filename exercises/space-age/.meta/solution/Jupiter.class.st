@@ -1,3 +1,6 @@
+"
+I am Jupiter, from the Sol system
+"
 Class {
 	#name : #Jupiter,
 	#superclass : #Planet,

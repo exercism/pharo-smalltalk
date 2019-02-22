@@ -1,3 +1,6 @@
+"
+Note that SpaceAge >> on:at: receives the name of an object as an argument instead of a symbol. Symbols exist in Smalltalk and a similar on:at: message could receive a first argument of e.g. #Earth. Here Earth will need to be a live object in Pharo. That object could be an instance variable on SpaceAgeTest or a global variable (see Smalltalk globals), but remember that classes are objects themselves...
+"
 Class {
 	#name : #SpaceAgeTest,
 	#superclass : #TestCase,
@@ -6,6 +9,8 @@ Class {
 
 { #category : #asserting }
 SpaceAgeTest >> assert: actualNumber closeEnoughTo: expectedNumber [
+	"The canonical data is precise to two decimal points. Number >> closeTo:precision: exists but didn't give quite the correct behavior."
+
 	self
 		assert: (actualNumber roundTo: 0.01)
 		equals: (expectedNumber roundTo: 0.01)
