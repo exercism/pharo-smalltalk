@@ -20,13 +20,11 @@ ClyExercismPkgFetchCommand class >> packageContextMenuActivation [
 ]
 
 { #category : #accessing }
-
 ClyExercismPkgFetchCommand >> defaultMenuIconName [
 	^#book
 ]
 
 { #category : #accessing }
-
 ClyExercismPkgFetchCommand >> defaultMenuItemName [
 	^'Fetch new exercise...'
 ]

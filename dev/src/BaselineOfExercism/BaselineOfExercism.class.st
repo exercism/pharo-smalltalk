@@ -12,12 +12,14 @@ BaselineOfExercism >> baseline: spec [
 		for: #common
 		do: [ self setUpDependencies: spec.
 			spec
-				package: 'Exercism'
-					with: [ ];
-				package: 'ExercismDev'
-					with: [ spec requires: #('Exercism' 'ExercismTools')];
 				package: 'ExercismTools'
 					with: [ spec requires: #('OSProcess' 'ExternalWebBrowser') ];
+				package: 'Exercism'
+					with: [ "Standalone, as this has all the solutons as well as tests"];
+				package: 'ExercismWIP'
+					with: [ "Holding package for WIP tests"];
+				package: 'ExercismDev'
+					with: [ spec requires: #('ExercismTools' 'Exercism' 'ExercismWIP')];
 				group: 'default'
 					with:
 					#('ExercismTools');

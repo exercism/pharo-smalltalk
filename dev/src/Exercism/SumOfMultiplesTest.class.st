@@ -1,4 +1,16 @@
 "
+# Sum Of Multiples
+
+Given a number, find the sum of all the unique multiples of particular numbers up to
+but not including that number.
+
+If we list all the natural numbers below 20 that are multiples of 3 or 5,
+we get 3, 5, 6, 9, 10, 12, 15, and 18.
+
+The sum of these multiples is 78.
+
+## Hint
+
 The trick to this exercise is to understand how to iterate accross an Interval as well as check a Collection for any multiples that are divisible by a number. Try using the Spotter to look up potential classes and browse the categories of methods in those classes. 
 
 Also remember that the Pharo environment is extensively cross referenced. You can right click on any class or method and browse ""references"" to a class (to see how it might be created), as well as ""senders"" of a method (to see how it might be used). 
@@ -6,9 +18,41 @@ Also remember that the Pharo environment is extensively cross referenced. You ca
 "
 Class {
 	#name : #SumOfMultiplesTest,
-	#superclass : #TestCase,
+	#superclass : #ExercismTest,
 	#category : #'Exercism-SumOfMultiples'
 }
+
+{ #category : #meta }
+SumOfMultiplesTest class >> difficulty [
+	^3
+]
+
+{ #category : #meta }
+SumOfMultiplesTest class >> topics [
+	"Answer a String Array of topics that classify the exercise"
+	
+	^#('iteration' 'filtering' 'math')
+]
+
+{ #category : #meta }
+SumOfMultiplesTest class >> unlockedBy [
+	"Answer the exercise this is dependent on (if core, this is the exercise this one should appear after in the config.json)"
+	
+	^LeapTest 
+]
+
+{ #category : #meta }
+SumOfMultiplesTest class >> uuid [
+	"Answer a unique id for this exercise"
+	^'34b0900f-de21-4fef-b24b-f125b608e65e'
+]
+
+{ #category : #config }
+SumOfMultiplesTest class >> version [
+	"Answer the exercise version number string this test was derived from"
+	
+	^'1.5.0'
+]
 
 { #category : #testing }
 SumOfMultiplesTest >> testMultiplesOf1to100 [

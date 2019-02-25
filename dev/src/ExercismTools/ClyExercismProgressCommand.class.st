@@ -9,7 +9,6 @@ ClyExercismProgressCommand class >> contextMenuOrder [
 		^5
 ]
 
-
 { #category : #accessing }
 ClyExercismProgressCommand >> defaultMenuIconName [
 	^#home
