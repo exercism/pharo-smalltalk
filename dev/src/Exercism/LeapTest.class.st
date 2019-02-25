@@ -26,7 +26,9 @@ phenomenon, go watch [this youtube video][video].
 
 ## Hint
 
-In Pharo, boolean operators are defined as messages. Study how ""and:"" and ""or:"" are implented in the classes True and False. Use the context menu item - senders of... to view how other parts of Pharo use these operators.
+Although Pharo provides a method in the standard library that does this, try and implement it from first principles without looking.
+
+If you are stuck, look at how boolean operators are actually defined as messages. Study how ""and:"" and ""or:"" are implented in the classes True and False, and then use the context menu item - senders of... to see how other parts of Pharo use them.
 
 "
 Class {

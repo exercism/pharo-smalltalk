@@ -12,6 +12,12 @@ ExercismTestTest >> testFollowedBy [
 ]
 
 { #category : #tests }
+ExercismTestTest >> testHintText [
+	self assert: ExercismTest hintText equals: ''.
+	self assert: (HelloWorldTest hintText beginsWith: 'If you are')
+]
+
+{ #category : #tests }
 ExercismTestTest >> testSlug [
 	self assert: ExercismTest slug equals: 'exercism'.
 	self assert: HelloWorldTest slug equals: 'hello-world'

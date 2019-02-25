@@ -32,13 +32,28 @@ ExercismTest class >> difficulty [
 	^self subclassResponsibility 
 ]
 
-{ #category : #config }
+{ #category : #helper }
 ExercismTest class >> followedBy [
 	"Answer the String name of the next core exercise that follows, otherwise nil if nothing comes after.
 	
 	This data provides a hook for users to load the next core exercise"
 	
 	^self unlockedBy ifNotNil: [ :parent | parent followedBy ]
+]
+
+{ #category : #helper }
+ExercismTest class >> hintText [
+	"Answer the String, that is the hint text for exerciems (this is the text afer the markdown heading ## Hint"
+
+	| hintIndex |
+	self comment
+		ifNotNil: [ :comment | 
+			| hintMarker |
+			hintMarker := '## Hint'.
+			hintIndex := comment findString: hintMarker.
+			hintIndex > 0
+				ifTrue: [ ^ (comment allButFirst: hintIndex + hintMarker size) trimBoth ] ].
+	^ ''
 ]
 
 { #category : #config }
@@ -82,7 +97,7 @@ ExercismTest class >> version [
 	^self subclassResponsibility  
 ]
 
-{ #category : #config }
+{ #category : #helper }
 ExercismTest class >> wordifiedName [
 	"Answer the english readable name of the exercise"
 	
