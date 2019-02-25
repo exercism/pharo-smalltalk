@@ -17,7 +17,7 @@ ClyExercismExerciseCommand class >> contextMenuOrder [
 { #category : #testing }
 ClyExercismExerciseCommand class >> isAbstract [
 	
-	^self subclasses notEmpty
+	^self == ClyExercismExerciseCommand
 ]
 
 { #category : #activation }

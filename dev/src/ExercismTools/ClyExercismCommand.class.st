@@ -13,7 +13,7 @@ Class {
 { #category : #testing }
 ClyExercismCommand class >> isAbstract [
 	
-	^self subclasses notEmpty
+	^self == ClyExercismCommand
 ]
 
 { #category : #testing }
