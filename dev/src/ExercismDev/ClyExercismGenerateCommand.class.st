@@ -1,14 +1,11 @@
+"
+Menu command for generating exercism artefacts
+"
 Class {
 	#name : #ClyExercismGenerateCommand,
 	#superclass : #ClyExercismCommand,
 	#category : #'ExercismDev-Menus'
 }
-
-{ #category : #testing }
-ClyExercismGenerateCommand class >> canBeExecutedInContext: aToolContext [
-	^ (super canBeExecutedInContext: aToolContext)
-		and: [ self isExercismTagIn: aToolContext ]
-]
 
 { #category : #testing }
 ClyExercismGenerateCommand class >> packageContextMenuActivation [

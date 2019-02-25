@@ -1,3 +1,6 @@
+"
+Menu command to submit a new exercise
+"
 Class {
 	#name : #ClyExercismSubmitCommand,
 	#superclass : #ClyExercismExerciseCommand,
@@ -20,11 +23,6 @@ ClyExercismSubmitCommand >> defaultMenuItemName [
 ]
 
 { #category : #accessing }
-ClyExercismSubmitCommand >> description [ 
-	^'Sumbit your proposed solution to Exercism for mentor review'
-]
-
-{ #category : #execution }
 ClyExercismSubmitCommand >> description [ 
 	^'Sumbit your proposed solution to Exercism for mentor review'
 ]
