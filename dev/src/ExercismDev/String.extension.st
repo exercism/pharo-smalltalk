@@ -1,13 +1,14 @@
 Extension { #name : #String }
 
 { #category : #'*ExercismDev' }
-String >> asValidKeywordName [
+String >> asValidKeyword [
+	"Answer the receiver as a Symbol, which is a valid method keyword or unary message name"
 
 	| validName |
 	
 	validName := self select: [ :c | c isAlphaNumeric or: [ c == $_ ] ].
 	
-	^validName first isDigit 
+	^(validName first isDigit 
 		ifTrue: [ 'and' , validName ]
-		ifFalse: [ validName ]
+		ifFalse: [ validName ]) asSymbol
 ]

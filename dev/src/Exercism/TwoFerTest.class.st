@@ -39,26 +39,26 @@ Class {
 	#category : #'Exercism-TwoFer'
 }
 
-{ #category : #meta }
+{ #category : #config }
 TwoFerTest class >> difficulty [
 	^1
 ]
 
-{ #category : #meta }
+{ #category : #config }
 TwoFerTest class >> topics [
 	"Answer a String Array of topics that classify the exercise"
 	
 	^#('strings' 'text-formatting')
 ]
 
-{ #category : #meta }
+{ #category : #config }
 TwoFerTest class >> unlockedBy [
 	"Answer the exercise this is dependent on (if core, this is the exercise this one should appear after in the config.json)"
 	
 	^HelloWorldTest 
 ]
 
-{ #category : #meta }
+{ #category : #config }
 TwoFerTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'9806fcc0-8505-4012-bd64-3f7468014df5'

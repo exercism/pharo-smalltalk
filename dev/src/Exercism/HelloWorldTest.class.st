@@ -34,45 +34,45 @@ Class {
 	#category : #'Exercism-HelloWorld'
 }
 
-{ #category : #meta }
+{ #category : #config }
 HelloWorldTest class >> autoApprove [ 
 	^true
 ]
 
-{ #category : #meta }
+{ #category : #config }
 HelloWorldTest class >> core [
 	"Answer a Boolean, true is this is a core exercise"
 	
 	^true
 ]
 
-{ #category : #meta }
+{ #category : #config }
 HelloWorldTest class >> difficulty [
 	^1
 ]
 
-{ #category : #config }
+{ #category : #helper }
 HelloWorldTest class >> followedBy [
 	"If this is a core exercise, answer the next one that follows otherwise nil (if not a core exercise, or the last one)"
 	
 	^'Leap'
 ]
 
-{ #category : #meta }
+{ #category : #config }
 HelloWorldTest class >> topics [
 	"Answer a String Array of topics that classify the exercise"
 	
 	^#('introduction')
 ]
 
-{ #category : #meta }
+{ #category : #config }
 HelloWorldTest class >> unlockedBy [
 	"Answer the exercise this is dependent on (if core, this is the exercise this one should appear after in the config.json)"
 	
 	^nil 
 ]
 
-{ #category : #meta }
+{ #category : #config }
 HelloWorldTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'a1812b5e-2788-4ea6-b948-bfe54edeb0da'

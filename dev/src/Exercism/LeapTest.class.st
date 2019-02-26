@@ -26,40 +26,38 @@ phenomenon, go watch [this youtube video][video].
 
 ## Hint
 
-Although Pharo provides a method in the standard library that does this, try and implement it from first principles without looking.
-
-If you are stuck, look at how boolean operators are actually defined as messages. Study how ""and:"" and ""or:"" are implented in the classes True and False, and then use the context menu item - senders of... to see how other parts of Pharo use them.
+TBD
 
 "
 Class {
 	#name : #LeapTest,
 	#superclass : #ExercismTest,
 	#instVars : [
-		'leapYearCalculator'
+		'leapCalculator'
 	],
 	#category : #'Exercism-Leap'
 }
 
-{ #category : #meta }
+{ #category : #config }
 LeapTest class >> core [
 	"Answer a Boolean, true is this is a core exercise"
 	
 	^true
 ]
 
-{ #category : #meta }
+{ #category : #config }
 LeapTest class >> difficulty [
 	^1
 ]
 
-{ #category : #config }
+{ #category : #helper }
 LeapTest class >> followedBy [
 	"If this is a core exercise, answer the next one that follows otherwise nil (if not a core exercise, or the last one)"
 	
 	^'ReverseString'
 ]
 
-{ #category : #meta }
+{ #category : #config }
 LeapTest class >> topics [
 	"Answer a String Array of topics that classify the exercise"
 	
@@ -73,7 +71,7 @@ LeapTest class >> unlockedBy [
 	^HelloWorldTest  
 ]
 
-{ #category : #meta }
+{ #category : #config }
 LeapTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'82b07f5c-119c-4250-8c07-a0a7e1a95458'
@@ -81,32 +79,59 @@ LeapTest class >> uuid [
 
 { #category : #config }
 LeapTest class >> version [
-	"Answer the exercise version number string this test was derived from"
-	
-	^'1.4.0'
+	"Generated from specification: 25 February 2019"
+	^'1.6.0'
 ]
 
 { #category : #setup }
 LeapTest >> setUp [
-	leapYearCalculator := Leap new
+	leapCalculator := Leap new
 ]
 
-{ #category : #testing }
-LeapTest >> testYearIsDivisibleBy100NotDivisibleBy400 [
-	self deny: (leapYearCalculator isLeapYear: 2100)
+{ #category : #test }
+LeapTest >> testYearDivisibleBy100NotDivisibleBy400InCommonYear [
+	| result |
+
+	result := leapCalculator leapYear: 2100 .
+	self assert: result equals: false
 ]
 
-{ #category : #testing }
-LeapTest >> testYearIsDivisibleBy400 [
-	self assert: (leapYearCalculator isLeapYear: 2000)
+{ #category : #test }
+LeapTest >> testYearDivisibleBy200NotDivisibleBy400InCommonYear [
+	| result |
+
+	result := leapCalculator leapYear: 1800 .
+	self assert: result equals: false
 ]
 
-{ #category : #testing }
-LeapTest >> testYearIsDivisibleBy4NotDivisibleBy100 [
-	self assert: (leapYearCalculator isLeapYear: 1996)
+{ #category : #test }
+LeapTest >> testYearDivisibleBy2NotDivisibleBy4InCommonYear [
+	| result |
+
+	result := leapCalculator leapYear: 1970 .
+	self assert: result equals: false
 ]
 
-{ #category : #testing }
-LeapTest >> testYearNotDivisibleBy4 [
-	self deny: (leapYearCalculator isLeapYear: 2015)
+{ #category : #test }
+LeapTest >> testYearDivisibleBy400InLeapYear [
+	| result |
+
+	result := leapCalculator leapYear: 2000 .
+	self assert: result equals: true
+]
+
+{ #category : #test }
+LeapTest >> testYearDivisibleBy4NotDivisibleBy100InLeapYear [
+	| result |
+
+	result := leapCalculator leapYear: 1996 .
+	self assert: result equals: true
+]
+
+{ #category : #test }
+LeapTest >> testYearNotDivisibleBy4InCommonYear [
+	| result |
+
+	result := leapCalculator leapYear: 2015 .
+	self assert: result equals: false
 ]

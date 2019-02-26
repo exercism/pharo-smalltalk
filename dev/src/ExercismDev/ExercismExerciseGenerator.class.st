@@ -142,14 +142,14 @@ ExercismExerciseGenerator >> generateMetaDataFor: testClass description: testDes
 		nextPutAll: ('^''{1}''' format: {uuid printString}); 
 		contents.
 	
-	self compile: src for: testClass class selector: #uuid protocol: 'meta'.
+	self compile: src for: testClass class selector: #uuid protocol: 'config'.
 	
 	src := (WriteStream on: '') nextPutAll: 'version'; cr; tab; 
 		nextPutAll: ('"Generated from specification: {1}"' format: {Date today}); cr; tab;
 		nextPutAll: ('^''{1}''' format: {versionString}); 
 		contents.
 	
-	self compile: src for: testClass class selector: #version protocol: 'meta'
+	self compile: src for: testClass class selector: #version protocol: 'config'
 		
 		
 		
@@ -186,9 +186,9 @@ ExercismExerciseGenerator >> generateTestMethodsOn: testClass calling: testVaria
 	
 	(testJson at: 'cases')
 		do: [ :case | 
-			methodName := ((aPrefixString
-				ifEmpty: [ 'test' ]) , (case at: 'description') asCamelCase capitalized)
-				asValidSelector.
+			methodName := ((aPrefixString ifEmpty: [ 'test' ]) , 
+				(case at: 'description') asCamelCase capitalized)
+					asValidKeyword.
 				
 			(case includesKey: 'cases')
 				ifTrue: [ 
@@ -201,6 +201,7 @@ ExercismExerciseGenerator >> generateTestMethodsOn: testClass calling: testVaria
 					instance := case at: 'property'.
 					parameters := case at: 'input'.
 					testResult := case at: 'expected'.
+					
 					self
 						generateTestNamed: methodName
 						in: testClass
@@ -218,7 +219,10 @@ ExercismExerciseGenerator >> generateTestNamed: testName in: aClass variable: va
 	output tab; nextPutAll: 'result := '; nextPutAll: variableName; space; nextPutAll: aSelectorPrefix.
 	
 	testParameters keys doWithIndex: [ :key :index |
-		output nextPutAll: (index = 1 ifTrue: [ key capitalized ] ifFalse: [key asValidKeywordName]).
+		output nextPutAll: 
+			(index = 1 
+				ifTrue: [self keywordFor: key withPrefix: aSelectorPrefix ] 
+				ifFalse: [key asValidKeyword]).
 		output nextPut: $:; space.
 		output nextPutAll: (testParameters at: key) storeString; space ].
 	
@@ -239,6 +243,13 @@ ExercismExerciseGenerator >> generateTestVariableAccessors: testVariable in: aCl
 		classVariable: false.
 	aRefactoring execute.
 	
+]
+
+{ #category : #generation }
+ExercismExerciseGenerator >> keywordFor: key withPrefix: aSelectorPrefix [
+	^(aSelectorPrefix asLowercase endsWith: key asLowercase)
+		ifTrue: [ '' ]
+		ifFalse: [ key capitalized ]
 ]
 
 { #category : #internal }
