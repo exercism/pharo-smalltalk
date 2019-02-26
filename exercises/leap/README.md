@@ -13,9 +13,6 @@ on every year that is evenly divisible by 4
 For example, 1997 is not a leap year, but 1996 is.  1900 is not a leap
 year, but 2000 is.
 
-If your language provides a method in the standard library that does
-this look-up, pretend it doesn't exist and implement it yourself.
-
 ## Notes
 
 Though our exercise adopts some very simple rules, there is more to
@@ -27,7 +24,8 @@ phenomenon, go watch [this youtube video][video].
 [video]: http://www.youtube.com/watch?v=xX96xng7sAE
 
 ## Hint
-In Pharo, boolean operators are defined as messages. Study how "and:" and "or:" are implented in the classes True and False. Use the context menu item - senders of... to view how other parts of Pharo use these operators.
+
+In Pharo, boolean operators are defined as messages. Study how "and:" and "or:" are implented in the classes True and False. Use the context menu item "senders of..." to view how other parts of Pharo use these operators.
 
 
 ## Downloading
