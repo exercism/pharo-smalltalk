@@ -7,11 +7,14 @@ Class {
 	#category : #'Exercism-Acronym'
 }
 
-{ #category : #example }
-Acronym >> abbreviate: aString [
+{ #category : #exercism }
+Acronym >> abbreviatePhrase: aString [
 	| words |
-	words := aString splitOn: [ :char | char isAlphaNumeric not ].
+	
+	words := aString splitOn: [ :char | char isAlphaNumeric not and: [ char ~= $' ]].
 	^ String
-		streamContents:
-			[ :stream | words reject: [ :word | word isEmpty ] thenDo: [ :word | stream nextPut: word first uppercase ] ]
+		streamContents: [ :stream | 
+			words
+				reject: [ :word | word isEmpty ]
+				thenDo: [ :word | stream nextPut: word first uppercase ] ]
 ]

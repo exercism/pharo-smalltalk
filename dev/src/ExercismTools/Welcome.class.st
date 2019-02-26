@@ -9,6 +9,11 @@ Class {
 	#category : #'ExercismTools-Welcome'
 }
 
+{ #category : #config }
+Welcome class >> followedBy [ 
+	^'HelloWorld'
+]
+
 { #category : #tests }
 Welcome >> testWelcome [
 	"This is a sample Pharo test fixture. 
