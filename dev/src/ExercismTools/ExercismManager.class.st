@@ -95,12 +95,6 @@ ExercismManager >> verifyToken [
 ]
 
 { #category : #exercism }
-ExercismManager >> viewOnExercism: packageOrTag [ 
-
-	|  url |
-		
-	url := 'https://exercism.io/my/tracks/pharo'.
-				
-	ExternalWebBrowser new open: url
-	
+ExercismManager >> viewOnExercism: packageOrTag [
+	WebBrowser openOn: 'https://exercism.io/my/tracks/pharo'
 ]
