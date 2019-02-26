@@ -1,59 +1,132 @@
 "
-You need to find a way to split up a String and then iterate cleanly over the resulting sections to output a result. 
+# Acronym
+
+Convert a phrase to its acronym.
+
+Techies love their TLA (Three Letter Acronyms)!
+
+Help generate some jargon by writing a program that converts a long name
+like Portable Network Graphics to its acronym (PNG).
+
+## Hint
+
+Try to find a way to split up a String and then iterate over the resulting sections to output a result. 
+
 
 "
 Class {
 	#name : #AcronymTest,
-	#superclass : #TestCase,
+	#superclass : #ExercismTest,
 	#instVars : [
-		'acronymGenerator'
+		'acronymCalculator'
 	],
 	#category : #'Exercism-Acronym'
 }
 
+{ #category : #config }
+AcronymTest class >> difficulty [
+	^2
+]
+
+{ #category : #config }
+AcronymTest class >> topics [
+	"Answer a String Array of topics that classify the exercise"
+	
+	^#('strings' 'iteration' 'parsing' 'text-formatting')
+]
+
+{ #category : #config }
+AcronymTest class >> unlockedBy [
+	"Answer the exercise this is dependent on (if core, this is the exercise this one should appear after in the config.json)"
+	
+	^ReverseStringTest 
+]
+
+{ #category : #config }
+AcronymTest class >> uuid [
+	"Answer a unique id for this exercise"
+	^'dc7b1fff-f0be-460d-b146-ee84c2acc10b'
+]
+
+{ #category : #config }
+AcronymTest class >> version [
+	"Generated from specification: 25 February 2019"
+	^'1.7.0'
+]
+
 { #category : #setup }
 AcronymTest >> setUp [
-	acronymGenerator := Acronym new
+	acronymCalculator := Acronym new
 ]
 
-{ #category : #testing }
-AcronymTest >> testAllCapsWord [
-	self
-		assert: (acronymGenerator abbreviate: 'GNU Image Manipulation Program')
-		equals: 'GIMP'
+{ #category : #test }
+AcronymTest >> testAbbreviateAPhraseAllCapsWord [
+	| result |
+
+	result := acronymCalculator abbreviatePhrase: 'GNU Image Manipulation Program' .
+	self assert: result equals: 'GIMP'
 ]
 
-{ #category : #testing }
-AcronymTest >> testBasicAcronym [
-	self 
-		assert: (acronymGenerator abbreviate: 'Portable Network Graphics') 
-		equals: 'PNG'
+{ #category : #test }
+AcronymTest >> testAbbreviateAPhraseApostrophes [
+	| result |
+
+	result := acronymCalculator abbreviatePhrase: 'Halley''s Comet' .
+	self assert: result equals: 'HC'
 ]
 
-{ #category : #testing }
-AcronymTest >> testLowercaseWord [
-	self 
-		assert: (acronymGenerator abbreviate: 'Ruby on Rails') 
-		equals: 'ROR'
+{ #category : #test }
+AcronymTest >> testAbbreviateAPhraseBasic [
+	| result |
+
+	result := acronymCalculator abbreviatePhrase: 'Portable Network Graphics' .
+	self assert: result equals: 'PNG'
 ]
 
-{ #category : #testing }
-AcronymTest >> testPunctuation [
-	self 
-		assert: (acronymGenerator abbreviate: 'First In, First Out') 
-		equals: 'FIFO'
+{ #category : #test }
+AcronymTest >> testAbbreviateAPhraseConsecutiveDelimiters [
+	| result |
+
+	result := acronymCalculator abbreviatePhrase: 'Something - I made up from thin air' .
+	self assert: result equals: 'SIMUFTA'
 ]
 
-{ #category : #testing }
-AcronymTest >> testPunctuationWithoutWhitespace [
-	self
-		assert: (acronymGenerator abbreviate: 'Complementary metal-oxide semiconductor')
-		equals: 'CMOS'
+{ #category : #test }
+AcronymTest >> testAbbreviateAPhraseLowercaseWords [
+	| result |
+
+	result := acronymCalculator abbreviatePhrase: 'Ruby on Rails' .
+	self assert: result equals: 'ROR'
 ]
 
-{ #category : #testing }
-AcronymTest >> testVeryLongAbbreviation [
-	self
-		assert: (acronymGenerator abbreviate: 'Rolling On The Floor Laughing So Hard That My Dogs Came Over And Licked Me')
-		equals: 'ROTFLSHTMDCOALM'
+{ #category : #test }
+AcronymTest >> testAbbreviateAPhrasePunctuation [
+	| result |
+
+	result := acronymCalculator abbreviatePhrase: 'First In, First Out' .
+	self assert: result equals: 'FIFO'
+]
+
+{ #category : #test }
+AcronymTest >> testAbbreviateAPhrasePunctuationWithoutWhitespace [
+	| result |
+
+	result := acronymCalculator abbreviatePhrase: 'Complementary metal-oxide semiconductor' .
+	self assert: result equals: 'CMOS'
+]
+
+{ #category : #test }
+AcronymTest >> testAbbreviateAPhraseUnderscoreEmphasis [
+	| result |
+
+	result := acronymCalculator abbreviatePhrase: 'The Road _Not_ Taken' .
+	self assert: result equals: 'TRNT'
+]
+
+{ #category : #test }
+AcronymTest >> testAbbreviateAPhraseVeryLongAbbreviation [
+	| result |
+
+	result := acronymCalculator abbreviatePhrase: 'Rolling On The Floor Laughing So Hard That My Dogs Came Over And Licked Me' .
+	self assert: result equals: 'ROTFLSHTMDCOALM'
 ]

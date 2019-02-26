@@ -9,7 +9,8 @@ we get 3, 5, 6, 9, 10, 12, 15, and 18.
 The sum of these multiples is 78.
 
 ## Hint
-The trick to this exercise is to understand how to iterate accross an Interval as well as check a Collection for any multiples that are divisible by a number. Try using the Spotter to look up potential classes and browse the categories of methods in those classes. Also remember that the Pharo environment is extensively cross referenced. You can right click on any class or method and browse "references" to a class (to see how it might be created), as well as "senders" of a method (to see how it might be used). 
+
+The trick to this exercise understanding how to iterate accross a range of numbers as well as check a Collection for any multiples that are divisible by a number. Try using the Spotter to look up potential classes and browse the categories of methods in those classes. Remember that the Pharo environment is extensively cross referenced. You can right click on any class or method and browse "references" to a class (to see how it might be created), as well as "senders" of a method (to see how it might be used).
 
 
 ## Downloading

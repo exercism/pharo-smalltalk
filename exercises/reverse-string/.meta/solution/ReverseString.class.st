@@ -9,6 +9,15 @@ Class {
 	#category : #'Exercism-ReverseString'
 }
 
+{ #category : #exercism }
+ReverseString >> indexedReverse: aString [
+	| result offset |
+	result := String new: aString size.
+	offset := aString size + 1.
+	aString doWithIndex: [ :char :i | result at: offset - i put: char ].
+	^ result
+]
+
 { #category : #example }
 ReverseString >> recursiveReverse: aString [
 	^ aString size > 1
@@ -16,14 +25,13 @@ ReverseString >> recursiveReverse: aString [
 		ifFalse: [ aString ]
 ]
 
-{ #category : #example }
-ReverseString >> reverse: aCollection [
-	| result offset |
-	result := aCollection species
-		new: aCollection size.
-	offset := aCollection size + 1.
-	aCollection
-		doWithIndex:
-			[ :char :i | result at: offset - i put: char ].
-	^ result
+{ #category : #exercism }
+ReverseString >> reverseValue: aString [
+
+	^ ((aString size to: 1 by: -1)
+		inject: (WriteStream on: '')
+		into: [ :result :i | 
+			result
+				nextPut: (aString at: i);
+				yourself ]) contents
 ]
