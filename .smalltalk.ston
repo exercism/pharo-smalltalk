@@ -11,10 +11,10 @@ SmalltalkCISpec {
 
   #testing : {
     #include : {
-      #packages : [ 'Exercism', 'ExercismDev', 'ExercismTools' ]
+      #packages : [ 'Exercism', 'ExercismTools' ]
     },
     #exclude : {
-      #classes : [#AllExercismTests, #ExercismSubmitTest, #ExercismDownloadTest],
+      #classes : [ #AllExercismTests, #ExercismSubmitTest, #ExercismDownloadTest ],
       #packages : [ 'ExercismWIP']
     }
   }
