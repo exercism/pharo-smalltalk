@@ -109,3 +109,12 @@ ExercismTest class >> wordifiedName [
 						ifTrue: [ aStream space ].
 					aStream nextPut: char ] ]
 ]
+
+{ #category : #test }
+ExercismTest >> verifySolution: aClass avoidsSelector: aSelector [
+	| badSelector |
+ 
+	badSelector := aClass methods detect: [ :m | m ast sentMessages includes: aSelector ] ifNone: [ ^self ].
+	
+	self fail: badSelector name, ' uses restricted method #', aSelector
+]

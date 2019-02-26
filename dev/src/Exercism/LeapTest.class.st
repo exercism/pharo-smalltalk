@@ -89,6 +89,11 @@ LeapTest >> setUp [
 ]
 
 { #category : #test }
+LeapTest >> testMisuseOfSelector [
+	self verifySolution: leapCalculator class avoidsSelector: #isLeapYear
+]
+
+{ #category : #test }
 LeapTest >> testYearDivisibleBy100NotDivisibleBy400InCommonYear [
 	| result |
 
