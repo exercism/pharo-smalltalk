@@ -17,5 +17,7 @@ SmalltalkCISpec {
       #classes : [ #AllExercismTests, #ExercismSubmitTest, #ExercismDownloadTest ],
       #packages : [ 'ExercismWIP']
     }
-  }
+  },
+
+  #allTestCases : false
 }
