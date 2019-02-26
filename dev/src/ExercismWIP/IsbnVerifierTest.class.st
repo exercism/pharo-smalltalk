@@ -1,0 +1,209 @@
+"
+# Isbn Verifier
+
+The [ISBN-10 verification process](https://en.wikipedia.org/wiki/International_Standard_Book_Number) is used to validate book identification
+numbers. These normally contain dashes and look like: `3-598-21508-8`
+
+## ISBN
+
+The ISBN-10 format is 9 digits (0 to 9) plus one check character (either a digit or an X only). In the case the check character is an X, this represents the value '10'. These may be communicated with or without hyphens, and can be checked for their validity by the following formula:
+
+```
+(x1 * 10 + x2 * 9 + x3 * 8 + x4 * 7 + x5 * 6 + x6 * 5 + x7 * 4 + x8 * 3 + x9 * 2 + x10 * 1) mod 11 == 0
+```
+
+If the result is 0, then it is a valid ISBN-10, otherwise it is invalid.
+
+## Example
+
+Let's take the ISBN-10 `3-598-21508-8`. We plug it in to the formula, and get:
+```
+(3 * 10 + 5 * 9 + 9 * 8 + 8 * 7 + 2 * 6 + 1 * 5 + 5 * 4 + 0 * 3 + 8 * 2 + 8 * 1) mod 11 == 0
+```
+
+Since the result is 0, this proves that our ISBN is valid.
+
+## Task
+
+Given a string the program should check if the provided string is a valid ISBN-10.
+Putting this into place requires some thinking about preprocessing/parsing of the string prior to calculating the check digit for the ISBN.
+
+The program should be able to verify ISBN-10 both with and without separating dashes.
+
+
+## Caveats
+
+Converting from strings to numbers can be tricky in certain languages.
+Now, it's even trickier since the check digit of an ISBN-10 may be 'X' (representing '10'). For instance `3-598-21507-X` is a valid ISBN-10.
+
+## Bonus tasks
+
+* Generate a valid ISBN-13 from the input ISBN-10 (and maybe verify it again with a derived verifier).
+
+* Generate valid ISBN, maybe even from a given starting ISBN.
+## Hint
+
+TBD
+
+"
+Class {
+	#name : #IsbnVerifierTest,
+	#superclass : #ExercismTest,
+	#instVars : [
+		'isbnVerifierCalculator'
+	],
+	#category : #'ExercismWIP-IsbnVerifier'
+}
+
+{ #category : #config }
+IsbnVerifierTest class >> uuid [
+	"Answer a unique id for this exercise"
+	^'e5b5d8d9-2b3f-0d00-a2b0-9c3309f0590c'
+]
+
+{ #category : #config }
+IsbnVerifierTest class >> version [
+	"Generated from specification: 26 February 2019"
+	^'2.7.0'
+]
+
+{ #category : #setup }
+IsbnVerifierTest >> setUp [
+	isbnVerifierCalculator := IsbnVerifier new
+]
+
+{ #category : #test }
+IsbnVerifierTest >> testCheckDigitIsACharacterOtherThanX [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '3-598-21507-A' .
+	self assert: result equals: false
+]
+
+{ #category : #test }
+IsbnVerifierTest >> testCheckDigitOfXShouldNotBeUsedFor0 [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '3-598-21515-X' .
+	self assert: result equals: false
+]
+
+{ #category : #test }
+IsbnVerifierTest >> testEmptyIsbn [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '' .
+	self assert: result equals: false
+]
+
+{ #category : #test }
+IsbnVerifierTest >> testInputIs9Characters [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '134456729' .
+	self assert: result equals: false
+]
+
+{ #category : #test }
+IsbnVerifierTest >> testInputIsTooLongButContainsAValidIsbn [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '98245726788' .
+	self assert: result equals: false
+]
+
+{ #category : #test }
+IsbnVerifierTest >> testInvalidCharacterInIsbn [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '3-598-P1581-X' .
+	self assert: result equals: false
+]
+
+{ #category : #test }
+IsbnVerifierTest >> testInvalidCharactersAreNotIgnored [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '3132P34035' .
+	self assert: result equals: false
+]
+
+{ #category : #test }
+IsbnVerifierTest >> testInvalidIsbnCheckDigit [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '3-598-21508-9' .
+	self assert: result equals: false
+]
+
+{ #category : #test }
+IsbnVerifierTest >> testIsbnWithoutCheckDigit [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '3-598-21507' .
+	self assert: result equals: false
+]
+
+{ #category : #test }
+IsbnVerifierTest >> testIsbnWithoutCheckDigitAndDashes [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '359821507' .
+	self assert: result equals: false
+]
+
+{ #category : #test }
+IsbnVerifierTest >> testIsbnWithoutSeparatingDashesAndXAsCheckDigit [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '359821507X' .
+	self assert: result equals: true
+]
+
+{ #category : #test }
+IsbnVerifierTest >> testTooLongIsbnAndNoDashes [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '3598215078X' .
+	self assert: result equals: false
+]
+
+{ #category : #test }
+IsbnVerifierTest >> testTooShortIsbn [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '00' .
+	self assert: result equals: false
+]
+
+{ #category : #test }
+IsbnVerifierTest >> testValidIsbnNumber [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '3-598-21508-8' .
+	self assert: result equals: true
+]
+
+{ #category : #test }
+IsbnVerifierTest >> testValidIsbnNumberWithACheckDigitOf10 [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '3-598-21507-X' .
+	self assert: result equals: true
+]
+
+{ #category : #test }
+IsbnVerifierTest >> testValidIsbnWithoutSeparatingDashes [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '3598215088' .
+	self assert: result equals: true
+]
+
+{ #category : #test }
+IsbnVerifierTest >> testXIsOnlyValidAsACheckDigit [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '3-598-2X507-9' .
+	self assert: result equals: false
+]
