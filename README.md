@@ -21,15 +21,14 @@ You first need to ensure that you have a complete exercism development environme
 1. the [exercism command line interface](https://exercism.io/cli-walkthrough) and configured it to point to somewhere sensible for development (e.g. `exercism configure -w ~/development/exercism`)
 1. the exercism/[problem specifications](https://github.com/exercism/problem-specifications) repo in a subdirectory of the exercism workspace configured above (this repo is used to generate exercise readme.md files, and as a reference to the suggested tests)
 1. the [configlet](https://github.com/exercism/configlet#usage) linter/generator
-1. the exercism/[pharo](https://github.com/exercism/pharo) repo, as a staging repository to which you will generate exercises and assets to check-in (seperately from coding in pharo). I suggest calling it something like `~/development/exercism/pharo-staging` to avoid any confusion (note: it can reside anywhere)
+1. the exercism/[pharo](https://github.com/exercism/pharo) repo, as a staging repository to which you will generate exercises and assets to check-in (separately from coding in pharo). I suggest calling it something like `~/development/exercism/pharo-staging` to avoid any confusion (note: it can reside anywhere)
 
 
 Next setup a Pharo environment for creating the actual coding examples. You need to load a development exercism baseline:
 
-1. Use [PharoLauncher](https://github.com/pharo-project/pharo-launcher) to create a fresh development image, and then launch it (you can also use [zerconf](https://get.pharo.org/) if you are familiar with it)
-1. Install the [latest Iceberg for Pharo 6.1](https://github.com/pharo-vcs/iceberg#update-iceberg). 
-1. Clone `https://exercism/pharo` (with the new v1.2.x Iceberg UI, select: "clone from github" and specify `exercism` as the owner name, `pharo` as the project name. This will automatically specify a src directory of `dev/src`).
-1. Install the Metacello baseline `dev` (not default) from the Iceberg, Metacello context menu. (e.g. right click on the "pharo" project you just cloned, select the second menu option in the Metacello menu, and type ```dev```)
+1. Use [PharoLauncher](https://github.com/pharo-project/pharo-launcher) to create a fresh 7.0 (stable) development image, and then launch it (you can also use [zerconf](https://get.pharo.org/) if you are familiar with it)
+1. Clone `https://exercism/pharo-smalltalk` as a GitHub problject and specify `exercism` as the owner name, `pharo-smalltalk` as the project name. This will automatically specify a src directory of `dev/src`).
+1. Install the Metacello baseline `dev` (not the default) from the Iceberg by using the Metacello context menu. (e.g. right click on the "pharo-smalltalk" project you just cloned, and select the second option in the Metacello menu, and type ```dev```)
 
 
 If you have any TIMEOUT problems refer to the [user installation instructions](./docs/INSTALLATION.md), as you may  need to use https as a download protocol.
@@ -43,9 +42,15 @@ Please read about how to [get involved in an Exercism track](https://github.com/
 
 We welcome pull requests of all kinds. No contribution is too small, particularly those that provide fixes and improvements to existing exercises. Note that this track's exercises must conform to the [Exercism-wide standards](https://github.com/exercism/docs/tree/master/language-tracks/exercises), but if you're unsure about how to make a change, then open a GitHub issue, and we'll discuss it.
 
-### Reading Smalltalk
+We are currently making some changes to make it easier to contribute, and the following instructions are where we aim to be once we approve this [PR](https://github.com/exercism/pharo-smalltalk/pull/144):
 
-[I Can Read C++ and Java But I Can't Read Smalltalk](https://github.com/exercism/docs/files/2276414/readingSmalltalk.pdf) by Wilf LaLonde is a good primer on Smalltalk syntax for people more familiar with curly braced languages.
+  * Check out the development baseline (as outlined above)
+  * find an exercise you like in the ExercismWIP package
+  * TDD a solution and adjust the tests accordingly (our generator is pretty basic - this said, corrections might be appropriate as PR's back to the upstream [problem-specification](https://github.com/exercism/problem-specifications) text)
+  * update the exercise meta data on the class side of the exercise (e.g. difficulty, unlockedBy, followedBy, Hint text etc).
+  * get your solution reviewed by starting a PR
+  * update the package of the chosen example to Exercism (i.e. move it out of the WIP package)
+  * submit the final PR, and a maintainer will run the generator to create the Exercism assests (via configlet) and commit the final solution
 
 ### Conventions
 
@@ -57,7 +62,7 @@ We welcome pull requests of all kinds. No contribution is too small, particularl
 
 At the most basic level, Exercism is all about the tests and testing with [test suites](https://github.com/exercism/docs/blob/master/language-tracks/exercises/anatomy/test-suites.md).
 
-Pharo exercises are organised into sub-packages, which each contain a TestCase that must be compatible with [SUunit](https://en.wikipedia.org/wiki/SUnit).
+Pharo exercism exercises are organised into sub-packages, which each contain a TestCase that must be compatible with [SUunit](https://en.wikipedia.org/wiki/SUnit).
 
 To test an exercise run it from the built-in test runner by clicking on the test orb. The orb will turn green if the tests are successful, or orange or red if their are any failures or errors respectively. Alternatively you can run tests manually in the playground by evaluating:
 
@@ -66,8 +71,7 @@ To test an exercise run it from the built-in test runner by clicking on the test
 ```
 
 To test in a non-development image, you should follow the [user installation steps](./docs/INSTALLATION.md). If you 
-are using that image to test subsequent development baselines - you may need to delete the following development directories to
-ensure you get the latest code: 
+are using that image to test subsequent development baselines - you may need to delete the following development directories to ensure you get the latest code: 
 `./pharo/pharo-local/iceberg, ./pharo/pharo-local/package-cache`
 
 You will also need to delete any exercise directories that you have downloaded (e.g. `./hello-world, ./two-fer`).

@@ -1,0 +1,9 @@
+# Handle line endings for files incorrectly undetected as text
+
+# These files are text and should be normalized (Convert crlf => lf)
+
+.gitignore text
+.gitattributes text
+
+*.md text
+*.yml text

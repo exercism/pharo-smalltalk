@@ -95,6 +95,8 @@ Temporary Items
 # overide all the idea specialisations, as I don't think we need any of it
 .idea
 
+/pharo-exercism.iml
+
 # User-specific stuff
 .idea/**/workspace.xml
 .idea/**/tasks.xml
