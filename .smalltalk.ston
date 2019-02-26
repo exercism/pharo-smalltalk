@@ -6,4 +6,9 @@ SmalltalkCISpec {
       #platforms : [ #pharo ]
     }
   ]
+  #testing : {
+    #include : {
+      #projects : [ 'BaselineOfExercism' ]
+    }
+  }
 }
