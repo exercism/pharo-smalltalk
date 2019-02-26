@@ -1,1 +1,1 @@
-In Pharo, boolean operators are defined as messages. Study how "and:" and "or:" are implented in the classes True and False. Use the context menu item - senders of... to view how other parts of Pharo use these operators.
+In Pharo, boolean operators are defined as messages. Study how "and:" and "or:" are implented in the classes True and False. Use the context menu item "senders of..." to view how other parts of Pharo use these operators.
