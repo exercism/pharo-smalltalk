@@ -12,7 +12,7 @@ SmalltalkCISpec {
     }
     #exclude : {
       // Need to sort the following out
-      #classes : ['ExercismSubmitTest' 'ExercismDownloadTest']
+      #classes : ['ExercismSubmitTest', 'ExercismDownloadTest']
     }
   }
 }
