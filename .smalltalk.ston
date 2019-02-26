@@ -14,7 +14,8 @@ SmalltalkCISpec {
       #projects : [ 'BaselineOfExercism' ]
     },
     #exclude : {
-      #classes : [#ExercismSubmitTest, #ExercismDownloadTest]
+      #classes : [#ExercismSubmitTest, #ExercismDownloadTest],
+      #packages : [ 'ExercismWIP.*']
     }
   }
 }
