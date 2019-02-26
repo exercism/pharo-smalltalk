@@ -9,7 +9,7 @@ SmalltalkCISpec {
   #testing : {
     #include : {
       #projects : [ 'BaselineOfExercism' ]
-    }
+    },
     #exclude : {
       #classes : ['ExercismSubmitTest', 'ExercismDownloadTest']
     }
