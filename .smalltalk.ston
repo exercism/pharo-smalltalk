@@ -1,0 +1,9 @@
+SmalltalkCISpec {
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'Exercism',
+      #directory : 'dev/src',
+      #platforms : [ #pharo ]
+    }
+  ]
+}
