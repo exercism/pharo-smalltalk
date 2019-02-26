@@ -6,12 +6,15 @@ SmalltalkCISpec {
       #platforms : [ #pharo ]
     }
   ],
+
+  #load : [ 'dev' ],
+
   #testing : {
     #include : {
       #projects : [ 'BaselineOfExercism' ]
     },
     #exclude : {
-      #classes : ['ExercismSubmitTest', 'ExercismDownloadTest']
+      #classes : [#ExercismSubmitTest, #ExercismDownloadTest]
     }
   }
 }
