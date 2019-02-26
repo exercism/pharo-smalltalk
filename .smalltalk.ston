@@ -3,11 +3,11 @@ SmalltalkCISpec {
     SCIMetacelloLoadSpec {
       #baseline : 'Exercism',
       #directory : 'dev/src',
+      #load : [ 'dev' ],
+
       #platforms : [ #pharo ]
     }
   ],
-
-  #load : [ 'dev' ],
 
   #testing : {
     #include : {
