@@ -11,7 +11,7 @@ SmalltalkCISpec {
 
   #testing : {
     #include : {
-      #packages : [ 'Exercism', 'ExercismTools' ]
+      #packages : [ 'Exercism' ]
     },
     #exclude : {
       #classes : [ #AllExercismTests, #ExercismTest, #ExercismSubmitTest, #ExercismDownloadTest ],
