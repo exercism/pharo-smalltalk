@@ -32,15 +32,15 @@ Class {
 	#category : #'ExercismWIP-SpaceAge'
 }
 
-{ #category : #meta }
+{ #category : #config }
 SpaceAgeTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'9935e5bc-163f-0d00-afa0-9b980aec9142'
+	^'3cd6e6d9-2b3f-0d00-a2bf-a4fe09f0590c'
 ]
 
-{ #category : #meta }
+{ #category : #config }
 SpaceAgeTest class >> version [
-	"Generated from specification: 25 February 2019"
+	"Generated from specification: 26 February 2019"
 	^'1.2.0'
 ]
 

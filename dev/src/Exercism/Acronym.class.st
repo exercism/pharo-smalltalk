@@ -11,7 +11,7 @@ Class {
 Acronym >> abbreviatePhrase: aString [
 	| words |
 	
-	words := aString splitOn: [ :char | char isAlphaNumeric not and: [ char ~= $' ]].
+	words := aString splitOn: [ :char | (char isAlphaNumeric or: [ char = $' ]) not].
 	^ String
 		streamContents: [ :stream | 
 			words

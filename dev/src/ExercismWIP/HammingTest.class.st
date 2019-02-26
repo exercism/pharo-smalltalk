@@ -38,15 +38,15 @@ Class {
 	#category : #'ExercismWIP-Hamming'
 }
 
-{ #category : #meta }
+{ #category : #config }
 HammingTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'887e11bd-163f-0d00-afce-4b2e0aec9142'
+	^'69f615da-2b3f-0d00-a2ed-aca409f0590c'
 ]
 
-{ #category : #meta }
+{ #category : #config }
 HammingTest class >> version [
-	"Generated from specification: 25 February 2019"
+	"Generated from specification: 26 February 2019"
 	^'2.3.0'
 ]
 
