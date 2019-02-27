@@ -1,6 +1,6 @@
 # Exercism Pharo Track
 
-![build status](https://travis-ci.org/exercism/pharo.svg?branch=master)
+![build status](https://travis-ci.org/exercism/pharo-smalltalk.svg?branch=master)
 
 The Pharo exercism track is in alpha development. 
 
@@ -42,7 +42,7 @@ Please read about how to [get involved in an Exercism track](https://github.com/
 
 We welcome pull requests of all kinds. No contribution is too small, particularly those that provide fixes and improvements to existing exercises. Note that this track's exercises must conform to the [Exercism-wide standards](https://github.com/exercism/docs/tree/master/language-tracks/exercises), but if you're unsure about how to make a change, then open a GitHub issue, and we'll discuss it.
 
-We are currently making some changes to make it easier to contribute, and the following instructions are where we aim to be once we approve this [PR](https://github.com/exercism/pharo-smalltalk/pull/144):
+We are currently making changes os it's easier to contribute, and the following instructions are WIP:
 
   * Check out the development baseline (as outlined above)
   * find an exercise you like in the ExercismWIP package
