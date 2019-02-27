@@ -10,7 +10,7 @@ like Portable Network Graphics to its acronym (PNG).
 
 ## Hint
 
-TBD
+Try to find a way to split up a String and then iterate over the resulting sections to output a result.
 
 "
 Class {
