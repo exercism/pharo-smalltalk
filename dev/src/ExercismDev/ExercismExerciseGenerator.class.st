@@ -183,16 +183,11 @@ ExercismExerciseGenerator >> generateTestClass: testName tag: tagName variable: 
 { #category : #generation }
 ExercismExerciseGenerator >> generateTestMethodsOn: testClass calling: testVariable using: testJson prefix: aPrefixString [
 	| instance methodName parameters testResult |
-	
 	(testJson at: 'cases')
-		do: [ :case | 
-			methodName := ((aPrefixString ifEmpty: [ 'test' ]) , 
-				(case at: 'description') asCamelCase capitalized)
-					asValidKeyword.
-				
+		doWithIndex: [ :case :i | 
+			methodName := self testMethodNamed: (case at: 'description') prefix: aPrefixString order: i.
 			(case includesKey: 'cases')
-				ifTrue: [ 
-					self
+				ifTrue: [ self
 						generateTestMethodsOn: testClass
 						calling: testVariable
 						using: case
@@ -201,7 +196,6 @@ ExercismExerciseGenerator >> generateTestMethodsOn: testClass calling: testVaria
 					instance := case at: 'property'.
 					parameters := case at: 'input'.
 					testResult := case at: 'expected'.
-					
 					self
 						generateTestNamed: methodName
 						in: testClass
@@ -229,7 +223,7 @@ ExercismExerciseGenerator >> generateTestNamed: testName in: aClass variable: va
 	output nextPut: $.; crlf; tab; nextPutAll: 'self assert: result equals: ', testResults storeString.
 	src := output contents.
 	
-	self compile: src for: aClass selector: testName protocol: 'test'
+	self compile: src for: aClass selector: testName protocol: 'tests'
 
 ]
 
@@ -266,4 +260,14 @@ ExercismExerciseGenerator >> numberGenerated [
 { #category : #accessing }
 ExercismExerciseGenerator >> numberGenerated: anObject [
 	numberGenerated := anObject
+]
+
+{ #category : #generation }
+ExercismExerciseGenerator >> testMethodNamed: baseNameString prefix: aPrefixString order: i [
+	| testPrefix |
+	
+	testPrefix := aPrefixString
+		ifEmpty: [ 'test{1}_' format: {i asTwoCharacterString} ].
+		
+	^ (testPrefix, baseNameString asCamelCase capitalized) asValidKeyword
 ]
