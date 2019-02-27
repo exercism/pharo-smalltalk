@@ -115,7 +115,7 @@ ExercismGenerator >> generateTo: filePathReference [
 	(RPackage organizer packageNamed: 'Exercism') packages do: [:pkg |
 			self generateSourceFilesFor: pkg to: filePathReference ].
 		
-	cmd := 'configlet generate ', (filePathReference resolveString: '..') pathString.		
+	cmd := 'configlet generate ', (filePathReference parent pathString) surroundedBySingleQuotes.		
 	result := PipeableOSProcess waitForCommand: cmd.
 	
 	result succeeded

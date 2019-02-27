@@ -118,7 +118,7 @@ ExercismTest class >> wordifiedName [
 					aStream nextPut: char ] ]
 ]
 
-{ #category : #test }
+{ #category : #verify }
 ExercismTest >> verifySolution: aClass avoidsSelector: aSelector [
 	| badSelector |
  

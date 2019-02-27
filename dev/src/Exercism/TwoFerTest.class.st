@@ -28,7 +28,7 @@ Here are some examples:
 
 ## Hint
 
-In Pharo, classes are objects that can have methods, however unlike HelloWorld the tests for TwoFer have been written to call instance methods.
+In Pharo, classes are objects that can have instance and class methods, however unlike HelloWorld the tests for TwoFer have been written to call instance methods. Typically class methods are used for constructing new objects (like a contructor in other languages).
 "
 Class {
 	#name : #TwoFerTest,
@@ -76,17 +76,17 @@ TwoFerTest >> setUp [
 	twoFer := TwoFer new.
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 TwoFerTest >> testANameGiven [
 	self assert: (twoFer who: 'Alice') equals: 'One for Alice, one for me.'
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 TwoFerTest >> testAnotherNameGiven [
 	self assert: (twoFer who: 'Bob') equals: 'One for Bob, one for me.' 
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 TwoFerTest >> testNoNameGiven [
 	self assert: twoFer who equals: 'One for you, one for me.' 
 	

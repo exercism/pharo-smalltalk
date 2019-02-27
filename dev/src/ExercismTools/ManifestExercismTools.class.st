@@ -14,5 +14,5 @@ ManifestExercismTools class >> ruleReTestClassNameShouldEndWithTestV1FalsePositi
 
 { #category : #'code-critics' }
 ManifestExercismTools class >> ruleReTestClassNotInPackageWithTestEndingNameV1FalsePositive [
-	^ #(#(#(#RGClassDefinition #(#Welcome)) #'2019-02-15T12:32:43.874674+00:00') )
+	^ #(#(#(#RGPackage #(#Exercism)) #'2019-02-27T21:55:15.183801+00:00') )
 ]

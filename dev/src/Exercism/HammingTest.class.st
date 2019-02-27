@@ -49,7 +49,7 @@ HammingTest class >> core [
 HammingTest class >> difficulty [
 	"Answer an Integer, the difficulty level of the test, 1=easy, 10=hard"
 	
-	^2
+	^1
 ]
 
 { #category : #helper }
@@ -106,36 +106,57 @@ HammingTest >> should: aBlock raise: anException containing: aMessageString [
 		
 ]
 
-{ #category : #test }
-HammingTest >> testDisallowFirstStrandLonger [
-	
+{ #category : #tests }
+HammingTest >> test01_EmptyStrands [
+	| result |
+
+	result := hammingCalculator distanceStrand1: '' strand2: '' .
+	self assert: result equals: 0
+]
+
+{ #category : #tests }
+HammingTest >> test02_SingleLetterIdenticalStrands [
+	| result |
+
+	result := hammingCalculator distanceStrand1: 'A' strand2: 'A' .
+	self assert: result equals: 0
+]
+
+{ #category : #tests }
+HammingTest >> test03_SingleLetterDifferentStrands [
+	| result |
+
+	result := hammingCalculator distanceStrand1: 'G' strand2: 'T' .
+	self assert: result equals: 1
+]
+
+{ #category : #tests }
+HammingTest >> test04_LongIdenticalStrands [
+	| result |
+
+	result := hammingCalculator distanceStrand1: 'GGACTGAAATCTG' strand2: 'GGACTGAAATCTG' .
+	self assert: result equals: 0
+]
+
+{ #category : #tests }
+HammingTest >> test05_LongDifferentStrands [
+	| result |
+
+	result := hammingCalculator distanceStrand1: 'GGACGGATTCTG' strand2: 'AGGACGGATTCT' .
+	self assert: result equals: 9
+]
+
+{ #category : #tests }
+HammingTest >> test06_DisallowFirstStrandLonger [
+
 	self
 		should: [ hammingCalculator distanceStrand1: 'AATG' strand2: 'AAA' ]
 		raise: Exception
 		containing: 'left and right strands must be of equal length'
-		
 ]
 
-{ #category : #test }
-HammingTest >> testDisallowLeftEmptyStrand [
-
-	self
-		should: [ hammingCalculator distanceStrand1: '' strand2: 'G' ]
-		raise: Exception 
-		containing: 'left strand must not be empty'
-]
-
-{ #category : #test }
-HammingTest >> testDisallowRightEmptyStrand [
-	
-	self
-		should: [ hammingCalculator distanceStrand1: 'G' strand2: '' ]
-		raise: Exception
-		containing: 'right strand must not be empty'
-]
-
-{ #category : #test }
-HammingTest >> testDisallowSecondStrandLonger [
+{ #category : #tests }
+HammingTest >> test07_DisallowSecondStrandLonger [
 
 	self
 		should: [ hammingCalculator distanceStrand1: 'ATA' strand2: 'AGTG' ]
@@ -143,42 +164,20 @@ HammingTest >> testDisallowSecondStrandLonger [
 		containing: 'left and right strands must be of equal length'
 ]
 
-{ #category : #test }
-HammingTest >> testEmptyStrands [
-	| result |
+{ #category : #tests }
+HammingTest >> test08_DisallowLeftEmptyStrand [
 
-	result := hammingCalculator distanceStrand1: '' strand2: '' .
-	self assert: result equals: 0
+	self
+		should: [ hammingCalculator distanceStrand1: '' strand2: 'G' ]
+		raise: Exception 
+		containing: 'left strand must not be empty'
 ]
 
-{ #category : #test }
-HammingTest >> testLongDifferentStrands [
-	| result |
+{ #category : #tests }
+HammingTest >> test09_DisallowRightEmptyStrand [
 
-	result := hammingCalculator distanceStrand1: 'GGACGGATTCTG' strand2: 'AGGACGGATTCT' .
-	self assert: result equals: 9
-]
-
-{ #category : #test }
-HammingTest >> testLongIdenticalStrands [
-	| result |
-
-	result := hammingCalculator distanceStrand1: 'GGACTGAAATCTG' strand2: 'GGACTGAAATCTG' .
-	self assert: result equals: 0
-]
-
-{ #category : #test }
-HammingTest >> testSingleLetterDifferentStrands [
-	| result |
-
-	result := hammingCalculator distanceStrand1: 'G' strand2: 'T' .
-	self assert: result equals: 1
-]
-
-{ #category : #test }
-HammingTest >> testSingleLetterIdenticalStrands [
-	| result |
-
-	result := hammingCalculator distanceStrand1: 'A' strand2: 'A' .
-	self assert: result equals: 0
+	self
+		should: [ hammingCalculator distanceStrand1: 'G' strand2: '' ]
+		raise: Exception
+		containing: 'right strand must not be empty'
 ]
