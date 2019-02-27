@@ -30,6 +30,19 @@
       ]
     },
     {
+      "slug": "leap",
+      "uuid": "82b07f5c-119c-4250-8c07-a0a7e1a95458",
+      "core": true,
+      "auto_approve": false,
+      "unlocked_by": null,
+      "difficulty": 1,
+      "topics": [
+        "booleans",
+        "conditionals",
+        "logic"
+      ]
+    },
+    {
       "slug": "reverse-string",
       "uuid": "bab40685-2f87-4d4f-8886-0a4d21a0d90d",
       "core": true,
@@ -57,19 +70,6 @@
       ]
     },
     {
-      "slug": "leap",
-      "uuid": "82b07f5c-119c-4250-8c07-a0a7e1a95458",
-      "core": true,
-      "auto_approve": false,
-      "unlocked_by": null,
-      "difficulty": 1,
-      "topics": [
-        "booleans",
-        "conditionals",
-        "logic"
-      ]
-    },
-    {
       "slug": "sum-of-multiples",
       "uuid": "34b0900f-de21-4fef-b24b-f125b608e65e",
       "core": true,
@@ -80,6 +80,20 @@
         "iteration",
         "filtering",
         "math"
+      ]
+    },
+    {
+      "slug": "hamming",
+      "uuid": "69f615da-2b3f-0d00-a2ed-aca409f0590c",
+      "core": true,
+      "auto_approve": false,
+      "unlocked_by": null,
+      "difficulty": 1,
+      "topics": [
+        "equality",
+        "loops",
+        "conditionals",
+        "strings"
       ]
     }
   ]
