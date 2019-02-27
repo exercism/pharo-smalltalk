@@ -24,6 +24,16 @@ ExercismTestTest >> testSlug [
 ]
 
 { #category : #tests }
+ExercismTestTest >> testVerifySelectorUsageDetection [
+	self
+		should: [ ExercismTest new
+				verifySolution: ExercismTestTest
+				avoidsSelector: #assert:equals: ]
+		raise: TestFailure
+		description: 'Should signal a TestFailure for detected selector usage'
+]
+
+{ #category : #tests }
 ExercismTestTest >> testWordifiedName [
 	self assert: ExercismTest wordifiedName equals: 'Exercism'.
 	self assert: HelloWorldTest wordifiedName equals: 'Hello World'

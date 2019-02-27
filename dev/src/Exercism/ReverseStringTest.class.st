@@ -134,3 +134,8 @@ ReverseStringTest >> testAnEmptyString [
 	result := reverseStringCalculator reverseValue: '' .
 	self assert: result equals: ''
 ]
+
+{ #category : #test }
+ReverseStringTest >> testMisuseOfSelector [
+	self verifySolution: reverseStringCalculator class avoidsSelector: #reverse
+]
