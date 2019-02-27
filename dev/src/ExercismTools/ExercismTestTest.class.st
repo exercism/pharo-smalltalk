@@ -7,8 +7,8 @@ Class {
 { #category : #tests }
 ExercismTestTest >> testFollowedBy [
 	
-	self assert: HelloWorldTest followedBy equals: 'ReverseString'.
-	self assert: AcronymTest followedBy equals: 'Leap'.
+	self assert: HelloWorldTest followedBy equals: 'Leap'.
+	
 ]
 
 { #category : #tests }

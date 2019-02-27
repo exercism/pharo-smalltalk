@@ -26,7 +26,7 @@ phenomenon, go watch [this youtube video][video].
 
 ## Hint
 
-TBD
+In Pharo, boolean operators are defined as messages. Study how ""and:"" and ""or:"" are implented in the classes True and False. Use the context menu item ""senders of..."" to view how other parts of Pharo use these operators.
 
 "
 Class {
@@ -80,7 +80,7 @@ LeapTest class >> uuid [
 { #category : #config }
 LeapTest class >> version [
 	"Generated from specification: 25 February 2019"
-	^'1.6.0'
+	^'1.5.1'
 ]
 
 { #category : #setup }

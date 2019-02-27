@@ -63,7 +63,11 @@ ExercismGenerator >> generateReadmeHintFor: packageOrTag to: destinationDirector
 	packageOrTag classes
 		detect: [ :c | c isTestCase ]
 		ifFound: [ :c | (destinationDirectory / 'hints.md') ensureCreateFile  
-				writeStreamDo:  [:stream | stream nextPutAll: c hintText ]]
+				writeStreamDo:  [:stream | | hint |
+					(hint := c hintText) = 'TBD' ifTrue: [
+						self halt: 'Forgot to update Exercise hint' ].
+					
+					stream nextPutAll: hint ]]
 ]
 
 { #category : #helper }

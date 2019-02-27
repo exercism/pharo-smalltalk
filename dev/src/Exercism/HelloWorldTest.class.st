@@ -24,7 +24,7 @@ While you can use a text editor, the Pharo IDE is partly what makes the langauge
 
 In Pharo you can run code (including tests) with broken methods and missing classes.  When the VM encounters broken code, it raises a debugger which lets you explore the problem a little better.  
 
-You have the option to press a Create button to create a missing class or method, as well as correct any code that causes an error. When you do so, the debugger will backup and let you resume execution with your new changes.
+You then have the option to press the Create button to add a missing class or method, as well as correct any code that causes an error. When you do so, the debugger will backup and let you resume execution with your new changes.
 
 Try doing this with your HelloWorld example, by simply running any one of the unit test methods.
 "
