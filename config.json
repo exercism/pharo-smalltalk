@@ -43,6 +43,19 @@
       ]
     },
     {
+      "slug": "raindrops",
+      "uuid": "c0bcb6c5-3f3f-0d00-995d-a4720043fb1f",
+      "core": false,
+      "auto_approve": false,
+      "unlocked_by": "leap",
+      "difficulty": 1,
+      "topics": [
+        "strings",
+        "conditionals",
+        "logic"
+      ]
+    },
+    {
       "slug": "reverse-string",
       "uuid": "bab40685-2f87-4d4f-8886-0a4d21a0d90d",
       "core": true,
