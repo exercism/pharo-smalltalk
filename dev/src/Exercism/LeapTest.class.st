@@ -52,7 +52,7 @@ LeapTest class >> difficulty [
 
 { #category : #helper }
 LeapTest class >> followedBy [
-	"If this is a core exercise, answer the next one that follows otherwise nil (if not a core exercise, or the last one)"
+	"If this is a core exercise, answer the next one that follows otherwise nil"
 	
 	^'ReverseString'
 ]
@@ -66,9 +66,9 @@ LeapTest class >> topics [
 
 { #category : #config }
 LeapTest class >> unlockedBy [
-	"Answer the exercise this is dependent on (if core, this is the exercise this one should appear after in the config.json)"
+	"Answer the exercise this is dependent on (if core, nil)"
 	
-	^HelloWorldTest  
+	^nil
 ]
 
 { #category : #config }

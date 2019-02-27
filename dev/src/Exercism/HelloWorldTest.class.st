@@ -53,7 +53,7 @@ HelloWorldTest class >> difficulty [
 
 { #category : #helper }
 HelloWorldTest class >> followedBy [
-	"If this is a core exercise, answer the next one that follows otherwise nil (if not a core exercise, or the last one)"
+	"If this is a core exercise, answer the next one that follows otherwise nil"
 	
 	^'Leap'
 ]
