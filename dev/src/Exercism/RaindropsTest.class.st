@@ -45,7 +45,7 @@ RaindropsTest class >> topics [
 	Topics are commonly found in (but not limited to): 
 		https://github.com/exercism/problem-specifications/blob/master/TOPICS.txt"
 		
-	^#('strings' 'conditionals')
+	^#('strings' 'conditionals' 'logic')
 	
 ]
 
