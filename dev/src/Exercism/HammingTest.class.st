@@ -26,7 +26,7 @@ exception vs returning a special value) may differ between languages.
 
 ## Hint
 
-TBD
+In Smalltalk, exceptions are instances of subclasses of Exception. While you can create your own for your domain, if you browse this hierarchy you can choose something appropriate to simplify your solution.
 
 "
 Class {
@@ -35,8 +35,40 @@ Class {
 	#instVars : [
 		'hammingCalculator'
 	],
-	#category : #'ExercismWIP-Hamming'
+	#category : #'Exercism-Hamming'
 }
+
+{ #category : #config }
+HammingTest class >> difficulty [
+	"Answer an Integer, the difficulty level of the test, 1=easy, 10=hard"
+	
+	^2
+]
+
+{ #category : #helper }
+HammingTest class >> followedBy [
+	"Answer the String name of the next core exercise that follows, otherwise nil if nothing comes after.
+	
+	This data provides a hook for users to load the next core exercise"
+	
+	^'Raindrops'
+]
+
+{ #category : #config }
+HammingTest class >> topics [
+	"Answer a String Array of topics that classify the exercise.
+	Topics are commonly found in (but not limited to): 
+		https://github.com/exercism/problem-specifications/blob/master/TOPICS.txt"
+
+	^ #('equality' 'loops' 'strings')
+]
+
+{ #category : #config }
+HammingTest class >> unlockedBy [
+	"Answer the exercise this is dependent on (if core, this is the exercise this one should appear after in the config.json)"
+	
+	^ReverseStringTest 
+]
 
 { #category : #config }
 HammingTest class >> uuid [
@@ -56,35 +88,52 @@ HammingTest >> setUp [
 ]
 
 { #category : #test }
-HammingTest >> testDisallowFirstStrandLonger [
-	| result |
+HammingTest >> should: aBlock raise: anException containing: aMessageString [
 
-	result := hammingCalculator distanceStrand1: 'AATG' strand2: 'AAA' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'left and right strands must be of equal length'); yourself)
+	self
+		should: aBlock
+		raise: anException 
+		withExceptionDo: [ :ex |
+			self assert: ex messageText equals: aMessageString ]
+		
+		
+]
+
+{ #category : #test }
+HammingTest >> testDisallowFirstStrandLonger [
+	
+	self
+		should: [ hammingCalculator distanceStrand1: 'AATG' strand2: 'AAA' ]
+		raise: Exception
+		containing: 'left and right strands must be of equal length'
+		
 ]
 
 { #category : #test }
 HammingTest >> testDisallowLeftEmptyStrand [
-	| result |
 
-	result := hammingCalculator distanceStrand1: '' strand2: 'G' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'left strand must not be empty'); yourself)
+	self
+		should: [ hammingCalculator distanceStrand1: '' strand2: 'G' ]
+		raise: Exception 
+		containing: 'left strand must not be empty'
 ]
 
 { #category : #test }
 HammingTest >> testDisallowRightEmptyStrand [
-	| result |
-
-	result := hammingCalculator distanceStrand1: 'G' strand2: '' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'right strand must not be empty'); yourself)
+	
+	self
+		should: [ hammingCalculator distanceStrand1: 'G' strand2: '' ]
+		raise: Exception
+		containing: 'right strand must not be empty'
 ]
 
 { #category : #test }
 HammingTest >> testDisallowSecondStrandLonger [
-	| result |
 
-	result := hammingCalculator distanceStrand1: 'ATA' strand2: 'AGTG' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'left and right strands must be of equal length'); yourself)
+	self
+		should: [ hammingCalculator distanceStrand1: 'ATA' strand2: 'AGTG' ]
+		raise: Exception
+		containing: 'left and right strands must be of equal length'
 ]
 
 { #category : #test }
