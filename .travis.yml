@@ -1,5 +1,17 @@
-language: bash
+language: smalltalk
 
-script:
+sudo: false
+
+os:
+  - linux
+
+install:
   - bin/fetch-configlet
+
+# Select Smalltalk image(s)
+smalltalk:
+  - Pharo64-7.0
+
+
+before_script:
   - bin/configlet lint --track-id pharo .
