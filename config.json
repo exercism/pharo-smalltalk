@@ -87,7 +87,7 @@
       "uuid": "69f615da-2b3f-0d00-a2ed-aca409f0590c",
       "core": true,
       "auto_approve": false,
-      "unlocked_by": "reverse-string",
+      "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "equality",
