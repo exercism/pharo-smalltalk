@@ -49,7 +49,7 @@ HammingTest class >> core [
 HammingTest class >> difficulty [
 	"Answer an Integer, the difficulty level of the test, 1=easy, 10=hard"
 	
-	^1
+	^2
 ]
 
 { #category : #helper }
@@ -67,7 +67,7 @@ HammingTest class >> topics [
 	Topics are commonly found in (but not limited to): 
 		https://github.com/exercism/problem-specifications/blob/master/TOPICS.txt"
 
-	^ #('equality' 'loops' 'strings' 'conditionals')
+	^ #('equality' 'loops' 'strings' 'transforming' 'exception_handling')
 ]
 
 { #category : #config }

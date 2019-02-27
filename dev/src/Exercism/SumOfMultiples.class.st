@@ -1,5 +1,5 @@
 "
-This solution uses inject:into: to sum the runnning interval, as well as extracting the multiples test to a seperate method for clarity
+This solution uses inject:into: to sum the runnning interval, as well as extracting the multiples test into a seperate method for clarity
 "
 Class {
 	#name : #SumOfMultiples,

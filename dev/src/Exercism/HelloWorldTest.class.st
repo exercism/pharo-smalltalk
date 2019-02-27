@@ -62,7 +62,7 @@ HelloWorldTest class >> followedBy [
 HelloWorldTest class >> topics [
 	"Answer a String Array of topics that classify the exercise"
 	
-	^#('introduction')
+	^#('introduction' 'strings')
 ]
 
 { #category : #config }
