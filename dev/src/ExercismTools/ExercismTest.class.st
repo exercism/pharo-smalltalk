@@ -33,6 +33,14 @@ ExercismTest class >> difficulty [
 ]
 
 { #category : #helper }
+ExercismTest class >> exercismName [
+	"Answer the english readable name of the exercise"
+	
+	^(self name asString withoutSuffix: 'Test') asKebabCase 
+				
+]
+
+{ #category : #helper }
 ExercismTest class >> followedBy [
 	"Answer the String name of the next core exercise that follows, otherwise nil if nothing comes after.
 	
