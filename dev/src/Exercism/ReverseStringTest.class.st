@@ -95,42 +95,42 @@ ReverseStringTest >> setUp [
 	reverseStringCalculator := ReverseString new
 ]
 
-{ #category : #test }
-ReverseStringTest >> testACapitalizedWord [
+{ #category : #tests }
+ReverseStringTest >> test01_AnEmptyString [
 	| result |
 
-	result := reverseStringCalculator reverseValue: 'Ramen' .
-	self assert: result equals: 'nemaR'
+	result := reverseStringCalculator reverseValue: '' .
+	self assert: result equals: ''
 ]
 
-{ #category : #test }
-ReverseStringTest >> testAPalindrome [
-	| result |
-
-	result := reverseStringCalculator reverseValue: 'racecar' .
-	self assert: result equals: 'racecar'
-]
-
-{ #category : #test }
-ReverseStringTest >> testASentenceWithPunctuation [
-	| result |
-
-	result := reverseStringCalculator reverseValue: 'I''m hungry!' .
-	self assert: result equals: '!yrgnuh m''I'
-]
-
-{ #category : #test }
-ReverseStringTest >> testAWord [
+{ #category : #tests }
+ReverseStringTest >> test02_AWord [
 	| result |
 
 	result := reverseStringCalculator reverseValue: 'robot' .
 	self assert: result equals: 'tobor'
 ]
 
-{ #category : #test }
-ReverseStringTest >> testAnEmptyString [
+{ #category : #tests }
+ReverseStringTest >> test03_ACapitalizedWord [
 	| result |
 
-	result := reverseStringCalculator reverseValue: '' .
-	self assert: result equals: ''
+	result := reverseStringCalculator reverseValue: 'Ramen' .
+	self assert: result equals: 'nemaR'
+]
+
+{ #category : #tests }
+ReverseStringTest >> test04_ASentenceWithPunctuation [
+	| result |
+
+	result := reverseStringCalculator reverseValue: 'I''m hungry!' .
+	self assert: result equals: '!yrgnuh m''I'
+]
+
+{ #category : #tests }
+ReverseStringTest >> test05_APalindrome [
+	| result |
+
+	result := reverseStringCalculator reverseValue: 'racecar' .
+	self assert: result equals: 'racecar'
 ]

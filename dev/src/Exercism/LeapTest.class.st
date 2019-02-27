@@ -88,50 +88,50 @@ LeapTest >> setUp [
 	leapCalculator := Leap new
 ]
 
-{ #category : #test }
-LeapTest >> testYearDivisibleBy100NotDivisibleBy400InCommonYear [
+{ #category : #tests }
+LeapTest >> test01_YearNotDivisibleBy4CommonYear [
 	| result |
 
-	result := leapCalculator leapYear: 2100 .
+	result := leapCalculator leapYear: 2015 .
 	self assert: result equals: false
 ]
 
-{ #category : #test }
-LeapTest >> testYearDivisibleBy200NotDivisibleBy400InCommonYear [
-	| result |
-
-	result := leapCalculator leapYear: 1800 .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-LeapTest >> testYearDivisibleBy2NotDivisibleBy4InCommonYear [
+{ #category : #tests }
+LeapTest >> test02_YearDivisibleBy2NotDivisibleBy4CommonYear [
 	| result |
 
 	result := leapCalculator leapYear: 1970 .
 	self assert: result equals: false
 ]
 
-{ #category : #test }
-LeapTest >> testYearDivisibleBy400InLeapYear [
-	| result |
-
-	result := leapCalculator leapYear: 2000 .
-	self assert: result equals: true
-]
-
-{ #category : #test }
-LeapTest >> testYearDivisibleBy4NotDivisibleBy100InLeapYear [
+{ #category : #tests }
+LeapTest >> test03_YearDivisibleBy4NotDivisibleBy100LeapYear [
 	| result |
 
 	result := leapCalculator leapYear: 1996 .
 	self assert: result equals: true
 ]
 
-{ #category : #test }
-LeapTest >> testYearNotDivisibleBy4InCommonYear [
+{ #category : #tests }
+LeapTest >> test04_YearDivisibleBy100NotDivisibleBy400CommonYear [
 	| result |
 
-	result := leapCalculator leapYear: 2015 .
+	result := leapCalculator leapYear: 2100 .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+LeapTest >> test05_YearDivisibleBy400LeapYear [
+	| result |
+
+	result := leapCalculator leapYear: 2000 .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+LeapTest >> test06_YearDivisibleBy200NotDivisibleBy400CommonYear [
+	| result |
+
+	result := leapCalculator leapYear: 1800 .
 	self assert: result equals: false
 ]

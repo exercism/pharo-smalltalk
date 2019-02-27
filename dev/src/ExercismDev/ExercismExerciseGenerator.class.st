@@ -182,10 +182,10 @@ ExercismExerciseGenerator >> generateTestClass: testName tag: tagName variable: 
 
 { #category : #generation }
 ExercismExerciseGenerator >> generateTestMethodsOn: testClass calling: testVariable using: testJson prefix: aPrefixString [
-	| instance methodName parameters testResult |
+	| instance methodName parameters testResult testPrefix |
 	(testJson at: 'cases')
 		doWithIndex: [ :case :i | 
-			methodName := self testMethodNamed: (case at: 'description') prefix: aPrefixString order: i.
+			methodName := aPrefixString, ((case at: 'description') asCamelCase capitalized) asValidKeyword.
 			(case includesKey: 'cases')
 				ifTrue: [ self
 						generateTestMethodsOn: testClass
@@ -196,8 +196,10 @@ ExercismExerciseGenerator >> generateTestMethodsOn: testClass calling: testVaria
 					instance := case at: 'property'.
 					parameters := case at: 'input'.
 					testResult := case at: 'expected'.
+					
+					testPrefix := 'test{1}_' format: {i asTwoCharacterString}.
 					self
-						generateTestNamed: methodName
+						generateTestNamed: (testPrefix, methodName) asSymbol 
 						in: testClass
 						variable: testVariable
 						selector: instance
@@ -260,14 +262,4 @@ ExercismExerciseGenerator >> numberGenerated [
 { #category : #accessing }
 ExercismExerciseGenerator >> numberGenerated: anObject [
 	numberGenerated := anObject
-]
-
-{ #category : #generation }
-ExercismExerciseGenerator >> testMethodNamed: baseNameString prefix: aPrefixString order: i [
-	| testPrefix |
-	
-	testPrefix := aPrefixString
-		ifEmpty: [ 'test{1}_' format: {i asTwoCharacterString} ].
-		
-	^ (testPrefix, baseNameString asCamelCase capitalized) asValidKeyword
 ]

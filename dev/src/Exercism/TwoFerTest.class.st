@@ -76,17 +76,17 @@ TwoFerTest >> setUp [
 	twoFer := TwoFer new.
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 TwoFerTest >> testANameGiven [
 	self assert: (twoFer who: 'Alice') equals: 'One for Alice, one for me.'
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 TwoFerTest >> testAnotherNameGiven [
 	self assert: (twoFer who: 'Bob') equals: 'One for Bob, one for me.' 
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 TwoFerTest >> testNoNameGiven [
 	self assert: twoFer who equals: 'One for you, one for me.' 
 	
