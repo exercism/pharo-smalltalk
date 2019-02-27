@@ -135,7 +135,7 @@ ReverseStringTest >> test05_APalindrome [
 	self assert: result equals: 'racecar'
 ]
 
-{ #category : #test }
+{ #category : #extra }
 ReverseStringTest >> testMisuseOfSelector [
 	self verifySolution: reverseStringCalculator class avoidsSelector: #reverse
 ]

@@ -90,11 +90,6 @@ LeapTest >> setUp [
 	leapCalculator := Leap new
 ]
 
-{ #category : #extra }
-LeapTest >> testMisuseOfSelector [
-	self verifySolution: leapCalculator class avoidsSelector: #isLeapYear
-]
-
 { #category : #tests }
 LeapTest >> test01_YearNotDivisibleBy4CommonYear [
 	| result |
@@ -141,4 +136,9 @@ LeapTest >> test06_YearDivisibleBy200NotDivisibleBy400CommonYear [
 
 	result := leapCalculator leapYear: 1800 .
 	self assert: result equals: false
+]
+
+{ #category : #extra }
+LeapTest >> testMisuseOfSelector [
+	self verifySolution: leapCalculator class avoidsSelector: #isLeapYear
 ]
