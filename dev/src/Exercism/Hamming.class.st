@@ -13,13 +13,10 @@ Hamming >> distanceStrand1: aString1 strand2: aString2 [
 	aString1 size = aString2 size
 		ifFalse: [ ^ DomainError signal: (self errorMsgFor: aString1 and: aString2) ].
 		
-	^ (1 to: aString1 size)
-		inject: 0
-		into: [ :result :index | 
-			result +
-				((aString1 at: index) ~= (aString2 at: index)
-					ifTrue: [ 1 ]
-					ifFalse: [ 0 ]) ]
+	^(1 to: aString1 size) sumNumbers: [ :index | 
+			(aString1 at: index) = (aString2 at: index)
+					ifTrue: [ 0 ]
+					ifFalse: [ 1 ] ]
 ]
 
 { #category : #exercism }

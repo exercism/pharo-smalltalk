@@ -61,7 +61,7 @@ LeapTest class >> followedBy [
 LeapTest class >> topics [
 	"Answer a String Array of topics that classify the exercise"
 	
-	^#('booleans' 'conditionals' 'logic')
+	^#('integers' 'math' 'conditionals' 'logic')
 ]
 
 { #category : #config }

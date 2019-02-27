@@ -48,7 +48,7 @@ TwoFerTest class >> difficulty [
 TwoFerTest class >> topics [
 	"Answer a String Array of topics that classify the exercise"
 	
-	^#('strings' 'text-formatting')
+	^#('strings' 'text-formatting' 'refactoring')
 ]
 
 { #category : #config }
