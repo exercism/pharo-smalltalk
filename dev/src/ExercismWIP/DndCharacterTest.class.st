@@ -50,12 +50,12 @@ Class {
 { #category : #config }
 DndCharacterTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'fc3626da-2b3f-0d00-a2fb-c40009f0590c'
+	^'4fa98bbe-4a3f-0d00-bb5d-38af071d6982'
 ]
 
 { #category : #config }
 DndCharacterTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.1.0'
 ]
 
@@ -64,154 +64,154 @@ DndCharacterTest >> setUp [
 	dndCharacterCalculator := DndCharacter new
 ]
 
-{ #category : #test }
-DndCharacterTest >> testAbilityModifierAbilityModifierForScore10Is0 [
-	| result |
-
-	result := dndCharacterCalculator modifierScore: 10 .
-	self assert: result equals: 0
-]
-
-{ #category : #test }
-DndCharacterTest >> testAbilityModifierAbilityModifierForScore11Is0 [
-	| result |
-
-	result := dndCharacterCalculator modifierScore: 11 .
-	self assert: result equals: 0
-]
-
-{ #category : #test }
-DndCharacterTest >> testAbilityModifierAbilityModifierForScore12Is1 [
-	| result |
-
-	result := dndCharacterCalculator modifierScore: 12 .
-	self assert: result equals: 1
-]
-
-{ #category : #test }
-DndCharacterTest >> testAbilityModifierAbilityModifierForScore13Is1 [
-	| result |
-
-	result := dndCharacterCalculator modifierScore: 13 .
-	self assert: result equals: 1
-]
-
-{ #category : #test }
-DndCharacterTest >> testAbilityModifierAbilityModifierForScore14Is2 [
-	| result |
-
-	result := dndCharacterCalculator modifierScore: 14 .
-	self assert: result equals: 2
-]
-
-{ #category : #test }
-DndCharacterTest >> testAbilityModifierAbilityModifierForScore15Is2 [
-	| result |
-
-	result := dndCharacterCalculator modifierScore: 15 .
-	self assert: result equals: 2
-]
-
-{ #category : #test }
-DndCharacterTest >> testAbilityModifierAbilityModifierForScore16Is3 [
-	| result |
-
-	result := dndCharacterCalculator modifierScore: 16 .
-	self assert: result equals: 3
-]
-
-{ #category : #test }
-DndCharacterTest >> testAbilityModifierAbilityModifierForScore17Is3 [
-	| result |
-
-	result := dndCharacterCalculator modifierScore: 17 .
-	self assert: result equals: 3
-]
-
-{ #category : #test }
-DndCharacterTest >> testAbilityModifierAbilityModifierForScore18Is4 [
-	| result |
-
-	result := dndCharacterCalculator modifierScore: 18 .
-	self assert: result equals: 4
-]
-
-{ #category : #test }
-DndCharacterTest >> testAbilityModifierAbilityModifierForScore3Is4 [
+{ #category : #tests }
+DndCharacterTest >> test01_AbilityModifierAbilityModifierForScore3Is4 [
 	| result |
 
 	result := dndCharacterCalculator modifierScore: 3 .
 	self assert: result equals:  -4
 ]
 
-{ #category : #test }
-DndCharacterTest >> testAbilityModifierAbilityModifierForScore4Is3 [
+{ #category : #tests }
+DndCharacterTest >> test02_AbilityModifierAbilityModifierForScore4Is3 [
 	| result |
 
 	result := dndCharacterCalculator modifierScore: 4 .
 	self assert: result equals:  -3
 ]
 
-{ #category : #test }
-DndCharacterTest >> testAbilityModifierAbilityModifierForScore5Is3 [
-	| result |
-
-	result := dndCharacterCalculator modifierScore: 5 .
-	self assert: result equals:  -3
-]
-
-{ #category : #test }
-DndCharacterTest >> testAbilityModifierAbilityModifierForScore6Is2 [
-	| result |
-
-	result := dndCharacterCalculator modifierScore: 6 .
-	self assert: result equals:  -2
-]
-
-{ #category : #test }
-DndCharacterTest >> testAbilityModifierAbilityModifierForScore7Is2 [
-	| result |
-
-	result := dndCharacterCalculator modifierScore: 7 .
-	self assert: result equals:  -2
-]
-
-{ #category : #test }
-DndCharacterTest >> testAbilityModifierAbilityModifierForScore8Is1 [
-	| result |
-
-	result := dndCharacterCalculator modifierScore: 8 .
-	self assert: result equals:  -1
-]
-
-{ #category : #test }
-DndCharacterTest >> testAbilityModifierAbilityModifierForScore9Is1 [
-	| result |
-
-	result := dndCharacterCalculator modifierScore: 9 .
-	self assert: result equals:  -1
-]
-
-{ #category : #test }
-DndCharacterTest >> testEachAbilityIsOnlyCalculatedOnce [
-	| result |
-
-	result := dndCharacterCalculator strength.
-	self assert: result equals: 'strength == strength'
-]
-
-{ #category : #test }
-DndCharacterTest >> testRandomAbilityIsWithinRange [
+{ #category : #tests }
+DndCharacterTest >> test02_RandomAbilityIsWithinRange [
 	| result |
 
 	result := dndCharacterCalculator ability.
 	self assert: result equals: 'score >= 3 && score <= 18'
 ]
 
-{ #category : #test }
-DndCharacterTest >> testRandomCharacterIsValid [
+{ #category : #tests }
+DndCharacterTest >> test03_AbilityModifierAbilityModifierForScore5Is3 [
+	| result |
+
+	result := dndCharacterCalculator modifierScore: 5 .
+	self assert: result equals:  -3
+]
+
+{ #category : #tests }
+DndCharacterTest >> test03_RandomCharacterIsValid [
 	| result |
 
 	result := dndCharacterCalculator character.
 	self assert: result equals: ((Dictionary new) add: ('charisma'->'charisma >= 3 && charisma <= 18'); add: ('intelligence'->'intelligence >= 3 && intelligence <= 18'); add: ('wisdom'->'wisdom >= 3 && wisdom <= 18'); add: ('strength'->'strength >= 3 && strength <= 18'); add: ('constitution'->'constitution >= 3 && constitution <= 18'); add: ('dexterity'->'dexterity >= 3 && dexterity <= 18'); add: ('hitpoints'->'hitpoints == 10 + modifier(constitution)'); yourself)
+]
+
+{ #category : #tests }
+DndCharacterTest >> test04_AbilityModifierAbilityModifierForScore6Is2 [
+	| result |
+
+	result := dndCharacterCalculator modifierScore: 6 .
+	self assert: result equals:  -2
+]
+
+{ #category : #tests }
+DndCharacterTest >> test04_EachAbilityIsOnlyCalculatedOnce [
+	| result |
+
+	result := dndCharacterCalculator strength.
+	self assert: result equals: 'strength == strength'
+]
+
+{ #category : #tests }
+DndCharacterTest >> test05_AbilityModifierAbilityModifierForScore7Is2 [
+	| result |
+
+	result := dndCharacterCalculator modifierScore: 7 .
+	self assert: result equals:  -2
+]
+
+{ #category : #tests }
+DndCharacterTest >> test06_AbilityModifierAbilityModifierForScore8Is1 [
+	| result |
+
+	result := dndCharacterCalculator modifierScore: 8 .
+	self assert: result equals:  -1
+]
+
+{ #category : #tests }
+DndCharacterTest >> test07_AbilityModifierAbilityModifierForScore9Is1 [
+	| result |
+
+	result := dndCharacterCalculator modifierScore: 9 .
+	self assert: result equals:  -1
+]
+
+{ #category : #tests }
+DndCharacterTest >> test08_AbilityModifierAbilityModifierForScore10Is0 [
+	| result |
+
+	result := dndCharacterCalculator modifierScore: 10 .
+	self assert: result equals: 0
+]
+
+{ #category : #tests }
+DndCharacterTest >> test09_AbilityModifierAbilityModifierForScore11Is0 [
+	| result |
+
+	result := dndCharacterCalculator modifierScore: 11 .
+	self assert: result equals: 0
+]
+
+{ #category : #tests }
+DndCharacterTest >> test10_AbilityModifierAbilityModifierForScore12Is1 [
+	| result |
+
+	result := dndCharacterCalculator modifierScore: 12 .
+	self assert: result equals: 1
+]
+
+{ #category : #tests }
+DndCharacterTest >> test11_AbilityModifierAbilityModifierForScore13Is1 [
+	| result |
+
+	result := dndCharacterCalculator modifierScore: 13 .
+	self assert: result equals: 1
+]
+
+{ #category : #tests }
+DndCharacterTest >> test12_AbilityModifierAbilityModifierForScore14Is2 [
+	| result |
+
+	result := dndCharacterCalculator modifierScore: 14 .
+	self assert: result equals: 2
+]
+
+{ #category : #tests }
+DndCharacterTest >> test13_AbilityModifierAbilityModifierForScore15Is2 [
+	| result |
+
+	result := dndCharacterCalculator modifierScore: 15 .
+	self assert: result equals: 2
+]
+
+{ #category : #tests }
+DndCharacterTest >> test14_AbilityModifierAbilityModifierForScore16Is3 [
+	| result |
+
+	result := dndCharacterCalculator modifierScore: 16 .
+	self assert: result equals: 3
+]
+
+{ #category : #tests }
+DndCharacterTest >> test15_AbilityModifierAbilityModifierForScore17Is3 [
+	| result |
+
+	result := dndCharacterCalculator modifierScore: 17 .
+	self assert: result equals: 3
+]
+
+{ #category : #tests }
+DndCharacterTest >> test16_AbilityModifierAbilityModifierForScore18Is4 [
+	| result |
+
+	result := dndCharacterCalculator modifierScore: 18 .
+	self assert: result equals: 4
 ]

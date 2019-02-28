@@ -32,12 +32,12 @@ Class {
 { #category : #config }
 MarkdownTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'3b1ff2d9-2b3f-0d00-a2cb-4a4b09f0590c'
+	^'a1f945be-4a3f-0d00-bb2f-04d4071d6982'
 ]
 
 { #category : #config }
 MarkdownTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.3.0'
 ]
 
@@ -46,40 +46,64 @@ MarkdownTest >> setUp [
 	markdownCalculator := Markdown new
 ]
 
-{ #category : #test }
-MarkdownTest >> testMixedNormalItalicsAndBoldText [
-	| result |
-
-	result := markdownCalculator parseMarkdown: 'This will _be_ __mixed__' .
-	self assert: result equals: '<p>This will <em>be</em> <strong>mixed</strong></p>'
-]
-
-{ #category : #test }
-MarkdownTest >> testParsesNormalTextAsAParagraph [
+{ #category : #tests }
+MarkdownTest >> test01_ParsesNormalTextAsAParagraph [
 	| result |
 
 	result := markdownCalculator parseMarkdown: 'This will be a paragraph' .
 	self assert: result equals: '<p>This will be a paragraph</p>'
 ]
 
-{ #category : #test }
-MarkdownTest >> testParsingBoldText [
-	| result |
-
-	result := markdownCalculator parseMarkdown: '__This will be bold__' .
-	self assert: result equals: '<p><strong>This will be bold</strong></p>'
-]
-
-{ #category : #test }
-MarkdownTest >> testParsingItalics [
+{ #category : #tests }
+MarkdownTest >> test02_ParsingItalics [
 	| result |
 
 	result := markdownCalculator parseMarkdown: '_This will be italic_' .
 	self assert: result equals: '<p><em>This will be italic</em></p>'
 ]
 
-{ #category : #test }
-MarkdownTest >> testUnorderedLists [
+{ #category : #tests }
+MarkdownTest >> test03_ParsingBoldText [
+	| result |
+
+	result := markdownCalculator parseMarkdown: '__This will be bold__' .
+	self assert: result equals: '<p><strong>This will be bold</strong></p>'
+]
+
+{ #category : #tests }
+MarkdownTest >> test04_MixedNormalItalicsAndBoldText [
+	| result |
+
+	result := markdownCalculator parseMarkdown: 'This will _be_ __mixed__' .
+	self assert: result equals: '<p>This will <em>be</em> <strong>mixed</strong></p>'
+]
+
+{ #category : #tests }
+MarkdownTest >> test05_WithH1HeaderLevel [
+	| result |
+
+	result := markdownCalculator parseMarkdown: '# This will be an h1' .
+	self assert: result equals: '<h1>This will be an h1</h1>'
+]
+
+{ #category : #tests }
+MarkdownTest >> test06_WithH2HeaderLevel [
+	| result |
+
+	result := markdownCalculator parseMarkdown: '## This will be an h2' .
+	self assert: result equals: '<h2>This will be an h2</h2>'
+]
+
+{ #category : #tests }
+MarkdownTest >> test07_WithH6HeaderLevel [
+	| result |
+
+	result := markdownCalculator parseMarkdown: '###### This will be an h6' .
+	self assert: result equals: '<h6>This will be an h6</h6>'
+]
+
+{ #category : #tests }
+MarkdownTest >> test08_UnorderedLists [
 	| result |
 
 	result := markdownCalculator parseMarkdown: '* Item 1
@@ -87,8 +111,8 @@ MarkdownTest >> testUnorderedLists [
 	self assert: result equals: '<ul><li>Item 1</li><li>Item 2</li></ul>'
 ]
 
-{ #category : #test }
-MarkdownTest >> testWithALittleBitOfEverything [
+{ #category : #tests }
+MarkdownTest >> test09_WithALittleBitOfEverything [
 	| result |
 
 	result := markdownCalculator parseMarkdown: '# Header!
@@ -97,40 +121,16 @@ MarkdownTest >> testWithALittleBitOfEverything [
 	self assert: result equals: '<h1>Header!</h1><ul><li><strong>Bold Item</strong></li><li><em>Italic Item</em></li></ul>'
 ]
 
-{ #category : #test }
-MarkdownTest >> testWithH1HeaderLevel [
-	| result |
-
-	result := markdownCalculator parseMarkdown: '# This will be an h1' .
-	self assert: result equals: '<h1>This will be an h1</h1>'
-]
-
-{ #category : #test }
-MarkdownTest >> testWithH2HeaderLevel [
-	| result |
-
-	result := markdownCalculator parseMarkdown: '## This will be an h2' .
-	self assert: result equals: '<h2>This will be an h2</h2>'
-]
-
-{ #category : #test }
-MarkdownTest >> testWithH6HeaderLevel [
-	| result |
-
-	result := markdownCalculator parseMarkdown: '###### This will be an h6' .
-	self assert: result equals: '<h6>This will be an h6</h6>'
-]
-
-{ #category : #test }
-MarkdownTest >> testWithMarkdownSymbolsInTheHeaderTextThatShouldNotBeInterpreted [
+{ #category : #tests }
+MarkdownTest >> test10_WithMarkdownSymbolsInTheHeaderTextThatShouldNotBeInterpreted [
 	| result |
 
 	result := markdownCalculator parseMarkdown: '# This is a header with # and * in the text' .
 	self assert: result equals: '<h1>This is a header with # and * in the text</h1>'
 ]
 
-{ #category : #test }
-MarkdownTest >> testWithMarkdownSymbolsInTheListItemTextThatShouldNotBeInterpreted [
+{ #category : #tests }
+MarkdownTest >> test11_WithMarkdownSymbolsInTheListItemTextThatShouldNotBeInterpreted [
 	| result |
 
 	result := markdownCalculator parseMarkdown: '* Item 1 with a # in the text
@@ -138,8 +138,8 @@ MarkdownTest >> testWithMarkdownSymbolsInTheListItemTextThatShouldNotBeInterpret
 	self assert: result equals: '<ul><li>Item 1 with a # in the text</li><li>Item 2 with * in the text</li></ul>'
 ]
 
-{ #category : #test }
-MarkdownTest >> testWithMarkdownSymbolsInTheParagraphTextThatShouldNotBeInterpreted [
+{ #category : #tests }
+MarkdownTest >> test12_WithMarkdownSymbolsInTheParagraphTextThatShouldNotBeInterpreted [
 	| result |
 
 	result := markdownCalculator parseMarkdown: 'This is a paragraph with # and * in the text' .

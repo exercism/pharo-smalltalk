@@ -59,12 +59,12 @@ Class {
 { #category : #config }
 ProteinTranslationTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'c3c6d6d9-2b3f-0d00-a2ae-8bd009f0590c'
+	^'961220be-4a3f-0d00-bb12-536b071d6982'
 ]
 
 { #category : #config }
 ProteinTranslationTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.1.1'
 ]
 
@@ -73,186 +73,186 @@ ProteinTranslationTest >> setUp [
 	proteinTranslationCalculator := ProteinTranslation new
 ]
 
-{ #category : #test }
-ProteinTranslationTest >> testTranslateInputRNASequencesIntoProteinsCysteineRNASequence1 [
-	| result |
-
-	result := proteinTranslationCalculator proteinsStrand: 'UGU' .
-	self assert: result equals: #('Cysteine' )
-]
-
-{ #category : #test }
-ProteinTranslationTest >> testTranslateInputRNASequencesIntoProteinsCysteineRNASequence2 [
-	| result |
-
-	result := proteinTranslationCalculator proteinsStrand: 'UGC' .
-	self assert: result equals: #('Cysteine' )
-]
-
-{ #category : #test }
-ProteinTranslationTest >> testTranslateInputRNASequencesIntoProteinsLeucineRNASequence1 [
-	| result |
-
-	result := proteinTranslationCalculator proteinsStrand: 'UUA' .
-	self assert: result equals: #('Leucine' )
-]
-
-{ #category : #test }
-ProteinTranslationTest >> testTranslateInputRNASequencesIntoProteinsLeucineRNASequence2 [
-	| result |
-
-	result := proteinTranslationCalculator proteinsStrand: 'UUG' .
-	self assert: result equals: #('Leucine' )
-]
-
-{ #category : #test }
-ProteinTranslationTest >> testTranslateInputRNASequencesIntoProteinsMethionineRNASequence [
+{ #category : #tests }
+ProteinTranslationTest >> test01_TranslateInputRNASequencesIntoProteinsMethionineRNASequence [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'AUG' .
 	self assert: result equals: #('Methionine' )
 ]
 
-{ #category : #test }
-ProteinTranslationTest >> testTranslateInputRNASequencesIntoProteinsPhenylalanineRNASequence1 [
+{ #category : #tests }
+ProteinTranslationTest >> test02_TranslateInputRNASequencesIntoProteinsPhenylalanineRNASequence1 [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UUU' .
 	self assert: result equals: #('Phenylalanine' )
 ]
 
-{ #category : #test }
-ProteinTranslationTest >> testTranslateInputRNASequencesIntoProteinsPhenylalanineRNASequence2 [
+{ #category : #tests }
+ProteinTranslationTest >> test03_TranslateInputRNASequencesIntoProteinsPhenylalanineRNASequence2 [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UUC' .
 	self assert: result equals: #('Phenylalanine' )
 ]
 
-{ #category : #test }
-ProteinTranslationTest >> testTranslateInputRNASequencesIntoProteinsSTOPCodonRNASequence1 [
+{ #category : #tests }
+ProteinTranslationTest >> test04_TranslateInputRNASequencesIntoProteinsLeucineRNASequence1 [
 	| result |
 
-	result := proteinTranslationCalculator proteinsStrand: 'UAA' .
-	self assert: result equals: #()
+	result := proteinTranslationCalculator proteinsStrand: 'UUA' .
+	self assert: result equals: #('Leucine' )
 ]
 
-{ #category : #test }
-ProteinTranslationTest >> testTranslateInputRNASequencesIntoProteinsSTOPCodonRNASequence2 [
+{ #category : #tests }
+ProteinTranslationTest >> test05_TranslateInputRNASequencesIntoProteinsLeucineRNASequence2 [
 	| result |
 
-	result := proteinTranslationCalculator proteinsStrand: 'UAG' .
-	self assert: result equals: #()
+	result := proteinTranslationCalculator proteinsStrand: 'UUG' .
+	self assert: result equals: #('Leucine' )
 ]
 
-{ #category : #test }
-ProteinTranslationTest >> testTranslateInputRNASequencesIntoProteinsSTOPCodonRNASequence3 [
-	| result |
-
-	result := proteinTranslationCalculator proteinsStrand: 'UGA' .
-	self assert: result equals: #()
-]
-
-{ #category : #test }
-ProteinTranslationTest >> testTranslateInputRNASequencesIntoProteinsSerineRNASequence1 [
+{ #category : #tests }
+ProteinTranslationTest >> test06_TranslateInputRNASequencesIntoProteinsSerineRNASequence1 [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UCU' .
 	self assert: result equals: #('Serine' )
 ]
 
-{ #category : #test }
-ProteinTranslationTest >> testTranslateInputRNASequencesIntoProteinsSerineRNASequence2 [
+{ #category : #tests }
+ProteinTranslationTest >> test07_TranslateInputRNASequencesIntoProteinsSerineRNASequence2 [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UCC' .
 	self assert: result equals: #('Serine' )
 ]
 
-{ #category : #test }
-ProteinTranslationTest >> testTranslateInputRNASequencesIntoProteinsSerineRNASequence3 [
+{ #category : #tests }
+ProteinTranslationTest >> test08_TranslateInputRNASequencesIntoProteinsSerineRNASequence3 [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UCA' .
 	self assert: result equals: #('Serine' )
 ]
 
-{ #category : #test }
-ProteinTranslationTest >> testTranslateInputRNASequencesIntoProteinsSerineRNASequence4 [
+{ #category : #tests }
+ProteinTranslationTest >> test09_TranslateInputRNASequencesIntoProteinsSerineRNASequence4 [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UCG' .
 	self assert: result equals: #('Serine' )
 ]
 
-{ #category : #test }
-ProteinTranslationTest >> testTranslateInputRNASequencesIntoProteinsTranslateRNAStrandIntoCorrectProteinList [
-	| result |
-
-	result := proteinTranslationCalculator proteinsStrand: 'AUGUUUUGG' .
-	self assert: result equals: #('Methionine' 'Phenylalanine' 'Tryptophan' )
-]
-
-{ #category : #test }
-ProteinTranslationTest >> testTranslateInputRNASequencesIntoProteinsTranslationStopsIfSTOPCodonAtBeginningOfSequence [
-	| result |
-
-	result := proteinTranslationCalculator proteinsStrand: 'UAGUGG' .
-	self assert: result equals: #()
-]
-
-{ #category : #test }
-ProteinTranslationTest >> testTranslateInputRNASequencesIntoProteinsTranslationStopsIfSTOPCodonAtEndOfThreecodonSequence [
-	| result |
-
-	result := proteinTranslationCalculator proteinsStrand: 'AUGUUUUAA' .
-	self assert: result equals: #('Methionine' 'Phenylalanine' )
-]
-
-{ #category : #test }
-ProteinTranslationTest >> testTranslateInputRNASequencesIntoProteinsTranslationStopsIfSTOPCodonAtEndOfTwocodonSequence [
-	| result |
-
-	result := proteinTranslationCalculator proteinsStrand: 'UGGUAG' .
-	self assert: result equals: #('Tryptophan' )
-]
-
-{ #category : #test }
-ProteinTranslationTest >> testTranslateInputRNASequencesIntoProteinsTranslationStopsIfSTOPCodonInMiddleOfSixcodonSequence [
-	| result |
-
-	result := proteinTranslationCalculator proteinsStrand: 'UGGUGUUAUUAAUGGUUU' .
-	self assert: result equals: #('Tryptophan' 'Cysteine' 'Tyrosine' )
-]
-
-{ #category : #test }
-ProteinTranslationTest >> testTranslateInputRNASequencesIntoProteinsTranslationStopsIfSTOPCodonInMiddleOfThreecodonSequence [
-	| result |
-
-	result := proteinTranslationCalculator proteinsStrand: 'UGGUAGUGG' .
-	self assert: result equals: #('Tryptophan' )
-]
-
-{ #category : #test }
-ProteinTranslationTest >> testTranslateInputRNASequencesIntoProteinsTryptophanRNASequence [
-	| result |
-
-	result := proteinTranslationCalculator proteinsStrand: 'UGG' .
-	self assert: result equals: #('Tryptophan' )
-]
-
-{ #category : #test }
-ProteinTranslationTest >> testTranslateInputRNASequencesIntoProteinsTyrosineRNASequence1 [
+{ #category : #tests }
+ProteinTranslationTest >> test10_TranslateInputRNASequencesIntoProteinsTyrosineRNASequence1 [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UAU' .
 	self assert: result equals: #('Tyrosine' )
 ]
 
-{ #category : #test }
-ProteinTranslationTest >> testTranslateInputRNASequencesIntoProteinsTyrosineRNASequence2 [
+{ #category : #tests }
+ProteinTranslationTest >> test11_TranslateInputRNASequencesIntoProteinsTyrosineRNASequence2 [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UAC' .
 	self assert: result equals: #('Tyrosine' )
+]
+
+{ #category : #tests }
+ProteinTranslationTest >> test12_TranslateInputRNASequencesIntoProteinsCysteineRNASequence1 [
+	| result |
+
+	result := proteinTranslationCalculator proteinsStrand: 'UGU' .
+	self assert: result equals: #('Cysteine' )
+]
+
+{ #category : #tests }
+ProteinTranslationTest >> test13_TranslateInputRNASequencesIntoProteinsCysteineRNASequence2 [
+	| result |
+
+	result := proteinTranslationCalculator proteinsStrand: 'UGC' .
+	self assert: result equals: #('Cysteine' )
+]
+
+{ #category : #tests }
+ProteinTranslationTest >> test14_TranslateInputRNASequencesIntoProteinsTryptophanRNASequence [
+	| result |
+
+	result := proteinTranslationCalculator proteinsStrand: 'UGG' .
+	self assert: result equals: #('Tryptophan' )
+]
+
+{ #category : #tests }
+ProteinTranslationTest >> test15_TranslateInputRNASequencesIntoProteinsSTOPCodonRNASequence1 [
+	| result |
+
+	result := proteinTranslationCalculator proteinsStrand: 'UAA' .
+	self assert: result equals: #()
+]
+
+{ #category : #tests }
+ProteinTranslationTest >> test16_TranslateInputRNASequencesIntoProteinsSTOPCodonRNASequence2 [
+	| result |
+
+	result := proteinTranslationCalculator proteinsStrand: 'UAG' .
+	self assert: result equals: #()
+]
+
+{ #category : #tests }
+ProteinTranslationTest >> test17_TranslateInputRNASequencesIntoProteinsSTOPCodonRNASequence3 [
+	| result |
+
+	result := proteinTranslationCalculator proteinsStrand: 'UGA' .
+	self assert: result equals: #()
+]
+
+{ #category : #tests }
+ProteinTranslationTest >> test18_TranslateInputRNASequencesIntoProteinsTranslateRNAStrandIntoCorrectProteinList [
+	| result |
+
+	result := proteinTranslationCalculator proteinsStrand: 'AUGUUUUGG' .
+	self assert: result equals: #('Methionine' 'Phenylalanine' 'Tryptophan' )
+]
+
+{ #category : #tests }
+ProteinTranslationTest >> test19_TranslateInputRNASequencesIntoProteinsTranslationStopsIfSTOPCodonAtBeginningOfSequence [
+	| result |
+
+	result := proteinTranslationCalculator proteinsStrand: 'UAGUGG' .
+	self assert: result equals: #()
+]
+
+{ #category : #tests }
+ProteinTranslationTest >> test20_TranslateInputRNASequencesIntoProteinsTranslationStopsIfSTOPCodonAtEndOfTwocodonSequence [
+	| result |
+
+	result := proteinTranslationCalculator proteinsStrand: 'UGGUAG' .
+	self assert: result equals: #('Tryptophan' )
+]
+
+{ #category : #tests }
+ProteinTranslationTest >> test21_TranslateInputRNASequencesIntoProteinsTranslationStopsIfSTOPCodonAtEndOfThreecodonSequence [
+	| result |
+
+	result := proteinTranslationCalculator proteinsStrand: 'AUGUUUUAA' .
+	self assert: result equals: #('Methionine' 'Phenylalanine' )
+]
+
+{ #category : #tests }
+ProteinTranslationTest >> test22_TranslateInputRNASequencesIntoProteinsTranslationStopsIfSTOPCodonInMiddleOfThreecodonSequence [
+	| result |
+
+	result := proteinTranslationCalculator proteinsStrand: 'UGGUAGUGG' .
+	self assert: result equals: #('Tryptophan' )
+]
+
+{ #category : #tests }
+ProteinTranslationTest >> test23_TranslateInputRNASequencesIntoProteinsTranslationStopsIfSTOPCodonInMiddleOfSixcodonSequence [
+	| result |
+
+	result := proteinTranslationCalculator proteinsStrand: 'UGGUGUUAUUAAUGGUUU' .
+	self assert: result equals: #('Tryptophan' 'Cysteine' 'Tyrosine' )
 ]

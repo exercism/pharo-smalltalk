@@ -35,12 +35,12 @@ Class {
 { #category : #config }
 PerfectNumbersTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'f199e1d9-2b3f-0d00-a2ba-52e209f0590c'
+	^'be102fbe-4a3f-0d00-bb1e-f98d071d6982'
 ]
 
 { #category : #config }
 PerfectNumbersTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.1.0'
 ]
 
@@ -49,106 +49,106 @@ PerfectNumbersTest >> setUp [
 	perfectNumbersCalculator := PerfectNumbers new
 ]
 
-{ #category : #test }
-PerfectNumbersTest >> testAbundantNumbersLargeAbundantNumberIsClassifiedCorrectly [
-	| result |
-
-	result := perfectNumbersCalculator classifyNumber: 33550335 .
-	self assert: result equals: 'abundant'
-]
-
-{ #category : #test }
-PerfectNumbersTest >> testAbundantNumbersMediumAbundantNumberIsClassifiedCorrectly [
-	| result |
-
-	result := perfectNumbersCalculator classifyNumber: 30 .
-	self assert: result equals: 'abundant'
-]
-
-{ #category : #test }
-PerfectNumbersTest >> testAbundantNumbersSmallestAbundantNumberIsClassifiedCorrectly [
+{ #category : #tests }
+PerfectNumbersTest >> test01_AbundantNumbersSmallestAbundantNumberIsClassifiedCorrectly [
 	| result |
 
 	result := perfectNumbersCalculator classifyNumber: 12 .
 	self assert: result equals: 'abundant'
 ]
 
-{ #category : #test }
-PerfectNumbersTest >> testDeficientNumbersEdgeCasenoFactorsOtherThanItselfIsClassifiedCorrectly [
-	| result |
-
-	result := perfectNumbersCalculator classifyNumber: 1 .
-	self assert: result equals: 'deficient'
-]
-
-{ #category : #test }
-PerfectNumbersTest >> testDeficientNumbersLargeDeficientNumberIsClassifiedCorrectly [
-	| result |
-
-	result := perfectNumbersCalculator classifyNumber: 33550337 .
-	self assert: result equals: 'deficient'
-]
-
-{ #category : #test }
-PerfectNumbersTest >> testDeficientNumbersMediumDeficientNumberIsClassifiedCorrectly [
-	| result |
-
-	result := perfectNumbersCalculator classifyNumber: 32 .
-	self assert: result equals: 'deficient'
-]
-
-{ #category : #test }
-PerfectNumbersTest >> testDeficientNumbersSmallestNonprimeDeficientNumberIsClassifiedCorrectly [
-	| result |
-
-	result := perfectNumbersCalculator classifyNumber: 4 .
-	self assert: result equals: 'deficient'
-]
-
-{ #category : #test }
-PerfectNumbersTest >> testDeficientNumbersSmallestPrimeDeficientNumberIsClassifiedCorrectly [
+{ #category : #tests }
+PerfectNumbersTest >> test01_DeficientNumbersSmallestPrimeDeficientNumberIsClassifiedCorrectly [
 	| result |
 
 	result := perfectNumbersCalculator classifyNumber: 2 .
 	self assert: result equals: 'deficient'
 ]
 
-{ #category : #test }
-PerfectNumbersTest >> testInvalidInputsNegativeIntegerIsRejectednotANaturalNumber [
-	| result |
-
-	result := perfectNumbersCalculator classifyNumber:  -1 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Classification is only possible for natural numbers.'); yourself)
-]
-
-{ #category : #test }
-PerfectNumbersTest >> testInvalidInputsZeroIsRejectednotANaturalNumber [
+{ #category : #tests }
+PerfectNumbersTest >> test01_InvalidInputsZeroIsRejectednotANaturalNumber [
 	| result |
 
 	result := perfectNumbersCalculator classifyNumber: 0 .
 	self assert: result equals: ((Dictionary new) add: ('error'->'Classification is only possible for natural numbers.'); yourself)
 ]
 
-{ #category : #test }
-PerfectNumbersTest >> testPerfectNumbersLargePerfectNumberIsClassifiedCorrectly [
+{ #category : #tests }
+PerfectNumbersTest >> test01_PerfectNumbersSmallestPerfectNumberIsClassifiedCorrectly [
 	| result |
 
-	result := perfectNumbersCalculator classifyNumber: 33550336 .
+	result := perfectNumbersCalculator classifyNumber: 6 .
 	self assert: result equals: 'perfect'
 ]
 
-{ #category : #test }
-PerfectNumbersTest >> testPerfectNumbersMediumPerfectNumberIsClassifiedCorrectly [
+{ #category : #tests }
+PerfectNumbersTest >> test02_AbundantNumbersMediumAbundantNumberIsClassifiedCorrectly [
+	| result |
+
+	result := perfectNumbersCalculator classifyNumber: 30 .
+	self assert: result equals: 'abundant'
+]
+
+{ #category : #tests }
+PerfectNumbersTest >> test02_DeficientNumbersSmallestNonprimeDeficientNumberIsClassifiedCorrectly [
+	| result |
+
+	result := perfectNumbersCalculator classifyNumber: 4 .
+	self assert: result equals: 'deficient'
+]
+
+{ #category : #tests }
+PerfectNumbersTest >> test02_InvalidInputsNegativeIntegerIsRejectednotANaturalNumber [
+	| result |
+
+	result := perfectNumbersCalculator classifyNumber:  -1 .
+	self assert: result equals: ((Dictionary new) add: ('error'->'Classification is only possible for natural numbers.'); yourself)
+]
+
+{ #category : #tests }
+PerfectNumbersTest >> test02_PerfectNumbersMediumPerfectNumberIsClassifiedCorrectly [
 	| result |
 
 	result := perfectNumbersCalculator classifyNumber: 28 .
 	self assert: result equals: 'perfect'
 ]
 
-{ #category : #test }
-PerfectNumbersTest >> testPerfectNumbersSmallestPerfectNumberIsClassifiedCorrectly [
+{ #category : #tests }
+PerfectNumbersTest >> test03_AbundantNumbersLargeAbundantNumberIsClassifiedCorrectly [
 	| result |
 
-	result := perfectNumbersCalculator classifyNumber: 6 .
+	result := perfectNumbersCalculator classifyNumber: 33550335 .
+	self assert: result equals: 'abundant'
+]
+
+{ #category : #tests }
+PerfectNumbersTest >> test03_DeficientNumbersMediumDeficientNumberIsClassifiedCorrectly [
+	| result |
+
+	result := perfectNumbersCalculator classifyNumber: 32 .
+	self assert: result equals: 'deficient'
+]
+
+{ #category : #tests }
+PerfectNumbersTest >> test03_PerfectNumbersLargePerfectNumberIsClassifiedCorrectly [
+	| result |
+
+	result := perfectNumbersCalculator classifyNumber: 33550336 .
 	self assert: result equals: 'perfect'
+]
+
+{ #category : #tests }
+PerfectNumbersTest >> test04_DeficientNumbersLargeDeficientNumberIsClassifiedCorrectly [
+	| result |
+
+	result := perfectNumbersCalculator classifyNumber: 33550337 .
+	self assert: result equals: 'deficient'
+]
+
+{ #category : #tests }
+PerfectNumbersTest >> test05_DeficientNumbersEdgeCasenoFactorsOtherThanItselfIsClassifiedCorrectly [
+	| result |
+
+	result := perfectNumbersCalculator classifyNumber: 1 .
+	self assert: result equals: 'deficient'
 ]

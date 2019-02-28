@@ -70,12 +70,12 @@ Class {
 { #category : #config }
 DiamondTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'9d44d3d9-2b3f-0d00-a2ab-b32909f0590c'
+	^'bee81abe-4a3f-0d00-bb0f-d8a2071d6982'
 ]
 
 { #category : #config }
 DiamondTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.1.0'
 ]
 
@@ -84,42 +84,42 @@ DiamondTest >> setUp [
 	diamondCalculator := Diamond new
 ]
 
-{ #category : #test }
-DiamondTest >> testDegenerateCaseWithASingleARow [
+{ #category : #tests }
+DiamondTest >> test01_DegenerateCaseWithASingleARow [
 	| result |
 
 	result := diamondCalculator rowsLetter: 'A' .
 	self assert: result equals: #('A' )
 ]
 
-{ #category : #test }
-DiamondTest >> testDegenerateCaseWithNoRowContaining3DistinctGroupsOfSpaces [
+{ #category : #tests }
+DiamondTest >> test02_DegenerateCaseWithNoRowContaining3DistinctGroupsOfSpaces [
 	| result |
 
 	result := diamondCalculator rowsLetter: 'B' .
 	self assert: result equals: #(' A ' 'B B' ' A ' )
 ]
 
-{ #category : #test }
-DiamondTest >> testLargestPossibleDiamond [
+{ #category : #tests }
+DiamondTest >> test03_SmallestNondegenerateCaseWithOddDiamondSideLength [
 	| result |
 
-	result := diamondCalculator rowsLetter: 'Z' .
-	self assert: result equals: #('                         A                         ' '                        B B                        ' '                       C   C                       ' '                      D     D                      ' '                     E       E                     ' '                    F         F                    ' '                   G           G                   ' '                  H             H                  ' '                 I               I                 ' '                J                 J                ' '               K                   K               ' '              L                     L              ' '             M                       M             ' '            N                         N            ' '           O                           O           ' '          P                             P          ' '         Q                               Q         ' '        R                                 R        ' '       S                                   S       ' '      T                                     T      ' '     U                                       U     ' '    V                                         V    ' '   W                                           W   ' '  X                                             X  ' ' Y                                               Y ' 'Z                                                 Z' ' Y                                               Y ' '  X                                             X  ' '   W                                           W   ' '    V                                         V    ' '     U                                       U     ' '      T                                     T      ' '       S                                   S       ' '        R                                 R        ' '         Q                               Q         ' '          P                             P          ' '           O                           O           ' '            N                         N            ' '             M                       M             ' '              L                     L              ' '               K                   K               ' '                J                 J                ' '                 I               I                 ' '                  H             H                  ' '                   G           G                   ' '                    F         F                    ' '                     E       E                     ' '                      D     D                      ' '                       C   C                       ' '                        B B                        ' '                         A                         ' )
+	result := diamondCalculator rowsLetter: 'C' .
+	self assert: result equals: #('  A  ' ' B B ' 'C   C' ' B B ' '  A  ' )
 ]
 
-{ #category : #test }
-DiamondTest >> testSmallestNondegenerateCaseWithEvenDiamondSideLength [
+{ #category : #tests }
+DiamondTest >> test04_SmallestNondegenerateCaseWithEvenDiamondSideLength [
 	| result |
 
 	result := diamondCalculator rowsLetter: 'D' .
 	self assert: result equals: #('   A   ' '  B B  ' ' C   C ' 'D     D' ' C   C ' '  B B  ' '   A   ' )
 ]
 
-{ #category : #test }
-DiamondTest >> testSmallestNondegenerateCaseWithOddDiamondSideLength [
+{ #category : #tests }
+DiamondTest >> test05_LargestPossibleDiamond [
 	| result |
 
-	result := diamondCalculator rowsLetter: 'C' .
-	self assert: result equals: #('  A  ' ' B B ' 'C   C' ' B B ' '  A  ' )
+	result := diamondCalculator rowsLetter: 'Z' .
+	self assert: result equals: #('                         A                         ' '                        B B                        ' '                       C   C                       ' '                      D     D                      ' '                     E       E                     ' '                    F         F                    ' '                   G           G                   ' '                  H             H                  ' '                 I               I                 ' '                J                 J                ' '               K                   K               ' '              L                     L              ' '             M                       M             ' '            N                         N            ' '           O                           O           ' '          P                             P          ' '         Q                               Q         ' '        R                                 R        ' '       S                                   S       ' '      T                                     T      ' '     U                                       U     ' '    V                                         V    ' '   W                                           W   ' '  X                                             X  ' ' Y                                               Y ' 'Z                                                 Z' ' Y                                               Y ' '  X                                             X  ' '   W                                           W   ' '    V                                         V    ' '     U                                       U     ' '      T                                     T      ' '       S                                   S       ' '        R                                 R        ' '         Q                               Q         ' '          P                             P          ' '           O                           O           ' '            N                         N            ' '             M                       M             ' '              L                     L              ' '               K                   K               ' '                J                 J                ' '                 I               I                 ' '                  H             H                  ' '                   G           G                   ' '                    F         F                    ' '                     E       E                     ' '                      D     D                      ' '                       C   C                       ' '                        B B                        ' '                         A                         ' )
 ]

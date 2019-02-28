@@ -47,12 +47,12 @@ Class {
 { #category : #config }
 PrimeFactorsTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'97652ada-2b3f-0d00-a300-284c09f0590c'
+	^'4a8991be-4a3f-0d00-bb62-cab6071d6982'
 ]
 
 { #category : #config }
 PrimeFactorsTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.1.0'
 ]
 
@@ -61,58 +61,58 @@ PrimeFactorsTest >> setUp [
 	primeFactorsCalculator := PrimeFactors new
 ]
 
-{ #category : #test }
-PrimeFactorsTest >> testReturnsPrimeFactorsForTheGivenInputNumberCubeOfAPrime [
-	| result |
-
-	result := primeFactorsCalculator factorsValue: 8 .
-	self assert: result equals: #(2 2 2 )
-]
-
-{ #category : #test }
-PrimeFactorsTest >> testReturnsPrimeFactorsForTheGivenInputNumberFactorsIncludeALargePrime [
-	| result |
-
-	result := primeFactorsCalculator factorsValue: 93819012551 .
-	self assert: result equals: #(11 9539 894119 )
-]
-
-{ #category : #test }
-PrimeFactorsTest >> testReturnsPrimeFactorsForTheGivenInputNumberNoFactors [
+{ #category : #tests }
+PrimeFactorsTest >> test01_ReturnsPrimeFactorsForTheGivenInputNumberNoFactors [
 	| result |
 
 	result := primeFactorsCalculator factorsValue: 1 .
 	self assert: result equals: #()
 ]
 
-{ #category : #test }
-PrimeFactorsTest >> testReturnsPrimeFactorsForTheGivenInputNumberPrimeNumber [
+{ #category : #tests }
+PrimeFactorsTest >> test02_ReturnsPrimeFactorsForTheGivenInputNumberPrimeNumber [
 	| result |
 
 	result := primeFactorsCalculator factorsValue: 2 .
 	self assert: result equals: #(2 )
 ]
 
-{ #category : #test }
-PrimeFactorsTest >> testReturnsPrimeFactorsForTheGivenInputNumberProductOfPrimes [
+{ #category : #tests }
+PrimeFactorsTest >> test03_ReturnsPrimeFactorsForTheGivenInputNumberSquareOfAPrime [
 	| result |
 
-	result := primeFactorsCalculator factorsValue: 901255 .
-	self assert: result equals: #(5 17 23 461 )
+	result := primeFactorsCalculator factorsValue: 9 .
+	self assert: result equals: #(3 3 )
 ]
 
-{ #category : #test }
-PrimeFactorsTest >> testReturnsPrimeFactorsForTheGivenInputNumberProductOfPrimesAndNonprimes [
+{ #category : #tests }
+PrimeFactorsTest >> test04_ReturnsPrimeFactorsForTheGivenInputNumberCubeOfAPrime [
+	| result |
+
+	result := primeFactorsCalculator factorsValue: 8 .
+	self assert: result equals: #(2 2 2 )
+]
+
+{ #category : #tests }
+PrimeFactorsTest >> test05_ReturnsPrimeFactorsForTheGivenInputNumberProductOfPrimesAndNonprimes [
 	| result |
 
 	result := primeFactorsCalculator factorsValue: 12 .
 	self assert: result equals: #(2 2 3 )
 ]
 
-{ #category : #test }
-PrimeFactorsTest >> testReturnsPrimeFactorsForTheGivenInputNumberSquareOfAPrime [
+{ #category : #tests }
+PrimeFactorsTest >> test06_ReturnsPrimeFactorsForTheGivenInputNumberProductOfPrimes [
 	| result |
 
-	result := primeFactorsCalculator factorsValue: 9 .
-	self assert: result equals: #(3 3 )
+	result := primeFactorsCalculator factorsValue: 901255 .
+	self assert: result equals: #(5 17 23 461 )
+]
+
+{ #category : #tests }
+PrimeFactorsTest >> test07_ReturnsPrimeFactorsForTheGivenInputNumberFactorsIncludeALargePrime [
+	| result |
+
+	result := primeFactorsCalculator factorsValue: 93819012551 .
+	self assert: result equals: #(11 9539 894119 )
 ]

@@ -28,12 +28,12 @@ Class {
 { #category : #config }
 FlattenArrayTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'10bf29da-2b3f-0d00-a2ff-d64c09f0590c'
+	^'62bc90be-4a3f-0d00-bb61-397f071d6982'
 ]
 
 { #category : #config }
 FlattenArrayTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.2.0'
 ]
 
@@ -42,50 +42,50 @@ FlattenArrayTest >> setUp [
 	flattenArrayCalculator := FlattenArray new
 ]
 
-{ #category : #test }
-FlattenArrayTest >> test5LevelNesting [
+{ #category : #tests }
+FlattenArrayTest >> test01_NoNesting [
 	| result |
 
-	result := flattenArrayCalculator flattenArray: #(0 2 #(#(2 3 ) 8 100 4 #(#(#(50 ) ) ) )  -2 ) .
-	self assert: result equals: #(0 2 2 3 8 100 4 50  -2 )
+	result := flattenArrayCalculator flattenArray: #(0 1 2 ) .
+	self assert: result equals: #(0 1 2 )
 ]
 
-{ #category : #test }
-FlattenArrayTest >> test6LevelNestListWithNullValues [
-	| result |
-
-	result := flattenArrayCalculator flattenArray: #(0 2 #(#(2 3 ) 8 #(#(100 ) ) nil #(#(nil ) ) )  -2 ) .
-	self assert: result equals: #(0 2 2 3 8 100  -2 )
-]
-
-{ #category : #test }
-FlattenArrayTest >> test6LevelNesting [
-	| result |
-
-	result := flattenArrayCalculator flattenArray: #(1 #(2 #(#(3 ) ) #(4 #(#(5 ) ) ) 6 7 ) 8 ) .
-	self assert: result equals: #(1 2 3 4 5 6 7 8 )
-]
-
-{ #category : #test }
-FlattenArrayTest >> testAllValuesInNestedListAreNull [
-	| result |
-
-	result := flattenArrayCalculator flattenArray: #(nil #(#(#(nil ) ) ) nil nil #(#(nil nil ) nil ) nil ) .
-	self assert: result equals: #()
-]
-
-{ #category : #test }
-FlattenArrayTest >> testFlattensArrayWithJustIntegersPresent [
+{ #category : #tests }
+FlattenArrayTest >> test02_FlattensArrayWithJustIntegersPresent [
 	| result |
 
 	result := flattenArrayCalculator flattenArray: #(1 #(2 3 4 5 6 7 ) 8 ) .
 	self assert: result equals: #(1 2 3 4 5 6 7 8 )
 ]
 
-{ #category : #test }
-FlattenArrayTest >> testNoNesting [
+{ #category : #tests }
+FlattenArrayTest >> test03_and5LevelNesting [
 	| result |
 
-	result := flattenArrayCalculator flattenArray: #(0 1 2 ) .
-	self assert: result equals: #(0 1 2 )
+	result := flattenArrayCalculator flattenArray: #(0 2 #(#(2 3 ) 8 100 4 #(#(#(50 ) ) ) )  -2 ) .
+	self assert: result equals: #(0 2 2 3 8 100 4 50  -2 )
+]
+
+{ #category : #tests }
+FlattenArrayTest >> test04_and6LevelNesting [
+	| result |
+
+	result := flattenArrayCalculator flattenArray: #(1 #(2 #(#(3 ) ) #(4 #(#(5 ) ) ) 6 7 ) 8 ) .
+	self assert: result equals: #(1 2 3 4 5 6 7 8 )
+]
+
+{ #category : #tests }
+FlattenArrayTest >> test05_and6LevelNestListWithNullValues [
+	| result |
+
+	result := flattenArrayCalculator flattenArray: #(0 2 #(#(2 3 ) 8 #(#(100 ) ) nil #(#(nil ) ) )  -2 ) .
+	self assert: result equals: #(0 2 2 3 8 100  -2 )
+]
+
+{ #category : #tests }
+FlattenArrayTest >> test06_AllValuesInNestedListAreNull [
+	| result |
+
+	result := flattenArrayCalculator flattenArray: #(nil #(#(#(nil ) ) ) nil nil #(#(nil nil ) nil ) nil ) .
+	self assert: result equals: #()
 ]

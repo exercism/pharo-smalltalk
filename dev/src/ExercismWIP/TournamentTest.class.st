@@ -82,12 +82,12 @@ Class {
 { #category : #config }
 TournamentTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'3baefed9-2b3f-0d00-a2d8-be9d09f0590c'
+	^'392b58be-4a3f-0d00-bb3c-0152071d6982'
 ]
 
 { #category : #config }
 TournamentTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.4.0'
 ]
 
@@ -96,90 +96,90 @@ TournamentTest >> setUp [
 	tournamentCalculator := Tournament new
 ]
 
-{ #category : #test }
-TournamentTest >> testADifferentTeamCanWin [
-	| result |
-
-	result := tournamentCalculator tallyRows: #('Blithering Badgers;Allegoric Alaskans;win' ) .
-	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Blithering Badgers             |  1 |  1 |  0 |  0 |  3' 'Allegoric Alaskans             |  1 |  0 |  0 |  1 |  0' )
-]
-
-{ #category : #test }
-TournamentTest >> testADrawIsOnePointEach [
-	| result |
-
-	result := tournamentCalculator tallyRows: #('Allegoric Alaskans;Blithering Badgers;draw' ) .
-	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Allegoric Alaskans             |  1 |  0 |  1 |  0 |  1' 'Blithering Badgers             |  1 |  0 |  1 |  0 |  1' )
-]
-
-{ #category : #test }
-TournamentTest >> testAWinCanAlsoBeExpressedAsALoss [
-	| result |
-
-	result := tournamentCalculator tallyRows: #('Blithering Badgers;Allegoric Alaskans;loss' ) .
-	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3' 'Blithering Badgers             |  1 |  0 |  0 |  1 |  0' )
-]
-
-{ #category : #test }
-TournamentTest >> testAWinIsThreePointsALossIsZeroPoints [
-	| result |
-
-	result := tournamentCalculator tallyRows: #('Allegoric Alaskans;Blithering Badgers;win' ) .
-	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3' 'Blithering Badgers             |  1 |  0 |  0 |  1 |  0' )
-]
-
-{ #category : #test }
-TournamentTest >> testIncompleteCompetitionnotAllPairsHavePlayed [
-	| result |
-
-	result := tournamentCalculator tallyRows: #('Allegoric Alaskans;Blithering Badgers;loss' 'Devastating Donkeys;Allegoric Alaskans;loss' 'Courageous Californians;Blithering Badgers;draw' 'Allegoric Alaskans;Courageous Californians;win' ) .
-	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Allegoric Alaskans             |  3 |  2 |  0 |  1 |  6' 'Blithering Badgers             |  2 |  1 |  1 |  0 |  4' 'Courageous Californians        |  2 |  0 |  1 |  1 |  1' 'Devastating Donkeys            |  1 |  0 |  0 |  1 |  0' )
-]
-
-{ #category : #test }
-TournamentTest >> testJustTheHeaderIfNoInput [
+{ #category : #tests }
+TournamentTest >> test01_JustTheHeaderIfNoInput [
 	| result |
 
 	result := tournamentCalculator tallyRows: #() .
 	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' )
 ]
 
-{ #category : #test }
-TournamentTest >> testThereCanBeMoreThanOneMatch [
+{ #category : #tests }
+TournamentTest >> test02_AWinIsThreePointsALossIsZeroPoints [
+	| result |
+
+	result := tournamentCalculator tallyRows: #('Allegoric Alaskans;Blithering Badgers;win' ) .
+	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3' 'Blithering Badgers             |  1 |  0 |  0 |  1 |  0' )
+]
+
+{ #category : #tests }
+TournamentTest >> test03_AWinCanAlsoBeExpressedAsALoss [
+	| result |
+
+	result := tournamentCalculator tallyRows: #('Blithering Badgers;Allegoric Alaskans;loss' ) .
+	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3' 'Blithering Badgers             |  1 |  0 |  0 |  1 |  0' )
+]
+
+{ #category : #tests }
+TournamentTest >> test04_ADifferentTeamCanWin [
+	| result |
+
+	result := tournamentCalculator tallyRows: #('Blithering Badgers;Allegoric Alaskans;win' ) .
+	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Blithering Badgers             |  1 |  1 |  0 |  0 |  3' 'Allegoric Alaskans             |  1 |  0 |  0 |  1 |  0' )
+]
+
+{ #category : #tests }
+TournamentTest >> test05_ADrawIsOnePointEach [
+	| result |
+
+	result := tournamentCalculator tallyRows: #('Allegoric Alaskans;Blithering Badgers;draw' ) .
+	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Allegoric Alaskans             |  1 |  0 |  1 |  0 |  1' 'Blithering Badgers             |  1 |  0 |  1 |  0 |  1' )
+]
+
+{ #category : #tests }
+TournamentTest >> test06_ThereCanBeMoreThanOneMatch [
 	| result |
 
 	result := tournamentCalculator tallyRows: #('Allegoric Alaskans;Blithering Badgers;win' 'Allegoric Alaskans;Blithering Badgers;win' ) .
 	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6' 'Blithering Badgers             |  2 |  0 |  0 |  2 |  0' )
 ]
 
-{ #category : #test }
-TournamentTest >> testThereCanBeMoreThanOneWinner [
+{ #category : #tests }
+TournamentTest >> test07_ThereCanBeMoreThanOneWinner [
 	| result |
 
 	result := tournamentCalculator tallyRows: #('Allegoric Alaskans;Blithering Badgers;loss' 'Allegoric Alaskans;Blithering Badgers;win' ) .
 	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Allegoric Alaskans             |  2 |  1 |  0 |  1 |  3' 'Blithering Badgers             |  2 |  1 |  0 |  1 |  3' )
 ]
 
-{ #category : #test }
-TournamentTest >> testThereCanBeMoreThanTwoTeams [
+{ #category : #tests }
+TournamentTest >> test08_ThereCanBeMoreThanTwoTeams [
 	| result |
 
 	result := tournamentCalculator tallyRows: #('Allegoric Alaskans;Blithering Badgers;win' 'Blithering Badgers;Courageous Californians;win' 'Courageous Californians;Allegoric Alaskans;loss' ) .
 	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6' 'Blithering Badgers             |  2 |  1 |  0 |  1 |  3' 'Courageous Californians        |  2 |  0 |  0 |  2 |  0' )
 ]
 
-{ #category : #test }
-TournamentTest >> testTiesBrokenAlphabetically [
-	| result |
-
-	result := tournamentCalculator tallyRows: #('Courageous Californians;Devastating Donkeys;win' 'Allegoric Alaskans;Blithering Badgers;win' 'Devastating Donkeys;Allegoric Alaskans;loss' 'Courageous Californians;Blithering Badgers;win' 'Blithering Badgers;Devastating Donkeys;draw' 'Allegoric Alaskans;Courageous Californians;draw' ) .
-	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Allegoric Alaskans             |  3 |  2 |  1 |  0 |  7' 'Courageous Californians        |  3 |  2 |  1 |  0 |  7' 'Blithering Badgers             |  3 |  0 |  1 |  2 |  1' 'Devastating Donkeys            |  3 |  0 |  1 |  2 |  1' )
-]
-
-{ #category : #test }
-TournamentTest >> testTypicalInput [
+{ #category : #tests }
+TournamentTest >> test09_TypicalInput [
 	| result |
 
 	result := tournamentCalculator tallyRows: #('Allegoric Alaskans;Blithering Badgers;win' 'Devastating Donkeys;Courageous Californians;draw' 'Devastating Donkeys;Allegoric Alaskans;win' 'Courageous Californians;Blithering Badgers;loss' 'Blithering Badgers;Devastating Donkeys;loss' 'Allegoric Alaskans;Courageous Californians;win' ) .
 	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Devastating Donkeys            |  3 |  2 |  1 |  0 |  7' 'Allegoric Alaskans             |  3 |  2 |  0 |  1 |  6' 'Blithering Badgers             |  3 |  1 |  0 |  2 |  3' 'Courageous Californians        |  3 |  0 |  1 |  2 |  1' )
+]
+
+{ #category : #tests }
+TournamentTest >> test10_IncompleteCompetitionnotAllPairsHavePlayed [
+	| result |
+
+	result := tournamentCalculator tallyRows: #('Allegoric Alaskans;Blithering Badgers;loss' 'Devastating Donkeys;Allegoric Alaskans;loss' 'Courageous Californians;Blithering Badgers;draw' 'Allegoric Alaskans;Courageous Californians;win' ) .
+	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Allegoric Alaskans             |  3 |  2 |  0 |  1 |  6' 'Blithering Badgers             |  2 |  1 |  1 |  0 |  4' 'Courageous Californians        |  2 |  0 |  1 |  1 |  1' 'Devastating Donkeys            |  1 |  0 |  0 |  1 |  0' )
+]
+
+{ #category : #tests }
+TournamentTest >> test11_TiesBrokenAlphabetically [
+	| result |
+
+	result := tournamentCalculator tallyRows: #('Courageous Californians;Devastating Donkeys;win' 'Allegoric Alaskans;Blithering Badgers;win' 'Devastating Donkeys;Allegoric Alaskans;loss' 'Courageous Californians;Blithering Badgers;win' 'Blithering Badgers;Devastating Donkeys;draw' 'Allegoric Alaskans;Courageous Californians;draw' ) .
+	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Allegoric Alaskans             |  3 |  2 |  1 |  0 |  7' 'Courageous Californians        |  3 |  2 |  1 |  0 |  7' 'Blithering Badgers             |  3 |  0 |  1 |  2 |  1' 'Devastating Donkeys            |  3 |  0 |  1 |  2 |  1' )
 ]

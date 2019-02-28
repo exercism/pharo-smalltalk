@@ -55,12 +55,12 @@ Class {
 { #category : #config }
 PovTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'17f5dad9-2b3f-0d00-a2b2-3e7409f0590c'
+	^'2f5c25be-4a3f-0d00-bb16-a76f071d6982'
 ]
 
 { #category : #config }
 PovTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.3.0'
 ]
 
@@ -69,122 +69,122 @@ PovTest >> setUp [
 	povCalculator := Pov new
 ]
 
-{ #category : #test }
-PovTest >> testGivenTwoNodesFindThePathBetweenThemCanFindPathFromNodesOtherThanX [
-	| result |
-
-	result := povCalculator pathToFrom: 'a' to: 'c' tree: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 4) at: 1 put: ((Dictionary new) add: ('label'->'a'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'x'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'b'); yourself); at: 4 put: ((Dictionary new) add: ('label'->'c'); yourself); yourself)); yourself) .
-	self assert: result equals: #('a' 'parent' 'c' )
-]
-
-{ #category : #test }
-PovTest >> testGivenTwoNodesFindThePathBetweenThemCanFindPathNotInvolvingRoot [
-	| result |
-
-	result := povCalculator pathToFrom: 'x' to: 'sibling-1' tree: ((Dictionary new) add: ('label'->'grandparent'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('label'->'x'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'sibling-0'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'sibling-1'); yourself); yourself)); yourself); yourself)); yourself) .
-	self assert: result equals: #('x' 'parent' 'sibling-1' )
-]
-
-{ #category : #test }
-PovTest >> testGivenTwoNodesFindThePathBetweenThemCanFindPathToCousin [
-	| result |
-
-	result := povCalculator pathToFrom: 'x' to: 'cousin-1' tree: ((Dictionary new) add: ('label'->'grandparent'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('label'->'x'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'kid-0'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'kid-1'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('label'->'sibling-0'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'sibling-1'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('label'->'uncle'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'cousin-0'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'cousin-1'); yourself); yourself)); yourself); yourself)); yourself) .
-	self assert: result equals: #('x' 'parent' 'grandparent' 'uncle' 'cousin-1' )
-]
-
-{ #category : #test }
-PovTest >> testGivenTwoNodesFindThePathBetweenThemCanFindPathToParent [
+{ #category : #tests }
+PovTest >> test01_GivenTwoNodesFindThePathBetweenThemCanFindPathToParent [
 	| result |
 
 	result := povCalculator pathToFrom: 'x' to: 'parent' tree: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'x'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'sibling'); yourself); yourself)); yourself) .
 	self assert: result equals: #('x' 'parent' )
 ]
 
-{ #category : #test }
-PovTest >> testGivenTwoNodesFindThePathBetweenThemCanFindPathToSibling [
+{ #category : #tests }
+PovTest >> test01_RerootATreeSoThatItsRootIsTheSpecifiedNodeResultsInTheSameTreeIfTheInputTreeIsASingleton [
+	| result |
+
+	result := povCalculator fromPovTree: ((Dictionary new) add: ('label'->'x'); yourself) from: 'x' .
+	self assert: result equals: ((Dictionary new) add: ('label'->'x'); yourself)
+]
+
+{ #category : #tests }
+PovTest >> test02_GivenTwoNodesFindThePathBetweenThemCanFindPathToSibling [
 	| result |
 
 	result := povCalculator pathToFrom: 'x' to: 'b' tree: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 4) at: 1 put: ((Dictionary new) add: ('label'->'a'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'x'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'b'); yourself); at: 4 put: ((Dictionary new) add: ('label'->'c'); yourself); yourself)); yourself) .
 	self assert: result equals: #('x' 'parent' 'b' )
 ]
 
-{ #category : #test }
-PovTest >> testGivenTwoNodesFindThePathBetweenThemErrorsIfDestinationDoesNotExist [
-	| result |
-
-	result := povCalculator pathToFrom: 'x' to: 'nonexistent' tree: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('label'->'x'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'kid-0'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'kid-1'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('label'->'sibling-0'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'sibling-1'); yourself); yourself)); yourself) .
-	self assert: result equals: nil
-]
-
-{ #category : #test }
-PovTest >> testGivenTwoNodesFindThePathBetweenThemErrorsIfSourceDoesNotExist [
-	| result |
-
-	result := povCalculator pathToFrom: 'nonexistent' to: 'x' tree: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('label'->'x'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'kid-0'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'kid-1'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('label'->'sibling-0'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'sibling-1'); yourself); yourself)); yourself) .
-	self assert: result equals: nil
-]
-
-{ #category : #test }
-PovTest >> testRerootATreeSoThatItsRootIsTheSpecifiedNodeCanRerootAComplexTreeWithCousins [
-	| result |
-
-	result := povCalculator fromPovTree: ((Dictionary new) add: ('label'->'grandparent'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('label'->'x'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'kid-0'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'kid-1'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('label'->'sibling-0'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'sibling-1'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('label'->'uncle'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'cousin-0'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'cousin-1'); yourself); yourself)); yourself); yourself)); yourself) from: 'x' .
-	self assert: result equals: ((Dictionary new) add: ('label'->'x'); add: ('children'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('label'->'kid-1'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'kid-0'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('label'->'sibling-0'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'sibling-1'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'grandparent'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'uncle'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'cousin-0'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'cousin-1'); yourself); yourself)); yourself); yourself)); yourself); yourself)); yourself); yourself)); yourself)
-]
-
-{ #category : #test }
-PovTest >> testRerootATreeSoThatItsRootIsTheSpecifiedNodeCanRerootATreeWithAParentAndManySiblings [
-	| result |
-
-	result := povCalculator fromPovTree: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 4) at: 1 put: ((Dictionary new) add: ('label'->'a'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'x'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'b'); yourself); at: 4 put: ((Dictionary new) add: ('label'->'c'); yourself); yourself)); yourself) from: 'x' .
-	self assert: result equals: ((Dictionary new) add: ('label'->'x'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('label'->'a'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'b'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'c'); yourself); yourself)); yourself); yourself)); yourself)
-]
-
-{ #category : #test }
-PovTest >> testRerootATreeSoThatItsRootIsTheSpecifiedNodeCanRerootATreeWithAParentAndOneSibling [
+{ #category : #tests }
+PovTest >> test02_RerootATreeSoThatItsRootIsTheSpecifiedNodeCanRerootATreeWithAParentAndOneSibling [
 	| result |
 
 	result := povCalculator fromPovTree: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'x'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'sibling'); yourself); yourself)); yourself) from: 'x' .
 	self assert: result equals: ((Dictionary new) add: ('label'->'x'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'sibling'); yourself); yourself)); yourself); yourself)); yourself)
 ]
 
-{ #category : #test }
-PovTest >> testRerootATreeSoThatItsRootIsTheSpecifiedNodeCanRerootATreeWithNewRootDeeplyNestedInTree [
+{ #category : #tests }
+PovTest >> test03_GivenTwoNodesFindThePathBetweenThemCanFindPathToCousin [
+	| result |
+
+	result := povCalculator pathToFrom: 'x' to: 'cousin-1' tree: ((Dictionary new) add: ('label'->'grandparent'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('label'->'x'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'kid-0'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'kid-1'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('label'->'sibling-0'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'sibling-1'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('label'->'uncle'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'cousin-0'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'cousin-1'); yourself); yourself)); yourself); yourself)); yourself) .
+	self assert: result equals: #('x' 'parent' 'grandparent' 'uncle' 'cousin-1' )
+]
+
+{ #category : #tests }
+PovTest >> test03_RerootATreeSoThatItsRootIsTheSpecifiedNodeCanRerootATreeWithAParentAndManySiblings [
+	| result |
+
+	result := povCalculator fromPovTree: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 4) at: 1 put: ((Dictionary new) add: ('label'->'a'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'x'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'b'); yourself); at: 4 put: ((Dictionary new) add: ('label'->'c'); yourself); yourself)); yourself) from: 'x' .
+	self assert: result equals: ((Dictionary new) add: ('label'->'x'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('label'->'a'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'b'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'c'); yourself); yourself)); yourself); yourself)); yourself)
+]
+
+{ #category : #tests }
+PovTest >> test04_GivenTwoNodesFindThePathBetweenThemCanFindPathNotInvolvingRoot [
+	| result |
+
+	result := povCalculator pathToFrom: 'x' to: 'sibling-1' tree: ((Dictionary new) add: ('label'->'grandparent'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('label'->'x'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'sibling-0'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'sibling-1'); yourself); yourself)); yourself); yourself)); yourself) .
+	self assert: result equals: #('x' 'parent' 'sibling-1' )
+]
+
+{ #category : #tests }
+PovTest >> test04_RerootATreeSoThatItsRootIsTheSpecifiedNodeCanRerootATreeWithNewRootDeeplyNestedInTree [
 	| result |
 
 	result := povCalculator fromPovTree: ((Dictionary new) add: ('label'->'level-0'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'level-1'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'level-2'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'level-3'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'x'); yourself); yourself)); yourself); yourself)); yourself); yourself)); yourself); yourself)); yourself) from: 'x' .
 	self assert: result equals: ((Dictionary new) add: ('label'->'x'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'level-3'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'level-2'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'level-1'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'level-0'); yourself); yourself)); yourself); yourself)); yourself); yourself)); yourself); yourself)); yourself)
 ]
 
-{ #category : #test }
-PovTest >> testRerootATreeSoThatItsRootIsTheSpecifiedNodeErrorsIfTargetDoesNotExistInALargeTree [
+{ #category : #tests }
+PovTest >> test05_GivenTwoNodesFindThePathBetweenThemCanFindPathFromNodesOtherThanX [
 	| result |
 
-	result := povCalculator fromPovTree: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('label'->'x'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'kid-0'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'kid-1'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('label'->'sibling-0'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'sibling-1'); yourself); yourself)); yourself) from: 'nonexistent' .
-	self assert: result equals: nil
+	result := povCalculator pathToFrom: 'a' to: 'c' tree: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 4) at: 1 put: ((Dictionary new) add: ('label'->'a'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'x'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'b'); yourself); at: 4 put: ((Dictionary new) add: ('label'->'c'); yourself); yourself)); yourself) .
+	self assert: result equals: #('a' 'parent' 'c' )
 ]
 
-{ #category : #test }
-PovTest >> testRerootATreeSoThatItsRootIsTheSpecifiedNodeErrorsIfTargetDoesNotExistInASingletonTree [
-	| result |
-
-	result := povCalculator fromPovTree: ((Dictionary new) add: ('label'->'x'); yourself) from: 'nonexistent' .
-	self assert: result equals: nil
-]
-
-{ #category : #test }
-PovTest >> testRerootATreeSoThatItsRootIsTheSpecifiedNodeMovesChildrenOfTheNewRootToSameLevelAsFormerParent [
+{ #category : #tests }
+PovTest >> test05_RerootATreeSoThatItsRootIsTheSpecifiedNodeMovesChildrenOfTheNewRootToSameLevelAsFormerParent [
 	| result |
 
 	result := povCalculator fromPovTree: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'x'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'kid-0'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'kid-1'); yourself); yourself)); yourself); yourself)); yourself) from: 'x' .
 	self assert: result equals: ((Dictionary new) add: ('label'->'x'); add: ('children'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('label'->'kid-0'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'kid-1'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'parent'); yourself); yourself)); yourself)
 ]
 
-{ #category : #test }
-PovTest >> testRerootATreeSoThatItsRootIsTheSpecifiedNodeResultsInTheSameTreeIfTheInputTreeIsASingleton [
+{ #category : #tests }
+PovTest >> test06_GivenTwoNodesFindThePathBetweenThemErrorsIfDestinationDoesNotExist [
 	| result |
 
-	result := povCalculator fromPovTree: ((Dictionary new) add: ('label'->'x'); yourself) from: 'x' .
-	self assert: result equals: ((Dictionary new) add: ('label'->'x'); yourself)
+	result := povCalculator pathToFrom: 'x' to: 'nonexistent' tree: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('label'->'x'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'kid-0'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'kid-1'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('label'->'sibling-0'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'sibling-1'); yourself); yourself)); yourself) .
+	self assert: result equals: nil
+]
+
+{ #category : #tests }
+PovTest >> test06_RerootATreeSoThatItsRootIsTheSpecifiedNodeCanRerootAComplexTreeWithCousins [
+	| result |
+
+	result := povCalculator fromPovTree: ((Dictionary new) add: ('label'->'grandparent'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('label'->'x'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'kid-0'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'kid-1'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('label'->'sibling-0'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'sibling-1'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('label'->'uncle'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'cousin-0'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'cousin-1'); yourself); yourself)); yourself); yourself)); yourself) from: 'x' .
+	self assert: result equals: ((Dictionary new) add: ('label'->'x'); add: ('children'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('label'->'kid-1'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'kid-0'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('label'->'sibling-0'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'sibling-1'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'grandparent'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'uncle'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'cousin-0'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'cousin-1'); yourself); yourself)); yourself); yourself)); yourself); yourself)); yourself); yourself)); yourself)
+]
+
+{ #category : #tests }
+PovTest >> test07_GivenTwoNodesFindThePathBetweenThemErrorsIfSourceDoesNotExist [
+	| result |
+
+	result := povCalculator pathToFrom: 'nonexistent' to: 'x' tree: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('label'->'x'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'kid-0'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'kid-1'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('label'->'sibling-0'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'sibling-1'); yourself); yourself)); yourself) .
+	self assert: result equals: nil
+]
+
+{ #category : #tests }
+PovTest >> test07_RerootATreeSoThatItsRootIsTheSpecifiedNodeErrorsIfTargetDoesNotExistInASingletonTree [
+	| result |
+
+	result := povCalculator fromPovTree: ((Dictionary new) add: ('label'->'x'); yourself) from: 'nonexistent' .
+	self assert: result equals: nil
+]
+
+{ #category : #tests }
+PovTest >> test08_RerootATreeSoThatItsRootIsTheSpecifiedNodeErrorsIfTargetDoesNotExistInALargeTree [
+	| result |
+
+	result := povCalculator fromPovTree: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('label'->'x'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'kid-0'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'kid-1'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('label'->'sibling-0'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'sibling-1'); yourself); yourself)); yourself) from: 'nonexistent' .
+	self assert: result equals: nil
 ]

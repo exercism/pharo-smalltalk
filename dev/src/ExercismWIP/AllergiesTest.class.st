@@ -47,12 +47,12 @@ Class {
 { #category : #config }
 AllergiesTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'23f72dda-2b3f-0d00-a303-8a3409f0590c'
+	^'a74e96be-4a3f-0d00-bb65-6c76071d6982'
 ]
 
 { #category : #config }
 AllergiesTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.2.0'
 ]
 
@@ -61,106 +61,106 @@ AllergiesTest >> setUp [
 	allergiesCalculator := Allergies new
 ]
 
-{ #category : #test }
-AllergiesTest >> testAllergicToAllergicToEggsInAdditionToOtherStuff [
-	| result |
-
-	result := allergiesCalculator allergicToScore: 5 .
-	self assert: result equals: ((Array new: 3) at: 1 put: ((Dictionary new) add: ('substance'->'eggs'); add: ('result'->true); yourself); at: 2 put: ((Dictionary new) add: ('substance'->'shellfish'); add: ('result'->true); yourself); at: 3 put: ((Dictionary new) add: ('substance'->'strawberries'); add: ('result'->false); yourself); yourself)
-]
-
-{ #category : #test }
-AllergiesTest >> testAllergicToAllergicToStrawberriesButNotPeanuts [
-	| result |
-
-	result := allergiesCalculator allergicToScore: 9 .
-	self assert: result equals: ((Array new: 4) at: 1 put: ((Dictionary new) add: ('substance'->'eggs'); add: ('result'->true); yourself); at: 2 put: ((Dictionary new) add: ('substance'->'peanuts'); add: ('result'->false); yourself); at: 3 put: ((Dictionary new) add: ('substance'->'shellfish'); add: ('result'->false); yourself); at: 4 put: ((Dictionary new) add: ('substance'->'strawberries'); add: ('result'->true); yourself); yourself)
-]
-
-{ #category : #test }
-AllergiesTest >> testAllergicToIsAllergicToEggs [
-	| result |
-
-	result := allergiesCalculator allergicToScore: 1 .
-	self assert: result equals: ((Array new: 1) at: 1 put: ((Dictionary new) add: ('substance'->'eggs'); add: ('result'->true); yourself); yourself)
-]
-
-{ #category : #test }
-AllergiesTest >> testAllergicToNoAllergiesMeansNotAllergic [
+{ #category : #tests }
+AllergiesTest >> test01_AllergicToNoAllergiesMeansNotAllergic [
 	| result |
 
 	result := allergiesCalculator allergicToScore: 0 .
 	self assert: result equals: ((Array new: 3) at: 1 put: ((Dictionary new) add: ('substance'->'peanuts'); add: ('result'->false); yourself); at: 2 put: ((Dictionary new) add: ('substance'->'cats'); add: ('result'->false); yourself); at: 3 put: ((Dictionary new) add: ('substance'->'strawberries'); add: ('result'->false); yourself); yourself)
 ]
 
-{ #category : #test }
-AllergiesTest >> testListAllergicToEggsAndPeanuts [
+{ #category : #tests }
+AllergiesTest >> test01_ListNoAllergiesAtAll [
 	| result |
 
-	result := allergiesCalculator listScore: 3 .
-	self assert: result equals: #('eggs' 'peanuts' )
+	result := allergiesCalculator listScore: 0 .
+	self assert: result equals: #()
 ]
 
-{ #category : #test }
-AllergiesTest >> testListAllergicToEverything [
+{ #category : #tests }
+AllergiesTest >> test02_AllergicToIsAllergicToEggs [
 	| result |
 
-	result := allergiesCalculator listScore: 255 .
-	self assert: result equals: #('eggs' 'peanuts' 'shellfish' 'strawberries' 'tomatoes' 'chocolate' 'pollen' 'cats' )
+	result := allergiesCalculator allergicToScore: 1 .
+	self assert: result equals: ((Array new: 1) at: 1 put: ((Dictionary new) add: ('substance'->'eggs'); add: ('result'->true); yourself); yourself)
 ]
 
-{ #category : #test }
-AllergiesTest >> testListAllergicToJustEggs [
+{ #category : #tests }
+AllergiesTest >> test02_ListAllergicToJustEggs [
 	| result |
 
 	result := allergiesCalculator listScore: 1 .
 	self assert: result equals: #('eggs' )
 ]
 
-{ #category : #test }
-AllergiesTest >> testListAllergicToJustPeanuts [
+{ #category : #tests }
+AllergiesTest >> test03_AllergicToAllergicToEggsInAdditionToOtherStuff [
+	| result |
+
+	result := allergiesCalculator allergicToScore: 5 .
+	self assert: result equals: ((Array new: 3) at: 1 put: ((Dictionary new) add: ('substance'->'eggs'); add: ('result'->true); yourself); at: 2 put: ((Dictionary new) add: ('substance'->'shellfish'); add: ('result'->true); yourself); at: 3 put: ((Dictionary new) add: ('substance'->'strawberries'); add: ('result'->false); yourself); yourself)
+]
+
+{ #category : #tests }
+AllergiesTest >> test03_ListAllergicToJustPeanuts [
 	| result |
 
 	result := allergiesCalculator listScore: 2 .
 	self assert: result equals: #('peanuts' )
 ]
 
-{ #category : #test }
-AllergiesTest >> testListAllergicToJustStrawberries [
+{ #category : #tests }
+AllergiesTest >> test04_AllergicToAllergicToStrawberriesButNotPeanuts [
+	| result |
+
+	result := allergiesCalculator allergicToScore: 9 .
+	self assert: result equals: ((Array new: 4) at: 1 put: ((Dictionary new) add: ('substance'->'eggs'); add: ('result'->true); yourself); at: 2 put: ((Dictionary new) add: ('substance'->'peanuts'); add: ('result'->false); yourself); at: 3 put: ((Dictionary new) add: ('substance'->'shellfish'); add: ('result'->false); yourself); at: 4 put: ((Dictionary new) add: ('substance'->'strawberries'); add: ('result'->true); yourself); yourself)
+]
+
+{ #category : #tests }
+AllergiesTest >> test04_ListAllergicToJustStrawberries [
 	| result |
 
 	result := allergiesCalculator listScore: 8 .
 	self assert: result equals: #('strawberries' )
 ]
 
-{ #category : #test }
-AllergiesTest >> testListAllergicToLotsOfStuff [
+{ #category : #tests }
+AllergiesTest >> test05_ListAllergicToEggsAndPeanuts [
 	| result |
 
-	result := allergiesCalculator listScore: 248 .
-	self assert: result equals: #('strawberries' 'tomatoes' 'chocolate' 'pollen' 'cats' )
+	result := allergiesCalculator listScore: 3 .
+	self assert: result equals: #('eggs' 'peanuts' )
 ]
 
-{ #category : #test }
-AllergiesTest >> testListAllergicToMoreThanEggsButNotPeanuts [
+{ #category : #tests }
+AllergiesTest >> test06_ListAllergicToMoreThanEggsButNotPeanuts [
 	| result |
 
 	result := allergiesCalculator listScore: 5 .
 	self assert: result equals: #('eggs' 'shellfish' )
 ]
 
-{ #category : #test }
-AllergiesTest >> testListIgnoreNonAllergenScoreParts [
+{ #category : #tests }
+AllergiesTest >> test07_ListAllergicToLotsOfStuff [
+	| result |
+
+	result := allergiesCalculator listScore: 248 .
+	self assert: result equals: #('strawberries' 'tomatoes' 'chocolate' 'pollen' 'cats' )
+]
+
+{ #category : #tests }
+AllergiesTest >> test08_ListAllergicToEverything [
+	| result |
+
+	result := allergiesCalculator listScore: 255 .
+	self assert: result equals: #('eggs' 'peanuts' 'shellfish' 'strawberries' 'tomatoes' 'chocolate' 'pollen' 'cats' )
+]
+
+{ #category : #tests }
+AllergiesTest >> test09_ListIgnoreNonAllergenScoreParts [
 	| result |
 
 	result := allergiesCalculator listScore: 509 .
 	self assert: result equals: #('eggs' 'shellfish' 'strawberries' 'tomatoes' 'chocolate' 'pollen' 'cats' )
-]
-
-{ #category : #test }
-AllergiesTest >> testListNoAllergiesAtAll [
-	| result |
-
-	result := allergiesCalculator listScore: 0 .
-	self assert: result equals: #()
 ]

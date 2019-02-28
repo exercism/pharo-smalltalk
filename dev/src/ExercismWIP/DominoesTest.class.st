@@ -32,12 +32,12 @@ Class {
 { #category : #config }
 DominoesTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'85f405da-2b3f-0d00-a2e0-477a09f0590c'
+	^'833366be-4a3f-0d00-bb44-0c73071d6982'
 ]
 
 { #category : #config }
 DominoesTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'2.1.0'
 ]
 
@@ -46,98 +46,98 @@ DominoesTest >> setUp [
 	dominoesCalculator := Dominoes new
 ]
 
-{ #category : #test }
-DominoesTest >> testCanReverseDominoes [
-	| result |
-
-	result := dominoesCalculator canChainDominoes: #(#(1 2 ) #(1 3 ) #(2 3 ) ) .
-	self assert: result equals: true
-]
-
-{ #category : #test }
-DominoesTest >> testCantBeChained [
-	| result |
-
-	result := dominoesCalculator canChainDominoes: #(#(1 2 ) #(4 1 ) #(2 3 ) ) .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-DominoesTest >> testDisconnectedDoubleLoop [
-	| result |
-
-	result := dominoesCalculator canChainDominoes: #(#(1 2 ) #(2 1 ) #(3 4 ) #(4 3 ) ) .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-DominoesTest >> testDisconnectedSimple [
-	| result |
-
-	result := dominoesCalculator canChainDominoes: #(#(1 1 ) #(2 2 ) ) .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-DominoesTest >> testDisconnectedSingleIsolated [
-	| result |
-
-	result := dominoesCalculator canChainDominoes: #(#(1 2 ) #(2 3 ) #(3 1 ) #(4 4 ) ) .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-DominoesTest >> testEmptyInputEmptyOutput [
+{ #category : #tests }
+DominoesTest >> test01_EmptyInputEmptyOutput [
 	| result |
 
 	result := dominoesCalculator canChainDominoes: #() .
 	self assert: result equals: true
 ]
 
-{ #category : #test }
-DominoesTest >> testNeedBacktrack [
-	| result |
-
-	result := dominoesCalculator canChainDominoes: #(#(1 2 ) #(2 3 ) #(3 1 ) #(2 4 ) #(2 4 ) ) .
-	self assert: result equals: true
-]
-
-{ #category : #test }
-DominoesTest >> testNineElements [
-	| result |
-
-	result := dominoesCalculator canChainDominoes: #(#(1 2 ) #(5 3 ) #(3 1 ) #(1 2 ) #(2 4 ) #(1 6 ) #(2 3 ) #(3 4 ) #(5 6 ) ) .
-	self assert: result equals: true
-]
-
-{ #category : #test }
-DominoesTest >> testSeparateLoops [
-	| result |
-
-	result := dominoesCalculator canChainDominoes: #(#(1 2 ) #(2 3 ) #(3 1 ) #(1 1 ) #(2 2 ) #(3 3 ) ) .
-	self assert: result equals: true
-]
-
-{ #category : #test }
-DominoesTest >> testSingletonInputSingletonOutput [
+{ #category : #tests }
+DominoesTest >> test02_SingletonInputSingletonOutput [
 	| result |
 
 	result := dominoesCalculator canChainDominoes: #(#(1 1 ) ) .
 	self assert: result equals: true
 ]
 
-{ #category : #test }
-DominoesTest >> testSingletonThatCantBeChained [
+{ #category : #tests }
+DominoesTest >> test03_SingletonThatCantBeChained [
 	| result |
 
 	result := dominoesCalculator canChainDominoes: #(#(1 2 ) ) .
 	self assert: result equals: false
 ]
 
-{ #category : #test }
-DominoesTest >> testThreeElements [
+{ #category : #tests }
+DominoesTest >> test04_ThreeElements [
 	| result |
 
 	result := dominoesCalculator canChainDominoes: #(#(1 2 ) #(3 1 ) #(2 3 ) ) .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+DominoesTest >> test05_CanReverseDominoes [
+	| result |
+
+	result := dominoesCalculator canChainDominoes: #(#(1 2 ) #(1 3 ) #(2 3 ) ) .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+DominoesTest >> test06_CantBeChained [
+	| result |
+
+	result := dominoesCalculator canChainDominoes: #(#(1 2 ) #(4 1 ) #(2 3 ) ) .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+DominoesTest >> test07_DisconnectedSimple [
+	| result |
+
+	result := dominoesCalculator canChainDominoes: #(#(1 1 ) #(2 2 ) ) .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+DominoesTest >> test08_DisconnectedDoubleLoop [
+	| result |
+
+	result := dominoesCalculator canChainDominoes: #(#(1 2 ) #(2 1 ) #(3 4 ) #(4 3 ) ) .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+DominoesTest >> test09_DisconnectedSingleIsolated [
+	| result |
+
+	result := dominoesCalculator canChainDominoes: #(#(1 2 ) #(2 3 ) #(3 1 ) #(4 4 ) ) .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+DominoesTest >> test10_NeedBacktrack [
+	| result |
+
+	result := dominoesCalculator canChainDominoes: #(#(1 2 ) #(2 3 ) #(3 1 ) #(2 4 ) #(2 4 ) ) .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+DominoesTest >> test11_SeparateLoops [
+	| result |
+
+	result := dominoesCalculator canChainDominoes: #(#(1 2 ) #(2 3 ) #(3 1 ) #(1 1 ) #(2 2 ) #(3 3 ) ) .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+DominoesTest >> test12_NineElements [
+	| result |
+
+	result := dominoesCalculator canChainDominoes: #(#(1 2 ) #(5 3 ) #(3 1 ) #(1 2 ) #(2 4 ) #(1 6 ) #(2 3 ) #(3 4 ) #(5 6 ) ) .
 	self assert: result equals: true
 ]

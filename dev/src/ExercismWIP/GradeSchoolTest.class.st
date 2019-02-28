@@ -52,12 +52,12 @@ Class {
 { #category : #config }
 GradeSchoolTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'5d2d25da-2b3f-0d00-a2fa-f19e09f0590c'
+	^'73438abe-4a3f-0d00-bb5c-593b071d6982'
 ]
 
 { #category : #config }
 GradeSchoolTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.0.0'
 ]
 
@@ -66,58 +66,58 @@ GradeSchoolTest >> setUp [
 	gradeSchoolCalculator := GradeSchool new
 ]
 
-{ #category : #test }
-GradeSchoolTest >> testAddingAStudentAddsThemToTheSortedRoster [
+{ #category : #tests }
+GradeSchoolTest >> test01_AddingAStudentAddsThemToTheSortedRoster [
 	| result |
 
 	result := gradeSchoolCalculator rosterStudents: #(#('Aimee' 2 ) ) .
 	self assert: result equals: #('Aimee' )
 ]
 
-{ #category : #test }
-GradeSchoolTest >> testAddingMoreStudentAddsThemToTheSortedRoster [
+{ #category : #tests }
+GradeSchoolTest >> test02_AddingMoreStudentAddsThemToTheSortedRoster [
 	| result |
 
 	result := gradeSchoolCalculator rosterStudents: #(#('Blair' 2 ) #('James' 2 ) #('Paul' 2 ) ) .
 	self assert: result equals: #('Blair' 'James' 'Paul' )
 ]
 
-{ #category : #test }
-GradeSchoolTest >> testAddingStudentsToDifferentGradesAddsThemToTheSameSortedRoster [
+{ #category : #tests }
+GradeSchoolTest >> test03_AddingStudentsToDifferentGradesAddsThemToTheSameSortedRoster [
 	| result |
 
 	result := gradeSchoolCalculator rosterStudents: #(#('Chelsea' 3 ) #('Logan' 7 ) ) .
 	self assert: result equals: #('Chelsea' 'Logan' )
 ]
 
-{ #category : #test }
-GradeSchoolTest >> testGradeReturnsAnEmptyListIfThereAreNoStudentsInThatGrade [
-	| result |
-
-	result := gradeSchoolCalculator gradeDesiredGrade: 1 students: #() .
-	self assert: result equals: #()
-]
-
-{ #category : #test }
-GradeSchoolTest >> testGradeReturnsTheStudentsInThatGradeInAlphabeticalOrder [
-	| result |
-
-	result := gradeSchoolCalculator gradeDesiredGrade: 5 students: #(#('Franklin' 5 ) #('Bradley' 5 ) #('Jeff' 1 ) ) .
-	self assert: result equals: #('Bradley' 'Franklin' )
-]
-
-{ #category : #test }
-GradeSchoolTest >> testRosterReturnsAnEmptyListIfThereAreNoStudentsEnrolled [
+{ #category : #tests }
+GradeSchoolTest >> test04_RosterReturnsAnEmptyListIfThereAreNoStudentsEnrolled [
 	| result |
 
 	result := gradeSchoolCalculator rosterStudents: #() .
 	self assert: result equals: #()
 ]
 
-{ #category : #test }
-GradeSchoolTest >> testStudentNamesWithGradesAreDisplayedInTheSameSortedRoster [
+{ #category : #tests }
+GradeSchoolTest >> test05_StudentNamesWithGradesAreDisplayedInTheSameSortedRoster [
 	| result |
 
 	result := gradeSchoolCalculator rosterStudents: #(#('Peter' 2 ) #('Anna' 1 ) #('Barb' 1 ) #('Zoe' 2 ) #('Alex' 2 ) #('Jim' 3 ) #('Charlie' 1 ) ) .
 	self assert: result equals: #('Anna' 'Barb' 'Charlie' 'Alex' 'Peter' 'Zoe' 'Jim' )
+]
+
+{ #category : #tests }
+GradeSchoolTest >> test06_GradeReturnsTheStudentsInThatGradeInAlphabeticalOrder [
+	| result |
+
+	result := gradeSchoolCalculator gradeDesiredGrade: 5 students: #(#('Franklin' 5 ) #('Bradley' 5 ) #('Jeff' 1 ) ) .
+	self assert: result equals: #('Bradley' 'Franklin' )
+]
+
+{ #category : #tests }
+GradeSchoolTest >> test07_GradeReturnsAnEmptyListIfThereAreNoStudentsInThatGrade [
+	| result |
+
+	result := gradeSchoolCalculator gradeDesiredGrade: 1 students: #() .
+	self assert: result equals: #()
 ]

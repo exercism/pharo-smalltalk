@@ -57,12 +57,12 @@ Class {
 { #category : #config }
 ScrabbleScoreTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'cacf06da-2b3f-0d00-a2e1-be2b09f0590c'
+	^'7e2d67be-4a3f-0d00-bb45-7225071d6982'
 ]
 
 { #category : #config }
 ScrabbleScoreTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.1.0'
 ]
 
@@ -71,90 +71,90 @@ ScrabbleScoreTest >> setUp [
 	scrabbleScoreCalculator := ScrabbleScore new
 ]
 
-{ #category : #test }
-ScrabbleScoreTest >> testEmptyInput [
-	| result |
-
-	result := scrabbleScoreCalculator scoreWord: '' .
-	self assert: result equals: 0
-]
-
-{ #category : #test }
-ScrabbleScoreTest >> testEnglishlikeWord [
-	| result |
-
-	result := scrabbleScoreCalculator scoreWord: 'pinata' .
-	self assert: result equals: 8
-]
-
-{ #category : #test }
-ScrabbleScoreTest >> testEntireAlphabetAvailable [
-	| result |
-
-	result := scrabbleScoreCalculator scoreWord: 'abcdefghijklmnopqrstuvwxyz' .
-	self assert: result equals: 87
-]
-
-{ #category : #test }
-ScrabbleScoreTest >> testLongMixedcaseWord [
-	| result |
-
-	result := scrabbleScoreCalculator scoreWord: 'OxyphenButazone' .
-	self assert: result equals: 41
-]
-
-{ #category : #test }
-ScrabbleScoreTest >> testLowercaseLetter [
+{ #category : #tests }
+ScrabbleScoreTest >> test01_LowercaseLetter [
 	| result |
 
 	result := scrabbleScoreCalculator scoreWord: 'a' .
 	self assert: result equals: 1
 ]
 
-{ #category : #test }
-ScrabbleScoreTest >> testMediumValuableWord [
-	| result |
-
-	result := scrabbleScoreCalculator scoreWord: 'quirky' .
-	self assert: result equals: 22
-]
-
-{ #category : #test }
-ScrabbleScoreTest >> testMediumWord [
-	| result |
-
-	result := scrabbleScoreCalculator scoreWord: 'street' .
-	self assert: result equals: 6
-]
-
-{ #category : #test }
-ScrabbleScoreTest >> testShortValuableWord [
-	| result |
-
-	result := scrabbleScoreCalculator scoreWord: 'zoo' .
-	self assert: result equals: 12
-]
-
-{ #category : #test }
-ScrabbleScoreTest >> testShortWord [
-	| result |
-
-	result := scrabbleScoreCalculator scoreWord: 'at' .
-	self assert: result equals: 2
-]
-
-{ #category : #test }
-ScrabbleScoreTest >> testUppercaseLetter [
+{ #category : #tests }
+ScrabbleScoreTest >> test02_UppercaseLetter [
 	| result |
 
 	result := scrabbleScoreCalculator scoreWord: 'A' .
 	self assert: result equals: 1
 ]
 
-{ #category : #test }
-ScrabbleScoreTest >> testValuableLetter [
+{ #category : #tests }
+ScrabbleScoreTest >> test03_ValuableLetter [
 	| result |
 
 	result := scrabbleScoreCalculator scoreWord: 'f' .
 	self assert: result equals: 4
+]
+
+{ #category : #tests }
+ScrabbleScoreTest >> test04_ShortWord [
+	| result |
+
+	result := scrabbleScoreCalculator scoreWord: 'at' .
+	self assert: result equals: 2
+]
+
+{ #category : #tests }
+ScrabbleScoreTest >> test05_ShortValuableWord [
+	| result |
+
+	result := scrabbleScoreCalculator scoreWord: 'zoo' .
+	self assert: result equals: 12
+]
+
+{ #category : #tests }
+ScrabbleScoreTest >> test06_MediumWord [
+	| result |
+
+	result := scrabbleScoreCalculator scoreWord: 'street' .
+	self assert: result equals: 6
+]
+
+{ #category : #tests }
+ScrabbleScoreTest >> test07_MediumValuableWord [
+	| result |
+
+	result := scrabbleScoreCalculator scoreWord: 'quirky' .
+	self assert: result equals: 22
+]
+
+{ #category : #tests }
+ScrabbleScoreTest >> test08_LongMixedcaseWord [
+	| result |
+
+	result := scrabbleScoreCalculator scoreWord: 'OxyphenButazone' .
+	self assert: result equals: 41
+]
+
+{ #category : #tests }
+ScrabbleScoreTest >> test09_EnglishlikeWord [
+	| result |
+
+	result := scrabbleScoreCalculator scoreWord: 'pinata' .
+	self assert: result equals: 8
+]
+
+{ #category : #tests }
+ScrabbleScoreTest >> test10_EmptyInput [
+	| result |
+
+	result := scrabbleScoreCalculator scoreWord: '' .
+	self assert: result equals: 0
+]
+
+{ #category : #tests }
+ScrabbleScoreTest >> test11_EntireAlphabetAvailable [
+	| result |
+
+	result := scrabbleScoreCalculator scoreWord: 'abcdefghijklmnopqrstuvwxyz' .
+	self assert: result equals: 87
 ]

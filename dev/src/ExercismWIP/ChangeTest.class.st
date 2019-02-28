@@ -34,12 +34,12 @@ Class {
 { #category : #config }
 ChangeTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'fb0ae0d9-2b3f-0d00-a2b8-70b309f0590c'
+	^'27b22cbe-4a3f-0d00-bb1c-d37a071d6982'
 ]
 
 { #category : #config }
 ChangeTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.3.0'
 ]
 
@@ -48,90 +48,90 @@ ChangeTest >> setUp [
 	changeCalculator := Change new
 ]
 
-{ #category : #test }
-ChangeTest >> testAnotherPossibleChangeWithoutUnitCoinsAvailable [
+{ #category : #tests }
+ChangeTest >> test01_SingleCoinChange [
 	| result |
 
-	result := changeCalculator findFewestCoins: #(4 5 ) target: 27 .
-	self assert: result equals: #(4 4 4 5 5 5 )
+	result := changeCalculator findFewestCoins: #(1 5 10 25 100 ) target: 25 .
+	self assert: result equals: #(25 )
 ]
 
-{ #category : #test }
-ChangeTest >> testCannotFindNegativeChangeValues [
-	| result |
-
-	result := changeCalculator findFewestCoins: #(1 2 5 ) target:  -5 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'target can''t be negative'); yourself)
-]
-
-{ #category : #test }
-ChangeTest >> testChangeWithLilliputianCoins [
-	| result |
-
-	result := changeCalculator findFewestCoins: #(1 4 15 20 50 ) target: 23 .
-	self assert: result equals: #(4 4 15 )
-]
-
-{ #category : #test }
-ChangeTest >> testChangeWithLowerElboniaCoins [
-	| result |
-
-	result := changeCalculator findFewestCoins: #(1 5 10 21 25 ) target: 63 .
-	self assert: result equals: #(21 21 21 )
-]
-
-{ #category : #test }
-ChangeTest >> testErrorIfNoCombinationCanAddUpToTarget [
-	| result |
-
-	result := changeCalculator findFewestCoins: #(5 10 ) target: 94 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'can''t make target with given coins'); yourself)
-]
-
-{ #category : #test }
-ChangeTest >> testErrorTestingForChangeSmallerThanTheSmallestOfCoins [
-	| result |
-
-	result := changeCalculator findFewestCoins: #(5 10 ) target: 3 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'can''t make target with given coins'); yourself)
-]
-
-{ #category : #test }
-ChangeTest >> testLargeTargetValues [
-	| result |
-
-	result := changeCalculator findFewestCoins: #(1 2 5 10 20 50 100 ) target: 999 .
-	self assert: result equals: #(2 2 5 20 20 50 100 100 100 100 100 100 100 100 100 )
-]
-
-{ #category : #test }
-ChangeTest >> testMultipleCoinChange [
+{ #category : #tests }
+ChangeTest >> test02_MultipleCoinChange [
 	| result |
 
 	result := changeCalculator findFewestCoins: #(1 5 10 25 100 ) target: 15 .
 	self assert: result equals: #(5 10 )
 ]
 
-{ #category : #test }
-ChangeTest >> testNoCoinsMake0Change [
+{ #category : #tests }
+ChangeTest >> test03_ChangeWithLilliputianCoins [
 	| result |
 
-	result := changeCalculator findFewestCoins: #(1 5 10 21 25 ) target: 0 .
-	self assert: result equals: #()
+	result := changeCalculator findFewestCoins: #(1 4 15 20 50 ) target: 23 .
+	self assert: result equals: #(4 4 15 )
 ]
 
-{ #category : #test }
-ChangeTest >> testPossibleChangeWithoutUnitCoinsAvailable [
+{ #category : #tests }
+ChangeTest >> test04_ChangeWithLowerElboniaCoins [
+	| result |
+
+	result := changeCalculator findFewestCoins: #(1 5 10 21 25 ) target: 63 .
+	self assert: result equals: #(21 21 21 )
+]
+
+{ #category : #tests }
+ChangeTest >> test05_LargeTargetValues [
+	| result |
+
+	result := changeCalculator findFewestCoins: #(1 2 5 10 20 50 100 ) target: 999 .
+	self assert: result equals: #(2 2 5 20 20 50 100 100 100 100 100 100 100 100 100 )
+]
+
+{ #category : #tests }
+ChangeTest >> test06_PossibleChangeWithoutUnitCoinsAvailable [
 	| result |
 
 	result := changeCalculator findFewestCoins: #(2 5 10 20 50 ) target: 21 .
 	self assert: result equals: #(2 2 2 5 10 )
 ]
 
-{ #category : #test }
-ChangeTest >> testSingleCoinChange [
+{ #category : #tests }
+ChangeTest >> test07_AnotherPossibleChangeWithoutUnitCoinsAvailable [
 	| result |
 
-	result := changeCalculator findFewestCoins: #(1 5 10 25 100 ) target: 25 .
-	self assert: result equals: #(25 )
+	result := changeCalculator findFewestCoins: #(4 5 ) target: 27 .
+	self assert: result equals: #(4 4 4 5 5 5 )
+]
+
+{ #category : #tests }
+ChangeTest >> test08_NoCoinsMake0Change [
+	| result |
+
+	result := changeCalculator findFewestCoins: #(1 5 10 21 25 ) target: 0 .
+	self assert: result equals: #()
+]
+
+{ #category : #tests }
+ChangeTest >> test09_ErrorTestingForChangeSmallerThanTheSmallestOfCoins [
+	| result |
+
+	result := changeCalculator findFewestCoins: #(5 10 ) target: 3 .
+	self assert: result equals: ((Dictionary new) add: ('error'->'can''t make target with given coins'); yourself)
+]
+
+{ #category : #tests }
+ChangeTest >> test10_ErrorIfNoCombinationCanAddUpToTarget [
+	| result |
+
+	result := changeCalculator findFewestCoins: #(5 10 ) target: 94 .
+	self assert: result equals: ((Dictionary new) add: ('error'->'can''t make target with given coins'); yourself)
+]
+
+{ #category : #tests }
+ChangeTest >> test11_CannotFindNegativeChangeValues [
+	| result |
+
+	result := changeCalculator findFewestCoins: #(1 2 5 ) target:  -5 .
+	self assert: result equals: ((Dictionary new) add: ('error'->'target can''t be negative'); yourself)
 ]

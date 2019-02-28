@@ -52,12 +52,12 @@ Class {
 { #category : #config }
 BinarySearchTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'20c933da-2b3f-0d00-a309-704909f0590c'
+	^'1d919dbe-4a3f-0d00-bb6b-fb2e071d6982'
 ]
 
 { #category : #config }
 BinarySearchTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.3.0'
 ]
 
@@ -66,88 +66,88 @@ BinarySearchTest >> setUp [
 	binarySearchCalculator := BinarySearch new
 ]
 
-{ #category : #test }
-BinarySearchTest >> testAValueLargerThanTheArraysLargestValueIsNotFound [
-	| result |
-
-	result := binarySearchCalculator findArray: #(1 3 4 6 8 9 11 ) value: 13 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'value not in array'); yourself)
-]
-
-{ #category : #test }
-BinarySearchTest >> testAValueSmallerThanTheArraysSmallestValueIsNotFound [
-	| result |
-
-	result := binarySearchCalculator findArray: #(1 3 4 6 8 9 11 ) value: 0 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'value not in array'); yourself)
-]
-
-{ #category : #test }
-BinarySearchTest >> testFindsAValueAtTheBeginningOfAnArray [
-	| result |
-
-	result := binarySearchCalculator findArray: #(1 3 4 6 8 9 11 ) value: 1 .
-	self assert: result equals: 0
-]
-
-{ #category : #test }
-BinarySearchTest >> testFindsAValueAtTheEndOfAnArray [
-	| result |
-
-	result := binarySearchCalculator findArray: #(1 3 4 6 8 9 11 ) value: 11 .
-	self assert: result equals: 6
-]
-
-{ #category : #test }
-BinarySearchTest >> testFindsAValueInAnArrayOfEvenLength [
-	| result |
-
-	result := binarySearchCalculator findArray: #(1 3 5 8 13 21 34 55 89 144 233 377 ) value: 21 .
-	self assert: result equals: 5
-]
-
-{ #category : #test }
-BinarySearchTest >> testFindsAValueInAnArrayOfOddLength [
-	| result |
-
-	result := binarySearchCalculator findArray: #(1 3 5 8 13 21 34 55 89 144 233 377 634 ) value: 144 .
-	self assert: result equals: 9
-]
-
-{ #category : #test }
-BinarySearchTest >> testFindsAValueInAnArrayWithOneElement [
+{ #category : #tests }
+BinarySearchTest >> test01_FindsAValueInAnArrayWithOneElement [
 	| result |
 
 	result := binarySearchCalculator findArray: #(6 ) value: 6 .
 	self assert: result equals: 0
 ]
 
-{ #category : #test }
-BinarySearchTest >> testFindsAValueInTheMiddleOfAnArray [
+{ #category : #tests }
+BinarySearchTest >> test02_FindsAValueInTheMiddleOfAnArray [
 	| result |
 
 	result := binarySearchCalculator findArray: #(1 3 4 6 8 9 11 ) value: 6 .
 	self assert: result equals: 3
 ]
 
-{ #category : #test }
-BinarySearchTest >> testIdentifiesThatAValueIsNotIncludedInTheArray [
+{ #category : #tests }
+BinarySearchTest >> test03_FindsAValueAtTheBeginningOfAnArray [
+	| result |
+
+	result := binarySearchCalculator findArray: #(1 3 4 6 8 9 11 ) value: 1 .
+	self assert: result equals: 0
+]
+
+{ #category : #tests }
+BinarySearchTest >> test04_FindsAValueAtTheEndOfAnArray [
+	| result |
+
+	result := binarySearchCalculator findArray: #(1 3 4 6 8 9 11 ) value: 11 .
+	self assert: result equals: 6
+]
+
+{ #category : #tests }
+BinarySearchTest >> test05_FindsAValueInAnArrayOfOddLength [
+	| result |
+
+	result := binarySearchCalculator findArray: #(1 3 5 8 13 21 34 55 89 144 233 377 634 ) value: 144 .
+	self assert: result equals: 9
+]
+
+{ #category : #tests }
+BinarySearchTest >> test06_FindsAValueInAnArrayOfEvenLength [
+	| result |
+
+	result := binarySearchCalculator findArray: #(1 3 5 8 13 21 34 55 89 144 233 377 ) value: 21 .
+	self assert: result equals: 5
+]
+
+{ #category : #tests }
+BinarySearchTest >> test07_IdentifiesThatAValueIsNotIncludedInTheArray [
 	| result |
 
 	result := binarySearchCalculator findArray: #(1 3 4 6 8 9 11 ) value: 7 .
 	self assert: result equals: ((Dictionary new) add: ('error'->'value not in array'); yourself)
 ]
 
-{ #category : #test }
-BinarySearchTest >> testNothingIsFoundInAnEmptyArray [
+{ #category : #tests }
+BinarySearchTest >> test08_AValueSmallerThanTheArraysSmallestValueIsNotFound [
+	| result |
+
+	result := binarySearchCalculator findArray: #(1 3 4 6 8 9 11 ) value: 0 .
+	self assert: result equals: ((Dictionary new) add: ('error'->'value not in array'); yourself)
+]
+
+{ #category : #tests }
+BinarySearchTest >> test09_AValueLargerThanTheArraysLargestValueIsNotFound [
+	| result |
+
+	result := binarySearchCalculator findArray: #(1 3 4 6 8 9 11 ) value: 13 .
+	self assert: result equals: ((Dictionary new) add: ('error'->'value not in array'); yourself)
+]
+
+{ #category : #tests }
+BinarySearchTest >> test10_NothingIsFoundInAnEmptyArray [
 	| result |
 
 	result := binarySearchCalculator findArray: #() value: 1 .
 	self assert: result equals: ((Dictionary new) add: ('error'->'value not in array'); yourself)
 ]
 
-{ #category : #test }
-BinarySearchTest >> testNothingIsFoundWhenTheLeftAndRightBoundsCross [
+{ #category : #tests }
+BinarySearchTest >> test11_NothingIsFoundWhenTheLeftAndRightBoundsCross [
 	| result |
 
 	result := binarySearchCalculator findArray: #(1 2 ) value: 0 .

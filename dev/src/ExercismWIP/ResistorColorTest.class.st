@@ -37,12 +37,12 @@ Class {
 { #category : #config }
 ResistorColorTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'398a01da-2b3f-0d00-a2dc-a43009f0590c'
+	^'0e035dbe-4a3f-0d00-bb40-bb98071d6982'
 ]
 
 { #category : #config }
 ResistorColorTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.0.0'
 ]
 
@@ -51,34 +51,34 @@ ResistorColorTest >> setUp [
 	resistorColorCalculator := ResistorColor new
 ]
 
-{ #category : #test }
-ResistorColorTest >> testColorCodesBlack [
+{ #category : #tests }
+ResistorColorTest >> test01_ColorCodesBlack [
 	| result |
 
 	result := resistorColorCalculator colorCodeColor: 'black' .
 	self assert: result equals: 0
 ]
 
-{ #category : #test }
-ResistorColorTest >> testColorCodesOrange [
-	| result |
-
-	result := resistorColorCalculator colorCodeColor: 'orange' .
-	self assert: result equals: 3
-]
-
-{ #category : #test }
-ResistorColorTest >> testColorCodesWhite [
+{ #category : #tests }
+ResistorColorTest >> test02_ColorCodesWhite [
 	| result |
 
 	result := resistorColorCalculator colorCodeColor: 'white' .
 	self assert: result equals: 9
 ]
 
-{ #category : #test }
-ResistorColorTest >> testColors [
+{ #category : #tests }
+ResistorColorTest >> test02_Colors [
 	| result |
 
 	result := resistorColorCalculator colors.
 	self assert: result equals: #('black' 'brown' 'red' 'orange' 'yellow' 'green' 'blue' 'violet' 'grey' 'white' )
+]
+
+{ #category : #tests }
+ResistorColorTest >> test03_ColorCodesOrange [
+	| result |
+
+	result := resistorColorCalculator colorCodeColor: 'orange' .
+	self assert: result equals: 3
 ]

@@ -43,12 +43,12 @@ Class {
 { #category : #config }
 ZebraPuzzleTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'e66d38da-2b3f-0d00-a30c-a38609f0590c'
+	^'bfc4a2be-4a3f-0d00-bb6e-66e2071d6982'
 ]
 
 { #category : #config }
 ZebraPuzzleTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.1.0'
 ]
 
@@ -57,16 +57,16 @@ ZebraPuzzleTest >> setUp [
 	zebraPuzzleCalculator := ZebraPuzzle new
 ]
 
-{ #category : #test }
-ZebraPuzzleTest >> testResidentWhoDrinksWater [
+{ #category : #tests }
+ZebraPuzzleTest >> test01_ResidentWhoDrinksWater [
 	| result |
 
 	result := zebraPuzzleCalculator drinksWater.
 	self assert: result equals: 'Norwegian'
 ]
 
-{ #category : #test }
-ZebraPuzzleTest >> testResidentWhoOwnsZebra [
+{ #category : #tests }
+ZebraPuzzleTest >> test02_ResidentWhoOwnsZebra [
 	| result |
 
 	result := zebraPuzzleCalculator ownsZebra.

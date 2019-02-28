@@ -55,12 +55,12 @@ Class {
 { #category : #config }
 DiffieHellmanTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'1b4dffd9-2b3f-0d00-a2d9-4e7609f0590c'
+	^'922159be-4a3f-0d00-bb3d-e26d071d6982'
 ]
 
 { #category : #config }
 DiffieHellmanTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.0.0'
 ]
 
@@ -69,42 +69,42 @@ DiffieHellmanTest >> setUp [
 	diffieHellmanCalculator := DiffieHellman new
 ]
 
-{ #category : #test }
-DiffieHellmanTest >> testCanCalculatePublicKeyUsingPrivateKey [
-	| result |
-
-	result := diffieHellmanCalculator publicKeyP: 23 g: 5 privateKey: 6 .
-	self assert: result equals: 8
-]
-
-{ #category : #test }
-DiffieHellmanTest >> testCanCalculateSecretUsingOtherPartysPublicKey [
-	| result |
-
-	result := diffieHellmanCalculator secretTheirPublicKey: 19 p: 23 myPrivateKey: 6 .
-	self assert: result equals: 2
-]
-
-{ #category : #test }
-DiffieHellmanTest >> testKeyExchange [
-	| result |
-
-	result := diffieHellmanCalculator keyExchangeBobPublicKey: 'publicKey(p, g, bobPrivateKey)' g: 5 p: 23 alicePrivateKey: 'privateKey(p)' bobPrivateKey: 'privateKey(p)' secretA: 'secret(p, bobPublicKey, alicePrivateKey)' alicePublicKey: 'publicKey(p, g, alicePrivateKey)' secretB: 'secret(p, alicePublicKey, bobPrivateKey)' .
-	self assert: result equals: 'secretA == secretB'
-]
-
-{ #category : #test }
-DiffieHellmanTest >> testPrivateKeyIsInRange1P [
+{ #category : #tests }
+DiffieHellmanTest >> test01_PrivateKeyIsInRange1P [
 	| result |
 
 	result := diffieHellmanCalculator privateKeyIsInRange.
 	self assert: result equals: ((Dictionary new) add: ('greaterThan'->1); add: ('lessThan'->'p'); yourself)
 ]
 
-{ #category : #test }
-DiffieHellmanTest >> testPrivateKeyIsRandom [
+{ #category : #tests }
+DiffieHellmanTest >> test02_PrivateKeyIsRandom [
 	| result |
 
 	result := diffieHellmanCalculator privateKeyIsRandom.
 	self assert: result equals: ((Dictionary new) add: ('random'->true); yourself)
+]
+
+{ #category : #tests }
+DiffieHellmanTest >> test03_CanCalculatePublicKeyUsingPrivateKey [
+	| result |
+
+	result := diffieHellmanCalculator publicKeyP: 23 g: 5 privateKey: 6 .
+	self assert: result equals: 8
+]
+
+{ #category : #tests }
+DiffieHellmanTest >> test04_CanCalculateSecretUsingOtherPartysPublicKey [
+	| result |
+
+	result := diffieHellmanCalculator secretTheirPublicKey: 19 p: 23 myPrivateKey: 6 .
+	self assert: result equals: 2
+]
+
+{ #category : #tests }
+DiffieHellmanTest >> test05_KeyExchange [
+	| result |
+
+	result := diffieHellmanCalculator keyExchangeBobPublicKey: 'publicKey(p, g, bobPrivateKey)' g: 5 p: 23 alicePrivateKey: 'privateKey(p)' bobPrivateKey: 'privateKey(p)' secretA: 'secret(p, bobPublicKey, alicePrivateKey)' alicePublicKey: 'publicKey(p, g, alicePrivateKey)' secretB: 'secret(p, alicePublicKey, bobPrivateKey)' .
+	self assert: result equals: 'secretA == secretB'
 ]

@@ -43,12 +43,12 @@ Class {
 { #category : #config }
 ForthTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'df062dda-2b3f-0d00-a302-df1b09f0590c'
+	^'eb1195be-4a3f-0d00-bb64-146a071d6982'
 ]
 
 { #category : #config }
 ForthTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.7.0'
 ]
 
@@ -57,370 +57,370 @@ ForthTest >> setUp [
 	forthCalculator := Forth new
 ]
 
-{ #category : #test }
-ForthTest >> testAdditionCanAddTwoNumbers [
+{ #category : #tests }
+ForthTest >> test01_AdditionCanAddTwoNumbers [
 	| result |
 
 	result := forthCalculator evaluateInstructions: #('1 2 +' ) .
 	self assert: result equals: #(3 )
 ]
 
-{ #category : #test }
-ForthTest >> testAdditionErrorsIfThereIsNothingOnTheStack [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('+' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
-]
-
-{ #category : #test }
-ForthTest >> testAdditionErrorsIfThereIsOnlyOneValueOnTheStack [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('1 +' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'only one value on stack'); yourself)
-]
-
-{ #category : #test }
-ForthTest >> testCaseinsensitivityDROPIsCaseinsensitive [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('1 2 3 4 DROP Drop drop' ) .
-	self assert: result equals: #(1 )
-]
-
-{ #category : #test }
-ForthTest >> testCaseinsensitivityDUPIsCaseinsensitive [
+{ #category : #tests }
+ForthTest >> test01_CaseinsensitivityDUPIsCaseinsensitive [
 	| result |
 
 	result := forthCalculator evaluateInstructions: #('1 DUP Dup dup' ) .
 	self assert: result equals: #(1 1 1 1 )
 ]
 
-{ #category : #test }
-ForthTest >> testCaseinsensitivityDefinitionsAreCaseinsensitive [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #(': SWAP DUP Dup dup ;' '1 swap' ) .
-	self assert: result equals: #(1 1 1 1 )
-]
-
-{ #category : #test }
-ForthTest >> testCaseinsensitivityOVERIsCaseinsensitive [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('1 2 OVER Over over' ) .
-	self assert: result equals: #(1 2 1 2 1 )
-]
-
-{ #category : #test }
-ForthTest >> testCaseinsensitivitySWAPIsCaseinsensitive [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('1 2 SWAP 3 Swap 4 swap' ) .
-	self assert: result equals: #(2 3 4 1 )
-]
-
-{ #category : #test }
-ForthTest >> testCaseinsensitivityUserdefinedWordsAreCaseinsensitive [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #(': foo dup ;' '1 FOO Foo foo' ) .
-	self assert: result equals: #(1 1 1 1 )
-]
-
-{ #category : #test }
-ForthTest >> testCombinedArithmeticAdditionAndSubtraction [
+{ #category : #tests }
+ForthTest >> test01_CombinedArithmeticAdditionAndSubtraction [
 	| result |
 
 	result := forthCalculator evaluateInstructions: #('1 2 + 4 -' ) .
 	self assert: result equals: #( -1 )
 ]
 
-{ #category : #test }
-ForthTest >> testCombinedArithmeticMultiplicationAndDivision [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('2 4 * 3 /' ) .
-	self assert: result equals: #(2 )
-]
-
-{ #category : #test }
-ForthTest >> testDivisionCanDivideTwoNumbers [
+{ #category : #tests }
+ForthTest >> test01_DivisionCanDivideTwoNumbers [
 	| result |
 
 	result := forthCalculator evaluateInstructions: #('12 3 /' ) .
 	self assert: result equals: #(4 )
 ]
 
-{ #category : #test }
-ForthTest >> testDivisionErrorsIfDividingByZero [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('4 0 /' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'divide by zero'); yourself)
-]
-
-{ #category : #test }
-ForthTest >> testDivisionErrorsIfThereIsNothingOnTheStack [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('/' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
-]
-
-{ #category : #test }
-ForthTest >> testDivisionErrorsIfThereIsOnlyOneValueOnTheStack [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('1 /' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'only one value on the stack'); yourself)
-]
-
-{ #category : #test }
-ForthTest >> testDivisionPerformsIntegerDivision [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('8 3 /' ) .
-	self assert: result equals: #(2 )
-]
-
-{ #category : #test }
-ForthTest >> testDropErrorsIfThereIsNothingOnTheStack [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('drop' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
-]
-
-{ #category : #test }
-ForthTest >> testDropRemovesTheTopValueOnTheStackIfItIsNotTheOnlyOne [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('1 2 drop' ) .
-	self assert: result equals: #(1 )
-]
-
-{ #category : #test }
-ForthTest >> testDropRemovesTheTopValueOnTheStackIfItIsTheOnlyOne [
+{ #category : #tests }
+ForthTest >> test01_DropRemovesTheTopValueOnTheStackIfItIsTheOnlyOne [
 	| result |
 
 	result := forthCalculator evaluateInstructions: #('1 drop' ) .
 	self assert: result equals: #()
 ]
 
-{ #category : #test }
-ForthTest >> testDupCopiesAValueOnTheStack [
+{ #category : #tests }
+ForthTest >> test01_DupCopiesAValueOnTheStack [
 	| result |
 
 	result := forthCalculator evaluateInstructions: #('1 dup' ) .
 	self assert: result equals: #(1 1 )
 ]
 
-{ #category : #test }
-ForthTest >> testDupCopiesTheTopValueOnTheStack [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('1 2 dup' ) .
-	self assert: result equals: #(1 2 2 )
-]
-
-{ #category : #test }
-ForthTest >> testDupErrorsIfThereIsNothingOnTheStack [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('dup' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
-]
-
-{ #category : #test }
-ForthTest >> testMultiplicationCanMultiplyTwoNumbers [
+{ #category : #tests }
+ForthTest >> test01_MultiplicationCanMultiplyTwoNumbers [
 	| result |
 
 	result := forthCalculator evaluateInstructions: #('2 4 *' ) .
 	self assert: result equals: #(8 )
 ]
 
-{ #category : #test }
-ForthTest >> testMultiplicationErrorsIfThereIsNothingOnTheStack [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('*' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
-]
-
-{ #category : #test }
-ForthTest >> testMultiplicationErrorsIfThereIsOnlyOneValueOnTheStack [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('1 *' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'only one value on the stack'); yourself)
-]
-
-{ #category : #test }
-ForthTest >> testOverCopiesTheSecondElementIfThereAreMoreThanTwo [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('1 2 3 over' ) .
-	self assert: result equals: #(1 2 3 2 )
-]
-
-{ #category : #test }
-ForthTest >> testOverCopiesTheSecondElementIfThereAreOnlyTwo [
+{ #category : #tests }
+ForthTest >> test01_OverCopiesTheSecondElementIfThereAreOnlyTwo [
 	| result |
 
 	result := forthCalculator evaluateInstructions: #('1 2 over' ) .
 	self assert: result equals: #(1 2 1 )
 ]
 
-{ #category : #test }
-ForthTest >> testOverErrorsIfThereIsNothingOnTheStack [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('over' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
-]
-
-{ #category : #test }
-ForthTest >> testOverErrorsIfThereIsOnlyOneValueOnTheStack [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('1 over' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'only one value on the stack stack'); yourself)
-]
-
-{ #category : #test }
-ForthTest >> testParsingAndNumbersNumbersJustGetPushedOntoTheStack [
+{ #category : #tests }
+ForthTest >> test01_ParsingAndNumbersNumbersJustGetPushedOntoTheStack [
 	| result |
 
 	result := forthCalculator evaluateInstructions: #('1 2 3 4 5' ) .
 	self assert: result equals: #(1 2 3 4 5 )
 ]
 
-{ #category : #test }
-ForthTest >> testSubtractionCanSubtractTwoNumbers [
+{ #category : #tests }
+ForthTest >> test01_SubtractionCanSubtractTwoNumbers [
 	| result |
 
 	result := forthCalculator evaluateInstructions: #('3 4 -' ) .
 	self assert: result equals: #( -1 )
 ]
 
-{ #category : #test }
-ForthTest >> testSubtractionErrorsIfThereIsNothingOnTheStack [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('-' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
-]
-
-{ #category : #test }
-ForthTest >> testSubtractionErrorsIfThereIsOnlyOneValueOnTheStack [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('1 -' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'only one value on the stack'); yourself)
-]
-
-{ #category : #test }
-ForthTest >> testSwapErrorsIfThereIsNothingOnTheStack [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('swap' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
-]
-
-{ #category : #test }
-ForthTest >> testSwapErrorsIfThereIsOnlyOneValueOnTheStack [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('1 swap' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'only one value on the stack'); yourself)
-]
-
-{ #category : #test }
-ForthTest >> testSwapSwapsTheTopTwoValuesOnTheStackIfTheyAreNotTheOnlyOnes [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #('1 2 3 swap' ) .
-	self assert: result equals: #(1 3 2 )
-]
-
-{ #category : #test }
-ForthTest >> testSwapSwapsTheTopTwoValuesOnTheStackIfTheyAreTheOnlyOnes [
+{ #category : #tests }
+ForthTest >> test01_SwapSwapsTheTopTwoValuesOnTheStackIfTheyAreTheOnlyOnes [
 	| result |
 
 	result := forthCalculator evaluateInstructions: #('1 2 swap' ) .
 	self assert: result equals: #(2 1 )
 ]
 
-{ #category : #test }
-ForthTest >> testUserdefinedWordsCanConsistOfBuiltinWords [
+{ #category : #tests }
+ForthTest >> test01_UserdefinedWordsCanConsistOfBuiltinWords [
 	| result |
 
 	result := forthCalculator evaluateInstructions: #(': dup-twice dup dup ;' '1 dup-twice' ) .
 	self assert: result equals: #(1 1 1 )
 ]
 
-{ #category : #test }
-ForthTest >> testUserdefinedWordsCanDefineWordThatUsesWordWithTheSameName [
+{ #category : #tests }
+ForthTest >> test02_AdditionErrorsIfThereIsNothingOnTheStack [
 	| result |
 
-	result := forthCalculator evaluateInstructions: #(': foo 10 ;' ': foo foo 1 + ;' 'foo' ) .
-	self assert: result equals: #(11 )
+	result := forthCalculator evaluateInstructions: #('+' ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
 ]
 
-{ #category : #test }
-ForthTest >> testUserdefinedWordsCanOverrideBuiltinOperators [
+{ #category : #tests }
+ForthTest >> test02_CaseinsensitivityDROPIsCaseinsensitive [
 	| result |
 
-	result := forthCalculator evaluateInstructions: #(': + * ;' '3 4 +' ) .
-	self assert: result equals: #(12 )
+	result := forthCalculator evaluateInstructions: #('1 2 3 4 DROP Drop drop' ) .
+	self assert: result equals: #(1 )
 ]
 
-{ #category : #test }
-ForthTest >> testUserdefinedWordsCanOverrideBuiltinWords [
+{ #category : #tests }
+ForthTest >> test02_CombinedArithmeticMultiplicationAndDivision [
 	| result |
 
-	result := forthCalculator evaluateInstructions: #(': swap dup ;' '1 swap' ) .
-	self assert: result equals: #(1 1 )
+	result := forthCalculator evaluateInstructions: #('2 4 * 3 /' ) .
+	self assert: result equals: #(2 )
 ]
 
-{ #category : #test }
-ForthTest >> testUserdefinedWordsCanOverrideOtherUserdefinedWords [
+{ #category : #tests }
+ForthTest >> test02_DivisionPerformsIntegerDivision [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #('8 3 /' ) .
+	self assert: result equals: #(2 )
+]
+
+{ #category : #tests }
+ForthTest >> test02_DropRemovesTheTopValueOnTheStackIfItIsNotTheOnlyOne [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #('1 2 drop' ) .
+	self assert: result equals: #(1 )
+]
+
+{ #category : #tests }
+ForthTest >> test02_DupCopiesTheTopValueOnTheStack [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #('1 2 dup' ) .
+	self assert: result equals: #(1 2 2 )
+]
+
+{ #category : #tests }
+ForthTest >> test02_MultiplicationErrorsIfThereIsNothingOnTheStack [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #('*' ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
+]
+
+{ #category : #tests }
+ForthTest >> test02_OverCopiesTheSecondElementIfThereAreMoreThanTwo [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #('1 2 3 over' ) .
+	self assert: result equals: #(1 2 3 2 )
+]
+
+{ #category : #tests }
+ForthTest >> test02_SubtractionErrorsIfThereIsNothingOnTheStack [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #('-' ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
+]
+
+{ #category : #tests }
+ForthTest >> test02_SwapSwapsTheTopTwoValuesOnTheStackIfTheyAreNotTheOnlyOnes [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #('1 2 3 swap' ) .
+	self assert: result equals: #(1 3 2 )
+]
+
+{ #category : #tests }
+ForthTest >> test02_UserdefinedWordsExecuteInTheRightOrder [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #(': countup 1 2 3 ;' 'countup' ) .
+	self assert: result equals: #(1 2 3 )
+]
+
+{ #category : #tests }
+ForthTest >> test03_AdditionErrorsIfThereIsOnlyOneValueOnTheStack [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #('1 +' ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'only one value on stack'); yourself)
+]
+
+{ #category : #tests }
+ForthTest >> test03_CaseinsensitivitySWAPIsCaseinsensitive [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #('1 2 SWAP 3 Swap 4 swap' ) .
+	self assert: result equals: #(2 3 4 1 )
+]
+
+{ #category : #tests }
+ForthTest >> test03_DivisionErrorsIfDividingByZero [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #('4 0 /' ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'divide by zero'); yourself)
+]
+
+{ #category : #tests }
+ForthTest >> test03_DropErrorsIfThereIsNothingOnTheStack [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #('drop' ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
+]
+
+{ #category : #tests }
+ForthTest >> test03_DupErrorsIfThereIsNothingOnTheStack [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #('dup' ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
+]
+
+{ #category : #tests }
+ForthTest >> test03_MultiplicationErrorsIfThereIsOnlyOneValueOnTheStack [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #('1 *' ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'only one value on the stack'); yourself)
+]
+
+{ #category : #tests }
+ForthTest >> test03_OverErrorsIfThereIsNothingOnTheStack [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #('over' ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
+]
+
+{ #category : #tests }
+ForthTest >> test03_SubtractionErrorsIfThereIsOnlyOneValueOnTheStack [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #('1 -' ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'only one value on the stack'); yourself)
+]
+
+{ #category : #tests }
+ForthTest >> test03_SwapErrorsIfThereIsNothingOnTheStack [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #('swap' ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
+]
+
+{ #category : #tests }
+ForthTest >> test03_UserdefinedWordsCanOverrideOtherUserdefinedWords [
 	| result |
 
 	result := forthCalculator evaluateInstructions: #(': foo dup ;' ': foo dup dup ;' '1 foo' ) .
 	self assert: result equals: #(1 1 1 )
 ]
 
-{ #category : #test }
-ForthTest >> testUserdefinedWordsCanUseDifferentWordsWithTheSameName [
+{ #category : #tests }
+ForthTest >> test04_CaseinsensitivityOVERIsCaseinsensitive [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #('1 2 OVER Over over' ) .
+	self assert: result equals: #(1 2 1 2 1 )
+]
+
+{ #category : #tests }
+ForthTest >> test04_DivisionErrorsIfThereIsNothingOnTheStack [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #('/' ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
+]
+
+{ #category : #tests }
+ForthTest >> test04_OverErrorsIfThereIsOnlyOneValueOnTheStack [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #('1 over' ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'only one value on the stack stack'); yourself)
+]
+
+{ #category : #tests }
+ForthTest >> test04_SwapErrorsIfThereIsOnlyOneValueOnTheStack [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #('1 swap' ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'only one value on the stack'); yourself)
+]
+
+{ #category : #tests }
+ForthTest >> test04_UserdefinedWordsCanOverrideBuiltinWords [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #(': swap dup ;' '1 swap' ) .
+	self assert: result equals: #(1 1 )
+]
+
+{ #category : #tests }
+ForthTest >> test05_CaseinsensitivityUserdefinedWordsAreCaseinsensitive [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #(': foo dup ;' '1 FOO Foo foo' ) .
+	self assert: result equals: #(1 1 1 1 )
+]
+
+{ #category : #tests }
+ForthTest >> test05_DivisionErrorsIfThereIsOnlyOneValueOnTheStack [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #('1 /' ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'only one value on the stack'); yourself)
+]
+
+{ #category : #tests }
+ForthTest >> test05_UserdefinedWordsCanOverrideBuiltinOperators [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #(': + * ;' '3 4 +' ) .
+	self assert: result equals: #(12 )
+]
+
+{ #category : #tests }
+ForthTest >> test06_CaseinsensitivityDefinitionsAreCaseinsensitive [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #(': SWAP DUP Dup dup ;' '1 swap' ) .
+	self assert: result equals: #(1 1 1 1 )
+]
+
+{ #category : #tests }
+ForthTest >> test06_UserdefinedWordsCanUseDifferentWordsWithTheSameName [
 	| result |
 
 	result := forthCalculator evaluateInstructions: #(': foo 5 ;' ': bar foo ;' ': foo 6 ;' 'bar foo' ) .
 	self assert: result equals: #(5 6 )
 ]
 
-{ #category : #test }
-ForthTest >> testUserdefinedWordsCannotRedefineNumbers [
+{ #category : #tests }
+ForthTest >> test07_UserdefinedWordsCanDefineWordThatUsesWordWithTheSameName [
+	| result |
+
+	result := forthCalculator evaluateInstructions: #(': foo 10 ;' ': foo foo 1 + ;' 'foo' ) .
+	self assert: result equals: #(11 )
+]
+
+{ #category : #tests }
+ForthTest >> test08_UserdefinedWordsCannotRedefineNumbers [
 	| result |
 
 	result := forthCalculator evaluateInstructions: #(': 1 2 ;' ) .
 	self assert: result equals: ((Dictionary new) add: ('error'->'illegal operation'); yourself)
 ]
 
-{ #category : #test }
-ForthTest >> testUserdefinedWordsErrorsIfExecutingANonexistentWord [
+{ #category : #tests }
+ForthTest >> test09_UserdefinedWordsErrorsIfExecutingANonexistentWord [
 	| result |
 
 	result := forthCalculator evaluateInstructions: #('foo' ) .
 	self assert: result equals: ((Dictionary new) add: ('error'->'undefined operation'); yourself)
-]
-
-{ #category : #test }
-ForthTest >> testUserdefinedWordsExecuteInTheRightOrder [
-	| result |
-
-	result := forthCalculator evaluateInstructions: #(': countup 1 2 3 ;' 'countup' ) .
-	self assert: result equals: #(1 2 3 )
 ]

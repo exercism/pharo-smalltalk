@@ -85,12 +85,12 @@ Class {
 { #category : #config }
 BookStoreTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'af88dcd9-2b3f-0d00-a2b4-cd8409f0590c'
+	^'57a727be-4a3f-0d00-bb18-bc50071d6982'
 ]
 
 { #category : #config }
 BookStoreTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.4.0'
 ]
 
@@ -99,122 +99,122 @@ BookStoreTest >> setUp [
 	bookStoreCalculator := BookStore new
 ]
 
-{ #category : #test }
-BookStoreTest >> testReturnTheTotalBasketPriceAfterApplyingTheBestDiscountEmptyBasket [
-	| result |
-
-	result := bookStoreCalculator totalBasket: #() .
-	self assert: result equals: 0
-]
-
-{ #category : #test }
-BookStoreTest >> testReturnTheTotalBasketPriceAfterApplyingTheBestDiscountFiveDifferentBooks [
-	| result |
-
-	result := bookStoreCalculator totalBasket: #(1 2 3 4 5 ) .
-	self assert: result equals: 3000
-]
-
-{ #category : #test }
-BookStoreTest >> testReturnTheTotalBasketPriceAfterApplyingTheBestDiscountFourDifferentBooks [
-	| result |
-
-	result := bookStoreCalculator totalBasket: #(1 2 3 4 ) .
-	self assert: result equals: 2560
-]
-
-{ #category : #test }
-BookStoreTest >> testReturnTheTotalBasketPriceAfterApplyingTheBestDiscountFourGroupsOfFourAreCheaperThanTwoGroupsEachOfFiveAndThree [
-	| result |
-
-	result := bookStoreCalculator totalBasket: #(1 1 2 2 3 3 4 5 1 1 2 2 3 3 4 5 ) .
-	self assert: result equals: 10240
-]
-
-{ #category : #test }
-BookStoreTest >> testReturnTheTotalBasketPriceAfterApplyingTheBestDiscountGroupOfFourPlusGroupOfTwoIsCheaperThanTwoGroupsOfThree [
-	| result |
-
-	result := bookStoreCalculator totalBasket: #(1 1 2 2 3 4 ) .
-	self assert: result equals: 4080
-]
-
-{ #category : #test }
-BookStoreTest >> testReturnTheTotalBasketPriceAfterApplyingTheBestDiscountOnlyASingleBook [
+{ #category : #tests }
+BookStoreTest >> test01_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountOnlyASingleBook [
 	| result |
 
 	result := bookStoreCalculator totalBasket: #(1 ) .
 	self assert: result equals: 800
 ]
 
-{ #category : #test }
-BookStoreTest >> testReturnTheTotalBasketPriceAfterApplyingTheBestDiscountThreeCopiesOfFirstBookAnd2EachOfRemaining [
+{ #category : #tests }
+BookStoreTest >> test02_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwoOfTheSameBook [
 	| result |
 
-	result := bookStoreCalculator totalBasket: #(1 1 2 2 3 3 4 4 5 5 1 ) .
-	self assert: result equals: 6800
+	result := bookStoreCalculator totalBasket: #(2 2 ) .
+	self assert: result equals: 1600
 ]
 
-{ #category : #test }
-BookStoreTest >> testReturnTheTotalBasketPriceAfterApplyingTheBestDiscountThreeDifferentBooks [
+{ #category : #tests }
+BookStoreTest >> test03_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountEmptyBasket [
 	| result |
 
-	result := bookStoreCalculator totalBasket: #(1 2 3 ) .
-	self assert: result equals: 2160
+	result := bookStoreCalculator totalBasket: #() .
+	self assert: result equals: 0
 ]
 
-{ #category : #test }
-BookStoreTest >> testReturnTheTotalBasketPriceAfterApplyingTheBestDiscountThreeEachOfFirst2BooksAnd2EachOfRemainingBooks [
-	| result |
-
-	result := bookStoreCalculator totalBasket: #(1 1 2 2 3 3 4 4 5 5 1 2 ) .
-	self assert: result equals: 7520
-]
-
-{ #category : #test }
-BookStoreTest >> testReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwoCopiesOfEachBook [
-	| result |
-
-	result := bookStoreCalculator totalBasket: #(1 1 2 2 3 3 4 4 5 5 ) .
-	self assert: result equals: 6000
-]
-
-{ #category : #test }
-BookStoreTest >> testReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwoDifferentBooks [
+{ #category : #tests }
+BookStoreTest >> test04_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwoDifferentBooks [
 	| result |
 
 	result := bookStoreCalculator totalBasket: #(1 2 ) .
 	self assert: result equals: 1520
 ]
 
-{ #category : #test }
-BookStoreTest >> testReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwoEachOfFirst4BooksAnd1CopyEachOfRest [
+{ #category : #tests }
+BookStoreTest >> test05_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountThreeDifferentBooks [
 	| result |
 
-	result := bookStoreCalculator totalBasket: #(1 1 2 2 3 3 4 4 5 ) .
-	self assert: result equals: 5560
+	result := bookStoreCalculator totalBasket: #(1 2 3 ) .
+	self assert: result equals: 2160
 ]
 
-{ #category : #test }
-BookStoreTest >> testReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwoGroupsOfFourIsCheaperThanGroupOfFivePlusGroupOfThree [
+{ #category : #tests }
+BookStoreTest >> test06_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountFourDifferentBooks [
+	| result |
+
+	result := bookStoreCalculator totalBasket: #(1 2 3 4 ) .
+	self assert: result equals: 2560
+]
+
+{ #category : #tests }
+BookStoreTest >> test07_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountFiveDifferentBooks [
+	| result |
+
+	result := bookStoreCalculator totalBasket: #(1 2 3 4 5 ) .
+	self assert: result equals: 3000
+]
+
+{ #category : #tests }
+BookStoreTest >> test08_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwoGroupsOfFourIsCheaperThanGroupOfFivePlusGroupOfThree [
 	| result |
 
 	result := bookStoreCalculator totalBasket: #(1 1 2 2 3 3 4 5 ) .
 	self assert: result equals: 5120
 ]
 
-{ #category : #test }
-BookStoreTest >> testReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwoGroupsOfFourIsCheaperThanGroupsOfFiveAndThree [
+{ #category : #tests }
+BookStoreTest >> test09_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwoGroupsOfFourIsCheaperThanGroupsOfFiveAndThree [
 	| result |
 
 	result := bookStoreCalculator totalBasket: #(1 1 2 3 4 4 5 5 ) .
 	self assert: result equals: 5120
 ]
 
-{ #category : #test }
-BookStoreTest >> testReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwoOfTheSameBook [
+{ #category : #tests }
+BookStoreTest >> test10_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountGroupOfFourPlusGroupOfTwoIsCheaperThanTwoGroupsOfThree [
 	| result |
 
-	result := bookStoreCalculator totalBasket: #(2 2 ) .
-	self assert: result equals: 1600
+	result := bookStoreCalculator totalBasket: #(1 1 2 2 3 4 ) .
+	self assert: result equals: 4080
+]
+
+{ #category : #tests }
+BookStoreTest >> test11_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwoEachOfFirst4BooksAnd1CopyEachOfRest [
+	| result |
+
+	result := bookStoreCalculator totalBasket: #(1 1 2 2 3 3 4 4 5 ) .
+	self assert: result equals: 5560
+]
+
+{ #category : #tests }
+BookStoreTest >> test12_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwoCopiesOfEachBook [
+	| result |
+
+	result := bookStoreCalculator totalBasket: #(1 1 2 2 3 3 4 4 5 5 ) .
+	self assert: result equals: 6000
+]
+
+{ #category : #tests }
+BookStoreTest >> test13_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountThreeCopiesOfFirstBookAnd2EachOfRemaining [
+	| result |
+
+	result := bookStoreCalculator totalBasket: #(1 1 2 2 3 3 4 4 5 5 1 ) .
+	self assert: result equals: 6800
+]
+
+{ #category : #tests }
+BookStoreTest >> test14_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountThreeEachOfFirst2BooksAnd2EachOfRemainingBooks [
+	| result |
+
+	result := bookStoreCalculator totalBasket: #(1 1 2 2 3 3 4 4 5 5 1 2 ) .
+	self assert: result equals: 7520
+]
+
+{ #category : #tests }
+BookStoreTest >> test15_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountFourGroupsOfFourAreCheaperThanTwoGroupsEachOfFiveAndThree [
+	| result |
+
+	result := bookStoreCalculator totalBasket: #(1 1 2 2 3 3 4 5 1 1 2 2 3 3 4 5 ) .
+	self assert: result equals: 10240
 ]

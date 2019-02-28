@@ -47,12 +47,12 @@ Class {
 { #category : #config }
 TwoBucketTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'d4a2dbd9-2b3f-0d00-a2b3-430c09f0590c'
+	^'755c26be-4a3f-0d00-bb17-8bce071d6982'
 ]
 
 { #category : #config }
 TwoBucketTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.4.0'
 ]
 
@@ -61,50 +61,50 @@ TwoBucketTest >> setUp [
 	twoBucketCalculator := TwoBucket new
 ]
 
-{ #category : #test }
-TwoBucketTest >> testMeasureOneStepUsingBucketOneOfSize1AndBucketTwoOfSize3StartWithBucketTwo [
-	| result |
-
-	result := twoBucketCalculator measureGoal: 3 bucketTwo: 3 startBucket: 'two' bucketOne: 1 .
-	self assert: result equals: ((Dictionary new) add: ('goalBucket'->'two'); add: ('otherBucket'->0); add: ('moves'->1); yourself)
-]
-
-{ #category : #test }
-TwoBucketTest >> testMeasureUsingBucketOneOfSize2AndBucketTwoOfSize3StartWithBucketOneAndEndWithBucketTwo [
-	| result |
-
-	result := twoBucketCalculator measureGoal: 3 bucketTwo: 3 startBucket: 'one' bucketOne: 2 .
-	self assert: result equals: ((Dictionary new) add: ('goalBucket'->'two'); add: ('otherBucket'->2); add: ('moves'->2); yourself)
-]
-
-{ #category : #test }
-TwoBucketTest >> testMeasureUsingBucketOneOfSize3AndBucketTwoOfSize5StartWithBucketOne [
+{ #category : #tests }
+TwoBucketTest >> test01_MeasureUsingBucketOneOfSize3AndBucketTwoOfSize5StartWithBucketOne [
 	| result |
 
 	result := twoBucketCalculator measureGoal: 1 bucketTwo: 5 startBucket: 'one' bucketOne: 3 .
 	self assert: result equals: ((Dictionary new) add: ('goalBucket'->'one'); add: ('otherBucket'->5); add: ('moves'->4); yourself)
 ]
 
-{ #category : #test }
-TwoBucketTest >> testMeasureUsingBucketOneOfSize3AndBucketTwoOfSize5StartWithBucketTwo [
+{ #category : #tests }
+TwoBucketTest >> test02_MeasureUsingBucketOneOfSize3AndBucketTwoOfSize5StartWithBucketTwo [
 	| result |
 
 	result := twoBucketCalculator measureGoal: 1 bucketTwo: 5 startBucket: 'two' bucketOne: 3 .
 	self assert: result equals: ((Dictionary new) add: ('goalBucket'->'two'); add: ('otherBucket'->3); add: ('moves'->8); yourself)
 ]
 
-{ #category : #test }
-TwoBucketTest >> testMeasureUsingBucketOneOfSize7AndBucketTwoOfSize11StartWithBucketOne [
+{ #category : #tests }
+TwoBucketTest >> test03_MeasureUsingBucketOneOfSize7AndBucketTwoOfSize11StartWithBucketOne [
 	| result |
 
 	result := twoBucketCalculator measureGoal: 2 bucketTwo: 11 startBucket: 'one' bucketOne: 7 .
 	self assert: result equals: ((Dictionary new) add: ('goalBucket'->'one'); add: ('otherBucket'->11); add: ('moves'->14); yourself)
 ]
 
-{ #category : #test }
-TwoBucketTest >> testMeasureUsingBucketOneOfSize7AndBucketTwoOfSize11StartWithBucketTwo [
+{ #category : #tests }
+TwoBucketTest >> test04_MeasureUsingBucketOneOfSize7AndBucketTwoOfSize11StartWithBucketTwo [
 	| result |
 
 	result := twoBucketCalculator measureGoal: 2 bucketTwo: 11 startBucket: 'two' bucketOne: 7 .
 	self assert: result equals: ((Dictionary new) add: ('goalBucket'->'two'); add: ('otherBucket'->7); add: ('moves'->18); yourself)
+]
+
+{ #category : #tests }
+TwoBucketTest >> test05_MeasureOneStepUsingBucketOneOfSize1AndBucketTwoOfSize3StartWithBucketTwo [
+	| result |
+
+	result := twoBucketCalculator measureGoal: 3 bucketTwo: 3 startBucket: 'two' bucketOne: 1 .
+	self assert: result equals: ((Dictionary new) add: ('goalBucket'->'two'); add: ('otherBucket'->0); add: ('moves'->1); yourself)
+]
+
+{ #category : #tests }
+TwoBucketTest >> test06_MeasureUsingBucketOneOfSize2AndBucketTwoOfSize3StartWithBucketOneAndEndWithBucketTwo [
+	| result |
+
+	result := twoBucketCalculator measureGoal: 3 bucketTwo: 3 startBucket: 'one' bucketOne: 2 .
+	self assert: result equals: ((Dictionary new) add: ('goalBucket'->'two'); add: ('otherBucket'->2); add: ('moves'->2); yourself)
 ]

@@ -49,12 +49,12 @@ Class {
 { #category : #config }
 VariableLengthQuantityTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'f9e0ddd9-2b3f-0d00-a2b5-ab8309f0590c'
+	^'088f29be-4a3f-0d00-bb19-4715071d6982'
 ]
 
 { #category : #config }
 VariableLengthQuantityTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.2.0'
 ]
 
@@ -63,210 +63,210 @@ VariableLengthQuantityTest >> setUp [
 	variableLengthQuantityCalculator := VariableLengthQuantity new
 ]
 
-{ #category : #test }
-VariableLengthQuantityTest >> testDecodeASeriesOfBytesProducingASeriesOfIntegersFourBytes [
-	| result |
-
-	result := variableLengthQuantityCalculator decodeIntegers: #(129 128 128 0 ) .
-	self assert: result equals: #(2097152 )
-]
-
-{ #category : #test }
-VariableLengthQuantityTest >> testDecodeASeriesOfBytesProducingASeriesOfIntegersIncompleteSequenceCausesError [
-	| result |
-
-	result := variableLengthQuantityCalculator decodeIntegers: #(255 ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'incomplete sequence'); yourself)
-]
-
-{ #category : #test }
-VariableLengthQuantityTest >> testDecodeASeriesOfBytesProducingASeriesOfIntegersIncompleteSequenceCausesErrorEvenIfValueIsZero [
-	| result |
-
-	result := variableLengthQuantityCalculator decodeIntegers: #(128 ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'incomplete sequence'); yourself)
-]
-
-{ #category : #test }
-VariableLengthQuantityTest >> testDecodeASeriesOfBytesProducingASeriesOfIntegersMaximum32bitInteger [
-	| result |
-
-	result := variableLengthQuantityCalculator decodeIntegers: #(143 255 255 255 127 ) .
-	self assert: result equals: #(4294967295 )
-]
-
-{ #category : #test }
-VariableLengthQuantityTest >> testDecodeASeriesOfBytesProducingASeriesOfIntegersMultipleValues [
-	| result |
-
-	result := variableLengthQuantityCalculator decodeIntegers: #(192 0 200 232 86 255 255 255 127 0 255 127 129 128 0 ) .
-	self assert: result equals: #(8192 1193046 268435455 0 16383 16384 )
-]
-
-{ #category : #test }
-VariableLengthQuantityTest >> testDecodeASeriesOfBytesProducingASeriesOfIntegersOneByte [
+{ #category : #tests }
+VariableLengthQuantityTest >> test01_DecodeASeriesOfBytesProducingASeriesOfIntegersOneByte [
 	| result |
 
 	result := variableLengthQuantityCalculator decodeIntegers: #(127 ) .
 	self assert: result equals: #(127 )
 ]
 
-{ #category : #test }
-VariableLengthQuantityTest >> testDecodeASeriesOfBytesProducingASeriesOfIntegersThreeBytes [
+{ #category : #tests }
+VariableLengthQuantityTest >> test01_EncodeASeriesOfIntegersProducingASeriesOfBytesZero [
 	| result |
 
-	result := variableLengthQuantityCalculator decodeIntegers: #(255 255 127 ) .
-	self assert: result equals: #(2097151 )
+	result := variableLengthQuantityCalculator encodeIntegers: #(0 ) .
+	self assert: result equals: #(0 )
 ]
 
-{ #category : #test }
-VariableLengthQuantityTest >> testDecodeASeriesOfBytesProducingASeriesOfIntegersTwoBytes [
+{ #category : #tests }
+VariableLengthQuantityTest >> test02_DecodeASeriesOfBytesProducingASeriesOfIntegersTwoBytes [
 	| result |
 
 	result := variableLengthQuantityCalculator decodeIntegers: #(192 0 ) .
 	self assert: result equals: #(8192 )
 ]
 
-{ #category : #test }
-VariableLengthQuantityTest >> testEncodeASeriesOfIntegersProducingASeriesOfBytesArbitraryDoubleByte [
-	| result |
-
-	result := variableLengthQuantityCalculator encodeIntegers: #(8192 ) .
-	self assert: result equals: #(192 0 )
-]
-
-{ #category : #test }
-VariableLengthQuantityTest >> testEncodeASeriesOfIntegersProducingASeriesOfBytesArbitraryQuadrupleByte [
-	| result |
-
-	result := variableLengthQuantityCalculator encodeIntegers: #(134217728 ) .
-	self assert: result equals: #(192 128 128 0 )
-]
-
-{ #category : #test }
-VariableLengthQuantityTest >> testEncodeASeriesOfIntegersProducingASeriesOfBytesArbitraryQuintupleByte [
-	| result |
-
-	result := variableLengthQuantityCalculator encodeIntegers: #(4278190080 ) .
-	self assert: result equals: #(143 248 128 128 0 )
-]
-
-{ #category : #test }
-VariableLengthQuantityTest >> testEncodeASeriesOfIntegersProducingASeriesOfBytesArbitrarySingleByte [
+{ #category : #tests }
+VariableLengthQuantityTest >> test02_EncodeASeriesOfIntegersProducingASeriesOfBytesArbitrarySingleByte [
 	| result |
 
 	result := variableLengthQuantityCalculator encodeIntegers: #(64 ) .
 	self assert: result equals: #(64 )
 ]
 
-{ #category : #test }
-VariableLengthQuantityTest >> testEncodeASeriesOfIntegersProducingASeriesOfBytesArbitraryTripleByte [
+{ #category : #tests }
+VariableLengthQuantityTest >> test03_DecodeASeriesOfBytesProducingASeriesOfIntegersThreeBytes [
 	| result |
 
-	result := variableLengthQuantityCalculator encodeIntegers: #(1048576 ) .
-	self assert: result equals: #(192 128 0 )
+	result := variableLengthQuantityCalculator decodeIntegers: #(255 255 127 ) .
+	self assert: result equals: #(2097151 )
 ]
 
-{ #category : #test }
-VariableLengthQuantityTest >> testEncodeASeriesOfIntegersProducingASeriesOfBytesLargestDoubleByte [
-	| result |
-
-	result := variableLengthQuantityCalculator encodeIntegers: #(16383 ) .
-	self assert: result equals: #(255 127 )
-]
-
-{ #category : #test }
-VariableLengthQuantityTest >> testEncodeASeriesOfIntegersProducingASeriesOfBytesLargestQuadrupleByte [
-	| result |
-
-	result := variableLengthQuantityCalculator encodeIntegers: #(268435455 ) .
-	self assert: result equals: #(255 255 255 127 )
-]
-
-{ #category : #test }
-VariableLengthQuantityTest >> testEncodeASeriesOfIntegersProducingASeriesOfBytesLargestSingleByte [
+{ #category : #tests }
+VariableLengthQuantityTest >> test03_EncodeASeriesOfIntegersProducingASeriesOfBytesLargestSingleByte [
 	| result |
 
 	result := variableLengthQuantityCalculator encodeIntegers: #(127 ) .
 	self assert: result equals: #(127 )
 ]
 
-{ #category : #test }
-VariableLengthQuantityTest >> testEncodeASeriesOfIntegersProducingASeriesOfBytesLargestTripleByte [
+{ #category : #tests }
+VariableLengthQuantityTest >> test04_DecodeASeriesOfBytesProducingASeriesOfIntegersFourBytes [
 	| result |
 
-	result := variableLengthQuantityCalculator encodeIntegers: #(2097151 ) .
-	self assert: result equals: #(255 255 127 )
+	result := variableLengthQuantityCalculator decodeIntegers: #(129 128 128 0 ) .
+	self assert: result equals: #(2097152 )
 ]
 
-{ #category : #test }
-VariableLengthQuantityTest >> testEncodeASeriesOfIntegersProducingASeriesOfBytesManyMultibyteValues [
-	| result |
-
-	result := variableLengthQuantityCalculator encodeIntegers: #(8192 1193046 268435455 0 16383 16384 ) .
-	self assert: result equals: #(192 0 200 232 86 255 255 255 127 0 255 127 129 128 0 )
-]
-
-{ #category : #test }
-VariableLengthQuantityTest >> testEncodeASeriesOfIntegersProducingASeriesOfBytesMaximum32bitIntegerInput [
-	| result |
-
-	result := variableLengthQuantityCalculator encodeIntegers: #(4294967295 ) .
-	self assert: result equals: #(143 255 255 255 127 )
-]
-
-{ #category : #test }
-VariableLengthQuantityTest >> testEncodeASeriesOfIntegersProducingASeriesOfBytesSmallestDoubleByte [
+{ #category : #tests }
+VariableLengthQuantityTest >> test04_EncodeASeriesOfIntegersProducingASeriesOfBytesSmallestDoubleByte [
 	| result |
 
 	result := variableLengthQuantityCalculator encodeIntegers: #(128 ) .
 	self assert: result equals: #(129 0 )
 ]
 
-{ #category : #test }
-VariableLengthQuantityTest >> testEncodeASeriesOfIntegersProducingASeriesOfBytesSmallestQuadrupleByte [
+{ #category : #tests }
+VariableLengthQuantityTest >> test05_DecodeASeriesOfBytesProducingASeriesOfIntegersMaximum32bitInteger [
 	| result |
 
-	result := variableLengthQuantityCalculator encodeIntegers: #(2097152 ) .
-	self assert: result equals: #(129 128 128 0 )
+	result := variableLengthQuantityCalculator decodeIntegers: #(143 255 255 255 127 ) .
+	self assert: result equals: #(4294967295 )
 ]
 
-{ #category : #test }
-VariableLengthQuantityTest >> testEncodeASeriesOfIntegersProducingASeriesOfBytesSmallestQuintupleByte [
+{ #category : #tests }
+VariableLengthQuantityTest >> test05_EncodeASeriesOfIntegersProducingASeriesOfBytesArbitraryDoubleByte [
 	| result |
 
-	result := variableLengthQuantityCalculator encodeIntegers: #(268435456 ) .
-	self assert: result equals: #(129 128 128 128 0 )
+	result := variableLengthQuantityCalculator encodeIntegers: #(8192 ) .
+	self assert: result equals: #(192 0 )
 ]
 
-{ #category : #test }
-VariableLengthQuantityTest >> testEncodeASeriesOfIntegersProducingASeriesOfBytesSmallestTripleByte [
+{ #category : #tests }
+VariableLengthQuantityTest >> test06_DecodeASeriesOfBytesProducingASeriesOfIntegersIncompleteSequenceCausesError [
+	| result |
+
+	result := variableLengthQuantityCalculator decodeIntegers: #(255 ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'incomplete sequence'); yourself)
+]
+
+{ #category : #tests }
+VariableLengthQuantityTest >> test06_EncodeASeriesOfIntegersProducingASeriesOfBytesLargestDoubleByte [
+	| result |
+
+	result := variableLengthQuantityCalculator encodeIntegers: #(16383 ) .
+	self assert: result equals: #(255 127 )
+]
+
+{ #category : #tests }
+VariableLengthQuantityTest >> test07_DecodeASeriesOfBytesProducingASeriesOfIntegersIncompleteSequenceCausesErrorEvenIfValueIsZero [
+	| result |
+
+	result := variableLengthQuantityCalculator decodeIntegers: #(128 ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'incomplete sequence'); yourself)
+]
+
+{ #category : #tests }
+VariableLengthQuantityTest >> test07_EncodeASeriesOfIntegersProducingASeriesOfBytesSmallestTripleByte [
 	| result |
 
 	result := variableLengthQuantityCalculator encodeIntegers: #(16384 ) .
 	self assert: result equals: #(129 128 0 )
 ]
 
-{ #category : #test }
-VariableLengthQuantityTest >> testEncodeASeriesOfIntegersProducingASeriesOfBytesTwoMultibyteValues [
+{ #category : #tests }
+VariableLengthQuantityTest >> test08_DecodeASeriesOfBytesProducingASeriesOfIntegersMultipleValues [
 	| result |
 
-	result := variableLengthQuantityCalculator encodeIntegers: #(16384 1193046 ) .
-	self assert: result equals: #(129 128 0 200 232 86 )
+	result := variableLengthQuantityCalculator decodeIntegers: #(192 0 200 232 86 255 255 255 127 0 255 127 129 128 0 ) .
+	self assert: result equals: #(8192 1193046 268435455 0 16383 16384 )
 ]
 
-{ #category : #test }
-VariableLengthQuantityTest >> testEncodeASeriesOfIntegersProducingASeriesOfBytesTwoSinglebyteValues [
+{ #category : #tests }
+VariableLengthQuantityTest >> test08_EncodeASeriesOfIntegersProducingASeriesOfBytesArbitraryTripleByte [
+	| result |
+
+	result := variableLengthQuantityCalculator encodeIntegers: #(1048576 ) .
+	self assert: result equals: #(192 128 0 )
+]
+
+{ #category : #tests }
+VariableLengthQuantityTest >> test09_EncodeASeriesOfIntegersProducingASeriesOfBytesLargestTripleByte [
+	| result |
+
+	result := variableLengthQuantityCalculator encodeIntegers: #(2097151 ) .
+	self assert: result equals: #(255 255 127 )
+]
+
+{ #category : #tests }
+VariableLengthQuantityTest >> test10_EncodeASeriesOfIntegersProducingASeriesOfBytesSmallestQuadrupleByte [
+	| result |
+
+	result := variableLengthQuantityCalculator encodeIntegers: #(2097152 ) .
+	self assert: result equals: #(129 128 128 0 )
+]
+
+{ #category : #tests }
+VariableLengthQuantityTest >> test11_EncodeASeriesOfIntegersProducingASeriesOfBytesArbitraryQuadrupleByte [
+	| result |
+
+	result := variableLengthQuantityCalculator encodeIntegers: #(134217728 ) .
+	self assert: result equals: #(192 128 128 0 )
+]
+
+{ #category : #tests }
+VariableLengthQuantityTest >> test12_EncodeASeriesOfIntegersProducingASeriesOfBytesLargestQuadrupleByte [
+	| result |
+
+	result := variableLengthQuantityCalculator encodeIntegers: #(268435455 ) .
+	self assert: result equals: #(255 255 255 127 )
+]
+
+{ #category : #tests }
+VariableLengthQuantityTest >> test13_EncodeASeriesOfIntegersProducingASeriesOfBytesSmallestQuintupleByte [
+	| result |
+
+	result := variableLengthQuantityCalculator encodeIntegers: #(268435456 ) .
+	self assert: result equals: #(129 128 128 128 0 )
+]
+
+{ #category : #tests }
+VariableLengthQuantityTest >> test14_EncodeASeriesOfIntegersProducingASeriesOfBytesArbitraryQuintupleByte [
+	| result |
+
+	result := variableLengthQuantityCalculator encodeIntegers: #(4278190080 ) .
+	self assert: result equals: #(143 248 128 128 0 )
+]
+
+{ #category : #tests }
+VariableLengthQuantityTest >> test15_EncodeASeriesOfIntegersProducingASeriesOfBytesMaximum32bitIntegerInput [
+	| result |
+
+	result := variableLengthQuantityCalculator encodeIntegers: #(4294967295 ) .
+	self assert: result equals: #(143 255 255 255 127 )
+]
+
+{ #category : #tests }
+VariableLengthQuantityTest >> test16_EncodeASeriesOfIntegersProducingASeriesOfBytesTwoSinglebyteValues [
 	| result |
 
 	result := variableLengthQuantityCalculator encodeIntegers: #(64 127 ) .
 	self assert: result equals: #(64 127 )
 ]
 
-{ #category : #test }
-VariableLengthQuantityTest >> testEncodeASeriesOfIntegersProducingASeriesOfBytesZero [
+{ #category : #tests }
+VariableLengthQuantityTest >> test17_EncodeASeriesOfIntegersProducingASeriesOfBytesTwoMultibyteValues [
 	| result |
 
-	result := variableLengthQuantityCalculator encodeIntegers: #(0 ) .
-	self assert: result equals: #(0 )
+	result := variableLengthQuantityCalculator encodeIntegers: #(16384 1193046 ) .
+	self assert: result equals: #(129 128 0 200 232 86 )
+]
+
+{ #category : #tests }
+VariableLengthQuantityTest >> test18_EncodeASeriesOfIntegersProducingASeriesOfBytesManyMultibyteValues [
+	| result |
+
+	result := variableLengthQuantityCalculator encodeIntegers: #(8192 1193046 268435455 0 16383 16384 ) .
+	self assert: result equals: #(192 0 200 232 86 255 255 255 127 0 255 127 129 128 0 )
 ]

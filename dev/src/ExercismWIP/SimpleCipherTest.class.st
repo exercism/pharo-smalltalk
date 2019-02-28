@@ -96,12 +96,12 @@ Class {
 { #category : #config }
 SimpleCipherTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'8aec3ada-2b3f-0d00-a30f-8db509f0590c'
+	^'473ea6be-4a3f-0d00-bb71-1079071d6982'
 ]
 
 { #category : #config }
 SimpleCipherTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'2.0.0'
 ]
 
@@ -110,98 +110,98 @@ SimpleCipherTest >> setUp [
 	simpleCipherCalculator := SimpleCipher new
 ]
 
-{ #category : #test }
-SimpleCipherTest >> testRandomKeyCipherCanDecode [
-	| result |
-
-	result := simpleCipherCalculator decodeCiphertext: 'cipher.key.substring(0, expected.length)' .
-	self assert: result equals: 'aaaaaaaaaa'
-]
-
-{ #category : #test }
-SimpleCipherTest >> testRandomKeyCipherCanEncode [
+{ #category : #tests }
+SimpleCipherTest >> test01_RandomKeyCipherCanEncode [
 	| result |
 
 	result := simpleCipherCalculator encodePlaintext: 'aaaaaaaaaa' .
 	self assert: result equals: 'cipher.key.substring(0, plaintext.length)'
 ]
 
-{ #category : #test }
-SimpleCipherTest >> testRandomKeyCipherIsReversibleIeIfYouApplyDecodeInAEncodedResultYouMustSeeTheSamePlaintextEncodeParameterAsAResultOfTheDecodeMethod [
-	| result |
-
-	result := simpleCipherCalculator decodeCiphertext: 'cipher.encode' plaintext: 'abcdefghij' .
-	self assert: result equals: 'abcdefghij'
-]
-
-{ #category : #test }
-SimpleCipherTest >> testRandomKeyCipherKeyIsMadeOnlyOfLowercaseLetters [
-	| result |
-
-	result := simpleCipherCalculator key.
-	self assert: result equals: ((Dictionary new) add: ('match'->'^[a-z]+$'); yourself)
-]
-
-{ #category : #test }
-SimpleCipherTest >> testSubstitutionCipherCanDecode [
-	| result |
-
-	result := simpleCipherCalculator decodeCiphertext: 'abcdefghij' key: 'abcdefghij' .
-	self assert: result equals: 'aaaaaaaaaa'
-]
-
-{ #category : #test }
-SimpleCipherTest >> testSubstitutionCipherCanDecodeMessagesLongerThanTheKey [
-	| result |
-
-	result := simpleCipherCalculator decodeCiphertext: 'iboaqcnecbfcr' key: 'abc' .
-	self assert: result equals: 'iamapandabear'
-]
-
-{ #category : #test }
-SimpleCipherTest >> testSubstitutionCipherCanDoubleShiftEncode [
-	| result |
-
-	result := simpleCipherCalculator encodeKey: 'iamapandabear' plaintext: 'iamapandabear' .
-	self assert: result equals: 'qayaeaagaciai'
-]
-
-{ #category : #test }
-SimpleCipherTest >> testSubstitutionCipherCanEncode [
+{ #category : #tests }
+SimpleCipherTest >> test01_SubstitutionCipherCanEncode [
 	| result |
 
 	result := simpleCipherCalculator encodeKey: 'abcdefghij' plaintext: 'aaaaaaaaaa' .
 	self assert: result equals: 'abcdefghij'
 ]
 
-{ #category : #test }
-SimpleCipherTest >> testSubstitutionCipherCanEncodeMessagesLongerThanTheKey [
+{ #category : #tests }
+SimpleCipherTest >> test02_RandomKeyCipherCanDecode [
 	| result |
 
-	result := simpleCipherCalculator encodeKey: 'abc' plaintext: 'iamapandabear' .
-	self assert: result equals: 'iboaqcnecbfcr'
+	result := simpleCipherCalculator decodeCiphertext: 'cipher.key.substring(0, expected.length)' .
+	self assert: result equals: 'aaaaaaaaaa'
 ]
 
-{ #category : #test }
-SimpleCipherTest >> testSubstitutionCipherCanWrapOnDecode [
+{ #category : #tests }
+SimpleCipherTest >> test02_SubstitutionCipherCanDecode [
 	| result |
 
-	result := simpleCipherCalculator decodeCiphertext: 'zabcdefghi' key: 'abcdefghij' .
-	self assert: result equals: 'zzzzzzzzzz'
+	result := simpleCipherCalculator decodeCiphertext: 'abcdefghij' key: 'abcdefghij' .
+	self assert: result equals: 'aaaaaaaaaa'
 ]
 
-{ #category : #test }
-SimpleCipherTest >> testSubstitutionCipherCanWrapOnEncode [
+{ #category : #tests }
+SimpleCipherTest >> test03_RandomKeyCipherIsReversibleIeIfYouApplyDecodeInAEncodedResultYouMustSeeTheSamePlaintextEncodeParameterAsAResultOfTheDecodeMethod [
+	| result |
+
+	result := simpleCipherCalculator decodeCiphertext: 'cipher.encode' plaintext: 'abcdefghij' .
+	self assert: result equals: 'abcdefghij'
+]
+
+{ #category : #tests }
+SimpleCipherTest >> test03_SubstitutionCipherIsReversibleIeIfYouApplyDecodeInAEncodedResultYouMustSeeTheSamePlaintextEncodeParameterAsAResultOfTheDecodeMethod [
+	| result |
+
+	result := simpleCipherCalculator decodeCiphertext: 'cipher.encode' key: 'abcdefghij' plaintext: 'abcdefghij' .
+	self assert: result equals: 'abcdefghij'
+]
+
+{ #category : #tests }
+SimpleCipherTest >> test04_RandomKeyCipherKeyIsMadeOnlyOfLowercaseLetters [
+	| result |
+
+	result := simpleCipherCalculator key.
+	self assert: result equals: ((Dictionary new) add: ('match'->'^[a-z]+$'); yourself)
+]
+
+{ #category : #tests }
+SimpleCipherTest >> test04_SubstitutionCipherCanDoubleShiftEncode [
+	| result |
+
+	result := simpleCipherCalculator encodeKey: 'iamapandabear' plaintext: 'iamapandabear' .
+	self assert: result equals: 'qayaeaagaciai'
+]
+
+{ #category : #tests }
+SimpleCipherTest >> test05_SubstitutionCipherCanWrapOnEncode [
 	| result |
 
 	result := simpleCipherCalculator encodeKey: 'abcdefghij' plaintext: 'zzzzzzzzzz' .
 	self assert: result equals: 'zabcdefghi'
 ]
 
-{ #category : #test }
-SimpleCipherTest >> testSubstitutionCipherIsReversibleIeIfYouApplyDecodeInAEncodedResultYouMustSeeTheSamePlaintextEncodeParameterAsAResultOfTheDecodeMethod [
+{ #category : #tests }
+SimpleCipherTest >> test06_SubstitutionCipherCanWrapOnDecode [
 	| result |
 
-	result := simpleCipherCalculator decodeCiphertext: 'cipher.encode' key: 'abcdefghij' plaintext: 'abcdefghij' .
-	self assert: result equals: 'abcdefghij'
+	result := simpleCipherCalculator decodeCiphertext: 'zabcdefghi' key: 'abcdefghij' .
+	self assert: result equals: 'zzzzzzzzzz'
+]
+
+{ #category : #tests }
+SimpleCipherTest >> test07_SubstitutionCipherCanEncodeMessagesLongerThanTheKey [
+	| result |
+
+	result := simpleCipherCalculator encodeKey: 'abc' plaintext: 'iamapandabear' .
+	self assert: result equals: 'iboaqcnecbfcr'
+]
+
+{ #category : #tests }
+SimpleCipherTest >> test08_SubstitutionCipherCanDecodeMessagesLongerThanTheKey [
+	| result |
+
+	result := simpleCipherCalculator decodeCiphertext: 'iboaqcnecbfcr' key: 'abc' .
+	self assert: result equals: 'iamapandabear'
 ]

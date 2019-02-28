@@ -81,12 +81,12 @@ Class {
 { #category : #config }
 RectanglesTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'35d811da-2b3f-0d00-a2e9-474009f0590c'
+	^'e5db72be-4a3f-0d00-bb4d-3e3a071d6982'
 ]
 
 { #category : #config }
 RectanglesTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.1.0'
 ]
 
@@ -95,106 +95,106 @@ RectanglesTest >> setUp [
 	rectanglesCalculator := Rectangles new
 ]
 
-{ #category : #test }
-RectanglesTest >> test1x1SquareIsCounted [
-	| result |
-
-	result := rectanglesCalculator rectanglesStrings: #('++' '++' ) .
-	self assert: result equals: 1
-]
-
-{ #category : #test }
-RectanglesTest >> testCornerIsRequiredForARectangleToBeComplete [
-	| result |
-
-	result := rectanglesCalculator rectanglesStrings: #('+------+----+' '|      |    |' '+------+    |' '|   |       |' '+---+-------+' ) .
-	self assert: result equals: 2
-]
-
-{ #category : #test }
-RectanglesTest >> testFiveRectanglesWithSharedParts [
-	| result |
-
-	result := rectanglesCalculator rectanglesStrings: #('  +-+' '  | |' '+-+-+' '| | |' '+-+-+' ) .
-	self assert: result equals: 5
-]
-
-{ #category : #test }
-RectanglesTest >> testLargeInputWithManyRectangles [
-	| result |
-
-	result := rectanglesCalculator rectanglesStrings: #('+---+--+----+' '|   +--+----+' '+---+--+    |' '|   +--+----+' '+---+--+--+-+' '+---+--+--+-+' '+------+  | |' '          +-+' ) .
-	self assert: result equals: 60
-]
-
-{ #category : #test }
-RectanglesTest >> testNoColumns [
-	| result |
-
-	result := rectanglesCalculator rectanglesStrings: #('' ) .
-	self assert: result equals: 0
-]
-
-{ #category : #test }
-RectanglesTest >> testNoRectangles [
-	| result |
-
-	result := rectanglesCalculator rectanglesStrings: #(' ' ) .
-	self assert: result equals: 0
-]
-
-{ #category : #test }
-RectanglesTest >> testNoRows [
+{ #category : #tests }
+RectanglesTest >> test01_NoRows [
 	| result |
 
 	result := rectanglesCalculator rectanglesStrings: #() .
 	self assert: result equals: 0
 ]
 
-{ #category : #test }
-RectanglesTest >> testOneRectangle [
+{ #category : #tests }
+RectanglesTest >> test02_NoColumns [
+	| result |
+
+	result := rectanglesCalculator rectanglesStrings: #('' ) .
+	self assert: result equals: 0
+]
+
+{ #category : #tests }
+RectanglesTest >> test03_NoRectangles [
+	| result |
+
+	result := rectanglesCalculator rectanglesStrings: #(' ' ) .
+	self assert: result equals: 0
+]
+
+{ #category : #tests }
+RectanglesTest >> test04_OneRectangle [
 	| result |
 
 	result := rectanglesCalculator rectanglesStrings: #('+-+' '| |' '+-+' ) .
 	self assert: result equals: 1
 ]
 
-{ #category : #test }
-RectanglesTest >> testOnlyCompleteRectanglesAreCounted [
+{ #category : #tests }
+RectanglesTest >> test05_TwoRectanglesWithoutSharedParts [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #('  +-+' '    |' '+-+-+' '| | -' '+-+-+' ) .
-	self assert: result equals: 1
+	result := rectanglesCalculator rectanglesStrings: #('  +-+' '  | |' '+-+-+' '| |  ' '+-+  ' ) .
+	self assert: result equals: 2
 ]
 
-{ #category : #test }
-RectanglesTest >> testRectangleOfHeight1IsCounted [
+{ #category : #tests }
+RectanglesTest >> test06_FiveRectanglesWithSharedParts [
+	| result |
+
+	result := rectanglesCalculator rectanglesStrings: #('  +-+' '  | |' '+-+-+' '| | |' '+-+-+' ) .
+	self assert: result equals: 5
+]
+
+{ #category : #tests }
+RectanglesTest >> test07_RectangleOfHeight1IsCounted [
 	| result |
 
 	result := rectanglesCalculator rectanglesStrings: #('+--+' '+--+' ) .
 	self assert: result equals: 1
 ]
 
-{ #category : #test }
-RectanglesTest >> testRectangleOfWidth1IsCounted [
+{ #category : #tests }
+RectanglesTest >> test08_RectangleOfWidth1IsCounted [
 	| result |
 
 	result := rectanglesCalculator rectanglesStrings: #('++' '||' '++' ) .
 	self assert: result equals: 1
 ]
 
-{ #category : #test }
-RectanglesTest >> testRectanglesCanBeOfDifferentSizes [
+{ #category : #tests }
+RectanglesTest >> test09_and1x1SquareIsCounted [
+	| result |
+
+	result := rectanglesCalculator rectanglesStrings: #('++' '++' ) .
+	self assert: result equals: 1
+]
+
+{ #category : #tests }
+RectanglesTest >> test10_OnlyCompleteRectanglesAreCounted [
+	| result |
+
+	result := rectanglesCalculator rectanglesStrings: #('  +-+' '    |' '+-+-+' '| | -' '+-+-+' ) .
+	self assert: result equals: 1
+]
+
+{ #category : #tests }
+RectanglesTest >> test11_RectanglesCanBeOfDifferentSizes [
 	| result |
 
 	result := rectanglesCalculator rectanglesStrings: #('+------+----+' '|      |    |' '+---+--+    |' '|   |       |' '+---+-------+' ) .
 	self assert: result equals: 3
 ]
 
-{ #category : #test }
-RectanglesTest >> testTwoRectanglesWithoutSharedParts [
+{ #category : #tests }
+RectanglesTest >> test12_CornerIsRequiredForARectangleToBeComplete [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #('  +-+' '  | |' '+-+-+' '| |  ' '+-+  ' ) .
+	result := rectanglesCalculator rectanglesStrings: #('+------+----+' '|      |    |' '+------+    |' '|   |       |' '+---+-------+' ) .
 	self assert: result equals: 2
+]
+
+{ #category : #tests }
+RectanglesTest >> test13_LargeInputWithManyRectangles [
+	| result |
+
+	result := rectanglesCalculator rectanglesStrings: #('+---+--+----+' '|   +--+----+' '+---+--+    |' '|   +--+----+' '+---+--+--+-+' '+---+--+--+-+' '+------+  | |' '          +-+' ) .
+	self assert: result equals: 60
 ]

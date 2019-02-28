@@ -58,12 +58,12 @@ Class {
 { #category : #config }
 IsbnVerifierTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'e5b5d8d9-2b3f-0d00-a2b0-9c3309f0590c'
+	^'8b8022be-4a3f-0d00-bb14-c200071d6982'
 ]
 
 { #category : #config }
 IsbnVerifierTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'2.7.0'
 ]
 
@@ -72,138 +72,138 @@ IsbnVerifierTest >> setUp [
 	isbnVerifierCalculator := IsbnVerifier new
 ]
 
-{ #category : #test }
-IsbnVerifierTest >> testCheckDigitIsACharacterOtherThanX [
-	| result |
-
-	result := isbnVerifierCalculator isValidIsbn: '3-598-21507-A' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-IsbnVerifierTest >> testCheckDigitOfXShouldNotBeUsedFor0 [
-	| result |
-
-	result := isbnVerifierCalculator isValidIsbn: '3-598-21515-X' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-IsbnVerifierTest >> testEmptyIsbn [
-	| result |
-
-	result := isbnVerifierCalculator isValidIsbn: '' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-IsbnVerifierTest >> testInputIs9Characters [
-	| result |
-
-	result := isbnVerifierCalculator isValidIsbn: '134456729' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-IsbnVerifierTest >> testInputIsTooLongButContainsAValidIsbn [
-	| result |
-
-	result := isbnVerifierCalculator isValidIsbn: '98245726788' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-IsbnVerifierTest >> testInvalidCharacterInIsbn [
-	| result |
-
-	result := isbnVerifierCalculator isValidIsbn: '3-598-P1581-X' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-IsbnVerifierTest >> testInvalidCharactersAreNotIgnored [
-	| result |
-
-	result := isbnVerifierCalculator isValidIsbn: '3132P34035' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-IsbnVerifierTest >> testInvalidIsbnCheckDigit [
-	| result |
-
-	result := isbnVerifierCalculator isValidIsbn: '3-598-21508-9' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-IsbnVerifierTest >> testIsbnWithoutCheckDigit [
-	| result |
-
-	result := isbnVerifierCalculator isValidIsbn: '3-598-21507' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-IsbnVerifierTest >> testIsbnWithoutCheckDigitAndDashes [
-	| result |
-
-	result := isbnVerifierCalculator isValidIsbn: '359821507' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-IsbnVerifierTest >> testIsbnWithoutSeparatingDashesAndXAsCheckDigit [
-	| result |
-
-	result := isbnVerifierCalculator isValidIsbn: '359821507X' .
-	self assert: result equals: true
-]
-
-{ #category : #test }
-IsbnVerifierTest >> testTooLongIsbnAndNoDashes [
-	| result |
-
-	result := isbnVerifierCalculator isValidIsbn: '3598215078X' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-IsbnVerifierTest >> testTooShortIsbn [
-	| result |
-
-	result := isbnVerifierCalculator isValidIsbn: '00' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-IsbnVerifierTest >> testValidIsbnNumber [
+{ #category : #tests }
+IsbnVerifierTest >> test01_ValidIsbnNumber [
 	| result |
 
 	result := isbnVerifierCalculator isValidIsbn: '3-598-21508-8' .
 	self assert: result equals: true
 ]
 
-{ #category : #test }
-IsbnVerifierTest >> testValidIsbnNumberWithACheckDigitOf10 [
+{ #category : #tests }
+IsbnVerifierTest >> test02_InvalidIsbnCheckDigit [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '3-598-21508-9' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+IsbnVerifierTest >> test03_ValidIsbnNumberWithACheckDigitOf10 [
 	| result |
 
 	result := isbnVerifierCalculator isValidIsbn: '3-598-21507-X' .
 	self assert: result equals: true
 ]
 
-{ #category : #test }
-IsbnVerifierTest >> testValidIsbnWithoutSeparatingDashes [
+{ #category : #tests }
+IsbnVerifierTest >> test04_CheckDigitIsACharacterOtherThanX [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '3-598-21507-A' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+IsbnVerifierTest >> test05_InvalidCharacterInIsbn [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '3-598-P1581-X' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+IsbnVerifierTest >> test06_XIsOnlyValidAsACheckDigit [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '3-598-2X507-9' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+IsbnVerifierTest >> test07_ValidIsbnWithoutSeparatingDashes [
 	| result |
 
 	result := isbnVerifierCalculator isValidIsbn: '3598215088' .
 	self assert: result equals: true
 ]
 
-{ #category : #test }
-IsbnVerifierTest >> testXIsOnlyValidAsACheckDigit [
+{ #category : #tests }
+IsbnVerifierTest >> test08_IsbnWithoutSeparatingDashesAndXAsCheckDigit [
 	| result |
 
-	result := isbnVerifierCalculator isValidIsbn: '3-598-2X507-9' .
+	result := isbnVerifierCalculator isValidIsbn: '359821507X' .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+IsbnVerifierTest >> test09_IsbnWithoutCheckDigitAndDashes [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '359821507' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+IsbnVerifierTest >> test10_TooLongIsbnAndNoDashes [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '3598215078X' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+IsbnVerifierTest >> test11_TooShortIsbn [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '00' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+IsbnVerifierTest >> test12_IsbnWithoutCheckDigit [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '3-598-21507' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+IsbnVerifierTest >> test13_CheckDigitOfXShouldNotBeUsedFor0 [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '3-598-21515-X' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+IsbnVerifierTest >> test14_EmptyIsbn [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+IsbnVerifierTest >> test15_InputIs9Characters [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '134456729' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+IsbnVerifierTest >> test16_InvalidCharactersAreNotIgnored [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '3132P34035' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+IsbnVerifierTest >> test17_InputIsTooLongButContainsAValidIsbn [
+	| result |
+
+	result := isbnVerifierCalculator isValidIsbn: '98245726788' .
 	self assert: result equals: false
 ]

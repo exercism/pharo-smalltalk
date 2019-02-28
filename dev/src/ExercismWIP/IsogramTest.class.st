@@ -31,12 +31,12 @@ Class {
 { #category : #config }
 IsogramTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'7cfb12da-2b3f-0d00-a2ea-bf1e09f0590c'
+	^'9e0074be-4a3f-0d00-bb4e-73e5071d6982'
 ]
 
 { #category : #config }
 IsogramTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.7.0'
 ]
 
@@ -45,106 +45,106 @@ IsogramTest >> setUp [
 	isogramCalculator := Isogram new
 ]
 
-{ #category : #test }
-IsogramTest >> testCheckIfTheGivenStringIsAnIsogramDuplicatedCharacterInTheMiddle [
-	| result |
-
-	result := isogramCalculator isIsogramPhrase: 'accentor' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-IsogramTest >> testCheckIfTheGivenStringIsAnIsogramEmptyString [
+{ #category : #tests }
+IsogramTest >> test01_CheckIfTheGivenStringIsAnIsogramEmptyString [
 	| result |
 
 	result := isogramCalculator isIsogramPhrase: '' .
 	self assert: result equals: true
 ]
 
-{ #category : #test }
-IsogramTest >> testCheckIfTheGivenStringIsAnIsogramHypotheticalIsogrammicWordWithHyphen [
-	| result |
-
-	result := isogramCalculator isIsogramPhrase: 'thumbscrew-japingly' .
-	self assert: result equals: true
-]
-
-{ #category : #test }
-IsogramTest >> testCheckIfTheGivenStringIsAnIsogramHypotheticalWordWithDuplicatedCharacterFollowingHyphen [
-	| result |
-
-	result := isogramCalculator isIsogramPhrase: 'thumbscrew-jappingly' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-IsogramTest >> testCheckIfTheGivenStringIsAnIsogramIsogramWithDuplicatedHyphen [
-	| result |
-
-	result := isogramCalculator isIsogramPhrase: 'six-year-old' .
-	self assert: result equals: true
-]
-
-{ #category : #test }
-IsogramTest >> testCheckIfTheGivenStringIsAnIsogramIsogramWithOnlyLowerCaseCharacters [
+{ #category : #tests }
+IsogramTest >> test02_CheckIfTheGivenStringIsAnIsogramIsogramWithOnlyLowerCaseCharacters [
 	| result |
 
 	result := isogramCalculator isIsogramPhrase: 'isogram' .
 	self assert: result equals: true
 ]
 
-{ #category : #test }
-IsogramTest >> testCheckIfTheGivenStringIsAnIsogramLongestReportedEnglishIsogram [
-	| result |
-
-	result := isogramCalculator isIsogramPhrase: 'subdermatoglyphic' .
-	self assert: result equals: true
-]
-
-{ #category : #test }
-IsogramTest >> testCheckIfTheGivenStringIsAnIsogramMadeupNameThatIsAnIsogram [
-	| result |
-
-	result := isogramCalculator isIsogramPhrase: 'Emily Jung Schwartzkopf' .
-	self assert: result equals: true
-]
-
-{ #category : #test }
-IsogramTest >> testCheckIfTheGivenStringIsAnIsogramSameFirstAndLastCharacters [
-	| result |
-
-	result := isogramCalculator isIsogramPhrase: 'angola' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-IsogramTest >> testCheckIfTheGivenStringIsAnIsogramWordWithDuplicatedCharacterInMixedCase [
-	| result |
-
-	result := isogramCalculator isIsogramPhrase: 'Alphabet' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-IsogramTest >> testCheckIfTheGivenStringIsAnIsogramWordWithDuplicatedCharacterInMixedCaseLowercaseFirst [
-	| result |
-
-	result := isogramCalculator isIsogramPhrase: 'alphAbet' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-IsogramTest >> testCheckIfTheGivenStringIsAnIsogramWordWithOneDuplicatedCharacter [
+{ #category : #tests }
+IsogramTest >> test03_CheckIfTheGivenStringIsAnIsogramWordWithOneDuplicatedCharacter [
 	| result |
 
 	result := isogramCalculator isIsogramPhrase: 'eleven' .
 	self assert: result equals: false
 ]
 
-{ #category : #test }
-IsogramTest >> testCheckIfTheGivenStringIsAnIsogramWordWithOneDuplicatedCharacterFromTheEndOfTheAlphabet [
+{ #category : #tests }
+IsogramTest >> test04_CheckIfTheGivenStringIsAnIsogramWordWithOneDuplicatedCharacterFromTheEndOfTheAlphabet [
 	| result |
 
 	result := isogramCalculator isIsogramPhrase: 'zzyzx' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+IsogramTest >> test05_CheckIfTheGivenStringIsAnIsogramLongestReportedEnglishIsogram [
+	| result |
+
+	result := isogramCalculator isIsogramPhrase: 'subdermatoglyphic' .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+IsogramTest >> test06_CheckIfTheGivenStringIsAnIsogramWordWithDuplicatedCharacterInMixedCase [
+	| result |
+
+	result := isogramCalculator isIsogramPhrase: 'Alphabet' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+IsogramTest >> test07_CheckIfTheGivenStringIsAnIsogramWordWithDuplicatedCharacterInMixedCaseLowercaseFirst [
+	| result |
+
+	result := isogramCalculator isIsogramPhrase: 'alphAbet' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+IsogramTest >> test08_CheckIfTheGivenStringIsAnIsogramHypotheticalIsogrammicWordWithHyphen [
+	| result |
+
+	result := isogramCalculator isIsogramPhrase: 'thumbscrew-japingly' .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+IsogramTest >> test09_CheckIfTheGivenStringIsAnIsogramHypotheticalWordWithDuplicatedCharacterFollowingHyphen [
+	| result |
+
+	result := isogramCalculator isIsogramPhrase: 'thumbscrew-jappingly' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+IsogramTest >> test10_CheckIfTheGivenStringIsAnIsogramIsogramWithDuplicatedHyphen [
+	| result |
+
+	result := isogramCalculator isIsogramPhrase: 'six-year-old' .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+IsogramTest >> test11_CheckIfTheGivenStringIsAnIsogramMadeupNameThatIsAnIsogram [
+	| result |
+
+	result := isogramCalculator isIsogramPhrase: 'Emily Jung Schwartzkopf' .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+IsogramTest >> test12_CheckIfTheGivenStringIsAnIsogramDuplicatedCharacterInTheMiddle [
+	| result |
+
+	result := isogramCalculator isIsogramPhrase: 'accentor' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+IsogramTest >> test13_CheckIfTheGivenStringIsAnIsogramSameFirstAndLastCharacters [
+	| result |
+
+	result := isogramCalculator isIsogramPhrase: 'angola' .
 	self assert: result equals: false
 ]

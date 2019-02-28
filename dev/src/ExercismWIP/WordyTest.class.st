@@ -85,12 +85,12 @@ Class {
 { #category : #config }
 WordyTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'900c15da-2b3f-0d00-a2ec-d34e09f0590c'
+	^'557476be-4a3f-0d00-bb50-6f1c071d6982'
 ]
 
 { #category : #config }
 WordyTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.5.0'
 ]
 
@@ -99,186 +99,186 @@ WordyTest >> setUp [
 	wordyCalculator := Wordy new
 ]
 
-{ #category : #test }
-WordyTest >> testAddition [
-	| result |
-
-	result := wordyCalculator answerQuestion: 'What is 1 plus 1?' .
-	self assert: result equals: 2
-]
-
-{ #category : #test }
-WordyTest >> testAdditionAndMultiplication [
-	| result |
-
-	result := wordyCalculator answerQuestion: 'What is -3 plus 7 multiplied by -2?' .
-	self assert: result equals:  -8
-]
-
-{ #category : #test }
-WordyTest >> testAdditionAndSubtraction [
-	| result |
-
-	result := wordyCalculator answerQuestion: 'What is 1 plus 5 minus -2?' .
-	self assert: result equals: 8
-]
-
-{ #category : #test }
-WordyTest >> testAdditionWithNegativeNumbers [
-	| result |
-
-	result := wordyCalculator answerQuestion: 'What is -1 plus -10?' .
-	self assert: result equals:  -11
-]
-
-{ #category : #test }
-WordyTest >> testDivision [
-	| result |
-
-	result := wordyCalculator answerQuestion: 'What is 33 divided by -3?' .
-	self assert: result equals:  -11
-]
-
-{ #category : #test }
-WordyTest >> testJustANumber [
+{ #category : #tests }
+WordyTest >> test01_JustANumber [
 	| result |
 
 	result := wordyCalculator answerQuestion: 'What is 5?' .
 	self assert: result equals: 5
 ]
 
-{ #category : #test }
-WordyTest >> testLargeAddition [
+{ #category : #tests }
+WordyTest >> test02_Addition [
 	| result |
 
-	result := wordyCalculator answerQuestion: 'What is 123 plus 45678?' .
-	self assert: result equals: 45801
+	result := wordyCalculator answerQuestion: 'What is 1 plus 1?' .
+	self assert: result equals: 2
 ]
 
-{ #category : #test }
-WordyTest >> testMoreAddition [
+{ #category : #tests }
+WordyTest >> test03_MoreAddition [
 	| result |
 
 	result := wordyCalculator answerQuestion: 'What is 53 plus 2?' .
 	self assert: result equals: 55
 ]
 
-{ #category : #test }
-WordyTest >> testMultipleAdditions [
+{ #category : #tests }
+WordyTest >> test04_AdditionWithNegativeNumbers [
 	| result |
 
-	result := wordyCalculator answerQuestion: 'What is 1 plus 1 plus 1?' .
-	self assert: result equals: 3
+	result := wordyCalculator answerQuestion: 'What is -1 plus -10?' .
+	self assert: result equals:  -11
 ]
 
-{ #category : #test }
-WordyTest >> testMultipleDivision [
+{ #category : #tests }
+WordyTest >> test05_LargeAddition [
 	| result |
 
-	result := wordyCalculator answerQuestion: 'What is -12 divided by 2 divided by -3?' .
-	self assert: result equals: 2
+	result := wordyCalculator answerQuestion: 'What is 123 plus 45678?' .
+	self assert: result equals: 45801
 ]
 
-{ #category : #test }
-WordyTest >> testMultipleMultiplication [
-	| result |
-
-	result := wordyCalculator answerQuestion: 'What is 2 multiplied by -2 multiplied by 3?' .
-	self assert: result equals:  -12
-]
-
-{ #category : #test }
-WordyTest >> testMultipleSubtraction [
-	| result |
-
-	result := wordyCalculator answerQuestion: 'What is 20 minus 4 minus 13?' .
-	self assert: result equals: 3
-]
-
-{ #category : #test }
-WordyTest >> testMultiplication [
-	| result |
-
-	result := wordyCalculator answerQuestion: 'What is -3 multiplied by 25?' .
-	self assert: result equals:  -75
-]
-
-{ #category : #test }
-WordyTest >> testNonMathQuestion [
-	| result |
-
-	result := wordyCalculator answerQuestion: 'Who is the President of the United States?' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'unknown operation'); yourself)
-]
-
-{ #category : #test }
-WordyTest >> testRejectPostfixNotation [
-	| result |
-
-	result := wordyCalculator answerQuestion: 'What is 1 2 plus?' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'syntax error'); yourself)
-]
-
-{ #category : #test }
-WordyTest >> testRejectPrefixNotation [
-	| result |
-
-	result := wordyCalculator answerQuestion: 'What is plus 1 2?' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'syntax error'); yourself)
-]
-
-{ #category : #test }
-WordyTest >> testRejectProblemMissingAnOperand [
-	| result |
-
-	result := wordyCalculator answerQuestion: 'What is 1 plus?' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'syntax error'); yourself)
-]
-
-{ #category : #test }
-WordyTest >> testRejectProblemWithNoOperandsOrOperators [
-	| result |
-
-	result := wordyCalculator answerQuestion: 'What is?' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'syntax error'); yourself)
-]
-
-{ #category : #test }
-WordyTest >> testRejectTwoNumbersInARow [
-	| result |
-
-	result := wordyCalculator answerQuestion: 'What is 1 plus 2 1?' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'syntax error'); yourself)
-]
-
-{ #category : #test }
-WordyTest >> testRejectTwoOperationsInARow [
-	| result |
-
-	result := wordyCalculator answerQuestion: 'What is 1 plus plus 2?' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'syntax error'); yourself)
-]
-
-{ #category : #test }
-WordyTest >> testSubtraction [
+{ #category : #tests }
+WordyTest >> test06_Subtraction [
 	| result |
 
 	result := wordyCalculator answerQuestion: 'What is 4 minus -12?' .
 	self assert: result equals: 16
 ]
 
-{ #category : #test }
-WordyTest >> testSubtractionThenAddition [
+{ #category : #tests }
+WordyTest >> test07_Multiplication [
+	| result |
+
+	result := wordyCalculator answerQuestion: 'What is -3 multiplied by 25?' .
+	self assert: result equals:  -75
+]
+
+{ #category : #tests }
+WordyTest >> test08_Division [
+	| result |
+
+	result := wordyCalculator answerQuestion: 'What is 33 divided by -3?' .
+	self assert: result equals:  -11
+]
+
+{ #category : #tests }
+WordyTest >> test09_MultipleAdditions [
+	| result |
+
+	result := wordyCalculator answerQuestion: 'What is 1 plus 1 plus 1?' .
+	self assert: result equals: 3
+]
+
+{ #category : #tests }
+WordyTest >> test10_AdditionAndSubtraction [
+	| result |
+
+	result := wordyCalculator answerQuestion: 'What is 1 plus 5 minus -2?' .
+	self assert: result equals: 8
+]
+
+{ #category : #tests }
+WordyTest >> test11_MultipleSubtraction [
+	| result |
+
+	result := wordyCalculator answerQuestion: 'What is 20 minus 4 minus 13?' .
+	self assert: result equals: 3
+]
+
+{ #category : #tests }
+WordyTest >> test12_SubtractionThenAddition [
 	| result |
 
 	result := wordyCalculator answerQuestion: 'What is 17 minus 6 plus 3?' .
 	self assert: result equals: 14
 ]
 
-{ #category : #test }
-WordyTest >> testUnknownOperation [
+{ #category : #tests }
+WordyTest >> test13_MultipleMultiplication [
+	| result |
+
+	result := wordyCalculator answerQuestion: 'What is 2 multiplied by -2 multiplied by 3?' .
+	self assert: result equals:  -12
+]
+
+{ #category : #tests }
+WordyTest >> test14_AdditionAndMultiplication [
+	| result |
+
+	result := wordyCalculator answerQuestion: 'What is -3 plus 7 multiplied by -2?' .
+	self assert: result equals:  -8
+]
+
+{ #category : #tests }
+WordyTest >> test15_MultipleDivision [
+	| result |
+
+	result := wordyCalculator answerQuestion: 'What is -12 divided by 2 divided by -3?' .
+	self assert: result equals: 2
+]
+
+{ #category : #tests }
+WordyTest >> test16_UnknownOperation [
 	| result |
 
 	result := wordyCalculator answerQuestion: 'What is 52 cubed?' .
 	self assert: result equals: ((Dictionary new) add: ('error'->'unknown operation'); yourself)
+]
+
+{ #category : #tests }
+WordyTest >> test17_NonMathQuestion [
+	| result |
+
+	result := wordyCalculator answerQuestion: 'Who is the President of the United States?' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'unknown operation'); yourself)
+]
+
+{ #category : #tests }
+WordyTest >> test18_RejectProblemMissingAnOperand [
+	| result |
+
+	result := wordyCalculator answerQuestion: 'What is 1 plus?' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'syntax error'); yourself)
+]
+
+{ #category : #tests }
+WordyTest >> test19_RejectProblemWithNoOperandsOrOperators [
+	| result |
+
+	result := wordyCalculator answerQuestion: 'What is?' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'syntax error'); yourself)
+]
+
+{ #category : #tests }
+WordyTest >> test20_RejectTwoOperationsInARow [
+	| result |
+
+	result := wordyCalculator answerQuestion: 'What is 1 plus plus 2?' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'syntax error'); yourself)
+]
+
+{ #category : #tests }
+WordyTest >> test21_RejectTwoNumbersInARow [
+	| result |
+
+	result := wordyCalculator answerQuestion: 'What is 1 plus 2 1?' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'syntax error'); yourself)
+]
+
+{ #category : #tests }
+WordyTest >> test22_RejectPostfixNotation [
+	| result |
+
+	result := wordyCalculator answerQuestion: 'What is 1 2 plus?' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'syntax error'); yourself)
+]
+
+{ #category : #tests }
+WordyTest >> test23_RejectPrefixNotation [
+	| result |
+
+	result := wordyCalculator answerQuestion: 'What is plus 1 2?' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'syntax error'); yourself)
 ]

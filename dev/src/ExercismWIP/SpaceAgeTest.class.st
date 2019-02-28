@@ -35,12 +35,12 @@ Class {
 { #category : #config }
 SpaceAgeTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'3cd6e6d9-2b3f-0d00-a2bf-a4fe09f0590c'
+	^'7bec34be-4a3f-0d00-bb23-9404071d6982'
 ]
 
 { #category : #config }
 SpaceAgeTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.2.0'
 ]
 
@@ -49,66 +49,66 @@ SpaceAgeTest >> setUp [
 	spaceAgeCalculator := SpaceAge new
 ]
 
-{ #category : #test }
-SpaceAgeTest >> testAgeOnEarth [
+{ #category : #tests }
+SpaceAgeTest >> test01_AgeOnEarth [
 	| result |
 
 	result := spaceAgeCalculator agePlanet: 'Earth' seconds: 1000000000 .
 	self assert: result equals: 31.69
 ]
 
-{ #category : #test }
-SpaceAgeTest >> testAgeOnJupiter [
-	| result |
-
-	result := spaceAgeCalculator agePlanet: 'Jupiter' seconds: 901876382 .
-	self assert: result equals: 2.41
-]
-
-{ #category : #test }
-SpaceAgeTest >> testAgeOnMars [
-	| result |
-
-	result := spaceAgeCalculator agePlanet: 'Mars' seconds: 2129871239 .
-	self assert: result equals: 35.88
-]
-
-{ #category : #test }
-SpaceAgeTest >> testAgeOnMercury [
+{ #category : #tests }
+SpaceAgeTest >> test02_AgeOnMercury [
 	| result |
 
 	result := spaceAgeCalculator agePlanet: 'Mercury' seconds: 2134835688 .
 	self assert: result equals: 280.88
 ]
 
-{ #category : #test }
-SpaceAgeTest >> testAgeOnNeptune [
+{ #category : #tests }
+SpaceAgeTest >> test03_AgeOnVenus [
 	| result |
 
-	result := spaceAgeCalculator agePlanet: 'Neptune' seconds: 1821023456 .
-	self assert: result equals: 0.35
+	result := spaceAgeCalculator agePlanet: 'Venus' seconds: 189839836 .
+	self assert: result equals: 9.78
 ]
 
-{ #category : #test }
-SpaceAgeTest >> testAgeOnSaturn [
+{ #category : #tests }
+SpaceAgeTest >> test04_AgeOnMars [
+	| result |
+
+	result := spaceAgeCalculator agePlanet: 'Mars' seconds: 2129871239 .
+	self assert: result equals: 35.88
+]
+
+{ #category : #tests }
+SpaceAgeTest >> test05_AgeOnJupiter [
+	| result |
+
+	result := spaceAgeCalculator agePlanet: 'Jupiter' seconds: 901876382 .
+	self assert: result equals: 2.41
+]
+
+{ #category : #tests }
+SpaceAgeTest >> test06_AgeOnSaturn [
 	| result |
 
 	result := spaceAgeCalculator agePlanet: 'Saturn' seconds: 2000000000 .
 	self assert: result equals: 2.15
 ]
 
-{ #category : #test }
-SpaceAgeTest >> testAgeOnUranus [
+{ #category : #tests }
+SpaceAgeTest >> test07_AgeOnUranus [
 	| result |
 
 	result := spaceAgeCalculator agePlanet: 'Uranus' seconds: 1210123456 .
 	self assert: result equals: 0.46
 ]
 
-{ #category : #test }
-SpaceAgeTest >> testAgeOnVenus [
+{ #category : #tests }
+SpaceAgeTest >> test08_AgeOnNeptune [
 	| result |
 
-	result := spaceAgeCalculator agePlanet: 'Venus' seconds: 189839836 .
-	self assert: result equals: 9.78
+	result := spaceAgeCalculator agePlanet: 'Neptune' seconds: 1821023456 .
+	self assert: result equals: 0.35
 ]

@@ -26,12 +26,12 @@ Class {
 { #category : #config }
 PangramTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'9cca2fda-2b3f-0d00-a305-892f09f0590c'
+	^'6be398be-4a3f-0d00-bb67-0d71071d6982'
 ]
 
 { #category : #config }
 PangramTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.4.1'
 ]
 
@@ -40,80 +40,80 @@ PangramTest >> setUp [
 	pangramCalculator := Pangram new
 ]
 
-{ #category : #test }
-PangramTest >> testCheckIfTheGivenStringIsAPangramAnotherMissingCharacterEgh [
-	| result |
-
-	result := pangramCalculator isPangramSentence: 'five boxing wizards jump quickly at it' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-PangramTest >> testCheckIfTheGivenStringIsAPangramMissingCharacterx [
-	| result |
-
-	result := pangramCalculator isPangramSentence: 'a quick movement of the enemy will jeopardize five gunboats' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-PangramTest >> testCheckIfTheGivenStringIsAPangramMissingLettersReplacedByNumbers [
-	| result |
-
-	result := pangramCalculator isPangramSentence: '7h3 qu1ck brown fox jumps ov3r 7h3 lazy dog' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-PangramTest >> testCheckIfTheGivenStringIsAPangramPangramWithMixedCaseAndPunctuation [
-	| result |
-
-	result := pangramCalculator isPangramSentence: '"Five quacking Zephyrs jolt my wax bed."' .
-	self assert: result equals: true
-]
-
-{ #category : #test }
-PangramTest >> testCheckIfTheGivenStringIsAPangramPangramWithNumbers [
-	| result |
-
-	result := pangramCalculator isPangramSentence: 'the 1 quick brown fox jumps over the 2 lazy dogs' .
-	self assert: result equals: true
-]
-
-{ #category : #test }
-PangramTest >> testCheckIfTheGivenStringIsAPangramPangramWithOnlyLowerCase [
-	| result |
-
-	result := pangramCalculator isPangramSentence: 'the quick brown fox jumps over the lazy dog' .
-	self assert: result equals: true
-]
-
-{ #category : #test }
-PangramTest >> testCheckIfTheGivenStringIsAPangramPangramWithUnderscores [
-	| result |
-
-	result := pangramCalculator isPangramSentence: 'the_quick_brown_fox_jumps_over_the_lazy_dog' .
-	self assert: result equals: true
-]
-
-{ #category : #test }
-PangramTest >> testCheckIfTheGivenStringIsAPangramRecognizesAPerfectLowerCasePangram [
-	| result |
-
-	result := pangramCalculator isPangramSentence: 'abcdefghijklmnopqrstuvwxyz' .
-	self assert: result equals: true
-]
-
-{ #category : #test }
-PangramTest >> testCheckIfTheGivenStringIsAPangramSentenceEmpty [
+{ #category : #tests }
+PangramTest >> test01_CheckIfTheGivenStringIsAPangramSentenceEmpty [
 	| result |
 
 	result := pangramCalculator isPangramSentence: '' .
 	self assert: result equals: false
 ]
 
-{ #category : #test }
-PangramTest >> testCheckIfTheGivenStringIsAPangramUpperAndLowerCaseVersionsOfTheSameCharacterShouldNotBeCountedSeparately [
+{ #category : #tests }
+PangramTest >> test02_CheckIfTheGivenStringIsAPangramRecognizesAPerfectLowerCasePangram [
+	| result |
+
+	result := pangramCalculator isPangramSentence: 'abcdefghijklmnopqrstuvwxyz' .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+PangramTest >> test03_CheckIfTheGivenStringIsAPangramPangramWithOnlyLowerCase [
+	| result |
+
+	result := pangramCalculator isPangramSentence: 'the quick brown fox jumps over the lazy dog' .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+PangramTest >> test04_CheckIfTheGivenStringIsAPangramMissingCharacterx [
+	| result |
+
+	result := pangramCalculator isPangramSentence: 'a quick movement of the enemy will jeopardize five gunboats' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+PangramTest >> test05_CheckIfTheGivenStringIsAPangramAnotherMissingCharacterEgh [
+	| result |
+
+	result := pangramCalculator isPangramSentence: 'five boxing wizards jump quickly at it' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+PangramTest >> test06_CheckIfTheGivenStringIsAPangramPangramWithUnderscores [
+	| result |
+
+	result := pangramCalculator isPangramSentence: 'the_quick_brown_fox_jumps_over_the_lazy_dog' .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+PangramTest >> test07_CheckIfTheGivenStringIsAPangramPangramWithNumbers [
+	| result |
+
+	result := pangramCalculator isPangramSentence: 'the 1 quick brown fox jumps over the 2 lazy dogs' .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+PangramTest >> test08_CheckIfTheGivenStringIsAPangramMissingLettersReplacedByNumbers [
+	| result |
+
+	result := pangramCalculator isPangramSentence: '7h3 qu1ck brown fox jumps ov3r 7h3 lazy dog' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+PangramTest >> test09_CheckIfTheGivenStringIsAPangramPangramWithMixedCaseAndPunctuation [
+	| result |
+
+	result := pangramCalculator isPangramSentence: '"Five quacking Zephyrs jolt my wax bed."' .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+PangramTest >> test10_CheckIfTheGivenStringIsAPangramUpperAndLowerCaseVersionsOfTheSameCharacterShouldNotBeCountedSeparately [
 	| result |
 
 	result := pangramCalculator isPangramSentence: 'the quick brown fox jumps over with lazy FX' .

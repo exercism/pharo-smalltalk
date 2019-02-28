@@ -90,12 +90,12 @@ Class {
 { #category : #config }
 CryptoSquareTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'982af6d9-2b3f-0d00-a2cf-bf7d09f0590c'
+	^'dd164cbe-4a3f-0d00-bb33-478b071d6982'
 ]
 
 { #category : #config }
 CryptoSquareTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'3.2.0'
 ]
 
@@ -104,58 +104,58 @@ CryptoSquareTest >> setUp [
 	cryptoSquareCalculator := CryptoSquare new
 ]
 
-{ #category : #test }
-CryptoSquareTest >> test54CharacterPlaintextResultsIn7ChunksTheLastTwoWithTrailingSpaces [
-	| result |
-
-	result := cryptoSquareCalculator ciphertextPlaintext: 'If man was meant to stay on the ground, god would have given us roots.' .
-	self assert: result equals: 'imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn  sseoau '
-]
-
-{ #category : #test }
-CryptoSquareTest >> test8CharacterPlaintextResultsIn3ChunksTheLastOneWithATrailingSpace [
-	| result |
-
-	result := cryptoSquareCalculator ciphertextPlaintext: 'Chill out.' .
-	self assert: result equals: 'clu hlt io '
-]
-
-{ #category : #test }
-CryptoSquareTest >> test9CharacterPlaintextResultsIn3ChunksOf3Characters [
-	| result |
-
-	result := cryptoSquareCalculator ciphertextPlaintext: 'This is fun!' .
-	self assert: result equals: 'tsf hiu isn'
-]
-
-{ #category : #test }
-CryptoSquareTest >> testEmptyPlaintextResultsInAnEmptyCiphertext [
+{ #category : #tests }
+CryptoSquareTest >> test01_EmptyPlaintextResultsInAnEmptyCiphertext [
 	| result |
 
 	result := cryptoSquareCalculator ciphertextPlaintext: '' .
 	self assert: result equals: ''
 ]
 
-{ #category : #test }
-CryptoSquareTest >> testLowercase [
+{ #category : #tests }
+CryptoSquareTest >> test02_Lowercase [
 	| result |
 
 	result := cryptoSquareCalculator ciphertextPlaintext: 'A' .
 	self assert: result equals: 'a'
 ]
 
-{ #category : #test }
-CryptoSquareTest >> testRemovePunctuation [
+{ #category : #tests }
+CryptoSquareTest >> test03_RemoveSpaces [
+	| result |
+
+	result := cryptoSquareCalculator ciphertextPlaintext: '  b ' .
+	self assert: result equals: 'b'
+]
+
+{ #category : #tests }
+CryptoSquareTest >> test04_RemovePunctuation [
 	| result |
 
 	result := cryptoSquareCalculator ciphertextPlaintext: '@1,%!' .
 	self assert: result equals: '1'
 ]
 
-{ #category : #test }
-CryptoSquareTest >> testRemoveSpaces [
+{ #category : #tests }
+CryptoSquareTest >> test05_and9CharacterPlaintextResultsIn3ChunksOf3Characters [
 	| result |
 
-	result := cryptoSquareCalculator ciphertextPlaintext: '  b ' .
-	self assert: result equals: 'b'
+	result := cryptoSquareCalculator ciphertextPlaintext: 'This is fun!' .
+	self assert: result equals: 'tsf hiu isn'
+]
+
+{ #category : #tests }
+CryptoSquareTest >> test06_and8CharacterPlaintextResultsIn3ChunksTheLastOneWithATrailingSpace [
+	| result |
+
+	result := cryptoSquareCalculator ciphertextPlaintext: 'Chill out.' .
+	self assert: result equals: 'clu hlt io '
+]
+
+{ #category : #tests }
+CryptoSquareTest >> test07_and54CharacterPlaintextResultsIn7ChunksTheLastTwoWithTrailingSpaces [
+	| result |
+
+	result := cryptoSquareCalculator ciphertextPlaintext: 'If man was meant to stay on the ground, god would have given us roots.' .
+	self assert: result equals: 'imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn  sseoau '
 ]

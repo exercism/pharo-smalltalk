@@ -76,12 +76,12 @@ Class {
 { #category : #config }
 RailFenceCipherTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'9a0e2bda-2b3f-0d00-a301-c08a09f0590c'
+	^'db7492be-4a3f-0d00-bb63-7d9e071d6982'
 ]
 
 { #category : #config }
 RailFenceCipherTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.1.0'
 ]
 
@@ -90,50 +90,50 @@ RailFenceCipherTest >> setUp [
 	railFenceCipherCalculator := RailFenceCipher new
 ]
 
-{ #category : #test }
-RailFenceCipherTest >> testDecodeDecodeWithFiveRails [
-	| result |
-
-	result := railFenceCipherCalculator decodeRails: 5 msg: 'EIEXMSMESAORIWSCE' .
-	self assert: result equals: 'EXERCISMISAWESOME'
-]
-
-{ #category : #test }
-RailFenceCipherTest >> testDecodeDecodeWithSixRails [
-	| result |
-
-	result := railFenceCipherCalculator decodeRails: 6 msg: '133714114238148966225439541018335470986172518171757571896261' .
-	self assert: result equals: '112358132134558914423337761098715972584418167651094617711286'
-]
-
-{ #category : #test }
-RailFenceCipherTest >> testDecodeDecodeWithThreeRails [
+{ #category : #tests }
+RailFenceCipherTest >> test01_DecodeDecodeWithThreeRails [
 	| result |
 
 	result := railFenceCipherCalculator decodeRails: 3 msg: 'TEITELHDVLSNHDTISEIIEA' .
 	self assert: result equals: 'THEDEVILISINTHEDETAILS'
 ]
 
-{ #category : #test }
-RailFenceCipherTest >> testEncodeEncodeWithEndingInTheMiddle [
+{ #category : #tests }
+RailFenceCipherTest >> test01_EncodeEncodeWithTwoRails [
 	| result |
 
-	result := railFenceCipherCalculator encodeRails: 4 msg: 'EXERCISES' .
-	self assert: result equals: 'ESXIEECSR'
+	result := railFenceCipherCalculator encodeRails: 2 msg: 'XOXOXOXOXOXOXOXOXO' .
+	self assert: result equals: 'XXXXXXXXXOOOOOOOOO'
 ]
 
-{ #category : #test }
-RailFenceCipherTest >> testEncodeEncodeWithThreeRails [
+{ #category : #tests }
+RailFenceCipherTest >> test02_DecodeDecodeWithFiveRails [
+	| result |
+
+	result := railFenceCipherCalculator decodeRails: 5 msg: 'EIEXMSMESAORIWSCE' .
+	self assert: result equals: 'EXERCISMISAWESOME'
+]
+
+{ #category : #tests }
+RailFenceCipherTest >> test02_EncodeEncodeWithThreeRails [
 	| result |
 
 	result := railFenceCipherCalculator encodeRails: 3 msg: 'WEAREDISCOVEREDFLEEATONCE' .
 	self assert: result equals: 'WECRLTEERDSOEEFEAOCAIVDEN'
 ]
 
-{ #category : #test }
-RailFenceCipherTest >> testEncodeEncodeWithTwoRails [
+{ #category : #tests }
+RailFenceCipherTest >> test03_DecodeDecodeWithSixRails [
 	| result |
 
-	result := railFenceCipherCalculator encodeRails: 2 msg: 'XOXOXOXOXOXOXOXOXO' .
-	self assert: result equals: 'XXXXXXXXXOOOOOOOOO'
+	result := railFenceCipherCalculator decodeRails: 6 msg: '133714114238148966225439541018335470986172518171757571896261' .
+	self assert: result equals: '112358132134558914423337761098715972584418167651094617711286'
+]
+
+{ #category : #tests }
+RailFenceCipherTest >> test03_EncodeEncodeWithEndingInTheMiddle [
+	| result |
+
+	result := railFenceCipherCalculator encodeRails: 4 msg: 'EXERCISES' .
+	self assert: result equals: 'ESXIEECSR'
 ]

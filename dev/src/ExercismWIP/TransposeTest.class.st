@@ -76,12 +76,12 @@ Class {
 { #category : #config }
 TransposeTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'1beafdd9-2b3f-0d00-a2d7-1d7c09f0590c'
+	^'5ee656be-4a3f-0d00-bb3b-1fa2071d6982'
 ]
 
 { #category : #config }
 TransposeTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.1.0'
 ]
 
@@ -90,90 +90,90 @@ TransposeTest >> setUp [
 	transposeCalculator := Transpose new
 ]
 
-{ #category : #test }
-TransposeTest >> testEmptyString [
+{ #category : #tests }
+TransposeTest >> test01_EmptyString [
 	| result |
 
 	result := transposeCalculator transposeLines: #() .
 	self assert: result equals: #()
 ]
 
-{ #category : #test }
-TransposeTest >> testFirstLineLongerThanSecondLine [
+{ #category : #tests }
+TransposeTest >> test02_TwoCharactersInARow [
 	| result |
 
-	result := transposeCalculator transposeLines: #('The fourth line.' 'The fifth line.' ) .
-	self assert: result equals: #('TT' 'hh' 'ee' '  ' 'ff' 'oi' 'uf' 'rt' 'th' 'h ' ' l' 'li' 'in' 'ne' 'e.' '.' )
+	result := transposeCalculator transposeLines: #('A1' ) .
+	self assert: result equals: #('A' '1' )
 ]
 
-{ #category : #test }
-TransposeTest >> testMixedLineLength [
-	| result |
-
-	result := transposeCalculator transposeLines: #('The longest line.' 'A long line.' 'A longer line.' 'A line.' ) .
-	self assert: result equals: #('TAAA' 'h   ' 'elll' ' ooi' 'lnnn' 'ogge' 'n e.' 'glr' 'ei ' 'snl' 'tei' ' .n' 'l e' 'i .' 'n' 'e' '.' )
-]
-
-{ #category : #test }
-TransposeTest >> testRectangle [
-	| result |
-
-	result := transposeCalculator transposeLines: #('FRACTURE' 'OUTLINED' 'BLOOMING' 'SEPTETTE' ) .
-	self assert: result equals: #('FOBS' 'RULE' 'ATOP' 'CLOT' 'TIME' 'UNIT' 'RENT' 'EDGE' )
-]
-
-{ #category : #test }
-TransposeTest >> testSecondLineLongerThanFirstLine [
-	| result |
-
-	result := transposeCalculator transposeLines: #('The first line.' 'The second line.' ) .
-	self assert: result equals: #('TT' 'hh' 'ee' '  ' 'fs' 'ie' 'rc' 'so' 'tn' ' d' 'l ' 'il' 'ni' 'en' '.e' ' .' )
-]
-
-{ #category : #test }
-TransposeTest >> testSimple [
-	| result |
-
-	result := transposeCalculator transposeLines: #('ABC' '123' ) .
-	self assert: result equals: #('A1' 'B2' 'C3' )
-]
-
-{ #category : #test }
-TransposeTest >> testSingleLine [
-	| result |
-
-	result := transposeCalculator transposeLines: #('Single line.' ) .
-	self assert: result equals: #('S' 'i' 'n' 'g' 'l' 'e' ' ' 'l' 'i' 'n' 'e' '.' )
-]
-
-{ #category : #test }
-TransposeTest >> testSquare [
-	| result |
-
-	result := transposeCalculator transposeLines: #('HEART' 'EMBER' 'ABUSE' 'RESIN' 'TREND' ) .
-	self assert: result equals: #('HEART' 'EMBER' 'ABUSE' 'RESIN' 'TREND' )
-]
-
-{ #category : #test }
-TransposeTest >> testTriangle [
-	| result |
-
-	result := transposeCalculator transposeLines: #('T' 'EE' 'AAA' 'SSSS' 'EEEEE' 'RRRRRR' ) .
-	self assert: result equals: #('TEASER' ' EASER' '  ASER' '   SER' '    ER' '     R' )
-]
-
-{ #category : #test }
-TransposeTest >> testTwoCharactersInAColumn [
+{ #category : #tests }
+TransposeTest >> test03_TwoCharactersInAColumn [
 	| result |
 
 	result := transposeCalculator transposeLines: #('A' '1' ) .
 	self assert: result equals: #('A1' )
 ]
 
-{ #category : #test }
-TransposeTest >> testTwoCharactersInARow [
+{ #category : #tests }
+TransposeTest >> test04_Simple [
 	| result |
 
-	result := transposeCalculator transposeLines: #('A1' ) .
-	self assert: result equals: #('A' '1' )
+	result := transposeCalculator transposeLines: #('ABC' '123' ) .
+	self assert: result equals: #('A1' 'B2' 'C3' )
+]
+
+{ #category : #tests }
+TransposeTest >> test05_SingleLine [
+	| result |
+
+	result := transposeCalculator transposeLines: #('Single line.' ) .
+	self assert: result equals: #('S' 'i' 'n' 'g' 'l' 'e' ' ' 'l' 'i' 'n' 'e' '.' )
+]
+
+{ #category : #tests }
+TransposeTest >> test06_FirstLineLongerThanSecondLine [
+	| result |
+
+	result := transposeCalculator transposeLines: #('The fourth line.' 'The fifth line.' ) .
+	self assert: result equals: #('TT' 'hh' 'ee' '  ' 'ff' 'oi' 'uf' 'rt' 'th' 'h ' ' l' 'li' 'in' 'ne' 'e.' '.' )
+]
+
+{ #category : #tests }
+TransposeTest >> test07_SecondLineLongerThanFirstLine [
+	| result |
+
+	result := transposeCalculator transposeLines: #('The first line.' 'The second line.' ) .
+	self assert: result equals: #('TT' 'hh' 'ee' '  ' 'fs' 'ie' 'rc' 'so' 'tn' ' d' 'l ' 'il' 'ni' 'en' '.e' ' .' )
+]
+
+{ #category : #tests }
+TransposeTest >> test08_MixedLineLength [
+	| result |
+
+	result := transposeCalculator transposeLines: #('The longest line.' 'A long line.' 'A longer line.' 'A line.' ) .
+	self assert: result equals: #('TAAA' 'h   ' 'elll' ' ooi' 'lnnn' 'ogge' 'n e.' 'glr' 'ei ' 'snl' 'tei' ' .n' 'l e' 'i .' 'n' 'e' '.' )
+]
+
+{ #category : #tests }
+TransposeTest >> test09_Square [
+	| result |
+
+	result := transposeCalculator transposeLines: #('HEART' 'EMBER' 'ABUSE' 'RESIN' 'TREND' ) .
+	self assert: result equals: #('HEART' 'EMBER' 'ABUSE' 'RESIN' 'TREND' )
+]
+
+{ #category : #tests }
+TransposeTest >> test10_Rectangle [
+	| result |
+
+	result := transposeCalculator transposeLines: #('FRACTURE' 'OUTLINED' 'BLOOMING' 'SEPTETTE' ) .
+	self assert: result equals: #('FOBS' 'RULE' 'ATOP' 'CLOT' 'TIME' 'UNIT' 'RENT' 'EDGE' )
+]
+
+{ #category : #tests }
+TransposeTest >> test11_Triangle [
+	| result |
+
+	result := transposeCalculator transposeLines: #('T' 'EE' 'AAA' 'SSSS' 'EEEEE' 'RRRRRR' ) .
+	self assert: result equals: #('TEASER' ' EASER' '  ASER' '   SER' '    ER' '     R' )
 ]

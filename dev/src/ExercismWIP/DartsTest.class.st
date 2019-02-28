@@ -33,12 +33,12 @@ Class {
 { #category : #config }
 DartsTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'34ed17da-2b3f-0d00-a2ef-8e5709f0590c'
+	^'33b978be-4a3f-0d00-bb52-b33b071d6982'
 ]
 
 { #category : #config }
 DartsTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.1.0'
 ]
 
@@ -47,58 +47,58 @@ DartsTest >> setUp [
 	dartsCalculator := Darts new
 ]
 
-{ #category : #test }
-DartsTest >> testReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartLandsInTheInnerCircle [
-	| result |
-
-	result := dartsCalculator scoreX:  -0.1 y:  -0.1 .
-	self assert: result equals: 10
-]
-
-{ #category : #test }
-DartsTest >> testReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartLandsInTheMiddleCircle [
-	| result |
-
-	result := dartsCalculator scoreX: 0.8 y:  -0.8 .
-	self assert: result equals: 5
-]
-
-{ #category : #test }
-DartsTest >> testReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartLandsInTheOuterCircle [
-	| result |
-
-	result := dartsCalculator scoreX: 4 y: 4 .
-	self assert: result equals: 1
-]
-
-{ #category : #test }
-DartsTest >> testReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartLandsJustInTheBorderOfTheTarget [
-	| result |
-
-	result := dartsCalculator scoreX: 0 y: 10 .
-	self assert: result equals: 1
-]
-
-{ #category : #test }
-DartsTest >> testReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartLandsOutsideTheTarget [
+{ #category : #tests }
+DartsTest >> test01_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartLandsOutsideTheTarget [
 	| result |
 
 	result := dartsCalculator scoreX:  -9 y: 9 .
 	self assert: result equals: 0
 ]
 
-{ #category : #test }
-DartsTest >> testReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartLandsRightInTheBorderBetweenMiddleAndInnerCircles [
+{ #category : #tests }
+DartsTest >> test02_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartLandsJustInTheBorderOfTheTarget [
+	| result |
+
+	result := dartsCalculator scoreX: 0 y: 10 .
+	self assert: result equals: 1
+]
+
+{ #category : #tests }
+DartsTest >> test03_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartLandsInTheOuterCircle [
+	| result |
+
+	result := dartsCalculator scoreX: 4 y: 4 .
+	self assert: result equals: 1
+]
+
+{ #category : #tests }
+DartsTest >> test04_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartLandsRightInTheBorderBetweenOuterAndMiddleCircles [
+	| result |
+
+	result := dartsCalculator scoreX: 5 y: 0 .
+	self assert: result equals: 5
+]
+
+{ #category : #tests }
+DartsTest >> test05_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartLandsInTheMiddleCircle [
+	| result |
+
+	result := dartsCalculator scoreX: 0.8 y:  -0.8 .
+	self assert: result equals: 5
+]
+
+{ #category : #tests }
+DartsTest >> test06_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartLandsRightInTheBorderBetweenMiddleAndInnerCircles [
 	| result |
 
 	result := dartsCalculator scoreX: 0 y:  -1 .
 	self assert: result equals: 10
 ]
 
-{ #category : #test }
-DartsTest >> testReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartLandsRightInTheBorderBetweenOuterAndMiddleCircles [
+{ #category : #tests }
+DartsTest >> test07_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartLandsInTheInnerCircle [
 	| result |
 
-	result := dartsCalculator scoreX: 5 y: 0 .
-	self assert: result equals: 5
+	result := dartsCalculator scoreX:  -0.1 y:  -0.1 .
+	self assert: result equals: 10
 ]

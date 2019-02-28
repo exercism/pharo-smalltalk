@@ -29,12 +29,12 @@ Class {
 { #category : #config }
 ArmstrongNumbersTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'b78eded9-2b3f-0d00-a2b6-35a509f0590c'
+	^'bd832abe-4a3f-0d00-bb1a-f1ce071d6982'
 ]
 
 { #category : #config }
 ArmstrongNumbersTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.0.0'
 ]
 
@@ -43,66 +43,66 @@ ArmstrongNumbersTest >> setUp [
 	armstrongNumbersCalculator := ArmstrongNumbers new
 ]
 
-{ #category : #test }
-ArmstrongNumbersTest >> testFourDigitNumberThatIsAnArmstrongNumber [
-	| result |
-
-	result := armstrongNumbersCalculator isArmstrongNumber: 9474 .
-	self assert: result equals: true
-]
-
-{ #category : #test }
-ArmstrongNumbersTest >> testFourDigitNumberThatIsNotAnArmstrongNumber [
-	| result |
-
-	result := armstrongNumbersCalculator isArmstrongNumber: 9475 .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-ArmstrongNumbersTest >> testSevenDigitNumberThatIsAnArmstrongNumber [
-	| result |
-
-	result := armstrongNumbersCalculator isArmstrongNumber: 9926315 .
-	self assert: result equals: true
-]
-
-{ #category : #test }
-ArmstrongNumbersTest >> testSevenDigitNumberThatIsNotAnArmstrongNumber [
-	| result |
-
-	result := armstrongNumbersCalculator isArmstrongNumber: 9926314 .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-ArmstrongNumbersTest >> testSingleDigitNumbersAreArmstrongNumbers [
+{ #category : #tests }
+ArmstrongNumbersTest >> test01_SingleDigitNumbersAreArmstrongNumbers [
 	| result |
 
 	result := armstrongNumbersCalculator isArmstrongNumber: 5 .
 	self assert: result equals: true
 ]
 
-{ #category : #test }
-ArmstrongNumbersTest >> testThereAreNo2DigitArmstrongNumbers [
+{ #category : #tests }
+ArmstrongNumbersTest >> test02_ThereAreNo2DigitArmstrongNumbers [
 	| result |
 
 	result := armstrongNumbersCalculator isArmstrongNumber: 10 .
 	self assert: result equals: false
 ]
 
-{ #category : #test }
-ArmstrongNumbersTest >> testThreeDigitNumberThatIsAnArmstrongNumber [
+{ #category : #tests }
+ArmstrongNumbersTest >> test03_ThreeDigitNumberThatIsAnArmstrongNumber [
 	| result |
 
 	result := armstrongNumbersCalculator isArmstrongNumber: 153 .
 	self assert: result equals: true
 ]
 
-{ #category : #test }
-ArmstrongNumbersTest >> testThreeDigitNumberThatIsNotAnArmstrongNumber [
+{ #category : #tests }
+ArmstrongNumbersTest >> test04_ThreeDigitNumberThatIsNotAnArmstrongNumber [
 	| result |
 
 	result := armstrongNumbersCalculator isArmstrongNumber: 100 .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+ArmstrongNumbersTest >> test05_FourDigitNumberThatIsAnArmstrongNumber [
+	| result |
+
+	result := armstrongNumbersCalculator isArmstrongNumber: 9474 .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+ArmstrongNumbersTest >> test06_FourDigitNumberThatIsNotAnArmstrongNumber [
+	| result |
+
+	result := armstrongNumbersCalculator isArmstrongNumber: 9475 .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+ArmstrongNumbersTest >> test07_SevenDigitNumberThatIsAnArmstrongNumber [
+	| result |
+
+	result := armstrongNumbersCalculator isArmstrongNumber: 9926315 .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+ArmstrongNumbersTest >> test08_SevenDigitNumberThatIsNotAnArmstrongNumber [
+	| result |
+
+	result := armstrongNumbersCalculator isArmstrongNumber: 9926314 .
 	self assert: result equals: false
 ]

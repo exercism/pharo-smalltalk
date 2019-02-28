@@ -80,12 +80,12 @@ Class {
 { #category : #config }
 SayTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'7937e5d9-2b3f-0d00-a2be-6dec09f0590c'
+	^'f3cb33be-4a3f-0d00-bb22-7a42071d6982'
 ]
 
 { #category : #config }
 SayTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.2.0'
 ]
 
@@ -94,122 +94,122 @@ SayTest >> setUp [
 	sayCalculator := Say new
 ]
 
-{ #category : #test }
-SayTest >> testABigNumber [
+{ #category : #tests }
+SayTest >> test01_Zero [
 	| result |
 
-	result := sayCalculator sayNumber: 987654321123 .
-	self assert: result equals: 'nine hundred eighty-seven billion six hundred fifty-four million three hundred twenty-one thousand one hundred twenty-three'
+	result := sayCalculator sayNumber: 0 .
+	self assert: result equals: 'zero'
 ]
 
-{ #category : #test }
-SayTest >> testFourteen [
-	| result |
-
-	result := sayCalculator sayNumber: 14 .
-	self assert: result equals: 'fourteen'
-]
-
-{ #category : #test }
-SayTest >> testNumbersAbove999999999999AreOutOfRange [
-	| result |
-
-	result := sayCalculator sayNumber: 1000000000000 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'input out of range'); yourself)
-]
-
-{ #category : #test }
-SayTest >> testNumbersBelowZeroAreOutOfRange [
-	| result |
-
-	result := sayCalculator sayNumber:  -1 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'input out of range'); yourself)
-]
-
-{ #category : #test }
-SayTest >> testOne [
+{ #category : #tests }
+SayTest >> test02_One [
 	| result |
 
 	result := sayCalculator sayNumber: 1 .
 	self assert: result equals: 'one'
 ]
 
-{ #category : #test }
-SayTest >> testOneBillion [
+{ #category : #tests }
+SayTest >> test03_Fourteen [
 	| result |
 
-	result := sayCalculator sayNumber: 1000000000 .
-	self assert: result equals: 'one billion'
+	result := sayCalculator sayNumber: 14 .
+	self assert: result equals: 'fourteen'
 ]
 
-{ #category : #test }
-SayTest >> testOneHundred [
-	| result |
-
-	result := sayCalculator sayNumber: 100 .
-	self assert: result equals: 'one hundred'
-]
-
-{ #category : #test }
-SayTest >> testOneHundredTwentythree [
-	| result |
-
-	result := sayCalculator sayNumber: 123 .
-	self assert: result equals: 'one hundred twenty-three'
-]
-
-{ #category : #test }
-SayTest >> testOneMillion [
-	| result |
-
-	result := sayCalculator sayNumber: 1000000 .
-	self assert: result equals: 'one million'
-]
-
-{ #category : #test }
-SayTest >> testOneMillionTwoThousandThreeHundredFortyfive [
-	| result |
-
-	result := sayCalculator sayNumber: 1002345 .
-	self assert: result equals: 'one million two thousand three hundred forty-five'
-]
-
-{ #category : #test }
-SayTest >> testOneThousand [
-	| result |
-
-	result := sayCalculator sayNumber: 1000 .
-	self assert: result equals: 'one thousand'
-]
-
-{ #category : #test }
-SayTest >> testOneThousandTwoHundredThirtyfour [
-	| result |
-
-	result := sayCalculator sayNumber: 1234 .
-	self assert: result equals: 'one thousand two hundred thirty-four'
-]
-
-{ #category : #test }
-SayTest >> testTwenty [
+{ #category : #tests }
+SayTest >> test04_Twenty [
 	| result |
 
 	result := sayCalculator sayNumber: 20 .
 	self assert: result equals: 'twenty'
 ]
 
-{ #category : #test }
-SayTest >> testTwentytwo [
+{ #category : #tests }
+SayTest >> test05_Twentytwo [
 	| result |
 
 	result := sayCalculator sayNumber: 22 .
 	self assert: result equals: 'twenty-two'
 ]
 
-{ #category : #test }
-SayTest >> testZero [
+{ #category : #tests }
+SayTest >> test06_OneHundred [
 	| result |
 
-	result := sayCalculator sayNumber: 0 .
-	self assert: result equals: 'zero'
+	result := sayCalculator sayNumber: 100 .
+	self assert: result equals: 'one hundred'
+]
+
+{ #category : #tests }
+SayTest >> test07_OneHundredTwentythree [
+	| result |
+
+	result := sayCalculator sayNumber: 123 .
+	self assert: result equals: 'one hundred twenty-three'
+]
+
+{ #category : #tests }
+SayTest >> test08_OneThousand [
+	| result |
+
+	result := sayCalculator sayNumber: 1000 .
+	self assert: result equals: 'one thousand'
+]
+
+{ #category : #tests }
+SayTest >> test09_OneThousandTwoHundredThirtyfour [
+	| result |
+
+	result := sayCalculator sayNumber: 1234 .
+	self assert: result equals: 'one thousand two hundred thirty-four'
+]
+
+{ #category : #tests }
+SayTest >> test10_OneMillion [
+	| result |
+
+	result := sayCalculator sayNumber: 1000000 .
+	self assert: result equals: 'one million'
+]
+
+{ #category : #tests }
+SayTest >> test11_OneMillionTwoThousandThreeHundredFortyfive [
+	| result |
+
+	result := sayCalculator sayNumber: 1002345 .
+	self assert: result equals: 'one million two thousand three hundred forty-five'
+]
+
+{ #category : #tests }
+SayTest >> test12_OneBillion [
+	| result |
+
+	result := sayCalculator sayNumber: 1000000000 .
+	self assert: result equals: 'one billion'
+]
+
+{ #category : #tests }
+SayTest >> test13_ABigNumber [
+	| result |
+
+	result := sayCalculator sayNumber: 987654321123 .
+	self assert: result equals: 'nine hundred eighty-seven billion six hundred fifty-four million three hundred twenty-one thousand one hundred twenty-three'
+]
+
+{ #category : #tests }
+SayTest >> test14_NumbersBelowZeroAreOutOfRange [
+	| result |
+
+	result := sayCalculator sayNumber:  -1 .
+	self assert: result equals: ((Dictionary new) add: ('error'->'input out of range'); yourself)
+]
+
+{ #category : #tests }
+SayTest >> test15_NumbersAbove999999999999AreOutOfRange [
+	| result |
+
+	result := sayCalculator sayNumber: 1000000000000 .
+	self assert: result equals: ((Dictionary new) add: ('error'->'input out of range'); yourself)
 ]

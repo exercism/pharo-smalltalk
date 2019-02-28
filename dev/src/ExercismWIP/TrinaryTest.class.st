@@ -39,12 +39,12 @@ Class {
 { #category : #config }
 TrinaryTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'5c7be9d9-2b3f-0d00-a2c2-eea209f0590c'
+	^'64c838be-4a3f-0d00-bb26-d815071d6982'
 ]
 
 { #category : #config }
 TrinaryTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.1.0'
 ]
 
@@ -53,90 +53,90 @@ TrinaryTest >> setUp [
 	trinaryCalculator := Trinary new
 ]
 
-{ #category : #test }
-TrinaryTest >> testReturnsTheDecimalRepresentationOfTheInputTrinaryValueInvalidNumbersWithLettersAsInputReturns0 [
-	| result |
-
-	result := trinaryCalculator toDecimalTrinary: '0a1b2c' .
-	self assert: result equals: 0
-]
-
-{ #category : #test }
-TrinaryTest >> testReturnsTheDecimalRepresentationOfTheInputTrinaryValueInvalidTrinaryDigitsReturns0 [
-	| result |
-
-	result := trinaryCalculator toDecimalTrinary: '1234' .
-	self assert: result equals: 0
-]
-
-{ #category : #test }
-TrinaryTest >> testReturnsTheDecimalRepresentationOfTheInputTrinaryValueInvalidWordAsInputReturns0 [
-	| result |
-
-	result := trinaryCalculator toDecimalTrinary: 'carrot' .
-	self assert: result equals: 0
-]
-
-{ #category : #test }
-TrinaryTest >> testReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary100IsDecimal9 [
-	| result |
-
-	result := trinaryCalculator toDecimalTrinary: 100 .
-	self assert: result equals: 9
-]
-
-{ #category : #test }
-TrinaryTest >> testReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary10IsDecimal3 [
-	| result |
-
-	result := trinaryCalculator toDecimalTrinary: 10 .
-	self assert: result equals: 3
-]
-
-{ #category : #test }
-TrinaryTest >> testReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary1122000120IsDecimal32091 [
-	| result |
-
-	result := trinaryCalculator toDecimalTrinary: 1122000120 .
-	self assert: result equals: 32091
-]
-
-{ #category : #test }
-TrinaryTest >> testReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary112IsDecimal14 [
-	| result |
-
-	result := trinaryCalculator toDecimalTrinary: 112 .
-	self assert: result equals: 14
-]
-
-{ #category : #test }
-TrinaryTest >> testReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary11IsDecimal4 [
-	| result |
-
-	result := trinaryCalculator toDecimalTrinary: 11 .
-	self assert: result equals: 4
-]
-
-{ #category : #test }
-TrinaryTest >> testReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary1IsDecimal1 [
+{ #category : #tests }
+TrinaryTest >> test01_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary1IsDecimal1 [
 	| result |
 
 	result := trinaryCalculator toDecimalTrinary: 1 .
 	self assert: result equals: 1
 ]
 
-{ #category : #test }
-TrinaryTest >> testReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary222IsDecimal26 [
+{ #category : #tests }
+TrinaryTest >> test02_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary2IsDecimal2 [
+	| result |
+
+	result := trinaryCalculator toDecimalTrinary: 2 .
+	self assert: result equals: 2
+]
+
+{ #category : #tests }
+TrinaryTest >> test03_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary10IsDecimal3 [
+	| result |
+
+	result := trinaryCalculator toDecimalTrinary: 10 .
+	self assert: result equals: 3
+]
+
+{ #category : #tests }
+TrinaryTest >> test04_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary11IsDecimal4 [
+	| result |
+
+	result := trinaryCalculator toDecimalTrinary: 11 .
+	self assert: result equals: 4
+]
+
+{ #category : #tests }
+TrinaryTest >> test05_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary100IsDecimal9 [
+	| result |
+
+	result := trinaryCalculator toDecimalTrinary: 100 .
+	self assert: result equals: 9
+]
+
+{ #category : #tests }
+TrinaryTest >> test06_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary112IsDecimal14 [
+	| result |
+
+	result := trinaryCalculator toDecimalTrinary: 112 .
+	self assert: result equals: 14
+]
+
+{ #category : #tests }
+TrinaryTest >> test07_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary222IsDecimal26 [
 	| result |
 
 	result := trinaryCalculator toDecimalTrinary: 222 .
 	self assert: result equals: 26
 ]
 
-{ #category : #test }
-TrinaryTest >> testReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary2IsDecimal2 [
+{ #category : #tests }
+TrinaryTest >> test08_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary1122000120IsDecimal32091 [
 	| result |
 
-	result := trinaryCalculator toDecimalTrinary: 2 .
-	self assert: result equals: 2
+	result := trinaryCalculator toDecimalTrinary: 1122000120 .
+	self assert: result equals: 32091
+]
+
+{ #category : #tests }
+TrinaryTest >> test09_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueInvalidTrinaryDigitsReturns0 [
+	| result |
+
+	result := trinaryCalculator toDecimalTrinary: '1234' .
+	self assert: result equals: 0
+]
+
+{ #category : #tests }
+TrinaryTest >> test10_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueInvalidWordAsInputReturns0 [
+	| result |
+
+	result := trinaryCalculator toDecimalTrinary: 'carrot' .
+	self assert: result equals: 0
+]
+
+{ #category : #tests }
+TrinaryTest >> test11_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueInvalidNumbersWithLettersAsInputReturns0 [
+	| result |
+
+	result := trinaryCalculator toDecimalTrinary: '0a1b2c' .
+	self assert: result equals: 0
 ]

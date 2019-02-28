@@ -83,12 +83,12 @@ Class {
 { #category : #config }
 SgfParsingTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'250301da-2b3f-0d00-a2db-eeb409f0590c'
+	^'261d5cbe-4a3f-0d00-bb3f-432a071d6982'
 ]
 
 { #category : #config }
 SgfParsingTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.2.0'
 ]
 
@@ -97,106 +97,106 @@ SgfParsingTest >> setUp [
 	sgfParsingCalculator := SgfParsing new
 ]
 
-{ #category : #test }
-SgfParsingTest >> testAllLowercaseProperty [
-	| result |
-
-	result := sgfParsingCalculator parseEncoded: '(;a[b])' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'property must be in uppercase'); yourself)
-]
-
-{ #category : #test }
-SgfParsingTest >> testEmptyInput [
+{ #category : #tests }
+SgfParsingTest >> test01_EmptyInput [
 	| result |
 
 	result := sgfParsingCalculator parseEncoded: '' .
 	self assert: result equals: ((Dictionary new) add: ('error'->'tree missing'); yourself)
 ]
 
-{ #category : #test }
-SgfParsingTest >> testEscapedProperty [
-	| result |
-
-	result := sgfParsingCalculator parseEncoded: '(;A[\]b\nc\nd\t\te \n\]])' .
-	self assert: result equals: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('A'->#(']b\nc\nd  e \n]' )); yourself)); add: ('children'->#()); yourself)
-]
-
-{ #category : #test }
-SgfParsingTest >> testMultipleProperties [
-	| result |
-
-	result := sgfParsingCalculator parseEncoded: '(;A[b]C[d])' .
-	self assert: result equals: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('A'->#('b' )); add: ('C'->#('d' )); yourself)); add: ('children'->#()); yourself)
-]
-
-{ #category : #test }
-SgfParsingTest >> testMultiplePropertyValues [
-	| result |
-
-	result := sgfParsingCalculator parseEncoded: '(;A[b][c][d])' .
-	self assert: result equals: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('A'->#('b' 'c' 'd' )); yourself)); add: ('children'->#()); yourself)
-]
-
-{ #category : #test }
-SgfParsingTest >> testNodeWithoutProperties [
-	| result |
-
-	result := sgfParsingCalculator parseEncoded: '(;)' .
-	self assert: result equals: ((Dictionary new) add: ('properties'->((Dictionary new))); add: ('children'->#()); yourself)
-]
-
-{ #category : #test }
-SgfParsingTest >> testNodeWithoutTree [
-	| result |
-
-	result := sgfParsingCalculator parseEncoded: ';' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'tree missing'); yourself)
-]
-
-{ #category : #test }
-SgfParsingTest >> testPropertiesWithoutDelimiter [
-	| result |
-
-	result := sgfParsingCalculator parseEncoded: '(;A)' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'properties without delimiter'); yourself)
-]
-
-{ #category : #test }
-SgfParsingTest >> testSingleNodeTree [
-	| result |
-
-	result := sgfParsingCalculator parseEncoded: '(;A[B])' .
-	self assert: result equals: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('A'->#('B' )); yourself)); add: ('children'->#()); yourself)
-]
-
-{ #category : #test }
-SgfParsingTest >> testTreeWithNoNodes [
+{ #category : #tests }
+SgfParsingTest >> test02_TreeWithNoNodes [
 	| result |
 
 	result := sgfParsingCalculator parseEncoded: '()' .
 	self assert: result equals: ((Dictionary new) add: ('error'->'tree with no nodes'); yourself)
 ]
 
-{ #category : #test }
-SgfParsingTest >> testTwoChildTrees [
+{ #category : #tests }
+SgfParsingTest >> test03_NodeWithoutTree [
 	| result |
 
-	result := sgfParsingCalculator parseEncoded: '(;A[B](;B[C])(;C[D]))' .
-	self assert: result equals: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('A'->#('B' )); yourself)); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('B'->#('C' )); yourself)); add: ('children'->#()); yourself); at: 2 put: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('C'->#('D' )); yourself)); add: ('children'->#()); yourself); yourself)); yourself)
+	result := sgfParsingCalculator parseEncoded: ';' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'tree missing'); yourself)
 ]
 
-{ #category : #test }
-SgfParsingTest >> testTwoNodes [
+{ #category : #tests }
+SgfParsingTest >> test04_NodeWithoutProperties [
+	| result |
+
+	result := sgfParsingCalculator parseEncoded: '(;)' .
+	self assert: result equals: ((Dictionary new) add: ('properties'->((Dictionary new))); add: ('children'->#()); yourself)
+]
+
+{ #category : #tests }
+SgfParsingTest >> test05_SingleNodeTree [
+	| result |
+
+	result := sgfParsingCalculator parseEncoded: '(;A[B])' .
+	self assert: result equals: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('A'->#('B' )); yourself)); add: ('children'->#()); yourself)
+]
+
+{ #category : #tests }
+SgfParsingTest >> test06_MultipleProperties [
+	| result |
+
+	result := sgfParsingCalculator parseEncoded: '(;A[b]C[d])' .
+	self assert: result equals: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('A'->#('b' )); add: ('C'->#('d' )); yourself)); add: ('children'->#()); yourself)
+]
+
+{ #category : #tests }
+SgfParsingTest >> test07_PropertiesWithoutDelimiter [
+	| result |
+
+	result := sgfParsingCalculator parseEncoded: '(;A)' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'properties without delimiter'); yourself)
+]
+
+{ #category : #tests }
+SgfParsingTest >> test08_AllLowercaseProperty [
+	| result |
+
+	result := sgfParsingCalculator parseEncoded: '(;a[b])' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'property must be in uppercase'); yourself)
+]
+
+{ #category : #tests }
+SgfParsingTest >> test09_UpperAndLowercaseProperty [
+	| result |
+
+	result := sgfParsingCalculator parseEncoded: '(;Aa[b])' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'property must be in uppercase'); yourself)
+]
+
+{ #category : #tests }
+SgfParsingTest >> test10_TwoNodes [
 	| result |
 
 	result := sgfParsingCalculator parseEncoded: '(;A[B];B[C])' .
 	self assert: result equals: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('A'->#('B' )); yourself)); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('B'->#('C' )); yourself)); add: ('children'->#()); yourself); yourself)); yourself)
 ]
 
-{ #category : #test }
-SgfParsingTest >> testUpperAndLowercaseProperty [
+{ #category : #tests }
+SgfParsingTest >> test11_TwoChildTrees [
 	| result |
 
-	result := sgfParsingCalculator parseEncoded: '(;Aa[b])' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'property must be in uppercase'); yourself)
+	result := sgfParsingCalculator parseEncoded: '(;A[B](;B[C])(;C[D]))' .
+	self assert: result equals: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('A'->#('B' )); yourself)); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('B'->#('C' )); yourself)); add: ('children'->#()); yourself); at: 2 put: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('C'->#('D' )); yourself)); add: ('children'->#()); yourself); yourself)); yourself)
+]
+
+{ #category : #tests }
+SgfParsingTest >> test12_MultiplePropertyValues [
+	| result |
+
+	result := sgfParsingCalculator parseEncoded: '(;A[b][c][d])' .
+	self assert: result equals: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('A'->#('b' 'c' 'd' )); yourself)); add: ('children'->#()); yourself)
+]
+
+{ #category : #tests }
+SgfParsingTest >> test13_EscapedProperty [
+	| result |
+
+	result := sgfParsingCalculator parseEncoded: '(;A[\]b\nc\nd\t\te \n\]])' .
+	self assert: result equals: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('A'->#(']b\nc\nd  e \n]' )); yourself)); add: ('children'->#()); yourself)
 ]
