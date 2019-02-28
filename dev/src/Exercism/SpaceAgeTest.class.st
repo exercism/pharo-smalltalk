@@ -20,7 +20,12 @@ youtube video](http://www.youtube.com/watch?v=Z_2gbGXzFbs).
 
 ## Hint
 
-TBD
+You might find Pharo dictionaries useful in completing this exercise.
+Pharo has several ways to construct dictionaries, including `Dictionary new: at:put:`
+and a literal syntax using `Association`s. An `Association` looks like `key -> value`
+and can be turned into a dictionary like this: `{ 'key' -> 'value' } asDictionary`.
+Remember that in Smalltalk, all infix operators are right-associative and that you
+can browse any of the classes mentioned above live.
 
 "
 Class {
@@ -29,8 +34,18 @@ Class {
 	#instVars : [
 		'spaceAgeCalculator'
 	],
-	#category : #'ExercismWIP-SpaceAge'
+	#category : #'Exercism-SpaceAge'
 }
+
+{ #category : #config }
+SpaceAgeTest class >> difficulty [
+	^ 1
+]
+
+{ #category : #config }
+SpaceAgeTest class >> topics [
+	^ #('dictionaries' 'math')
+]
 
 { #category : #config }
 SpaceAgeTest class >> uuid [
@@ -44,6 +59,11 @@ SpaceAgeTest class >> version [
 	^'1.2.0'
 ]
 
+{ #category : #assertions }
+SpaceAgeTest >> assert: aNumber closeEnoughTo: aNumber2 [
+	self assert: aNumber closeEnoughTo: aNumber2 by: 2
+]
+
 { #category : #setup }
 SpaceAgeTest >> setUp [
 	spaceAgeCalculator := SpaceAge new
@@ -52,63 +72,55 @@ SpaceAgeTest >> setUp [
 { #category : #tests }
 SpaceAgeTest >> test01_AgeOnEarth [
 	| result |
-
-	result := spaceAgeCalculator agePlanet: 'Earth' seconds: 1000000000 .
-	self assert: result equals: 31.69
+	result := spaceAgeCalculator ageOnPlanet: 'Earth' at: 1000000000.
+	self assert: result closeEnoughTo: 31.69
 ]
 
 { #category : #tests }
 SpaceAgeTest >> test02_AgeOnMercury [
 	| result |
-
-	result := spaceAgeCalculator agePlanet: 'Mercury' seconds: 2134835688 .
-	self assert: result equals: 280.88
+	result := spaceAgeCalculator ageOnPlanet: 'Mercury' at: 2134835688.
+	self assert: result closeEnoughTo: 280.88
 ]
 
 { #category : #tests }
 SpaceAgeTest >> test03_AgeOnVenus [
 	| result |
-
-	result := spaceAgeCalculator agePlanet: 'Venus' seconds: 189839836 .
-	self assert: result equals: 9.78
+	result := spaceAgeCalculator ageOnPlanet: 'Venus' at: 189839836.
+	self assert: result closeEnoughTo: 9.78
 ]
 
 { #category : #tests }
 SpaceAgeTest >> test04_AgeOnMars [
 	| result |
-
-	result := spaceAgeCalculator agePlanet: 'Mars' seconds: 2129871239 .
-	self assert: result equals: 35.88
+	result := spaceAgeCalculator ageOnPlanet: 'Mars' at: 2129871239.
+	self assert: result closeEnoughTo: 35.88
 ]
 
 { #category : #tests }
 SpaceAgeTest >> test05_AgeOnJupiter [
 	| result |
-
-	result := spaceAgeCalculator agePlanet: 'Jupiter' seconds: 901876382 .
-	self assert: result equals: 2.41
+	result := spaceAgeCalculator ageOnPlanet: 'Jupiter' at: 901876382.
+	self assert: result closeEnoughTo: 2.41
 ]
 
 { #category : #tests }
 SpaceAgeTest >> test06_AgeOnSaturn [
 	| result |
-
-	result := spaceAgeCalculator agePlanet: 'Saturn' seconds: 2000000000 .
-	self assert: result equals: 2.15
+	result := spaceAgeCalculator ageOnPlanet: 'Saturn' at: 2000000000.
+	self assert: result closeEnoughTo: 2.15
 ]
 
 { #category : #tests }
 SpaceAgeTest >> test07_AgeOnUranus [
 	| result |
-
-	result := spaceAgeCalculator agePlanet: 'Uranus' seconds: 1210123456 .
-	self assert: result equals: 0.46
+	result := spaceAgeCalculator ageOnPlanet: 'Uranus' at: 1210123456.
+	self assert: result closeEnoughTo: 0.46
 ]
 
 { #category : #tests }
 SpaceAgeTest >> test08_AgeOnNeptune [
 	| result |
-
-	result := spaceAgeCalculator agePlanet: 'Neptune' seconds: 1821023456 .
-	self assert: result equals: 0.35
+	result := spaceAgeCalculator ageOnPlanet: 'Neptune' at: 1821023456.
+	self assert: result closeEnoughTo: 0.35
 ]
