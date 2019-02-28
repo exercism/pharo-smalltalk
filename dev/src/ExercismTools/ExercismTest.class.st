@@ -118,6 +118,15 @@ ExercismTest class >> wordifiedName [
 					aStream nextPut: char ] ]
 ]
 
+{ #category : #assertions }
+ExercismTest >> assert: aNumber closeEnoughTo: aNumber2 by: decimalPlaces [
+	"Assert that two numbers are the same when rounded to decimalPlaces places"
+
+	self
+		assert: (aNumber asFloat round: decimalPlaces)
+		equals: (aNumber2 asFloat round: decimalPlaces)
+]
+
 { #category : #verify }
 ExercismTest >> verifySolution: aClass avoidsSelector: aSelector [
 	| badSelector |
