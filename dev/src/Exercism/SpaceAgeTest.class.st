@@ -67,55 +67,55 @@ SpaceAgeTest >> setUp [
 { #category : #tests }
 SpaceAgeTest >> test01_AgeOnEarth [
 	| result |
-	result := spaceAgeCalculator ageOn: 'Earth' at: 1000000000.
+	result := spaceAgeCalculator ageOnPlanet: 'Earth' at: 1000000000.
 	self assert: result closeEnoughTo: 31.69
 ]
 
 { #category : #tests }
 SpaceAgeTest >> test02_AgeOnMercury [
 	| result |
-	result := spaceAgeCalculator ageOn: 'Mercury' at: 2134835688.
+	result := spaceAgeCalculator ageOnPlanet: 'Mercury' at: 2134835688.
 	self assert: result closeEnoughTo: 280.88
 ]
 
 { #category : #tests }
 SpaceAgeTest >> test03_AgeOnVenus [
 	| result |
-	result := spaceAgeCalculator ageOn: 'Venus' at: 189839836.
+	result := spaceAgeCalculator ageOnPlanet: 'Venus' at: 189839836.
 	self assert: result closeEnoughTo: 9.78
 ]
 
 { #category : #tests }
 SpaceAgeTest >> test04_AgeOnMars [
 	| result |
-	result := spaceAgeCalculator ageOn: 'Mars' at: 2129871239.
+	result := spaceAgeCalculator ageOnPlanet: 'Mars' at: 2129871239.
 	self assert: result closeEnoughTo: 35.88
 ]
 
 { #category : #tests }
 SpaceAgeTest >> test05_AgeOnJupiter [
 	| result |
-	result := spaceAgeCalculator ageOn: 'Jupiter' at: 901876382.
+	result := spaceAgeCalculator ageOnPlanet: 'Jupiter' at: 901876382.
 	self assert: result closeEnoughTo: 2.41
 ]
 
 { #category : #tests }
 SpaceAgeTest >> test06_AgeOnSaturn [
 	| result |
-	result := spaceAgeCalculator ageOn: 'Saturn' at: 2000000000.
+	result := spaceAgeCalculator ageOnPlanet: 'Saturn' at: 2000000000.
 	self assert: result closeEnoughTo: 2.15
 ]
 
 { #category : #tests }
 SpaceAgeTest >> test07_AgeOnUranus [
 	| result |
-	result := spaceAgeCalculator ageOn: 'Uranus' at: 1210123456.
+	result := spaceAgeCalculator ageOnPlanet: 'Uranus' at: 1210123456.
 	self assert: result closeEnoughTo: 0.46
 ]
 
 { #category : #tests }
 SpaceAgeTest >> test08_AgeOnNeptune [
 	| result |
-	result := spaceAgeCalculator ageOn: 'Neptune' at: 1821023456.
+	result := spaceAgeCalculator ageOnPlanet: 'Neptune' at: 1821023456.
 	self assert: result closeEnoughTo: 0.35
 ]

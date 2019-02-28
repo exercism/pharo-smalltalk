@@ -34,7 +34,7 @@ SpaceAge class >> initializeOrbitalPeriods [
 ]
 
 { #category : #exercism }
-SpaceAge >> ageOn: aPlanet at: aSeconds [
+SpaceAge >> ageOnPlanet: aPlanet at: aSeconds [
 	"Return the age in aPlanet's years at aSeconds old"
 	^ aSeconds / (self orbitalPeriodOn: aPlanet)
 ]
