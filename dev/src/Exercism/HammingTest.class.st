@@ -52,15 +52,6 @@ HammingTest class >> difficulty [
 	^1
 ]
 
-{ #category : #helper }
-HammingTest class >> followedBy [
-	"Answer the String name of the next core exercise that follows, otherwise nil if nothing comes after.
-	
-	This data provides a hook for users to load the next core exercise"
-	
-	^'Raindrops'
-]
-
 { #category : #config }
 HammingTest class >> topics [
 	"Answer a String Array of topics that classify the exercise.

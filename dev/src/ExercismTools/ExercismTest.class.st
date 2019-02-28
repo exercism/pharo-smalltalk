@@ -42,11 +42,11 @@ ExercismTest class >> exercismName [
 
 { #category : #helper }
 ExercismTest class >> followedBy [
-	"Answer the String name of the next core exercise that follows, otherwise nil if nothing comes after.
+	"Answer the String name of the next core exercise that follows, otherwise '' if nothing comes after.
 	
 	This data provides a hook for users to load the next core exercise"
 	
-	^self unlockedBy ifNotNil: [ :parent | parent followedBy ]
+	^self unlockedBy ifNil: ['' ] ifNotNil: [ :parent | parent followedBy ]
 ]
 
 { #category : #helper }

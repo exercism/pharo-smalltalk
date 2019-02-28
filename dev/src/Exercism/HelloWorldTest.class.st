@@ -55,7 +55,7 @@ HelloWorldTest class >> difficulty [
 HelloWorldTest class >> followedBy [
 	"If this is a core exercise, answer the next one that follows otherwise nil"
 	
-	^'Leap'
+	^'TwoFer'
 ]
 
 { #category : #config }

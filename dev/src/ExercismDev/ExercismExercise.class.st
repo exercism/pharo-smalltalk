@@ -10,7 +10,21 @@ Class {
 { #category : #'instance creation' }
 ExercismExercise class >> allExercises [
 	^ExercismTest allSubclasses collect: [ :c |
-		ExercismExercise from: c ] thenSelect: [:e | e isComplete ]
+		ExercismExercise from: c ] thenSelect: [:e | e isDefined ]
+]
+
+{ #category : #'instance creation' }
+ExercismExercise class >> bonusExercises [
+	"self bonusExercises"
+	
+	^(self allExercises reject: [:e | e isCore ])
+		asSortedCollection: [ :a :b | a name < b name ]
+]
+
+{ #category : #'instance creation' }
+ExercismExercise class >> coreExercises [
+	^(self allExercises select: [:e | e isCore ])
+		asSortedCollection: [ :a :b | b isFollowedBy: a ]
 ]
 
 { #category : #'instance creation' }
@@ -29,6 +43,19 @@ ExercismExercise >> = anObject [
 	self class = anObject class
 		ifFalse: [ ^ false ].
 	^ testCase = anObject testCase
+]
+
+{ #category : #accessing }
+ExercismExercise >> asJsonData [
+	"Answer a collection of attributes"
+	
+	^{ 'slug' -> self name.
+		'uuid' -> self uuid.
+		'core' -> self isCore.
+		'auto_approve' -> self isAutoApprove.
+		'unlocked_by' -> (self unlockedBy ifNotNil: [:e | e name]).
+		'difficulty' -> self difficulty.
+		'topics' -> self topics } asOrderedDictionary 
 ]
 
 { #category : #accessing }
@@ -69,13 +96,18 @@ ExercismExercise >> hash [
 ]
 
 { #category : #accessing }
-ExercismExercise >> isComplete [
-	^[self difficulty notNil ] on: SubclassResponsibility do: [ false ]
+ExercismExercise >> isAutoApprove [
+	^self testCase autoApprove 
 ]
 
 { #category : #accessing }
 ExercismExercise >> isCore [
 	^self testCase core
+]
+
+{ #category : #accessing }
+ExercismExercise >> isDefined [
+	^[self difficulty notNil ] on: SubclassResponsibility do: [ false ]
 ]
 
 { #category : #accessing }
@@ -105,7 +137,7 @@ ExercismExercise >> printOn: aStream [
 		nextPutAll: self name.
 	self isCore
 		ifTrue: [ aStream nextPut: $* ].
-	self isComplete
+	self isDefined
 		ifTrue: [ aStream
 				space;
 				print: self difficulty ]
@@ -136,4 +168,9 @@ ExercismExercise >> unlockedBy [
 { #category : #accessing }
 ExercismExercise >> unlockedExercises [
 	^self class allExercises select: [ :e | e isUnlockedBy: self ]
+]
+
+{ #category : #accessing }
+ExercismExercise >> uuid [
+	^self testCase uuid 
 ]

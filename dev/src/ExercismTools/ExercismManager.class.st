@@ -17,14 +17,19 @@ ExercismManager class >> default [
 	^self new
 ]
 
-{ #category : #exercism }
+{ #category : #config }
 ExercismManager class >> exercismPackageName [
 	^ 'Exercism'
 ]
 
-{ #category : #exercism }
+{ #category : #cache }
 ExercismManager class >> solutionData [
 	^ SolutionData ifNil: [ SolutionData := Dictionary new ]
+]
+
+{ #category : #config }
+ExercismManager class >> trackId [
+	^'pharo'
 ]
 
 { #category : #exercism }

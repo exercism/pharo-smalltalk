@@ -65,7 +65,7 @@ ExercismGenerator >> generateReadmeHintFor: packageOrTag to: destinationDirector
 		ifFound: [ :c | (destinationDirectory / 'hints.md') ensureCreateFile  
 				writeStreamDo:  [:stream | | hint |
 					(hint := c hintText) = 'TBD' ifTrue: [
-						self halt: 'Forgot to update Exercise hint' ].
+						self halt: 'Forgot to update Exercise hint for: ', c exercismName  ].
 					
 					stream nextPutAll: hint ]]
 ]
@@ -110,12 +110,16 @@ ExercismGenerator >> generateSourceFilesFor: packageOrTag to: filePathString [
 
 { #category : #generation }
 ExercismGenerator >> generateTo: filePathReference [
-	| cmd result |
+	| cmd result basePathReference |
 	
 	(RPackage organizer packageNamed: 'Exercism') packages do: [:pkg |
 			self generateSourceFilesFor: pkg to: filePathReference ].
 		
-	cmd := 'configlet generate ', (filePathReference parent pathString) surroundedBySingleQuotes.		
+	
+	basePathReference := filePathReference parent.
+	ExercismConfigGenerator generateTo: basePathReference.
+	
+	cmd := 'configlet generate ', (basePathReference pathString surroundedBySingleQuotes).		
 	result := PipeableOSProcess waitForCommand: cmd.
 	
 	result succeeded
