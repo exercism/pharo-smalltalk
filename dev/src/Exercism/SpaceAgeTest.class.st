@@ -44,7 +44,7 @@ SpaceAgeTest class >> difficulty [
 
 { #category : #config }
 SpaceAgeTest class >> topics [
-	^ #('dictionaries''conditionals' 'math')
+	^ #('dictionaries' 'math')
 ]
 
 { #category : #config }
