@@ -20,7 +20,12 @@ youtube video](http://www.youtube.com/watch?v=Z_2gbGXzFbs).
 
 ## Hint
 
-TBD
+You might find Pharo dictionaries useful in completing this exercise.
+Pharo has several ways to construct dictionaries, including `Dictionary new: at:put:`
+and a literal syntax using `Association`s. An `Association` looks like `key -> value`
+and can be turned into a dictionary like this: `{ 'key' -> 'value' } asDictionary`.
+Remember that in Smalltalk, all infix operators are right-associative and that you
+can browse any of the classes mentioned above live.
 
 "
 Class {
