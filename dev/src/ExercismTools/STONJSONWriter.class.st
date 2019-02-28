@@ -1,5 +1,5 @@
 "
-I am a simple JSON writer that lets you specify configuation like JSON like:
+I am a simple JSON writer that lets you specify configuation in JSON like:
 
 data := { 
 	'id'-> 123. 
@@ -7,10 +7,12 @@ data := {
 	'exercises' -> {
 		'name' -> 'hello'.
 		'topics' -> #('a' 'b' 'c') }
-	}.
+	}. ""asOrderedDictionary""
 	
 String streamContents: [ :stream |
-	(STONJSONWriter on: stream) writeList: data ].
+	(STONJSONWriter on: stream) nextPut: data  ].
+
+Use #asOrderedDictionary if you need the output in  { } vs. the [ ] of an array.
 "
 Class {
 	#name : #STONJSONWriter,
@@ -28,6 +30,7 @@ STONJSONWriter class >> on: writeStream [
 
 { #category : #writing }
 STONJSONWriter >> writeAssociation: association [
+	"Overriden to support associations"
 	
 	self 
 		encodeKey: association key 
@@ -36,6 +39,7 @@ STONJSONWriter >> writeAssociation: association [
 
 { #category : #writing }
 STONJSONWriter >> writeObject: anObject do: block [
+	"Overridden to support Collections and Dictionaries"
 	
 	jsonMode ifTrue: [ 
 		(anObject isKindOf: OrderedCollection)

@@ -7,7 +7,7 @@ Class {
 { #category : #tests }
 ExercismTestTest >> testFollowedBy [
 	
-	self assert: HelloWorldTest followedBy equals: 'Leap'.
+	self assert: HelloWorldTest followedBy equals: 'TwoFer'.
 	
 ]
 

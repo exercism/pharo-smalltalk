@@ -1,3 +1,6 @@
+"
+I generate a valid exercism config.json file based on exercise metadata
+"
 Class {
 	#name : #ExercismConfigGenerator,
 	#superclass : #Object,
@@ -30,7 +33,13 @@ ExercismConfigGenerator class >> generate [
 		chooseDirectory: 'Select the config.json file location where exercises have been generated'
 		path: self defaultPath.
 		
-	path ifNotNil: [ self new generateConfigFrom: (self defaultPath: path) ]
+	path ifNotNil: [ self generateTo: (self defaultPath: path) ]
+]
+
+{ #category : #examples }
+ExercismConfigGenerator class >> generateTo: aFilePathReference [
+
+	self new generateConfigFrom: aFilePathReference 
 ]
 
 { #category : #generation }
@@ -39,7 +48,7 @@ ExercismConfigGenerator >> generateConfigFrom: aFileSystemReference [
 	
 	| configFile config coreExercises contents bonusExercises |
 	
-	configFile := aFileSystemReference / 'configx.json'.
+	configFile := aFileSystemReference / 'config.json'.
 	config := OrderedCollection withAll: ExercismManager trackConfigHeader.
 	
 	coreExercises := ExercismExercise coreExercises collect: [:e | e asJsonData ].
@@ -50,7 +59,9 @@ ExercismConfigGenerator >> generateConfigFrom: aFileSystemReference [
 	contents := String streamContents: [ :stream |
 		 (STONJSONWriter on: stream) nextPut: config asOrderedDictionary ].
 	
-	configFile delete; writeStreamDo: [ :stream |
-		 stream nextPutAll: contents ]
+	configFile 
+		ensureDelete; 
+		writeStreamDo: [ :stream |
+		 	stream nextPutAll: contents ]
 	
 ]
