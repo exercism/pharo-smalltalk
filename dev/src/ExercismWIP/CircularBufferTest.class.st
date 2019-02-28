@@ -68,12 +68,12 @@ Class {
 { #category : #config }
 CircularBufferTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'e4141fda-2b3f-0d00-a2f6-335809f0590c'
+	^'ef9e81be-4a3f-0d00-bb58-a12a071d6982'
 ]
 
 { #category : #config }
 CircularBufferTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.1.0'
 ]
 
@@ -82,106 +82,106 @@ CircularBufferTest >> setUp [
 	circularBufferCalculator := CircularBuffer new
 ]
 
-{ #category : #test }
-CircularBufferTest >> testAReadFreesUpCapacityForAnotherWrite [
+{ #category : #tests }
+CircularBufferTest >> test01_ReadingEmptyBufferShouldFail [
 	| result |
 
-	result := circularBufferCalculator runOperations: ((Array new: 4) at: 1 put: ((Dictionary new) add: ('item'->1); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 2 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->1); add: ('operation'->'read'); yourself); at: 3 put: ((Dictionary new) add: ('item'->2); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 4 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->2); add: ('operation'->'read'); yourself); yourself) capacity: 1 .
+	result := circularBufferCalculator runOperations: ((Array new: 1) at: 1 put: ((Dictionary new) add: ('should_succeed'->false); add: ('operation'->'read'); yourself); yourself) capacity: 1 .
 	self assert: result equals: ((Dictionary new))
 ]
 
-{ #category : #test }
-CircularBufferTest >> testCanReadAnItemJustWritten [
+{ #category : #tests }
+CircularBufferTest >> test02_CanReadAnItemJustWritten [
 	| result |
 
 	result := circularBufferCalculator runOperations: ((Array new: 2) at: 1 put: ((Dictionary new) add: ('item'->1); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 2 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->1); add: ('operation'->'read'); yourself); yourself) capacity: 1 .
 	self assert: result equals: ((Dictionary new))
 ]
 
-{ #category : #test }
-CircularBufferTest >> testClearDoesNothingOnEmptyBuffer [
-	| result |
-
-	result := circularBufferCalculator runOperations: ((Array new: 3) at: 1 put: ((Dictionary new) add: ('operation'->'clear'); yourself); at: 2 put: ((Dictionary new) add: ('item'->1); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 3 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->1); add: ('operation'->'read'); yourself); yourself) capacity: 1 .
-	self assert: result equals: ((Dictionary new))
-]
-
-{ #category : #test }
-CircularBufferTest >> testClearFreesUpCapacityForAnotherWrite [
-	| result |
-
-	result := circularBufferCalculator runOperations: ((Array new: 4) at: 1 put: ((Dictionary new) add: ('item'->1); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 2 put: ((Dictionary new) add: ('operation'->'clear'); yourself); at: 3 put: ((Dictionary new) add: ('item'->2); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 4 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->2); add: ('operation'->'read'); yourself); yourself) capacity: 1 .
-	self assert: result equals: ((Dictionary new))
-]
-
-{ #category : #test }
-CircularBufferTest >> testEachItemMayOnlyBeReadOnce [
+{ #category : #tests }
+CircularBufferTest >> test03_EachItemMayOnlyBeReadOnce [
 	| result |
 
 	result := circularBufferCalculator runOperations: ((Array new: 3) at: 1 put: ((Dictionary new) add: ('item'->1); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 2 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->1); add: ('operation'->'read'); yourself); at: 3 put: ((Dictionary new) add: ('should_succeed'->false); add: ('operation'->'read'); yourself); yourself) capacity: 1 .
 	self assert: result equals: ((Dictionary new))
 ]
 
-{ #category : #test }
-CircularBufferTest >> testFullBufferCantBeWrittenTo [
-	| result |
-
-	result := circularBufferCalculator runOperations: ((Array new: 2) at: 1 put: ((Dictionary new) add: ('item'->1); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 2 put: ((Dictionary new) add: ('item'->2); add: ('should_succeed'->false); add: ('operation'->'write'); yourself); yourself) capacity: 1 .
-	self assert: result equals: ((Dictionary new))
-]
-
-{ #category : #test }
-CircularBufferTest >> testItemsAreReadInTheOrderTheyAreWritten [
+{ #category : #tests }
+CircularBufferTest >> test04_ItemsAreReadInTheOrderTheyAreWritten [
 	| result |
 
 	result := circularBufferCalculator runOperations: ((Array new: 4) at: 1 put: ((Dictionary new) add: ('item'->1); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 2 put: ((Dictionary new) add: ('item'->2); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 3 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->1); add: ('operation'->'read'); yourself); at: 4 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->2); add: ('operation'->'read'); yourself); yourself) capacity: 2 .
 	self assert: result equals: ((Dictionary new))
 ]
 
-{ #category : #test }
-CircularBufferTest >> testItemsClearedOutOfBufferCantBeRead [
+{ #category : #tests }
+CircularBufferTest >> test05_FullBufferCantBeWrittenTo [
 	| result |
 
-	result := circularBufferCalculator runOperations: ((Array new: 3) at: 1 put: ((Dictionary new) add: ('item'->1); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 2 put: ((Dictionary new) add: ('operation'->'clear'); yourself); at: 3 put: ((Dictionary new) add: ('should_succeed'->false); add: ('operation'->'read'); yourself); yourself) capacity: 1 .
+	result := circularBufferCalculator runOperations: ((Array new: 2) at: 1 put: ((Dictionary new) add: ('item'->1); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 2 put: ((Dictionary new) add: ('item'->2); add: ('should_succeed'->false); add: ('operation'->'write'); yourself); yourself) capacity: 1 .
 	self assert: result equals: ((Dictionary new))
 ]
 
-{ #category : #test }
-CircularBufferTest >> testOverwriteActsLikeWriteOnNonfullBuffer [
+{ #category : #tests }
+CircularBufferTest >> test06_AReadFreesUpCapacityForAnotherWrite [
 	| result |
 
-	result := circularBufferCalculator runOperations: ((Array new: 4) at: 1 put: ((Dictionary new) add: ('item'->1); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 2 put: ((Dictionary new) add: ('item'->2); add: ('operation'->'overwrite'); yourself); at: 3 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->1); add: ('operation'->'read'); yourself); at: 4 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->2); add: ('operation'->'read'); yourself); yourself) capacity: 2 .
+	result := circularBufferCalculator runOperations: ((Array new: 4) at: 1 put: ((Dictionary new) add: ('item'->1); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 2 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->1); add: ('operation'->'read'); yourself); at: 3 put: ((Dictionary new) add: ('item'->2); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 4 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->2); add: ('operation'->'read'); yourself); yourself) capacity: 1 .
 	self assert: result equals: ((Dictionary new))
 ]
 
-{ #category : #test }
-CircularBufferTest >> testOverwriteReplacesTheOldestItemOnFullBuffer [
-	| result |
-
-	result := circularBufferCalculator runOperations: ((Array new: 5) at: 1 put: ((Dictionary new) add: ('item'->1); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 2 put: ((Dictionary new) add: ('item'->2); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 3 put: ((Dictionary new) add: ('item'->3); add: ('operation'->'overwrite'); yourself); at: 4 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->2); add: ('operation'->'read'); yourself); at: 5 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->3); add: ('operation'->'read'); yourself); yourself) capacity: 2 .
-	self assert: result equals: ((Dictionary new))
-]
-
-{ #category : #test }
-CircularBufferTest >> testOverwriteReplacesTheOldestItemRemainingInBufferFollowingARead [
-	| result |
-
-	result := circularBufferCalculator runOperations: ((Array new: 9) at: 1 put: ((Dictionary new) add: ('item'->1); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 2 put: ((Dictionary new) add: ('item'->2); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 3 put: ((Dictionary new) add: ('item'->3); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 4 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->1); add: ('operation'->'read'); yourself); at: 5 put: ((Dictionary new) add: ('item'->4); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 6 put: ((Dictionary new) add: ('item'->5); add: ('operation'->'overwrite'); yourself); at: 7 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->3); add: ('operation'->'read'); yourself); at: 8 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->4); add: ('operation'->'read'); yourself); at: 9 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->5); add: ('operation'->'read'); yourself); yourself) capacity: 3 .
-	self assert: result equals: ((Dictionary new))
-]
-
-{ #category : #test }
-CircularBufferTest >> testReadPositionIsMaintainedEvenAcrossMultipleWrites [
+{ #category : #tests }
+CircularBufferTest >> test07_ReadPositionIsMaintainedEvenAcrossMultipleWrites [
 	| result |
 
 	result := circularBufferCalculator runOperations: ((Array new: 6) at: 1 put: ((Dictionary new) add: ('item'->1); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 2 put: ((Dictionary new) add: ('item'->2); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 3 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->1); add: ('operation'->'read'); yourself); at: 4 put: ((Dictionary new) add: ('item'->3); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 5 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->2); add: ('operation'->'read'); yourself); at: 6 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->3); add: ('operation'->'read'); yourself); yourself) capacity: 3 .
 	self assert: result equals: ((Dictionary new))
 ]
 
-{ #category : #test }
-CircularBufferTest >> testReadingEmptyBufferShouldFail [
+{ #category : #tests }
+CircularBufferTest >> test08_ItemsClearedOutOfBufferCantBeRead [
 	| result |
 
-	result := circularBufferCalculator runOperations: ((Array new: 1) at: 1 put: ((Dictionary new) add: ('should_succeed'->false); add: ('operation'->'read'); yourself); yourself) capacity: 1 .
+	result := circularBufferCalculator runOperations: ((Array new: 3) at: 1 put: ((Dictionary new) add: ('item'->1); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 2 put: ((Dictionary new) add: ('operation'->'clear'); yourself); at: 3 put: ((Dictionary new) add: ('should_succeed'->false); add: ('operation'->'read'); yourself); yourself) capacity: 1 .
+	self assert: result equals: ((Dictionary new))
+]
+
+{ #category : #tests }
+CircularBufferTest >> test09_ClearFreesUpCapacityForAnotherWrite [
+	| result |
+
+	result := circularBufferCalculator runOperations: ((Array new: 4) at: 1 put: ((Dictionary new) add: ('item'->1); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 2 put: ((Dictionary new) add: ('operation'->'clear'); yourself); at: 3 put: ((Dictionary new) add: ('item'->2); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 4 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->2); add: ('operation'->'read'); yourself); yourself) capacity: 1 .
+	self assert: result equals: ((Dictionary new))
+]
+
+{ #category : #tests }
+CircularBufferTest >> test10_ClearDoesNothingOnEmptyBuffer [
+	| result |
+
+	result := circularBufferCalculator runOperations: ((Array new: 3) at: 1 put: ((Dictionary new) add: ('operation'->'clear'); yourself); at: 2 put: ((Dictionary new) add: ('item'->1); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 3 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->1); add: ('operation'->'read'); yourself); yourself) capacity: 1 .
+	self assert: result equals: ((Dictionary new))
+]
+
+{ #category : #tests }
+CircularBufferTest >> test11_OverwriteActsLikeWriteOnNonfullBuffer [
+	| result |
+
+	result := circularBufferCalculator runOperations: ((Array new: 4) at: 1 put: ((Dictionary new) add: ('item'->1); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 2 put: ((Dictionary new) add: ('item'->2); add: ('operation'->'overwrite'); yourself); at: 3 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->1); add: ('operation'->'read'); yourself); at: 4 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->2); add: ('operation'->'read'); yourself); yourself) capacity: 2 .
+	self assert: result equals: ((Dictionary new))
+]
+
+{ #category : #tests }
+CircularBufferTest >> test12_OverwriteReplacesTheOldestItemOnFullBuffer [
+	| result |
+
+	result := circularBufferCalculator runOperations: ((Array new: 5) at: 1 put: ((Dictionary new) add: ('item'->1); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 2 put: ((Dictionary new) add: ('item'->2); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 3 put: ((Dictionary new) add: ('item'->3); add: ('operation'->'overwrite'); yourself); at: 4 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->2); add: ('operation'->'read'); yourself); at: 5 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->3); add: ('operation'->'read'); yourself); yourself) capacity: 2 .
+	self assert: result equals: ((Dictionary new))
+]
+
+{ #category : #tests }
+CircularBufferTest >> test13_OverwriteReplacesTheOldestItemRemainingInBufferFollowingARead [
+	| result |
+
+	result := circularBufferCalculator runOperations: ((Array new: 9) at: 1 put: ((Dictionary new) add: ('item'->1); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 2 put: ((Dictionary new) add: ('item'->2); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 3 put: ((Dictionary new) add: ('item'->3); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 4 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->1); add: ('operation'->'read'); yourself); at: 5 put: ((Dictionary new) add: ('item'->4); add: ('should_succeed'->true); add: ('operation'->'write'); yourself); at: 6 put: ((Dictionary new) add: ('item'->5); add: ('operation'->'overwrite'); yourself); at: 7 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->3); add: ('operation'->'read'); yourself); at: 8 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->4); add: ('operation'->'read'); yourself); at: 9 put: ((Dictionary new) add: ('should_succeed'->true); add: ('expected'->5); add: ('operation'->'read'); yourself); yourself) capacity: 3 .
 	self assert: result equals: ((Dictionary new))
 ]

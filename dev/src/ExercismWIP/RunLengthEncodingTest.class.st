@@ -41,12 +41,12 @@ Class {
 { #category : #config }
 RunLengthEncodingTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'75dbf9d9-2b3f-0d00-a2d3-6b0f09f0590c'
+	^'382c51be-4a3f-0d00-bb37-85f6071d6982'
 ]
 
 { #category : #config }
 RunLengthEncodingTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.1.0'
 ]
 
@@ -55,106 +55,106 @@ RunLengthEncodingTest >> setUp [
 	runLengthEncodingCalculator := RunLengthEncoding new
 ]
 
-{ #category : #test }
-RunLengthEncodingTest >> testEncodeAndThenDecodeEncodeFollowedByDecodeGivesOriginalString [
+{ #category : #tests }
+RunLengthEncodingTest >> test01_EncodeAndThenDecodeEncodeFollowedByDecodeGivesOriginalString [
 	| result |
 
 	result := runLengthEncodingCalculator consistencyString: 'zzz ZZ  zZ' .
 	self assert: result equals: 'zzz ZZ  zZ'
 ]
 
-{ #category : #test }
-RunLengthEncodingTest >> testRunlengthDecodeAStringEmptyString [
+{ #category : #tests }
+RunLengthEncodingTest >> test01_RunlengthDecodeAStringEmptyString [
 	| result |
 
 	result := runLengthEncodingCalculator decodeString: '' .
 	self assert: result equals: ''
 ]
 
-{ #category : #test }
-RunLengthEncodingTest >> testRunlengthDecodeAStringLowerCaseString [
-	| result |
-
-	result := runLengthEncodingCalculator decodeString: '2a3b4c' .
-	self assert: result equals: 'aabbbcccc'
-]
-
-{ #category : #test }
-RunLengthEncodingTest >> testRunlengthDecodeAStringMultipleWhitespaceMixedInString [
-	| result |
-
-	result := runLengthEncodingCalculator decodeString: '2 hs2q q2w2 ' .
-	self assert: result equals: '  hsqq qww  '
-]
-
-{ #category : #test }
-RunLengthEncodingTest >> testRunlengthDecodeAStringSingleCharactersOnly [
-	| result |
-
-	result := runLengthEncodingCalculator decodeString: 'XYZ' .
-	self assert: result equals: 'XYZ'
-]
-
-{ #category : #test }
-RunLengthEncodingTest >> testRunlengthDecodeAStringSingleCharactersWithRepeatedCharacters [
-	| result |
-
-	result := runLengthEncodingCalculator decodeString: '12WB12W3B24WB' .
-	self assert: result equals: 'WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB'
-]
-
-{ #category : #test }
-RunLengthEncodingTest >> testRunlengthDecodeAStringStringWithNoSingleCharacters [
-	| result |
-
-	result := runLengthEncodingCalculator decodeString: '2A3B4C' .
-	self assert: result equals: 'AABBBCCCC'
-]
-
-{ #category : #test }
-RunLengthEncodingTest >> testRunlengthEncodeAStringEmptyString [
+{ #category : #tests }
+RunLengthEncodingTest >> test01_RunlengthEncodeAStringEmptyString [
 	| result |
 
 	result := runLengthEncodingCalculator encodeString: '' .
 	self assert: result equals: ''
 ]
 
-{ #category : #test }
-RunLengthEncodingTest >> testRunlengthEncodeAStringLowercaseCharacters [
+{ #category : #tests }
+RunLengthEncodingTest >> test02_RunlengthDecodeAStringSingleCharactersOnly [
 	| result |
 
-	result := runLengthEncodingCalculator encodeString: 'aabbbcccc' .
-	self assert: result equals: '2a3b4c'
+	result := runLengthEncodingCalculator decodeString: 'XYZ' .
+	self assert: result equals: 'XYZ'
 ]
 
-{ #category : #test }
-RunLengthEncodingTest >> testRunlengthEncodeAStringMultipleWhitespaceMixedInString [
-	| result |
-
-	result := runLengthEncodingCalculator encodeString: '  hsqq qww  ' .
-	self assert: result equals: '2 hs2q q2w2 '
-]
-
-{ #category : #test }
-RunLengthEncodingTest >> testRunlengthEncodeAStringSingleCharactersMixedWithRepeatedCharacters [
-	| result |
-
-	result := runLengthEncodingCalculator encodeString: 'WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB' .
-	self assert: result equals: '12WB12W3B24WB'
-]
-
-{ #category : #test }
-RunLengthEncodingTest >> testRunlengthEncodeAStringSingleCharactersOnlyAreEncodedWithoutCount [
+{ #category : #tests }
+RunLengthEncodingTest >> test02_RunlengthEncodeAStringSingleCharactersOnlyAreEncodedWithoutCount [
 	| result |
 
 	result := runLengthEncodingCalculator encodeString: 'XYZ' .
 	self assert: result equals: 'XYZ'
 ]
 
-{ #category : #test }
-RunLengthEncodingTest >> testRunlengthEncodeAStringStringWithNoSingleCharacters [
+{ #category : #tests }
+RunLengthEncodingTest >> test03_RunlengthDecodeAStringStringWithNoSingleCharacters [
+	| result |
+
+	result := runLengthEncodingCalculator decodeString: '2A3B4C' .
+	self assert: result equals: 'AABBBCCCC'
+]
+
+{ #category : #tests }
+RunLengthEncodingTest >> test03_RunlengthEncodeAStringStringWithNoSingleCharacters [
 	| result |
 
 	result := runLengthEncodingCalculator encodeString: 'AABBBCCCC' .
 	self assert: result equals: '2A3B4C'
+]
+
+{ #category : #tests }
+RunLengthEncodingTest >> test04_RunlengthDecodeAStringSingleCharactersWithRepeatedCharacters [
+	| result |
+
+	result := runLengthEncodingCalculator decodeString: '12WB12W3B24WB' .
+	self assert: result equals: 'WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB'
+]
+
+{ #category : #tests }
+RunLengthEncodingTest >> test04_RunlengthEncodeAStringSingleCharactersMixedWithRepeatedCharacters [
+	| result |
+
+	result := runLengthEncodingCalculator encodeString: 'WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB' .
+	self assert: result equals: '12WB12W3B24WB'
+]
+
+{ #category : #tests }
+RunLengthEncodingTest >> test05_RunlengthDecodeAStringMultipleWhitespaceMixedInString [
+	| result |
+
+	result := runLengthEncodingCalculator decodeString: '2 hs2q q2w2 ' .
+	self assert: result equals: '  hsqq qww  '
+]
+
+{ #category : #tests }
+RunLengthEncodingTest >> test05_RunlengthEncodeAStringMultipleWhitespaceMixedInString [
+	| result |
+
+	result := runLengthEncodingCalculator encodeString: '  hsqq qww  ' .
+	self assert: result equals: '2 hs2q q2w2 '
+]
+
+{ #category : #tests }
+RunLengthEncodingTest >> test06_RunlengthDecodeAStringLowerCaseString [
+	| result |
+
+	result := runLengthEncodingCalculator decodeString: '2a3b4c' .
+	self assert: result equals: 'aabbbcccc'
+]
+
+{ #category : #tests }
+RunLengthEncodingTest >> test06_RunlengthEncodeAStringLowercaseCharacters [
+	| result |
+
+	result := runLengthEncodingCalculator encodeString: 'aabbbcccc' .
+	self assert: result equals: '2a3b4c'
 ]

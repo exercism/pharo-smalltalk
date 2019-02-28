@@ -48,12 +48,12 @@ Class {
 { #category : #config }
 ConnectTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'0d1d29da-2b3f-0d00-a2fe-d11109f0590c'
+	^'06c48fbe-4a3f-0d00-bb60-e70d071d6982'
 ]
 
 { #category : #config }
 ConnectTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.1.0'
 ]
 
@@ -62,80 +62,80 @@ ConnectTest >> setUp [
 	connectCalculator := Connect new
 ]
 
-{ #category : #test }
-ConnectTest >> testAnEmptyBoardHasNoWinner [
+{ #category : #tests }
+ConnectTest >> test01_AnEmptyBoardHasNoWinner [
 	| result |
 
 	result := connectCalculator winnerBoard: #('. . . . .' ' . . . . .' '  . . . . .' '   . . . . .' '    . . . . .' ) .
 	self assert: result equals: ''
 ]
 
-{ #category : #test }
-ConnectTest >> testIllegalDiagonalDoesNotMakeAWinner [
-	| result |
-
-	result := connectCalculator winnerBoard: #('X O . .' ' O X X X' '  O X O .' '   . O X .' '    X X O O' ) .
-	self assert: result equals: ''
-]
-
-{ #category : #test }
-ConnectTest >> testNobodyWinsCrossingAdjacentAngles [
-	| result |
-
-	result := connectCalculator winnerBoard: #('X . . .' ' . X O .' '  O . X O' '   . O . X' '    . . O .' ) .
-	self assert: result equals: ''
-]
-
-{ #category : #test }
-ConnectTest >> testOCanWinOnA1x1Board [
-	| result |
-
-	result := connectCalculator winnerBoard: #('O' ) .
-	self assert: result equals: 'O'
-]
-
-{ #category : #test }
-ConnectTest >> testOWinsCrossingFromTopToBottom [
-	| result |
-
-	result := connectCalculator winnerBoard: #('. O . .' ' O X X X' '  O O O .' '   X X O X' '    . O X .' ) .
-	self assert: result equals: 'O'
-]
-
-{ #category : #test }
-ConnectTest >> testOnlyEdgesDoesNotMakeAWinner [
-	| result |
-
-	result := connectCalculator winnerBoard: #('O O O X' ' X . . X' '  X . . X' '   X O O O' ) .
-	self assert: result equals: ''
-]
-
-{ #category : #test }
-ConnectTest >> testXCanWinOnA1x1Board [
+{ #category : #tests }
+ConnectTest >> test02_XCanWinOnA1x1Board [
 	| result |
 
 	result := connectCalculator winnerBoard: #('X' ) .
 	self assert: result equals: 'X'
 ]
 
-{ #category : #test }
-ConnectTest >> testXWinsCrossingFromLeftToRight [
+{ #category : #tests }
+ConnectTest >> test03_OCanWinOnA1x1Board [
+	| result |
+
+	result := connectCalculator winnerBoard: #('O' ) .
+	self assert: result equals: 'O'
+]
+
+{ #category : #tests }
+ConnectTest >> test04_OnlyEdgesDoesNotMakeAWinner [
+	| result |
+
+	result := connectCalculator winnerBoard: #('O O O X' ' X . . X' '  X . . X' '   X O O O' ) .
+	self assert: result equals: ''
+]
+
+{ #category : #tests }
+ConnectTest >> test05_IllegalDiagonalDoesNotMakeAWinner [
+	| result |
+
+	result := connectCalculator winnerBoard: #('X O . .' ' O X X X' '  O X O .' '   . O X .' '    X X O O' ) .
+	self assert: result equals: ''
+]
+
+{ #category : #tests }
+ConnectTest >> test06_NobodyWinsCrossingAdjacentAngles [
+	| result |
+
+	result := connectCalculator winnerBoard: #('X . . .' ' . X O .' '  O . X O' '   . O . X' '    . . O .' ) .
+	self assert: result equals: ''
+]
+
+{ #category : #tests }
+ConnectTest >> test07_XWinsCrossingFromLeftToRight [
 	| result |
 
 	result := connectCalculator winnerBoard: #('. O . .' ' O X X X' '  O X O .' '   X X O X' '    . O X .' ) .
 	self assert: result equals: 'X'
 ]
 
-{ #category : #test }
-ConnectTest >> testXWinsUsingAConvolutedPath [
+{ #category : #tests }
+ConnectTest >> test08_OWinsCrossingFromTopToBottom [
+	| result |
+
+	result := connectCalculator winnerBoard: #('. O . .' ' O X X X' '  O O O .' '   X X O X' '    . O X .' ) .
+	self assert: result equals: 'O'
+]
+
+{ #category : #tests }
+ConnectTest >> test09_XWinsUsingAConvolutedPath [
 	| result |
 
 	result := connectCalculator winnerBoard: #('. X X . .' ' X . X . X' '  . X . X .' '   . X X . .' '    O O O O O' ) .
 	self assert: result equals: 'X'
 ]
 
-{ #category : #test }
-ConnectTest >> testXWinsUsingASpiralPath [
+{ #category : #tests }
+ConnectTest >> test10_XWinsUsingASpiralPath [
 	| result |
 
 	result := connectCalculator winnerBoard: #('O X X X X X X X X' ' O X O O O O O O O' '  O X O X X X X X O' '   O X O X O O O X O' '    O X O X X X O X O' '     O X O O O X O X O' '      O X X X X X O X O' '       O O O O O O O X O' '        X X X X X X X X O' ) .

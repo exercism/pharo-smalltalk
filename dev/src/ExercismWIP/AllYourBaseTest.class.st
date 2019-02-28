@@ -49,12 +49,12 @@ Class {
 { #category : #config }
 AllYourBaseTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'c3132fda-2b3f-0d00-a304-8a1109f0590c'
+	^'5cdd97be-4a3f-0d00-bb66-ea47071d6982'
 ]
 
 { #category : #config }
 AllYourBaseTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'2.3.0'
 ]
 
@@ -63,170 +63,170 @@ AllYourBaseTest >> setUp [
 	allYourBaseCalculator := AllYourBase new
 ]
 
-{ #category : #test }
-AllYourBaseTest >> test15bitInteger [
-	| result |
-
-	result := allYourBaseCalculator rebaseInputBase: 97 digits: #(3 46 60 ) outputBase: 73 .
-	self assert: result equals: #(6 10 45 )
-]
-
-{ #category : #test }
-AllYourBaseTest >> testBinaryToMultipleDecimal [
-	| result |
-
-	result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1 0 1 0 1 0 ) outputBase: 10 .
-	self assert: result equals: #(4 2 )
-]
-
-{ #category : #test }
-AllYourBaseTest >> testBinaryToSingleDecimal [
-	| result |
-
-	result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1 0 1 ) outputBase: 10 .
-	self assert: result equals: #(5 )
-]
-
-{ #category : #test }
-AllYourBaseTest >> testBothBasesAreNegative [
-	| result |
-
-	result := allYourBaseCalculator rebaseInputBase:  -2 digits: #(1 ) outputBase:  -7 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'input base must be >= 2'); yourself)
-]
-
-{ #category : #test }
-AllYourBaseTest >> testDecimalToBinary [
-	| result |
-
-	result := allYourBaseCalculator rebaseInputBase: 10 digits: #(4 2 ) outputBase: 2 .
-	self assert: result equals: #(1 0 1 0 1 0 )
-]
-
-{ #category : #test }
-AllYourBaseTest >> testEmptyList [
-	| result |
-
-	result := allYourBaseCalculator rebaseInputBase: 2 digits: #() outputBase: 10 .
-	self assert: result equals: #(0 )
-]
-
-{ #category : #test }
-AllYourBaseTest >> testHexadecimalToTrinary [
-	| result |
-
-	result := allYourBaseCalculator rebaseInputBase: 16 digits: #(2 10 ) outputBase: 3 .
-	self assert: result equals: #(1 1 2 0 )
-]
-
-{ #category : #test }
-AllYourBaseTest >> testInputBaseIsNegative [
-	| result |
-
-	result := allYourBaseCalculator rebaseInputBase:  -2 digits: #(1 ) outputBase: 10 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'input base must be >= 2'); yourself)
-]
-
-{ #category : #test }
-AllYourBaseTest >> testInputBaseIsOne [
-	| result |
-
-	result := allYourBaseCalculator rebaseInputBase: 1 digits: #(0 ) outputBase: 10 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'input base must be >= 2'); yourself)
-]
-
-{ #category : #test }
-AllYourBaseTest >> testInputBaseIsZero [
-	| result |
-
-	result := allYourBaseCalculator rebaseInputBase: 0 digits: #() outputBase: 10 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'input base must be >= 2'); yourself)
-]
-
-{ #category : #test }
-AllYourBaseTest >> testInvalidPositiveDigit [
-	| result |
-
-	result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1 2 1 0 1 0 ) outputBase: 10 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'all digits must satisfy 0 <= d < input base'); yourself)
-]
-
-{ #category : #test }
-AllYourBaseTest >> testLeadingZeros [
-	| result |
-
-	result := allYourBaseCalculator rebaseInputBase: 7 digits: #(0 6 0 ) outputBase: 10 .
-	self assert: result equals: #(4 2 )
-]
-
-{ #category : #test }
-AllYourBaseTest >> testMultipleZeros [
-	| result |
-
-	result := allYourBaseCalculator rebaseInputBase: 10 digits: #(0 0 0 ) outputBase: 2 .
-	self assert: result equals: #(0 )
-]
-
-{ #category : #test }
-AllYourBaseTest >> testNegativeDigit [
-	| result |
-
-	result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1  -1 1 0 1 0 ) outputBase: 10 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'all digits must satisfy 0 <= d < input base'); yourself)
-]
-
-{ #category : #test }
-AllYourBaseTest >> testOutputBaseIsNegative [
-	| result |
-
-	result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1 ) outputBase:  -7 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'output base must be >= 2'); yourself)
-]
-
-{ #category : #test }
-AllYourBaseTest >> testOutputBaseIsOne [
-	| result |
-
-	result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1 0 1 0 1 0 ) outputBase: 1 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'output base must be >= 2'); yourself)
-]
-
-{ #category : #test }
-AllYourBaseTest >> testOutputBaseIsZero [
-	| result |
-
-	result := allYourBaseCalculator rebaseInputBase: 10 digits: #(7 ) outputBase: 0 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'output base must be >= 2'); yourself)
-]
-
-{ #category : #test }
-AllYourBaseTest >> testSingleBitOneToDecimal [
+{ #category : #tests }
+AllYourBaseTest >> test01_SingleBitOneToDecimal [
 	| result |
 
 	result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1 ) outputBase: 10 .
 	self assert: result equals: #(1 )
 ]
 
-{ #category : #test }
-AllYourBaseTest >> testSingleDecimalToBinary [
+{ #category : #tests }
+AllYourBaseTest >> test02_BinaryToSingleDecimal [
+	| result |
+
+	result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1 0 1 ) outputBase: 10 .
+	self assert: result equals: #(5 )
+]
+
+{ #category : #tests }
+AllYourBaseTest >> test03_SingleDecimalToBinary [
 	| result |
 
 	result := allYourBaseCalculator rebaseInputBase: 10 digits: #(5 ) outputBase: 2 .
 	self assert: result equals: #(1 0 1 )
 ]
 
-{ #category : #test }
-AllYourBaseTest >> testSingleZero [
+{ #category : #tests }
+AllYourBaseTest >> test04_BinaryToMultipleDecimal [
+	| result |
+
+	result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1 0 1 0 1 0 ) outputBase: 10 .
+	self assert: result equals: #(4 2 )
+]
+
+{ #category : #tests }
+AllYourBaseTest >> test05_DecimalToBinary [
+	| result |
+
+	result := allYourBaseCalculator rebaseInputBase: 10 digits: #(4 2 ) outputBase: 2 .
+	self assert: result equals: #(1 0 1 0 1 0 )
+]
+
+{ #category : #tests }
+AllYourBaseTest >> test06_TrinaryToHexadecimal [
+	| result |
+
+	result := allYourBaseCalculator rebaseInputBase: 3 digits: #(1 1 2 0 ) outputBase: 16 .
+	self assert: result equals: #(2 10 )
+]
+
+{ #category : #tests }
+AllYourBaseTest >> test07_HexadecimalToTrinary [
+	| result |
+
+	result := allYourBaseCalculator rebaseInputBase: 16 digits: #(2 10 ) outputBase: 3 .
+	self assert: result equals: #(1 1 2 0 )
+]
+
+{ #category : #tests }
+AllYourBaseTest >> test08_and15bitInteger [
+	| result |
+
+	result := allYourBaseCalculator rebaseInputBase: 97 digits: #(3 46 60 ) outputBase: 73 .
+	self assert: result equals: #(6 10 45 )
+]
+
+{ #category : #tests }
+AllYourBaseTest >> test09_EmptyList [
+	| result |
+
+	result := allYourBaseCalculator rebaseInputBase: 2 digits: #() outputBase: 10 .
+	self assert: result equals: #(0 )
+]
+
+{ #category : #tests }
+AllYourBaseTest >> test10_SingleZero [
 	| result |
 
 	result := allYourBaseCalculator rebaseInputBase: 10 digits: #(0 ) outputBase: 2 .
 	self assert: result equals: #(0 )
 ]
 
-{ #category : #test }
-AllYourBaseTest >> testTrinaryToHexadecimal [
+{ #category : #tests }
+AllYourBaseTest >> test11_MultipleZeros [
 	| result |
 
-	result := allYourBaseCalculator rebaseInputBase: 3 digits: #(1 1 2 0 ) outputBase: 16 .
-	self assert: result equals: #(2 10 )
+	result := allYourBaseCalculator rebaseInputBase: 10 digits: #(0 0 0 ) outputBase: 2 .
+	self assert: result equals: #(0 )
+]
+
+{ #category : #tests }
+AllYourBaseTest >> test12_LeadingZeros [
+	| result |
+
+	result := allYourBaseCalculator rebaseInputBase: 7 digits: #(0 6 0 ) outputBase: 10 .
+	self assert: result equals: #(4 2 )
+]
+
+{ #category : #tests }
+AllYourBaseTest >> test13_InputBaseIsOne [
+	| result |
+
+	result := allYourBaseCalculator rebaseInputBase: 1 digits: #(0 ) outputBase: 10 .
+	self assert: result equals: ((Dictionary new) add: ('error'->'input base must be >= 2'); yourself)
+]
+
+{ #category : #tests }
+AllYourBaseTest >> test14_InputBaseIsZero [
+	| result |
+
+	result := allYourBaseCalculator rebaseInputBase: 0 digits: #() outputBase: 10 .
+	self assert: result equals: ((Dictionary new) add: ('error'->'input base must be >= 2'); yourself)
+]
+
+{ #category : #tests }
+AllYourBaseTest >> test15_InputBaseIsNegative [
+	| result |
+
+	result := allYourBaseCalculator rebaseInputBase:  -2 digits: #(1 ) outputBase: 10 .
+	self assert: result equals: ((Dictionary new) add: ('error'->'input base must be >= 2'); yourself)
+]
+
+{ #category : #tests }
+AllYourBaseTest >> test16_NegativeDigit [
+	| result |
+
+	result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1  -1 1 0 1 0 ) outputBase: 10 .
+	self assert: result equals: ((Dictionary new) add: ('error'->'all digits must satisfy 0 <= d < input base'); yourself)
+]
+
+{ #category : #tests }
+AllYourBaseTest >> test17_InvalidPositiveDigit [
+	| result |
+
+	result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1 2 1 0 1 0 ) outputBase: 10 .
+	self assert: result equals: ((Dictionary new) add: ('error'->'all digits must satisfy 0 <= d < input base'); yourself)
+]
+
+{ #category : #tests }
+AllYourBaseTest >> test18_OutputBaseIsOne [
+	| result |
+
+	result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1 0 1 0 1 0 ) outputBase: 1 .
+	self assert: result equals: ((Dictionary new) add: ('error'->'output base must be >= 2'); yourself)
+]
+
+{ #category : #tests }
+AllYourBaseTest >> test19_OutputBaseIsZero [
+	| result |
+
+	result := allYourBaseCalculator rebaseInputBase: 10 digits: #(7 ) outputBase: 0 .
+	self assert: result equals: ((Dictionary new) add: ('error'->'output base must be >= 2'); yourself)
+]
+
+{ #category : #tests }
+AllYourBaseTest >> test20_OutputBaseIsNegative [
+	| result |
+
+	result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1 ) outputBase:  -7 .
+	self assert: result equals: ((Dictionary new) add: ('error'->'output base must be >= 2'); yourself)
+]
+
+{ #category : #tests }
+AllYourBaseTest >> test21_BothBasesAreNegative [
+	| result |
+
+	result := allYourBaseCalculator rebaseInputBase:  -2 digits: #(1 ) outputBase:  -7 .
+	self assert: result equals: ((Dictionary new) add: ('error'->'input base must be >= 2'); yourself)
 ]

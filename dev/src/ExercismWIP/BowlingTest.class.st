@@ -78,12 +78,12 @@ Class {
 { #category : #config }
 BowlingTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'7875f5d9-2b3f-0d00-a2ce-4ad409f0590c'
+	^'b5044bbe-4a3f-0d00-bb32-4092071d6982'
 ]
 
 { #category : #config }
 BowlingTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.2.0'
 ]
 
@@ -92,242 +92,242 @@ BowlingTest >> setUp [
 	bowlingCalculator := Bowling new
 ]
 
-{ #category : #test }
-BowlingTest >> testARollCannotScoreMoreThan10Points [
-	| result |
-
-	result := bowlingCalculator roll: 11 previousRolls: #() .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Pin count exceeds pins on the lane'); yourself)
-]
-
-{ #category : #test }
-BowlingTest >> testASpareFollowedByZerosIsWorthTenPoints [
-	| result |
-
-	result := bowlingCalculator scorePreviousRolls: #(6 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
-	self assert: result equals: 10
-]
-
-{ #category : #test }
-BowlingTest >> testASpareInTheLastFrameGetsAOneRollBonusThatIsCountedOnce [
-	| result |
-
-	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 3 7 ) .
-	self assert: result equals: 17
-]
-
-{ #category : #test }
-BowlingTest >> testAStrikeEarnsTenPointsInAFrameWithASingleRoll [
-	| result |
-
-	result := bowlingCalculator scorePreviousRolls: #(10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
-	self assert: result equals: 10
-]
-
-{ #category : #test }
-BowlingTest >> testAStrikeInTheLastFrameGetsATwoRollBonusThatIsCountedOnce [
-	| result |
-
-	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 7 1 ) .
-	self assert: result equals: 18
-]
-
-{ #category : #test }
-BowlingTest >> testAStrikeWithTheOneRollBonusAfterASpareInTheLastFrameDoesNotGetABonus [
-	| result |
-
-	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 3 10 ) .
-	self assert: result equals: 20
-]
-
-{ #category : #test }
-BowlingTest >> testAllStrikesIsAPerfectGame [
-	| result |
-
-	result := bowlingCalculator scorePreviousRolls: #(10 10 10 10 10 10 10 10 10 10 10 10 ) .
-	self assert: result equals: 300
-]
-
-{ #category : #test }
-BowlingTest >> testAnIncompleteGameCannotBeScored [
-	| result |
-
-	result := bowlingCalculator scorePreviousRolls: #(0 0 ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Score cannot be taken until the end of the game'); yourself)
-]
-
-{ #category : #test }
-BowlingTest >> testAnUnstartedGameCannotBeScored [
-	| result |
-
-	result := bowlingCalculator scorePreviousRolls: #() .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Score cannot be taken until the end of the game'); yourself)
-]
-
-{ #category : #test }
-BowlingTest >> testBonusRollAfterAStrikeInTheLastFrameCannotScoreMoreThan10Points [
-	| result |
-
-	result := bowlingCalculator roll: 11 previousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Pin count exceeds pins on the lane'); yourself)
-]
-
-{ #category : #test }
-BowlingTest >> testBonusRollForASpareInTheLastFrameMustBeRolledBeforeScoreCanBeCalculated [
-	| result |
-
-	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 3 ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Score cannot be taken until the end of the game'); yourself)
-]
-
-{ #category : #test }
-BowlingTest >> testBonusRollsForAStrikeInTheLastFrameMustBeRolledBeforeScoreCanBeCalculated [
-	| result |
-
-	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Score cannot be taken until the end of the game'); yourself)
-]
-
-{ #category : #test }
-BowlingTest >> testBothBonusRollsForAStrikeInTheLastFrameMustBeRolledBeforeScoreCanBeCalculated [
-	| result |
-
-	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 10 ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Score cannot be taken until the end of the game'); yourself)
-]
-
-{ #category : #test }
-BowlingTest >> testCannotRollAfterBonusRollForSpare [
-	| result |
-
-	result := bowlingCalculator roll: 2 previousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 3 2 ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Cannot roll after game is over'); yourself)
-]
-
-{ #category : #test }
-BowlingTest >> testCannotRollAfterBonusRollsForStrike [
-	| result |
-
-	result := bowlingCalculator roll: 2 previousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 3 2 ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Cannot roll after game is over'); yourself)
-]
-
-{ #category : #test }
-BowlingTest >> testCannotRollIfGameAlreadyHasTenFrames [
-	| result |
-
-	result := bowlingCalculator roll: 0 previousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Cannot roll after game is over'); yourself)
-]
-
-{ #category : #test }
-BowlingTest >> testConsecutiveSparesEachGetAOneRollBonus [
-	| result |
-
-	result := bowlingCalculator scorePreviousRolls: #(5 5 3 7 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
-	self assert: result equals: 31
-]
-
-{ #category : #test }
-BowlingTest >> testConsecutiveStrikesEachGetTheTwoRollBonus [
-	| result |
-
-	result := bowlingCalculator scorePreviousRolls: #(10 10 10 5 3 0 0 0 0 0 0 0 0 0 0 0 0 ) .
-	self assert: result equals: 81
-]
-
-{ #category : #test }
-BowlingTest >> testPointsScoredInTheRollAfterASpareAreCountedTwice [
-	| result |
-
-	result := bowlingCalculator scorePreviousRolls: #(6 4 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
-	self assert: result equals: 16
-]
-
-{ #category : #test }
-BowlingTest >> testPointsScoredInTheTwoRollsAfterAStrikeAreCountedTwiceAsABonus [
-	| result |
-
-	result := bowlingCalculator scorePreviousRolls: #(10 5 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
-	self assert: result equals: 26
-]
-
-{ #category : #test }
-BowlingTest >> testRollingASpareWithTheTwoRollBonusDoesNotGetABonusRoll [
-	| result |
-
-	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 7 3 ) .
-	self assert: result equals: 20
-]
-
-{ #category : #test }
-BowlingTest >> testRollsCannotScoreNegativePoints [
-	| result |
-
-	result := bowlingCalculator roll:  -1 previousRolls: #() .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Negative roll is invalid'); yourself)
-]
-
-{ #category : #test }
-BowlingTest >> testSecondBonusRollAfterAStrikeInTheLastFrameCannotScoreMoreThan10Points [
-	| result |
-
-	result := bowlingCalculator roll: 11 previousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 10 ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Pin count exceeds pins on the lane'); yourself)
-]
-
-{ #category : #test }
-BowlingTest >> testShouldBeAbleToScoreAGameWithAllZeros [
+{ #category : #tests }
+BowlingTest >> test01_ShouldBeAbleToScoreAGameWithAllZeros [
 	| result |
 
 	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
 	self assert: result equals: 0
 ]
 
-{ #category : #test }
-BowlingTest >> testShouldBeAbleToScoreAGameWithNoStrikesOrSpares [
+{ #category : #tests }
+BowlingTest >> test02_ShouldBeAbleToScoreAGameWithNoStrikesOrSpares [
 	| result |
 
 	result := bowlingCalculator scorePreviousRolls: #(3 6 3 6 3 6 3 6 3 6 3 6 3 6 3 6 3 6 3 6 ) .
 	self assert: result equals: 90
 ]
 
-{ #category : #test }
-BowlingTest >> testStrikesWithTheTwoRollBonusDoNotGetBonusRolls [
+{ #category : #tests }
+BowlingTest >> test03_ASpareFollowedByZerosIsWorthTenPoints [
+	| result |
+
+	result := bowlingCalculator scorePreviousRolls: #(6 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
+	self assert: result equals: 10
+]
+
+{ #category : #tests }
+BowlingTest >> test04_PointsScoredInTheRollAfterASpareAreCountedTwice [
+	| result |
+
+	result := bowlingCalculator scorePreviousRolls: #(6 4 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
+	self assert: result equals: 16
+]
+
+{ #category : #tests }
+BowlingTest >> test05_ConsecutiveSparesEachGetAOneRollBonus [
+	| result |
+
+	result := bowlingCalculator scorePreviousRolls: #(5 5 3 7 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
+	self assert: result equals: 31
+]
+
+{ #category : #tests }
+BowlingTest >> test06_ASpareInTheLastFrameGetsAOneRollBonusThatIsCountedOnce [
+	| result |
+
+	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 3 7 ) .
+	self assert: result equals: 17
+]
+
+{ #category : #tests }
+BowlingTest >> test07_AStrikeEarnsTenPointsInAFrameWithASingleRoll [
+	| result |
+
+	result := bowlingCalculator scorePreviousRolls: #(10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
+	self assert: result equals: 10
+]
+
+{ #category : #tests }
+BowlingTest >> test08_PointsScoredInTheTwoRollsAfterAStrikeAreCountedTwiceAsABonus [
+	| result |
+
+	result := bowlingCalculator scorePreviousRolls: #(10 5 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
+	self assert: result equals: 26
+]
+
+{ #category : #tests }
+BowlingTest >> test09_ConsecutiveStrikesEachGetTheTwoRollBonus [
+	| result |
+
+	result := bowlingCalculator scorePreviousRolls: #(10 10 10 5 3 0 0 0 0 0 0 0 0 0 0 0 0 ) .
+	self assert: result equals: 81
+]
+
+{ #category : #tests }
+BowlingTest >> test10_AStrikeInTheLastFrameGetsATwoRollBonusThatIsCountedOnce [
+	| result |
+
+	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 7 1 ) .
+	self assert: result equals: 18
+]
+
+{ #category : #tests }
+BowlingTest >> test11_RollingASpareWithTheTwoRollBonusDoesNotGetABonusRoll [
+	| result |
+
+	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 7 3 ) .
+	self assert: result equals: 20
+]
+
+{ #category : #tests }
+BowlingTest >> test12_StrikesWithTheTwoRollBonusDoNotGetBonusRolls [
 	| result |
 
 	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 10 10 ) .
 	self assert: result equals: 30
 ]
 
-{ #category : #test }
-BowlingTest >> testTheSecondBonusRollsAfterAStrikeInTheLastFrameCannotBeAStrikeIfTheFirstOneIsNotAStrike [
+{ #category : #tests }
+BowlingTest >> test13_AStrikeWithTheOneRollBonusAfterASpareInTheLastFrameDoesNotGetABonus [
 	| result |
 
-	result := bowlingCalculator roll: 10 previousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 6 ) .
+	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 3 10 ) .
+	self assert: result equals: 20
+]
+
+{ #category : #tests }
+BowlingTest >> test14_AllStrikesIsAPerfectGame [
+	| result |
+
+	result := bowlingCalculator scorePreviousRolls: #(10 10 10 10 10 10 10 10 10 10 10 10 ) .
+	self assert: result equals: 300
+]
+
+{ #category : #tests }
+BowlingTest >> test15_RollsCannotScoreNegativePoints [
+	| result |
+
+	result := bowlingCalculator roll:  -1 previousRolls: #() .
+	self assert: result equals: ((Dictionary new) add: ('error'->'Negative roll is invalid'); yourself)
+]
+
+{ #category : #tests }
+BowlingTest >> test16_ARollCannotScoreMoreThan10Points [
+	| result |
+
+	result := bowlingCalculator roll: 11 previousRolls: #() .
 	self assert: result equals: ((Dictionary new) add: ('error'->'Pin count exceeds pins on the lane'); yourself)
 ]
 
-{ #category : #test }
-BowlingTest >> testTwoBonusRollsAfterAStrikeInTheLastFrameCanScoreMoreThan10PointsIfOneIsAStrike [
+{ #category : #tests }
+BowlingTest >> test17_TwoRollsInAFrameCannotScoreMoreThan10Points [
 	| result |
 
-	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 10 6 ) .
-	self assert: result equals: 26
+	result := bowlingCalculator roll: 6 previousRolls: #(5 ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'Pin count exceeds pins on the lane'); yourself)
 ]
 
-{ #category : #test }
-BowlingTest >> testTwoBonusRollsAfterAStrikeInTheLastFrameCannotScoreMoreThan10Points [
+{ #category : #tests }
+BowlingTest >> test18_BonusRollAfterAStrikeInTheLastFrameCannotScoreMoreThan10Points [
+	| result |
+
+	result := bowlingCalculator roll: 11 previousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'Pin count exceeds pins on the lane'); yourself)
+]
+
+{ #category : #tests }
+BowlingTest >> test19_TwoBonusRollsAfterAStrikeInTheLastFrameCannotScoreMoreThan10Points [
 	| result |
 
 	result := bowlingCalculator roll: 6 previousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 5 ) .
 	self assert: result equals: ((Dictionary new) add: ('error'->'Pin count exceeds pins on the lane'); yourself)
 ]
 
-{ #category : #test }
-BowlingTest >> testTwoRollsInAFrameCannotScoreMoreThan10Points [
+{ #category : #tests }
+BowlingTest >> test20_TwoBonusRollsAfterAStrikeInTheLastFrameCanScoreMoreThan10PointsIfOneIsAStrike [
 	| result |
 
-	result := bowlingCalculator roll: 6 previousRolls: #(5 ) .
+	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 10 6 ) .
+	self assert: result equals: 26
+]
+
+{ #category : #tests }
+BowlingTest >> test21_TheSecondBonusRollsAfterAStrikeInTheLastFrameCannotBeAStrikeIfTheFirstOneIsNotAStrike [
+	| result |
+
+	result := bowlingCalculator roll: 10 previousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 6 ) .
 	self assert: result equals: ((Dictionary new) add: ('error'->'Pin count exceeds pins on the lane'); yourself)
+]
+
+{ #category : #tests }
+BowlingTest >> test22_SecondBonusRollAfterAStrikeInTheLastFrameCannotScoreMoreThan10Points [
+	| result |
+
+	result := bowlingCalculator roll: 11 previousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 10 ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'Pin count exceeds pins on the lane'); yourself)
+]
+
+{ #category : #tests }
+BowlingTest >> test23_AnUnstartedGameCannotBeScored [
+	| result |
+
+	result := bowlingCalculator scorePreviousRolls: #() .
+	self assert: result equals: ((Dictionary new) add: ('error'->'Score cannot be taken until the end of the game'); yourself)
+]
+
+{ #category : #tests }
+BowlingTest >> test24_AnIncompleteGameCannotBeScored [
+	| result |
+
+	result := bowlingCalculator scorePreviousRolls: #(0 0 ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'Score cannot be taken until the end of the game'); yourself)
+]
+
+{ #category : #tests }
+BowlingTest >> test25_CannotRollIfGameAlreadyHasTenFrames [
+	| result |
+
+	result := bowlingCalculator roll: 0 previousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'Cannot roll after game is over'); yourself)
+]
+
+{ #category : #tests }
+BowlingTest >> test26_BonusRollsForAStrikeInTheLastFrameMustBeRolledBeforeScoreCanBeCalculated [
+	| result |
+
+	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'Score cannot be taken until the end of the game'); yourself)
+]
+
+{ #category : #tests }
+BowlingTest >> test27_BothBonusRollsForAStrikeInTheLastFrameMustBeRolledBeforeScoreCanBeCalculated [
+	| result |
+
+	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 10 ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'Score cannot be taken until the end of the game'); yourself)
+]
+
+{ #category : #tests }
+BowlingTest >> test28_BonusRollForASpareInTheLastFrameMustBeRolledBeforeScoreCanBeCalculated [
+	| result |
+
+	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 3 ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'Score cannot be taken until the end of the game'); yourself)
+]
+
+{ #category : #tests }
+BowlingTest >> test29_CannotRollAfterBonusRollForSpare [
+	| result |
+
+	result := bowlingCalculator roll: 2 previousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 3 2 ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'Cannot roll after game is over'); yourself)
+]
+
+{ #category : #tests }
+BowlingTest >> test30_CannotRollAfterBonusRollsForStrike [
+	| result |
+
+	result := bowlingCalculator roll: 2 previousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 3 2 ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'Cannot roll after game is over'); yourself)
 ]

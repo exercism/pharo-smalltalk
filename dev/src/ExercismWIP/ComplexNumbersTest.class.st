@@ -46,12 +46,12 @@ Class {
 { #category : #config }
 ComplexNumbersTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'d9021bda-2b3f-0d00-a2f2-73e309f0590c'
+	^'e44b7dbe-4a3f-0d00-bb55-f73f071d6982'
 ]
 
 { #category : #config }
 ComplexNumbersTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.3.0'
 ]
 
@@ -60,250 +60,250 @@ ComplexNumbersTest >> setUp [
 	complexNumbersCalculator := ComplexNumbers new
 ]
 
-{ #category : #test }
-ComplexNumbersTest >> testAbsoluteValueAbsoluteValueOfANegativePurelyRealNumber [
-	| result |
-
-	result := complexNumbersCalculator absZ: #( -5 0 ) .
-	self assert: result equals: 5
-]
-
-{ #category : #test }
-ComplexNumbersTest >> testAbsoluteValueAbsoluteValueOfANumberWithRealAndImaginaryPart [
-	| result |
-
-	result := complexNumbersCalculator absZ: #(3 4 ) .
-	self assert: result equals: 5
-]
-
-{ #category : #test }
-ComplexNumbersTest >> testAbsoluteValueAbsoluteValueOfAPositivePurelyRealNumber [
+{ #category : #tests }
+ComplexNumbersTest >> test01_AbsoluteValueAbsoluteValueOfAPositivePurelyRealNumber [
 	| result |
 
 	result := complexNumbersCalculator absZ: #(5 0 ) .
 	self assert: result equals: 5
 ]
 
-{ #category : #test }
-ComplexNumbersTest >> testAbsoluteValueAbsoluteValueOfAPurelyImaginaryNumberWithNegativeImaginaryPart [
-	| result |
-
-	result := complexNumbersCalculator absZ: #(0  -5 ) .
-	self assert: result equals: 5
-]
-
-{ #category : #test }
-ComplexNumbersTest >> testAbsoluteValueAbsoluteValueOfAPurelyImaginaryNumberWithPositiveImaginaryPart [
-	| result |
-
-	result := complexNumbersCalculator absZ: #(0 5 ) .
-	self assert: result equals: 5
-]
-
-{ #category : #test }
-ComplexNumbersTest >> testArithmeticAdditionAddNumbersWithRealAndImaginaryPart [
-	| result |
-
-	result := complexNumbersCalculator addZ2: #(3 4 ) z1: #(1 2 ) .
-	self assert: result equals: #(4 6 )
-]
-
-{ #category : #test }
-ComplexNumbersTest >> testArithmeticAdditionAddPurelyImaginaryNumbers [
-	| result |
-
-	result := complexNumbersCalculator addZ2: #(0 2 ) z1: #(0 1 ) .
-	self assert: result equals: #(0 3 )
-]
-
-{ #category : #test }
-ComplexNumbersTest >> testArithmeticAdditionAddPurelyRealNumbers [
+{ #category : #tests }
+ComplexNumbersTest >> test01_ArithmeticAdditionAddPurelyRealNumbers [
 	| result |
 
 	result := complexNumbersCalculator addZ2: #(2 0 ) z1: #(1 0 ) .
 	self assert: result equals: #(3 0 )
 ]
 
-{ #category : #test }
-ComplexNumbersTest >> testArithmeticDivisionDivideNumbersWithRealAndImaginaryPart [
-	| result |
-
-	result := complexNumbersCalculator divZ2: #(3 4 ) z1: #(1 2 ) .
-	self assert: result equals: #(0.44 0.08 )
-]
-
-{ #category : #test }
-ComplexNumbersTest >> testArithmeticDivisionDividePurelyImaginaryNumbers [
-	| result |
-
-	result := complexNumbersCalculator divZ2: #(0 2 ) z1: #(0 1 ) .
-	self assert: result equals: #(0.5 0 )
-]
-
-{ #category : #test }
-ComplexNumbersTest >> testArithmeticDivisionDividePurelyRealNumbers [
+{ #category : #tests }
+ComplexNumbersTest >> test01_ArithmeticDivisionDividePurelyRealNumbers [
 	| result |
 
 	result := complexNumbersCalculator divZ2: #(2 0 ) z1: #(1 0 ) .
 	self assert: result equals: #(0.5 0 )
 ]
 
-{ #category : #test }
-ComplexNumbersTest >> testArithmeticMultiplicationMultiplyNumbersWithRealAndImaginaryPart [
-	| result |
-
-	result := complexNumbersCalculator mulZ2: #(3 4 ) z1: #(1 2 ) .
-	self assert: result equals: #( -5 10 )
-]
-
-{ #category : #test }
-ComplexNumbersTest >> testArithmeticMultiplicationMultiplyPurelyImaginaryNumbers [
-	| result |
-
-	result := complexNumbersCalculator mulZ2: #(0 2 ) z1: #(0 1 ) .
-	self assert: result equals: #( -2 0 )
-]
-
-{ #category : #test }
-ComplexNumbersTest >> testArithmeticMultiplicationMultiplyPurelyRealNumbers [
+{ #category : #tests }
+ComplexNumbersTest >> test01_ArithmeticMultiplicationMultiplyPurelyRealNumbers [
 	| result |
 
 	result := complexNumbersCalculator mulZ2: #(2 0 ) z1: #(1 0 ) .
 	self assert: result equals: #(2 0 )
 ]
 
-{ #category : #test }
-ComplexNumbersTest >> testArithmeticSubtractionSubtractNumbersWithRealAndImaginaryPart [
-	| result |
-
-	result := complexNumbersCalculator subZ2: #(3 4 ) z1: #(1 2 ) .
-	self assert: result equals: #( -2  -2 )
-]
-
-{ #category : #test }
-ComplexNumbersTest >> testArithmeticSubtractionSubtractPurelyImaginaryNumbers [
-	| result |
-
-	result := complexNumbersCalculator subZ2: #(0 2 ) z1: #(0 1 ) .
-	self assert: result equals: #(0  -1 )
-]
-
-{ #category : #test }
-ComplexNumbersTest >> testArithmeticSubtractionSubtractPurelyRealNumbers [
+{ #category : #tests }
+ComplexNumbersTest >> test01_ArithmeticSubtractionSubtractPurelyRealNumbers [
 	| result |
 
 	result := complexNumbersCalculator subZ2: #(2 0 ) z1: #(1 0 ) .
 	self assert: result equals: #( -1 0 )
 ]
 
-{ #category : #test }
-ComplexNumbersTest >> testComplexConjugateConjugateANumberWithRealAndImaginaryPart [
-	| result |
-
-	result := complexNumbersCalculator conjugateZ: #(1 1 ) .
-	self assert: result equals: #(1  -1 )
-]
-
-{ #category : #test }
-ComplexNumbersTest >> testComplexConjugateConjugateAPurelyImaginaryNumber [
-	| result |
-
-	result := complexNumbersCalculator conjugateZ: #(0 5 ) .
-	self assert: result equals: #(0  -5 )
-]
-
-{ #category : #test }
-ComplexNumbersTest >> testComplexConjugateConjugateAPurelyRealNumber [
+{ #category : #tests }
+ComplexNumbersTest >> test01_ComplexConjugateConjugateAPurelyRealNumber [
 	| result |
 
 	result := complexNumbersCalculator conjugateZ: #(5 0 ) .
 	self assert: result equals: #(5 0 )
 ]
 
-{ #category : #test }
-ComplexNumbersTest >> testComplexExponentialFunctionEulersIdentityformula [
+{ #category : #tests }
+ComplexNumbersTest >> test01_ComplexExponentialFunctionEulersIdentityformula [
 	| result |
 
 	result := complexNumbersCalculator expZ: #(0 'pi' ) .
 	self assert: result equals: #( -1 0 )
 ]
 
-{ #category : #test }
-ComplexNumbersTest >> testComplexExponentialFunctionExponentialOf0 [
-	| result |
-
-	result := complexNumbersCalculator expZ: #(0 0 ) .
-	self assert: result equals: #(1 0 )
-]
-
-{ #category : #test }
-ComplexNumbersTest >> testComplexExponentialFunctionExponentialOfANumberWithRealAndImaginaryPart [
-	| result |
-
-	result := complexNumbersCalculator expZ: #('ln(2)' 'pi' ) .
-	self assert: result equals: #( -2 0 )
-]
-
-{ #category : #test }
-ComplexNumbersTest >> testComplexExponentialFunctionExponentialOfAPurelyRealNumber [
-	| result |
-
-	result := complexNumbersCalculator expZ: #(1 0 ) .
-	self assert: result equals: #('e' 0 )
-]
-
-{ #category : #test }
-ComplexNumbersTest >> testImaginaryPartImaginaryPartOfANumberWithRealAndImaginaryPart [
-	| result |
-
-	result := complexNumbersCalculator imaginaryZ: #(1 2 ) .
-	self assert: result equals: 2
-]
-
-{ #category : #test }
-ComplexNumbersTest >> testImaginaryPartImaginaryPartOfAPurelyImaginaryNumber [
-	| result |
-
-	result := complexNumbersCalculator imaginaryZ: #(0 1 ) .
-	self assert: result equals: 1
-]
-
-{ #category : #test }
-ComplexNumbersTest >> testImaginaryPartImaginaryPartOfAPurelyRealNumber [
+{ #category : #tests }
+ComplexNumbersTest >> test01_ImaginaryPartImaginaryPartOfAPurelyRealNumber [
 	| result |
 
 	result := complexNumbersCalculator imaginaryZ: #(1 0 ) .
 	self assert: result equals: 0
 ]
 
-{ #category : #test }
-ComplexNumbersTest >> testImaginaryUnit [
+{ #category : #tests }
+ComplexNumbersTest >> test01_RealPartRealPartOfAPurelyRealNumber [
 	| result |
 
-	result := complexNumbersCalculator mulZ2: #(0 1 ) z1: #(0 1 ) .
-	self assert: result equals: #( -1 0 )
-]
-
-{ #category : #test }
-ComplexNumbersTest >> testRealPartRealPartOfANumberWithRealAndImaginaryPart [
-	| result |
-
-	result := complexNumbersCalculator realZ: #(1 2 ) .
+	result := complexNumbersCalculator realZ: #(1 0 ) .
 	self assert: result equals: 1
 ]
 
-{ #category : #test }
-ComplexNumbersTest >> testRealPartRealPartOfAPurelyImaginaryNumber [
+{ #category : #tests }
+ComplexNumbersTest >> test02_AbsoluteValueAbsoluteValueOfANegativePurelyRealNumber [
+	| result |
+
+	result := complexNumbersCalculator absZ: #( -5 0 ) .
+	self assert: result equals: 5
+]
+
+{ #category : #tests }
+ComplexNumbersTest >> test02_ArithmeticAdditionAddPurelyImaginaryNumbers [
+	| result |
+
+	result := complexNumbersCalculator addZ2: #(0 2 ) z1: #(0 1 ) .
+	self assert: result equals: #(0 3 )
+]
+
+{ #category : #tests }
+ComplexNumbersTest >> test02_ArithmeticDivisionDividePurelyImaginaryNumbers [
+	| result |
+
+	result := complexNumbersCalculator divZ2: #(0 2 ) z1: #(0 1 ) .
+	self assert: result equals: #(0.5 0 )
+]
+
+{ #category : #tests }
+ComplexNumbersTest >> test02_ArithmeticMultiplicationMultiplyPurelyImaginaryNumbers [
+	| result |
+
+	result := complexNumbersCalculator mulZ2: #(0 2 ) z1: #(0 1 ) .
+	self assert: result equals: #( -2 0 )
+]
+
+{ #category : #tests }
+ComplexNumbersTest >> test02_ArithmeticSubtractionSubtractPurelyImaginaryNumbers [
+	| result |
+
+	result := complexNumbersCalculator subZ2: #(0 2 ) z1: #(0 1 ) .
+	self assert: result equals: #(0  -1 )
+]
+
+{ #category : #tests }
+ComplexNumbersTest >> test02_ComplexConjugateConjugateAPurelyImaginaryNumber [
+	| result |
+
+	result := complexNumbersCalculator conjugateZ: #(0 5 ) .
+	self assert: result equals: #(0  -5 )
+]
+
+{ #category : #tests }
+ComplexNumbersTest >> test02_ComplexExponentialFunctionExponentialOf0 [
+	| result |
+
+	result := complexNumbersCalculator expZ: #(0 0 ) .
+	self assert: result equals: #(1 0 )
+]
+
+{ #category : #tests }
+ComplexNumbersTest >> test02_ImaginaryPartImaginaryPartOfAPurelyImaginaryNumber [
+	| result |
+
+	result := complexNumbersCalculator imaginaryZ: #(0 1 ) .
+	self assert: result equals: 1
+]
+
+{ #category : #tests }
+ComplexNumbersTest >> test02_RealPartRealPartOfAPurelyImaginaryNumber [
 	| result |
 
 	result := complexNumbersCalculator realZ: #(0 1 ) .
 	self assert: result equals: 0
 ]
 
-{ #category : #test }
-ComplexNumbersTest >> testRealPartRealPartOfAPurelyRealNumber [
+{ #category : #tests }
+ComplexNumbersTest >> test03_AbsoluteValueAbsoluteValueOfAPurelyImaginaryNumberWithPositiveImaginaryPart [
 	| result |
 
-	result := complexNumbersCalculator realZ: #(1 0 ) .
+	result := complexNumbersCalculator absZ: #(0 5 ) .
+	self assert: result equals: 5
+]
+
+{ #category : #tests }
+ComplexNumbersTest >> test03_ArithmeticAdditionAddNumbersWithRealAndImaginaryPart [
+	| result |
+
+	result := complexNumbersCalculator addZ2: #(3 4 ) z1: #(1 2 ) .
+	self assert: result equals: #(4 6 )
+]
+
+{ #category : #tests }
+ComplexNumbersTest >> test03_ArithmeticDivisionDivideNumbersWithRealAndImaginaryPart [
+	| result |
+
+	result := complexNumbersCalculator divZ2: #(3 4 ) z1: #(1 2 ) .
+	self assert: result equals: #(0.44 0.08 )
+]
+
+{ #category : #tests }
+ComplexNumbersTest >> test03_ArithmeticMultiplicationMultiplyNumbersWithRealAndImaginaryPart [
+	| result |
+
+	result := complexNumbersCalculator mulZ2: #(3 4 ) z1: #(1 2 ) .
+	self assert: result equals: #( -5 10 )
+]
+
+{ #category : #tests }
+ComplexNumbersTest >> test03_ArithmeticSubtractionSubtractNumbersWithRealAndImaginaryPart [
+	| result |
+
+	result := complexNumbersCalculator subZ2: #(3 4 ) z1: #(1 2 ) .
+	self assert: result equals: #( -2  -2 )
+]
+
+{ #category : #tests }
+ComplexNumbersTest >> test03_ComplexConjugateConjugateANumberWithRealAndImaginaryPart [
+	| result |
+
+	result := complexNumbersCalculator conjugateZ: #(1 1 ) .
+	self assert: result equals: #(1  -1 )
+]
+
+{ #category : #tests }
+ComplexNumbersTest >> test03_ComplexExponentialFunctionExponentialOfAPurelyRealNumber [
+	| result |
+
+	result := complexNumbersCalculator expZ: #(1 0 ) .
+	self assert: result equals: #('e' 0 )
+]
+
+{ #category : #tests }
+ComplexNumbersTest >> test03_ImaginaryPartImaginaryPartOfANumberWithRealAndImaginaryPart [
+	| result |
+
+	result := complexNumbersCalculator imaginaryZ: #(1 2 ) .
+	self assert: result equals: 2
+]
+
+{ #category : #tests }
+ComplexNumbersTest >> test03_ImaginaryUnit [
+	| result |
+
+	result := complexNumbersCalculator mulZ2: #(0 1 ) z1: #(0 1 ) .
+	self assert: result equals: #( -1 0 )
+]
+
+{ #category : #tests }
+ComplexNumbersTest >> test03_RealPartRealPartOfANumberWithRealAndImaginaryPart [
+	| result |
+
+	result := complexNumbersCalculator realZ: #(1 2 ) .
 	self assert: result equals: 1
+]
+
+{ #category : #tests }
+ComplexNumbersTest >> test04_AbsoluteValueAbsoluteValueOfAPurelyImaginaryNumberWithNegativeImaginaryPart [
+	| result |
+
+	result := complexNumbersCalculator absZ: #(0  -5 ) .
+	self assert: result equals: 5
+]
+
+{ #category : #tests }
+ComplexNumbersTest >> test04_ComplexExponentialFunctionExponentialOfANumberWithRealAndImaginaryPart [
+	| result |
+
+	result := complexNumbersCalculator expZ: #('ln(2)' 'pi' ) .
+	self assert: result equals: #( -2 0 )
+]
+
+{ #category : #tests }
+ComplexNumbersTest >> test05_AbsoluteValueAbsoluteValueOfANumberWithRealAndImaginaryPart [
+	| result |
+
+	result := complexNumbersCalculator absZ: #(3 4 ) .
+	self assert: result equals: 5
 ]

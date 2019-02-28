@@ -22,12 +22,12 @@ Class {
 { #category : #config }
 HighScoresTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'1496d7d9-2b3f-0d00-a2af-29ab09f0590c'
+	^'3c1621be-4a3f-0d00-bb13-b757071d6982'
 ]
 
 { #category : #config }
 HighScoresTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'4.0.0'
 ]
 
@@ -36,64 +36,64 @@ HighScoresTest >> setUp [
 	highScoresCalculator := HighScores new
 ]
 
-{ #category : #test }
-HighScoresTest >> testLatestScore [
-	| result |
-
-	result := highScoresCalculator latestScores: #(100 0 90 30 ) .
-	self assert: result equals: 30
-]
-
-{ #category : #test }
-HighScoresTest >> testListOfScores [
+{ #category : #tests }
+HighScoresTest >> test01_ListOfScores [
 	| result |
 
 	result := highScoresCalculator scores: #(30 50 20 70 ) .
 	self assert: result equals: #(30 50 20 70 )
 ]
 
-{ #category : #test }
-HighScoresTest >> testPersonalBest [
-	| result |
-
-	result := highScoresCalculator personalBestScores: #(40 100 70 ) .
-	self assert: result equals: 100
-]
-
-{ #category : #test }
-HighScoresTest >> testTop3ScoresPersonalTopHighestToLowest [
-	| result |
-
-	result := highScoresCalculator personalTopThreeScores: #(20 10 30 ) .
-	self assert: result equals: #(30 20 10 )
-]
-
-{ #category : #test }
-HighScoresTest >> testTop3ScoresPersonalTopThreeFromAListOfScores [
+{ #category : #tests }
+HighScoresTest >> test01_Top3ScoresPersonalTopThreeFromAListOfScores [
 	| result |
 
 	result := highScoresCalculator personalTopThreeScores: #(10 30 90 30 100 20 10 0 30 40 40 70 70 ) .
 	self assert: result equals: #(100 90 70 )
 ]
 
-{ #category : #test }
-HighScoresTest >> testTop3ScoresPersonalTopWhenThereAreLessThan3 [
+{ #category : #tests }
+HighScoresTest >> test02_LatestScore [
 	| result |
 
-	result := highScoresCalculator personalTopThreeScores: #(30 70 ) .
-	self assert: result equals: #(70 30 )
+	result := highScoresCalculator latestScores: #(100 0 90 30 ) .
+	self assert: result equals: 30
 ]
 
-{ #category : #test }
-HighScoresTest >> testTop3ScoresPersonalTopWhenThereIsATie [
+{ #category : #tests }
+HighScoresTest >> test02_Top3ScoresPersonalTopHighestToLowest [
+	| result |
+
+	result := highScoresCalculator personalTopThreeScores: #(20 10 30 ) .
+	self assert: result equals: #(30 20 10 )
+]
+
+{ #category : #tests }
+HighScoresTest >> test03_PersonalBest [
+	| result |
+
+	result := highScoresCalculator personalBestScores: #(40 100 70 ) .
+	self assert: result equals: 100
+]
+
+{ #category : #tests }
+HighScoresTest >> test03_Top3ScoresPersonalTopWhenThereIsATie [
 	| result |
 
 	result := highScoresCalculator personalTopThreeScores: #(40 20 40 30 ) .
 	self assert: result equals: #(40 40 30 )
 ]
 
-{ #category : #test }
-HighScoresTest >> testTop3ScoresPersonalTopWhenThereIsOnlyOne [
+{ #category : #tests }
+HighScoresTest >> test04_Top3ScoresPersonalTopWhenThereAreLessThan3 [
+	| result |
+
+	result := highScoresCalculator personalTopThreeScores: #(30 70 ) .
+	self assert: result equals: #(70 30 )
+]
+
+{ #category : #tests }
+HighScoresTest >> test05_Top3ScoresPersonalTopWhenThereIsOnlyOne [
 	| result |
 
 	result := highScoresCalculator personalTopThreeScores: #(40 ) .

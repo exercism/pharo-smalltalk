@@ -46,12 +46,12 @@ Class {
 { #category : #config }
 AtbashCipherTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'75a6e8d9-2b3f-0d00-a2c1-5cfd09f0590c'
+	^'789737be-4a3f-0d00-bb25-8948071d6982'
 ]
 
 { #category : #config }
 AtbashCipherTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.2.0'
 ]
 
@@ -60,114 +60,114 @@ AtbashCipherTest >> setUp [
 	atbashCipherCalculator := AtbashCipher new
 ]
 
-{ #category : #test }
-AtbashCipherTest >> testDecodeDecodeASentence [
-	| result |
-
-	result := atbashCipherCalculator decodePhrase: 'zmlyh gzxov rhlug vmzhg vkkrm thglm v' .
-	self assert: result equals: 'anobstacleisoftenasteppingstone'
-]
-
-{ #category : #test }
-AtbashCipherTest >> testDecodeDecodeAllTheLetters [
-	| result |
-
-	result := atbashCipherCalculator decodePhrase: 'gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt' .
-	self assert: result equals: 'thequickbrownfoxjumpsoverthelazydog'
-]
-
-{ #category : #test }
-AtbashCipherTest >> testDecodeDecodeExercism [
+{ #category : #tests }
+AtbashCipherTest >> test01_DecodeDecodeExercism [
 	| result |
 
 	result := atbashCipherCalculator decodePhrase: 'vcvix rhn' .
 	self assert: result equals: 'exercism'
 ]
 
-{ #category : #test }
-AtbashCipherTest >> testDecodeDecodeNumbers [
+{ #category : #tests }
+AtbashCipherTest >> test01_EncodeEncodeYes [
 	| result |
 
-	result := atbashCipherCalculator decodePhrase: 'gvhgr mt123 gvhgr mt' .
-	self assert: result equals: 'testing123testing'
+	result := atbashCipherCalculator encodePhrase: 'yes' .
+	self assert: result equals: 'bvh'
 ]
 
-{ #category : #test }
-AtbashCipherTest >> testDecodeDecodeWithNoSpaces [
+{ #category : #tests }
+AtbashCipherTest >> test02_DecodeDecodeASentence [
 	| result |
 
-	result := atbashCipherCalculator decodePhrase: 'zmlyhgzxovrhlugvmzhgvkkrmthglmv' .
+	result := atbashCipherCalculator decodePhrase: 'zmlyh gzxov rhlug vmzhg vkkrm thglm v' .
 	self assert: result equals: 'anobstacleisoftenasteppingstone'
 ]
 
-{ #category : #test }
-AtbashCipherTest >> testDecodeDecodeWithTooManySpaces [
-	| result |
-
-	result := atbashCipherCalculator decodePhrase: 'vc vix    r hn' .
-	self assert: result equals: 'exercism'
-]
-
-{ #category : #test }
-AtbashCipherTest >> testEncodeEncodeAllTheLetters [
-	| result |
-
-	result := atbashCipherCalculator encodePhrase: 'The quick brown fox jumps over the lazy dog.' .
-	self assert: result equals: 'gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt'
-]
-
-{ #category : #test }
-AtbashCipherTest >> testEncodeEncodeDeepThought [
-	| result |
-
-	result := atbashCipherCalculator encodePhrase: 'Truth is fiction.' .
-	self assert: result equals: 'gifgs rhurx grlm'
-]
-
-{ #category : #test }
-AtbashCipherTest >> testEncodeEncodeMindblowingly [
-	| result |
-
-	result := atbashCipherCalculator encodePhrase: 'mindblowingly' .
-	self assert: result equals: 'nrmwy oldrm tob'
-]
-
-{ #category : #test }
-AtbashCipherTest >> testEncodeEncodeNo [
+{ #category : #tests }
+AtbashCipherTest >> test02_EncodeEncodeNo [
 	| result |
 
 	result := atbashCipherCalculator encodePhrase: 'no' .
 	self assert: result equals: 'ml'
 ]
 
-{ #category : #test }
-AtbashCipherTest >> testEncodeEncodeNumbers [
+{ #category : #tests }
+AtbashCipherTest >> test03_DecodeDecodeNumbers [
 	| result |
 
-	result := atbashCipherCalculator encodePhrase: 'Testing,1 2 3, testing.' .
-	self assert: result equals: 'gvhgr mt123 gvhgr mt'
+	result := atbashCipherCalculator decodePhrase: 'gvhgr mt123 gvhgr mt' .
+	self assert: result equals: 'testing123testing'
 ]
 
-{ #category : #test }
-AtbashCipherTest >> testEncodeEncodeOMG [
+{ #category : #tests }
+AtbashCipherTest >> test03_EncodeEncodeOMG [
 	| result |
 
 	result := atbashCipherCalculator encodePhrase: 'OMG' .
 	self assert: result equals: 'lnt'
 ]
 
-{ #category : #test }
-AtbashCipherTest >> testEncodeEncodeSpaces [
+{ #category : #tests }
+AtbashCipherTest >> test04_DecodeDecodeAllTheLetters [
+	| result |
+
+	result := atbashCipherCalculator decodePhrase: 'gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt' .
+	self assert: result equals: 'thequickbrownfoxjumpsoverthelazydog'
+]
+
+{ #category : #tests }
+AtbashCipherTest >> test04_EncodeEncodeSpaces [
 	| result |
 
 	result := atbashCipherCalculator encodePhrase: 'O M G' .
 	self assert: result equals: 'lnt'
 ]
 
-{ #category : #test }
-AtbashCipherTest >> testEncodeEncodeYes [
+{ #category : #tests }
+AtbashCipherTest >> test05_DecodeDecodeWithTooManySpaces [
 	| result |
 
-	result := atbashCipherCalculator encodePhrase: 'yes' .
-	self assert: result equals: 'bvh'
+	result := atbashCipherCalculator decodePhrase: 'vc vix    r hn' .
+	self assert: result equals: 'exercism'
+]
+
+{ #category : #tests }
+AtbashCipherTest >> test05_EncodeEncodeMindblowingly [
+	| result |
+
+	result := atbashCipherCalculator encodePhrase: 'mindblowingly' .
+	self assert: result equals: 'nrmwy oldrm tob'
+]
+
+{ #category : #tests }
+AtbashCipherTest >> test06_DecodeDecodeWithNoSpaces [
+	| result |
+
+	result := atbashCipherCalculator decodePhrase: 'zmlyhgzxovrhlugvmzhgvkkrmthglmv' .
+	self assert: result equals: 'anobstacleisoftenasteppingstone'
+]
+
+{ #category : #tests }
+AtbashCipherTest >> test06_EncodeEncodeNumbers [
+	| result |
+
+	result := atbashCipherCalculator encodePhrase: 'Testing,1 2 3, testing.' .
+	self assert: result equals: 'gvhgr mt123 gvhgr mt'
+]
+
+{ #category : #tests }
+AtbashCipherTest >> test07_EncodeEncodeDeepThought [
+	| result |
+
+	result := atbashCipherCalculator encodePhrase: 'Truth is fiction.' .
+	self assert: result equals: 'gifgs rhurx grlm'
+]
+
+{ #category : #tests }
+AtbashCipherTest >> test08_EncodeEncodeAllTheLetters [
+	| result |
+
+	result := atbashCipherCalculator encodePhrase: 'The quick brown fox jumps over the lazy dog.' .
+	self assert: result equals: 'gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt'
 ]

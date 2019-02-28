@@ -46,12 +46,12 @@ Class {
 { #category : #config }
 SecretHandshakeTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'8782e2d9-2b3f-0d00-a2bb-aa8a09f0590c'
+	^'3f2e30be-4a3f-0d00-bb1f-c5f7071d6982'
 ]
 
 { #category : #config }
 SecretHandshakeTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.2.0'
 ]
 
@@ -60,90 +60,90 @@ SecretHandshakeTest >> setUp [
 	secretHandshakeCalculator := SecretHandshake new
 ]
 
-{ #category : #test }
-SecretHandshakeTest >> testCreateAHandshakeForANumberAllPossibleActions [
+{ #category : #tests }
+SecretHandshakeTest >> test01_CreateAHandshakeForANumberWinkFor1 [
 	| result |
 
-	result := secretHandshakeCalculator commandsNumber: 15 .
-	self assert: result equals: #('wink' 'double blink' 'close your eyes' 'jump' )
+	result := secretHandshakeCalculator commandsNumber: 1 .
+	self assert: result equals: #('wink' )
 ]
 
-{ #category : #test }
-SecretHandshakeTest >> testCreateAHandshakeForANumberCloseYourEyesFor100 [
-	| result |
-
-	result := secretHandshakeCalculator commandsNumber: 4 .
-	self assert: result equals: #('close your eyes' )
-]
-
-{ #category : #test }
-SecretHandshakeTest >> testCreateAHandshakeForANumberCombineTwoActions [
-	| result |
-
-	result := secretHandshakeCalculator commandsNumber: 3 .
-	self assert: result equals: #('wink' 'double blink' )
-]
-
-{ #category : #test }
-SecretHandshakeTest >> testCreateAHandshakeForANumberDoNothingForZero [
-	| result |
-
-	result := secretHandshakeCalculator commandsNumber: 0 .
-	self assert: result equals: #()
-]
-
-{ #category : #test }
-SecretHandshakeTest >> testCreateAHandshakeForANumberDoubleBlinkFor10 [
+{ #category : #tests }
+SecretHandshakeTest >> test02_CreateAHandshakeForANumberDoubleBlinkFor10 [
 	| result |
 
 	result := secretHandshakeCalculator commandsNumber: 2 .
 	self assert: result equals: #('double blink' )
 ]
 
-{ #category : #test }
-SecretHandshakeTest >> testCreateAHandshakeForANumberJumpFor1000 [
+{ #category : #tests }
+SecretHandshakeTest >> test03_CreateAHandshakeForANumberCloseYourEyesFor100 [
+	| result |
+
+	result := secretHandshakeCalculator commandsNumber: 4 .
+	self assert: result equals: #('close your eyes' )
+]
+
+{ #category : #tests }
+SecretHandshakeTest >> test04_CreateAHandshakeForANumberJumpFor1000 [
 	| result |
 
 	result := secretHandshakeCalculator commandsNumber: 8 .
 	self assert: result equals: #('jump' )
 ]
 
-{ #category : #test }
-SecretHandshakeTest >> testCreateAHandshakeForANumberReverseAllPossibleActions [
+{ #category : #tests }
+SecretHandshakeTest >> test05_CreateAHandshakeForANumberCombineTwoActions [
 	| result |
 
-	result := secretHandshakeCalculator commandsNumber: 31 .
-	self assert: result equals: #('jump' 'close your eyes' 'double blink' 'wink' )
+	result := secretHandshakeCalculator commandsNumber: 3 .
+	self assert: result equals: #('wink' 'double blink' )
 ]
 
-{ #category : #test }
-SecretHandshakeTest >> testCreateAHandshakeForANumberReverseTwoActions [
+{ #category : #tests }
+SecretHandshakeTest >> test06_CreateAHandshakeForANumberReverseTwoActions [
 	| result |
 
 	result := secretHandshakeCalculator commandsNumber: 19 .
 	self assert: result equals: #('double blink' 'wink' )
 ]
 
-{ #category : #test }
-SecretHandshakeTest >> testCreateAHandshakeForANumberReversingNoActionsStillGivesNoActions [
-	| result |
-
-	result := secretHandshakeCalculator commandsNumber: 16 .
-	self assert: result equals: #()
-]
-
-{ #category : #test }
-SecretHandshakeTest >> testCreateAHandshakeForANumberReversingOneActionGivesTheSameAction [
+{ #category : #tests }
+SecretHandshakeTest >> test07_CreateAHandshakeForANumberReversingOneActionGivesTheSameAction [
 	| result |
 
 	result := secretHandshakeCalculator commandsNumber: 24 .
 	self assert: result equals: #('jump' )
 ]
 
-{ #category : #test }
-SecretHandshakeTest >> testCreateAHandshakeForANumberWinkFor1 [
+{ #category : #tests }
+SecretHandshakeTest >> test08_CreateAHandshakeForANumberReversingNoActionsStillGivesNoActions [
 	| result |
 
-	result := secretHandshakeCalculator commandsNumber: 1 .
-	self assert: result equals: #('wink' )
+	result := secretHandshakeCalculator commandsNumber: 16 .
+	self assert: result equals: #()
+]
+
+{ #category : #tests }
+SecretHandshakeTest >> test09_CreateAHandshakeForANumberAllPossibleActions [
+	| result |
+
+	result := secretHandshakeCalculator commandsNumber: 15 .
+	self assert: result equals: #('wink' 'double blink' 'close your eyes' 'jump' )
+]
+
+{ #category : #tests }
+SecretHandshakeTest >> test10_CreateAHandshakeForANumberReverseAllPossibleActions [
+	| result |
+
+	result := secretHandshakeCalculator commandsNumber: 31 .
+	self assert: result equals: #('jump' 'close your eyes' 'double blink' 'wink' )
+]
+
+{ #category : #tests }
+SecretHandshakeTest >> test11_CreateAHandshakeForANumberDoNothingForZero [
+	| result |
+
+	result := secretHandshakeCalculator commandsNumber: 0 .
+	self assert: result equals: #()
 ]

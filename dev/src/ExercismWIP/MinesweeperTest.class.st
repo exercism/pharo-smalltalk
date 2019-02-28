@@ -44,12 +44,12 @@ Class {
 { #category : #config }
 MinesweeperTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'3aabfad9-2b3f-0d00-a2d4-c4d009f0590c'
+	^'4c5452be-4a3f-0d00-bb38-1048071d6982'
 ]
 
 { #category : #config }
 MinesweeperTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.1.0'
 ]
 
@@ -58,98 +58,98 @@ MinesweeperTest >> setUp [
 	minesweeperCalculator := Minesweeper new
 ]
 
-{ #category : #test }
-MinesweeperTest >> testCross [
-	| result |
-
-	result := minesweeperCalculator annotateMinefield: #('  *  ' '  *  ' '*****' '  *  ' '  *  ' ) .
-	self assert: result equals: #(' 2*2 ' '25*52' '*****' '25*52' ' 2*2 ' )
-]
-
-{ #category : #test }
-MinesweeperTest >> testHorizontalLine [
-	| result |
-
-	result := minesweeperCalculator annotateMinefield: #(' * * ' ) .
-	self assert: result equals: #('1*2*1' )
-]
-
-{ #category : #test }
-MinesweeperTest >> testHorizontalLineMinesAtEdges [
-	| result |
-
-	result := minesweeperCalculator annotateMinefield: #('*   *' ) .
-	self assert: result equals: #('*1 1*' )
-]
-
-{ #category : #test }
-MinesweeperTest >> testLargeMinefield [
-	| result |
-
-	result := minesweeperCalculator annotateMinefield: #(' *  * ' '  *   ' '    * ' '   * *' ' *  * ' '      ' ) .
-	self assert: result equals: #('1*22*1' '12*322' ' 123*2' '112*4*' '1*22*2' '111111' )
-]
-
-{ #category : #test }
-MinesweeperTest >> testMineSurroundedBySpaces [
-	| result |
-
-	result := minesweeperCalculator annotateMinefield: #('   ' ' * ' '   ' ) .
-	self assert: result equals: #('111' '1*1' '111' )
-]
-
-{ #category : #test }
-MinesweeperTest >> testMinefieldWithOnlyMines [
-	| result |
-
-	result := minesweeperCalculator annotateMinefield: #('***' '***' '***' ) .
-	self assert: result equals: #('***' '***' '***' )
-]
-
-{ #category : #test }
-MinesweeperTest >> testNoColumns [
-	| result |
-
-	result := minesweeperCalculator annotateMinefield: #('' ) .
-	self assert: result equals: #('' )
-]
-
-{ #category : #test }
-MinesweeperTest >> testNoMines [
-	| result |
-
-	result := minesweeperCalculator annotateMinefield: #('   ' '   ' '   ' ) .
-	self assert: result equals: #('   ' '   ' '   ' )
-]
-
-{ #category : #test }
-MinesweeperTest >> testNoRows [
+{ #category : #tests }
+MinesweeperTest >> test01_NoRows [
 	| result |
 
 	result := minesweeperCalculator annotateMinefield: #() .
 	self assert: result equals: #()
 ]
 
-{ #category : #test }
-MinesweeperTest >> testSpaceSurroundedByMines [
+{ #category : #tests }
+MinesweeperTest >> test02_NoColumns [
+	| result |
+
+	result := minesweeperCalculator annotateMinefield: #('' ) .
+	self assert: result equals: #('' )
+]
+
+{ #category : #tests }
+MinesweeperTest >> test03_NoMines [
+	| result |
+
+	result := minesweeperCalculator annotateMinefield: #('   ' '   ' '   ' ) .
+	self assert: result equals: #('   ' '   ' '   ' )
+]
+
+{ #category : #tests }
+MinesweeperTest >> test04_MinefieldWithOnlyMines [
+	| result |
+
+	result := minesweeperCalculator annotateMinefield: #('***' '***' '***' ) .
+	self assert: result equals: #('***' '***' '***' )
+]
+
+{ #category : #tests }
+MinesweeperTest >> test05_MineSurroundedBySpaces [
+	| result |
+
+	result := minesweeperCalculator annotateMinefield: #('   ' ' * ' '   ' ) .
+	self assert: result equals: #('111' '1*1' '111' )
+]
+
+{ #category : #tests }
+MinesweeperTest >> test06_SpaceSurroundedByMines [
 	| result |
 
 	result := minesweeperCalculator annotateMinefield: #('***' '* *' '***' ) .
 	self assert: result equals: #('***' '*8*' '***' )
 ]
 
-{ #category : #test }
-MinesweeperTest >> testVerticalLine [
+{ #category : #tests }
+MinesweeperTest >> test07_HorizontalLine [
+	| result |
+
+	result := minesweeperCalculator annotateMinefield: #(' * * ' ) .
+	self assert: result equals: #('1*2*1' )
+]
+
+{ #category : #tests }
+MinesweeperTest >> test08_HorizontalLineMinesAtEdges [
+	| result |
+
+	result := minesweeperCalculator annotateMinefield: #('*   *' ) .
+	self assert: result equals: #('*1 1*' )
+]
+
+{ #category : #tests }
+MinesweeperTest >> test09_VerticalLine [
 	| result |
 
 	result := minesweeperCalculator annotateMinefield: #(' ' '*' ' ' '*' ' ' ) .
 	self assert: result equals: #('1' '*' '2' '*' '1' )
 ]
 
-{ #category : #test }
-MinesweeperTest >> testVerticalLineMinesAtEdges [
+{ #category : #tests }
+MinesweeperTest >> test10_VerticalLineMinesAtEdges [
 	| result |
 
 	result := minesweeperCalculator annotateMinefield: #('*' ' ' ' ' ' ' '*' ) .
 	self assert: result equals: #('*' '1' ' ' '1' '*' )
+]
+
+{ #category : #tests }
+MinesweeperTest >> test11_Cross [
+	| result |
+
+	result := minesweeperCalculator annotateMinefield: #('  *  ' '  *  ' '*****' '  *  ' '  *  ' ) .
+	self assert: result equals: #(' 2*2 ' '25*52' '*****' '25*52' ' 2*2 ' )
+]
+
+{ #category : #tests }
+MinesweeperTest >> test12_LargeMinefield [
+	| result |
+
+	result := minesweeperCalculator annotateMinefield: #(' *  * ' '  *   ' '    * ' '   * *' ' *  * ' '      ' ) .
+	self assert: result equals: #('1*22*1' '12*322' ' 123*2' '112*4*' '1*22*2' '111111' )
 ]

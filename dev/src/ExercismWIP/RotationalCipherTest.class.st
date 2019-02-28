@@ -48,12 +48,12 @@ Class {
 { #category : #config }
 RotationalCipherTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'bf82d9d9-2b3f-0d00-a2b1-e20e09f0590c'
+	^'879323be-4a3f-0d00-bb15-ae00071d6982'
 ]
 
 { #category : #config }
 RotationalCipherTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.2.0'
 ]
 
@@ -62,82 +62,82 @@ RotationalCipherTest >> setUp [
 	rotationalCipherCalculator := RotationalCipher new
 ]
 
-{ #category : #test }
-RotationalCipherTest >> testTestRotationFromEnglishToROTnRotateABy0SameOutputAsInput [
+{ #category : #tests }
+RotationalCipherTest >> test01_TestRotationFromEnglishToROTnRotateABy0SameOutputAsInput [
 	| result |
 
 	result := rotationalCipherCalculator rotateText: 'a' shiftKey: 0 .
 	self assert: result equals: 'a'
 ]
 
-{ #category : #test }
-RotationalCipherTest >> testTestRotationFromEnglishToROTnRotateABy1 [
+{ #category : #tests }
+RotationalCipherTest >> test02_TestRotationFromEnglishToROTnRotateABy1 [
 	| result |
 
 	result := rotationalCipherCalculator rotateText: 'a' shiftKey: 1 .
 	self assert: result equals: 'b'
 ]
 
-{ #category : #test }
-RotationalCipherTest >> testTestRotationFromEnglishToROTnRotateABy26SameOutputAsInput [
+{ #category : #tests }
+RotationalCipherTest >> test03_TestRotationFromEnglishToROTnRotateABy26SameOutputAsInput [
 	| result |
 
 	result := rotationalCipherCalculator rotateText: 'a' shiftKey: 26 .
 	self assert: result equals: 'a'
 ]
 
-{ #category : #test }
-RotationalCipherTest >> testTestRotationFromEnglishToROTnRotateAllLetters [
-	| result |
-
-	result := rotationalCipherCalculator rotateText: 'The quick brown fox jumps over the lazy dog.' shiftKey: 13 .
-	self assert: result equals: 'Gur dhvpx oebja sbk whzcf bire gur ynml qbt.'
-]
-
-{ #category : #test }
-RotationalCipherTest >> testTestRotationFromEnglishToROTnRotateCapitalLetters [
-	| result |
-
-	result := rotationalCipherCalculator rotateText: 'OMG' shiftKey: 5 .
-	self assert: result equals: 'TRL'
-]
-
-{ #category : #test }
-RotationalCipherTest >> testTestRotationFromEnglishToROTnRotateMBy13 [
+{ #category : #tests }
+RotationalCipherTest >> test04_TestRotationFromEnglishToROTnRotateMBy13 [
 	| result |
 
 	result := rotationalCipherCalculator rotateText: 'm' shiftKey: 13 .
 	self assert: result equals: 'z'
 ]
 
-{ #category : #test }
-RotationalCipherTest >> testTestRotationFromEnglishToROTnRotateNBy13WithWrapAroundAlphabet [
+{ #category : #tests }
+RotationalCipherTest >> test05_TestRotationFromEnglishToROTnRotateNBy13WithWrapAroundAlphabet [
 	| result |
 
 	result := rotationalCipherCalculator rotateText: 'n' shiftKey: 13 .
 	self assert: result equals: 'a'
 ]
 
-{ #category : #test }
-RotationalCipherTest >> testTestRotationFromEnglishToROTnRotateNumbers [
+{ #category : #tests }
+RotationalCipherTest >> test06_TestRotationFromEnglishToROTnRotateCapitalLetters [
+	| result |
+
+	result := rotationalCipherCalculator rotateText: 'OMG' shiftKey: 5 .
+	self assert: result equals: 'TRL'
+]
+
+{ #category : #tests }
+RotationalCipherTest >> test07_TestRotationFromEnglishToROTnRotateSpaces [
+	| result |
+
+	result := rotationalCipherCalculator rotateText: 'O M G' shiftKey: 5 .
+	self assert: result equals: 'T R L'
+]
+
+{ #category : #tests }
+RotationalCipherTest >> test08_TestRotationFromEnglishToROTnRotateNumbers [
 	| result |
 
 	result := rotationalCipherCalculator rotateText: 'Testing 1 2 3 testing' shiftKey: 4 .
 	self assert: result equals: 'Xiwxmrk 1 2 3 xiwxmrk'
 ]
 
-{ #category : #test }
-RotationalCipherTest >> testTestRotationFromEnglishToROTnRotatePunctuation [
+{ #category : #tests }
+RotationalCipherTest >> test09_TestRotationFromEnglishToROTnRotatePunctuation [
 	| result |
 
 	result := rotationalCipherCalculator rotateText: 'Let''s eat, Grandma!' shiftKey: 21 .
 	self assert: result equals: 'Gzo''n zvo, Bmviyhv!'
 ]
 
-{ #category : #test }
-RotationalCipherTest >> testTestRotationFromEnglishToROTnRotateSpaces [
+{ #category : #tests }
+RotationalCipherTest >> test10_TestRotationFromEnglishToROTnRotateAllLetters [
 	| result |
 
-	result := rotationalCipherCalculator rotateText: 'O M G' shiftKey: 5 .
-	self assert: result equals: 'T R L'
+	result := rotationalCipherCalculator rotateText: 'The quick brown fox jumps over the lazy dog.' shiftKey: 13 .
+	self assert: result equals: 'Gur dhvpx oebja sbk whzcf bire gur ynml qbt.'
 ]

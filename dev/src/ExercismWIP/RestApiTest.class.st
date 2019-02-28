@@ -56,12 +56,12 @@ Class {
 { #category : #config }
 RestApiTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'68bb34da-2b3f-0d00-a30a-027709f0590c'
+	^'ede39ebe-4a3f-0d00-bb6c-9c85071d6982'
 ]
 
 { #category : #config }
 RestApiTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.1.1'
 ]
 
@@ -70,74 +70,74 @@ RestApiTest >> setUp [
 	restApiCalculator := RestApi new
 ]
 
-{ #category : #test }
-RestApiTest >> testIouBorrowerHasNegativeBalance [
-	| result |
-
-	result := restApiCalculator postPayload: ((Dictionary new) add: ('amount'->3.0); add: ('lender'->'Adam'); add: ('borrower'->'Bob'); yourself) url: '/iou' database: ((Dictionary new) add: ('users'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Adam'); add: ('owes'->((Dictionary new))); add: ('balance'->0.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Bob'); add: ('owes'->((Dictionary new) add: ('Chuck'->3.0); yourself)); add: ('balance'-> -3.0); yourself); at: 3 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Bob'->3.0); yourself)); add: ('name'->'Chuck'); add: ('owes'->((Dictionary new))); add: ('balance'->3.0); yourself); yourself)); yourself) .
-	self assert: result equals: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Bob'->3.0); yourself)); add: ('name'->'Adam'); add: ('owes'->((Dictionary new))); add: ('balance'->3.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Bob'); add: ('owes'->((Dictionary new) add: ('Adam'->3.0); add: ('Chuck'->3.0); yourself)); add: ('balance'-> -6.0); yourself); yourself)); yourself)
-]
-
-{ #category : #test }
-RestApiTest >> testIouBothUsersHave0Balance [
+{ #category : #tests }
+RestApiTest >> test01_IouBothUsersHave0Balance [
 	| result |
 
 	result := restApiCalculator postPayload: ((Dictionary new) add: ('amount'->3.0); add: ('lender'->'Adam'); add: ('borrower'->'Bob'); yourself) url: '/iou' database: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Adam'); add: ('owes'->((Dictionary new))); add: ('balance'->0.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Bob'); add: ('owes'->((Dictionary new))); add: ('balance'->0.0); yourself); yourself)); yourself) .
 	self assert: result equals: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Bob'->3.0); yourself)); add: ('name'->'Adam'); add: ('owes'->((Dictionary new))); add: ('balance'->3.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Bob'); add: ('owes'->((Dictionary new) add: ('Adam'->3.0); yourself)); add: ('balance'-> -3.0); yourself); yourself)); yourself)
 ]
 
-{ #category : #test }
-RestApiTest >> testIouLenderHasNegativeBalance [
+{ #category : #tests }
+RestApiTest >> test01_UserManagementNoUsers [
 	| result |
 
-	result := restApiCalculator postPayload: ((Dictionary new) add: ('amount'->3.0); add: ('lender'->'Bob'); add: ('borrower'->'Adam'); yourself) url: '/iou' database: ((Dictionary new) add: ('users'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Adam'); add: ('owes'->((Dictionary new))); add: ('balance'->0.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Bob'); add: ('owes'->((Dictionary new) add: ('Chuck'->3.0); yourself)); add: ('balance'-> -3.0); yourself); at: 3 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Bob'->3.0); yourself)); add: ('name'->'Chuck'); add: ('owes'->((Dictionary new))); add: ('balance'->3.0); yourself); yourself)); yourself) .
-	self assert: result equals: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Adam'); add: ('owes'->((Dictionary new) add: ('Bob'->3.0); yourself)); add: ('balance'-> -3.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Adam'->3.0); yourself)); add: ('name'->'Bob'); add: ('owes'->((Dictionary new) add: ('Chuck'->3.0); yourself)); add: ('balance'->0.0); yourself); yourself)); yourself)
+	result := restApiCalculator getUrl: '/users' database: ((Dictionary new) add: ('users'->#()); yourself) .
+	self assert: result equals: ((Dictionary new) add: ('users'->#()); yourself)
 ]
 
-{ #category : #test }
-RestApiTest >> testIouLenderOwesBorrower [
+{ #category : #tests }
+RestApiTest >> test02_IouBorrowerHasNegativeBalance [
 	| result |
 
-	result := restApiCalculator postPayload: ((Dictionary new) add: ('amount'->2.0); add: ('lender'->'Adam'); add: ('borrower'->'Bob'); yourself) url: '/iou' database: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Adam'); add: ('owes'->((Dictionary new) add: ('Bob'->3.0); yourself)); add: ('balance'-> -3.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Adam'->3.0); yourself)); add: ('name'->'Bob'); add: ('owes'->((Dictionary new))); add: ('balance'->3.0); yourself); yourself)); yourself) .
-	self assert: result equals: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Adam'); add: ('owes'->((Dictionary new) add: ('Bob'->1.0); yourself)); add: ('balance'-> -1.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Adam'->1.0); yourself)); add: ('name'->'Bob'); add: ('owes'->((Dictionary new))); add: ('balance'->1.0); yourself); yourself)); yourself)
+	result := restApiCalculator postPayload: ((Dictionary new) add: ('amount'->3.0); add: ('lender'->'Adam'); add: ('borrower'->'Bob'); yourself) url: '/iou' database: ((Dictionary new) add: ('users'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Adam'); add: ('owes'->((Dictionary new))); add: ('balance'->0.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Bob'); add: ('owes'->((Dictionary new) add: ('Chuck'->3.0); yourself)); add: ('balance'-> -3.0); yourself); at: 3 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Bob'->3.0); yourself)); add: ('name'->'Chuck'); add: ('owes'->((Dictionary new))); add: ('balance'->3.0); yourself); yourself)); yourself) .
+	self assert: result equals: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Bob'->3.0); yourself)); add: ('name'->'Adam'); add: ('owes'->((Dictionary new))); add: ('balance'->3.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Bob'); add: ('owes'->((Dictionary new) add: ('Adam'->3.0); add: ('Chuck'->3.0); yourself)); add: ('balance'-> -6.0); yourself); yourself)); yourself)
 ]
 
-{ #category : #test }
-RestApiTest >> testIouLenderOwesBorrowerLessThanNewLoan [
-	| result |
-
-	result := restApiCalculator postPayload: ((Dictionary new) add: ('amount'->4.0); add: ('lender'->'Adam'); add: ('borrower'->'Bob'); yourself) url: '/iou' database: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Adam'); add: ('owes'->((Dictionary new) add: ('Bob'->3.0); yourself)); add: ('balance'-> -3.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Adam'->3.0); yourself)); add: ('name'->'Bob'); add: ('owes'->((Dictionary new))); add: ('balance'->3.0); yourself); yourself)); yourself) .
-	self assert: result equals: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Bob'->1.0); yourself)); add: ('name'->'Adam'); add: ('owes'->((Dictionary new))); add: ('balance'->1.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Bob'); add: ('owes'->((Dictionary new) add: ('Adam'->1.0); yourself)); add: ('balance'-> -1.0); yourself); yourself)); yourself)
-]
-
-{ #category : #test }
-RestApiTest >> testIouLenderOwesBorrowerSameAsNewLoan [
-	| result |
-
-	result := restApiCalculator postPayload: ((Dictionary new) add: ('amount'->3.0); add: ('lender'->'Adam'); add: ('borrower'->'Bob'); yourself) url: '/iou' database: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Adam'); add: ('owes'->((Dictionary new) add: ('Bob'->3.0); yourself)); add: ('balance'-> -3.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Adam'->3.0); yourself)); add: ('name'->'Bob'); add: ('owes'->((Dictionary new))); add: ('balance'->3.0); yourself); yourself)); yourself) .
-	self assert: result equals: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Adam'); add: ('owes'->((Dictionary new))); add: ('balance'->0.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Bob'); add: ('owes'->((Dictionary new))); add: ('balance'->0.0); yourself); yourself)); yourself)
-]
-
-{ #category : #test }
-RestApiTest >> testUserManagementAddUser [
+{ #category : #tests }
+RestApiTest >> test02_UserManagementAddUser [
 	| result |
 
 	result := restApiCalculator postPayload: ((Dictionary new) add: ('user'->'Adam'); yourself) url: '/add' database: ((Dictionary new) add: ('users'->#()); yourself) .
 	self assert: result equals: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Adam'); add: ('owes'->((Dictionary new))); add: ('balance'->0.0); yourself)
 ]
 
-{ #category : #test }
-RestApiTest >> testUserManagementGetSingleUser [
+{ #category : #tests }
+RestApiTest >> test03_IouLenderHasNegativeBalance [
+	| result |
+
+	result := restApiCalculator postPayload: ((Dictionary new) add: ('amount'->3.0); add: ('lender'->'Bob'); add: ('borrower'->'Adam'); yourself) url: '/iou' database: ((Dictionary new) add: ('users'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Adam'); add: ('owes'->((Dictionary new))); add: ('balance'->0.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Bob'); add: ('owes'->((Dictionary new) add: ('Chuck'->3.0); yourself)); add: ('balance'-> -3.0); yourself); at: 3 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Bob'->3.0); yourself)); add: ('name'->'Chuck'); add: ('owes'->((Dictionary new))); add: ('balance'->3.0); yourself); yourself)); yourself) .
+	self assert: result equals: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Adam'); add: ('owes'->((Dictionary new) add: ('Bob'->3.0); yourself)); add: ('balance'-> -3.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Adam'->3.0); yourself)); add: ('name'->'Bob'); add: ('owes'->((Dictionary new) add: ('Chuck'->3.0); yourself)); add: ('balance'->0.0); yourself); yourself)); yourself)
+]
+
+{ #category : #tests }
+RestApiTest >> test03_UserManagementGetSingleUser [
 	| result |
 
 	result := restApiCalculator getPayload: ((Dictionary new) add: ('users'->#('Bob' )); yourself) url: '/users' database: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Adam'); add: ('owes'->((Dictionary new))); add: ('balance'->0.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Bob'); add: ('owes'->((Dictionary new))); add: ('balance'->0.0); yourself); yourself)); yourself) .
 	self assert: result equals: ((Dictionary new) add: ('users'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Bob'); add: ('owes'->((Dictionary new))); add: ('balance'->0.0); yourself); yourself)); yourself)
 ]
 
-{ #category : #test }
-RestApiTest >> testUserManagementNoUsers [
+{ #category : #tests }
+RestApiTest >> test04_IouLenderOwesBorrower [
 	| result |
 
-	result := restApiCalculator getUrl: '/users' database: ((Dictionary new) add: ('users'->#()); yourself) .
-	self assert: result equals: ((Dictionary new) add: ('users'->#()); yourself)
+	result := restApiCalculator postPayload: ((Dictionary new) add: ('amount'->2.0); add: ('lender'->'Adam'); add: ('borrower'->'Bob'); yourself) url: '/iou' database: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Adam'); add: ('owes'->((Dictionary new) add: ('Bob'->3.0); yourself)); add: ('balance'-> -3.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Adam'->3.0); yourself)); add: ('name'->'Bob'); add: ('owes'->((Dictionary new))); add: ('balance'->3.0); yourself); yourself)); yourself) .
+	self assert: result equals: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Adam'); add: ('owes'->((Dictionary new) add: ('Bob'->1.0); yourself)); add: ('balance'-> -1.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Adam'->1.0); yourself)); add: ('name'->'Bob'); add: ('owes'->((Dictionary new))); add: ('balance'->1.0); yourself); yourself)); yourself)
+]
+
+{ #category : #tests }
+RestApiTest >> test05_IouLenderOwesBorrowerLessThanNewLoan [
+	| result |
+
+	result := restApiCalculator postPayload: ((Dictionary new) add: ('amount'->4.0); add: ('lender'->'Adam'); add: ('borrower'->'Bob'); yourself) url: '/iou' database: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Adam'); add: ('owes'->((Dictionary new) add: ('Bob'->3.0); yourself)); add: ('balance'-> -3.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Adam'->3.0); yourself)); add: ('name'->'Bob'); add: ('owes'->((Dictionary new))); add: ('balance'->3.0); yourself); yourself)); yourself) .
+	self assert: result equals: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Bob'->1.0); yourself)); add: ('name'->'Adam'); add: ('owes'->((Dictionary new))); add: ('balance'->1.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Bob'); add: ('owes'->((Dictionary new) add: ('Adam'->1.0); yourself)); add: ('balance'-> -1.0); yourself); yourself)); yourself)
+]
+
+{ #category : #tests }
+RestApiTest >> test06_IouLenderOwesBorrowerSameAsNewLoan [
+	| result |
+
+	result := restApiCalculator postPayload: ((Dictionary new) add: ('amount'->3.0); add: ('lender'->'Adam'); add: ('borrower'->'Bob'); yourself) url: '/iou' database: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Adam'); add: ('owes'->((Dictionary new) add: ('Bob'->3.0); yourself)); add: ('balance'-> -3.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Adam'->3.0); yourself)); add: ('name'->'Bob'); add: ('owes'->((Dictionary new))); add: ('balance'->3.0); yourself); yourself)); yourself) .
+	self assert: result equals: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Adam'); add: ('owes'->((Dictionary new))); add: ('balance'->0.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Bob'); add: ('owes'->((Dictionary new))); add: ('balance'->0.0); yourself); yourself)); yourself)
 ]

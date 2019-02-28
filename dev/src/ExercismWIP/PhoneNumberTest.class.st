@@ -46,12 +46,12 @@ Class {
 { #category : #config }
 PhoneNumberTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'e5f5eed9-2b3f-0d00-a2c7-d99709f0590c'
+	^'484c41be-4a3f-0d00-bb2b-aece071d6982'
 ]
 
 { #category : #config }
 PhoneNumberTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.7.0'
 ]
 
@@ -60,146 +60,146 @@ PhoneNumberTest >> setUp [
 	phoneNumberCalculator := PhoneNumber new
 ]
 
-{ #category : #test }
-PhoneNumberTest >> testCleanupUserenteredPhoneNumbersCleansNumbersWithDots [
-	| result |
-
-	result := phoneNumberCalculator cleanPhrase: '223.456.7890' .
-	self assert: result equals: '2234567890'
-]
-
-{ #category : #test }
-PhoneNumberTest >> testCleanupUserenteredPhoneNumbersCleansNumbersWithMultipleSpaces [
-	| result |
-
-	result := phoneNumberCalculator cleanPhrase: '223 456   7890   ' .
-	self assert: result equals: '2234567890'
-]
-
-{ #category : #test }
-PhoneNumberTest >> testCleanupUserenteredPhoneNumbersCleansTheNumber [
+{ #category : #tests }
+PhoneNumberTest >> test01_CleanupUserenteredPhoneNumbersCleansTheNumber [
 	| result |
 
 	result := phoneNumberCalculator cleanPhrase: '(223) 456-7890' .
 	self assert: result equals: '2234567890'
 ]
 
-{ #category : #test }
-PhoneNumberTest >> testCleanupUserenteredPhoneNumbersInvalidIfAreaCodeStartsWith0 [
+{ #category : #tests }
+PhoneNumberTest >> test02_CleanupUserenteredPhoneNumbersCleansNumbersWithDots [
 	| result |
 
-	result := phoneNumberCalculator cleanPhrase: '(023) 456-7890' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'area code cannot start with zero'); yourself)
+	result := phoneNumberCalculator cleanPhrase: '223.456.7890' .
+	self assert: result equals: '2234567890'
 ]
 
-{ #category : #test }
-PhoneNumberTest >> testCleanupUserenteredPhoneNumbersInvalidIfAreaCodeStartsWith0OnValid11digitNumber [
+{ #category : #tests }
+PhoneNumberTest >> test03_CleanupUserenteredPhoneNumbersCleansNumbersWithMultipleSpaces [
 	| result |
 
-	result := phoneNumberCalculator cleanPhrase: '1 (023) 456-7890' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'area code cannot start with zero'); yourself)
+	result := phoneNumberCalculator cleanPhrase: '223 456   7890   ' .
+	self assert: result equals: '2234567890'
 ]
 
-{ #category : #test }
-PhoneNumberTest >> testCleanupUserenteredPhoneNumbersInvalidIfAreaCodeStartsWith1 [
-	| result |
-
-	result := phoneNumberCalculator cleanPhrase: '(123) 456-7890' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'area code cannot start with one'); yourself)
-]
-
-{ #category : #test }
-PhoneNumberTest >> testCleanupUserenteredPhoneNumbersInvalidIfAreaCodeStartsWith1OnValid11digitNumber [
-	| result |
-
-	result := phoneNumberCalculator cleanPhrase: '1 (123) 456-7890' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'area code cannot start with one'); yourself)
-]
-
-{ #category : #test }
-PhoneNumberTest >> testCleanupUserenteredPhoneNumbersInvalidIfExchangeCodeStartsWith0 [
-	| result |
-
-	result := phoneNumberCalculator cleanPhrase: '(223) 056-7890' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'exchange code cannot start with zero'); yourself)
-]
-
-{ #category : #test }
-PhoneNumberTest >> testCleanupUserenteredPhoneNumbersInvalidIfExchangeCodeStartsWith0OnValid11digitNumber [
-	| result |
-
-	result := phoneNumberCalculator cleanPhrase: '1 (223) 056-7890' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'exchange code cannot start with zero'); yourself)
-]
-
-{ #category : #test }
-PhoneNumberTest >> testCleanupUserenteredPhoneNumbersInvalidIfExchangeCodeStartsWith1 [
-	| result |
-
-	result := phoneNumberCalculator cleanPhrase: '(223) 156-7890' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'exchange code cannot start with one'); yourself)
-]
-
-{ #category : #test }
-PhoneNumberTest >> testCleanupUserenteredPhoneNumbersInvalidIfExchangeCodeStartsWith1OnValid11digitNumber [
-	| result |
-
-	result := phoneNumberCalculator cleanPhrase: '1 (223) 156-7890' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'exchange code cannot start with one'); yourself)
-]
-
-{ #category : #test }
-PhoneNumberTest >> testCleanupUserenteredPhoneNumbersInvalidWhen11DigitsDoesNotStartWithA1 [
-	| result |
-
-	result := phoneNumberCalculator cleanPhrase: '22234567890' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'11 digits must start with 1'); yourself)
-]
-
-{ #category : #test }
-PhoneNumberTest >> testCleanupUserenteredPhoneNumbersInvalidWhen9Digits [
+{ #category : #tests }
+PhoneNumberTest >> test04_CleanupUserenteredPhoneNumbersInvalidWhen9Digits [
 	| result |
 
 	result := phoneNumberCalculator cleanPhrase: '123456789' .
 	self assert: result equals: ((Dictionary new) add: ('error'->'incorrect number of digits'); yourself)
 ]
 
-{ #category : #test }
-PhoneNumberTest >> testCleanupUserenteredPhoneNumbersInvalidWhenMoreThan11Digits [
+{ #category : #tests }
+PhoneNumberTest >> test05_CleanupUserenteredPhoneNumbersInvalidWhen11DigitsDoesNotStartWithA1 [
 	| result |
 
-	result := phoneNumberCalculator cleanPhrase: '321234567890' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'more than 11 digits'); yourself)
+	result := phoneNumberCalculator cleanPhrase: '22234567890' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'11 digits must start with 1'); yourself)
 ]
 
-{ #category : #test }
-PhoneNumberTest >> testCleanupUserenteredPhoneNumbersInvalidWithLetters [
-	| result |
-
-	result := phoneNumberCalculator cleanPhrase: '123-abc-7890' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'letters not permitted'); yourself)
-]
-
-{ #category : #test }
-PhoneNumberTest >> testCleanupUserenteredPhoneNumbersInvalidWithPunctuations [
-	| result |
-
-	result := phoneNumberCalculator cleanPhrase: '123-@:!-7890' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'punctuations not permitted'); yourself)
-]
-
-{ #category : #test }
-PhoneNumberTest >> testCleanupUserenteredPhoneNumbersValidWhen11DigitsAndStartingWith1 [
+{ #category : #tests }
+PhoneNumberTest >> test06_CleanupUserenteredPhoneNumbersValidWhen11DigitsAndStartingWith1 [
 	| result |
 
 	result := phoneNumberCalculator cleanPhrase: '12234567890' .
 	self assert: result equals: '2234567890'
 ]
 
-{ #category : #test }
-PhoneNumberTest >> testCleanupUserenteredPhoneNumbersValidWhen11DigitsAndStartingWith1EvenWithPunctuation [
+{ #category : #tests }
+PhoneNumberTest >> test07_CleanupUserenteredPhoneNumbersValidWhen11DigitsAndStartingWith1EvenWithPunctuation [
 	| result |
 
 	result := phoneNumberCalculator cleanPhrase: '+1 (223) 456-7890' .
 	self assert: result equals: '2234567890'
+]
+
+{ #category : #tests }
+PhoneNumberTest >> test08_CleanupUserenteredPhoneNumbersInvalidWhenMoreThan11Digits [
+	| result |
+
+	result := phoneNumberCalculator cleanPhrase: '321234567890' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'more than 11 digits'); yourself)
+]
+
+{ #category : #tests }
+PhoneNumberTest >> test09_CleanupUserenteredPhoneNumbersInvalidWithLetters [
+	| result |
+
+	result := phoneNumberCalculator cleanPhrase: '123-abc-7890' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'letters not permitted'); yourself)
+]
+
+{ #category : #tests }
+PhoneNumberTest >> test10_CleanupUserenteredPhoneNumbersInvalidWithPunctuations [
+	| result |
+
+	result := phoneNumberCalculator cleanPhrase: '123-@:!-7890' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'punctuations not permitted'); yourself)
+]
+
+{ #category : #tests }
+PhoneNumberTest >> test11_CleanupUserenteredPhoneNumbersInvalidIfAreaCodeStartsWith0 [
+	| result |
+
+	result := phoneNumberCalculator cleanPhrase: '(023) 456-7890' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'area code cannot start with zero'); yourself)
+]
+
+{ #category : #tests }
+PhoneNumberTest >> test12_CleanupUserenteredPhoneNumbersInvalidIfAreaCodeStartsWith1 [
+	| result |
+
+	result := phoneNumberCalculator cleanPhrase: '(123) 456-7890' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'area code cannot start with one'); yourself)
+]
+
+{ #category : #tests }
+PhoneNumberTest >> test13_CleanupUserenteredPhoneNumbersInvalidIfExchangeCodeStartsWith0 [
+	| result |
+
+	result := phoneNumberCalculator cleanPhrase: '(223) 056-7890' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'exchange code cannot start with zero'); yourself)
+]
+
+{ #category : #tests }
+PhoneNumberTest >> test14_CleanupUserenteredPhoneNumbersInvalidIfExchangeCodeStartsWith1 [
+	| result |
+
+	result := phoneNumberCalculator cleanPhrase: '(223) 156-7890' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'exchange code cannot start with one'); yourself)
+]
+
+{ #category : #tests }
+PhoneNumberTest >> test15_CleanupUserenteredPhoneNumbersInvalidIfAreaCodeStartsWith0OnValid11digitNumber [
+	| result |
+
+	result := phoneNumberCalculator cleanPhrase: '1 (023) 456-7890' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'area code cannot start with zero'); yourself)
+]
+
+{ #category : #tests }
+PhoneNumberTest >> test16_CleanupUserenteredPhoneNumbersInvalidIfAreaCodeStartsWith1OnValid11digitNumber [
+	| result |
+
+	result := phoneNumberCalculator cleanPhrase: '1 (123) 456-7890' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'area code cannot start with one'); yourself)
+]
+
+{ #category : #tests }
+PhoneNumberTest >> test17_CleanupUserenteredPhoneNumbersInvalidIfExchangeCodeStartsWith0OnValid11digitNumber [
+	| result |
+
+	result := phoneNumberCalculator cleanPhrase: '1 (223) 056-7890' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'exchange code cannot start with zero'); yourself)
+]
+
+{ #category : #tests }
+PhoneNumberTest >> test18_CleanupUserenteredPhoneNumbersInvalidIfExchangeCodeStartsWith1OnValid11digitNumber [
+	| result |
+
+	result := phoneNumberCalculator cleanPhrase: '1 (223) 156-7890' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'exchange code cannot start with one'); yourself)
 ]

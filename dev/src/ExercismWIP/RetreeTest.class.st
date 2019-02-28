@@ -46,12 +46,12 @@ Class {
 { #category : #config }
 RetreeTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'3abfe0d9-2b3f-0d00-a2b9-055d09f0590c'
+	^'d1c42dbe-4a3f-0d00-bb1d-02aa071d6982'
 ]
 
 { #category : #config }
 RetreeTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.0.0'
 ]
 
@@ -60,50 +60,50 @@ RetreeTest >> setUp [
 	retreeCalculator := Retree new
 ]
 
-{ #category : #test }
-RetreeTest >> testEmptyTree [
+{ #category : #tests }
+RetreeTest >> test01_EmptyTree [
 	| result |
 
 	result := retreeCalculator treeFromTraversalsPreorder: #() inorder: #() .
 	self assert: result equals: ((Dictionary new))
 ]
 
-{ #category : #test }
-RetreeTest >> testRejectInconsistentTraversalsOfSameLength [
+{ #category : #tests }
+RetreeTest >> test02_TreeWithOneItem [
 	| result |
 
-	result := retreeCalculator treeFromTraversalsPreorder: #('x' 'y' 'z' ) inorder: #('a' 'b' 'c' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'traversals must have the same elements'); yourself)
+	result := retreeCalculator treeFromTraversalsPreorder: #('a' ) inorder: #('a' ) .
+	self assert: result equals: ((Dictionary new) add: ('v'->'a'); add: ('l'->((Dictionary new))); add: ('r'->((Dictionary new))); yourself)
 ]
 
-{ #category : #test }
-RetreeTest >> testRejectTraversalsOfDifferentLength [
-	| result |
-
-	result := retreeCalculator treeFromTraversalsPreorder: #('a' 'b' ) inorder: #('b' 'a' 'r' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'traversals must have the same length'); yourself)
-]
-
-{ #category : #test }
-RetreeTest >> testRejectTraversalsWithRepeatedItems [
-	| result |
-
-	result := retreeCalculator treeFromTraversalsPreorder: #('a' 'b' 'a' ) inorder: #('b' 'a' 'a' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'traversals must contain unique items'); yourself)
-]
-
-{ #category : #test }
-RetreeTest >> testTreeWithManyItems [
+{ #category : #tests }
+RetreeTest >> test03_TreeWithManyItems [
 	| result |
 
 	result := retreeCalculator treeFromTraversalsPreorder: #('a' 'i' 'x' 'f' 'r' ) inorder: #('i' 'a' 'f' 'x' 'r' ) .
 	self assert: result equals: ((Dictionary new) add: ('v'->'a'); add: ('l'->((Dictionary new) add: ('v'->'i'); add: ('l'->((Dictionary new))); add: ('r'->((Dictionary new))); yourself)); add: ('r'->((Dictionary new) add: ('v'->'x'); add: ('l'->((Dictionary new) add: ('v'->'f'); add: ('l'->((Dictionary new))); add: ('r'->((Dictionary new))); yourself)); add: ('r'->((Dictionary new) add: ('v'->'r'); add: ('l'->((Dictionary new))); add: ('r'->((Dictionary new))); yourself)); yourself)); yourself)
 ]
 
-{ #category : #test }
-RetreeTest >> testTreeWithOneItem [
+{ #category : #tests }
+RetreeTest >> test04_RejectTraversalsOfDifferentLength [
 	| result |
 
-	result := retreeCalculator treeFromTraversalsPreorder: #('a' ) inorder: #('a' ) .
-	self assert: result equals: ((Dictionary new) add: ('v'->'a'); add: ('l'->((Dictionary new))); add: ('r'->((Dictionary new))); yourself)
+	result := retreeCalculator treeFromTraversalsPreorder: #('a' 'b' ) inorder: #('b' 'a' 'r' ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'traversals must have the same length'); yourself)
+]
+
+{ #category : #tests }
+RetreeTest >> test05_RejectInconsistentTraversalsOfSameLength [
+	| result |
+
+	result := retreeCalculator treeFromTraversalsPreorder: #('x' 'y' 'z' ) inorder: #('a' 'b' 'c' ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'traversals must have the same elements'); yourself)
+]
+
+{ #category : #tests }
+RetreeTest >> test06_RejectTraversalsWithRepeatedItems [
+	| result |
+
+	result := retreeCalculator treeFromTraversalsPreorder: #('a' 'b' 'a' ) inorder: #('b' 'a' 'a' ) .
+	self assert: result equals: ((Dictionary new) add: ('error'->'traversals must contain unique items'); yourself)
 ]

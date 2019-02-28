@@ -23,12 +23,12 @@ Class {
 { #category : #config }
 GigasecondTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'af06f9d9-2b3f-0d00-a2d2-25cb09f0590c'
+	^'21e14fbe-4a3f-0d00-bb36-c9a1071d6982'
 ]
 
 { #category : #config }
 GigasecondTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'2.0.0'
 ]
 
@@ -37,42 +37,42 @@ GigasecondTest >> setUp [
 	gigasecondCalculator := Gigasecond new
 ]
 
-{ #category : #test }
-GigasecondTest >> testAddOneGigasecondToTheInputDateOnlySpecificationOfTime [
+{ #category : #tests }
+GigasecondTest >> test01_AddOneGigasecondToTheInputDateOnlySpecificationOfTime [
 	| result |
 
 	result := gigasecondCalculator addMoment: '2011-04-25' .
 	self assert: result equals: '2043-01-01T01:46:40'
 ]
 
-{ #category : #test }
-GigasecondTest >> testAddOneGigasecondToTheInputFullTimeSpecified [
-	| result |
-
-	result := gigasecondCalculator addMoment: '2015-01-24T22:00:00' .
-	self assert: result equals: '2046-10-02T23:46:40'
-]
-
-{ #category : #test }
-GigasecondTest >> testAddOneGigasecondToTheInputFullTimeWithDayRollover [
-	| result |
-
-	result := gigasecondCalculator addMoment: '2015-01-24T23:59:59' .
-	self assert: result equals: '2046-10-03T01:46:39'
-]
-
-{ #category : #test }
-GigasecondTest >> testAddOneGigasecondToTheInputSecondTestForDateOnlySpecificationOfTime [
+{ #category : #tests }
+GigasecondTest >> test02_AddOneGigasecondToTheInputSecondTestForDateOnlySpecificationOfTime [
 	| result |
 
 	result := gigasecondCalculator addMoment: '1977-06-13' .
 	self assert: result equals: '2009-02-19T01:46:40'
 ]
 
-{ #category : #test }
-GigasecondTest >> testAddOneGigasecondToTheInputThirdTestForDateOnlySpecificationOfTime [
+{ #category : #tests }
+GigasecondTest >> test03_AddOneGigasecondToTheInputThirdTestForDateOnlySpecificationOfTime [
 	| result |
 
 	result := gigasecondCalculator addMoment: '1959-07-19' .
 	self assert: result equals: '1991-03-27T01:46:40'
+]
+
+{ #category : #tests }
+GigasecondTest >> test04_AddOneGigasecondToTheInputFullTimeSpecified [
+	| result |
+
+	result := gigasecondCalculator addMoment: '2015-01-24T22:00:00' .
+	self assert: result equals: '2046-10-02T23:46:40'
+]
+
+{ #category : #tests }
+GigasecondTest >> test05_AddOneGigasecondToTheInputFullTimeWithDayRollover [
+	| result |
+
+	result := gigasecondCalculator addMoment: '2015-01-24T23:59:59' .
+	self assert: result equals: '2046-10-03T01:46:39'
 ]

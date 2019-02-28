@@ -36,12 +36,12 @@ Class {
 { #category : #config }
 RnaTranscriptionTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'6026e3d9-2b3f-0d00-a2bc-7b6709f0590c'
+	^'ce1731be-4a3f-0d00-bb20-ed0c071d6982'
 ]
 
 { #category : #config }
 RnaTranscriptionTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.3.0'
 ]
 
@@ -50,50 +50,50 @@ RnaTranscriptionTest >> setUp [
 	rnaTranscriptionCalculator := RnaTranscription new
 ]
 
-{ #category : #test }
-RnaTranscriptionTest >> testEmptyRNASequence [
+{ #category : #tests }
+RnaTranscriptionTest >> test01_EmptyRNASequence [
 	| result |
 
 	result := rnaTranscriptionCalculator toRnaDna: '' .
 	self assert: result equals: ''
 ]
 
-{ #category : #test }
-RnaTranscriptionTest >> testRNAComplement [
-	| result |
-
-	result := rnaTranscriptionCalculator toRnaDna: 'ACGTGGTCTTAA' .
-	self assert: result equals: 'UGCACCAGAAUU'
-]
-
-{ #category : #test }
-RnaTranscriptionTest >> testRNAComplementOfAdenineIsUracil [
-	| result |
-
-	result := rnaTranscriptionCalculator toRnaDna: 'A' .
-	self assert: result equals: 'U'
-]
-
-{ #category : #test }
-RnaTranscriptionTest >> testRNAComplementOfCytosineIsGuanine [
+{ #category : #tests }
+RnaTranscriptionTest >> test02_RNAComplementOfCytosineIsGuanine [
 	| result |
 
 	result := rnaTranscriptionCalculator toRnaDna: 'C' .
 	self assert: result equals: 'G'
 ]
 
-{ #category : #test }
-RnaTranscriptionTest >> testRNAComplementOfGuanineIsCytosine [
+{ #category : #tests }
+RnaTranscriptionTest >> test03_RNAComplementOfGuanineIsCytosine [
 	| result |
 
 	result := rnaTranscriptionCalculator toRnaDna: 'G' .
 	self assert: result equals: 'C'
 ]
 
-{ #category : #test }
-RnaTranscriptionTest >> testRNAComplementOfThymineIsAdenine [
+{ #category : #tests }
+RnaTranscriptionTest >> test04_RNAComplementOfThymineIsAdenine [
 	| result |
 
 	result := rnaTranscriptionCalculator toRnaDna: 'T' .
 	self assert: result equals: 'A'
+]
+
+{ #category : #tests }
+RnaTranscriptionTest >> test05_RNAComplementOfAdenineIsUracil [
+	| result |
+
+	result := rnaTranscriptionCalculator toRnaDna: 'A' .
+	self assert: result equals: 'U'
+]
+
+{ #category : #tests }
+RnaTranscriptionTest >> test06_RNAComplement [
+	| result |
+
+	result := rnaTranscriptionCalculator toRnaDna: 'ACGTGGTCTTAA' .
+	self assert: result equals: 'UGCACCAGAAUU'
 ]

@@ -26,12 +26,12 @@ Class {
 { #category : #config }
 NthPrimeTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'e61e3ada-2b3f-0d00-a30e-f5c109f0590c'
+	^'0f15a5be-4a3f-0d00-bb70-93ee071d6982'
 ]
 
 { #category : #config }
 NthPrimeTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'2.1.0'
 ]
 
@@ -40,40 +40,40 @@ NthPrimeTest >> setUp [
 	nthPrimeCalculator := NthPrime new
 ]
 
-{ #category : #test }
-NthPrimeTest >> testBigPrime [
-	| result |
-
-	result := nthPrimeCalculator primeNumber: 10001 .
-	self assert: result equals: 104743
-]
-
-{ #category : #test }
-NthPrimeTest >> testFirstPrime [
+{ #category : #tests }
+NthPrimeTest >> test01_FirstPrime [
 	| result |
 
 	result := nthPrimeCalculator primeNumber: 1 .
 	self assert: result equals: 2
 ]
 
-{ #category : #test }
-NthPrimeTest >> testSecondPrime [
+{ #category : #tests }
+NthPrimeTest >> test02_SecondPrime [
 	| result |
 
 	result := nthPrimeCalculator primeNumber: 2 .
 	self assert: result equals: 3
 ]
 
-{ #category : #test }
-NthPrimeTest >> testSixthPrime [
+{ #category : #tests }
+NthPrimeTest >> test03_SixthPrime [
 	| result |
 
 	result := nthPrimeCalculator primeNumber: 6 .
 	self assert: result equals: 13
 ]
 
-{ #category : #test }
-NthPrimeTest >> testThereIsNoZerothPrime [
+{ #category : #tests }
+NthPrimeTest >> test04_BigPrime [
+	| result |
+
+	result := nthPrimeCalculator primeNumber: 10001 .
+	self assert: result equals: 104743
+]
+
+{ #category : #tests }
+NthPrimeTest >> test05_ThereIsNoZerothPrime [
 	| result |
 
 	result := nthPrimeCalculator primeNumber: 0 .

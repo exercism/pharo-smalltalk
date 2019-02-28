@@ -44,12 +44,12 @@ Class {
 { #category : #config }
 GrainsTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'67a51cda-2b3f-0d00-a2f4-722909f0590c'
+	^'f7f07fbe-4a3f-0d00-bb57-b1cf071d6982'
 ]
 
 { #category : #config }
 GrainsTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.2.0'
 ]
 
@@ -58,90 +58,90 @@ GrainsTest >> setUp [
 	grainsCalculator := Grains new
 ]
 
-{ #category : #test }
-GrainsTest >> testReturnsTheNumberOfGrainsOnTheSquare1 [
+{ #category : #tests }
+GrainsTest >> test01_ReturnsTheNumberOfGrainsOnTheSquareand1 [
 	| result |
 
 	result := grainsCalculator square: 1 .
 	self assert: result equals: 1
 ]
 
-{ #category : #test }
-GrainsTest >> testReturnsTheNumberOfGrainsOnTheSquare16 [
-	| result |
-
-	result := grainsCalculator square: 16 .
-	self assert: result equals: 32768
-]
-
-{ #category : #test }
-GrainsTest >> testReturnsTheNumberOfGrainsOnTheSquare2 [
+{ #category : #tests }
+GrainsTest >> test02_ReturnsTheNumberOfGrainsOnTheSquareand2 [
 	| result |
 
 	result := grainsCalculator square: 2 .
 	self assert: result equals: 2
 ]
 
-{ #category : #test }
-GrainsTest >> testReturnsTheNumberOfGrainsOnTheSquare3 [
+{ #category : #tests }
+GrainsTest >> test02_ReturnsTheTotalNumberOfGrainsOnTheBoard [
+	| result |
+
+	result := grainsCalculator total.
+	self assert: result equals: 18446744073709551615
+]
+
+{ #category : #tests }
+GrainsTest >> test03_ReturnsTheNumberOfGrainsOnTheSquareand3 [
 	| result |
 
 	result := grainsCalculator square: 3 .
 	self assert: result equals: 4
 ]
 
-{ #category : #test }
-GrainsTest >> testReturnsTheNumberOfGrainsOnTheSquare32 [
-	| result |
-
-	result := grainsCalculator square: 32 .
-	self assert: result equals: 2147483648
-]
-
-{ #category : #test }
-GrainsTest >> testReturnsTheNumberOfGrainsOnTheSquare4 [
+{ #category : #tests }
+GrainsTest >> test04_ReturnsTheNumberOfGrainsOnTheSquareand4 [
 	| result |
 
 	result := grainsCalculator square: 4 .
 	self assert: result equals: 8
 ]
 
-{ #category : #test }
-GrainsTest >> testReturnsTheNumberOfGrainsOnTheSquare64 [
+{ #category : #tests }
+GrainsTest >> test05_ReturnsTheNumberOfGrainsOnTheSquareand16 [
+	| result |
+
+	result := grainsCalculator square: 16 .
+	self assert: result equals: 32768
+]
+
+{ #category : #tests }
+GrainsTest >> test06_ReturnsTheNumberOfGrainsOnTheSquareand32 [
+	| result |
+
+	result := grainsCalculator square: 32 .
+	self assert: result equals: 2147483648
+]
+
+{ #category : #tests }
+GrainsTest >> test07_ReturnsTheNumberOfGrainsOnTheSquareand64 [
 	| result |
 
 	result := grainsCalculator square: 64 .
 	self assert: result equals: 9223372036854775808
 ]
 
-{ #category : #test }
-GrainsTest >> testReturnsTheNumberOfGrainsOnTheSquareNegativeSquareRaisesAnException [
-	| result |
-
-	result := grainsCalculator square:  -1 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'square must be between 1 and 64'); yourself)
-]
-
-{ #category : #test }
-GrainsTest >> testReturnsTheNumberOfGrainsOnTheSquareSquare0RaisesAnException [
+{ #category : #tests }
+GrainsTest >> test08_ReturnsTheNumberOfGrainsOnTheSquareSquare0RaisesAnException [
 	| result |
 
 	result := grainsCalculator square: 0 .
 	self assert: result equals: ((Dictionary new) add: ('error'->'square must be between 1 and 64'); yourself)
 ]
 
-{ #category : #test }
-GrainsTest >> testReturnsTheNumberOfGrainsOnTheSquareSquareGreaterThan64RaisesAnException [
+{ #category : #tests }
+GrainsTest >> test09_ReturnsTheNumberOfGrainsOnTheSquareNegativeSquareRaisesAnException [
+	| result |
+
+	result := grainsCalculator square:  -1 .
+	self assert: result equals: ((Dictionary new) add: ('error'->'square must be between 1 and 64'); yourself)
+]
+
+{ #category : #tests }
+GrainsTest >> test10_ReturnsTheNumberOfGrainsOnTheSquareSquareGreaterThan64RaisesAnException [
 	| result |
 
 	result := grainsCalculator square: 65 .
 	self assert: result equals: ((Dictionary new) add: ('error'->'square must be between 1 and 64'); yourself)
-]
-
-{ #category : #test }
-GrainsTest >> testReturnsTheTotalNumberOfGrainsOnTheBoard [
-	| result |
-
-	result := grainsCalculator total.
-	self assert: result equals: 18446744073709551615
 ]

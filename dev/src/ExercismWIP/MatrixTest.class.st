@@ -58,12 +58,12 @@ Class {
 { #category : #config }
 MatrixTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'3c5c32da-2b3f-0d00-a307-fd2809f0590c'
+	^'a68f9bbe-4a3f-0d00-bb69-b718071d6982'
 ]
 
 { #category : #config }
 MatrixTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.1.0'
 ]
 
@@ -72,29 +72,16 @@ MatrixTest >> setUp [
 	matrixCalculator := Matrix new
 ]
 
-{ #category : #test }
-MatrixTest >> testCanExtractColumn [
+{ #category : #tests }
+MatrixTest >> test01_ExtractRowFromOneNumberMatrix [
 	| result |
 
-	result := matrixCalculator columnString: '1 2 3
-4 5 6
-7 8 9' index: 3 .
-	self assert: result equals: #(3 6 9 )
+	result := matrixCalculator rowString: '1' index: 1 .
+	self assert: result equals: #(1 )
 ]
 
-{ #category : #test }
-MatrixTest >> testCanExtractColumnFromNonsquareMatrix [
-	| result |
-
-	result := matrixCalculator columnString: '1 2 3
-4 5 6
-7 8 9
-8 7 6' index: 3 .
-	self assert: result equals: #(3 6 9 6 )
-]
-
-{ #category : #test }
-MatrixTest >> testCanExtractRow [
+{ #category : #tests }
+MatrixTest >> test02_CanExtractRow [
 	| result |
 
 	result := matrixCalculator rowString: '1 2
@@ -102,8 +89,17 @@ MatrixTest >> testCanExtractRow [
 	self assert: result equals: #(3 4 )
 ]
 
-{ #category : #test }
-MatrixTest >> testCanExtractRowFromNonsquareMatrix [
+{ #category : #tests }
+MatrixTest >> test03_ExtractRowWhereNumbersHaveDifferentWidths [
+	| result |
+
+	result := matrixCalculator rowString: '1 2
+10 20' index: 2 .
+	self assert: result equals: #(10 20 )
+]
+
+{ #category : #tests }
+MatrixTest >> test04_CanExtractRowFromNonsquareMatrix [
 	| result |
 
 	result := matrixCalculator rowString: '1 2 3
@@ -113,37 +109,41 @@ MatrixTest >> testCanExtractRowFromNonsquareMatrix [
 	self assert: result equals: #(7 8 9 )
 ]
 
-{ #category : #test }
-MatrixTest >> testExtractColumnFromOneNumberMatrix [
+{ #category : #tests }
+MatrixTest >> test05_ExtractColumnFromOneNumberMatrix [
 	| result |
 
 	result := matrixCalculator columnString: '1' index: 1 .
 	self assert: result equals: #(1 )
 ]
 
-{ #category : #test }
-MatrixTest >> testExtractColumnWhereNumbersHaveDifferentWidths [
+{ #category : #tests }
+MatrixTest >> test06_CanExtractColumn [
+	| result |
+
+	result := matrixCalculator columnString: '1 2 3
+4 5 6
+7 8 9' index: 3 .
+	self assert: result equals: #(3 6 9 )
+]
+
+{ #category : #tests }
+MatrixTest >> test07_CanExtractColumnFromNonsquareMatrix [
+	| result |
+
+	result := matrixCalculator columnString: '1 2 3
+4 5 6
+7 8 9
+8 7 6' index: 3 .
+	self assert: result equals: #(3 6 9 6 )
+]
+
+{ #category : #tests }
+MatrixTest >> test08_ExtractColumnWhereNumbersHaveDifferentWidths [
 	| result |
 
 	result := matrixCalculator columnString: '89 1903 3
 18 3 1
 9 4 800' index: 2 .
 	self assert: result equals: #(1903 3 4 )
-]
-
-{ #category : #test }
-MatrixTest >> testExtractRowFromOneNumberMatrix [
-	| result |
-
-	result := matrixCalculator rowString: '1' index: 1 .
-	self assert: result equals: #(1 )
-]
-
-{ #category : #test }
-MatrixTest >> testExtractRowWhereNumbersHaveDifferentWidths [
-	| result |
-
-	result := matrixCalculator rowString: '1 2
-10 20' index: 2 .
-	self assert: result equals: #(10 20 )
 ]

@@ -66,12 +66,12 @@ Class {
 { #category : #config }
 ScaleGeneratorTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'11f707da-2b3f-0d00-a2e2-355f09f0590c'
+	^'b66e68be-4a3f-0d00-bb46-db95071d6982'
 ]
 
 { #category : #config }
 ScaleGeneratorTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'2.0.0'
 ]
 
@@ -80,138 +80,138 @@ ScaleGeneratorTest >> setUp [
 	scaleGeneratorCalculator := ScaleGenerator new
 ]
 
-{ #category : #test }
-ScaleGeneratorTest >> testChromaticScalesChromaticScaleWithFlats [
-	| result |
-
-	result := scaleGeneratorCalculator chromaticTonic: 'F' .
-	self assert: result equals: #('F' 'Gb' 'G' 'Ab' 'A' 'Bb' 'B' 'C' 'Db' 'D' 'Eb' 'E' )
-]
-
-{ #category : #test }
-ScaleGeneratorTest >> testChromaticScalesChromaticScaleWithSharps [
+{ #category : #tests }
+ScaleGeneratorTest >> test01_ChromaticScalesChromaticScaleWithSharps [
 	| result |
 
 	result := scaleGeneratorCalculator chromaticTonic: 'C' .
 	self assert: result equals: #('C' 'C#' 'D' 'D#' 'E' 'F' 'F#' 'G' 'G#' 'A' 'A#' 'B' )
 ]
 
-{ #category : #test }
-ScaleGeneratorTest >> testScalesWithSpecifiedIntervalsDorianMode [
+{ #category : #tests }
+ScaleGeneratorTest >> test01_ScalesWithSpecifiedIntervalsSimpleMajorScale [
 	| result |
 
-	result := scaleGeneratorCalculator intervalTonic: 'd' intervals: 'MmMMMmM' .
-	self assert: result equals: #('D' 'E' 'F' 'G' 'A' 'B' 'C' )
+	result := scaleGeneratorCalculator intervalTonic: 'C' intervals: 'MMmMMMm' .
+	self assert: result equals: #('C' 'D' 'E' 'F' 'G' 'A' 'B' )
 ]
 
-{ #category : #test }
-ScaleGeneratorTest >> testScalesWithSpecifiedIntervalsEnigmatic [
+{ #category : #tests }
+ScaleGeneratorTest >> test02_ChromaticScalesChromaticScaleWithFlats [
 	| result |
 
-	result := scaleGeneratorCalculator intervalTonic: 'G' intervals: 'mAMMMmm' .
-	self assert: result equals: #('G' 'G#' 'B' 'C#' 'D#' 'F' 'F#' )
+	result := scaleGeneratorCalculator chromaticTonic: 'F' .
+	self assert: result equals: #('F' 'Gb' 'G' 'Ab' 'A' 'Bb' 'B' 'C' 'Db' 'D' 'Eb' 'E' )
 ]
 
-{ #category : #test }
-ScaleGeneratorTest >> testScalesWithSpecifiedIntervalsHarmonicMinor [
-	| result |
-
-	result := scaleGeneratorCalculator intervalTonic: 'd' intervals: 'MmMMmAm' .
-	self assert: result equals: #('D' 'E' 'F' 'G' 'A' 'Bb' 'Db' )
-]
-
-{ #category : #test }
-ScaleGeneratorTest >> testScalesWithSpecifiedIntervalsHexatonic [
-	| result |
-
-	result := scaleGeneratorCalculator intervalTonic: 'Db' intervals: 'MMMMMM' .
-	self assert: result equals: #('Db' 'Eb' 'F' 'G' 'A' 'B' )
-]
-
-{ #category : #test }
-ScaleGeneratorTest >> testScalesWithSpecifiedIntervalsLocrianMode [
-	| result |
-
-	result := scaleGeneratorCalculator intervalTonic: 'g' intervals: 'mMMmMMM' .
-	self assert: result equals: #('G' 'Ab' 'Bb' 'C' 'Db' 'Eb' 'F' )
-]
-
-{ #category : #test }
-ScaleGeneratorTest >> testScalesWithSpecifiedIntervalsLydianMode [
-	| result |
-
-	result := scaleGeneratorCalculator intervalTonic: 'a' intervals: 'MMMmMMm' .
-	self assert: result equals: #('A' 'B' 'C#' 'D#' 'E' 'F#' 'G#' )
-]
-
-{ #category : #test }
-ScaleGeneratorTest >> testScalesWithSpecifiedIntervalsMajorScaleWithFlats [
-	| result |
-
-	result := scaleGeneratorCalculator intervalTonic: 'F' intervals: 'MMmMMMm' .
-	self assert: result equals: #('F' 'G' 'A' 'Bb' 'C' 'D' 'E' )
-]
-
-{ #category : #test }
-ScaleGeneratorTest >> testScalesWithSpecifiedIntervalsMajorScaleWithSharps [
+{ #category : #tests }
+ScaleGeneratorTest >> test02_ScalesWithSpecifiedIntervalsMajorScaleWithSharps [
 	| result |
 
 	result := scaleGeneratorCalculator intervalTonic: 'G' intervals: 'MMmMMMm' .
 	self assert: result equals: #('G' 'A' 'B' 'C' 'D' 'E' 'F#' )
 ]
 
-{ #category : #test }
-ScaleGeneratorTest >> testScalesWithSpecifiedIntervalsMinorScaleWithFlats [
+{ #category : #tests }
+ScaleGeneratorTest >> test03_ScalesWithSpecifiedIntervalsMajorScaleWithFlats [
 	| result |
 
-	result := scaleGeneratorCalculator intervalTonic: 'bb' intervals: 'MmMMmMM' .
-	self assert: result equals: #('Bb' 'C' 'Db' 'Eb' 'F' 'Gb' 'Ab' )
+	result := scaleGeneratorCalculator intervalTonic: 'F' intervals: 'MMmMMMm' .
+	self assert: result equals: #('F' 'G' 'A' 'Bb' 'C' 'D' 'E' )
 ]
 
-{ #category : #test }
-ScaleGeneratorTest >> testScalesWithSpecifiedIntervalsMinorScaleWithSharps [
+{ #category : #tests }
+ScaleGeneratorTest >> test04_ScalesWithSpecifiedIntervalsMinorScaleWithSharps [
 	| result |
 
 	result := scaleGeneratorCalculator intervalTonic: 'f#' intervals: 'MmMMmMM' .
 	self assert: result equals: #('F#' 'G#' 'A' 'B' 'C#' 'D' 'E' )
 ]
 
-{ #category : #test }
-ScaleGeneratorTest >> testScalesWithSpecifiedIntervalsMixolydianMode [
+{ #category : #tests }
+ScaleGeneratorTest >> test05_ScalesWithSpecifiedIntervalsMinorScaleWithFlats [
+	| result |
+
+	result := scaleGeneratorCalculator intervalTonic: 'bb' intervals: 'MmMMmMM' .
+	self assert: result equals: #('Bb' 'C' 'Db' 'Eb' 'F' 'Gb' 'Ab' )
+]
+
+{ #category : #tests }
+ScaleGeneratorTest >> test06_ScalesWithSpecifiedIntervalsDorianMode [
+	| result |
+
+	result := scaleGeneratorCalculator intervalTonic: 'd' intervals: 'MmMMMmM' .
+	self assert: result equals: #('D' 'E' 'F' 'G' 'A' 'B' 'C' )
+]
+
+{ #category : #tests }
+ScaleGeneratorTest >> test07_ScalesWithSpecifiedIntervalsMixolydianMode [
 	| result |
 
 	result := scaleGeneratorCalculator intervalTonic: 'Eb' intervals: 'MMmMMmM' .
 	self assert: result equals: #('Eb' 'F' 'G' 'Ab' 'Bb' 'C' 'Db' )
 ]
 
-{ #category : #test }
-ScaleGeneratorTest >> testScalesWithSpecifiedIntervalsOctatonic [
+{ #category : #tests }
+ScaleGeneratorTest >> test08_ScalesWithSpecifiedIntervalsLydianMode [
 	| result |
 
-	result := scaleGeneratorCalculator intervalTonic: 'C' intervals: 'MmMmMmMm' .
-	self assert: result equals: #('C' 'D' 'D#' 'F' 'F#' 'G#' 'A' 'B' )
+	result := scaleGeneratorCalculator intervalTonic: 'a' intervals: 'MMMmMMm' .
+	self assert: result equals: #('A' 'B' 'C#' 'D#' 'E' 'F#' 'G#' )
 ]
 
-{ #category : #test }
-ScaleGeneratorTest >> testScalesWithSpecifiedIntervalsPentatonic [
-	| result |
-
-	result := scaleGeneratorCalculator intervalTonic: 'A' intervals: 'MMAMA' .
-	self assert: result equals: #('A' 'B' 'C#' 'E' 'F#' )
-]
-
-{ #category : #test }
-ScaleGeneratorTest >> testScalesWithSpecifiedIntervalsPhrygianMode [
+{ #category : #tests }
+ScaleGeneratorTest >> test09_ScalesWithSpecifiedIntervalsPhrygianMode [
 	| result |
 
 	result := scaleGeneratorCalculator intervalTonic: 'e' intervals: 'mMMMmMM' .
 	self assert: result equals: #('E' 'F' 'G' 'A' 'B' 'C' 'D' )
 ]
 
-{ #category : #test }
-ScaleGeneratorTest >> testScalesWithSpecifiedIntervalsSimpleMajorScale [
+{ #category : #tests }
+ScaleGeneratorTest >> test10_ScalesWithSpecifiedIntervalsLocrianMode [
 	| result |
 
-	result := scaleGeneratorCalculator intervalTonic: 'C' intervals: 'MMmMMMm' .
-	self assert: result equals: #('C' 'D' 'E' 'F' 'G' 'A' 'B' )
+	result := scaleGeneratorCalculator intervalTonic: 'g' intervals: 'mMMmMMM' .
+	self assert: result equals: #('G' 'Ab' 'Bb' 'C' 'Db' 'Eb' 'F' )
+]
+
+{ #category : #tests }
+ScaleGeneratorTest >> test11_ScalesWithSpecifiedIntervalsHarmonicMinor [
+	| result |
+
+	result := scaleGeneratorCalculator intervalTonic: 'd' intervals: 'MmMMmAm' .
+	self assert: result equals: #('D' 'E' 'F' 'G' 'A' 'Bb' 'Db' )
+]
+
+{ #category : #tests }
+ScaleGeneratorTest >> test12_ScalesWithSpecifiedIntervalsOctatonic [
+	| result |
+
+	result := scaleGeneratorCalculator intervalTonic: 'C' intervals: 'MmMmMmMm' .
+	self assert: result equals: #('C' 'D' 'D#' 'F' 'F#' 'G#' 'A' 'B' )
+]
+
+{ #category : #tests }
+ScaleGeneratorTest >> test13_ScalesWithSpecifiedIntervalsHexatonic [
+	| result |
+
+	result := scaleGeneratorCalculator intervalTonic: 'Db' intervals: 'MMMMMM' .
+	self assert: result equals: #('Db' 'Eb' 'F' 'G' 'A' 'B' )
+]
+
+{ #category : #tests }
+ScaleGeneratorTest >> test14_ScalesWithSpecifiedIntervalsPentatonic [
+	| result |
+
+	result := scaleGeneratorCalculator intervalTonic: 'A' intervals: 'MMAMA' .
+	self assert: result equals: #('A' 'B' 'C#' 'E' 'F#' )
+]
+
+{ #category : #tests }
+ScaleGeneratorTest >> test15_ScalesWithSpecifiedIntervalsEnigmatic [
+	| result |
+
+	result := scaleGeneratorCalculator intervalTonic: 'G' intervals: 'mAMMMmm' .
+	self assert: result equals: #('G' 'G#' 'B' 'C#' 'D#' 'F' 'F#' )
 ]

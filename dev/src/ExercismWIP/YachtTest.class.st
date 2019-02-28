@@ -54,12 +54,12 @@ Class {
 { #category : #config }
 YachtTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'0b6af8d9-2b3f-0d00-a2d1-298d09f0590c'
+	^'68014fbe-4a3f-0d00-bb35-a91d071d6982'
 ]
 
 { #category : #config }
 YachtTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.1.0'
 ]
 
@@ -68,218 +68,218 @@ YachtTest >> setUp [
 	yachtCalculator := Yacht new
 ]
 
-{ #category : #test }
-YachtTest >> testBigStraight [
-	| result |
-
-	result := yachtCalculator scoreCategory: 'big straight' dice: #(4 6 2 5 3 ) .
-	self assert: result equals: 30
-]
-
-{ #category : #test }
-YachtTest >> testBigStraightAsLittleStraight [
-	| result |
-
-	result := yachtCalculator scoreCategory: 'little straight' dice: #(6 5 4 3 2 ) .
-	self assert: result equals: 0
-]
-
-{ #category : #test }
-YachtTest >> testChoice [
-	| result |
-
-	result := yachtCalculator scoreCategory: 'choice' dice: #(3 3 5 6 6 ) .
-	self assert: result equals: 23
-]
-
-{ #category : #test }
-YachtTest >> testFourInOrderButNotALittleStraight [
-	| result |
-
-	result := yachtCalculator scoreCategory: 'little straight' dice: #(1 1 2 3 4 ) .
-	self assert: result equals: 0
-]
-
-{ #category : #test }
-YachtTest >> testFourOfAKind [
-	| result |
-
-	result := yachtCalculator scoreCategory: 'four of a kind' dice: #(6 6 4 6 6 ) .
-	self assert: result equals: 24
-]
-
-{ #category : #test }
-YachtTest >> testFourOfAKindIsNotAFullHouse [
-	| result |
-
-	result := yachtCalculator scoreCategory: 'full house' dice: #(1 4 4 4 4 ) .
-	self assert: result equals: 0
-]
-
-{ #category : #test }
-YachtTest >> testFours [
-	| result |
-
-	result := yachtCalculator scoreCategory: 'fours' dice: #(1 4 1 4 1 ) .
-	self assert: result equals: 8
-]
-
-{ #category : #test }
-YachtTest >> testFullHouseIsNotFourOfAKind [
-	| result |
-
-	result := yachtCalculator scoreCategory: 'four of a kind' dice: #(3 3 3 5 5 ) .
-	self assert: result equals: 0
-]
-
-{ #category : #test }
-YachtTest >> testFullHouseThreeSmallTwoBig [
-	| result |
-
-	result := yachtCalculator scoreCategory: 'full house' dice: #(5 3 3 5 3 ) .
-	self assert: result equals: 19
-]
-
-{ #category : #test }
-YachtTest >> testFullHouseTwoSmallThreeBig [
-	| result |
-
-	result := yachtCalculator scoreCategory: 'full house' dice: #(2 2 4 4 4 ) .
-	self assert: result equals: 16
-]
-
-{ #category : #test }
-YachtTest >> testLittleStraight [
-	| result |
-
-	result := yachtCalculator scoreCategory: 'little straight' dice: #(3 5 4 1 2 ) .
-	self assert: result equals: 30
-]
-
-{ #category : #test }
-YachtTest >> testLittleStraightAsBigStraight [
-	| result |
-
-	result := yachtCalculator scoreCategory: 'big straight' dice: #(1 2 3 4 5 ) .
-	self assert: result equals: 0
-]
-
-{ #category : #test }
-YachtTest >> testMinimumIs1MaximumIs5ButNotALittleStraight [
-	| result |
-
-	result := yachtCalculator scoreCategory: 'little straight' dice: #(1 1 3 4 5 ) .
-	self assert: result equals: 0
-]
-
-{ #category : #test }
-YachtTest >> testNoOnes [
-	| result |
-
-	result := yachtCalculator scoreCategory: 'ones' dice: #(4 3 6 5 5 ) .
-	self assert: result equals: 0
-]
-
-{ #category : #test }
-YachtTest >> testNoPairsButNotALittleStraight [
-	| result |
-
-	result := yachtCalculator scoreCategory: 'little straight' dice: #(1 2 3 4 6 ) .
-	self assert: result equals: 0
-]
-
-{ #category : #test }
-YachtTest >> testNotYacht [
-	| result |
-
-	result := yachtCalculator scoreCategory: 'yacht' dice: #(1 3 3 2 5 ) .
-	self assert: result equals: 0
-]
-
-{ #category : #test }
-YachtTest >> testOnes [
-	| result |
-
-	result := yachtCalculator scoreCategory: 'ones' dice: #(1 1 1 3 5 ) .
-	self assert: result equals: 3
-]
-
-{ #category : #test }
-YachtTest >> testOnesOutOfOrder [
-	| result |
-
-	result := yachtCalculator scoreCategory: 'ones' dice: #(3 1 1 5 1 ) .
-	self assert: result equals: 3
-]
-
-{ #category : #test }
-YachtTest >> testSixes [
-	| result |
-
-	result := yachtCalculator scoreCategory: 'sixes' dice: #(2 3 4 5 6 ) .
-	self assert: result equals: 6
-]
-
-{ #category : #test }
-YachtTest >> testTwoPairIsNotAFullHouse [
-	| result |
-
-	result := yachtCalculator scoreCategory: 'full house' dice: #(2 2 4 4 5 ) .
-	self assert: result equals: 0
-]
-
-{ #category : #test }
-YachtTest >> testTwos [
-	| result |
-
-	result := yachtCalculator scoreCategory: 'twos' dice: #(2 3 4 5 6 ) .
-	self assert: result equals: 2
-]
-
-{ #category : #test }
-YachtTest >> testYacht [
+{ #category : #tests }
+YachtTest >> test01_Yacht [
 	| result |
 
 	result := yachtCalculator scoreCategory: 'yacht' dice: #(5 5 5 5 5 ) .
 	self assert: result equals: 50
 ]
 
-{ #category : #test }
-YachtTest >> testYachtAsChoice [
+{ #category : #tests }
+YachtTest >> test02_NotYacht [
 	| result |
 
-	result := yachtCalculator scoreCategory: 'choice' dice: #(2 2 2 2 2 ) .
-	self assert: result equals: 10
+	result := yachtCalculator scoreCategory: 'yacht' dice: #(1 3 3 2 5 ) .
+	self assert: result equals: 0
 ]
 
-{ #category : #test }
-YachtTest >> testYachtCanBeScoredAsFourOfAKind [
+{ #category : #tests }
+YachtTest >> test03_Ones [
 	| result |
 
-	result := yachtCalculator scoreCategory: 'four of a kind' dice: #(3 3 3 3 3 ) .
-	self assert: result equals: 12
+	result := yachtCalculator scoreCategory: 'ones' dice: #(1 1 1 3 5 ) .
+	self assert: result equals: 3
 ]
 
-{ #category : #test }
-YachtTest >> testYachtCountedAsThrees [
+{ #category : #tests }
+YachtTest >> test04_OnesOutOfOrder [
+	| result |
+
+	result := yachtCalculator scoreCategory: 'ones' dice: #(3 1 1 5 1 ) .
+	self assert: result equals: 3
+]
+
+{ #category : #tests }
+YachtTest >> test05_NoOnes [
+	| result |
+
+	result := yachtCalculator scoreCategory: 'ones' dice: #(4 3 6 5 5 ) .
+	self assert: result equals: 0
+]
+
+{ #category : #tests }
+YachtTest >> test06_Twos [
+	| result |
+
+	result := yachtCalculator scoreCategory: 'twos' dice: #(2 3 4 5 6 ) .
+	self assert: result equals: 2
+]
+
+{ #category : #tests }
+YachtTest >> test07_Fours [
+	| result |
+
+	result := yachtCalculator scoreCategory: 'fours' dice: #(1 4 1 4 1 ) .
+	self assert: result equals: 8
+]
+
+{ #category : #tests }
+YachtTest >> test08_YachtCountedAsThrees [
 	| result |
 
 	result := yachtCalculator scoreCategory: 'threes' dice: #(3 3 3 3 3 ) .
 	self assert: result equals: 15
 ]
 
-{ #category : #test }
-YachtTest >> testYachtIsNotAFullHouse [
+{ #category : #tests }
+YachtTest >> test09_YachtOf3sCountedAsFives [
+	| result |
+
+	result := yachtCalculator scoreCategory: 'fives' dice: #(3 3 3 3 3 ) .
+	self assert: result equals: 0
+]
+
+{ #category : #tests }
+YachtTest >> test10_Sixes [
+	| result |
+
+	result := yachtCalculator scoreCategory: 'sixes' dice: #(2 3 4 5 6 ) .
+	self assert: result equals: 6
+]
+
+{ #category : #tests }
+YachtTest >> test11_FullHouseTwoSmallThreeBig [
+	| result |
+
+	result := yachtCalculator scoreCategory: 'full house' dice: #(2 2 4 4 4 ) .
+	self assert: result equals: 16
+]
+
+{ #category : #tests }
+YachtTest >> test12_FullHouseThreeSmallTwoBig [
+	| result |
+
+	result := yachtCalculator scoreCategory: 'full house' dice: #(5 3 3 5 3 ) .
+	self assert: result equals: 19
+]
+
+{ #category : #tests }
+YachtTest >> test13_TwoPairIsNotAFullHouse [
+	| result |
+
+	result := yachtCalculator scoreCategory: 'full house' dice: #(2 2 4 4 5 ) .
+	self assert: result equals: 0
+]
+
+{ #category : #tests }
+YachtTest >> test14_FourOfAKindIsNotAFullHouse [
+	| result |
+
+	result := yachtCalculator scoreCategory: 'full house' dice: #(1 4 4 4 4 ) .
+	self assert: result equals: 0
+]
+
+{ #category : #tests }
+YachtTest >> test15_YachtIsNotAFullHouse [
 	| result |
 
 	result := yachtCalculator scoreCategory: 'full house' dice: #(2 2 2 2 2 ) .
 	self assert: result equals: 0
 ]
 
-{ #category : #test }
-YachtTest >> testYachtOf3sCountedAsFives [
+{ #category : #tests }
+YachtTest >> test16_FourOfAKind [
 	| result |
 
-	result := yachtCalculator scoreCategory: 'fives' dice: #(3 3 3 3 3 ) .
+	result := yachtCalculator scoreCategory: 'four of a kind' dice: #(6 6 4 6 6 ) .
+	self assert: result equals: 24
+]
+
+{ #category : #tests }
+YachtTest >> test17_YachtCanBeScoredAsFourOfAKind [
+	| result |
+
+	result := yachtCalculator scoreCategory: 'four of a kind' dice: #(3 3 3 3 3 ) .
+	self assert: result equals: 12
+]
+
+{ #category : #tests }
+YachtTest >> test18_FullHouseIsNotFourOfAKind [
+	| result |
+
+	result := yachtCalculator scoreCategory: 'four of a kind' dice: #(3 3 3 5 5 ) .
 	self assert: result equals: 0
+]
+
+{ #category : #tests }
+YachtTest >> test19_LittleStraight [
+	| result |
+
+	result := yachtCalculator scoreCategory: 'little straight' dice: #(3 5 4 1 2 ) .
+	self assert: result equals: 30
+]
+
+{ #category : #tests }
+YachtTest >> test20_LittleStraightAsBigStraight [
+	| result |
+
+	result := yachtCalculator scoreCategory: 'big straight' dice: #(1 2 3 4 5 ) .
+	self assert: result equals: 0
+]
+
+{ #category : #tests }
+YachtTest >> test21_FourInOrderButNotALittleStraight [
+	| result |
+
+	result := yachtCalculator scoreCategory: 'little straight' dice: #(1 1 2 3 4 ) .
+	self assert: result equals: 0
+]
+
+{ #category : #tests }
+YachtTest >> test22_NoPairsButNotALittleStraight [
+	| result |
+
+	result := yachtCalculator scoreCategory: 'little straight' dice: #(1 2 3 4 6 ) .
+	self assert: result equals: 0
+]
+
+{ #category : #tests }
+YachtTest >> test23_MinimumIs1MaximumIs5ButNotALittleStraight [
+	| result |
+
+	result := yachtCalculator scoreCategory: 'little straight' dice: #(1 1 3 4 5 ) .
+	self assert: result equals: 0
+]
+
+{ #category : #tests }
+YachtTest >> test24_BigStraight [
+	| result |
+
+	result := yachtCalculator scoreCategory: 'big straight' dice: #(4 6 2 5 3 ) .
+	self assert: result equals: 30
+]
+
+{ #category : #tests }
+YachtTest >> test25_BigStraightAsLittleStraight [
+	| result |
+
+	result := yachtCalculator scoreCategory: 'little straight' dice: #(6 5 4 3 2 ) .
+	self assert: result equals: 0
+]
+
+{ #category : #tests }
+YachtTest >> test26_Choice [
+	| result |
+
+	result := yachtCalculator scoreCategory: 'choice' dice: #(3 3 5 6 6 ) .
+	self assert: result equals: 23
+]
+
+{ #category : #tests }
+YachtTest >> test27_YachtAsChoice [
+	| result |
+
+	result := yachtCalculator scoreCategory: 'choice' dice: #(2 2 2 2 2 ) .
+	self assert: result equals: 10
 ]

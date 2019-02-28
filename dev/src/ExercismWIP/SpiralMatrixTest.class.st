@@ -41,12 +41,12 @@ Class {
 { #category : #config }
 SpiralMatrixTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'7182d2d9-2b3f-0d00-a2aa-176f09f0590c'
+	^'82c919be-4a3f-0d00-bb0e-b715071d6982'
 ]
 
 { #category : #config }
 SpiralMatrixTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.1.0'
 ]
 
@@ -55,50 +55,50 @@ SpiralMatrixTest >> setUp [
 	spiralMatrixCalculator := SpiralMatrix new
 ]
 
-{ #category : #test }
-SpiralMatrixTest >> testEmptySpiral [
+{ #category : #tests }
+SpiralMatrixTest >> test01_EmptySpiral [
 	| result |
 
 	result := spiralMatrixCalculator spiralMatrixSize: 0 .
 	self assert: result equals: #()
 ]
 
-{ #category : #test }
-SpiralMatrixTest >> testSpiralOfSize2 [
+{ #category : #tests }
+SpiralMatrixTest >> test02_TrivialSpiral [
+	| result |
+
+	result := spiralMatrixCalculator spiralMatrixSize: 1 .
+	self assert: result equals: #(#(1 ) )
+]
+
+{ #category : #tests }
+SpiralMatrixTest >> test03_SpiralOfSize2 [
 	| result |
 
 	result := spiralMatrixCalculator spiralMatrixSize: 2 .
 	self assert: result equals: #(#(1 2 ) #(4 3 ) )
 ]
 
-{ #category : #test }
-SpiralMatrixTest >> testSpiralOfSize3 [
+{ #category : #tests }
+SpiralMatrixTest >> test04_SpiralOfSize3 [
 	| result |
 
 	result := spiralMatrixCalculator spiralMatrixSize: 3 .
 	self assert: result equals: #(#(1 2 3 ) #(8 9 4 ) #(7 6 5 ) )
 ]
 
-{ #category : #test }
-SpiralMatrixTest >> testSpiralOfSize4 [
+{ #category : #tests }
+SpiralMatrixTest >> test05_SpiralOfSize4 [
 	| result |
 
 	result := spiralMatrixCalculator spiralMatrixSize: 4 .
 	self assert: result equals: #(#(1 2 3 4 ) #(12 13 14 5 ) #(11 16 15 6 ) #(10 9 8 7 ) )
 ]
 
-{ #category : #test }
-SpiralMatrixTest >> testSpiralOfSize5 [
+{ #category : #tests }
+SpiralMatrixTest >> test06_SpiralOfSize5 [
 	| result |
 
 	result := spiralMatrixCalculator spiralMatrixSize: 5 .
 	self assert: result equals: #(#(1 2 3 4 5 ) #(16 17 18 19 6 ) #(15 24 25 20 7 ) #(14 23 22 21 8 ) #(13 12 11 10 9 ) )
-]
-
-{ #category : #test }
-SpiralMatrixTest >> testTrivialSpiral [
-	| result |
-
-	result := spiralMatrixCalculator spiralMatrixSize: 1 .
-	self assert: result equals: #(#(1 ) )
 ]

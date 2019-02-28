@@ -30,12 +30,12 @@ Class {
 { #category : #config }
 NucleotideCountTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'892ef1d9-2b3f-0d00-a2ca-2d2a09f0590c'
+	^'35bb44be-4a3f-0d00-bb2e-2b78071d6982'
 ]
 
 { #category : #config }
 NucleotideCountTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.3.0'
 ]
 
@@ -44,42 +44,42 @@ NucleotideCountTest >> setUp [
 	nucleotideCountCalculator := NucleotideCount new
 ]
 
-{ #category : #test }
-NucleotideCountTest >> testCountAllNucleotidesInAStrandCanCountOneNucleotideInSinglecharacterInput [
-	| result |
-
-	result := nucleotideCountCalculator nucleotideCountsStrand: 'G' .
-	self assert: result equals: ((Dictionary new) add: ('G'->1); add: ('T'->0); add: ('A'->0); add: ('C'->0); yourself)
-]
-
-{ #category : #test }
-NucleotideCountTest >> testCountAllNucleotidesInAStrandEmptyStrand [
+{ #category : #tests }
+NucleotideCountTest >> test01_CountAllNucleotidesInAStrandEmptyStrand [
 	| result |
 
 	result := nucleotideCountCalculator nucleotideCountsStrand: '' .
 	self assert: result equals: ((Dictionary new) add: ('G'->0); add: ('T'->0); add: ('A'->0); add: ('C'->0); yourself)
 ]
 
-{ #category : #test }
-NucleotideCountTest >> testCountAllNucleotidesInAStrandStrandWithInvalidNucleotides [
+{ #category : #tests }
+NucleotideCountTest >> test02_CountAllNucleotidesInAStrandCanCountOneNucleotideInSinglecharacterInput [
 	| result |
 
-	result := nucleotideCountCalculator nucleotideCountsStrand: 'AGXXACT' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Invalid nucleotide in strand'); yourself)
+	result := nucleotideCountCalculator nucleotideCountsStrand: 'G' .
+	self assert: result equals: ((Dictionary new) add: ('G'->1); add: ('T'->0); add: ('A'->0); add: ('C'->0); yourself)
 ]
 
-{ #category : #test }
-NucleotideCountTest >> testCountAllNucleotidesInAStrandStrandWithMultipleNucleotides [
+{ #category : #tests }
+NucleotideCountTest >> test03_CountAllNucleotidesInAStrandStrandWithRepeatedNucleotide [
+	| result |
+
+	result := nucleotideCountCalculator nucleotideCountsStrand: 'GGGGGGG' .
+	self assert: result equals: ((Dictionary new) add: ('G'->7); add: ('T'->0); add: ('A'->0); add: ('C'->0); yourself)
+]
+
+{ #category : #tests }
+NucleotideCountTest >> test04_CountAllNucleotidesInAStrandStrandWithMultipleNucleotides [
 	| result |
 
 	result := nucleotideCountCalculator nucleotideCountsStrand: 'AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC' .
 	self assert: result equals: ((Dictionary new) add: ('G'->17); add: ('T'->21); add: ('A'->20); add: ('C'->12); yourself)
 ]
 
-{ #category : #test }
-NucleotideCountTest >> testCountAllNucleotidesInAStrandStrandWithRepeatedNucleotide [
+{ #category : #tests }
+NucleotideCountTest >> test05_CountAllNucleotidesInAStrandStrandWithInvalidNucleotides [
 	| result |
 
-	result := nucleotideCountCalculator nucleotideCountsStrand: 'GGGGGGG' .
-	self assert: result equals: ((Dictionary new) add: ('G'->7); add: ('T'->0); add: ('A'->0); add: ('C'->0); yourself)
+	result := nucleotideCountCalculator nucleotideCountsStrand: 'AGXXACT' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'Invalid nucleotide in strand'); yourself)
 ]

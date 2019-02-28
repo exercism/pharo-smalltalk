@@ -82,12 +82,12 @@ Class {
 { #category : #config }
 LuhnTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'332517da-2b3f-0d00-a2ee-833309f0590c'
+	^'dfdb77be-4a3f-0d00-bb51-a203071d6982'
 ]
 
 { #category : #config }
 LuhnTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.4.0'
 ]
 
@@ -96,130 +96,130 @@ LuhnTest >> setUp [
 	luhnCalculator := Luhn new
 ]
 
-{ #category : #test }
-LuhnTest >> testASimpleValidSINThatBecomesInvalidIfReversed [
-	| result |
-
-	result := luhnCalculator validValue: '59' .
-	self assert: result equals: true
-]
-
-{ #category : #test }
-LuhnTest >> testASimpleValidSINThatRemainsValidIfReversed [
-	| result |
-
-	result := luhnCalculator validValue: '059' .
-	self assert: result equals: true
-]
-
-{ #category : #test }
-LuhnTest >> testASingleZeroIsInvalid [
-	| result |
-
-	result := luhnCalculator validValue: '0' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-LuhnTest >> testAValidCanadianSIN [
-	| result |
-
-	result := luhnCalculator validValue: '055 444 285' .
-	self assert: result equals: true
-]
-
-{ #category : #test }
-LuhnTest >> testInputDigit9IsCorrectlyConvertedToOutputDigit9 [
-	| result |
-
-	result := luhnCalculator validValue: '091' .
-	self assert: result equals: true
-]
-
-{ #category : #test }
-LuhnTest >> testInvalidCanadianSIN [
-	| result |
-
-	result := luhnCalculator validValue: '055 444 286' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-LuhnTest >> testInvalidCreditCard [
-	| result |
-
-	result := luhnCalculator validValue: '8273 1232 7352 0569' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-LuhnTest >> testMoreThanASingleZeroIsValid [
-	| result |
-
-	result := luhnCalculator validValue: '0000 0' .
-	self assert: result equals: true
-]
-
-{ #category : #test }
-LuhnTest >> testSingleDigitStringsCanNotBeValid [
+{ #category : #tests }
+LuhnTest >> test01_SingleDigitStringsCanNotBeValid [
 	| result |
 
 	result := luhnCalculator validValue: '1' .
 	self assert: result equals: false
 ]
 
-{ #category : #test }
-LuhnTest >> testSingleZeroWithSpaceIsInvalid [
+{ #category : #tests }
+LuhnTest >> test02_ASingleZeroIsInvalid [
 	| result |
 
-	result := luhnCalculator validValue: ' 0' .
+	result := luhnCalculator validValue: '0' .
 	self assert: result equals: false
 ]
 
-{ #category : #test }
-LuhnTest >> testStringsWithNondigitsIsInvalid [
+{ #category : #tests }
+LuhnTest >> test03_ASimpleValidSINThatRemainsValidIfReversed [
 	| result |
 
-	result := luhnCalculator validValue: ':9' .
+	result := luhnCalculator validValue: '059' .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+LuhnTest >> test04_ASimpleValidSINThatBecomesInvalidIfReversed [
+	| result |
+
+	result := luhnCalculator validValue: '59' .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+LuhnTest >> test05_AValidCanadianSIN [
+	| result |
+
+	result := luhnCalculator validValue: '055 444 285' .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+LuhnTest >> test06_InvalidCanadianSIN [
+	| result |
+
+	result := luhnCalculator validValue: '055 444 286' .
 	self assert: result equals: false
 ]
 
-{ #category : #test }
-LuhnTest >> testValidNumberWithAnEvenNumberOfDigits [
+{ #category : #tests }
+LuhnTest >> test07_InvalidCreditCard [
+	| result |
+
+	result := luhnCalculator validValue: '8273 1232 7352 0569' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+LuhnTest >> test08_ValidNumberWithAnEvenNumberOfDigits [
 	| result |
 
 	result := luhnCalculator validValue: '095 245 88' .
 	self assert: result equals: true
 ]
 
-{ #category : #test }
-LuhnTest >> testValidStringsWithANondigitAddedAtTheEndBecomeInvalid [
-	| result |
-
-	result := luhnCalculator validValue: '059a' .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-LuhnTest >> testValidStringsWithANondigitIncludedBecomeInvalid [
+{ #category : #tests }
+LuhnTest >> test09_ValidStringsWithANondigitIncludedBecomeInvalid [
 	| result |
 
 	result := luhnCalculator validValue: '055a 444 285' .
 	self assert: result equals: false
 ]
 
-{ #category : #test }
-LuhnTest >> testValidStringsWithPunctuationIncludedBecomeInvalid [
+{ #category : #tests }
+LuhnTest >> test10_ValidStringsWithANondigitAddedAtTheEndBecomeInvalid [
+	| result |
+
+	result := luhnCalculator validValue: '059a' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+LuhnTest >> test11_ValidStringsWithPunctuationIncludedBecomeInvalid [
 	| result |
 
 	result := luhnCalculator validValue: '055-444-285' .
 	self assert: result equals: false
 ]
 
-{ #category : #test }
-LuhnTest >> testValidStringsWithSymbolsIncludedBecomeInvalid [
+{ #category : #tests }
+LuhnTest >> test12_ValidStringsWithSymbolsIncludedBecomeInvalid [
 	| result |
 
 	result := luhnCalculator validValue: '055£ 444$ 285' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+LuhnTest >> test13_SingleZeroWithSpaceIsInvalid [
+	| result |
+
+	result := luhnCalculator validValue: ' 0' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+LuhnTest >> test14_MoreThanASingleZeroIsValid [
+	| result |
+
+	result := luhnCalculator validValue: '0000 0' .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+LuhnTest >> test15_InputDigit9IsCorrectlyConvertedToOutputDigit9 [
+	| result |
+
+	result := luhnCalculator validValue: '091' .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+LuhnTest >> test16_StringsWithNondigitsIsInvalid [
+	| result |
+
+	result := luhnCalculator validValue: ':9' .
 	self assert: result equals: false
 ]

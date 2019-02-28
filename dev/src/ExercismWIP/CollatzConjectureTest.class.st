@@ -44,12 +44,12 @@ Class {
 { #category : #config }
 CollatzConjectureTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'d0fe32da-2b3f-0d00-a308-55f509f0590c'
+	^'87669cbe-4a3f-0d00-bb6a-b167071d6982'
 ]
 
 { #category : #config }
 CollatzConjectureTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.2.1'
 ]
 
@@ -58,50 +58,50 @@ CollatzConjectureTest >> setUp [
 	collatzConjectureCalculator := CollatzConjecture new
 ]
 
-{ #category : #test }
-CollatzConjectureTest >> testDivideIfEven [
+{ #category : #tests }
+CollatzConjectureTest >> test01_ZeroStepsForOne [
+	| result |
+
+	result := collatzConjectureCalculator stepsNumber: 1 .
+	self assert: result equals: 0
+]
+
+{ #category : #tests }
+CollatzConjectureTest >> test02_DivideIfEven [
 	| result |
 
 	result := collatzConjectureCalculator stepsNumber: 16 .
 	self assert: result equals: 4
 ]
 
-{ #category : #test }
-CollatzConjectureTest >> testEvenAndOddSteps [
+{ #category : #tests }
+CollatzConjectureTest >> test03_EvenAndOddSteps [
 	| result |
 
 	result := collatzConjectureCalculator stepsNumber: 12 .
 	self assert: result equals: 9
 ]
 
-{ #category : #test }
-CollatzConjectureTest >> testLargeNumberOfEvenAndOddSteps [
+{ #category : #tests }
+CollatzConjectureTest >> test04_LargeNumberOfEvenAndOddSteps [
 	| result |
 
 	result := collatzConjectureCalculator stepsNumber: 1000000 .
 	self assert: result equals: 152
 ]
 
-{ #category : #test }
-CollatzConjectureTest >> testNegativeValueIsAnError [
-	| result |
-
-	result := collatzConjectureCalculator stepsNumber:  -15 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Only positive numbers are allowed'); yourself)
-]
-
-{ #category : #test }
-CollatzConjectureTest >> testZeroIsAnError [
+{ #category : #tests }
+CollatzConjectureTest >> test05_ZeroIsAnError [
 	| result |
 
 	result := collatzConjectureCalculator stepsNumber: 0 .
 	self assert: result equals: ((Dictionary new) add: ('error'->'Only positive numbers are allowed'); yourself)
 ]
 
-{ #category : #test }
-CollatzConjectureTest >> testZeroStepsForOne [
+{ #category : #tests }
+CollatzConjectureTest >> test06_NegativeValueIsAnError [
 	| result |
 
-	result := collatzConjectureCalculator stepsNumber: 1 .
-	self assert: result equals: 0
+	result := collatzConjectureCalculator stepsNumber:  -15 .
+	self assert: result equals: ((Dictionary new) add: ('error'->'Only positive numbers are allowed'); yourself)
 ]

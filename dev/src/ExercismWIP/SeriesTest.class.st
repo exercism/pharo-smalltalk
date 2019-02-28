@@ -38,12 +38,12 @@ Class {
 { #category : #config }
 SeriesTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'c06ed5d9-2b3f-0d00-a2ad-e1a209f0590c'
+	^'7c1b1ebe-4a3f-0d00-bb11-67a0071d6982'
 ]
 
 { #category : #config }
 SeriesTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.0.0'
 ]
 
@@ -52,82 +52,82 @@ SeriesTest >> setUp [
 	seriesCalculator := Series new
 ]
 
-{ #category : #test }
-SeriesTest >> testEmptySeriesIsInvalid [
-	| result |
-
-	result := seriesCalculator slicesSliceLength: 1 series: '' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'series cannot be empty'); yourself)
-]
-
-{ #category : #test }
-SeriesTest >> testSliceLengthCannotBeNegative [
-	| result |
-
-	result := seriesCalculator slicesSliceLength:  -1 series: '123' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'slice length cannot be negative'); yourself)
-]
-
-{ #category : #test }
-SeriesTest >> testSliceLengthCannotBeZero [
-	| result |
-
-	result := seriesCalculator slicesSliceLength: 0 series: '12345' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'slice length cannot be zero'); yourself)
-]
-
-{ #category : #test }
-SeriesTest >> testSliceLengthIsTooLarge [
-	| result |
-
-	result := seriesCalculator slicesSliceLength: 6 series: '12345' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'slice length cannot be greater than series length'); yourself)
-]
-
-{ #category : #test }
-SeriesTest >> testSlicesCanIncludeDuplicates [
-	| result |
-
-	result := seriesCalculator slicesSliceLength: 3 series: '777777' .
-	self assert: result equals: #('777' '777' '777' '777' )
-]
-
-{ #category : #test }
-SeriesTest >> testSlicesOfALongSeries [
-	| result |
-
-	result := seriesCalculator slicesSliceLength: 5 series: '918493904243' .
-	self assert: result equals: #('91849' '18493' '84939' '49390' '93904' '39042' '90424' '04243' )
-]
-
-{ #category : #test }
-SeriesTest >> testSlicesOfOneFromOne [
+{ #category : #tests }
+SeriesTest >> test01_SlicesOfOneFromOne [
 	| result |
 
 	result := seriesCalculator slicesSliceLength: 1 series: '1' .
 	self assert: result equals: #('1' )
 ]
 
-{ #category : #test }
-SeriesTest >> testSlicesOfOneFromTwo [
+{ #category : #tests }
+SeriesTest >> test02_SlicesOfOneFromTwo [
 	| result |
 
 	result := seriesCalculator slicesSliceLength: 1 series: '12' .
 	self assert: result equals: #('1' '2' )
 ]
 
-{ #category : #test }
-SeriesTest >> testSlicesOfTwo [
+{ #category : #tests }
+SeriesTest >> test03_SlicesOfTwo [
 	| result |
 
 	result := seriesCalculator slicesSliceLength: 2 series: '35' .
 	self assert: result equals: #('35' )
 ]
 
-{ #category : #test }
-SeriesTest >> testSlicesOfTwoOverlap [
+{ #category : #tests }
+SeriesTest >> test04_SlicesOfTwoOverlap [
 	| result |
 
 	result := seriesCalculator slicesSliceLength: 2 series: '9142' .
 	self assert: result equals: #('91' '14' '42' )
+]
+
+{ #category : #tests }
+SeriesTest >> test05_SlicesCanIncludeDuplicates [
+	| result |
+
+	result := seriesCalculator slicesSliceLength: 3 series: '777777' .
+	self assert: result equals: #('777' '777' '777' '777' )
+]
+
+{ #category : #tests }
+SeriesTest >> test06_SlicesOfALongSeries [
+	| result |
+
+	result := seriesCalculator slicesSliceLength: 5 series: '918493904243' .
+	self assert: result equals: #('91849' '18493' '84939' '49390' '93904' '39042' '90424' '04243' )
+]
+
+{ #category : #tests }
+SeriesTest >> test07_SliceLengthIsTooLarge [
+	| result |
+
+	result := seriesCalculator slicesSliceLength: 6 series: '12345' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'slice length cannot be greater than series length'); yourself)
+]
+
+{ #category : #tests }
+SeriesTest >> test08_SliceLengthCannotBeZero [
+	| result |
+
+	result := seriesCalculator slicesSliceLength: 0 series: '12345' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'slice length cannot be zero'); yourself)
+]
+
+{ #category : #tests }
+SeriesTest >> test09_SliceLengthCannotBeNegative [
+	| result |
+
+	result := seriesCalculator slicesSliceLength:  -1 series: '123' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'slice length cannot be negative'); yourself)
+]
+
+{ #category : #tests }
+SeriesTest >> test10_EmptySeriesIsInvalid [
+	| result |
+
+	result := seriesCalculator slicesSliceLength: 1 series: '' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'series cannot be empty'); yourself)
 ]

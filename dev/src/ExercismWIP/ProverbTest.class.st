@@ -34,12 +34,12 @@ Class {
 { #category : #config }
 ProverbTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'b721ead9-2b3f-0d00-a2c3-cf7209f0590c'
+	^'37cd39be-4a3f-0d00-bb27-6490071d6982'
 ]
 
 { #category : #config }
 ProverbTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.1.0'
 ]
 
@@ -48,50 +48,50 @@ ProverbTest >> setUp [
 	proverbCalculator := Proverb new
 ]
 
-{ #category : #test }
-ProverbTest >> testFourPiecesModernized [
+{ #category : #tests }
+ProverbTest >> test01_ZeroPieces [
 	| result |
 
-	result := proverbCalculator reciteStrings: #('pin' 'gun' 'soldier' 'battle' ) .
-	self assert: result equals: #('For want of a pin the gun was lost.' 'For want of a gun the soldier was lost.' 'For want of a soldier the battle was lost.' 'And all for the want of a pin.' )
+	result := proverbCalculator reciteStrings: #() .
+	self assert: result equals: #()
 ]
 
-{ #category : #test }
-ProverbTest >> testFullProverb [
-	| result |
-
-	result := proverbCalculator reciteStrings: #('nail' 'shoe' 'horse' 'rider' 'message' 'battle' 'kingdom' ) .
-	self assert: result equals: #('For want of a nail the shoe was lost.' 'For want of a shoe the horse was lost.' 'For want of a horse the rider was lost.' 'For want of a rider the message was lost.' 'For want of a message the battle was lost.' 'For want of a battle the kingdom was lost.' 'And all for the want of a nail.' )
-]
-
-{ #category : #test }
-ProverbTest >> testOnePiece [
+{ #category : #tests }
+ProverbTest >> test02_OnePiece [
 	| result |
 
 	result := proverbCalculator reciteStrings: #('nail' ) .
 	self assert: result equals: #('And all for the want of a nail.' )
 ]
 
-{ #category : #test }
-ProverbTest >> testThreePieces [
-	| result |
-
-	result := proverbCalculator reciteStrings: #('nail' 'shoe' 'horse' ) .
-	self assert: result equals: #('For want of a nail the shoe was lost.' 'For want of a shoe the horse was lost.' 'And all for the want of a nail.' )
-]
-
-{ #category : #test }
-ProverbTest >> testTwoPieces [
+{ #category : #tests }
+ProverbTest >> test03_TwoPieces [
 	| result |
 
 	result := proverbCalculator reciteStrings: #('nail' 'shoe' ) .
 	self assert: result equals: #('For want of a nail the shoe was lost.' 'And all for the want of a nail.' )
 ]
 
-{ #category : #test }
-ProverbTest >> testZeroPieces [
+{ #category : #tests }
+ProverbTest >> test04_ThreePieces [
 	| result |
 
-	result := proverbCalculator reciteStrings: #() .
-	self assert: result equals: #()
+	result := proverbCalculator reciteStrings: #('nail' 'shoe' 'horse' ) .
+	self assert: result equals: #('For want of a nail the shoe was lost.' 'For want of a shoe the horse was lost.' 'And all for the want of a nail.' )
+]
+
+{ #category : #tests }
+ProverbTest >> test05_FullProverb [
+	| result |
+
+	result := proverbCalculator reciteStrings: #('nail' 'shoe' 'horse' 'rider' 'message' 'battle' 'kingdom' ) .
+	self assert: result equals: #('For want of a nail the shoe was lost.' 'For want of a shoe the horse was lost.' 'For want of a horse the rider was lost.' 'For want of a rider the message was lost.' 'For want of a message the battle was lost.' 'For want of a battle the kingdom was lost.' 'And all for the want of a nail.' )
+]
+
+{ #category : #tests }
+ProverbTest >> test06_FourPiecesModernized [
+	| result |
+
+	result := proverbCalculator reciteStrings: #('pin' 'gun' 'soldier' 'battle' ) .
+	self assert: result equals: #('For want of a pin the gun was lost.' 'For want of a gun the soldier was lost.' 'For want of a soldier the battle was lost.' 'And all for the want of a pin.' )
 ]

@@ -45,12 +45,12 @@ Class {
 { #category : #config }
 ZipperTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'6c8e09da-2b3f-0d00-a2e3-12ca09f0590c'
+	^'9a026abe-4a3f-0d00-bb47-3b13071d6982'
 ]
 
 { #category : #config }
 ZipperTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.1.0'
 ]
 
@@ -59,106 +59,106 @@ ZipperTest >> setUp [
 	zipperCalculator := Zipper new
 ]
 
-{ #category : #test }
-ZipperTest >> testDataIsRetained [
+{ #category : #tests }
+ZipperTest >> test01_DataIsRetained [
 	| result |
 
 	result := zipperCalculator expectedValueOperations: ((Array new: 1) at: 1 put: ((Dictionary new) add: ('operation'->'to_tree'); yourself); yourself) initialTree: ((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself) .
 	self assert: result equals: ((Dictionary new) add: ('value'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself)); add: ('type'->'tree'); yourself)
 ]
 
-{ #category : #test }
-ZipperTest >> testDeadEnd [
-	| result |
-
-	result := zipperCalculator expectedValueOperations: ((Array new: 2) at: 1 put: ((Dictionary new) add: ('operation'->'left'); yourself); at: 2 put: ((Dictionary new) add: ('operation'->'left'); yourself); yourself) initialTree: ((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself) .
-	self assert: result equals: ((Dictionary new) add: ('value'->nil); add: ('type'->'zipper'); yourself)
-]
-
-{ #category : #test }
-ZipperTest >> testDifferentPathsToSameZipper [
-	| result |
-
-	result := zipperCalculator sameResultFromOperations: ((Array new: 3) at: 1 put: ((Dictionary new) add: ('operation'->'left'); yourself); at: 2 put: ((Dictionary new) add: ('operation'->'up'); yourself); at: 3 put: ((Dictionary new) add: ('operation'->'right'); yourself); yourself) initialTree: ((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself) .
-	self assert: result equals: ((Dictionary new) add: ('operations'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('operation'->'right'); yourself); yourself)); add: ('initialTree'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself)); add: ('type'->'zipper'); yourself)
-]
-
-{ #category : #test }
-ZipperTest >> testLeftRightAndUp [
-	| result |
-
-	result := zipperCalculator expectedValueOperations: ((Array new: 7) at: 1 put: ((Dictionary new) add: ('operation'->'left'); yourself); at: 2 put: ((Dictionary new) add: ('operation'->'up'); yourself); at: 3 put: ((Dictionary new) add: ('operation'->'right'); yourself); at: 4 put: ((Dictionary new) add: ('operation'->'up'); yourself); at: 5 put: ((Dictionary new) add: ('operation'->'left'); yourself); at: 6 put: ((Dictionary new) add: ('operation'->'right'); yourself); at: 7 put: ((Dictionary new) add: ('operation'->'value'); yourself); yourself) initialTree: ((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself) .
-	self assert: result equals: ((Dictionary new) add: ('value'->3); add: ('type'->'int'); yourself)
-]
-
-{ #category : #test }
-ZipperTest >> testLeftRightAndValue [
+{ #category : #tests }
+ZipperTest >> test02_LeftRightAndValue [
 	| result |
 
 	result := zipperCalculator expectedValueOperations: ((Array new: 3) at: 1 put: ((Dictionary new) add: ('operation'->'left'); yourself); at: 2 put: ((Dictionary new) add: ('operation'->'right'); yourself); at: 3 put: ((Dictionary new) add: ('operation'->'value'); yourself); yourself) initialTree: ((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself) .
 	self assert: result equals: ((Dictionary new) add: ('value'->3); add: ('type'->'int'); yourself)
 ]
 
-{ #category : #test }
-ZipperTest >> testSet_leftWithLeaf [
+{ #category : #tests }
+ZipperTest >> test03_DeadEnd [
 	| result |
 
-	result := zipperCalculator expectedValueOperations: ((Array new: 3) at: 1 put: ((Dictionary new) add: ('operation'->'left'); yourself); at: 2 put: ((Dictionary new) add: ('item'->((Dictionary new) add: ('value'->5); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('operation'->'set_left'); yourself); at: 3 put: ((Dictionary new) add: ('operation'->'to_tree'); yourself); yourself) initialTree: ((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself) .
-	self assert: result equals: ((Dictionary new) add: ('value'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->5); add: ('right'->nil); add: ('left'->nil); yourself)); yourself)); yourself)); add: ('type'->'tree'); yourself)
+	result := zipperCalculator expectedValueOperations: ((Array new: 2) at: 1 put: ((Dictionary new) add: ('operation'->'left'); yourself); at: 2 put: ((Dictionary new) add: ('operation'->'left'); yourself); yourself) initialTree: ((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself) .
+	self assert: result equals: ((Dictionary new) add: ('value'->nil); add: ('type'->'zipper'); yourself)
 ]
 
-{ #category : #test }
-ZipperTest >> testSet_rightWithNull [
+{ #category : #tests }
+ZipperTest >> test04_TreeFromDeepFocus [
 	| result |
 
-	result := zipperCalculator expectedValueOperations: ((Array new: 3) at: 1 put: ((Dictionary new) add: ('operation'->'left'); yourself); at: 2 put: ((Dictionary new) add: ('item'->nil); add: ('operation'->'set_right'); yourself); at: 3 put: ((Dictionary new) add: ('operation'->'to_tree'); yourself); yourself) initialTree: ((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself) .
-	self assert: result equals: ((Dictionary new) add: ('value'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->nil); add: ('left'->nil); yourself)); yourself)); add: ('type'->'tree'); yourself)
+	result := zipperCalculator expectedValueOperations: ((Array new: 3) at: 1 put: ((Dictionary new) add: ('operation'->'left'); yourself); at: 2 put: ((Dictionary new) add: ('operation'->'right'); yourself); at: 3 put: ((Dictionary new) add: ('operation'->'to_tree'); yourself); yourself) initialTree: ((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself) .
+	self assert: result equals: ((Dictionary new) add: ('value'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself)); add: ('type'->'tree'); yourself)
 ]
 
-{ #category : #test }
-ZipperTest >> testSet_rightWithSubtree [
-	| result |
-
-	result := zipperCalculator expectedValueOperations: ((Array new: 2) at: 1 put: ((Dictionary new) add: ('item'->((Dictionary new) add: ('value'->6); add: ('right'->((Dictionary new) add: ('value'->8); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->7); add: ('right'->nil); add: ('left'->nil); yourself)); yourself)); add: ('operation'->'set_right'); yourself); at: 2 put: ((Dictionary new) add: ('operation'->'to_tree'); yourself); yourself) initialTree: ((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself) .
-	self assert: result equals: ((Dictionary new) add: ('value'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->6); add: ('right'->((Dictionary new) add: ('value'->8); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->7); add: ('right'->nil); add: ('left'->nil); yourself)); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself)); add: ('type'->'tree'); yourself)
-]
-
-{ #category : #test }
-ZipperTest >> testSet_value [
-	| result |
-
-	result := zipperCalculator expectedValueOperations: ((Array new: 3) at: 1 put: ((Dictionary new) add: ('operation'->'left'); yourself); at: 2 put: ((Dictionary new) add: ('item'->5); add: ('operation'->'set_value'); yourself); at: 3 put: ((Dictionary new) add: ('operation'->'to_tree'); yourself); yourself) initialTree: ((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself) .
-	self assert: result equals: ((Dictionary new) add: ('value'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->5); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself)); add: ('type'->'tree'); yourself)
-]
-
-{ #category : #test }
-ZipperTest >> testSet_valueAfterTraversingUp [
-	| result |
-
-	result := zipperCalculator expectedValueOperations: ((Array new: 5) at: 1 put: ((Dictionary new) add: ('operation'->'left'); yourself); at: 2 put: ((Dictionary new) add: ('operation'->'right'); yourself); at: 3 put: ((Dictionary new) add: ('operation'->'up'); yourself); at: 4 put: ((Dictionary new) add: ('item'->5); add: ('operation'->'set_value'); yourself); at: 5 put: ((Dictionary new) add: ('operation'->'to_tree'); yourself); yourself) initialTree: ((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself) .
-	self assert: result equals: ((Dictionary new) add: ('value'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->5); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself)); add: ('type'->'tree'); yourself)
-]
-
-{ #category : #test }
-ZipperTest >> testSet_valueOnDeepFocus [
-	| result |
-
-	result := zipperCalculator expectedValueOperations: ((Array new: 4) at: 1 put: ((Dictionary new) add: ('operation'->'left'); yourself); at: 2 put: ((Dictionary new) add: ('operation'->'right'); yourself); at: 3 put: ((Dictionary new) add: ('item'->5); add: ('operation'->'set_value'); yourself); at: 4 put: ((Dictionary new) add: ('operation'->'to_tree'); yourself); yourself) initialTree: ((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself) .
-	self assert: result equals: ((Dictionary new) add: ('value'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->5); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself)); add: ('type'->'tree'); yourself)
-]
-
-{ #category : #test }
-ZipperTest >> testTraversingUpFromTop [
+{ #category : #tests }
+ZipperTest >> test05_TraversingUpFromTop [
 	| result |
 
 	result := zipperCalculator expectedValueOperations: ((Array new: 1) at: 1 put: ((Dictionary new) add: ('operation'->'up'); yourself); yourself) initialTree: ((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself) .
 	self assert: result equals: ((Dictionary new) add: ('value'->nil); add: ('type'->'zipper'); yourself)
 ]
 
-{ #category : #test }
-ZipperTest >> testTreeFromDeepFocus [
+{ #category : #tests }
+ZipperTest >> test06_LeftRightAndUp [
 	| result |
 
-	result := zipperCalculator expectedValueOperations: ((Array new: 3) at: 1 put: ((Dictionary new) add: ('operation'->'left'); yourself); at: 2 put: ((Dictionary new) add: ('operation'->'right'); yourself); at: 3 put: ((Dictionary new) add: ('operation'->'to_tree'); yourself); yourself) initialTree: ((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself) .
-	self assert: result equals: ((Dictionary new) add: ('value'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself)); add: ('type'->'tree'); yourself)
+	result := zipperCalculator expectedValueOperations: ((Array new: 7) at: 1 put: ((Dictionary new) add: ('operation'->'left'); yourself); at: 2 put: ((Dictionary new) add: ('operation'->'up'); yourself); at: 3 put: ((Dictionary new) add: ('operation'->'right'); yourself); at: 4 put: ((Dictionary new) add: ('operation'->'up'); yourself); at: 5 put: ((Dictionary new) add: ('operation'->'left'); yourself); at: 6 put: ((Dictionary new) add: ('operation'->'right'); yourself); at: 7 put: ((Dictionary new) add: ('operation'->'value'); yourself); yourself) initialTree: ((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself) .
+	self assert: result equals: ((Dictionary new) add: ('value'->3); add: ('type'->'int'); yourself)
+]
+
+{ #category : #tests }
+ZipperTest >> test07_Set_value [
+	| result |
+
+	result := zipperCalculator expectedValueOperations: ((Array new: 3) at: 1 put: ((Dictionary new) add: ('operation'->'left'); yourself); at: 2 put: ((Dictionary new) add: ('item'->5); add: ('operation'->'set_value'); yourself); at: 3 put: ((Dictionary new) add: ('operation'->'to_tree'); yourself); yourself) initialTree: ((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself) .
+	self assert: result equals: ((Dictionary new) add: ('value'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->5); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself)); add: ('type'->'tree'); yourself)
+]
+
+{ #category : #tests }
+ZipperTest >> test08_Set_valueAfterTraversingUp [
+	| result |
+
+	result := zipperCalculator expectedValueOperations: ((Array new: 5) at: 1 put: ((Dictionary new) add: ('operation'->'left'); yourself); at: 2 put: ((Dictionary new) add: ('operation'->'right'); yourself); at: 3 put: ((Dictionary new) add: ('operation'->'up'); yourself); at: 4 put: ((Dictionary new) add: ('item'->5); add: ('operation'->'set_value'); yourself); at: 5 put: ((Dictionary new) add: ('operation'->'to_tree'); yourself); yourself) initialTree: ((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself) .
+	self assert: result equals: ((Dictionary new) add: ('value'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->5); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself)); add: ('type'->'tree'); yourself)
+]
+
+{ #category : #tests }
+ZipperTest >> test09_Set_leftWithLeaf [
+	| result |
+
+	result := zipperCalculator expectedValueOperations: ((Array new: 3) at: 1 put: ((Dictionary new) add: ('operation'->'left'); yourself); at: 2 put: ((Dictionary new) add: ('item'->((Dictionary new) add: ('value'->5); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('operation'->'set_left'); yourself); at: 3 put: ((Dictionary new) add: ('operation'->'to_tree'); yourself); yourself) initialTree: ((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself) .
+	self assert: result equals: ((Dictionary new) add: ('value'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->5); add: ('right'->nil); add: ('left'->nil); yourself)); yourself)); yourself)); add: ('type'->'tree'); yourself)
+]
+
+{ #category : #tests }
+ZipperTest >> test10_Set_rightWithNull [
+	| result |
+
+	result := zipperCalculator expectedValueOperations: ((Array new: 3) at: 1 put: ((Dictionary new) add: ('operation'->'left'); yourself); at: 2 put: ((Dictionary new) add: ('item'->nil); add: ('operation'->'set_right'); yourself); at: 3 put: ((Dictionary new) add: ('operation'->'to_tree'); yourself); yourself) initialTree: ((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself) .
+	self assert: result equals: ((Dictionary new) add: ('value'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->nil); add: ('left'->nil); yourself)); yourself)); add: ('type'->'tree'); yourself)
+]
+
+{ #category : #tests }
+ZipperTest >> test11_Set_rightWithSubtree [
+	| result |
+
+	result := zipperCalculator expectedValueOperations: ((Array new: 2) at: 1 put: ((Dictionary new) add: ('item'->((Dictionary new) add: ('value'->6); add: ('right'->((Dictionary new) add: ('value'->8); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->7); add: ('right'->nil); add: ('left'->nil); yourself)); yourself)); add: ('operation'->'set_right'); yourself); at: 2 put: ((Dictionary new) add: ('operation'->'to_tree'); yourself); yourself) initialTree: ((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself) .
+	self assert: result equals: ((Dictionary new) add: ('value'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->6); add: ('right'->((Dictionary new) add: ('value'->8); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->7); add: ('right'->nil); add: ('left'->nil); yourself)); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself)); add: ('type'->'tree'); yourself)
+]
+
+{ #category : #tests }
+ZipperTest >> test12_Set_valueOnDeepFocus [
+	| result |
+
+	result := zipperCalculator expectedValueOperations: ((Array new: 4) at: 1 put: ((Dictionary new) add: ('operation'->'left'); yourself); at: 2 put: ((Dictionary new) add: ('operation'->'right'); yourself); at: 3 put: ((Dictionary new) add: ('item'->5); add: ('operation'->'set_value'); yourself); at: 4 put: ((Dictionary new) add: ('operation'->'to_tree'); yourself); yourself) initialTree: ((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself) .
+	self assert: result equals: ((Dictionary new) add: ('value'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->5); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself)); add: ('type'->'tree'); yourself)
+]
+
+{ #category : #tests }
+ZipperTest >> test13_DifferentPathsToSameZipper [
+	| result |
+
+	result := zipperCalculator sameResultFromOperations: ((Array new: 3) at: 1 put: ((Dictionary new) add: ('operation'->'left'); yourself); at: 2 put: ((Dictionary new) add: ('operation'->'up'); yourself); at: 3 put: ((Dictionary new) add: ('operation'->'right'); yourself); yourself) initialTree: ((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself) .
+	self assert: result equals: ((Dictionary new) add: ('operations'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('operation'->'right'); yourself); yourself)); add: ('initialTree'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself)); add: ('type'->'zipper'); yourself)
 ]

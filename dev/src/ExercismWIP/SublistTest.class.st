@@ -35,12 +35,12 @@ Class {
 { #category : #config }
 SublistTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'8c5328da-2b3f-0d00-a2fd-5d1409f0590c'
+	^'c5778ebe-4a3f-0d00-bb5f-b8dd071d6982'
 ]
 
 { #category : #config }
 SublistTest class >> version [
-	"Generated from specification: 26 February 2019"
+	"Generated from specification: 28 February 2019"
 	^'1.1.0'
 ]
 
@@ -49,138 +49,138 @@ SublistTest >> setUp [
 	sublistCalculator := Sublist new
 ]
 
-{ #category : #test }
-SublistTest >> testAtEndOfSuperlist [
-	| result |
-
-	result := sublistCalculator sublistListOne: #(0 1 2 3 4 5 ) listTwo: #(3 4 5 ) .
-	self assert: result equals: 'superlist'
-]
-
-{ #category : #test }
-SublistTest >> testAtStartOfSuperlist [
-	| result |
-
-	result := sublistCalculator sublistListOne: #(0 1 2 3 4 5 ) listTwo: #(0 1 2 ) .
-	self assert: result equals: 'superlist'
-]
-
-{ #category : #test }
-SublistTest >> testConsecutive [
-	| result |
-
-	result := sublistCalculator sublistListOne: #(1 1 2 ) listTwo: #(0 1 1 1 2 1 2 ) .
-	self assert: result equals: 'sublist'
-]
-
-{ #category : #test }
-SublistTest >> testDifferentLists [
-	| result |
-
-	result := sublistCalculator sublistListOne: #(1 2 3 ) listTwo: #(2 3 4 ) .
-	self assert: result equals: 'unequal'
-]
-
-{ #category : #test }
-SublistTest >> testEmptyListWithinNonEmptyList [
-	| result |
-
-	result := sublistCalculator sublistListOne: #() listTwo: #(1 2 3 ) .
-	self assert: result equals: 'sublist'
-]
-
-{ #category : #test }
-SublistTest >> testEmptyLists [
+{ #category : #tests }
+SublistTest >> test01_EmptyLists [
 	| result |
 
 	result := sublistCalculator sublistListOne: #() listTwo: #() .
 	self assert: result equals: 'equal'
 ]
 
-{ #category : #test }
-SublistTest >> testFalseStart [
+{ #category : #tests }
+SublistTest >> test02_EmptyListWithinNonEmptyList [
 	| result |
 
-	result := sublistCalculator sublistListOne: #(1 2 5 ) listTwo: #(0 1 2 3 1 2 5 6 ) .
+	result := sublistCalculator sublistListOne: #() listTwo: #(1 2 3 ) .
 	self assert: result equals: 'sublist'
 ]
 
-{ #category : #test }
-SublistTest >> testFirstListMissingElementFromSecondList [
-	| result |
-
-	result := sublistCalculator sublistListOne: #(1 3 ) listTwo: #(1 2 3 ) .
-	self assert: result equals: 'unequal'
-]
-
-{ #category : #test }
-SublistTest >> testInMiddleOfSuperlist [
-	| result |
-
-	result := sublistCalculator sublistListOne: #(0 1 2 3 4 5 ) listTwo: #(2 3 ) .
-	self assert: result equals: 'superlist'
-]
-
-{ #category : #test }
-SublistTest >> testListEqualsItself [
-	| result |
-
-	result := sublistCalculator sublistListOne: #(1 2 3 ) listTwo: #(1 2 3 ) .
-	self assert: result equals: 'equal'
-]
-
-{ #category : #test }
-SublistTest >> testNonEmptyListContainsEmptyList [
+{ #category : #tests }
+SublistTest >> test03_NonEmptyListContainsEmptyList [
 	| result |
 
 	result := sublistCalculator sublistListOne: #(1 2 3 ) listTwo: #() .
 	self assert: result equals: 'superlist'
 ]
 
-{ #category : #test }
-SublistTest >> testOrderMattersToAList [
+{ #category : #tests }
+SublistTest >> test04_ListEqualsItself [
 	| result |
 
-	result := sublistCalculator sublistListOne: #(1 2 3 ) listTwo: #(3 2 1 ) .
+	result := sublistCalculator sublistListOne: #(1 2 3 ) listTwo: #(1 2 3 ) .
+	self assert: result equals: 'equal'
+]
+
+{ #category : #tests }
+SublistTest >> test05_DifferentLists [
+	| result |
+
+	result := sublistCalculator sublistListOne: #(1 2 3 ) listTwo: #(2 3 4 ) .
 	self assert: result equals: 'unequal'
 ]
 
-{ #category : #test }
-SublistTest >> testSameDigitsButDifferentNumbers [
+{ #category : #tests }
+SublistTest >> test06_FalseStart [
 	| result |
 
-	result := sublistCalculator sublistListOne: #(1 0 1 ) listTwo: #(10 1 ) .
-	self assert: result equals: 'unequal'
-]
-
-{ #category : #test }
-SublistTest >> testSecondListMissingElementFromFirstList [
-	| result |
-
-	result := sublistCalculator sublistListOne: #(1 2 3 ) listTwo: #(1 3 ) .
-	self assert: result equals: 'unequal'
-]
-
-{ #category : #test }
-SublistTest >> testSublistAtEnd [
-	| result |
-
-	result := sublistCalculator sublistListOne: #(3 4 5 ) listTwo: #(0 1 2 3 4 5 ) .
+	result := sublistCalculator sublistListOne: #(1 2 5 ) listTwo: #(0 1 2 3 1 2 5 6 ) .
 	self assert: result equals: 'sublist'
 ]
 
-{ #category : #test }
-SublistTest >> testSublistAtStart [
+{ #category : #tests }
+SublistTest >> test07_Consecutive [
+	| result |
+
+	result := sublistCalculator sublistListOne: #(1 1 2 ) listTwo: #(0 1 1 1 2 1 2 ) .
+	self assert: result equals: 'sublist'
+]
+
+{ #category : #tests }
+SublistTest >> test08_SublistAtStart [
 	| result |
 
 	result := sublistCalculator sublistListOne: #(0 1 2 ) listTwo: #(0 1 2 3 4 5 ) .
 	self assert: result equals: 'sublist'
 ]
 
-{ #category : #test }
-SublistTest >> testSublistInMiddle [
+{ #category : #tests }
+SublistTest >> test09_SublistInMiddle [
 	| result |
 
 	result := sublistCalculator sublistListOne: #(2 3 4 ) listTwo: #(0 1 2 3 4 5 ) .
 	self assert: result equals: 'sublist'
+]
+
+{ #category : #tests }
+SublistTest >> test10_SublistAtEnd [
+	| result |
+
+	result := sublistCalculator sublistListOne: #(3 4 5 ) listTwo: #(0 1 2 3 4 5 ) .
+	self assert: result equals: 'sublist'
+]
+
+{ #category : #tests }
+SublistTest >> test11_AtStartOfSuperlist [
+	| result |
+
+	result := sublistCalculator sublistListOne: #(0 1 2 3 4 5 ) listTwo: #(0 1 2 ) .
+	self assert: result equals: 'superlist'
+]
+
+{ #category : #tests }
+SublistTest >> test12_InMiddleOfSuperlist [
+	| result |
+
+	result := sublistCalculator sublistListOne: #(0 1 2 3 4 5 ) listTwo: #(2 3 ) .
+	self assert: result equals: 'superlist'
+]
+
+{ #category : #tests }
+SublistTest >> test13_AtEndOfSuperlist [
+	| result |
+
+	result := sublistCalculator sublistListOne: #(0 1 2 3 4 5 ) listTwo: #(3 4 5 ) .
+	self assert: result equals: 'superlist'
+]
+
+{ #category : #tests }
+SublistTest >> test14_FirstListMissingElementFromSecondList [
+	| result |
+
+	result := sublistCalculator sublistListOne: #(1 3 ) listTwo: #(1 2 3 ) .
+	self assert: result equals: 'unequal'
+]
+
+{ #category : #tests }
+SublistTest >> test15_SecondListMissingElementFromFirstList [
+	| result |
+
+	result := sublistCalculator sublistListOne: #(1 2 3 ) listTwo: #(1 3 ) .
+	self assert: result equals: 'unequal'
+]
+
+{ #category : #tests }
+SublistTest >> test16_OrderMattersToAList [
+	| result |
+
+	result := sublistCalculator sublistListOne: #(1 2 3 ) listTwo: #(3 2 1 ) .
+	self assert: result equals: 'unequal'
+]
+
+{ #category : #tests }
+SublistTest >> test17_SameDigitsButDifferentNumbers [
+	| result |
+
+	result := sublistCalculator sublistListOne: #(1 0 1 ) listTwo: #(10 1 ) .
+	self assert: result equals: 'unequal'
 ]
