@@ -51,7 +51,7 @@ HammingTest class >> topics [
 	Topics are commonly found in (but not limited to): 
 		https://github.com/exercism/problem-specifications/blob/master/TOPICS.txt"
 
-	^ #('equality' 'loops' 'strings' 'transforming' 'exception_handling')
+	^ #('equality' 'loops' 'strings' 'exception_handling')
 ]
 
 { #category : #config }
