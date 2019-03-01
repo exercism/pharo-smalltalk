@@ -39,17 +39,10 @@ Class {
 }
 
 { #category : #config }
-HammingTest class >> core [
-	"Answer a Boolean, true if this is a core exercise"
-	
-	^true
-]
-
-{ #category : #config }
 HammingTest class >> difficulty [
 	"Answer an Integer, the difficulty level of the test, 1=easy, 10=hard"
 	
-	^1
+	^2
 ]
 
 { #category : #config }
@@ -65,7 +58,7 @@ HammingTest class >> topics [
 HammingTest class >> unlockedBy [
 	"Answer the exercise this is dependent on (if core, this is the exercise this one should appear after in the config.json)"
 	
-	^nil
+	^ReverseStringTest
 ]
 
 { #category : #config }

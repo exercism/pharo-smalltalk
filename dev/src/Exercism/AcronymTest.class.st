@@ -38,7 +38,7 @@ AcronymTest class >> followedBy [
 AcronymTest class >> topics [
 	"Answer a String Array of topics that classify the exercise"
 	
-	^#('strings' 'iteration' 'parsing' 'text-formatting')
+	^#('strings' 'iteration' 'parsing')
 ]
 
 { #category : #config }

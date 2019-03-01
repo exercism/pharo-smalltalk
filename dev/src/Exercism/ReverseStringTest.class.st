@@ -61,7 +61,7 @@ ReverseStringTest class >> difficulty [
 ReverseStringTest class >> followedBy [
 	"If this is a core exercise, answer the next one that follows otherwise nil"
 	
-	^'Hamming'
+	^''
 ]
 
 { #category : #config }
