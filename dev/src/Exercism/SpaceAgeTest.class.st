@@ -48,6 +48,13 @@ SpaceAgeTest class >> topics [
 ]
 
 { #category : #config }
+SpaceAgeTest class >> unlockedBy [
+	"Answer the exercise this is dependent on (if core, this is the exercise this one should appear after in the config.json)"
+	
+	^TwoFerTest  
+]
+
+{ #category : #config }
 SpaceAgeTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'7bec34be-4a3f-0d00-bb23-9404071d6982'
