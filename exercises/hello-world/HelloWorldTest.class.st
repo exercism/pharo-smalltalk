@@ -53,16 +53,16 @@ HelloWorldTest class >> difficulty [
 
 { #category : #helper }
 HelloWorldTest class >> followedBy [
-	"If this is a core exercise, answer the next one that follows otherwise nil (if not a core exercise, or the last one)"
+	"If this is a core exercise, answer the next one that follows otherwise nil"
 	
-	^'Leap'
+	^'TwoFer'
 ]
 
 { #category : #config }
 HelloWorldTest class >> topics [
 	"Answer a String Array of topics that classify the exercise"
 	
-	^#('introduction')
+	^#('introduction' 'strings')
 ]
 
 { #category : #config }

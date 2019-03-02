@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #exercism }
-Raindrops >> convertNumber: aNumber [
+Raindrops >> convertNumber: aNumber [ 
 
 	^ String
 		streamContents: [ :stream | 

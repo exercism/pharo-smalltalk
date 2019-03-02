@@ -26,7 +26,9 @@ phenomenon, go watch [this youtube video][video].
 
 ## Hint
 
-In Pharo, boolean operators are defined as messages. Study how ""and:"" and ""or:"" are implented in the classes True and False. Use the context menu item ""senders of..."" to view how other parts of Pharo use these operators.
+The tests for this exercise (and future exercises), are prefix numbered 'test0X_'. This is not a normal convention in Pharo, however to ease the study of the language it is useful to present tests in a useful and deterministic order.
+
+For this exercise, study the 'arithmetic' method category for class Number, as well as how boolean operators are also defined as messages. Notice how ""and:"" and ""or:"" are implented in the classes True and False. You can use the context menu item ""senders of..."" to view how other parts of Pharo use these operators.
 
 "
 Class {
@@ -52,7 +54,7 @@ LeapTest class >> difficulty [
 
 { #category : #helper }
 LeapTest class >> followedBy [
-	"If this is a core exercise, answer the next one that follows otherwise nil (if not a core exercise, or the last one)"
+	"If this is a core exercise, answer the next one that follows otherwise nil"
 	
 	^'ReverseString'
 ]
@@ -61,14 +63,14 @@ LeapTest class >> followedBy [
 LeapTest class >> topics [
 	"Answer a String Array of topics that classify the exercise"
 	
-	^#('booleans' 'conditionals' 'logic')
+	^#('math' 'conditionals' 'logic')
 ]
 
 { #category : #config }
 LeapTest class >> unlockedBy [
-	"Answer the exercise this is dependent on (if core, this is the exercise this one should appear after in the config.json)"
+	"Answer the exercise this is dependent on (if core, nil)"
 	
-	^HelloWorldTest  
+	^nil
 ]
 
 { #category : #config }
@@ -88,50 +90,55 @@ LeapTest >> setUp [
 	leapCalculator := Leap new
 ]
 
-{ #category : #test }
-LeapTest >> testYearDivisibleBy100NotDivisibleBy400InCommonYear [
+{ #category : #tests }
+LeapTest >> test01_YearNotDivisibleBy4CommonYear [
 	| result |
 
-	result := leapCalculator leapYear: 2100 .
+	result := leapCalculator leapYear: 2015 .
 	self assert: result equals: false
 ]
 
-{ #category : #test }
-LeapTest >> testYearDivisibleBy200NotDivisibleBy400InCommonYear [
-	| result |
-
-	result := leapCalculator leapYear: 1800 .
-	self assert: result equals: false
-]
-
-{ #category : #test }
-LeapTest >> testYearDivisibleBy2NotDivisibleBy4InCommonYear [
+{ #category : #tests }
+LeapTest >> test02_YearDivisibleBy2NotDivisibleBy4CommonYear [
 	| result |
 
 	result := leapCalculator leapYear: 1970 .
 	self assert: result equals: false
 ]
 
-{ #category : #test }
-LeapTest >> testYearDivisibleBy400InLeapYear [
-	| result |
-
-	result := leapCalculator leapYear: 2000 .
-	self assert: result equals: true
-]
-
-{ #category : #test }
-LeapTest >> testYearDivisibleBy4NotDivisibleBy100InLeapYear [
+{ #category : #tests }
+LeapTest >> test03_YearDivisibleBy4NotDivisibleBy100LeapYear [
 	| result |
 
 	result := leapCalculator leapYear: 1996 .
 	self assert: result equals: true
 ]
 
-{ #category : #test }
-LeapTest >> testYearNotDivisibleBy4InCommonYear [
+{ #category : #tests }
+LeapTest >> test04_YearDivisibleBy100NotDivisibleBy400CommonYear [
 	| result |
 
-	result := leapCalculator leapYear: 2015 .
+	result := leapCalculator leapYear: 2100 .
 	self assert: result equals: false
+]
+
+{ #category : #tests }
+LeapTest >> test05_YearDivisibleBy400LeapYear [
+	| result |
+
+	result := leapCalculator leapYear: 2000 .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+LeapTest >> test06_YearDivisibleBy200NotDivisibleBy400CommonYear [
+	| result |
+
+	result := leapCalculator leapYear: 1800 .
+	self assert: result equals: false
+]
+
+{ #category : #extra }
+LeapTest >> testMisuseOfSelector [
+	self verifySolution: leapCalculator class avoidsSelector: #isLeapYear
 ]
