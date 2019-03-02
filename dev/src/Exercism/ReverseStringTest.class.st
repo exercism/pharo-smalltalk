@@ -68,7 +68,7 @@ ReverseStringTest class >> followedBy [
 ReverseStringTest class >> topics [
 	"Answer a String Array of topics that classify the exercise"
 	
-	^#('strings' 'iteration' 'text-formatting')
+	^#('strings' 'iteration')
 ]
 
 { #category : #config }

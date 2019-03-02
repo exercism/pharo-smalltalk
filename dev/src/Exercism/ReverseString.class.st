@@ -28,10 +28,7 @@ ReverseString >> recursiveReverse: aString [
 { #category : #exercism }
 ReverseString >> reverseValue: aString [
 
-	^ ((aString size to: 1 by: -1)
-		inject: (WriteStream on: '')
-		into: [ :result :i | 
-			result
-				nextPut: (aString at: i);
-				yourself ]) contents
+	^ String streamContents: [ :stream |
+		aString size to: 1 by: -1 do: [ :i |
+			stream nextPut: (aString at: i) ]]
 ]
