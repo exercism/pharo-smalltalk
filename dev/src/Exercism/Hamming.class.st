@@ -23,7 +23,7 @@ Hamming >> distanceStrand1: aString1 strand2: aString2 [
 { #category : #exercism }
 Hamming >> errorMsgFor: aString1 and: aString2 [
 
-	(aString1 size ~= aString2 size and: [ aString1 notEmpty & aString2 notEmpty ])
+	aString1 notEmpty & aString2 notEmpty
 		ifTrue: [ ^ 'left and right strands must be of equal length' ].
 		
 	aString1 ifEmpty: [ ^ 'left strand must not be empty' ].
