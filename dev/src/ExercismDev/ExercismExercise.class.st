@@ -80,7 +80,9 @@ ExercismExercise >> gtInspectorDetailsIn: composite [
 					'unlocks' -> self unlockedExercises.
 					'topics' -> self topics.
 					'tests' -> self testCase.
+					'uuid' -> self uuid.
 					'followed by' -> self followedBy.
+					'hint' -> self hintText.
 					 } ];
 		column: 'Property' evaluated: #key;
 		column: 'Value' evaluated: [:v | 
@@ -93,6 +95,11 @@ ExercismExercise >> hash [
 	"Answer an integer value that is related to the identity of the receiver."
 
 	^ testCase hash
+]
+
+{ #category : #config }
+ExercismExercise >> hintText [
+	^self testCase hintText
 ]
 
 { #category : #accessing }

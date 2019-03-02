@@ -81,7 +81,7 @@ ReverseStringTest class >> unlockedBy [
 { #category : #config }
 ReverseStringTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'dc7b1fff-f0be-460d-b146-ee84c2acc10b'
+	^'bab40685-2f87-4d4f-8886-0a4d21a0d90d'
 ]
 
 { #category : #config }
