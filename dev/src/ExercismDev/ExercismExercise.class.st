@@ -55,7 +55,7 @@ ExercismExercise >> asJsonData [
 		'auto_approve' -> self isAutoApprove.
 		'unlocked_by' -> (self unlockedBy ifNotNil: [:e | e name]).
 		'difficulty' -> self difficulty.
-		'topics' -> self topics } asOrderedDictionary 
+		'topics' -> self topics }
 ]
 
 { #category : #accessing }
