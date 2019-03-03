@@ -7,12 +7,12 @@ data := {
 	'exercises' -> {
 		'name' -> 'hello'.
 		'topics' -> #('a' 'b' 'c') }
-	}. ""asOrderedDictionary""
+	}. 
 	
 String streamContents: [ :stream |
 	(STONJSONWriter on: stream) nextPut: data  ].
 
-Use #asOrderedDictionary if you need the output in  { } vs. the [ ] of an array.
+It is assumed that key order is important and so all Dictionaries are converted to OrderedDictionary when writing out the JSON
 "
 Class {
 	#name : #STONJSONWriter,
@@ -45,7 +45,9 @@ STONJSONWriter >> writeObject: anObject do: block [
 		(anObject isKindOf: OrderedCollection)
 			ifTrue: [ ^self writeList: anObject ].
 		(anObject isKindOf: OrderedDictionary)
-			ifTrue: [ ^self writeMap: anObject ]].
+			ifTrue: [ ^self writeMap: anObject ].
+		(anObject isKindOf: Dictionary)
+			ifTrue: [ ^self writeMap: anObject asOrderedDictionary ]].
 		
 	super writeObject: anObject do: block 
 ]

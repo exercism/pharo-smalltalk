@@ -57,7 +57,7 @@ ExercismConfigGenerator >> generateConfigFrom: aFileSystemReference [
 	config add: 'exercises' -> (coreExercises, bonusExercises).
 	
 	contents := String streamContents: [ :stream |
-		 (STONJSONWriter on: stream) nextPut: config asOrderedDictionary ].
+		 (STONJSONWriter on: stream) nextPut: config ].
 	
 	configFile 
 		ensureDelete; 
