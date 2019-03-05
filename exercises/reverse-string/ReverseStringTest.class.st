@@ -46,36 +46,16 @@ Class {
 }
 
 { #category : #config }
-ReverseStringTest class >> core [
-	"Answer a Boolean, true is this is a core exercise"
+ReverseStringTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
-	^true
-]
-
-{ #category : #config }
-ReverseStringTest class >> difficulty [
-	^1
-]
-
-{ #category : #helper }
-ReverseStringTest class >> followedBy [
-	"If this is a core exercise, answer the next one that follows otherwise nil"
+	^(self createExerciseAfter: LeapTest)
+		isCore: true;
+		difficulty: 1;
+		topics: #('strings' 'iteration');
+		yourself
 	
-	^''
-]
-
-{ #category : #config }
-ReverseStringTest class >> topics [
-	"Answer a String Array of topics that classify the exercise"
-	
-	^#('strings' 'iteration')
-]
-
-{ #category : #config }
-ReverseStringTest class >> unlockedBy [
-	"Answer the exercise this is dependent on (if core, this is the exercise this one should appear after in the config.json)"
-	
-	^nil 
+				
 ]
 
 { #category : #config }

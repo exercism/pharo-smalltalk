@@ -27,22 +27,15 @@ Class {
 }
 
 { #category : #config }
-SumOfMultiplesTest class >> difficulty [
-	^3
-]
-
-{ #category : #config }
-SumOfMultiplesTest class >> topics [
-	"Answer a String Array of topics that classify the exercise"
+SumOfMultiplesTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
-	^#('iteration' 'filtering' 'math')
-]
-
-{ #category : #config }
-SumOfMultiplesTest class >> unlockedBy [
-	"Answer the exercise this is dependent on (if core, this is the exercise this one should appear after in the config.json)"
-	
-	^LeapTest 
+	^(self createExerciseAfter: LeapTest)
+		isCore: false;
+		difficulty: 3;
+		topics: #('iteration' 'filtering' 'math');
+		yourself
+				
 ]
 
 { #category : #config }
