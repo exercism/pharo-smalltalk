@@ -34,42 +34,17 @@ Class {
 	#category : #'Exercism-HelloWorld'
 }
 
-{ #category : #config }
-HelloWorldTest class >> autoApprove [ 
-	^true
-]
-
-{ #category : #config }
-HelloWorldTest class >> core [
-	"Answer a Boolean, true is this is a core exercise"
-	
-	^true
-]
-
-{ #category : #config }
-HelloWorldTest class >> difficulty [
-	^1
-]
-
 { #category : #helper }
-HelloWorldTest class >> followedBy [
-	"If this is a core exercise, answer the next one that follows otherwise nil"
+HelloWorldTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise.
+	HelloWorld is a special case as it's the first exercise"
 	
-	^'TwoFer'
-]
-
-{ #category : #config }
-HelloWorldTest class >> topics [
-	"Answer a String Array of topics that classify the exercise"
-	
-	^#('introduction' 'strings')
-]
-
-{ #category : #config }
-HelloWorldTest class >> unlockedBy [
-	"Answer the exercise this is dependent on (if core, this is the exercise this one should appear after in the config.json)"
-	
-	^nil 
+	^(ExercismExercise for: self) 
+		isCore: true;
+		isAutoApproved: true;
+		difficulty: 1;
+		topics: #('introduction' 'strings');
+		yourself
 ]
 
 { #category : #config }

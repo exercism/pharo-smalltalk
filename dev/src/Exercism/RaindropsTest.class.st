@@ -32,28 +32,16 @@ Class {
 	#category : #'Exercism-Raindrops'
 }
 
-{ #category : #config }
-RaindropsTest class >> difficulty [
-	"Answer an Integer, the difficulty level of the test, 1=easy, 10=hard"
+{ #category : #helper }
+RaindropsTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
-	^1
-]
-
-{ #category : #config }
-RaindropsTest class >> topics [
-	"Answer a String Array of topics that classify the exercise.
-	Topics are commonly found in (but not limited to): 
-		https://github.com/exercism/problem-specifications/blob/master/TOPICS.txt"
-		
-	^#('strings' 'conditionals' 'logic')
+	^(self createExerciseAfter: LeapTest)
+		isCore: false;
+		difficulty: 1;
+		topics: #('strings' 'conditionals' 'logic');
+		yourself
 	
-]
-
-{ #category : #config }
-RaindropsTest class >> unlockedBy [
-	"Answer the exercise this is dependent on (if core, this is the exercise this one should appear after in the config.json)"
-	
-	^LeapTest
 ]
 
 { #category : #config }
