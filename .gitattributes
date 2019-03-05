@@ -7,4 +7,4 @@
 
 *.md text
 *.yml text
-*.json text eol=cr
+*.json text
