@@ -44,7 +44,7 @@ ExercismConfigGenerator class >> generateTo: aFilePathReference [
 
 { #category : #generation }
 ExercismConfigGenerator >> generateConfigFrom: aFileSystemReference [
-	"self generate "
+	"self generate"
 	
 	| configFile config coreExercises contents bonusExercises |
 	
@@ -57,7 +57,7 @@ ExercismConfigGenerator >> generateConfigFrom: aFileSystemReference [
 	config add: 'exercises' -> (coreExercises, bonusExercises).
 	
 	contents := String streamContents: [ :stream |
-		 (STONJSONWriter on: stream) nextPut: config ].
+		 (STONJSONWriter on: stream) nextPut: config asOrderedDictionary ].
 	
 	configFile 
 		ensureDelete; 
