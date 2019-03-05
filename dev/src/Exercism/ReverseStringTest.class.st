@@ -45,43 +45,23 @@ Class {
 	#category : #'Exercism-ReverseString'
 }
 
-{ #category : #config }
-ReverseStringTest class >> core [
-	"Answer a Boolean, true is this is a core exercise"
-	
-	^true
-]
-
-{ #category : #config }
-ReverseStringTest class >> difficulty [
-	^1
-]
-
 { #category : #helper }
-ReverseStringTest class >> followedBy [
-	"If this is a core exercise, answer the next one that follows otherwise nil"
+ReverseStringTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
-	^'Hamming'
-]
-
-{ #category : #config }
-ReverseStringTest class >> topics [
-	"Answer a String Array of topics that classify the exercise"
+	^(self createExerciseAfter: LeapTest)
+		isCore: true;
+		difficulty: 1;
+		topics: #('strings' 'iteration');
+		yourself
 	
-	^#('strings' 'iteration' 'text-formatting')
-]
-
-{ #category : #config }
-ReverseStringTest class >> unlockedBy [
-	"Answer the exercise this is dependent on (if core, this is the exercise this one should appear after in the config.json)"
-	
-	^nil 
+				
 ]
 
 { #category : #config }
 ReverseStringTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'dc7b1fff-f0be-460d-b146-ee84c2acc10b'
+	^'bab40685-2f87-4d4f-8886-0a4d21a0d90d'
 ]
 
 { #category : #config }

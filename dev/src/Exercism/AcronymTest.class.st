@@ -23,29 +23,12 @@ Class {
 }
 
 { #category : #config }
-AcronymTest class >> difficulty [
-	^2
-]
-
-{ #category : #config }
-AcronymTest class >> followedBy [
-	"If this is a core exercise, answer the next one that follows otherwise nil"
-	
-	^ReverseStringTest 
-]
-
-{ #category : #config }
-AcronymTest class >> topics [
-	"Answer a String Array of topics that classify the exercise"
-	
-	^#('strings' 'iteration' 'parsing' 'text-formatting')
-]
-
-{ #category : #config }
-AcronymTest class >> unlockedBy [
-	"Answer the exercise this is dependent on (if core, this is the exercise this one should appear after in the config.json)"
-	
-	^ReverseStringTest 
+AcronymTest class >> exercise [
+	^(self createExerciseAfter: ReverseStringTest)
+		isCore: false;
+		difficulty: 2;
+		topics: #('strings' 'iteration' 'parsing');
+		yourself
 ]
 
 { #category : #config }
