@@ -61,14 +61,14 @@ ReverseStringTest class >> difficulty [
 ReverseStringTest class >> followedBy [
 	"If this is a core exercise, answer the next one that follows otherwise nil"
 	
-	^'Hamming'
+	^''
 ]
 
 { #category : #config }
 ReverseStringTest class >> topics [
 	"Answer a String Array of topics that classify the exercise"
 	
-	^#('strings' 'iteration' 'text-formatting')
+	^#('strings' 'iteration')
 ]
 
 { #category : #config }
@@ -81,7 +81,7 @@ ReverseStringTest class >> unlockedBy [
 { #category : #config }
 ReverseStringTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'dc7b1fff-f0be-460d-b146-ee84c2acc10b'
+	^'bab40685-2f87-4d4f-8886-0a4d21a0d90d'
 ]
 
 { #category : #config }

@@ -4,30 +4,20 @@ This solution uses inject:into: to sum the runnning interval, as well as extract
 Class {
 	#name : #SumOfMultiples,
 	#superclass : #Object,
-	#instVars : [
-		'multiples'
-	],
 	#category : #'Exercism-SumOfMultiples'
 }
 
 { #category : #internal }
-SumOfMultiples >> anyMultiplesOf: aNumber [
-	^ self multiples anySatisfy: [ :multiple | aNumber isDivisibleBy: multiple ]
-]
-
-{ #category : #accessing }
-SumOfMultiples >> multiples [
-	^ multiples ifNil: [ multiples := Set new ]
+SumOfMultiples >> anyMultiplesOf: aNumber in: aCollection [
+	^ aCollection anySatisfy: [ :multiple | aNumber isDivisibleBy: multiple ]
 ]
 
 { #category : #exercism }
 SumOfMultiples >> sumFactors: aCollection limit: anInteger [
-	self multiples addAll: aCollection.
 	
 	^ (1 to: anInteger - 1)
-		inject: 0
-		into: [ :runningSum :aNumber | 
-			(self anyMultiplesOf: aNumber)
-				ifTrue: [ runningSum + aNumber ]
-				ifFalse: [ runningSum ] ]
+		sumNumbers: [ :factor | 
+			(self anyMultiplesOf: factor in: aCollection)
+				ifTrue: [ factor ]
+				ifFalse: [ 0 ] ]
 ]

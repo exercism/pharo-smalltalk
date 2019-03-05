@@ -28,17 +28,10 @@ AcronymTest class >> difficulty [
 ]
 
 { #category : #config }
-AcronymTest class >> followedBy [
-	"If this is a core exercise, answer the next one that follows otherwise nil"
-	
-	^ReverseStringTest 
-]
-
-{ #category : #config }
 AcronymTest class >> topics [
 	"Answer a String Array of topics that classify the exercise"
 	
-	^#('strings' 'iteration' 'parsing' 'text-formatting')
+	^#('strings' 'iteration' 'parsing')
 ]
 
 { #category : #config }

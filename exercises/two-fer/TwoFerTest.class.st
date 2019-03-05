@@ -28,7 +28,7 @@ Here are some examples:
 
 ## Hint
 
-In Pharo, classes are objects that can have methods, however unlike HelloWorld the tests for TwoFer have been written to call instance methods.
+In Pharo, classes are objects that can have instance and class methods, however unlike HelloWorld the tests for TwoFer have been written to call instance methods. Typically class methods are used for constructing new objects (like a contructor in other languages).
 "
 Class {
 	#name : #TwoFerTest,
@@ -40,22 +40,38 @@ Class {
 }
 
 { #category : #config }
+TwoFerTest class >> core [
+	"Answer a Boolean, true if this is a core exercise"
+	
+	^true
+]
+
+{ #category : #config }
 TwoFerTest class >> difficulty [
 	^1
+]
+
+{ #category : #helper }
+TwoFerTest class >> followedBy [
+	"Answer the String name of the next core exercise that follows, otherwise '' if nothing comes after.
+	
+	This data provides a hook for users to load the next core exercise"
+	
+	^'Leap'
 ]
 
 { #category : #config }
 TwoFerTest class >> topics [
 	"Answer a String Array of topics that classify the exercise"
 	
-	^#('strings' 'text-formatting')
+	^#('strings' 'text-formatting' 'refactoring')
 ]
 
 { #category : #config }
 TwoFerTest class >> unlockedBy [
 	"Answer the exercise this is dependent on (if core, this is the exercise this one should appear after in the config.json)"
 	
-	^HelloWorldTest 
+	^nil
 ]
 
 { #category : #config }
@@ -76,17 +92,17 @@ TwoFerTest >> setUp [
 	twoFer := TwoFer new.
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 TwoFerTest >> testANameGiven [
 	self assert: (twoFer who: 'Alice') equals: 'One for Alice, one for me.'
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 TwoFerTest >> testAnotherNameGiven [
 	self assert: (twoFer who: 'Bob') equals: 'One for Bob, one for me.' 
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 TwoFerTest >> testNoNameGiven [
 	self assert: twoFer who equals: 'One for you, one for me.' 
 	

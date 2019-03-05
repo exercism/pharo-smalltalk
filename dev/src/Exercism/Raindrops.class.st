@@ -1,3 +1,6 @@
+"
+I iterate through a list of associations to check the factor and obtain the correct rain noise.
+"
 Class {
 	#name : #Raindrops,
 	#superclass : #Object,
@@ -6,13 +9,14 @@ Class {
 
 { #category : #exercism }
 Raindrops >> convertNumber: aNumber [ 
-	| output |
-	output := WriteStream on: ''.
-	
-	{ 3-> 'Pling'. 5->'Plang'. 7->'Plong' } do: [ :factor |
-		aNumber \\ factor key = 0 ifTrue: [ output nextPutAll: factor value ]].
-			
-	output isEmpty ifTrue: [ output print: aNumber ].
-	
-	^output contents
+
+	^ String
+		streamContents: [ :stream | 
+			{(3 -> 'Pling'). (5 -> 'Plang'). (7 -> 'Plong')} 
+				do: [ :factor | 
+					aNumber \\ factor key = 0
+						ifTrue: [ stream nextPutAll: factor value ] ].
+					
+			stream isEmpty
+				ifTrue: [ stream print: aNumber ] ]
 ]

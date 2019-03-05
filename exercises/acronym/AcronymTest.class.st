@@ -31,7 +31,7 @@ AcronymTest class >> difficulty [
 AcronymTest class >> topics [
 	"Answer a String Array of topics that classify the exercise"
 	
-	^#('strings' 'iteration' 'parsing' 'text-formatting')
+	^#('strings' 'iteration' 'parsing')
 ]
 
 { #category : #config }
@@ -58,74 +58,74 @@ AcronymTest >> setUp [
 	acronymCalculator := Acronym new
 ]
 
-{ #category : #test }
-AcronymTest >> testAbbreviateAPhraseAllCapsWord [
-	| result |
-
-	result := acronymCalculator abbreviatePhrase: 'GNU Image Manipulation Program' .
-	self assert: result equals: 'GIMP'
-]
-
-{ #category : #test }
-AcronymTest >> testAbbreviateAPhraseApostrophes [
-	| result |
-
-	result := acronymCalculator abbreviatePhrase: 'Halley''s Comet' .
-	self assert: result equals: 'HC'
-]
-
-{ #category : #test }
-AcronymTest >> testAbbreviateAPhraseBasic [
+{ #category : #tests }
+AcronymTest >> test01_AbbreviateAPhraseBasic [
 	| result |
 
 	result := acronymCalculator abbreviatePhrase: 'Portable Network Graphics' .
 	self assert: result equals: 'PNG'
 ]
 
-{ #category : #test }
-AcronymTest >> testAbbreviateAPhraseConsecutiveDelimiters [
-	| result |
-
-	result := acronymCalculator abbreviatePhrase: 'Something - I made up from thin air' .
-	self assert: result equals: 'SIMUFTA'
-]
-
-{ #category : #test }
-AcronymTest >> testAbbreviateAPhraseLowercaseWords [
+{ #category : #tests }
+AcronymTest >> test02_AbbreviateAPhraseLowercaseWords [
 	| result |
 
 	result := acronymCalculator abbreviatePhrase: 'Ruby on Rails' .
 	self assert: result equals: 'ROR'
 ]
 
-{ #category : #test }
-AcronymTest >> testAbbreviateAPhrasePunctuation [
+{ #category : #tests }
+AcronymTest >> test03_AbbreviateAPhrasePunctuation [
 	| result |
 
 	result := acronymCalculator abbreviatePhrase: 'First In, First Out' .
 	self assert: result equals: 'FIFO'
 ]
 
-{ #category : #test }
-AcronymTest >> testAbbreviateAPhrasePunctuationWithoutWhitespace [
+{ #category : #tests }
+AcronymTest >> test04_AbbreviateAPhraseAllCapsWord [
+	| result |
+
+	result := acronymCalculator abbreviatePhrase: 'GNU Image Manipulation Program' .
+	self assert: result equals: 'GIMP'
+]
+
+{ #category : #tests }
+AcronymTest >> test05_AbbreviateAPhrasePunctuationWithoutWhitespace [
 	| result |
 
 	result := acronymCalculator abbreviatePhrase: 'Complementary metal-oxide semiconductor' .
 	self assert: result equals: 'CMOS'
 ]
 
-{ #category : #test }
-AcronymTest >> testAbbreviateAPhraseUnderscoreEmphasis [
-	| result |
-
-	result := acronymCalculator abbreviatePhrase: 'The Road _Not_ Taken' .
-	self assert: result equals: 'TRNT'
-]
-
-{ #category : #test }
-AcronymTest >> testAbbreviateAPhraseVeryLongAbbreviation [
+{ #category : #tests }
+AcronymTest >> test06_AbbreviateAPhraseVeryLongAbbreviation [
 	| result |
 
 	result := acronymCalculator abbreviatePhrase: 'Rolling On The Floor Laughing So Hard That My Dogs Came Over And Licked Me' .
 	self assert: result equals: 'ROTFLSHTMDCOALM'
+]
+
+{ #category : #tests }
+AcronymTest >> test07_AbbreviateAPhraseConsecutiveDelimiters [
+	| result |
+
+	result := acronymCalculator abbreviatePhrase: 'Something - I made up from thin air' .
+	self assert: result equals: 'SIMUFTA'
+]
+
+{ #category : #tests }
+AcronymTest >> test08_AbbreviateAPhraseApostrophes [
+	| result |
+
+	result := acronymCalculator abbreviatePhrase: 'Halley''s Comet' .
+	self assert: result equals: 'HC'
+]
+
+{ #category : #tests }
+AcronymTest >> test09_AbbreviateAPhraseUnderscoreEmphasis [
+	| result |
+
+	result := acronymCalculator abbreviatePhrase: 'The Road _Not_ Taken' .
+	self assert: result equals: 'TRNT'
 ]
