@@ -123,12 +123,13 @@ ExercismExerciseGenerator >> generateFrom: filePathReference [
 
 { #category : #generation }
 ExercismExerciseGenerator >> generateMetaDataFor: testClass description: testDescription version: versionString metaData: testMetaData [
-	| comment uuid src |
+	| comment uuid src exerciseInfo |
 	
 	"testClass package classTagForClass: testRoot"
+	exerciseInfo := ExercismExercise for: testClass.
 	
 	comment := (WriteStream on: '') 
-		nextPutAll: '# ', testClass  wordifiedName; cr; cr;
+		nextPutAll: '# ', exerciseInfo wordifiedName; cr; cr;
 		nextPutAll: testDescription; cr;
 		nextPutAll: '## Hint'; cr; cr;
 		nextPutAll: 'TBD'; cr;
