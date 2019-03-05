@@ -38,20 +38,15 @@ Class {
 }
 
 { #category : #config }
-SpaceAgeTest class >> difficulty [
-	^ 1
-]
+SpaceAgeTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 
-{ #category : #config }
-SpaceAgeTest class >> topics [
-	^ #('dictionaries' 'math')
-]
-
-{ #category : #config }
-SpaceAgeTest class >> unlockedBy [
-	"Answer the exercise this is dependent on (if core, this is the exercise this one should appear after in the config.json)"
-	
-	^TwoFerTest  
+	^(self createExerciseAfter: TwoFerTest)
+		isCore: false;
+		difficulty: 1;
+		topics: #('dictionaries' 'math');
+		yourself
+		
 ]
 
 { #category : #config }
