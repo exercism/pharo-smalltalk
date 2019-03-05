@@ -75,6 +75,11 @@ ExercismExercise >> difficulty: anInteger [
 	difficulty := anInteger
 ]
 
+{ #category : #accessing }
+ExercismExercise >> exerciseClassName [ 
+	^self testCase name withoutSuffix: 'Test'
+]
+
 { #category : #navigating }
 ExercismExercise >> followedBy [
 "testcase : ^self unlockedBy ifNil: ['' ] ifNotNil: [ :parent | parent followedBy ]"
@@ -195,7 +200,7 @@ ExercismExercise >> isUnlockedBy: anExercise [
 
 { #category : #accessing }
 ExercismExercise >> name [ 
-	^(self testCase name asString withoutSuffix: 'Test') asKebabCase 
+	^self exerciseClassName asKebabCase 
 ]
 
 { #category : #printing }
@@ -219,7 +224,7 @@ ExercismExercise >> solutionClass [
 	^ self testCase
 		ifNil: [ nil ]
 		ifNotNil:
-			[ :test | Smalltalk classNamed: (test name withoutSuffix: 'Test') ]
+			[ :test | Smalltalk classNamed: self exerciseClassName ]
 ]
 
 { #category : #accessing }
@@ -279,11 +284,11 @@ ExercismExercise >> version [
 { #category : #accessing }
 ExercismExercise >> wordifiedName [
 	"Answer the english readable name of the exercise"
-	
-	^String
-		streamContents: [ :aStream |
-			(self name asString withoutSuffix: 'Test') 
-				doWithIndex: [ :char :i |
+
+	^ String
+		streamContents: [ :aStream | 
+			self exerciseClassName 
+				doWithIndex: [ :char :i | 
 					(char isUppercase and: [ i > 1 ])
 						ifTrue: [ aStream space ].
 					aStream nextPut: char ] ]
