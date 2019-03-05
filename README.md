@@ -2,55 +2,66 @@
 
 ![build status](https://travis-ci.org/exercism/pharo-smalltalk.svg?branch=master)
 
-The Pharo exercism track is in alpha development. 
+This project is for creating and supporting Exercism exercises for Pharo Smalltalk.
 
-If you'd like to help out with testing please [sign up here](https://exercism.io/my/tracks/pharo).
-Until release we cannot sign up mentors, so for testing choose independent mode.  To restart testing, you can "leave" the track then rejoin. [Docs available here](https://exercism.io/my/tracks/pharo).  
+Note: The Pharo exercism track is in alpha development. 
 
-If you'd like to help out with development, see below.
+If you'd like to help out with testing please sign up for the track using this [hidden track link](https://exercism.io/my/tracks/pharo), and review the [setup documentation](https://exercism.io/my/tracks/pharo). 
+
+Until we release we have limited mentors, so when testing you many need to switch to independent mode if you can't get a timely response.  If you need to restart testing, you should "leave" the track then rejoin it.  
+
+If you want to help out with development, see below.
 
 ## Development Setup
 
-This repository is for the development of [Exercism](http://exercism.io) exercises for the [Pharo Smalltalk](http://pharo.org) programming language. It is expected that you are [familiar](./docs/RESOURCES.md) with development in Pharo and its use of git. If however, you are new to Pharo or Exercism, consider using [Exercism to learn Pharo](./docs/INSTALLATION.md), so you can help contribute in the future.
+This repository is for the development of [Exercism](http://exercism.io) exercises running in the [Pharo Smalltalk](http://pharo.org) programming environment. It is expected that you are already [familiar](./docs/RESOURCES.md) with development in Pharo and its use of git. If you are new to Pharo or Exercism, consider using [Exercism to learn Pharo](./docs/INSTALLATION.md), so you can then help contribute in the future.
 
 
-NOTE: Pharo support for Exercism is currently in beta and so its not publicly visible, however you can still preview it through [this link](https://exercism.io/tracks/pharo).
+NOTE: Pharo support for Exercism is in beta and not publicly visible, however you can still preview it through [this hidden link](https://exercism.io/tracks/pharo).
 
 
-You first need to ensure that you have a complete exercism development environment and have installed:
+To help with development, you first need to ensure that you have a complete exercism development environment and have installed:
 1. the [exercism command line interface](https://exercism.io/cli-walkthrough) and configured it to point to somewhere sensible for development (e.g. `exercism configure -w ~/development/exercism`)
-1. the exercism/[problem specifications](https://github.com/exercism/problem-specifications) repo in a subdirectory of the exercism workspace configured above (this repo is used to generate exercise readme.md files, and as a reference to the suggested tests)
-1. the [configlet](https://github.com/exercism/configlet#usage) linter/generator
+1. the Exercism [configlet](https://github.com/exercism/configlet#usage) linter/generator
 1. the exercism/[pharo](https://github.com/exercism/pharo) repo, as a staging repository to which you will generate exercises and assets to check-in (separately from coding in pharo). I suggest calling it something like `~/development/exercism/pharo-staging` to avoid any confusion (note: it can reside anywhere)
-
+1. (Optionally) cloned the exercism/[problem specifications](https://github.com/exercism/problem-specifications) repo in a subdirectory of the exercism workspace configured above (this repo was used to generate exercise readme.md files, and is a reference to the suggested tests)
 
 Next setup a Pharo environment for creating the actual coding examples. You need to load a development exercism baseline:
 
-1. Use [PharoLauncher](https://github.com/pharo-project/pharo-launcher) to create a fresh 7.0 (stable) development image, and then launch it (you can also use [zerconf](https://get.pharo.org/) if you are familiar with it)
-1. Clone `https://exercism/pharo-smalltalk` as a GitHub problject and specify `exercism` as the owner name, `pharo-smalltalk` as the project name. This will automatically specify a src directory of `dev/src`).
-1. Install the Metacello baseline `dev` (not the default) from the Iceberg by using the Metacello context menu. (e.g. right click on the "pharo-smalltalk" project you just cloned, and select the second option in the Metacello menu, and type ```dev```)
+1. Use [PharoLauncher](https://github.com/pharo-project/pharo-launcher) to create a fresh 7.0 (stable) development image, and launch it (you can also use [zerconf](https://get.pharo.org/) if you are familiar with it)
+1. Fork `https://exercism/pharo-smalltalk` on github  
+1. Clone `https://<your id>/pharo-smalltalk` as a GitHub project and specify `<your id>` as the owner name, `pharo-smalltalk` as the project name
+1. Install the Metacello baseline `dev` (not the default) in Iceberg using the Metacello context menu. (e.g. right click on the "pharo-smalltalk" project you just cloned, and select the second option in the Metacello menu, and type `dev`)
 
-
-If you have any TIMEOUT problems refer to the [user installation instructions](./docs/INSTALLATION.md), as you may  need to use https as a download protocol.
-
+If you have any TIMEOUT problems refer to the [user installation instructions](./docs/INSTALLATION.md), 
 
 ## Contributing
 
 We are keen to improve this track and show developers a different way of thinking about coding! :tada:
 
-Please read about how to [get involved in an Exercism track](https://github.com/exercism/docs/tree/master/contributing-to-language-tracks) and also be sure to read the [Exercism Code of Conduct](https://exercism.io/code-of-conduct).
+Please read how to [get involved in an Exercism track](https://github.com/exercism/docs/tree/master/contributing-to-language-tracks) and also be sure to read the [Exercism Code of Conduct](https://exercism.io/code-of-conduct).
 
 We welcome pull requests of all kinds. No contribution is too small, particularly those that provide fixes and improvements to existing exercises. Note that this track's exercises must conform to the [Exercism-wide standards](https://github.com/exercism/docs/tree/master/language-tracks/exercises), but if you're unsure about how to make a change, then open a GitHub issue, and we'll discuss it.
 
-We are currently making changes os it's easier to contribute, and the following instructions are WIP:
+### Completing an Exercise
 
-  * Check out the development baseline (as outlined above)
-  * find an exercise you like in the ExercismWIP package
-  * TDD a solution and adjust the tests accordingly (our generator is pretty basic - this said, corrections might be appropriate as PR's back to the upstream [problem-specification](https://github.com/exercism/problem-specifications) text)
-  * update the exercise meta data on the class side of the exercise (e.g. difficulty, unlockedBy, followedBy, Hint text etc).
-  * get your solution reviewed by starting a PR
+While there many ways to help, by far the easiest and most useful contribution is to complete a solution for any of the currently "open" exercise. 
+
+  * Ensure your image is caught up to the exercism/pharo-smalltalk master (and push any changes back to your fork)
+  * The exercises are all TestCases that been automatically generated from the aforementioned problem-specifications repository. You will find them as subclasses of ExercismTest in the ExercismWIP package.
+
+  * Each WIP exercise already has the problem description in its class comment, and if you run the tests, you can TDD a solution (in the debugger if you run the first test by itself).
+
+  * You may need to adjust the test if it's not idiomatic Smalltalk (our generator is pretty basic - however this said, some corrections might be appropriate as PR's back to the upstream [problem-specification](https://github.com/exercism/problem-specifications) text)
+  
+  * Update the exercise meta data on the class side of the exercise by overriding the #exercise method and filling in a difficlty, topics etc. You should also fill in some Hint text in the Test comment tab (at the bottom - replacing TBD) 
+  
   * update the package of the chosen example to Exercism (i.e. move it out of the WIP package)
-  * submit the final PR, and a maintainer will run the generator to create the Exercism assests (via configlet) and commit the final solution
+  * create a new branch in Iceberg with the name of the exercise you chose 
+  * Before submitting your pull request, Run all the tests for the Pharo exercises and ensure they all pass
+  * Now get your solution reviewed by pushing your branch to your fork and then starting a PR on exercism/pharo-Smalltalk 
+  * follow your PR and answer any ensuing questions
+  * finally submit any adjustments and a maintainer will run the generator to create the Exercism assets (via configlet) and commit the final solution so it appears on the site
 
 ### Conventions
 
@@ -66,15 +77,15 @@ Pharo exercism exercises are organised into sub-packages, which each contain a T
 
 To test an exercise run it from the built-in test runner by clicking on the test orb. The orb will turn green if the tests are successful, or orange or red if their are any failures or errors respectively. Alternatively you can run tests manually in the playground by evaluating:
 
-```
-<ExerciseName>Test suite run.
+```smalltalk
+<ExerciseName>Test suite run. "single exercise"
+
+AllExercismTests suite run. "all exercises"
 ```
 
 To test in a non-development image, you should follow the [user installation steps](./docs/INSTALLATION.md). If you 
 are using that image to test subsequent development baselines - you may need to delete the following development directories to ensure you get the latest code: 
 `./pharo/pharo-local/iceberg, ./pharo/pharo-local/package-cache`
-
-You will also need to delete any exercise directories that you have downloaded (e.g. `./hello-world, ./two-fer`).
 
 ### Coding Style
 
@@ -86,26 +97,14 @@ You should also make use of the built-in code formatter (meta-f in the editor) w
 
 If you plan to make significant or breaking changes, please open an issue so we can discuss it before merging. If this discussion is relevant to more than just the Pharo track, please also open an issue in [exercism/discussions](https://github.com/exercism/discussions/issues).
 
-### Verifying Your Changes
+### Publishing A Completed Exercise
 
-Before submitting your pull request, you should check your changes as follows:
+When an exercise has been reviewed and is ready to put on the site you need to follow some extra steps.
 
-1. Run all the tests for the Pharo exercises and ensure they all pass
-1. Generate the exercises and templates into your seperate pharo exercism repo (the staging repo)
-1. Run the Exercism-specific linter to verify the track
-1. Check in your changes in a branch and generate a pull request
+1. Clone a copy of the repository into a staging location (a directory without any special characters due to [issue 154](https://github.com/exercism/configlet/issues/154))
+1. Right click on the exercism Package and choose "Generate exercise meta data", this will generate exercise meta data in your seperate staging location
+1. Check in your changes into a branch and generate a pull request
 
-All the tests for Pharo exercises can be run from the top level of the repo with:
-
-```smalltalk
-AllExercismTests suite run.
-```
-
-To generate the templates, locate the ExercismGenerator class in your Pharo image (or pick Exercism | Generate Exercises... from the package context menu), and click on the generate triangle (class method). It prompts you for a location, which should be the `exercises` directory of the staging repo you checked out seperately.
-
-For the Exercism specific linting, please see the [linter documentation](https://github.com/exercism/docs/blob/master/language-tracks/configuration/linting.md). You should run the linter from the command line in the exercises directory of the staging repo
-
-Finally check-in your exercise and readme using a git cli or a tool like IntelliJ or VSCode. 
 
 ### Contributing a New Exercise
 
