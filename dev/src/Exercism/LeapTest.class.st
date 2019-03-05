@@ -41,36 +41,16 @@ Class {
 }
 
 { #category : #config }
-LeapTest class >> core [
-	"Answer a Boolean, true is this is a core exercise"
+LeapTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
-	^true
-]
-
-{ #category : #config }
-LeapTest class >> difficulty [
-	^1
-]
-
-{ #category : #helper }
-LeapTest class >> followedBy [
-	"If this is a core exercise, answer the next one that follows otherwise nil"
+	^(self createExerciseAfter: TwoFerTest)
+		isCore: true;
+		difficulty: 1;
+		topics: #('math' 'conditionals' 'logic');
+		yourself
 	
-	^'ReverseString'
-]
-
-{ #category : #config }
-LeapTest class >> topics [
-	"Answer a String Array of topics that classify the exercise"
-	
-	^#('math' 'conditionals' 'logic')
-]
-
-{ #category : #config }
-LeapTest class >> unlockedBy [
-	"Answer the exercise this is dependent on (if core, nil)"
-	
-	^nil
+				
 ]
 
 { #category : #config }

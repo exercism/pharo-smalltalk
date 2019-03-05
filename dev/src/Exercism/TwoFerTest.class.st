@@ -40,38 +40,15 @@ Class {
 }
 
 { #category : #config }
-TwoFerTest class >> core [
-	"Answer a Boolean, true if this is a core exercise"
+TwoFerTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
-	^true
-]
-
-{ #category : #config }
-TwoFerTest class >> difficulty [
-	^1
-]
-
-{ #category : #helper }
-TwoFerTest class >> followedBy [
-	"Answer the String name of the next core exercise that follows, otherwise '' if nothing comes after.
+	^(self createExerciseAfter: HelloWorldTest)
+		isCore: true;
+		difficulty: 1;
+		topics: #('strings' 'text-formatting' 'refactoring');
+		yourself
 	
-	This data provides a hook for users to load the next core exercise"
-	
-	^'Leap'
-]
-
-{ #category : #config }
-TwoFerTest class >> topics [
-	"Answer a String Array of topics that classify the exercise"
-	
-	^#('strings' 'text-formatting' 'refactoring')
-]
-
-{ #category : #config }
-TwoFerTest class >> unlockedBy [
-	"Answer the exercise this is dependent on (if core, this is the exercise this one should appear after in the config.json)"
-	
-	^nil
 ]
 
 { #category : #config }

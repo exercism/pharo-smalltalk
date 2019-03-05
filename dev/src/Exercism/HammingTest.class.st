@@ -39,26 +39,12 @@ Class {
 }
 
 { #category : #config }
-HammingTest class >> difficulty [
-	"Answer an Integer, the difficulty level of the test, 1=easy, 10=hard"
-	
-	^2
-]
-
-{ #category : #config }
-HammingTest class >> topics [
-	"Answer a String Array of topics that classify the exercise.
-	Topics are commonly found in (but not limited to): 
-		https://github.com/exercism/problem-specifications/blob/master/TOPICS.txt"
-
-	^ #('equality' 'loops' 'strings' 'exception_handling')
-]
-
-{ #category : #config }
-HammingTest class >> unlockedBy [
-	"Answer the exercise this is dependent on (if core, this is the exercise this one should appear after in the config.json)"
-	
-	^ReverseStringTest
+HammingTest class >> exercise [
+	^(self createExerciseAfter: ReverseStringTest)
+		isCore: false;
+		difficulty: 2;
+		topics: #('equality' 'loops' 'strings' 'exception_handling');
+		yourself
 ]
 
 { #category : #config }

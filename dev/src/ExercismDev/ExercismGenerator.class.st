@@ -56,18 +56,18 @@ ExercismGenerator >> createTagSnapshotFor: packageOrTag [
 ]
 
 { #category : #helper }
-ExercismGenerator >> generateReadmeHintFor: packageOrTag to: destinationDirectory [
+ExercismGenerator >> generateReadmeHintFor: anExercismExercise to: destinationDirectory [
 	"Generate markdown hints, that exercism configlet will pickup for readme.md files
 	see: https://github.com/exercism/docs/blob/master/language-tracks/exercises/anatomy/readmes.md#generating-a-readme"
-	
-	packageOrTag classes
-		detect: [ :c | c isTestCase ]
-		ifFound: [ :c | (destinationDirectory / 'hints.md') ensureCreateFile  
-				writeStreamDo:  [:stream | | hint |
-					(hint := c hintText) = 'TBD' ifTrue: [
-						self halt: 'Forgot to update Exercise hint for: ', c exercismName  ].
-					
-					stream nextPutAll: hint ]]
+
+	(destinationDirectory / 'hints.md') ensureCreateFile
+		writeStreamDo: [ :stream | 
+			| hint |
+			(hint := anExercismExercise hintText) = 'TBD'
+				ifTrue: [ 
+					self halt: 'Forgot to update Exercise hint for: ', anExercismExercise name ].
+				
+			stream nextPutAll: hint ]
 ]
 
 { #category : #helper }
@@ -94,15 +94,15 @@ ExercismGenerator >> generateSourceFilesFor: packageOrTag to: filePathString [
 		sourceDirectory: (solutionDirectoryRef relativeTo: exampleDirectoryRef) pathString;
 		writeSnapshot: (self createTagSnapshotFor: packageOrTag).
 
-	"Remove the extra package file as its not needed for Exercism"
+	"Remove the package file as its not needed for Exercism"
 	(solutionDirectoryRef / 'package.st') delete.
 	
-	self generateReadmeHintFor: packageOrTag to: metaDirectoryRef.
-	
 	"Move the test file down to the exerciseDirectory"
-	testClass := packageOrTag classes detect: [ :cls | cls isTestCase  ].
+	testClass := packageOrTag classes detect: [ :cls | cls isTestCase  ].	
 	testClassFilename := testClass name, '.class.st'.
 	(solutionDirectoryRef / testClassFilename) moveTo: exerciseDirectoryRef / testClassFilename.
+	
+	self generateReadmeHintFor: testClass exercise to: metaDirectoryRef.
 	
 	^exerciseDirectoryRef 
 
