@@ -45,7 +45,7 @@ Class {
 	#category : #'Exercism-ReverseString'
 }
 
-{ #category : #helper }
+{ #category : #config }
 ReverseStringTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	

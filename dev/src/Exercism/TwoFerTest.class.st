@@ -39,7 +39,7 @@ Class {
 	#category : #'Exercism-TwoFer'
 }
 
-{ #category : #helper }
+{ #category : #config }
 TwoFerTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	

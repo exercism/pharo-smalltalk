@@ -32,7 +32,7 @@ Class {
 	#category : #'Exercism-Raindrops'
 }
 
-{ #category : #helper }
+{ #category : #config }
 RaindropsTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	

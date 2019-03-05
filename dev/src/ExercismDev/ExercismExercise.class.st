@@ -52,7 +52,7 @@ ExercismExercise >> = anObject [
 	^ self uuid = anObject uuid
 ]
 
-{ #category : #accessing }
+{ #category : #converting }
 ExercismExercise >> asJsonData [
 	"Answer a collection of attributes"
 	
@@ -75,13 +75,13 @@ ExercismExercise >> difficulty: anInteger [
 	difficulty := anInteger
 ]
 
-{ #category : #accessing }
+{ #category : #navigating }
 ExercismExercise >> followedBy [
 "testcase : ^self unlockedBy ifNil: ['' ] ifNotNil: [ :parent | parent followedBy ]"
 	^ self class coreExercises detect: [ :ex | ex isUnlockedBy: self ] ifNone: [  nil ]
 ]
 
-{ #category : #'gt-inspector-extension' }
+{ #category : #'gt-inspector' }
 ExercismExercise >> gtInspectorDetailsIn: composite [
 	<gtInspectorPresentationOrder: 30>
 	^ composite table
@@ -125,7 +125,7 @@ ExercismExercise >> hintText [
 	^ ''
 ]
 
-{ #category : #comparing }
+{ #category : #initialization }
 ExercismExercise >> initialize [
 	super initialize.
 	self
@@ -170,12 +170,12 @@ ExercismExercise >> isDeprecated: anObject [
 	isDeprecated := anObject
 ]
 
-{ #category : #accessing }
+{ #category : #comparing }
 ExercismExercise >> isFirst [
 	^ self unlockedBy isNil
 ]
 
-{ #category : #accessing }
+{ #category : #comparing }
 ExercismExercise >> isFollowedBy: anExercismExercise [
 
 	self isFirst ifTrue: [ ^ true ].
@@ -186,7 +186,7 @@ ExercismExercise >> isFollowedBy: anExercismExercise [
 		ifFalse: [ self isFollowedBy: anExercismExercise unlockedBy ]
 ]
 
-{ #category : #accessing }
+{ #category : #comparing }
 ExercismExercise >> isUnlockedBy: anExercise [
 	^ self unlockedBy
 		ifNil: [ false ]
@@ -198,7 +198,7 @@ ExercismExercise >> name [
 	^(self testCase name asString withoutSuffix: 'Test') asKebabCase 
 ]
 
-{ #category : #accessing }
+{ #category : #printing }
 ExercismExercise >> printOn: aStream [
 	
 	aStream

@@ -37,7 +37,7 @@ Class {
 	#category : #'Exercism-SpaceAge'
 }
 
-{ #category : #helper }
+{ #category : #config }
 SpaceAgeTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 

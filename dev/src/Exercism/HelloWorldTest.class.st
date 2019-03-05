@@ -34,7 +34,7 @@ Class {
 	#category : #'Exercism-HelloWorld'
 }
 
-{ #category : #helper }
+{ #category : #config }
 HelloWorldTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise.
 	HelloWorld is a special case as it's the first exercise"

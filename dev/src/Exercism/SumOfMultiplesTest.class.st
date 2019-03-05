@@ -26,7 +26,7 @@ Class {
 	#category : #'Exercism-SumOfMultiples'
 }
 
-{ #category : #helper }
+{ #category : #config }
 SumOfMultiplesTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	

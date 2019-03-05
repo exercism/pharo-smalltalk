@@ -40,7 +40,7 @@ Class {
 	#category : #'Exercism-Leap'
 }
 
-{ #category : #helper }
+{ #category : #config }
 LeapTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
