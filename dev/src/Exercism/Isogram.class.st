@@ -6,3 +6,10 @@ Class {
 	#superclass : #Object,
 	#category : #'Exercism-Isogram'
 }
+
+{ #category : #exercism }
+Isogram >> isIsogramPhrase: aString [ 
+	| significantString |
+	significantString := aString reject: [ :c | c isSpaceSeparator | c isDashPunctuation ].
+	^significantString size = significantString asLowercase asSet size
+]
