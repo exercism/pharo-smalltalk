@@ -6,6 +6,8 @@ Class {
 
 { #category : #tests }
 ExercismTestTest >> testVerifySelectorUsageDetection [
+	self assert: true equals: true. "a selector to detect".
+	
 	self
 		should: [ ExercismTest new
 				verifySolution: ExercismTestTest
