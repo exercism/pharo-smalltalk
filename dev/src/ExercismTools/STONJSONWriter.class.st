@@ -25,6 +25,7 @@ STONJSONWriter class >> on: writeStream [
 	^ (super on: writeStream)
 			jsonMode: true;
 			prettyPrint: true;
+			newLine: String lf;
 			yourself
 ]
 
