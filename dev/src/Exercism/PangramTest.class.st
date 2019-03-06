@@ -11,7 +11,7 @@ insensitive. Input will not contain non-ASCII symbols.
 
 ## Hint
 
-TBD
+It pays off to carefully read the exercise description as this can simplify your solution and make it quite compact.
 
 "
 Class {
@@ -22,6 +22,18 @@ Class {
 	],
 	#category : #'Exercism-Pangram'
 }
+
+{ #category : #helper }
+PangramTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+	
+	^(self createExerciseAfter: IsogramTest)
+		isCore: false;
+		difficulty: 2;
+		topics: #('strings' 'filtering');
+		yourself
+	
+]
 
 { #category : #config }
 PangramTest class >> uuid [
