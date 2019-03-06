@@ -9,7 +9,7 @@ Given `""listen""` and a list of candidates like `""enlists"" ""google""
 
 ## Hint
 
-TBD
+As with Isogram, it's worth browsing what data types are already available in the system. Also remember to take the tests step by step and try to build up a solution bit by bit. The debugger can also be your friend, and remember that it's possible to evaluate any expression or variable to better visualise and and understand how it works.
 
 "
 Class {
@@ -18,8 +18,21 @@ Class {
 	#instVars : [
 		'anagramCalculator'
 	],
-	#category : #'ExercismWIP-Anagram'
+	#category : #'Exercism-Anagram'
 }
+
+{ #category : #helper }
+AnagramTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+	
+	^(self createExerciseAfter: IsogramTest)
+		isCore: false;
+		difficulty: 3;
+		topics: #('strings' 'filtering');
+		yourself
+	
+				
+]
 
 { #category : #config }
 AnagramTest class >> uuid [

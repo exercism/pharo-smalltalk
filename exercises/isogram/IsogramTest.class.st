@@ -16,7 +16,7 @@ The word *isograms*, however, is not an isogram, because the s repeats.
 
 ## Hint
 
-TBD
+There is a range of interesting data types in Pharo, it's worth taking the time to browse the  hierarchy of class Collection and reading some of the class comments and running some of the examples.
 
 "
 Class {
@@ -25,8 +25,20 @@ Class {
 	#instVars : [
 		'isogramCalculator'
 	],
-	#category : #'ExercismWIP-Isogram'
+	#category : #'Exercism-Isogram'
 }
+
+{ #category : #helper }
+IsogramTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+	
+	^(self createExerciseAfter: ReverseStringTest)
+		isCore: true;
+		difficulty: 2;
+		topics: #('strings' 'iteration');
+		yourself
+
+]
 
 { #category : #config }
 IsogramTest class >> uuid [
