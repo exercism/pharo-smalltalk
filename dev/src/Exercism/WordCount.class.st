@@ -4,6 +4,21 @@ Class {
 	#category : #'Exercism-WordCount'
 }
 
+{ #category : #alternative }
+WordCount >> countWordsSentence2: aString [
+	"An alternative solution that doesn't use regex"
+	| result |
+	
+	result := (self splitValidWordsIn: aString)
+		inject: Bag new
+		into: [ :wordBag :word | 
+			wordBag
+				add: word;
+				yourself ].
+			
+	^ result valuesAndCounts
+]
+
 { #category : #solution }
 WordCount >> countWordsSentence: aString [
 	| result |
@@ -35,7 +50,7 @@ WordCount >> removeQuotesFrom: wordList [
 
 { #category : #alternative }
 WordCount >> splitValidWordsIn: aString [
-	"Answer a list of valid lower case words that aren't quoted - Alternate example to use in place of the regex base #findValidWordsIn:"
+	"Answer a list of valid lower case words that aren't quoted - without regex"
 	
 	| cleanString words validCharacters |
 

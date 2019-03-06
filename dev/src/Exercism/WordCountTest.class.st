@@ -26,7 +26,7 @@ Class {
 	#category : #'Exercism-WordCount'
 }
 
-{ #category : #helper }
+{ #category : #config }
 WordCountTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
