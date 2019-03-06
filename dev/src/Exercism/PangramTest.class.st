@@ -20,7 +20,7 @@ Class {
 	#instVars : [
 		'pangramCalculator'
 	],
-	#category : #'ExercismWIP-Pangram'
+	#category : #'Exercism-Pangram'
 }
 
 { #category : #config }
