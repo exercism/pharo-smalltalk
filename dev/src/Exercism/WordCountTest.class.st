@@ -14,7 +14,7 @@ free: 1
 
 ## Hint
 
-TBD
+There are several ways to approach this, study class String carefully and take it step by step. You might change approach mid way through if the solution becomes more complicated.
 
 "
 Class {
@@ -23,8 +23,20 @@ Class {
 	#instVars : [
 		'wordCountCalculator'
 	],
-	#category : #'ExercismWIP-WordCount'
+	#category : #'Exercism-WordCount'
 }
+
+{ #category : #helper }
+WordCountTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+	
+	^(self createExerciseAfter: IsogramTest)
+		isCore: false;
+		difficulty: 3;
+		topics: #('strings' 'iteration' 'pattern_recognition');
+		yourself
+
+]
 
 { #category : #config }
 WordCountTest class >> uuid [
