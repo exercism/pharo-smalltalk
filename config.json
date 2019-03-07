@@ -2,7 +2,7 @@
 	"track_id" : "pharo",
 	"language" : "Pharo",
 	"active" : false,
-	"blurb" : "Pharo is an immersive, open source, Smalltalk programming experience. It features a pure object-oriented language and powerful user extendable environment, that focuses on simplicity and immediate feedback (think IDE and OS rolled into one). It's elegence gives it wide reach into banking, education, web development and even robotics",
+	"blurb" : "Pharo is an immersive, open source, Smalltalk programming experience. It has a pure object-oriented language and powerful user extendable environment, that focuses on simplicity and immediate feedback (think IDE and OS rolled into one). It's elegence gives it wide reach into banking, education, web development and even robotics.",
 	"solution_pattern" : "\\.meta/solution/\\w+\\.class\\.st",
 	"test_pattern" : "\\w+Test\\.class\\.st",
 	"exercises" : [
@@ -155,6 +155,19 @@
 				"iteration",
 				"filtering",
 				"math"
+			]
+		},
+		{
+			"slug" : "word-count",
+			"uuid" : "a5de8cbe-4a3f-0d00-bb5e-8947071d6982",
+			"core" : false,
+			"auto_approve" : false,
+			"unlocked_by" : "isogram",
+			"difficulty" : 3,
+			"topics" : [
+				"strings",
+				"iteration",
+				"pattern_recognition"
 			]
 		}
 	]
