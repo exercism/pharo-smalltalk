@@ -17,8 +17,8 @@ ExercismSubmitTest >> setUp [
 ExercismSubmitTest >> testSubmitHelloWorldClass [
 	|exercise downloadCmd|
 	exercise := 'hello-world'.
-	downloadCmd := ExercismDownload new track: 'pharo' exercise: exercise.
-	downloadCmd getSolutionData.
+	downloadCmd := ExercismDownloadCommand track: ExercismManager trackId exercise: exercise.
+	downloadCmd execute.
 	self assert: (ExercismSubmit class: HelloWorld) isOkay.
 	
 ]
@@ -27,8 +27,8 @@ ExercismSubmitTest >> testSubmitHelloWorldClass [
 ExercismSubmitTest >> testSubmitHelloWorldPackage [
 	|exercise downloadCmd|
 	exercise := 'hello-world'.
-	downloadCmd := ExercismDownload new track: 'pharo' exercise: exercise.
-	downloadCmd getSolutionData.
+	downloadCmd := ExercismDownloadCommand track: ExercismManager trackId exercise: exercise.
+	downloadCmd execute.
 	self assert: (ExercismSubmit exercise: exercise) isOkay.
 	
 ]

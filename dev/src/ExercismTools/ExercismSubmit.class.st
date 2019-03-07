@@ -55,7 +55,7 @@ ExercismSubmit >> buildRequest [
 		multiPartFormDataEntity addPart: solutionPart.
 	].
 	
-	solutionId := (ExercismManager solutionData at: packageTag name asKebabCase) at: 'id'.
+	solutionId := (ExercismManager solutionData at: packageTag name asKebabCase) id.
 	
 	httpclient 
 		url: ApiPath , '/' , solutionId;
