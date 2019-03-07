@@ -49,7 +49,7 @@ ExercismManager class >> welcome [
 
 { #category : #exercism }
 ExercismManager >> fetchFromExercismTo: package [
-	| exerciseName |
+	| exerciseName result |
 	
 	exerciseName := (UIManager default
 		request: 'Enter a valid exercism exercise (e.g. hello-world):')
@@ -57,8 +57,11 @@ ExercismManager >> fetchFromExercismTo: package [
 			ifNotNil: [ :value | self parseExerciseName: value ].
 		
 	UIManager default inform: 'Loading: ' , exerciseName.
-	(ExercismDownload exercise: exerciseName)
-		ifTrue: [ UIManager default inform: 'Success, Happy Coding' ]
+	result := (ExercismDownloadCommand track: self class trackId exercise: exerciseName)
+		execute;
+		installExercise.
+		
+	result ifTrue: [ UIManager default inform: 'Success, Happy Coding' ]
 ]
 
 { #category : #helpers }
