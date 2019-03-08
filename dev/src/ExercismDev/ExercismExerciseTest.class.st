@@ -35,6 +35,13 @@ ExercismExerciseTest >> testName [
 ]
 
 { #category : #tests }
+ExercismExerciseTest >> testPackageTag [
+	
+	self assert: HelloWorldTest exercise packageTag class equals: RPackageTag.
+	self assert: HelloWorldTest exercise packageTag name equals: #HelloWorld.	
+]
+
+{ #category : #tests }
 ExercismExerciseTest >> testSolutionClass [
 	
 	self assert: HelloWorldTest exercise solutionClass  equals: HelloWorld.

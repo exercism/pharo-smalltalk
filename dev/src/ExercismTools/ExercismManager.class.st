@@ -18,6 +18,17 @@ ExercismManager class >> default [
 ]
 
 { #category : #config }
+ExercismManager class >> exercismPackage [
+	"Answer the default exercism package, or create one if missing"
+	| packageOrganiser |
+	
+	packageOrganiser := RPackageOrganizer default.
+	^ packageOrganiser
+		packageNamed: self exercismPackageName
+		ifAbsent: [ packageOrganiser createPackageNamed: self exercismPackageName ]
+]
+
+{ #category : #config }
 ExercismManager class >> exercismPackageName [
 	^ 'Exercism'
 ]
@@ -36,13 +47,12 @@ ExercismManager class >> trackId [
 ExercismManager class >> welcome [
 	"Setup the initial environment for a new user"
 
-	| pkg |
-	pkg := RPackageOrganizer default
-		createPackageNamed: self exercismPackageName.
-		
-	pkg
+	| defaultPackage |
+	
+	defaultPackage := self exercismPackage.	
+	defaultPackage
 		moveClass: Welcome
-			toTag: (RPackageTag package: pkg name: 'Welcome').
+			toTag: (RPackageTag package: defaultPackage name: 'Welcome').
 			
 	Smalltalk tools browser openOnClass: Welcome selector: #testWelcome.
 ]
@@ -87,10 +97,10 @@ ExercismManager >> pathStringFor: aFileReference [
 ExercismManager >> submitToExercism: packageOrTag [
 	| exerciseName |
 	
-	exerciseName := packageOrTag name asKebabCase.
-	exerciseName = 'exercism' ifTrue: [ self error: 'Select the sub-package with your solution!' ].
+	(packageOrTag  = self class exercismPackage) 
+		ifTrue: [ self error: 'Select the sub-package with your solution!' ].
 				
-	ExercismSubmit exercise: exerciseName.
+	(ExercismSubmitCommand exercise: packageOrTag) execute.
 	
 	UIManager default inform: 'Successfully submitted solution!'
 ]

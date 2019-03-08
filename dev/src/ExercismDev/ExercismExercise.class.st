@@ -130,6 +130,11 @@ ExercismExercise >> hintText [
 	^ ''
 ]
 
+{ #category : #accessing }
+ExercismExercise >> id [ 
+	^self name
+]
+
 { #category : #initialization }
 ExercismExercise >> initialize [
 	super initialize.
@@ -201,6 +206,11 @@ ExercismExercise >> isUnlockedBy: anExercise [
 { #category : #accessing }
 ExercismExercise >> name [ 
 	^self exerciseClassName asKebabCase 
+]
+
+{ #category : #accessing }
+ExercismExercise >> packageTag [
+	^self testCase package classTagForClass: self testCase
 ]
 
 { #category : #printing }

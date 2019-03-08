@@ -2,10 +2,10 @@ Class {
 	#name : #ExercismDownloadCommand,
 	#superclass : #ExercismCommand,
 	#instVars : [
-		'track',
-		'exercise',
 		'solution',
-		'client'
+		'client',
+		'exerciseId',
+		'trackName'
 	],
 	#category : #'ExercismTools-Core'
 }
@@ -38,28 +38,32 @@ ExercismDownloadCommand >> downloadExerciseFiles [
 	| filesContentMap |
 	
 	filesContentMap := Dictionary new.
-	solution filenames do: [ :filename | 
-		httpclient path: solution baseURL, filename.
-		filesContentMap at: filename put: httpclient get.
-		(httpclient response code = 401) ifTrue: [ (ExUnauthorized badToken: ApiToken) signal ].
- 		].
-	^ filesContentMap 
+	
+	solution filenames
+		do: [ :filename | 
+			httpclient path: solution baseURL , filename.
+			filesContentMap at: filename put: httpclient get.
+			httpclient response code = 401
+				ifTrue: [ (ExUnauthorized badToken: ApiToken) signal ] ].
+			
+	^ filesContentMap
 ]
 
 { #category : #execution }
 ExercismDownloadCommand >> execute [
-	[	httpclient := self class newHttpClient.
-		self verifyToken.  	
+	[ 
+		httpclient := self class newHttpClient.
+		self verifyToken.
 		self getSolutionData.
 		solution files: self downloadExerciseFiles.
-		^solution.
-	] on: ExUnauthorized do: [ :error |
-	 	error configureToken 
-			ifTrue: [ error retry ]
-			ifFalse: [ self inform: 'Aborted' ]
-		].
-	
-	^nil
+		^ solution 
+	]
+		on: ExUnauthorized
+		do: [ :error | 
+			error configureToken
+				ifTrue: [ error retry ]
+				ifFalse: [ self inform: 'Aborted' ] ].
+	^ nil
 ]
 
 { #category : #internal }
@@ -75,15 +79,14 @@ ExercismDownloadCommand >> getSolutionData [
 	solution := ExercismSubmission data: (response at: 'solution').
 	
 	"cache the id for later (needs improving)"
-	ExercismManager solutionData at: exercise put: solution
+	ExercismManager solutionData at: exerciseId put: solution
 ]
 
 { #category : #internal }
 ExercismDownloadCommand >> installExercise [
-	| rpo exercismPackage  |
+	|  exercismPackage  |
 	
-	rpo := RPackageOrganizer default.
-	exercismPackage := rpo packageNamed: 'Exercism' ifAbsent: [ rpo createPackageNamed: 'Exercism' ].
+	exercismPackage := ExercismManager exercismPackage.
 	
 	solution sourceFilesDo:  
 	 [ :filename :contents | |parser|
@@ -101,8 +104,8 @@ ExercismDownloadCommand >> retrieveLatestSubmission [
 	
 	httpclient
 		path: self path , '/latest';
-		queryAt: 'track_id' put: track;
-		queryAt: 'exercise_id' put: exercise.
+		queryAt: 'track_id' put: trackName;
+		queryAt: 'exercise_id' put: exerciseId.
 		
 	responseString := httpclient get.
 	
@@ -118,7 +121,7 @@ ExercismDownloadCommand >> solution [
 ]
 
 { #category : #accessing }
-ExercismDownloadCommand >> track: aStringTrack exercise: aStringExercise [
-	track := aStringTrack.
-	exercise := aStringExercise asKebabCase.
+ExercismDownloadCommand >> track: aStringTrackName exercise: aStringExerciseId [
+	trackName := aStringTrackName.
+	exerciseId := aStringExerciseId asKebabCase.
 ]
