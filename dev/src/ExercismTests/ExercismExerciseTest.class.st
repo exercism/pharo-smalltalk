@@ -4,7 +4,7 @@ An ExercismExerciseTest is a test class for testing the behavior of ExercismExer
 Class {
 	#name : #ExercismExerciseTest,
 	#superclass : #TestCase,
-	#category : #'ExercismDev-Tests'
+	#category : #ExercismTests
 }
 
 { #category : #tests }

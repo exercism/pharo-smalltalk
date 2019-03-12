@@ -15,8 +15,11 @@ ExercismSubmission class >> baseUrlKey [
 
 { #category : #accessing }
 ExercismSubmission class >> data: exercismDataDictionary [
-	^self new
-		exercismData: exercismDataDictionary;
+	^ self new
+		exercismData:
+			(exercismDataDictionary
+				at: 'solution'
+				ifAbsent: [ self error: 'Invalid data format' ]);
 		yourself
 ]
 
@@ -58,11 +61,6 @@ ExercismSubmission >> exercismData: anObject [
 { #category : #accessing }
 ExercismSubmission >> filenames [
 	^self exercismData at: 'files'
-]
-
-{ #category : #testing }
-ExercismSubmission >> includesFilename: aString [ 
-	^self filenames includes: aString
 ]
 
 { #category : #accessing }

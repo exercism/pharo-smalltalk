@@ -1,3 +1,10 @@
+"
+I am the source code generator for creating exercism compatible source files that can be checked into the exercism/pharo project for students to download.
+
+You need to have checked out the exercism problem-specifications to point the generator to, to get the test case definitions.
+
+To try: self generate
+"
 Class {
 	#name : #ExercismExerciseGenerator,
 	#superclass : #Object,

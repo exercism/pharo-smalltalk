@@ -10,7 +10,7 @@ Class {
 		'unlockedBy',
 		'isDeprecated'
 	],
-	#category : #'ExercismDev-Core'
+	#category : #'ExercismTools-Meta'
 }
 
 { #category : #'instance creation' }

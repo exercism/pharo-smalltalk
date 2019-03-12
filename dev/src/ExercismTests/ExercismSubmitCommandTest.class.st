@@ -1,7 +1,7 @@
 Class {
 	#name : #ExercismSubmitCommandTest,
 	#superclass : #TestCase,
-	#category : #'ExercismTools-Tests'
+	#category : #ExercismTests
 }
 
 { #category : #tests }

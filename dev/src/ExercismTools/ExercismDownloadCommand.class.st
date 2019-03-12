@@ -61,7 +61,7 @@ ExercismDownloadCommand >> fetchLatestSubmission [
 		at: 'error'
 		ifPresent: [ :error | self error: (error at: 'message') ].
 		
-	^ExercismSubmission data: (response at: 'solution')
+	^ExercismSubmission data: response
 ]
 
 { #category : #accessing }

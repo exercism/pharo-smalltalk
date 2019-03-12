@@ -17,13 +17,22 @@ BaselineOfExercism >> baseline: spec [
 					with: [ spec requires: #('ExercismPharo70') ];
 				
 				package: 'Exercism'; "For dev group (as this has all solutions & tests)"
-				package: 'ExercismSystemTests'; 
-				package: 'ExercismMocking';
+				
+				package: 'ExercismMocking' 
+					with: [ spec requires: #('Mocketry') ];
+				package: 'ExercismTests'
+					with: [ spec requires: #('ExercismMocking') ];
+				package: 'ExercismSystemTests'
+					with: [ spec requires: #('ExercismTests') ];
+				
 				package: 'ExercismWIP';
 					
 				package: 'ExercismDev'
-					with: [ spec requires: #('ExercismTools' 'Exercism' 'ExercismSystemTests'
-						'ExercismWIP' 'Mocketry' 'OSProcess')];
+					with: [ spec requires: #(
+						'OSProcess' "For shelling out to configlet"
+						'ExercismTools' 'Exercism' 'ExercismWIP' 
+						'ExercismTests' 'ExercismSystemTests'
+						)];
 				
 				group: 'default'
 					with: #('ExercismTools');

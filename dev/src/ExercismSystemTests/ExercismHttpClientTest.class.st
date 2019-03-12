@@ -83,7 +83,9 @@ ExercismHttpClientTest >> testSolutionPatch [
 	client
 		patchSolution: submitId with: {
 			'test1.txt'->'"some sample text"'.
-			'test2.txt'->'"some more sample text"'}
+			'test2.txt'->'"some more sample text"'} asOrderedDictionary.
+			
+	self assert: (#(201 400) includes: client responseCode) description: 'Invalid response code' 
 		
 ]
 

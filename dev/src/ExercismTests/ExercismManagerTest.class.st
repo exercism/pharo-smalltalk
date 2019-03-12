@@ -4,7 +4,7 @@ An ExercismManagerTest is a test class for testing the behavior of ExercismManag
 Class {
 	#name : #ExercismManagerTest,
 	#superclass : #TestCase,
-	#category : #'ExercismTools-Tests'
+	#category : #ExercismTests
 }
 
 { #category : #tests }
