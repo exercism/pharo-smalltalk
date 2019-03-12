@@ -18,7 +18,8 @@ ExercismSubmitCommandTest >> testSubmitHelloWorldPackageWithMock [
 	
 	submitCmd := ExercismSubmitCommand from: mockHttpClient exercise: exercise packageTag.
 	
-	ExercismManager submissionIdFor: exercise id ifAbsent: [ 'fakeId' ].
+	(ExercismManager stub submissionIdFor: Any ifAbsent: Any) willReturn: 'fakeId'.
+	
 	submitCmd execute.
 	
 	mockHttpClient should verify.

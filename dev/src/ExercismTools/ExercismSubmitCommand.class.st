@@ -57,7 +57,7 @@ ExercismSubmitCommand >> execute [
 	solutionId := ExercismManager 
 		submissionIdFor: self package name asKebabCase 
 		ifAbsent: [ self error: 
-			('Unable to submit exercise "{1}", submission id not found!' format: exerciseName) ].
+			('Unable to submit exercise {1p}, submission id not found!' format: exerciseName) ].
 			
 	self httpClient
 		patchSolution: solutionId
