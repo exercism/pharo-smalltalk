@@ -14,8 +14,8 @@ SmalltalkCISpec {
       #packages : [ 'Exercism' ]
     },
     #exclude : {
-      #classes : [ #AllExercismTests, #ExercismTest, #ExercismSubmitTest, #ExercismDownloadTest ],
-      #packages : [ 'ExercismWIP', 'ExercismTools']
+      #classes : [ #AllExercismTests, #ExercismTest, #ExercismHttpClientTest ],
+      #packages : [ 'ExercismWIP', 'ExercismTools', 'ExercismDev', 'ExercismSystemTests']
     }
   }
 }
