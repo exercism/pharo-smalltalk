@@ -17,6 +17,8 @@ ExercismSubmitCommandTest >> testSubmitHelloWorldPackageWithMock [
 			(formData at: 'HelloWorld.st') should includeSubstring: 'sample solution' ].
 	
 	submitCmd := ExercismSubmitCommand from: mockHttpClient exercise: exercise packageTag.
+	
+	ExercismManager submissionIdFor: exercise id ifAbsent: [ 'fakeId' ].
 	submitCmd execute.
 	
 	mockHttpClient should verify.

@@ -50,13 +50,20 @@ ExercismSubmitCommand >> createExerciseMap [
 
 { #category : #execution }
 ExercismSubmitCommand >> execute [
+	| solutionId exerciseName |
 	
-	| solutionId |
+	exerciseName := self package name asKebabCase.
 	
-	solutionId := ExercismManager submissionIdFor: self package name asKebabCase.
-	self httpClient patchSolution: solutionId with: self buildSolutionData.
-	
-	^true
+	solutionId := ExercismManager 
+		submissionIdFor: self package name asKebabCase 
+		ifAbsent: [ self error: 
+			('Unable to submit exercise "{1}", submission id not found!' format: exerciseName) ].
+			
+	self httpClient
+		patchSolution: solutionId
+		with: self buildSolutionData.
+		
+	^ true
 ]
 
 { #category : #accessing }

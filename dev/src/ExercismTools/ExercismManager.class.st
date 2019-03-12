@@ -45,9 +45,9 @@ ExercismManager class >> storeSubmissionData: aSubmission [
 ]
 
 { #category : #cache }
-ExercismManager class >> submissionIdFor: exercismId [ 
+ExercismManager class >> submissionIdFor: exercismId ifAbsent: aBlock [
 
-	^self solutionData at: exercismId
+	^self solutionData at: exercismId ifAbsent: aBlock
 ]
 
 { #category : #config }
