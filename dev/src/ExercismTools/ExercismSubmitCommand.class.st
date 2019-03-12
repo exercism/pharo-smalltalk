@@ -1,6 +1,6 @@
 Class {
 	#name : #ExercismSubmitCommand,
-	#superclass : #ExercismCommand,
+	#superclass : #ExercismHttpCommand,
 	#instVars : [
 		'package'
 	],
@@ -11,58 +11,52 @@ Class {
 ExercismSubmitCommand class >> exercise: packageOrTag [
 	"Submit an exercism package"
 
-	"By default, don't submit TestCases with the solution"
-	
-	(packageOrTag classes reject: [ :class | class isTestCase ]) ifEmpty: [ self error: 'No classes to submit' ].
-	
-	^ self new
-			package: packageOrTag;
-			yourself
-]
-
-{ #category : #internal }
-ExercismSubmitCommand >> buildExerciseMap [
-	^ExTonelWriter new mappedSnapshot: self package snapshot
-]
-
-{ #category : #internal }
-ExercismSubmitCommand >> buildRequest [
-	| multiPartFormDataEntity solutionId exerciseMap |
-	exerciseMap := self buildExerciseMap.
-	multiPartFormDataEntity := ZnMultiPartFormDataEntity new.
-	self solutionClasses do: [ :solutionClass | 
-		|solutionPart solutionEntity|
+	^ self from: ExercismHttpClient new exercise: packageOrTag 
 		
-		solutionEntity := ZnByteArrayEntity bytes: (exerciseMap at: solutionClass name).
-		solutionPart := ZnMimePart exercismFieldName: 'files[]' 
-				fileName: solutionClass name, '.st' entity: solutionEntity.
-		multiPartFormDataEntity addPart: solutionPart ].
+]
+
+{ #category : #command }
+ExercismSubmitCommand class >> from: anHttpClient exercise: packageOrTag [
+	"Submit an exercism package"
+
+	"By default, don't submit TestCases with the solution"
+	(packageOrTag classes reject: [ :class | class isTestCase ])
+		ifEmpty: [ self error: 'No classes to submit' ].
+		
+	^ self new
+		httpClient: anHttpClient;
+		package: packageOrTag;
+		yourself
+]
+
+{ #category : #internal }
+ExercismSubmitCommand >> buildSolutionData [
+	| exerciseMap |
 	
-	solutionId := (ExercismManager solutionData at: self package name asKebabCase) id.
+	exerciseMap := self createExerciseMap.
 	
-	httpclient 
-		url: ApiPath , '/' , solutionId;
-		entity: multiPartFormDataEntity
+	^ self solutionClasses
+		inject: Dictionary new
+		into: [ :map :solutionClass | 
+			map
+				add: (solutionClass name , '.st') -> (exerciseMap at: solutionClass name);
+				yourself ]
+]
+
+{ #category : #internal }
+ExercismSubmitCommand >> createExerciseMap [
+	^ExTonelWriter new mappedSnapshot: self package snapshot
 ]
 
 { #category : #execution }
 ExercismSubmitCommand >> execute [
-	| status statusMsgs statusCode |
 	
-	self buildRequest.
-	httpclient patch.
+	| solutionId |
 	
-	status := httpclient response statusLine.
-	statusCode := status code.
+	solutionId := ExercismManager submissionIdFor: self package name asKebabCase.
+	self httpClient patchSolution: solutionId with: self buildSolutionData.
 	
-	statusMsgs := {201 -> 'SUCCESS'. 400 -> 'NO CHANGES'} asDictionary.
-	
-	(statusMsgs includesKey: statusCode)
-		ifTrue: [ self inform: 'Exercism submit solution - ' , (statusMsgs at: statusCode) value. ^true ].
-		
-	self error:
-			'Exercism submit solution - UNKNOWN ERROR (' , 
-			statusCode printString, ' ' , status reason , ')'
+	^true
 ]
 
 { #category : #accessing }
@@ -75,7 +69,7 @@ ExercismSubmitCommand >> package: anObject [
 	package := anObject
 ]
 
-{ #category : #execution }
+{ #category : #accessing }
 ExercismSubmitCommand >> solutionClasses [ 
 
 	^self package classes reject: [ :class | class isTestCase ]

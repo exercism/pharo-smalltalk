@@ -40,7 +40,7 @@ ExUnauthorized >> configureToken [
 	newToken := MorphicUIManager default requestText: requestText initialAnswer: initialAnswer title: title.
 	newToken ifNil: [ ^false ].
 	(newToken = badToken)  ifTrue: [ ^false ].
-	ExercismCommand configureToken: newToken.
+	ExercismHttpClient configureToken: newToken.
 	^true "retry"
 ]
 

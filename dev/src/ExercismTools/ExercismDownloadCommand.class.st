@@ -1,9 +1,8 @@
 Class {
 	#name : #ExercismDownloadCommand,
-	#superclass : #ExercismCommand,
+	#superclass : #ExercismHttpCommand,
 	#instVars : [
-		'solution',
-		'client',
+		'parser',
 		'exerciseId',
 		'trackName'
 	],
@@ -13,50 +12,29 @@ Class {
 { #category : #command }
 ExercismDownloadCommand class >> from: aClient track: trackId exercise: exerciseId [
 	^self new 
-		client: aClient;
+		httpClient: aClient;
 		track: trackId exercise: exerciseId;
 		yourself
 ]
 
 { #category : #command }
 ExercismDownloadCommand class >> track: trackId exercise: exerciseId [
-	^ self from: nil track: trackId exercise: exerciseId
-]
-
-{ #category : #accessing }
-ExercismDownloadCommand >> client [
-	^ client
-]
-
-{ #category : #accessing }
-ExercismDownloadCommand >> client: anObject [
-	client := anObject
-]
-
-{ #category : #internal }
-ExercismDownloadCommand >> downloadExerciseFiles [
-	| filesContentMap |
-	
-	filesContentMap := Dictionary new.
-	
-	solution filenames
-		do: [ :filename | 
-			httpclient path: solution baseURL , filename.
-			filesContentMap at: filename put: httpclient get.
-			httpclient response code = 401
-				ifTrue: [ (ExUnauthorized badToken: ApiToken) signal ] ].
-			
-	^ filesContentMap
+	^ self from: ExercismHttpClient new track: trackId exercise: exerciseId
 ]
 
 { #category : #execution }
 ExercismDownloadCommand >> execute [
-	[ 
-		httpclient := self class newHttpClient.
-		self verifyToken.
-		self getSolutionData.
-		solution files: self downloadExerciseFiles.
-		^ solution 
+	[ | submission |
+	
+	self httpClient verifyToken.
+	submission := self fetchLatestSubmission.
+	
+	self fetchExerciseFilesFor: submission.
+	self installExerciseFor: submission.
+
+	"cache the id for later (could be improved)"
+	ExercismManager storeSubmissionData: submission.
+	^ submission 
 	]
 		on: ExUnauthorized
 		do: [ :error | 
@@ -67,57 +45,59 @@ ExercismDownloadCommand >> execute [
 ]
 
 { #category : #internal }
-ExercismDownloadCommand >> getSolutionData [
+ExercismDownloadCommand >> fetchExerciseFilesFor: submission [
+
+	submission
+		populateFileContentWith: [ :filename | self httpClient getResource: filename ]
+]
+
+{ #category : #internal }
+ExercismDownloadCommand >> fetchLatestSubmission [
 	| response |
 	
-	response := self retrieveLatestSubmission.
+	response := self retrieveLatestData.
 	
 	response
 		at: 'error'
 		ifPresent: [ :error | self error: (error at: 'message') ].
 		
-	solution := ExercismSubmission data: (response at: 'solution').
-	
-	"cache the id for later (needs improving)"
-	ExercismManager solutionData at: exerciseId put: solution
-]
-
-{ #category : #internal }
-ExercismDownloadCommand >> installExercise [
-	|  exercismPackage  |
-	
-	exercismPackage := ExercismManager exercismPackage.
-	
-	solution sourceFilesDo:  
-	 [ :filename :contents | |parser|
-			parser := TonelParser on: contents readStream.
-         	parser document do: [:def | def load].
-	].
-	
-	SystemAnnouncer uniqueInstance announce: (RPackageRegistered to: exercismPackage).
-	^true
-]
-
-{ #category : #internal }
-ExercismDownloadCommand >> retrieveLatestSubmission [
-	| responseString |
-	
-	httpclient
-		path: self path , '/latest';
-		queryAt: 'track_id' put: trackName;
-		queryAt: 'exercise_id' put: exerciseId.
-		
-	responseString := httpclient get.
-	
-	httpclient response code = 401
-		ifTrue: [ (ExUnauthorized badToken: ApiToken) signal ].
-	
-	^ STON fromString: responseString
+	^ExercismSubmission data: (response at: 'solution')
 ]
 
 { #category : #accessing }
-ExercismDownloadCommand >> solution [
-	^ solution copy
+ExercismDownloadCommand >> initialize [
+	super initialize.
+	self parser: TonelParser new.
+]
+
+{ #category : #internal }
+ExercismDownloadCommand >> installExerciseFor: submission [
+
+	submission
+		sourceFilesDo:
+			[ :filename :contents | (self parser documentFrom: contents) do: [ :def | def load ] ].
+		
+	SystemAnnouncer uniqueInstance
+		announce: (RPackageRegistered to: ExercismManager exercismPackage).
+	
+]
+
+{ #category : #accessing }
+ExercismDownloadCommand >> parser [
+	^ parser
+]
+
+{ #category : #accessing }
+ExercismDownloadCommand >> parser: aTonelParser [
+	parser := aTonelParser
+]
+
+{ #category : #internal }
+ExercismDownloadCommand >> retrieveLatestData [
+	| responseString |
+		
+	responseString := self httpClient getLatestExercise: exerciseId for: trackName.
+	^ STON fromString: responseString
 ]
 
 { #category : #accessing }

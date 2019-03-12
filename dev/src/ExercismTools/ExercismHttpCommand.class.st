@@ -39,72 +39,31 @@ One concern is the key being permanently retained in Image, in a corner case whe
 Perhaps later we should consider storing key in voltatile memory and/or external file.  btw, where does the CLI store its key?
 "
 Class {
-	#name : #ExercismCommand,
+	#name : #ExercismHttpCommand,
 	#superclass : #Object,
 	#instVars : [
-		'httpclient'
-	],
-	#classVars : [
-		'ApiPath',
-		'ApiToken'
+		'httpClient'
 	],
 	#category : #'ExercismTools-Core'
 }
 
-{ #category : #command }
-ExercismCommand class >> configureToken: your_CLI_token [
-    "Get your_CLI_token at https://exercism.io/my/settings"
-    ApiToken := your_CLI_token.
-    ApiPath := '/v1/solutions'.
-]
-
-{ #category : #testing }
-ExercismCommand class >> hasToken [
-    ^ApiToken notNil 
-]
-
-{ #category : #internal }
-ExercismCommand class >> newHttpClient [
-    ^ ZnClient new 
-          https;
-          host: 'api.exercism.io';
-          headerAt: 'Authorization' put: 'Bearer ' , self token
-]
-
-{ #category : #command }
-ExercismCommand class >> reset [
-	ApiPath := nil.
-	ApiToken := nil.
+{ #category : #execution }
+ExercismHttpCommand >> execute [
+	"Execute the command, answers true if successful"
 	
+	^self subclassResponsibility 
 ]
 
 { #category : #accessing }
-ExercismCommand class >> token [
-	^ ApiToken ifNil: [  'not-configured' ]
+ExercismHttpCommand >> httpClient [
+	"Anser the HttpRetriever used to marshal http requests"
+	
+	^ httpClient
 ]
 
-{ #category : #testing }
-ExercismCommand class >> verifyToken [
-	self hasToken ifFalse: [ (ExUnauthorized badToken: nil) signal ].
-	^ true
-]
-
-{ #category : #internal }
-ExercismCommand >> initialize [
-	httpclient := self class newHttpClient.
-]
-
-{ #category : #internal }
-ExercismCommand >> path [
-	^ApiPath copy
-]
-
-{ #category : #'test support' }
-ExercismCommand >> responseCode [
-	^ httpclient response code
-]
-
-{ #category : #internal }
-ExercismCommand >> verifyToken [
-	^ self class verifyToken
+{ #category : #accessing }
+ExercismHttpCommand >> httpClient: anHttpClient [
+	"Set the HttpRetriever used to marshal http requests"
+	
+	httpClient := anHttpClient
 ]

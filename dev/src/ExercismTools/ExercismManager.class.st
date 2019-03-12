@@ -38,6 +38,18 @@ ExercismManager class >> solutionData [
 	^ SolutionData ifNil: [ SolutionData := Dictionary new ]
 ]
 
+{ #category : #cache }
+ExercismManager class >> storeSubmissionData: aSubmission [
+
+	self solutionData at: aSubmission exerciseId put: aSubmission submissionId 
+]
+
+{ #category : #cache }
+ExercismManager class >> submissionIdFor: exercismId [ 
+
+	^self solutionData at: exercismId
+]
+
 { #category : #config }
 ExercismManager class >> trackId [
 	^'pharo'
@@ -68,10 +80,9 @@ ExercismManager >> fetchFromExercismTo: package [
 		
 	UIManager default inform: 'Loading: ' , exerciseName.
 	result := (ExercismDownloadCommand track: self class trackId exercise: exerciseName)
-		execute;
-		installExercise.
+		execute.
 		
-	result ifTrue: [ UIManager default inform: 'Success, Happy Coding' ]
+	result ifNotNil: [ UIManager default inform: 'Success, Happy Coding' ]
 ]
 
 { #category : #helpers }
@@ -95,8 +106,7 @@ ExercismManager >> pathStringFor: aFileReference [
 
 { #category : #exercism }
 ExercismManager >> submitToExercism: packageOrTag [
-	| exerciseName |
-	
+		
 	(packageOrTag  = self class exercismPackage) 
 		ifTrue: [ self error: 'Select the sub-package with your solution!' ].
 				
@@ -107,7 +117,7 @@ ExercismManager >> submitToExercism: packageOrTag [
 
 { #category : #helper }
 ExercismManager >> verifyToken [
-	 [ ExercismCommand verifyToken ] on: ExUnauthorized do: [ ^false ].
+	 [ ExercismHttpClient verifyToken ] on: ExUnauthorized do: [ ^false ].
 	^true 
 
 ]

@@ -3,10 +3,15 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'exercismData',
-		'files'
+		'contentData'
 	],
 	#category : #'ExercismTools-Core'
 }
+
+{ #category : #accessing }
+ExercismSubmission class >> baseUrlKey [
+	^ 'file_download_base_url'
+]
 
 { #category : #accessing }
 ExercismSubmission class >> data: exercismDataDictionary [
@@ -15,14 +20,29 @@ ExercismSubmission class >> data: exercismDataDictionary [
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
-ExercismSubmission >> baseURL [
-	^self exercismData at: 'file_download_base_url'
+{ #category : #accessing }
+ExercismSubmission >> baseUrl [ 
+	^(self exercismData at: self class baseUrlKey) exPathString.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
+ExercismSubmission >> contentData [
+	^ contentData
+]
+
+{ #category : #accessing }
+ExercismSubmission >> contentData: anObject [
+	contentData := anObject
+]
+
+{ #category : #accessing }
 ExercismSubmission >> contentsFor: aString [ 
-	^self files at: aString
+	^self contentData at: aString
+]
+
+{ #category : #accessing }
+ExercismSubmission >> exerciseId [
+	^(self exercismData at: 'exercise') at: 'id'
 ]
 
 { #category : #accessing }
@@ -35,37 +55,50 @@ ExercismSubmission >> exercismData: anObject [
 	exercismData := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ExercismSubmission >> filenames [
 	^self exercismData at: 'files'
 ]
 
-{ #category : #accessing }
-ExercismSubmission >> files [
-	^ files
-]
-
-{ #category : #accessing }
-ExercismSubmission >> files: anObject [
-	files := anObject
-]
-
-{ #category : #'as yet unclassified' }
-ExercismSubmission >> id [
-	^self exercismData at: 'id'
-]
-
-{ #category : #'as yet unclassified' }
-ExercismSubmission >> includes: aString [ 
+{ #category : #testing }
+ExercismSubmission >> includesFilename: aString [ 
 	^self filenames includes: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
+ExercismSubmission >> initialize [ 
+
+	super initialize.
+	self contentData: Dictionary new.
+]
+
+{ #category : #retrieving }
+ExercismSubmission >> populateFileContentWith: aBlockClosure [ 
+	
+	| baseUrl |
+	baseUrl := self baseUrl.
+	
+	self sourceFilenames do: [ :filename |
+		self contentData at: filename put: (aBlockClosure value: baseUrl, filename) ]
+]
+
+{ #category : #accessing }
+ExercismSubmission >> sourceFilenames [
+	
+	^self filenames select: [:filename | filename endsWith: '.st' ]
+]
+
+{ #category : #retrieving }
 ExercismSubmission >> sourceFilesDo: aBlockClosure [ 
 	
-	self filenames select: [:filename | filename endsWith: '.st' ] thenDo: [ :filename |
+	self sourceFilenames do: [ :filename |
 		| source |
 
-		source := self files at: filename.
+		source := self contentsFor: filename.
 		aBlockClosure value: filename value: source ]
+]
+
+{ #category : #accessing }
+ExercismSubmission >> submissionId [
+	^self exercismData at: 'id'
 ]

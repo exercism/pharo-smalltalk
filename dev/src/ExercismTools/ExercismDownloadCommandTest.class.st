@@ -4,34 +4,56 @@ Class {
 	#category : #'ExercismTools-Tests'
 }
 
-{ #category : #running }
-ExercismDownloadCommandTest >> setUp [
-	[ ExercismCommand verifyToken ] on: ExUnauthorized do: [ :error |
-	 	error configureToken 
-			ifTrue: [ error retry ]
-			ifFalse: [ self inform: 'Aborted'. ^false ]
-		].
-]
-
 { #category : #tests }
 ExercismDownloadCommandTest >> testExecuteDownloading [
 	"Easy test for the first two steps of ExercismDownload>>execute since they don't mutate the system.
 	TODO: Further test required for installing the exercise (while avoiding conflicts and cleaning up after)"
 
-	| cmd client downloadResult sourceCode |
-	cmd := ExercismDownloadCommand
-		from: client
-		track: 'pharo'
-		exercise: 'hello-world'.
+	| cmd downloadResult sourceCode solutionData fileContents mockHttpClient mockParser mockClass baseUrl |
+	
+	baseUrl := 'http://data.io/res'.
+	solutionData := { 
+		'exercise' ->> { 'id'-> '12345'}. 
+		'solution' ->> { 
+			'files' -> {'test1.st'. 'test.md'. 'test2.st'}.
+			#submissionId -> 'testId'.
+			ExercismSubmission baseUrlKey -> baseUrl } } asOrderedDictionary.
+			
+	fileContents := 'Some source'.
+	
+	mockHttpClient := Mock new.
+	(mockHttpClient expect verifyToken).
+	(mockHttpClient expect getLatestExercise: 'test-world' for: 'pharo') 
+		willReturn: solutionData exJSON.
+	(mockHttpClient expect getResource: Any)  
+		specifying: [ :res :count | 
+			res should equal: (baseUrl,'/test{1}.st' format: count asString).
+			fileContents, count printString ].
 		
-	downloadResult := cmd execute.
+	mockParser := Mock new.
+	mockClass := Mock new.
+	
+	(mockParser expect documentFrom: Any)
+		specifying: [ :contents :count |  
+			contents should endWith: count printString.
+			{ mockClass } ].
+	
+	(cmd := ExercismDownloadCommand
+				from: mockHttpClient track: 'pharo' exercise: 'test-world')
+					parser: mockParser.
+		
+	downloadResult := cmd execute. 
+	
+	mockHttpClient should receive verifyToken once.
+	mockClass should receive load twice.
 	
 	self assert: downloadResult notNil description: 'Get a result'.
-	self assert: (downloadResult id notNil).
+	self assert: downloadResult submissionId equals: 'testId'.
 	
-	self assert: (downloadResult includes: 'HelloWorldTest.class.st').
-	sourceCode := downloadResult contentsFor: 'HelloWorldTest.class.st'.
+	self assert: (downloadResult includesFilename: 'test1.st').
+	
+	sourceCode := downloadResult contentsFor: 'test1.st'.
 	self assert: sourceCode notEmpty.
-	self assert: (sourceCode includesSubstring: '#name : #HelloWorldTest').
+	self assert: sourceCode equals: 'Some source1'
 		
 ]

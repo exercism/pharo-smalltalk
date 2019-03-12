@@ -29,6 +29,14 @@ STONJSONWriter class >> on: writeStream [
 			yourself
 ]
 
+{ #category : #'instance creation' }
+STONJSONWriter class >> streamContentsOf: anObject [
+	"Answer a String, the results of streaming the writer contents for anObject (simple conveniance method)"
+	
+	^String streamContents: [ :stream |
+			(self on: stream) nextPut: anObject ]
+]
+
 { #category : #writing }
 STONJSONWriter >> writeAssociation: association [
 	"Overriden to support associations"

@@ -9,25 +9,32 @@ Class {
 
 { #category : #tests }
 ExercismSubmissionTest >> testIteratingThroughSourceCode [
-	| object actualNames i expectedSources expectedNames |
+	| submission actualNames i  expectedNames populateList baseUrl |
 	
 	actualNames := #('a.st' 'b.st' 'readme.md').
 	expectedNames := actualNames first: 2.
+	baseUrl := 'http://data.io/res'.
 	
-	object := ExercismSubmission
-		data: {('files' -> actualNames)} asDictionary.
+	submission := ExercismSubmission
+		data: {
+			('files' -> actualNames).
+			(ExercismSubmission baseUrlKey -> baseUrl) } asDictionary.
 		
-	expectedSources := {
-	('a.st' -> 'source a').
-	('b.st' -> 'source b').
-	('readme.md' -> 'readme more')} asDictionary.
+	populateList := OrderedCollection new.
 	
-	object files: expectedSources.
-	i := 1.
+	submission populateFileContentWith: [ :filename |
+		populateList add: filename.
+		filename, ' contents' ].
 	
-	object
+	populateList should equal: (expectedNames collect: [:n | baseUrl exPathString, n ]).
+	
+	i := 0.
+	submission
 		sourceFilesDo: [ :name :contents | 
-			self assert: name equals: (expectedNames at: i).
-			self assert: contents equals: (expectedSources at: name).
-			i := i + 1 ]
+			i := i + 1.
+			name should equal: (expectedNames at: i).
+			contents should beginWith: baseUrl .
+			contents should endWith: name, ' contents'  ].
+		
+	self assert: i = 2 description: 'Should only process code files'.
 ]

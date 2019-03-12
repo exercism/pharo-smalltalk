@@ -4,27 +4,22 @@ Class {
 	#category : #'ExercismTools-Tests'
 }
 
-{ #category : #running }
-ExercismSubmitCommandTest >> setUp [
-	[ ExercismCommand verifyToken ] on: ExUnauthorized do: [ :error |
-	 	error configureToken 
-			ifTrue: [ error retry ]
-			ifFalse: [ self inform: 'Aborted'. ^false ]
-		].
-]
-
 { #category : #tests }
-ExercismSubmitCommandTest >> testSubmitHelloWorldPackage [
-	| exercise downloadCmd submitCmd |
+ExercismSubmitCommandTest >> testSubmitHelloWorldPackageWithMock [
+	| exercise submitCmd mockHttpClient |
 	
+	mockHttpClient := Mock new.
 	exercise := HelloWorldTest exercise.
-	downloadCmd := ExercismDownloadCommand
-		track: ExercismManager trackId
-		exercise: exercise id.
-		
-	downloadCmd execute.
+
+	(mockHttpClient expect patchSolution: Any with: Any)
+		specifying: [:solnId :formData | 
+			formData keys should include: 'HelloWorld.st'.
+			(formData at: 'HelloWorld.st') should includeSubstring: 'sample solution' ].
 	
-	submitCmd := ExercismSubmitCommand exercise: exercise packageTag.
-	self assert: submitCmd execute.
+	submitCmd := ExercismSubmitCommand from: mockHttpClient exercise: exercise packageTag.
+	submitCmd execute.
+	
+	mockHttpClient should verify.
+	(mockHttpClient should receive patchSolution: Any with: Any) once.
 	
 ]
