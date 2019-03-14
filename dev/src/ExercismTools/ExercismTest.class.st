@@ -1,3 +1,6 @@
+"
+I am the root of Exercism test examples but also provide a hook to specify some simple exercise metadata that can be used to generate the exercism config.json file (used by the platform to unlock exercises for users as they progress).
+"
 Class {
 	#name : #ExercismTest,
 	#superclass : #TestCase,

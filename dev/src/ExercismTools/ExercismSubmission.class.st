@@ -1,3 +1,6 @@
+"
+I am a wrapper over the exercism json submission data. Crucially I have a solutionId that is needed when submitting exercises that have been downloaded.
+"
 Class {
 	#name : #ExercismSubmission,
 	#superclass : #Object,

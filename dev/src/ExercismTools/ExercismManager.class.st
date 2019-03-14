@@ -86,13 +86,6 @@ ExercismManager >> parseExerciseName: aString [
 ]
 
 { #category : #exercism }
-ExercismManager >> pathStringFor: aFileReference [
-	| aPath |
-	aPath := aFileReference path.
-	^ String streamContents: [ :stream | aPath printOn: stream delimiter: aPath delimiter ]
-]
-
-{ #category : #exercism }
 ExercismManager >> submitToExercism: packageOrTag [
 		
 	(packageOrTag  = self class exercismPackage) 
@@ -101,13 +94,6 @@ ExercismManager >> submitToExercism: packageOrTag [
 	(ExercismSubmitCommand exercise: packageOrTag) execute.
 	
 	UIManager default inform: 'Successfully submitted solution!'
-]
-
-{ #category : #helper }
-ExercismManager >> verifyToken [
-	 [ ExercismHttpClient verifyToken ] on: ExUnauthorized do: [ ^false ].
-	^true 
-
 ]
 
 { #category : #exercism }

@@ -1,3 +1,8 @@
+"
+I am the meta data for an exercise, and am typically created from the #excerise method on any of the specified ExercismTest tests (which are a type of SUnit test).
+
+Of note is that the exercise submission id is stored as a class instance variable on ExercismTest.
+"
 Class {
 	#name : #ExercismExercise,
 	#superclass : #Object,
@@ -256,19 +261,19 @@ ExercismExercise >> printOn: aStream [
 	aStream nextPut: $)
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ExercismExercise >> solutionClasses [
 	"Answer the classes that are submitted to Exercism"
 	
 	^self exercisePackageTag classes reject: [ :c | c isTestCase  ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ExercismExercise >> solutionId [
 	^self testCase solutionId
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ExercismExercise >> solutionSources [
 	| sources |
 	
@@ -282,7 +287,7 @@ ExercismExercise >> solutionSources [
 				yourself ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #storing }
 ExercismExercise >> storeSolutionId: anId [
 	^self testCase solutionId: anId
 ]
@@ -336,7 +341,7 @@ ExercismExercise >> uuid [
 	^self testCase uuid
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #verifying }
 ExercismExercise >> verifySolutionForSubmission [
 	<todo>
 ]

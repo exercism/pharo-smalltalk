@@ -1,3 +1,6 @@
+"
+I am the command for dowloading an exercise and installing it in the image
+"
 Class {
 	#name : #ExercismDownloadCommand,
 	#superclass : #ExercismHttpCommand,

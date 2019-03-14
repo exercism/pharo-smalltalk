@@ -1,5 +1,6 @@
 "
-I am a wrapper over a ZnClient to streamline the HTTP interactions with exercism, and to also make it restable
+I am a wrapper over a ZnClient to streamline the HTTP interactions with exercism, and to also make it re-testable.
+
 "
 Class {
 	#name : #ExercismHttpClient,

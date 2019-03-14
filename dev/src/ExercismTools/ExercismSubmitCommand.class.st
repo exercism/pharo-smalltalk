@@ -1,3 +1,6 @@
+"
+I am a command for submitting an exercise. 
+"
 Class {
 	#name : #ExercismSubmitCommand,
 	#superclass : #ExercismHttpCommand,
