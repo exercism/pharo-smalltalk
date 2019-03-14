@@ -4,19 +4,20 @@ Extension { #name : #SpecOfShouldExpression }
 SpecOfShouldExpression >> verify [
 	"Verify the current mock, and ensure all of its expectations have been met. This eases the burdon on having to make a series of 'should receive' calls, however some may still be needed (in addition) for more complicated assertions."
 	
-	| expectedMessages occurredMessages missingMessages errorMsg selectors |
+	| receiversExpectedMessages occurredMessages missingMessages errorMsg selectors |
 	
-	<todo: 'need to handle occured msgs and ensure they occurred properly'>
 	
-	expectedMessages := (receiver currentMockBehaviour expectedMessages) 
+	receiversExpectedMessages := (receiver currentMockBehaviour expectedMessages) 
 			select: [:m | m asExpectedMessageSpec messageSend receiver basicMatches: receiver].
+			
 	occurredMessages := receiver currentMockBehaviour occurredMessages.
 	
-	missingMessages := expectedMessages
+	missingMessages := receiversExpectedMessages
 		collect: [ :m | m asExpectedMessageSpec ]
 		thenReject: [ :m | m basicMatches: occurredMessages ].
 		
-	missingMessages ifEmpty: [ ^self ].
+	missingMessages ifEmpty: [ ^receiversExpectedMessages collect: [ :m |
+			m asExpectedMessageSpec validate: occurredMessages  ]].
 		
 	selectors := missingMessages
 		collect: [ :msg | msg messageSend selector asSimpleValue asSymbol ].

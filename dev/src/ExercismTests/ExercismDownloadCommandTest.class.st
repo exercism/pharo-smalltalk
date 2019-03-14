@@ -9,7 +9,7 @@ ExercismDownloadCommandTest >> testExecuteDownloading [
 
 	| cmd exercise solutionData mockHttpClient mockParser mockClass baseUrl sourceCode |
 	
-	Any strictMocks: true.
+	Any strictMocks: false.
 	mockHttpClient := ExercismHttpClient asMock.
 	mockParser := TonelParser asMock.
 	
@@ -50,7 +50,7 @@ ExercismDownloadCommandTest >> testExecuteDownloading [
 			contents should endWith: count printString.
 			{ mockClass } ].
 		
-	mockClass expect load used: 2.
+	mockClass expect load exactly: 2.
 		
 	].
 	

@@ -1,10 +1,32 @@
 Extension { #name : #MockExpectedMessage }
 
 { #category : #'*ExercismMocking' }
+MockExpectedMessage >> atLeast: aCount [
+	"Mark the expectation as: should be used at least once. Useful when using #expecting"
+	
+	spec usage minCount: aCount
+]
+
+{ #category : #'*ExercismMocking' }
 MockExpectedMessage >> atLeastOnce [
 	"Mark the expectation as: should be used at least once. Useful when using #expecting"
 	
-	spec usage minCount: 1
+	self atLeast: 1
+]
+
+{ #category : #'*ExercismMocking' }
+MockExpectedMessage >> atMost: numberOfTimes [
+	
+	self use: numberOfTimes 
+]
+
+{ #category : #'*ExercismMocking' }
+MockExpectedMessage >> exactly: numberOfTimes [
+	"An alias for use:, but grammatical nices when used with #expecting:"
+	
+	self
+		atLeast: numberOfTimes;
+		atMost: numberOfTimes
 ]
 
 { #category : #'*ExercismMocking' }
@@ -17,11 +39,4 @@ MockExpectedMessage >> specifying: aBlock [
 			
 	actions add: (MockExpectedRevealingPluggableAction basedOn: aBlock).
 	spec usage minCount: 1
-]
-
-{ #category : #'*ExercismMocking' }
-MockExpectedMessage >> used: numberOfTimes [
-	"An alias for use:, but grammatical nices when used with #expecting:"
-	
-	self use: numberOfTimes 
 ]
