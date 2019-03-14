@@ -2,30 +2,29 @@ Class {
 	#name : #ExercismSubmitCommand,
 	#superclass : #ExercismHttpCommand,
 	#instVars : [
-		'package'
+		'exercise'
 	],
 	#category : #'ExercismTools-Core'
 }
 
 { #category : #command }
-ExercismSubmitCommand class >> exercise: packageOrTag [
+ExercismSubmitCommand class >> exercise: anExercismExercise [
 	"Submit an exercism package"
 
-	^ self from: ExercismHttpClient new exercise: packageOrTag 
+	^ self from: ExercismHttpClient new exercise: anExercismExercise 
 		
 ]
 
 { #category : #command }
-ExercismSubmitCommand class >> from: anHttpClient exercise: packageOrTag [
+ExercismSubmitCommand class >> from: anHttpClient exercise: exercise [
 	"Submit an exercism package"
 
 	"By default, don't submit TestCases with the solution"
-	(packageOrTag classes reject: [ :class | class isTestCase ])
-		ifEmpty: [ self error: 'No classes to submit' ].
+	exercise verifySolutionForSubmission.
 		
 	^ self new
 		httpClient: anHttpClient;
-		package: packageOrTag;
+		exercise: exercise;
 		yourself
 ]
 
@@ -35,7 +34,7 @@ ExercismSubmitCommand >> buildSolutionData [
 	
 	exerciseMap := self createExerciseMap.
 	
-	^ self solutionClasses
+	^ self exercise solutionClasses
 		inject: Dictionary new
 		into: [ :map :solutionClass | 
 			map
@@ -45,39 +44,25 @@ ExercismSubmitCommand >> buildSolutionData [
 
 { #category : #internal }
 ExercismSubmitCommand >> createExerciseMap [
-	^ExTonelWriter new mappedSnapshot: self package snapshot
+	^ExTonelWriter new mappedSnapshot: self exercise snapshot
 ]
 
 { #category : #execution }
 ExercismSubmitCommand >> execute [
-	| solutionId exerciseName |
 	
-	exerciseName := self package name asKebabCase.
-	
-	solutionId := ExercismManager 
-		submissionIdFor: self package name asKebabCase 
-		ifAbsent: [ self error: 
-			('Unable to submit exercise {1p}, submission id not found!' format: exerciseName) ].
-			
 	self httpClient
-		patchSolution: solutionId
-		with: self buildSolutionData.
+		patchSolution: self exercise solutionId
+		with: self exercise solutionSources.
 		
 	^ true
 ]
 
 { #category : #accessing }
-ExercismSubmitCommand >> package [
-	^ package
+ExercismSubmitCommand >> exercise [
+	^ exercise
 ]
 
 { #category : #accessing }
-ExercismSubmitCommand >> package: anObject [
-	package := anObject
-]
-
-{ #category : #accessing }
-ExercismSubmitCommand >> solutionClasses [ 
-
-	^self package classes reject: [ :class | class isTestCase ]
+ExercismSubmitCommand >> exercise: anExercismExercise [
+	exercise := anExercismExercise
 ]

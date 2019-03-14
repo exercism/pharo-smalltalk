@@ -1,28 +1,33 @@
 Class {
 	#name : #ExercismSubmitCommandTest,
 	#superclass : #TestCase,
-	#category : #ExercismTests
+	#category : #'ExercismTests-UnitTests'
 }
 
 { #category : #tests }
 ExercismSubmitCommandTest >> testSubmitHelloWorldPackageWithMock [
-	| exercise submitCmd mockHttpClient |
+	| submitCmd mockHttpClient mockExercise |
 	
-	mockHttpClient := Mock new.
-	exercise := HelloWorldTest exercise.
-
+	Any strictMocks: true.
+	mockHttpClient := ExercismHttpClient asMock.
+	mockExercise := ExercismExercise asMock.
+	
+	(mockExercise expect solutionId) atLeastOnce willReturn: 'submission12'.
+	
+	(mockExercise expect verifySolutionForSubmission) atLeastOnce.
+	(mockExercise expect solutionSources) willReturn: 
+		{ 'HelloWorld.st'->'HelloWorld content'. 'TwoFer.st'->'twofer content'} asDictionary.
+	
 	(mockHttpClient expect patchSolution: Any with: Any)
 		specifying: [:solnId :formData | 
-			formData keys should include: 'HelloWorld.st'.
-			(formData at: 'HelloWorld.st') should includeSubstring: 'sample solution' ].
+			formData keys should equal: {'HelloWorld.st'. 'TwoFer.st' } asSet.
+			(formData at: 'HelloWorld.st') should includeSubstring: 'HelloWorld content' ].
 	
-	submitCmd := ExercismSubmitCommand from: mockHttpClient exercise: exercise packageTag.
-	
-	(ExercismManager stub submissionIdFor: Any ifAbsent: Any) willReturn: 'fakeId'.
+	submitCmd := ExercismSubmitCommand from: mockHttpClient exercise: mockExercise.
 	
 	submitCmd execute.
 	
-	mockHttpClient should verify.
-	(mockHttpClient should receive patchSolution: Any with: Any) once.
+	Any verify.
+
 	
 ]

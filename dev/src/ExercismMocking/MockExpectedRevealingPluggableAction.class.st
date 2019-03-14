@@ -20,8 +20,8 @@ MockExpectedRevealingPluggableAction >> executeFor: anOccurredMessage [
 				resignalAs:
 					(MockExpectationFailure new
 						messageText:
-							'Expectation failure for #' , anOccurredMessage selector , ' >> '
-								, ex messageText uncapitalized;
+							'Expectation failure: ', anOccurredMessage receiver mockName, '>>#' , anOccurredMessage selector , ' ('
+								, ex messageText uncapitalized, ')';
 						yourself) ]
 ]
 

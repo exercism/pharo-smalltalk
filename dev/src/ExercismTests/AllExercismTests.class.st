@@ -4,7 +4,7 @@ I am a composite test that gathers all the test cases in Exercism so you can eas
 Class {
 	#name : #AllExercismTests,
 	#superclass : #TestCase,
-	#category : #ExercismTests
+	#category : #'ExercismTests-UnitTests'
 }
 
 { #category : #private }

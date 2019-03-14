@@ -4,8 +4,58 @@ An ExercismExerciseTest is a test class for testing the behavior of ExercismExer
 Class {
 	#name : #ExercismExerciseTest,
 	#superclass : #TestCase,
-	#category : #ExercismTests
+	#category : #'ExercismTests-UnitTests'
 }
+
+{ #category : #tests }
+ExercismExerciseTest >> testAsJsonData [
+	
+	TestExerciseTest exercise asJsonData should beKindOf: Collection.
+	TestExerciseTest exercise asJsonData asJSON should includeSubstring: '"slug" : "test-exercise"'.
+	LeapTest exercise asJsonData asJSON should includeSubstring: '"slug" : "leap"'
+]
+
+{ #category : #tests }
+ExercismExerciseTest >> testExerciseClass [
+	
+	self assert: TestExerciseTest exercise exerciseClass equals: TestExercise.	
+	self assert: TestexerciseTest exercise exerciseClass equals: Testexercise.
+	self assert: TestEmptyTest exercise exerciseClass equals: nil.
+	
+]
+
+{ #category : #test }
+ExercismExerciseTest >> testExerciseClassName [
+
+	self assert: TestExerciseTest exercise exerciseClassName equals: TestExercise name.	
+	self assert: TestexerciseTest exercise exerciseClassName equals: Testexercise name.
+	self assert: TestEmptyTest exercise exerciseClassName equals: 'TestEmpty'.
+]
+
+{ #category : #tests }
+ExercismExerciseTest >> testExercisePackage [
+	
+	self assert: TestExerciseTest exercise exercisePackage name equals: #ExercismTests.	
+	self assert: HelloWorldTest exercise exercisePackage equals: ExercismManager exercismPackage.
+	self assert: TestEmptyTest exercise exercisePackage name equals: #ExercismTests.
+	
+]
+
+{ #category : #tests }
+ExercismExerciseTest >> testExercisePackageTag [
+	
+	self assert: TestExerciseTest exercise exercisePackageTag class equals: RPackageTag.
+	self assert: TestExerciseTest exercise exercisePackageTag name equals: #TestExercise.	
+	self assert: TestexerciseTest exercise exercisePackageTag name equals: #Testexercise.
+]
+
+{ #category : #tests }
+ExercismExerciseTest >> testFind [
+
+	self assert: (ExercismExercise find: 'hello-world') equals: HelloWorldTest exercise.
+	self should: [ExercismExercise find: 'missing-exercise'] raise: NotFound
+	
+]
 
 { #category : #tests }
 ExercismExerciseTest >> testFollowedBy [
@@ -21,6 +71,33 @@ ExercismExerciseTest >> testHintText [
 ]
 
 { #category : #tests }
+ExercismExerciseTest >> testIsDefined [
+	
+	self assert: TestExerciseTest exercise isDefined description: 'Should be defined'.
+	self deny: TestEmptyTest exercise isDefined  description: 'Should Not be defined' 
+	
+]
+
+{ #category : #tests }
+ExercismExerciseTest >> testIsEmpty [
+	
+	self deny: TestExerciseTest exercise isEmpty description: 'Not empty with 1 solution'.
+	self deny: TestexerciseTest exercise isEmpty description: 'Not empty with many solucionts'.
+	self assert: TestEmptyTest exercise isEmpty description: 'Should be empty' 
+	
+]
+
+{ #category : #tests }
+ExercismExerciseTest >> testIsFollowedBy [
+	
+	self assert: (HelloWorldTest exercise isFollowedBy: LeapTest exercise) description: 'Leap should follow HelloWorld'.
+	
+	self deny: (HelloWorldTest exercise isFollowedBy: HelloWorldTest exercise) description: 'HelloWorld should not follow itself (root)'.
+	self deny: (LeapTest exercise isFollowedBy: LeapTest exercise) description: 'Leap should not follow itself (non-root)'.
+	self deny: (LeapTest exercise isFollowedBy: HelloWorldTest exercise) description: 'HelloWorld should not follow Leap'.
+]
+
+{ #category : #tests }
 ExercismExerciseTest >> testIsUnlockedBy [
 
 	self assert: (TwoFerTest exercise isUnlockedBy: HelloWorldTest  exercise).
@@ -30,21 +107,70 @@ ExercismExerciseTest >> testIsUnlockedBy [
 { #category : #tests }
 ExercismExerciseTest >> testName [
 	
-	self assert: HelloWorldTest exercise name equals: 'hello-world'.
-	self assert: LeapTest exercise name equals: 'leap'
+	self assert: TestExerciseTest exercise name equals: 'test-exercise'.
+	self assert: TestexerciseTest exercise name equals: 'testexercise'
 ]
 
 { #category : #tests }
-ExercismExerciseTest >> testPackageTag [
+ExercismExerciseTest >> testSolutionClasses [
 	
-	self assert: HelloWorldTest exercise packageTag class equals: RPackageTag.
-	self assert: HelloWorldTest exercise packageTag name equals: #HelloWorld.	
+	self assertCollection: TestExerciseTest exercise solutionClasses equals: {TestExercise} asSet.
+	self assertCollection: TestexerciseTest exercise solutionClasses equals: {Testexercise. TestexerciseOther} asSet.
+	self assertCollection: TestEmptyTest exercise solutionClasses equals: {} asSet.
+	
 ]
 
 { #category : #tests }
-ExercismExerciseTest >> testSolutionClass [
+ExercismExerciseTest >> testSolutionId [
 	
-	self assert: HelloWorldTest exercise solutionClass  equals: HelloWorld.
+	TestExerciseTest solutionId: 'sId123'.
+	self assert: TestExerciseTest exercise solutionId equals: 'sId123'. 
+	TestexerciseTest solutionId: 'sId456'.
+	self assert: TestexerciseTest exercise solutionId equals: 'sId456'.
+	self assert: TestExerciseTest exercise solutionId equals: 'sId123'. 	
+]
+
+{ #category : #tests }
+ExercismExerciseTest >> testSolutionSources [
+	| sources classes classNames |
+	
+	sources := TestexerciseTest exercise solutionSources.
+	classes := TestexerciseTest exercise solutionClasses asOrderedCollection.
+	classNames := classes collect: [ :c | c name, '.st' ].
+	
+	self assertCollection: sources keys asSet equals: classNames asSet.
+	
+	(sources at: classNames first) should includeSubstring: '#name : #', classes first name.
+	(sources at: classNames last) should includeSubstring: '#name : #', classes last name.
+]
+
+{ #category : #tests }
+ExercismExerciseTest >> testStoreSolutionId [
+	
+	TestExerciseTest exercise storeSolutionId: 'sId123'. 
+	self assert: TestExerciseTest exercise solutionId equals: 'sId123'.
+	
+	TestexerciseTest exercise storeSolutionId: 'sId789'. 
+	self assert: TestexerciseTest exercise solutionId equals: 'sId789'.
+	 	
+]
+
+{ #category : #tests }
+ExercismExerciseTest >> testUnlockReference [
+	
+	self assert: HelloWorldTest exercise unlockReference equals: nil.
+	self assert: LeapTest exercise unlockReference equals: nil.
+	self assert: SpaceAgeTest exercise unlockReference equals: TwoFerTest exercise name.
+	
+	
+]
+
+{ #category : #tests }
+ExercismExerciseTest >> testUnlockeExercises [
+	
+	self assertCollection: HelloWorldTest exercise unlockedExercises asArray equals: #().
+	self assertCollection: TwoFerTest exercise unlockedExercises asArray equals: {SpaceAgeTest exercise}.
+
 	
 ]
 

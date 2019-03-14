@@ -1,6 +1,9 @@
 Class {
 	#name : #ExercismTest,
 	#superclass : #TestCase,
+	#classInstVars : [
+		'solutionId'
+	],
 	#category : #'ExercismTools-Core'
 }
 
@@ -32,6 +35,16 @@ ExercismTest class >> next [
 	"Answer the String id of the exercise name that follows"
 	
 	^''
+]
+
+{ #category : #accessing }
+ExercismTest class >> solutionId [
+	^ solutionId
+]
+
+{ #category : #accessing }
+ExercismTest class >> solutionId: anObject [
+	solutionId := anObject
 ]
 
 { #category : #config }

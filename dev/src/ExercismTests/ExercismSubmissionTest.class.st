@@ -4,7 +4,7 @@ An ExercismSubmissionTest is a test class for testing the behavior of ExercismSu
 Class {
 	#name : #ExercismSubmissionTest,
 	#superclass : #TestCase,
-	#category : #ExercismTests
+	#category : #'ExercismTests-UnitTests'
 }
 
 { #category : #'test-data' }
@@ -27,61 +27,91 @@ ExercismSubmissionTest class >> sampleDataFor: testName filenames: filenameList 
 
 { #category : #tests }
 ExercismSubmissionTest >> testFilenames [
-	| exercismSubmission |
+	| exercismSubmission actualNames |
+		
+	actualNames := #('a.st' 'b.st' 'readme.md').
 	
 	exercismSubmission := ExercismSubmission
-		data: (self class sampleDataFor: 'test-ex').
+		data: (self class sampleDataFor: 'test-ex' filenames: actualNames baseUrl: '/baseUrl').
 		
-	self assert: exercismSubmission submissionId equals: 'submission123'.
-	self assert: exercismSubmission exerciseId equals: 'test-ex'.
+	self assert: exercismSubmission filenames equals: actualNames.
+	
 	
 		
 ]
 
 { #category : #tests }
-ExercismSubmissionTest >> testIteratingThroughSourceCode [
-	| submission actualNames i  expectedNames baseUrl |
-	
-	actualNames := #('a.st' 'b.st' 'readme.md').
-	expectedNames := actualNames first: 2.
-	baseUrl := 'http://data.io/res'.
-	
-	submission := ExercismSubmission
-		data: (self class sampleDataFor: 'test-ex' filenames: actualNames baseUrl: baseUrl).
-		
-	submission populateFileContentWith: [ :filename |
-		filename, ' contents' ].
-	
-	i := 0.
-	submission
-		sourceFilesDo: [ :name :contents | 
-			i := i + 1.
-			name should equal: (expectedNames at: i).
-			contents should beginWith: baseUrl .
-			contents should endWith: name, ' contents'  ].
-		
-	self assert: i = 2 description: 'Should only process code files'.
-]
-
-{ #category : #tests }
-ExercismSubmissionTest >> testPopulateFileContents [
+ExercismSubmissionTest >> testPopulateFileContentsWith [
+	"Test populating content"
 	| actualNames baseUrl exercismSubmission rootName sourceNames |
-	
+
 	actualNames := #('a.st' 'b.st' 'readme.md').
 	sourceNames := actualNames first: 2.
 	baseUrl := 'http://data.io/res'.
-	
+
 	exercismSubmission := ExercismSubmission
-		data: (self class sampleDataFor: 'test-ex' filenames: actualNames baseUrl: baseUrl).
-	
-	exercismSubmission populateFileContentWith: [ :filename |
+		data: (self class	sampleDataFor: 'test-ex' filenames: actualNames baseUrl: baseUrl).
+
+	exercismSubmission
+		populateFileContentsWith: [ :filename | 
 			filename should beginWith: baseUrl.
 			rootName := filename allButFirst: baseUrl exPathString size.
-			
 			sourceNames should include: rootName.
-			rootName, ' contents' ]. 	
+			rootName , ' contents' ].
+		
+	self
+		assert: (exercismSubmission contentsFor: 'a.st' ifAbsent: [ '' ])
+		equals: 'a.st contents'.
+	self
+		assert: (exercismSubmission contentsFor: 'b.st' ifAbsent: [ '' ])
+		equals: 'b.st contents'
+]
+
+{ #category : #tests }
+ExercismSubmissionTest >> testSourceFilenames [
+	| exercismSubmission actualNames |
+		
+	actualNames := #('a.st' 'b.st' 'readme.md').
+	
+	exercismSubmission := ExercismSubmission
+		data: (self class sampleDataFor: 'test-ex' filenames: actualNames baseUrl: '/baseUrl').
+		
+	self assert: exercismSubmission sourceFilenames equals: actualNames allButLast.
 	
 	
-	self assert: (exercismSubmission contentsFor: 'a.st') equals: 'a.st contents'.
-	self assert: (exercismSubmission contentsFor: 'b.st') equals: 'b.st contents'.
+		
+]
+
+{ #category : #tests }
+ExercismSubmissionTest >> testSourceFilenamesWithContentsDo [
+	| exercismSubmission actualNames expectedNames resultingNames |
+		
+	actualNames := #('a.st' 'readme.md' 'b.st').
+	expectedNames := actualNames copyWithout: 'readme.md'.
+	resultingNames := OrderedCollection new.
+	
+	exercismSubmission := ExercismSubmission
+		data: (self class sampleDataFor: 'test-ex' filenames: actualNames baseUrl: '/baseUrl').
+	
+	exercismSubmission sourceFilenamesWithContentsDo: [ :name :contents | resultingNames add: name ].
+	
+	self assertCollection: resultingNames asArray equals: expectedNames.
+	
+	
+		
+]
+
+{ #category : #tests }
+ExercismSubmissionTest >> testStoreSolutionId [
+	| exercismSubmission |
+	
+	exercismSubmission := ExercismSubmission
+		data: (self class sampleDataFor: 'test-exercise').
+		
+	exercismSubmission storeSolutionId.
+	
+	self assert: exercismSubmission solutionId equals: 'submission123'.
+	self assert: TestExerciseTest solutionId equals: 'submission123'.
+	
+		
 ]

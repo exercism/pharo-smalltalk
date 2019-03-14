@@ -38,18 +38,6 @@ ExercismManager class >> solutionData [
 	^ SolutionData ifNil: [ SolutionData := Dictionary new ]
 ]
 
-{ #category : #cache }
-ExercismManager class >> storeSubmissionData: aSubmission [
-
-	self solutionData at: aSubmission exerciseId put: aSubmission submissionId 
-]
-
-{ #category : #cache }
-ExercismManager class >> submissionIdFor: exercismId ifAbsent: aBlock [
-
-	^self solutionData at: exercismId ifAbsent: aBlock
-]
-
 { #category : #config }
 ExercismManager class >> trackId [
 	^'pharo'

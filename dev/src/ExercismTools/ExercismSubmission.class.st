@@ -39,7 +39,7 @@ ExercismSubmission >> contentData: anObject [
 ]
 
 { #category : #accessing }
-ExercismSubmission >> contentsFor: aString [ 
+ExercismSubmission >> contentsFor: aString ifAbsent: anObject [ 
 	^self contentData at: aString
 ]
 
@@ -71,7 +71,7 @@ ExercismSubmission >> initialize [
 ]
 
 { #category : #retrieving }
-ExercismSubmission >> populateFileContentWith: aBlockClosure [ 
+ExercismSubmission >> populateFileContentsWith: aBlockClosure [ 
 	
 	| baseUrl |
 	baseUrl := self baseUrl.
@@ -81,22 +81,26 @@ ExercismSubmission >> populateFileContentWith: aBlockClosure [
 ]
 
 { #category : #accessing }
+ExercismSubmission >> solutionId [
+	^self exercismData at: 'id'
+]
+
+{ #category : #accessing }
 ExercismSubmission >> sourceFilenames [
 	
 	^self filenames select: [:filename | filename endsWith: '.st' ]
 ]
 
 { #category : #retrieving }
-ExercismSubmission >> sourceFilesDo: aBlockClosure [ 
-	
-	self sourceFilenames do: [ :filename |
-		| source |
-
-		source := self contentsFor: filename.
-		aBlockClosure value: filename value: source ]
+ExercismSubmission >> sourceFilenamesWithContentsDo: aBlockClosure [
+	self sourceFilenames
+		do: [ :filename | 
+			| source |
+			source := self contentData at: filename ifAbsent: [''].
+			aBlockClosure value: filename value: source ]
 ]
 
-{ #category : #accessing }
-ExercismSubmission >> submissionId [
-	^self exercismData at: 'id'
+{ #category : #storing }
+ExercismSubmission >> storeSolutionId [
+	(ExercismExercise find: self exerciseId) storeSolutionId: self solutionId
 ]

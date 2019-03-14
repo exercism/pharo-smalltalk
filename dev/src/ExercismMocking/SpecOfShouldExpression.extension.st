@@ -2,13 +2,35 @@ Extension { #name : #SpecOfShouldExpression }
 
 { #category : #'*ExercismMocking' }
 SpecOfShouldExpression >> verify [
-	"Experimental (and not working) extension to verify a mock so you don't have to repeat all the expection methods with a should be called construct"
+	"Verify the current mock, and ensure all of its expectations have been met. This eases the burdon on having to make a series of 'should receive' calls, however some may still be needed (in addition) for more complicated assertions."
 	
-	| msgs cm cmb |
-	msgs := receiver currentMockBehaviour expectedMessages.
-	cmb := receiver currentMockBehaviour.
-	cm := receiver currentMockBehaviour createMockToValidate: receiver withNegation: withNegation.
+	| expectedMessages occurredMessages missingMessages errorMsg selectors |
 	
-	msgs do: [ :m |
-		cmb send: (Message selector: m spec messageSend selector requiredValue) to: receiver ]
+	<todo: 'need to handle occured msgs and ensure they occurred properly'>
+	
+	expectedMessages := (receiver currentMockBehaviour expectedMessages) 
+			select: [:m | m asExpectedMessageSpec messageSend receiver basicMatches: receiver].
+	occurredMessages := receiver currentMockBehaviour occurredMessages.
+	
+	missingMessages := expectedMessages
+		collect: [ :m | m asExpectedMessageSpec ]
+		thenReject: [ :m | m basicMatches: occurredMessages ].
+		
+	missingMessages ifEmpty: [ ^self ].
+		
+	selectors := missingMessages
+		collect: [ :msg | msg messageSend selector asSimpleValue asSymbol ].
+		
+	errorMsg := String
+		streamContents: [ :stream | 
+			stream << receiver ghostPrintString
+				<< ' failed to satisfy expectations on: '.
+			selectors
+				allButLastDo: [ :s | 
+					stream
+						print: s;
+						nextPutAll: ', ' ].
+			stream print: selectors last ].
+		
+	MockExpectationFailure signal: errorMsg
 ]

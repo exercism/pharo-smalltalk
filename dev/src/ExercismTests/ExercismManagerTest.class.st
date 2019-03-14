@@ -4,11 +4,12 @@ An ExercismManagerTest is a test class for testing the behavior of ExercismManag
 Class {
 	#name : #ExercismManagerTest,
 	#superclass : #TestCase,
-	#category : #ExercismTests
+	#category : #'ExercismTests-UnitTests'
 }
 
 { #category : #tests }
 ExercismManagerTest >> testParseExerciseProposal [
+	"Ensure we can parse the proposed exercism download command, and extract the exercise id"
 
 	self assert: (ExercismManager default parseExerciseName: 'hello-world') equals: 'hello-world'.
 	self assert: (ExercismManager default parseExerciseName: 'exercism download --exercise=two-fer --track=pharo') equals: 'two-fer'.

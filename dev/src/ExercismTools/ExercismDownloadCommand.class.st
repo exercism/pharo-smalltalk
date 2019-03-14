@@ -32,8 +32,8 @@ ExercismDownloadCommand >> execute [
 	self fetchExerciseFilesFor: submission.
 	self installExerciseFor: submission.
 
-	"cache the id for later (could be improved)"
-	ExercismManager storeSubmissionData: submission.
+	submission storeSolutionId.
+	
 	^ submission 
 	]
 		on: ExUnauthorized
@@ -48,7 +48,7 @@ ExercismDownloadCommand >> execute [
 ExercismDownloadCommand >> fetchExerciseFilesFor: submission [
 
 	submission
-		populateFileContentWith: [ :filename | self httpClient getResource: filename ]
+		populateFileContentsWith: [ :filename | self httpClient getResource: filename ]
 ]
 
 { #category : #internal }
@@ -74,7 +74,7 @@ ExercismDownloadCommand >> initialize [
 ExercismDownloadCommand >> installExerciseFor: submission [
 
 	submission
-		sourceFilesDo:
+		sourceFilenamesWithContentsDo:
 			[ :filename :contents | (self parser documentFrom: contents) do: [ :def | def load ] ].
 		
 	SystemAnnouncer uniqueInstance
