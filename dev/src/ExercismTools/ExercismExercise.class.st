@@ -28,8 +28,10 @@ ExercismExercise class >> allExercises [
 { #category : #'instance creation' }
 ExercismExercise class >> bonusExercises [
 	"self bonusExercises"
-	
-	^(self allExercises reject: [:exercise | exercise isCore ])
+
+	^ (self allExercises
+		reject:
+			[ :exercise | exercise isCore or: [ exercise exercisePackage ~= HelloWorldTest package ] ])
 		asSortedCollection: [ :a :b | a name < b name ]
 ]
 
