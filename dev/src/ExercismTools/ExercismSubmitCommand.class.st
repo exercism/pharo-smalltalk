@@ -28,25 +28,6 @@ ExercismSubmitCommand class >> from: anHttpClient exercise: exercise [
 		yourself
 ]
 
-{ #category : #internal }
-ExercismSubmitCommand >> buildSolutionData [
-	| exerciseMap |
-	
-	exerciseMap := self createExerciseMap.
-	
-	^ self exercise solutionClasses
-		inject: Dictionary new
-		into: [ :map :solutionClass | 
-			map
-				add: (solutionClass name , '.st') -> (exerciseMap at: solutionClass name);
-				yourself ]
-]
-
-{ #category : #internal }
-ExercismSubmitCommand >> createExerciseMap [
-	^ExTonelWriter new mappedSnapshot: self exercise snapshot
-]
-
 { #category : #execution }
 ExercismSubmitCommand >> execute [
 	

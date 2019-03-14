@@ -19,7 +19,7 @@ ExercismExerciseTest >> testAsJsonData [
 ExercismExerciseTest >> testExerciseClass [
 	
 	self assert: TestExerciseTest exercise exerciseClass equals: TestExercise.	
-	self assert: TestexerciseTest exercise exerciseClass equals: Testexercise.
+	self assert: TestmanyTest exercise exerciseClass equals: Testmany.
 	self assert: TestEmptyTest exercise exerciseClass equals: nil.
 	
 ]
@@ -28,7 +28,7 @@ ExercismExerciseTest >> testExerciseClass [
 ExercismExerciseTest >> testExerciseClassName [
 
 	self assert: TestExerciseTest exercise exerciseClassName equals: TestExercise name.	
-	self assert: TestexerciseTest exercise exerciseClassName equals: Testexercise name.
+	self assert: TestmanyTest exercise exerciseClassName equals: Testmany name.
 	self assert: TestEmptyTest exercise exerciseClassName equals: 'TestEmpty'.
 ]
 
@@ -46,7 +46,7 @@ ExercismExerciseTest >> testExercisePackageTag [
 	
 	self assert: TestExerciseTest exercise exercisePackageTag class equals: RPackageTag.
 	self assert: TestExerciseTest exercise exercisePackageTag name equals: #TestExercise.	
-	self assert: TestexerciseTest exercise exercisePackageTag name equals: #Testexercise.
+	self assert: TestmanyTest exercise exercisePackageTag name equals: #Testmany.
 ]
 
 { #category : #tests }
@@ -82,7 +82,7 @@ ExercismExerciseTest >> testIsDefined [
 ExercismExerciseTest >> testIsEmpty [
 	
 	self deny: TestExerciseTest exercise isEmpty description: 'Not empty with 1 solution'.
-	self deny: TestexerciseTest exercise isEmpty description: 'Not empty with many solucionts'.
+	self deny: TestmanyTest exercise isEmpty description: 'Not empty with many solucionts'.
 	self assert: TestEmptyTest exercise isEmpty description: 'Should be empty' 
 	
 ]
@@ -108,14 +108,14 @@ ExercismExerciseTest >> testIsUnlockedBy [
 ExercismExerciseTest >> testName [
 	
 	self assert: TestExerciseTest exercise name equals: 'test-exercise'.
-	self assert: TestexerciseTest exercise name equals: 'testexercise'
+	self assert: TestmanyTest exercise name equals: 'testmany'
 ]
 
 { #category : #tests }
 ExercismExerciseTest >> testSolutionClasses [
 	
 	self assertCollection: TestExerciseTest exercise solutionClasses equals: {TestExercise} asSet.
-	self assertCollection: TestexerciseTest exercise solutionClasses equals: {Testexercise. TestexerciseOther} asSet.
+	self assertCollection: TestmanyTest exercise solutionClasses equals: {Testmany. TestOtherClass} asSet.
 	self assertCollection: TestEmptyTest exercise solutionClasses equals: {} asSet.
 	
 ]
@@ -125,8 +125,8 @@ ExercismExerciseTest >> testSolutionId [
 	
 	TestExerciseTest solutionId: 'sId123'.
 	self assert: TestExerciseTest exercise solutionId equals: 'sId123'. 
-	TestexerciseTest solutionId: 'sId456'.
-	self assert: TestexerciseTest exercise solutionId equals: 'sId456'.
+	TestmanyTest solutionId: 'sId456'.
+	self assert: TestmanyTest exercise solutionId equals: 'sId456'.
 	self assert: TestExerciseTest exercise solutionId equals: 'sId123'. 	
 ]
 
@@ -134,8 +134,9 @@ ExercismExerciseTest >> testSolutionId [
 ExercismExerciseTest >> testSolutionSources [
 	| sources classes classNames |
 	
-	sources := TestexerciseTest exercise solutionSources.
-	classes := TestexerciseTest exercise solutionClasses asOrderedCollection.
+	sources := TestmanyTest exercise solutionSources.
+	
+	classes := {Testmany. TestOtherClass}.
 	classNames := classes collect: [ :c | c name, '.st' ].
 	
 	self assertCollection: sources keys asSet equals: classNames asSet.
@@ -150,8 +151,8 @@ ExercismExerciseTest >> testStoreSolutionId [
 	TestExerciseTest exercise storeSolutionId: 'sId123'. 
 	self assert: TestExerciseTest exercise solutionId equals: 'sId123'.
 	
-	TestexerciseTest exercise storeSolutionId: 'sId789'. 
-	self assert: TestexerciseTest exercise solutionId equals: 'sId789'.
+	TestmanyTest exercise storeSolutionId: 'sId789'. 
+	self assert: TestmanyTest exercise solutionId equals: 'sId789'.
 	 	
 ]
 

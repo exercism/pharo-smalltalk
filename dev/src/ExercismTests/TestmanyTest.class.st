@@ -1,25 +1,25 @@
 Class {
-	#name : #TestExerciseTest,
+	#name : #TestmanyTest,
 	#superclass : #ExercismTest,
-	#category : #'ExercismTests-TestExercise'
+	#category : #'ExercismTests-Testmany'
 }
 
 { #category : #config }
-TestExerciseTest class >> exercise [
+TestmanyTest class >> exercise [
 	^(ExercismExercise for: self)
 		isCore: false;
-		difficulty: 1;
+		difficulty: 2;
 		topics: #('testing');
 		yourself
 ]
 
 { #category : #config }
-TestExerciseTest class >> uuid [
+TestmanyTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'dc7b1fff-f0be-460d-b146-ee84c2acc000'
+	^'dc7b1fff-f0be-460d-b146-ee84c2acc111'
 ]
 
 { #category : #config }
-TestExerciseTest class >> version [
+TestmanyTest class >> version [
 	^'1.0.0'
 ]

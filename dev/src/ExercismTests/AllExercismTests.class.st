@@ -11,7 +11,7 @@ Class {
 AllExercismTests class >> allExercismTests [
 	"gather all the TestCases in the Execercsim package"
 
-	^ self allExercismTestsFor: #( #Exercism #ExercismDev )
+	^ self allExercismTestsFor: #( #Exercism #ExercismTests)
 ]
 
 { #category : #private }

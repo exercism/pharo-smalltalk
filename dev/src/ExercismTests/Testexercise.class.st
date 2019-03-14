@@ -1,5 +1,5 @@
 Class {
-	#name : #Testexercise,
+	#name : #TestExercise,
 	#superclass : #Object,
-	#category : #'ExercismTests-Testexercise'
+	#category : #'ExercismTests-TestExercise'
 }

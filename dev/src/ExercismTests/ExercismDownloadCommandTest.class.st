@@ -7,7 +7,7 @@ Class {
 { #category : #tests }
 ExercismDownloadCommandTest >> testExecuteDownloading [
 
-	| cmd downloadResult solutionData mockHttpClient mockParser mockClass baseUrl sourceCode |
+	| cmd exercise solutionData mockHttpClient mockParser mockClass baseUrl sourceCode |
 	
 	Any strictMocks: true.
 	mockHttpClient := ExercismHttpClient asMock.
@@ -19,14 +19,14 @@ ExercismDownloadCommandTest >> testExecuteDownloading [
 					parser: mockParser;
 					yourself.
 	
-	downloadResult := cmd execute.
+	exercise := cmd execute.
 	
-	self assert: downloadResult notNil description: 'Get a result'.
+	self assert: exercise notNil description: 'Get a result'.
 	
-	sourceCode := downloadResult contentsFor: 'test1.st' ifAbsent: [''].
+	sourceCode := exercise contentsFor: 'test1.st' ifAbsent: [''].
 	self assert: sourceCode equals: 'Some source1'
 	
-	] runExpecting: [  
+	] runWithMockSetup: [  
 	
 	baseUrl := 'http://data.io/res'.
 	solutionData := ExercismSubmissionTest 
