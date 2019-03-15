@@ -69,6 +69,18 @@
 			]
 		},
 		{
+			"slug" : "grains",
+			"uuid" : "93dde1bb-8040-0d00-812a-052301deb008",
+			"core" : true,
+			"auto_approve" : false,
+			"unlocked_by" : null,
+			"difficulty" : 2,
+			"topics" : [
+				"math",
+				"recursion"
+			]
+		},
+		{
 			"slug" : "acronym",
 			"uuid" : "dc7b1fff-f0be-460d-b146-ee84c2acc10b",
 			"core" : false,
