@@ -16,6 +16,6 @@ String >> asValidKeyword [
 	validName := self select: [ :c | c isAlphaNumeric or: [ c == $_ ] ].
 	
 	^(validName first isDigit 
-		ifTrue: [ 'and' , validName ]
+		ifTrue: [ (self isAllDigits ifTrue: ['at' ] ifFalse: ['and']) , validName ]
 		ifFalse: [ validName ]) asSymbol
 ]

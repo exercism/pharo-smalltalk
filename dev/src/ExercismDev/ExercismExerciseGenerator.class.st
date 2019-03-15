@@ -190,10 +190,15 @@ ExercismExerciseGenerator >> generateTestClass: testName tag: tagName variable: 
 
 { #category : #generation }
 ExercismExerciseGenerator >> generateTestMethodsOn: testClass calling: testVariable using: testJson prefix: aPrefixString [
-	| instance methodName parameters testResult testPrefix |
+	| instance methodName parameters testResult testPrefix methodNameSegment |
 	(testJson at: 'cases')
 		doWithIndex: [ :case :i | 
-			methodName := aPrefixString, ((case at: 'description') asCamelCase capitalized) asValidKeyword.
+			
+			methodNameSegment := (case at: 'description') asCamelCase asValidKeyword capitalized. 
+			methodName :=  aPrefixString 
+				ifEmpty: [ methodNameSegment withoutPrefix: 'And' ] 
+				ifNotEmpty: [ aPrefixString, methodNameSegment ].
+				
 			(case includesKey: 'cases')
 				ifTrue: [ self
 						generateTestMethodsOn: testClass

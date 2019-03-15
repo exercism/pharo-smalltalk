@@ -6,3 +6,10 @@ Class {
 	#superclass : #TestCase,
 	#category : #'ExercismTests-UnitTests'
 }
+
+{ #category : #tests }
+ExercismExerciseGeneratorTest >> testAsValidKeywordOnString [
+
+	self assert: '1Direction' asValidKeyword equals: 'and1Direction'.
+	self assert: '1' asValidKeyword equals: 'at1'.
+]
