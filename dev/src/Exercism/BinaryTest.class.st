@@ -62,7 +62,7 @@ BinaryTest class >> exercise [
 BinaryTest class >> generator [
 	"Answer code generator aliases/hints"
 	
-	^{'binary'->'toBinary'}
+	^{'binary'->'fromBinary'}
 	
 				
 ]
@@ -88,7 +88,7 @@ BinaryTest >> setUp [
 BinaryTest >> test01_Binary0IsDecimal0 [
 	| result |
 
-	result := binaryCalculator decimalToBinary: '0' .
+	result := binaryCalculator decimalFromBinary: '0' .
 	self assert: result equals: 0
 ]
 
@@ -96,7 +96,7 @@ BinaryTest >> test01_Binary0IsDecimal0 [
 BinaryTest >> test02_Binary1IsDecimal1 [
 	| result |
 
-	result := binaryCalculator decimalToBinary: '1' .
+	result := binaryCalculator decimalFromBinary: '1' .
 	self assert: result equals: 1
 ]
 
@@ -104,7 +104,7 @@ BinaryTest >> test02_Binary1IsDecimal1 [
 BinaryTest >> test03_Binary10IsDecimal2 [
 	| result |
 
-	result := binaryCalculator decimalToBinary: '10' .
+	result := binaryCalculator decimalFromBinary: '10' .
 	self assert: result equals: 2
 ]
 
@@ -112,7 +112,7 @@ BinaryTest >> test03_Binary10IsDecimal2 [
 BinaryTest >> test04_Binary11IsDecimal3 [
 	| result |
 
-	result := binaryCalculator decimalToBinary: '11' .
+	result := binaryCalculator decimalFromBinary: '11' .
 	self assert: result equals: 3
 ]
 
@@ -120,7 +120,7 @@ BinaryTest >> test04_Binary11IsDecimal3 [
 BinaryTest >> test05_Binary100IsDecimal4 [
 	| result |
 
-	result := binaryCalculator decimalToBinary: '100' .
+	result := binaryCalculator decimalFromBinary: '100' .
 	self assert: result equals: 4
 ]
 
@@ -128,7 +128,7 @@ BinaryTest >> test05_Binary100IsDecimal4 [
 BinaryTest >> test06_Binary1001IsDecimal9 [
 	| result |
 
-	result := binaryCalculator decimalToBinary: '1001' .
+	result := binaryCalculator decimalFromBinary: '1001' .
 	self assert: result equals: 9
 ]
 
@@ -136,7 +136,7 @@ BinaryTest >> test06_Binary1001IsDecimal9 [
 BinaryTest >> test07_Binary11010IsDecimal26 [
 	| result |
 
-	result := binaryCalculator decimalToBinary: '11010' .
+	result := binaryCalculator decimalFromBinary: '11010' .
 	self assert: result equals: 26
 ]
 
@@ -144,7 +144,7 @@ BinaryTest >> test07_Binary11010IsDecimal26 [
 BinaryTest >> test08_Binary10001101000IsDecimal1128 [
 	| result |
 
-	result := binaryCalculator decimalToBinary: '10001101000' .
+	result := binaryCalculator decimalFromBinary: '10001101000' .
 	self assert: result equals: 1128
 ]
 
@@ -152,7 +152,7 @@ BinaryTest >> test08_Binary10001101000IsDecimal1128 [
 BinaryTest >> test09_BinaryIgnoresLeadingZeros [
 	| result |
 
-	result := binaryCalculator decimalToBinary: '000011111' .
+	result := binaryCalculator decimalFromBinary: '000011111' .
 	self assert: result equals: 31
 ]
 
@@ -160,7 +160,7 @@ BinaryTest >> test09_BinaryIgnoresLeadingZeros [
 BinaryTest >> test10_2IsNotAValidBinaryDigit [
 	| result |
 
-	result := binaryCalculator decimalToBinary: '2' .
+	result := binaryCalculator decimalFromBinary: '2' .
 	self assert: result equals: nil
 ]
 
@@ -168,7 +168,7 @@ BinaryTest >> test10_2IsNotAValidBinaryDigit [
 BinaryTest >> test11_ANumberContainingANonbinaryDigitIsInvalid [
 	| result |
 
-	result := binaryCalculator decimalToBinary: '01201' .
+	result := binaryCalculator decimalFromBinary: '01201' .
 	self assert: result equals: nil
 ]
 
@@ -176,7 +176,7 @@ BinaryTest >> test11_ANumberContainingANonbinaryDigitIsInvalid [
 BinaryTest >> test12_ANumberWithTrailingNonbinaryCharactersIsInvalid [
 	| result |
 
-	result := binaryCalculator decimalToBinary: '10nope' .
+	result := binaryCalculator decimalFromBinary: '10nope' .
 	self assert: result equals: nil
 ]
 
@@ -184,7 +184,7 @@ BinaryTest >> test12_ANumberWithTrailingNonbinaryCharactersIsInvalid [
 BinaryTest >> test13_ANumberWithLeadingNonbinaryCharactersIsInvalid [
 	| result |
 
-	result := binaryCalculator decimalToBinary: 'nope10' .
+	result := binaryCalculator decimalFromBinary: 'nope10' .
 	self assert: result equals: nil
 ]
 
@@ -192,7 +192,7 @@ BinaryTest >> test13_ANumberWithLeadingNonbinaryCharactersIsInvalid [
 BinaryTest >> test14_ANumberWithInternalNonbinaryCharactersIsInvalid [
 	| result |
 
-	result := binaryCalculator decimalToBinary: '10nope10' .
+	result := binaryCalculator decimalFromBinary: '10nope10' .
 	self assert: result equals: nil
 ]
 
@@ -200,6 +200,6 @@ BinaryTest >> test14_ANumberWithInternalNonbinaryCharactersIsInvalid [
 BinaryTest >> test15_ANumberAndAWordWhitespaceSeparatedIsInvalid [
 	| result |
 
-	result := binaryCalculator decimalToBinary: '001 nope' .
+	result := binaryCalculator decimalFromBinary: '001 nope' .
 	self assert: result equals: nil
 ]

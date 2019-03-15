@@ -5,7 +5,7 @@ Class {
 }
 
 { #category : #exercism }
-Binary >> decimalToBinary: aString [
+Binary >> decimalFromBinary: aString [
 	self ifNonBinary: aString then: [ ^ nil ].
 
 	^ (aString reverse asArray
@@ -14,7 +14,9 @@ Binary >> decimalToBinary: aString [
 ]
 
 { #category : #alternative }
-Binary >> decimalToBinaryLonghand: aString [
+Binary >> decimalFromBinaryAlternative: aString [
+	"This is an alternative solution, done in a slightly longer hand, but potentially more readable fashion?"
+	
 	| result |
 
 	self ifNonBinary: aString then: [ ^ nil ].
