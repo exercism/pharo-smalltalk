@@ -59,12 +59,12 @@ Class {
 { #category : #config }
 ProteinTranslationTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'961220be-4a3f-0d00-bb12-536b071d6982'
+	^'fa8dadbb-8040-0d00-80e7-6bc301deb008'
 ]
 
 { #category : #config }
 ProteinTranslationTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.1.1'
 ]
 

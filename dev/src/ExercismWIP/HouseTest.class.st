@@ -123,12 +123,12 @@ Class {
 { #category : #config }
 HouseTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'22a17ebe-4a3f-0d00-bb56-7582071d6982'
+	^'c821e1bb-8040-0d00-8129-005501deb008'
 ]
 
 { #category : #config }
 HouseTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'2.2.0'
 ]
 

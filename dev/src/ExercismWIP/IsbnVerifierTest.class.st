@@ -58,12 +58,12 @@ Class {
 { #category : #config }
 IsbnVerifierTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'8b8022be-4a3f-0d00-bb14-c200071d6982'
+	^'77feaebb-8040-0d00-80e9-584f01deb008'
 ]
 
 { #category : #config }
 IsbnVerifierTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'2.7.0'
 ]
 

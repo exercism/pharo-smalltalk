@@ -96,12 +96,12 @@ Class {
 { #category : #config }
 SimpleCipherTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'473ea6be-4a3f-0d00-bb71-1079071d6982'
+	^'393ff7bb-8040-0d00-8142-29ac01deb008'
 ]
 
 { #category : #config }
 SimpleCipherTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'2.0.0'
 ]
 

@@ -46,13 +46,13 @@ Class {
 { #category : #config }
 RationalNumbersTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'1f6e6dbe-4a3f-0d00-bb49-f1d7071d6982'
+	^'4742d5bb-8040-0d00-811b-b6c501deb008'
 ]
 
 { #category : #config }
 RationalNumbersTest class >> version [
-	"Generated from specification: 28 February 2019"
-	^'1.0.0'
+	"Generated from specification: 15 March 2019"
+	^'1.1.0'
 ]
 
 { #category : #setup }
@@ -125,10 +125,10 @@ RationalNumbersTest >> test01_ReductionToLowestTermsReduceAPositiveRationalNumbe
 ]
 
 { #category : #tests }
-RationalNumbersTest >> test02_AbsoluteValueAbsoluteValueOfANegativeRationalNumber [
+RationalNumbersTest >> test02_AbsoluteValueAbsoluteValueOfAPositiveRationalNumberWithNegativeNumeratorAndDenominator [
 	| result |
 
-	result := rationalNumbersCalculator absR: #( -1 2 ) .
+	result := rationalNumbersCalculator absR: #( -1  -2 ) .
 	self assert: result equals: #(1 2 )
 ]
 
@@ -189,11 +189,11 @@ RationalNumbersTest >> test02_ReductionToLowestTermsReduceANegativeRationalNumbe
 ]
 
 { #category : #tests }
-RationalNumbersTest >> test03_AbsoluteValueAbsoluteValueOfZero [
+RationalNumbersTest >> test03_AbsoluteValueAbsoluteValueOfANegativeRationalNumber [
 	| result |
 
-	result := rationalNumbersCalculator absR: #(0 1 ) .
-	self assert: result equals: #(0 1 )
+	result := rationalNumbersCalculator absR: #( -1 2 ) .
+	self assert: result equals: #(1 2 )
 ]
 
 { #category : #tests }
@@ -253,6 +253,14 @@ RationalNumbersTest >> test03_ReductionToLowestTermsReduceARationalNumberWithANe
 ]
 
 { #category : #tests }
+RationalNumbersTest >> test04_AbsoluteValueAbsoluteValueOfANegativeRationalNumberWithNegativeDenominator [
+	| result |
+
+	result := rationalNumbersCalculator absR: #(1  -2 ) .
+	self assert: result equals: #(1 2 )
+]
+
+{ #category : #tests }
 RationalNumbersTest >> test04_ArithmeticAdditionAddARationalNumberToItsAdditiveInverse [
 	| result |
 
@@ -297,6 +305,14 @@ RationalNumbersTest >> test04_ReductionToLowestTermsReduceZeroToLowestTerms [
 	| result |
 
 	result := rationalNumbersCalculator reduceR: #(0 6 ) .
+	self assert: result equals: #(0 1 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test05_AbsoluteValueAbsoluteValueOfZero [
+	| result |
+
+	result := rationalNumbersCalculator absR: #(0 1 ) .
 	self assert: result equals: #(0 1 )
 ]
 

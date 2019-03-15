@@ -54,12 +54,12 @@ Class {
 { #category : #config }
 YachtTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'68014fbe-4a3f-0d00-bb35-a91d071d6982'
+	^'b73ec5bb-8040-0d00-8107-421901deb008'
 ]
 
 { #category : #config }
 YachtTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.1.0'
 ]
 

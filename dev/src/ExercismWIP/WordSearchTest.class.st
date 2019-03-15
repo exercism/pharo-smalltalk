@@ -44,12 +44,12 @@ Class {
 { #category : #config }
 WordSearchTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'a448a8be-4a3f-0d00-bb72-a983071d6982'
+	^'768ff8bb-8040-0d00-8143-1bc401deb008'
 ]
 
 { #category : #config }
 WordSearchTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.2.1'
 ]
 

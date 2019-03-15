@@ -49,12 +49,12 @@ Class {
 { #category : #config }
 AllYourBaseTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'5cdd97be-4a3f-0d00-bb66-ea47071d6982'
+	^'ccb7efbb-8040-0d00-8138-443001deb008'
 ]
 
 { #category : #config }
 AllYourBaseTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'2.3.0'
 ]
 
@@ -120,7 +120,7 @@ AllYourBaseTest >> test07_HexadecimalToTrinary [
 ]
 
 { #category : #tests }
-AllYourBaseTest >> test08_and15bitInteger [
+AllYourBaseTest >> test08_15bitInteger [
 	| result |
 
 	result := allYourBaseCalculator rebaseInputBase: 97 digits: #(3 46 60 ) outputBase: 73 .

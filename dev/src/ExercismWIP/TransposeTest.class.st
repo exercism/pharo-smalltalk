@@ -76,12 +76,12 @@ Class {
 { #category : #config }
 TransposeTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'5ee656be-4a3f-0d00-bb3b-1fa2071d6982'
+	^'6361c9bb-8040-0d00-810d-e8fa01deb008'
 ]
 
 { #category : #config }
 TransposeTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.1.0'
 ]
 

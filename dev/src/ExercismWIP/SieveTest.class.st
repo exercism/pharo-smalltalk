@@ -47,12 +47,12 @@ Class {
 { #category : #config }
 SieveTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'73cd79be-4a3f-0d00-bb53-2543071d6982'
+	^'ffe8dcbb-8040-0d00-8124-bf5801deb008'
 ]
 
 { #category : #config }
 SieveTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.1.0'
 ]
 

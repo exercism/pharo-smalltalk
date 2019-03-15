@@ -46,12 +46,12 @@ Class {
 { #category : #config }
 AtbashCipherTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'789737be-4a3f-0d00-bb25-8948071d6982'
+	^'e4c8b9bb-8040-0d00-80f8-b10e01deb008'
 ]
 
 { #category : #config }
 AtbashCipherTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.2.0'
 ]
 

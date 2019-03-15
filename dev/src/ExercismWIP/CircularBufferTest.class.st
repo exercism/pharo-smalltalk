@@ -68,12 +68,12 @@ Class {
 { #category : #config }
 CircularBufferTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'ef9e81be-4a3f-0d00-bb58-a12a071d6982'
+	^'66e8e2bb-8040-0d00-812b-4cfd01deb008'
 ]
 
 { #category : #config }
 CircularBufferTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.1.0'
 ]
 

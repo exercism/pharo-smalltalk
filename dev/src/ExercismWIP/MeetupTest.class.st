@@ -44,12 +44,12 @@ Class {
 { #category : #config }
 MeetupTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'67ce87be-4a3f-0d00-bb5a-e3e2071d6982'
+	^'672be7bb-8040-0d00-812d-161601deb008'
 ]
 
 { #category : #config }
 MeetupTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.1.0'
 ]
 

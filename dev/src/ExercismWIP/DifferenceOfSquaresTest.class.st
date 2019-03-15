@@ -34,12 +34,12 @@ Class {
 { #category : #config }
 DifferenceOfSquaresTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'05a22bbe-4a3f-0d00-bb1b-1ea8071d6982'
+	^'546cb4bb-8040-0d00-80f0-98f501deb008'
 ]
 
 { #category : #config }
 DifferenceOfSquaresTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.2.0'
 ]
 

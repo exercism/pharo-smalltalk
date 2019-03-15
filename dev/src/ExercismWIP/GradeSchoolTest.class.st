@@ -52,12 +52,12 @@ Class {
 { #category : #config }
 GradeSchoolTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'73438abe-4a3f-0d00-bb5c-593b071d6982'
+	^'8198e8bb-8040-0d00-812f-dfab01deb008'
 ]
 
 { #category : #config }
 GradeSchoolTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.0.0'
 ]
 

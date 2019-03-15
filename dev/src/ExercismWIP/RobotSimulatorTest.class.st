@@ -45,12 +45,12 @@ Class {
 { #category : #config }
 RobotSimulatorTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'50ccaabe-4a3f-0d00-bb74-8498071d6982'
+	^'5438fabb-8040-0d00-8145-63f301deb008'
 ]
 
 { #category : #config }
 RobotSimulatorTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'3.1.0'
 ]
 

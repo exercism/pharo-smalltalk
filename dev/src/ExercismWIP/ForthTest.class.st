@@ -43,12 +43,12 @@ Class {
 { #category : #config }
 ForthTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'eb1195be-4a3f-0d00-bb64-146a071d6982'
+	^'dc15eebb-8040-0d00-8136-7e2301deb008'
 ]
 
 { #category : #config }
 ForthTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.7.0'
 ]
 

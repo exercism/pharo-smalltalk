@@ -33,12 +33,12 @@ Class {
 { #category : #config }
 ReactTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'ef999abe-4a3f-0d00-bb68-91a0071d6982'
+	^'2caef0bb-8040-0d00-8139-b11701deb008'
 ]
 
 { #category : #config }
 ReactTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'2.0.0'
 ]
 

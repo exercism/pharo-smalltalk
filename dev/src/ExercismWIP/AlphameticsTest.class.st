@@ -49,12 +49,12 @@ Class {
 { #category : #config }
 AlphameticsTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'c4c171be-4a3f-0d00-bb4c-5845071d6982'
+	^'a041d8bb-8040-0d00-811e-e9ed01deb008'
 ]
 
 { #category : #config }
 AlphameticsTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.3.0'
 ]
 

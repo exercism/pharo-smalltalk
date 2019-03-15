@@ -78,12 +78,12 @@ Class {
 { #category : #config }
 BowlingTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'b5044bbe-4a3f-0d00-bb32-4092071d6982'
+	^'8711c3bb-8040-0d00-8104-cce801deb008'
 ]
 
 { #category : #config }
 BowlingTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.2.0'
 ]
 

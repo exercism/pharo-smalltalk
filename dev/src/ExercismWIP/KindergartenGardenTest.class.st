@@ -77,12 +77,12 @@ Class {
 { #category : #config }
 KindergartenGardenTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'779d82be-4a3f-0d00-bb59-f0a8071d6982'
+	^'9598e3bb-8040-0d00-812c-7d2101deb008'
 ]
 
 { #category : #config }
 KindergartenGardenTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.1.1'
 ]
 

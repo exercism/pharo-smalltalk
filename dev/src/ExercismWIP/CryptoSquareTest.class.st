@@ -90,12 +90,12 @@ Class {
 { #category : #config }
 CryptoSquareTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'dd164cbe-4a3f-0d00-bb33-478b071d6982'
+	^'0cacc3bb-8040-0d00-8105-c0f301deb008'
 ]
 
 { #category : #config }
 CryptoSquareTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'3.2.0'
 ]
 
@@ -137,7 +137,7 @@ CryptoSquareTest >> test04_RemovePunctuation [
 ]
 
 { #category : #tests }
-CryptoSquareTest >> test05_and9CharacterPlaintextResultsIn3ChunksOf3Characters [
+CryptoSquareTest >> test05_9CharacterPlaintextResultsIn3ChunksOf3Characters [
 	| result |
 
 	result := cryptoSquareCalculator ciphertextPlaintext: 'This is fun!' .
@@ -145,7 +145,7 @@ CryptoSquareTest >> test05_and9CharacterPlaintextResultsIn3ChunksOf3Characters [
 ]
 
 { #category : #tests }
-CryptoSquareTest >> test06_and8CharacterPlaintextResultsIn3ChunksTheLastOneWithATrailingSpace [
+CryptoSquareTest >> test06_8CharacterPlaintextResultsIn3ChunksTheLastOneWithATrailingSpace [
 	| result |
 
 	result := cryptoSquareCalculator ciphertextPlaintext: 'Chill out.' .
@@ -153,7 +153,7 @@ CryptoSquareTest >> test06_and8CharacterPlaintextResultsIn3ChunksTheLastOneWithA
 ]
 
 { #category : #tests }
-CryptoSquareTest >> test07_and54CharacterPlaintextResultsIn7ChunksTheLastTwoWithTrailingSpaces [
+CryptoSquareTest >> test07_54CharacterPlaintextResultsIn7ChunksTheLastTwoWithTrailingSpaces [
 	| result |
 
 	result := cryptoSquareCalculator ciphertextPlaintext: 'If man was meant to stay on the ground, god would have given us roots.' .

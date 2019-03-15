@@ -46,12 +46,12 @@ Class {
 { #category : #config }
 SaddlePointsTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'b1fe7abe-4a3f-0d00-bb54-65fd071d6982'
+	^'99a4ddbb-8040-0d00-8125-638401deb008'
 ]
 
 { #category : #config }
 SaddlePointsTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.5.0'
 ]
 

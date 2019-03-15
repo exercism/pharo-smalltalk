@@ -37,12 +37,12 @@ Class {
 { #category : #config }
 ListOpsTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'1ca155be-4a3f-0d00-bb3a-d024071d6982'
+	^'dfb1c8bb-8040-0d00-810c-52df01deb008'
 ]
 
 { #category : #config }
 ListOpsTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'2.4.0'
 ]
 

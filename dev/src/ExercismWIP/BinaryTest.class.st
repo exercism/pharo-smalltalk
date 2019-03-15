@@ -48,12 +48,12 @@ Class {
 { #category : #config }
 BinaryTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'1b6389be-4a3f-0d00-bb5b-4054071d6982'
+	^'a90be8bb-8040-0d00-812e-0c1701deb008'
 ]
 
 { #category : #config }
 BinaryTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.1.0'
 ]
 
@@ -135,7 +135,7 @@ BinaryTest >> test09_BinaryIgnoresLeadingZeros [
 ]
 
 { #category : #tests }
-BinaryTest >> test10_and2IsNotAValidBinaryDigit [
+BinaryTest >> test10_2IsNotAValidBinaryDigit [
 	| result |
 
 	result := binaryCalculator decimalBinary: '2' .

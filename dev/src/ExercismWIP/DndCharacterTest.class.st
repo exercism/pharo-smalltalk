@@ -50,12 +50,12 @@ Class {
 { #category : #config }
 DndCharacterTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'4fa98bbe-4a3f-0d00-bb5d-38af071d6982'
+	^'0172e9bb-8040-0d00-8130-824f01deb008'
 ]
 
 { #category : #config }
 DndCharacterTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.1.0'
 ]
 
