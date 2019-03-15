@@ -18,6 +18,17 @@ ExercismManager class >> default [
 ]
 
 { #category : #config }
+ExercismManager class >> exercismPackage [
+	"Answer the default exercism package, or create one if missing"
+	| packageOrganiser |
+	
+	packageOrganiser := RPackageOrganizer default.
+	^ packageOrganiser
+		packageNamed: self exercismPackageName
+		ifAbsent: [ packageOrganiser createPackageNamed: self exercismPackageName ]
+]
+
+{ #category : #config }
 ExercismManager class >> exercismPackageName [
 	^ 'Exercism'
 ]
@@ -36,20 +47,19 @@ ExercismManager class >> trackId [
 ExercismManager class >> welcome [
 	"Setup the initial environment for a new user"
 
-	| pkg |
-	pkg := RPackageOrganizer default
-		createPackageNamed: self exercismPackageName.
-		
-	pkg
+	| defaultPackage |
+	
+	defaultPackage := self exercismPackage.	
+	defaultPackage
 		moveClass: Welcome
-			toTag: (RPackageTag package: pkg name: 'Welcome').
+			toTag: (RPackageTag package: defaultPackage name: 'Welcome').
 			
 	Smalltalk tools browser openOnClass: Welcome selector: #testWelcome.
 ]
 
 { #category : #exercism }
 ExercismManager >> fetchFromExercismTo: package [
-	| exerciseName |
+	| exerciseName result |
 	
 	exerciseName := (UIManager default
 		request: 'Enter a valid exercism exercise (e.g. hello-world):')
@@ -57,8 +67,10 @@ ExercismManager >> fetchFromExercismTo: package [
 			ifNotNil: [ :value | self parseExerciseName: value ].
 		
 	UIManager default inform: 'Loading: ' , exerciseName.
-	(ExercismDownload exercise: exerciseName)
-		ifTrue: [ UIManager default inform: 'Success, Happy Coding' ]
+	result := (ExercismDownloadCommand track: self class trackId exercise: exerciseName)
+		execute.
+		
+	result ifNotNil: [ UIManager default inform: 'Success, Happy Coding' ]
 ]
 
 { #category : #helpers }
@@ -74,29 +86,14 @@ ExercismManager >> parseExerciseName: aString [
 ]
 
 { #category : #exercism }
-ExercismManager >> pathStringFor: aFileReference [
-	| aPath |
-	aPath := aFileReference path.
-	^ String streamContents: [ :stream | aPath printOn: stream delimiter: aPath delimiter ]
-]
-
-{ #category : #exercism }
 ExercismManager >> submitToExercism: packageOrTag [
-	| exerciseName |
-	
-	exerciseName := packageOrTag name asKebabCase.
-	exerciseName = 'exercism' ifTrue: [ self error: 'Select the sub-package with your solution!' ].
+		
+	(packageOrTag  = self class exercismPackage) 
+		ifTrue: [ self error: 'Select the sub-package with your solution!' ].
 				
-	ExercismSubmit exercise: exerciseName.
+	(ExercismSubmitCommand exercise: packageOrTag) execute.
 	
 	UIManager default inform: 'Successfully submitted solution!'
-]
-
-{ #category : #helper }
-ExercismManager >> verifyToken [
-	 [ ExercismCommand verifyToken ] on: ExUnauthorized do: [ ^false ].
-	^true 
-
 ]
 
 { #category : #exercism }

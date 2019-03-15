@@ -1,3 +1,6 @@
+"
+There are several ways of solving this one, however on option (often used in other languages like Ruby and Python) is regex - and so I have demonstrated the Pharo equivalent here. There is an 'alternative' category with a more text processing based solution too.
+"
 Class {
 	#name : #WordCount,
 	#superclass : #Object,

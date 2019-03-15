@@ -1,5 +1,5 @@
 "
-I return ages in planet-years for planets in the solar system.
+I return ages in planet-years for planets in the solar system. This solution shows how to use a lazy initialized class variable for a simple lookup table.
 "
 Class {
 	#name : #SpaceAge,

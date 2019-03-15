@@ -1,6 +1,13 @@
 Extension { #name : #String }
 
 { #category : #'*ExercismDev' }
+String >> ->> aCollectionOfAssociations [
+	"Similar to -> but converts aCollection to anOrderedDictionary, useful when building JSON structures"
+
+	^self -> aCollectionOfAssociations asOrderedDictionary 
+]
+
+{ #category : #'*ExercismDev' }
 String >> asValidKeyword [
 	"Answer the receiver as a Symbol, which is a valid method keyword or unary message name"
 
@@ -9,6 +16,6 @@ String >> asValidKeyword [
 	validName := self select: [ :c | c isAlphaNumeric or: [ c == $_ ] ].
 	
 	^(validName first isDigit 
-		ifTrue: [ 'and' , validName ]
+		ifTrue: [ (self isAllDigits ifTrue: ['at' ] ifFalse: ['and']) , validName ]
 		ifFalse: [ validName ]) asSymbol
 ]

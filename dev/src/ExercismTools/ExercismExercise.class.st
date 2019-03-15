@@ -1,3 +1,8 @@
+"
+I am the meta data for an exercise, and am typically created from the #excerise method on any of the specified ExercismTest tests (which are a type of SUnit test).
+
+Of note is that the exercise submission id is stored as a class instance variable on ExercismTest.
+"
 Class {
 	#name : #ExercismExercise,
 	#superclass : #Object,
@@ -10,7 +15,7 @@ Class {
 		'unlockedBy',
 		'isDeprecated'
 	],
-	#category : #'ExercismDev-Core'
+	#category : #'ExercismTools-Meta'
 }
 
 { #category : #'instance creation' }
@@ -23,8 +28,10 @@ ExercismExercise class >> allExercises [
 { #category : #'instance creation' }
 ExercismExercise class >> bonusExercises [
 	"self bonusExercises"
-	
-	^(self allExercises reject: [:exercise | exercise isCore ])
+
+	^ (self allExercises
+		reject:
+			[ :exercise | exercise isCore or: [ exercise exercisePackage ~= HelloWorldTest package ] ])
 		asSortedCollection: [ :a :b | a name < b name ]
 ]
 
@@ -35,9 +42,16 @@ ExercismExercise class >> coreExercises [
 ]
 
 { #category : #'instance creation' }
-ExercismExercise class >> for: anExercismTest [
+ExercismExercise class >> find: exercismName [
+	| kebabedName |
+	kebabedName := exercismName asKebabCase.
+	^self allExercises detect: [ :ex | ex name = kebabedName ]
+]
+
+{ #category : #'instance creation' }
+ExercismExercise class >> for: anExercismTestCase [
 	^self new
-		testCase: anExercismTest;
+		testCase: anExercismTestCase;
 		yourself
 ]
 
@@ -76,8 +90,28 @@ ExercismExercise >> difficulty: anInteger [
 ]
 
 { #category : #accessing }
+ExercismExercise >> exerciseClass [
+	"Answer the main solution class, by convention this is the name of the exercise"
+	
+	^ self testCase
+		ifNil: [ nil ]
+		ifNotNil:
+			[ :test | Smalltalk classNamed: self exerciseClassName ]
+]
+
+{ #category : #accessing }
 ExercismExercise >> exerciseClassName [ 
 	^self testCase name withoutSuffix: 'Test'
+]
+
+{ #category : #accessing }
+ExercismExercise >> exercisePackage [
+	^self testCase package
+]
+
+{ #category : #accessing }
+ExercismExercise >> exercisePackageTag [
+	^self testCase package classTagForClass: self testCase
 ]
 
 { #category : #navigating }
@@ -130,6 +164,11 @@ ExercismExercise >> hintText [
 	^ ''
 ]
 
+{ #category : #accessing }
+ExercismExercise >> id [ 
+	^self name
+]
+
 { #category : #initialization }
 ExercismExercise >> initialize [
 	super initialize.
@@ -162,7 +201,7 @@ ExercismExercise >> isCore: aBoolean [
 
 { #category : #accessing }
 ExercismExercise >> isDefined [
-	^self solutionClass notNil
+	^self exerciseClass notNil
 ]
 
 { #category : #accessing }
@@ -175,6 +214,11 @@ ExercismExercise >> isDeprecated: anObject [
 	isDeprecated := anObject
 ]
 
+{ #category : #accessing }
+ExercismExercise >> isEmpty [
+	^self solutionClasses isEmpty
+]
+
 { #category : #comparing }
 ExercismExercise >> isFirst [
 	^ self unlockedBy isNil
@@ -183,7 +227,7 @@ ExercismExercise >> isFirst [
 { #category : #comparing }
 ExercismExercise >> isFollowedBy: anExercismExercise [
 
-	self isFirst ifTrue: [ ^ true ].
+	self isFirst ifTrue: [ ^ self ~= anExercismExercise ].
 	anExercismExercise isFirst ifTrue: [ ^ false ].
 		
 	^ (anExercismExercise isUnlockedBy: self)
@@ -220,11 +264,34 @@ ExercismExercise >> printOn: aStream [
 ]
 
 { #category : #accessing }
-ExercismExercise >> solutionClass [
-	^ self testCase
-		ifNil: [ nil ]
-		ifNotNil:
-			[ :test | Smalltalk classNamed: self exerciseClassName ]
+ExercismExercise >> solutionClasses [
+	"Answer the classes that are submitted to Exercism"
+	
+	^self exercisePackageTag classes reject: [ :c | c isTestCase  ]
+]
+
+{ #category : #accessing }
+ExercismExercise >> solutionId [
+	^self testCase solutionId
+]
+
+{ #category : #accessing }
+ExercismExercise >> solutionSources [
+	| sources |
+	
+	sources := ExTonelWriter new mappedSnapshot: self exercisePackageTag snapshot.
+	
+	^ (self solutionClasses collect: [ :c | c name ])
+		inject: Dictionary new
+		into: [ :result :c | 
+			result
+				at: c , '.st' put: (sources at: c);
+				yourself ]
+]
+
+{ #category : #storing }
+ExercismExercise >> storeSolutionId: anId [
+	^self testCase solutionId: anId
 ]
 
 { #category : #accessing }
@@ -253,7 +320,7 @@ ExercismExercise >> unlockReference [
 
 	^ self isCore
 		ifTrue: [ nil ]
-		ifFalse: [ self unlockedBy name ]
+		ifFalse: [ self unlockedBy ifNotNil: [:parent | parent name ]]
 ]
 
 { #category : #accessing }
@@ -274,6 +341,11 @@ ExercismExercise >> unlockedExercises [
 { #category : #accessing }
 ExercismExercise >> uuid [
 	^self testCase uuid
+]
+
+{ #category : #verifying }
+ExercismExercise >> verifySolutionForSubmission [
+	<todo>
 ]
 
 { #category : #accessing }

@@ -6,26 +6,39 @@ Class {
 
 { #category : #baselines }
 BaselineOfExercism >> baseline: spec [
-
 	<baseline>
+	
 	spec
 		for: #common
 		do: [ self setUpDependencies: spec.
 			spec
-				package: 'ExercismTools'
-					with: [ ];
-				package: 'Exercism'
-					with: [ "Dev version (as this has all the solutons as well as tests)"];
-				package: 'ExercismWIP'
-					with: [ "Holding package for WIP tests"];
+				package: 'ExercismPharo70'; "Pharo override/patch methods"
+				package: 'ExercismTools' 
+					with: [ spec requires: #('ExercismPharo70') ];
+				
+				package: 'Exercism'; "For dev group (as this has all solutions & tests)"
+				
+				package: 'ExercismMocking' 
+					with: [ spec requires: #('Mocketry') ];
+				package: 'ExercismTests'
+					with: [ spec requires: #('ExercismMocking') ];
+				package: 'ExercismSystemTests'
+					with: [ spec requires: #('ExercismTests') ];
+				
+				package: 'ExercismWIP';
+					
 				package: 'ExercismDev'
-					with: [ spec requires: #('ExercismTools' 'Exercism' 'ExercismWIP' 'OSProcess')];
+					with: [ spec requires: #(
+						'OSProcess' "For shelling out to configlet"
+						'ExercismTools' 'Exercism' 'ExercismWIP' 
+						'ExercismTests' 'ExercismSystemTests'
+						)];
+				
 				group: 'default'
-					with:
-					#('ExercismTools');
+					with: #('ExercismTools');
+				
 				group: 'dev'
-					with:
-					#('ExercismDev')]
+					with: #('ExercismDev')]
 ]
 
 { #category : #baselines }
@@ -38,5 +51,8 @@ BaselineOfExercism >> setUpDependencies: spec [
 					className: #ConfigurationOfOSProcess;
 					versionString: #'stable';
 					repository: 'http://www.squeaksource.com/OSProcess' ].
-		
+				
+	spec
+    	baseline: 'Mocketry'
+    	with: [ spec repository: 'github://dionisiydk/Mocketry:v4.0.x' ]
 ]
