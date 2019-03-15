@@ -124,7 +124,7 @@ AnagramTest >> test09_DetectsAnagramsUsingCaseinsensitivePossibleMatches [
 ]
 
 { #category : #tests }
-AnagramTest >> test10_DoesNotDetectAAnagramIfTheOriginalWordIsRepeated [
+AnagramTest >> test10_DoesNotDetectAnAnagramIfTheOriginalWordIsRepeated [
 	| result |
 
 	result := anagramCalculator findAnagramsCandidates: #('go Go GO' ) subject: 'go' .
