@@ -37,12 +37,12 @@ Class {
 { #category : #config }
 ResistorColorTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'0e035dbe-4a3f-0d00-bb40-bb98071d6982'
+	^'ee9accbb-8040-0d00-8112-521201deb008'
 ]
 
 { #category : #config }
 ResistorColorTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.0.0'
 ]
 

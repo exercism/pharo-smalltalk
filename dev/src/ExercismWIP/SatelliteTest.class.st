@@ -1,5 +1,5 @@
 "
-# Retree
+# Satellite
 
 Imagine you need to transmit a binary tree to a satellite approaching Alpha
 Centauri and you have limited bandwidth. Since the tree has no repeating
@@ -35,75 +35,75 @@ TBD
 
 "
 Class {
-	#name : #RetreeTest,
+	#name : #SatelliteTest,
 	#superclass : #ExercismTest,
 	#instVars : [
-		'retreeCalculator'
+		'satelliteCalculator'
 	],
-	#category : #'ExercismWIP-Retree'
+	#category : #'ExercismWIP-Satellite'
 }
 
 { #category : #config }
-RetreeTest class >> uuid [
+SatelliteTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'d1c42dbe-4a3f-0d00-bb1d-02aa071d6982'
+	^'5f42e0bb-8040-0d00-8128-aea101deb008'
 ]
 
 { #category : #config }
-RetreeTest class >> version [
-	"Generated from specification: 28 February 2019"
-	^'1.0.0'
+SatelliteTest class >> version [
+	"Generated from specification: 15 March 2019"
+	^'2.0.0'
 ]
 
 { #category : #setup }
-RetreeTest >> setUp [
-	retreeCalculator := Retree new
+SatelliteTest >> setUp [
+	satelliteCalculator := Satellite new
 ]
 
 { #category : #tests }
-RetreeTest >> test01_EmptyTree [
+SatelliteTest >> test01_EmptyTree [
 	| result |
 
-	result := retreeCalculator treeFromTraversalsPreorder: #() inorder: #() .
+	result := satelliteCalculator treeFromTraversalsPreorder: #() inorder: #() .
 	self assert: result equals: ((Dictionary new))
 ]
 
 { #category : #tests }
-RetreeTest >> test02_TreeWithOneItem [
+SatelliteTest >> test02_TreeWithOneItem [
 	| result |
 
-	result := retreeCalculator treeFromTraversalsPreorder: #('a' ) inorder: #('a' ) .
+	result := satelliteCalculator treeFromTraversalsPreorder: #('a' ) inorder: #('a' ) .
 	self assert: result equals: ((Dictionary new) add: ('v'->'a'); add: ('l'->((Dictionary new))); add: ('r'->((Dictionary new))); yourself)
 ]
 
 { #category : #tests }
-RetreeTest >> test03_TreeWithManyItems [
+SatelliteTest >> test03_TreeWithManyItems [
 	| result |
 
-	result := retreeCalculator treeFromTraversalsPreorder: #('a' 'i' 'x' 'f' 'r' ) inorder: #('i' 'a' 'f' 'x' 'r' ) .
+	result := satelliteCalculator treeFromTraversalsPreorder: #('a' 'i' 'x' 'f' 'r' ) inorder: #('i' 'a' 'f' 'x' 'r' ) .
 	self assert: result equals: ((Dictionary new) add: ('v'->'a'); add: ('l'->((Dictionary new) add: ('v'->'i'); add: ('l'->((Dictionary new))); add: ('r'->((Dictionary new))); yourself)); add: ('r'->((Dictionary new) add: ('v'->'x'); add: ('l'->((Dictionary new) add: ('v'->'f'); add: ('l'->((Dictionary new))); add: ('r'->((Dictionary new))); yourself)); add: ('r'->((Dictionary new) add: ('v'->'r'); add: ('l'->((Dictionary new))); add: ('r'->((Dictionary new))); yourself)); yourself)); yourself)
 ]
 
 { #category : #tests }
-RetreeTest >> test04_RejectTraversalsOfDifferentLength [
+SatelliteTest >> test04_RejectTraversalsOfDifferentLength [
 	| result |
 
-	result := retreeCalculator treeFromTraversalsPreorder: #('a' 'b' ) inorder: #('b' 'a' 'r' ) .
+	result := satelliteCalculator treeFromTraversalsPreorder: #('a' 'b' ) inorder: #('b' 'a' 'r' ) .
 	self assert: result equals: ((Dictionary new) add: ('error'->'traversals must have the same length'); yourself)
 ]
 
 { #category : #tests }
-RetreeTest >> test05_RejectInconsistentTraversalsOfSameLength [
+SatelliteTest >> test05_RejectInconsistentTraversalsOfSameLength [
 	| result |
 
-	result := retreeCalculator treeFromTraversalsPreorder: #('x' 'y' 'z' ) inorder: #('a' 'b' 'c' ) .
+	result := satelliteCalculator treeFromTraversalsPreorder: #('x' 'y' 'z' ) inorder: #('a' 'b' 'c' ) .
 	self assert: result equals: ((Dictionary new) add: ('error'->'traversals must have the same elements'); yourself)
 ]
 
 { #category : #tests }
-RetreeTest >> test06_RejectTraversalsWithRepeatedItems [
+SatelliteTest >> test06_RejectTraversalsWithRepeatedItems [
 	| result |
 
-	result := retreeCalculator treeFromTraversalsPreorder: #('a' 'b' 'a' ) inorder: #('b' 'a' 'a' ) .
+	result := satelliteCalculator treeFromTraversalsPreorder: #('a' 'b' 'a' ) inorder: #('b' 'a' 'a' ) .
 	self assert: result equals: ((Dictionary new) add: ('error'->'traversals must contain unique items'); yourself)
 ]

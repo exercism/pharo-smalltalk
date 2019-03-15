@@ -47,12 +47,12 @@ Class {
 { #category : #config }
 TwoBucketTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'755c26be-4a3f-0d00-bb17-8bce071d6982'
+	^'0964b1bb-8040-0d00-80ec-586901deb008'
 ]
 
 { #category : #config }
 TwoBucketTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.4.0'
 ]
 

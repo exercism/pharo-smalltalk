@@ -80,12 +80,12 @@ Class {
 { #category : #config }
 SayTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'f3cb33be-4a3f-0d00-bb22-7a42071d6982'
+	^'da4ab8bb-8040-0d00-80f6-b34501deb008'
 ]
 
 { #category : #config }
 SayTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.2.0'
 ]
 

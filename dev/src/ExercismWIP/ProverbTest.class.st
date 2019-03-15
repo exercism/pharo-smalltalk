@@ -34,12 +34,12 @@ Class {
 { #category : #config }
 ProverbTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'37cd39be-4a3f-0d00-bb27-6490071d6982'
+	^'b4e3babb-8040-0d00-80fa-71e001deb008'
 ]
 
 { #category : #config }
 ProverbTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.1.0'
 ]
 

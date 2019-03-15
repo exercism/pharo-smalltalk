@@ -76,12 +76,12 @@ Class {
 { #category : #config }
 RailFenceCipherTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'db7492be-4a3f-0d00-bb63-7d9e071d6982'
+	^'4c8cecbb-8040-0d00-8135-664d01deb008'
 ]
 
 { #category : #config }
 RailFenceCipherTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.1.0'
 ]
 

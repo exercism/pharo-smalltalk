@@ -82,12 +82,12 @@ Class {
 { #category : #config }
 LuhnTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'dfdb77be-4a3f-0d00-bb51-a203071d6982'
+	^'c0ccdbbb-8040-0d00-8122-f21a01deb008'
 ]
 
 { #category : #config }
 LuhnTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.4.0'
 ]
 

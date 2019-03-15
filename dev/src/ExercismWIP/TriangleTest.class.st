@@ -40,12 +40,12 @@ Class {
 { #category : #config }
 TriangleTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'992765be-4a3f-0d00-bb43-0ac8071d6982'
+	^'4d93cfbb-8040-0d00-8115-4e2601deb008'
 ]
 
 { #category : #config }
 TriangleTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.2.0'
 ]
 

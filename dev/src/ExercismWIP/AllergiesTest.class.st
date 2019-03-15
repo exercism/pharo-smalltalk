@@ -47,12 +47,12 @@ Class {
 { #category : #config }
 AllergiesTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'a74e96be-4a3f-0d00-bb65-6c76071d6982'
+	^'a1d1eebb-8040-0d00-8137-30f901deb008'
 ]
 
 { #category : #config }
 AllergiesTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.2.0'
 ]
 

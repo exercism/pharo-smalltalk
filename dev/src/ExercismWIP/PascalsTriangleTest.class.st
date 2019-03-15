@@ -32,12 +32,12 @@ Class {
 { #category : #config }
 PascalsTriangleTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'47074dbe-4a3f-0d00-bb34-0b99071d6982'
+	^'6d37c4bb-8040-0d00-8106-a18501deb008'
 ]
 
 { #category : #config }
 PascalsTriangleTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.5.0'
 ]
 

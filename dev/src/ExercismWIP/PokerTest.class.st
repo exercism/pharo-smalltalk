@@ -23,12 +23,12 @@ Class {
 { #category : #config }
 PokerTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'740a3cbe-4a3f-0d00-bb28-4fa5071d6982'
+	^'76e4bbbb-8040-0d00-80fb-625a01deb008'
 ]
 
 { #category : #config }
 PokerTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.1.0'
 ]
 

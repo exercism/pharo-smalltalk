@@ -41,12 +41,12 @@ Class {
 { #category : #config }
 SpiralMatrixTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'82c919be-4a3f-0d00-bb0e-b715071d6982'
+	^'c044abbb-8040-0d00-80e4-51bf01deb008'
 ]
 
 { #category : #config }
 SpiralMatrixTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.1.0'
 ]
 

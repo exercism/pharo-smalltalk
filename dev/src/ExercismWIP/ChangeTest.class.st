@@ -34,12 +34,12 @@ Class {
 { #category : #config }
 ChangeTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'27b22cbe-4a3f-0d00-bb1c-d37a071d6982'
+	^'6c0bb5bb-8040-0d00-80f1-210e01deb008'
 ]
 
 { #category : #config }
 ChangeTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.3.0'
 ]
 

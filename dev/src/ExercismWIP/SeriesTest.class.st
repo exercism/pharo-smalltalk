@@ -38,12 +38,12 @@ Class {
 { #category : #config }
 SeriesTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'7c1b1ebe-4a3f-0d00-bb11-67a0071d6982'
+	^'828dacbb-8040-0d00-80e6-607001deb008'
 ]
 
 { #category : #config }
 SeriesTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.0.0'
 ]
 

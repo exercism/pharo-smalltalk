@@ -29,12 +29,12 @@ Class {
 { #category : #config }
 ArmstrongNumbersTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'bd832abe-4a3f-0d00-bb1a-f1ce071d6982'
+	^'8bc0b3bb-8040-0d00-80ef-ee6601deb008'
 ]
 
 { #category : #config }
 ArmstrongNumbersTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.0.0'
 ]
 

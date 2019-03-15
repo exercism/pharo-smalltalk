@@ -66,12 +66,12 @@ Class {
 { #category : #config }
 ScaleGeneratorTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'b66e68be-4a3f-0d00-bb46-db95071d6982'
+	^'408fd1bb-8040-0d00-8118-e85a01deb008'
 ]
 
 { #category : #config }
 ScaleGeneratorTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'2.0.0'
 ]
 

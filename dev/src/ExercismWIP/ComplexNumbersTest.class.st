@@ -46,12 +46,12 @@ Class {
 { #category : #config }
 ComplexNumbersTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'e44b7dbe-4a3f-0d00-bb55-f73f071d6982'
+	^'8b05dfbb-8040-0d00-8126-a71501deb008'
 ]
 
 { #category : #config }
 ComplexNumbersTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.3.0'
 ]
 

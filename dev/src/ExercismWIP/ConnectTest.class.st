@@ -48,12 +48,12 @@ Class {
 { #category : #config }
 ConnectTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'06c48fbe-4a3f-0d00-bb60-e70d071d6982'
+	^'ab00ebbb-8040-0d00-8132-b4ac01deb008'
 ]
 
 { #category : #config }
 ConnectTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.1.0'
 ]
 

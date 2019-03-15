@@ -33,12 +33,12 @@ Class {
 { #category : #config }
 DartsTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'33b978be-4a3f-0d00-bb52-b33b071d6982'
+	^'b762dcbb-8040-0d00-8123-8a3501deb008'
 ]
 
 { #category : #config }
 DartsTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.1.0'
 ]
 

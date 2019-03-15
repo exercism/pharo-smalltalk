@@ -48,12 +48,12 @@ Class {
 { #category : #config }
 RotationalCipherTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'879323be-4a3f-0d00-bb15-ae00071d6982'
+	^'53a6afbb-8040-0d00-80ea-d38401deb008'
 ]
 
 { #category : #config }
 RotationalCipherTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.2.0'
 ]
 

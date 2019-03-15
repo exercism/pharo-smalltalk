@@ -22,12 +22,12 @@ Class {
 { #category : #config }
 HighScoresTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'3c1621be-4a3f-0d00-bb13-b757071d6982'
+	^'1024aebb-8040-0d00-80e8-da8501deb008'
 ]
 
 { #category : #config }
 HighScoresTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'4.0.0'
 ]
 

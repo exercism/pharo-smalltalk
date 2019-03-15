@@ -82,12 +82,12 @@ Class {
 { #category : #config }
 TournamentTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'392b58be-4a3f-0d00-bb3c-0152071d6982'
+	^'1109cabb-8040-0d00-810e-7c1b01deb008'
 ]
 
 { #category : #config }
 TournamentTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.4.0'
 ]
 

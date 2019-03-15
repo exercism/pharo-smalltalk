@@ -56,12 +56,12 @@ Class {
 { #category : #config }
 RestApiTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'ede39ebe-4a3f-0d00-bb6c-9c85071d6982'
+	^'5933f3bb-8040-0d00-813d-94e201deb008'
 ]
 
 { #category : #config }
 RestApiTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.1.1'
 ]
 

@@ -85,12 +85,12 @@ Class {
 { #category : #config }
 BookStoreTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'57a727be-4a3f-0d00-bb18-bc50071d6982'
+	^'f32eb2bb-8040-0d00-80ed-944a01deb008'
 ]
 
 { #category : #config }
 BookStoreTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.4.0'
 ]
 
