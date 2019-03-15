@@ -15,6 +15,17 @@ String >> asKebabCase [
 ]
 
 { #category : #'*ExercismTools' }
+String >> exPathString [
+	"Answer the receiver as a valid path, with a trailing /"
+
+	^ String
+		streamContents: [ :s | 
+			s nextPutAll: self.
+			self last = $/
+				ifFalse: [ s nextPut: $/ ] ]
+]
+
+{ #category : #'*ExercismTools' }
 String >> kebabAsCamelCase [
 	"Answer a String that converts the CamelCase input to camel-case kebab output 
 	used by exercism"

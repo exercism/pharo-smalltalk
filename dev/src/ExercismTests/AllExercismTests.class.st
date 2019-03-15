@@ -4,14 +4,14 @@ I am a composite test that gathers all the test cases in Exercism so you can eas
 Class {
 	#name : #AllExercismTests,
 	#superclass : #TestCase,
-	#category : #'ExercismDev-Tests'
+	#category : #'ExercismTests-UnitTests'
 }
 
 { #category : #private }
 AllExercismTests class >> allExercismTests [
 	"gather all the TestCases in the Execercsim package"
 
-	^ self allExercismTestsFor: #( #Exercism #ExercismDev )
+	^ self allExercismTestsFor: #( #Exercism #ExercismTests)
 ]
 
 { #category : #private }

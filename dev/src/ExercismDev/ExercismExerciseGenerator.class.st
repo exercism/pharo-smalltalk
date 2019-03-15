@@ -1,3 +1,10 @@
+"
+I am the source code generator for creating exercism compatible source files that can be checked into the exercism/pharo project for students to download.
+
+You need to have checked out the exercism problem-specifications to point the generator to, to get the test case definitions.
+
+To try: self generate
+"
 Class {
 	#name : #ExercismExerciseGenerator,
 	#superclass : #Object,
@@ -183,10 +190,15 @@ ExercismExerciseGenerator >> generateTestClass: testName tag: tagName variable: 
 
 { #category : #generation }
 ExercismExerciseGenerator >> generateTestMethodsOn: testClass calling: testVariable using: testJson prefix: aPrefixString [
-	| instance methodName parameters testResult testPrefix |
+	| instance methodName parameters testResult testPrefix methodNameSegment |
 	(testJson at: 'cases')
 		doWithIndex: [ :case :i | 
-			methodName := aPrefixString, ((case at: 'description') asCamelCase capitalized) asValidKeyword.
+			
+			methodNameSegment := (case at: 'description') asCamelCase asValidKeyword capitalized. 
+			methodName :=  aPrefixString 
+				ifEmpty: [ methodNameSegment withoutPrefix: 'And' ] 
+				ifNotEmpty: [ aPrefixString, methodNameSegment ].
+				
 			(case includesKey: 'cases')
 				ifTrue: [ self
 						generateTestMethodsOn: testClass

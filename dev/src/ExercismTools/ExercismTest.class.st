@@ -1,6 +1,12 @@
+"
+I am the root of Exercism test examples but also provide a hook to specify some simple exercise metadata that can be used to generate the exercism config.json file (used by the platform to unlock exercises for users as they progress).
+"
 Class {
 	#name : #ExercismTest,
 	#superclass : #TestCase,
+	#classInstVars : [
+		'solutionId'
+	],
 	#category : #'ExercismTools-Core'
 }
 
@@ -32,6 +38,16 @@ ExercismTest class >> next [
 	"Answer the String id of the exercise name that follows"
 	
 	^''
+]
+
+{ #category : #accessing }
+ExercismTest class >> solutionId [
+	^ solutionId
+]
+
+{ #category : #accessing }
+ExercismTest class >> solutionId: anObject [
+	solutionId := anObject
 ]
 
 { #category : #config }

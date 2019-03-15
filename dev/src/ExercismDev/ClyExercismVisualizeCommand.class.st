@@ -1,3 +1,6 @@
+"
+Menu command for (currently) crudely visualizing exercises
+"
 Class {
 	#name : #ClyExercismVisualizeCommand,
 	#superclass : #ClyExercismCommand,

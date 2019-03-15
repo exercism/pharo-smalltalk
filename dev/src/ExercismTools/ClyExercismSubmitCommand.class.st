@@ -29,5 +29,5 @@ ClyExercismSubmitCommand >> description [
 
 { #category : #execution }
 ClyExercismSubmitCommand >> execute [
-	ExercismManager default submitToExercism: self tagGroup
+	ExercismManager default submitToExercism: (ExercismExercise find: self tagGroup name) 
 ]
