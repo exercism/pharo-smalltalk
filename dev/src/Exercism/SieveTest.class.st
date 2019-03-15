@@ -32,7 +32,7 @@ language).
 
 ## Hint
 
-TBD
+To make your solution readable, try using the refactoring tools to extract any meaningful sub-operation(s), and don't worry about using well named temporary variables.
 
 "
 Class {
@@ -41,8 +41,21 @@ Class {
 	#instVars : [
 		'sieveCalculator'
 	],
-	#category : #'ExercismWIP-Sieve'
+	#category : #'Exercism-Sieve'
 }
+
+{ #category : #helper }
+SieveTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+
+	^(self createExerciseAfter: IsogramTest)
+		isCore: false;
+		difficulty: 3;
+		topics: #('math' 'lists' 'loops');
+		yourself
+
+				
+]
 
 { #category : #config }
 SieveTest class >> uuid [

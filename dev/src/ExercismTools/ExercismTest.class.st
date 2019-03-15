@@ -10,14 +10,14 @@ Class {
 	#category : #'ExercismTools-Core'
 }
 
-{ #category : #config }
+{ #category : #helper }
 ExercismTest class >> createExerciseAfter: anotherTestCase [
 	^(ExercismExercise for: self) 
 			unlockedBy: anotherTestCase exercise;
 			yourself
 ]
 
-{ #category : #helper }
+{ #category : #config }
 ExercismTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise
 	e.g.
@@ -33,9 +33,16 @@ ExercismTest class >> exercise [
 				
 ]
 
+{ #category : #generator }
+ExercismTest class >> generator [
+	"Answer code generator aliases/hints"
+	
+	^{}
+]
+
 { #category : #config }
 ExercismTest class >> next [
-	"Answer the String id of the exercise name that follows"
+	"Answer the String id of the exercise name that follows (For future usage)"
 	
 	^''
 ]
