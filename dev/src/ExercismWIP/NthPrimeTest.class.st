@@ -26,12 +26,12 @@ Class {
 { #category : #config }
 NthPrimeTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'0f15a5be-4a3f-0d00-bb70-93ee071d6982'
+	^'a596f6bb-8040-0d00-8141-ee2201deb008'
 ]
 
 { #category : #config }
 NthPrimeTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'2.1.0'
 ]
 

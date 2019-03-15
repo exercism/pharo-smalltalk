@@ -30,12 +30,12 @@ Class {
 { #category : #config }
 NucleotideCountTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'35bb44be-4a3f-0d00-bb2e-2b78071d6982'
+	^'25c4bfbb-8040-0d00-8100-f18701deb008'
 ]
 
 { #category : #config }
 NucleotideCountTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.3.0'
 ]
 

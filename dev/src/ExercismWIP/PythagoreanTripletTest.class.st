@@ -41,12 +41,12 @@ Class {
 { #category : #config }
 PythagoreanTripletTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'d9e274be-4a3f-0d00-bb4f-c391071d6982'
+	^'7bc3d9bb-8040-0d00-8120-98ce01deb008'
 ]
 
 { #category : #config }
 PythagoreanTripletTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.0.0'
 ]
 

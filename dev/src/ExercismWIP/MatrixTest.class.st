@@ -58,12 +58,12 @@ Class {
 { #category : #config }
 MatrixTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'a68f9bbe-4a3f-0d00-bb69-b718071d6982'
+	^'3a46f1bb-8040-0d00-813a-750801deb008'
 ]
 
 { #category : #config }
 MatrixTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.1.0'
 ]
 

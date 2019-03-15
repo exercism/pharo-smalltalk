@@ -35,12 +35,12 @@ Class {
 { #category : #config }
 PigLatinTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'859a70be-4a3f-0d00-bb4b-9bd7071d6982'
+	^'c97cd7bb-8040-0d00-811d-e08701deb008'
 ]
 
 { #category : #config }
 PigLatinTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.2.0'
 ]
 

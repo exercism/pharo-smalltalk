@@ -41,12 +41,12 @@ Class {
 { #category : #config }
 RunLengthEncodingTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'382c51be-4a3f-0d00-bb37-85f6071d6982'
+	^'6060c6bb-8040-0d00-8109-2c0801deb008'
 ]
 
 { #category : #config }
 RunLengthEncodingTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.1.0'
 ]
 

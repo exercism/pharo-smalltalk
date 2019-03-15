@@ -49,12 +49,12 @@ Class {
 { #category : #config }
 VariableLengthQuantityTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'088f29be-4a3f-0d00-bb19-4715071d6982'
+	^'a83bb3bb-8040-0d00-80ee-b8c201deb008'
 ]
 
 { #category : #config }
 VariableLengthQuantityTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.2.0'
 ]
 

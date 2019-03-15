@@ -87,12 +87,12 @@ Class {
 { #category : #config }
 AffineCipherTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'78ab3dbe-4a3f-0d00-bb29-0501071d6982'
+	^'deb9bcbb-8040-0d00-80fc-1fff01deb008'
 ]
 
 { #category : #config }
 AffineCipherTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'2.0.0'
 ]
 

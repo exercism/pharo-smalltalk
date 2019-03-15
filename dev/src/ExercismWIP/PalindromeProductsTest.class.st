@@ -50,12 +50,12 @@ Class {
 { #category : #config }
 PalindromeProductsTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'1beb43be-4a3f-0d00-bb2d-4e6a071d6982'
+	^'1f42bfbb-8040-0d00-80ff-9ea701deb008'
 ]
 
 { #category : #config }
 PalindromeProductsTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.2.0'
 ]
 

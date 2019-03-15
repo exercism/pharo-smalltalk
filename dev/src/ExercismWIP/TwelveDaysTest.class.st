@@ -46,12 +46,12 @@ Class {
 { #category : #config }
 TwelveDaysTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'4b456bbe-4a3f-0d00-bb48-739b071d6982'
+	^'6665d3bb-8040-0d00-811a-722c01deb008'
 ]
 
 { #category : #config }
 TwelveDaysTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.2.0'
 ]
 

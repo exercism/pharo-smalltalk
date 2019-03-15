@@ -338,12 +338,12 @@ Class {
 { #category : #config }
 BeerSongTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'6c2936be-4a3f-0d00-bb24-93dc071d6982'
+	^'6203b9bb-8040-0d00-80f7-b11c01deb008'
 ]
 
 { #category : #config }
 BeerSongTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'2.1.0'
 ]
 

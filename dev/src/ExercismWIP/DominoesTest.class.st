@@ -32,12 +32,12 @@ Class {
 { #category : #config }
 DominoesTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'833366be-4a3f-0d00-bb44-0c73071d6982'
+	^'113ad0bb-8040-0d00-8116-bede01deb008'
 ]
 
 { #category : #config }
 DominoesTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'2.1.0'
 ]
 

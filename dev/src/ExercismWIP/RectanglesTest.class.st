@@ -81,12 +81,12 @@ Class {
 { #category : #config }
 RectanglesTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'e5db72be-4a3f-0d00-bb4d-3e3a071d6982'
+	^'441ed9bb-8040-0d00-811f-edda01deb008'
 ]
 
 { #category : #config }
 RectanglesTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.1.0'
 ]
 
@@ -160,7 +160,7 @@ RectanglesTest >> test08_RectangleOfWidth1IsCounted [
 ]
 
 { #category : #tests }
-RectanglesTest >> test09_and1x1SquareIsCounted [
+RectanglesTest >> test09_1x1SquareIsCounted [
 	| result |
 
 	result := rectanglesCalculator rectanglesStrings: #('++' '++' ) .

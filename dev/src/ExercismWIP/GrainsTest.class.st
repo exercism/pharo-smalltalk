@@ -44,12 +44,12 @@ Class {
 { #category : #config }
 GrainsTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'f7f07fbe-4a3f-0d00-bb57-b1cf071d6982'
+	^'93dde1bb-8040-0d00-812a-052301deb008'
 ]
 
 { #category : #config }
 GrainsTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.2.0'
 ]
 
@@ -59,7 +59,7 @@ GrainsTest >> setUp [
 ]
 
 { #category : #tests }
-GrainsTest >> test01_ReturnsTheNumberOfGrainsOnTheSquareand1 [
+GrainsTest >> test01_ReturnsTheNumberOfGrainsOnTheSquareAt1 [
 	| result |
 
 	result := grainsCalculator square: 1 .
@@ -67,7 +67,7 @@ GrainsTest >> test01_ReturnsTheNumberOfGrainsOnTheSquareand1 [
 ]
 
 { #category : #tests }
-GrainsTest >> test02_ReturnsTheNumberOfGrainsOnTheSquareand2 [
+GrainsTest >> test02_ReturnsTheNumberOfGrainsOnTheSquareAt2 [
 	| result |
 
 	result := grainsCalculator square: 2 .
@@ -83,7 +83,7 @@ GrainsTest >> test02_ReturnsTheTotalNumberOfGrainsOnTheBoard [
 ]
 
 { #category : #tests }
-GrainsTest >> test03_ReturnsTheNumberOfGrainsOnTheSquareand3 [
+GrainsTest >> test03_ReturnsTheNumberOfGrainsOnTheSquareAt3 [
 	| result |
 
 	result := grainsCalculator square: 3 .
@@ -91,7 +91,7 @@ GrainsTest >> test03_ReturnsTheNumberOfGrainsOnTheSquareand3 [
 ]
 
 { #category : #tests }
-GrainsTest >> test04_ReturnsTheNumberOfGrainsOnTheSquareand4 [
+GrainsTest >> test04_ReturnsTheNumberOfGrainsOnTheSquareAt4 [
 	| result |
 
 	result := grainsCalculator square: 4 .
@@ -99,7 +99,7 @@ GrainsTest >> test04_ReturnsTheNumberOfGrainsOnTheSquareand4 [
 ]
 
 { #category : #tests }
-GrainsTest >> test05_ReturnsTheNumberOfGrainsOnTheSquareand16 [
+GrainsTest >> test05_ReturnsTheNumberOfGrainsOnTheSquareAt16 [
 	| result |
 
 	result := grainsCalculator square: 16 .
@@ -107,7 +107,7 @@ GrainsTest >> test05_ReturnsTheNumberOfGrainsOnTheSquareand16 [
 ]
 
 { #category : #tests }
-GrainsTest >> test06_ReturnsTheNumberOfGrainsOnTheSquareand32 [
+GrainsTest >> test06_ReturnsTheNumberOfGrainsOnTheSquareAt32 [
 	| result |
 
 	result := grainsCalculator square: 32 .
@@ -115,7 +115,7 @@ GrainsTest >> test06_ReturnsTheNumberOfGrainsOnTheSquareand32 [
 ]
 
 { #category : #tests }
-GrainsTest >> test07_ReturnsTheNumberOfGrainsOnTheSquareand64 [
+GrainsTest >> test07_ReturnsTheNumberOfGrainsOnTheSquareAt64 [
 	| result |
 
 	result := grainsCalculator square: 64 .

@@ -96,12 +96,12 @@ Class {
 { #category : #config }
 OcrNumbersTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'1c46a4be-4a3f-0d00-bb6f-9beb071d6982'
+	^'b018f6bb-8040-0d00-8140-5e7301deb008'
 ]
 
 { #category : #config }
 OcrNumbersTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.2.0'
 ]
 

@@ -44,12 +44,12 @@ Class {
 { #category : #config }
 QueenAttackTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'388f5abe-4a3f-0d00-bb3e-69aa071d6982'
+	^'dc44cbbb-8040-0d00-8110-c80f01deb008'
 ]
 
 { #category : #config }
 QueenAttackTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'2.2.0'
 ]
 

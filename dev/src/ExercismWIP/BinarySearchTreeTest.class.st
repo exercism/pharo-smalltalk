@@ -71,12 +71,12 @@ Class {
 { #category : #config }
 BinarySearchTreeTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'a06632be-4a3f-0d00-bb21-e6e7071d6982'
+	^'1992b7bb-8040-0d00-80f5-289201deb008'
 ]
 
 { #category : #config }
 BinarySearchTreeTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.0.0'
 ]
 

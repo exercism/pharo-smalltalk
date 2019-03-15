@@ -82,12 +82,12 @@ Class {
 { #category : #config }
 GrepTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'5f1f6fbe-4a3f-0d00-bb4a-7537071d6982'
+	^'ca9bd6bb-8040-0d00-811c-4fa101deb008'
 ]
 
 { #category : #config }
 GrepTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.2.0'
 ]
 

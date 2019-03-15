@@ -57,12 +57,12 @@ Class {
 { #category : #config }
 ScrabbleScoreTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'7e2d67be-4a3f-0d00-bb45-7225071d6982'
+	^'c4d1d0bb-8040-0d00-8117-feea01deb008'
 ]
 
 { #category : #config }
 ScrabbleScoreTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.1.0'
 ]
 

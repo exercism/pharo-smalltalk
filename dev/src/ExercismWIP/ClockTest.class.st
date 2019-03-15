@@ -24,12 +24,12 @@ Class {
 { #category : #config }
 ClockTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'9303a2be-4a3f-0d00-bb6d-0f40071d6982'
+	^'cad6f4bb-8040-0d00-813e-aedf01deb008'
 ]
 
 { #category : #config }
 ClockTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'2.4.0'
 ]
 

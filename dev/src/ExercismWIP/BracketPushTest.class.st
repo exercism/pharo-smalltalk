@@ -22,12 +22,12 @@ Class {
 { #category : #config }
 BracketPushTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'c69548be-4a3f-0d00-bb31-b82f071d6982'
+	^'2fccc1bb-8040-0d00-8103-f93f01deb008'
 ]
 
 { #category : #config }
 BracketPushTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.5.0'
 ]
 

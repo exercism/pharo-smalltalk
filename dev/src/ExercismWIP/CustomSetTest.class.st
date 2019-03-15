@@ -25,12 +25,12 @@ Class {
 { #category : #config }
 CustomSetTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'14c762be-4a3f-0d00-bb41-2664071d6982'
+	^'e1fccdbb-8040-0d00-8113-55f801deb008'
 ]
 
 { #category : #config }
 CustomSetTest class >> version [
-	"Generated from specification: 28 February 2019"
+	"Generated from specification: 15 March 2019"
 	^'1.3.0'
 ]
 
