@@ -1,10 +1,14 @@
 "
-I am a composite test that gathers all the test cases in Exercism so you can easily run them all in a System Browser
+I am a composite test that gathers all the test cases in Exercism so you can easily run them all in a System Browser or from the Playground.
+
+e.g.
+
+AllExercismTests suite run.
 "
 Class {
 	#name : #AllExercismTests,
 	#superclass : #TestCase,
-	#category : #'ExercismTests-UnitTests'
+	#category : #ExercismSystemTests
 }
 
 { #category : #private }
