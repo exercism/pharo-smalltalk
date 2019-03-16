@@ -1,16 +1,16 @@
 ## Installation
 
-The simplest way to install [Pharo](http://pharo.org) is is to use [zero conf](http://pharo.org/download#//*[@id="main"]/div/h2[3]) from a terminal command line.
+The simplest way to install [Pharo](http://pharo.org) is to use a [zero conf](http://pharo.org/download#//*[@id="main"]/div/h2[3]) download from a terminal command line.
 
 Windows users who do not have a UNIX style shell installed should skip to the **Windows Installation** instructions (below).
 
-In your `/Exercism/pharo-smalltalk` directory, type:
+For Linux/OSX, and assuming you have installed Exercism and have joined the Pharo track, then in your `/Exercism/pharo-smalltalk` directory, type:
 
 ```bash
 curl https://get.pharo.org/64/ | bash
 ```
 
-Then launch Pharo and load the exercism tools by typing:
+and then launch Pharo and load the exercism tools by typing:
 
 ```smalltalk
 ./pharo-ui Pharo.image eval "
