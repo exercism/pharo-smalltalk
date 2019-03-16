@@ -53,7 +53,7 @@ ExercismExerciseTest >> testExercisePackageTag [
 ExercismExerciseTest >> testFind [
 
 	self assert: (ExercismExercise find: 'hello-world') equals: HelloWorldTest exercise.
-	self should: [ExercismExercise find: 'missing-exercise'] raise: NotFound
+	self should: [ExercismExercise find: 'missing-exercise'] raise: Error
 	
 ]
 
