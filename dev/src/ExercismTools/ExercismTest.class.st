@@ -12,8 +12,10 @@ Class {
 
 { #category : #config }
 ExercismTest class >> createExerciseAfter: anotherTestCase [
+	"Helper method to create an exercise meta data object"
+	
 	^(ExercismExercise for: self) 
-			unlockedBy: anotherTestCase exercise;
+			unlockedBy: (anotherTestCase ifNotNil: [:parent | parent exercise]);
 			yourself
 ]
 
