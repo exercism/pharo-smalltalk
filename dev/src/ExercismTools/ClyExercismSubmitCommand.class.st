@@ -29,5 +29,21 @@ ClyExercismSubmitCommand >> description [
 
 { #category : #execution }
 ClyExercismSubmitCommand >> execute [
-	ExercismManager default submitToExercism: (ExercismExercise find: self tagGroup name) 
+	ExercismManager default
+		submitToExercism:
+			(ExercismExercise
+				find: self tagGroup name
+				ifAbsent:	[ :name | self reportErrorFor: name ])
+]
+
+{ #category : #execution }
+ClyExercismSubmitCommand >> reportErrorFor: name [
+	^ self
+		error:
+			(((Smalltalk hasClassNamed: name)
+				ifTrue:
+					[ 'Exercise "{1}" is missing metadata! You need to upgrade it in Exercism and re-fetch!' ]
+				ifFalse:
+					[ 'Exercise "{1}" Not Found! Please check the Exercism website for a valid exercise name!' ])
+				format: {name})
 ]

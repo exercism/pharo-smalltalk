@@ -52,9 +52,8 @@ ExercismExerciseTest >> testExercisePackageTag [
 { #category : #tests }
 ExercismExerciseTest >> testFind [
 
-	self assert: (ExercismExercise find: 'hello-world') equals: HelloWorldTest exercise.
-	self should: [ExercismExercise find: 'missing-exercise'] raise: Error
-	
+	self assert: (ExercismExercise find: 'hello-world' ifAbsent: [nil]) equals: HelloWorldTest exercise.
+	self assert: (ExercismExercise find: 'missing-exercise' ifAbsent: [ 'missing' ]) equals: 'missing'
 ]
 
 { #category : #tests }

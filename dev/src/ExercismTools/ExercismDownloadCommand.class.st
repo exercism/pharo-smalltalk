@@ -62,7 +62,7 @@ ExercismDownloadCommand >> fetchLatestSubmission [
 	
 	response
 		at: 'error'
-		ifPresent: [ :error | self error: (error at: 'message') ].
+		ifPresent: [ :error | self error: (error at: 'message'), '!' ].
 		
 	^ExercismSubmission data: response
 ]
