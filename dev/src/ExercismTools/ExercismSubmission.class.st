@@ -54,6 +54,11 @@ ExercismSubmission >> exercise [
 ]
 
 { #category : #accessing }
+ExercismSubmission >> exerciseClassName [ 
+	^self exerciseId kebabAsCamelCase 
+]
+
+{ #category : #accessing }
 ExercismSubmission >> exerciseId [
 	^(self exercismData at: 'exercise') at: 'id'
 ]

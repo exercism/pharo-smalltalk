@@ -25,6 +25,16 @@ ExercismSubmissionTest class >> sampleDataFor: testName filenames: filenameList 
 			
 ]
 
+{ #category : #test }
+ExercismSubmissionTest >> testExerciseClassName [
+
+	| exercismSubmission |
+	exercismSubmission := ExercismSubmission
+		data: (self class sampleDataFor: 'test-exercise').
+		
+	self assert: exercismSubmission exerciseClassName equals: 'TestExercise'.
+]
+
 { #category : #tests }
 ExercismSubmissionTest >> testFilenames [
 	| exercismSubmission actualNames |
