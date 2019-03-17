@@ -43,7 +43,7 @@ ExercismDownloadCommand >> execute [
 		do: [ :error | 
 			error configureToken
 				ifTrue: [ error retry ]
-				ifFalse: [ ^ExercismSubmission new errorMessage: 'Download Aborted' ] ].
+				ifFalse: [ ^ExercismSubmission error: 'Download Aborted' ] ].
 	
 ]
 
