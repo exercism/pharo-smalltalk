@@ -42,12 +42,13 @@ ExercismExercise class >> coreExercises [
 ]
 
 { #category : #'instance creation' }
-ExercismExercise class >> find: exercismName [
+ExercismExercise class >> find: exercismName ifAbsent: aBlock [
 	| kebabedName |
+
 	kebabedName := exercismName asKebabCase.
-	^self allExercises detect: [ :ex | ex name = kebabedName ] ifNone: [ 
-		self error: ('Exercise "{1}" Not Found! You need to upgrade it in Exercism and re-fetch?' 
-							format: {exercismName})]
+	^ self allExercises
+		detect: [ :ex | ex name = kebabedName ]
+		ifNone: aBlock
 ]
 
 { #category : #'instance creation' }

@@ -39,5 +39,11 @@ ClyExercismFetchCommand >> description [
 
 { #category : #execution }
 ClyExercismFetchCommand >> execute [
-	ExercismManager default fetchFromExercismTo: self packages first
+	| submission |
+	
+	submission := ExercismManager default fetchFromExercismTo: self packages first.
+   submission isValid ifTrue: [ 
+		UIManager default inform: 'Success, Happy Coding'.
+		self browser selectClass: submission exercise exerciseClass ]
+	
 ]

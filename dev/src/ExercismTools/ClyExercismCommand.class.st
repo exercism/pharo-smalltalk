@@ -5,7 +5,8 @@ Class {
 	#name : #ClyExercismCommand,
 	#superclass : #SycPackageCommand,
 	#instVars : [
-		'tagGroup'
+		'tagGroup',
+		'browser'
 	],
 	#category : #'ExercismTools-Menus'
 }
@@ -26,11 +27,22 @@ ClyExercismCommand class >> isExercismTagIn: aToolContext [
 ]
 
 { #category : #accessing }
+ClyExercismCommand >> browser [
+	^ browser
+]
+
+{ #category : #accessing }
+ClyExercismCommand >> browser: anObject [
+	browser := anObject
+]
+
+{ #category : #accessing }
 ClyExercismCommand >> prepareFullExecutionInContext: aToolContext [
 	
 	super prepareFullExecutionInContext: aToolContext.
 	
-	self tagGroup: aToolContext lastSelectedClassGroup
+	self tagGroup: aToolContext lastSelectedClassGroup.
+	self browser: aToolContext tool.
 ]
 
 { #category : #accessing }

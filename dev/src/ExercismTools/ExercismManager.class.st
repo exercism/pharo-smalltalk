@@ -59,6 +59,8 @@ ExercismManager class >> welcome [
 
 { #category : #exercism }
 ExercismManager >> fetchFromExercismTo: package [
+	"Prompt the user for an exercise to fetch, install it, and if successful, answer the loaded exercise"
+	
 	| exerciseName result |
 	
 	exerciseName := (UIManager default
@@ -70,7 +72,8 @@ ExercismManager >> fetchFromExercismTo: package [
 	result := (ExercismDownloadCommand track: self class trackId exercise: exerciseName)
 		execute.
 		
-	result ifNotNil: [ UIManager default inform: 'Success, Happy Coding' ]
+	^result
+	
 ]
 
 { #category : #helpers }

@@ -46,6 +46,13 @@ ExercismSubmission >> contentsFor: aString ifAbsent: anObject [
 	^self contentData at: aString
 ]
 
+{ #category : #storing }
+ExercismSubmission >> exercise [
+	"Answer the ExercismExercise associated with this submission"
+	
+	^ExercismExercise find: self exerciseId ifAbsent: nil
+]
+
 { #category : #accessing }
 ExercismSubmission >> exerciseId [
 	^(self exercismData at: 'exercise') at: 'id'
@@ -71,6 +78,13 @@ ExercismSubmission >> initialize [
 
 	super initialize.
 	self contentData: Dictionary new.
+]
+
+{ #category : #storing }
+ExercismSubmission >> isValid [
+	"Answer true if the submission resulted in a valid exercise"
+	
+	^self exercise notNil
 ]
 
 { #category : #retrieving }
@@ -105,5 +119,5 @@ ExercismSubmission >> sourceFilenamesWithContentsDo: aBlockClosure [
 
 { #category : #storing }
 ExercismSubmission >> storeSolutionId [
-	(ExercismExercise find: self exerciseId) storeSolutionId: self solutionId
+	self exercise storeSolutionId: self solutionId
 ]
