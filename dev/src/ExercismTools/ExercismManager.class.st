@@ -33,6 +33,17 @@ ExercismManager class >> exercismPackageName [
 	^ 'Exercism'
 ]
 
+{ #category : #exercism }
+ExercismManager class >> isUserMode [
+	"Answer true if exercism is loaded in a clean image with no dev tools"
+	
+	^ ((IceRepository registry collect: [ :repo | repo name ])) asArray
+		= #('iceberg' 'pharo' 'pharo-exercism')
+		and: [ (RPackageOrganizer default
+				packageNamed: 'ExercismDev'
+				ifAbsent: [ nil ]) isNil ]
+]
+
 { #category : #cache }
 ExercismManager class >> solutionData [
 	^ SolutionData ifNil: [ SolutionData := Dictionary new ]
@@ -47,14 +58,22 @@ ExercismManager class >> trackId [
 ExercismManager class >> welcome [
 	"Setup the initial environment for a new user"
 
-	| defaultPackage |
-	
-	defaultPackage := self exercismPackage.	
+	| defaultPackage browser |
+
+	defaultPackage := self exercismPackage.
 	defaultPackage
 		moveClass: Welcome
-			toTag: (RPackageTag package: defaultPackage name: 'Welcome').
-			
-	Smalltalk tools browser openOnClass: Welcome selector: #testWelcome.
+		toTag: (RPackageTag package: defaultPackage name: 'Welcome').
+		
+	"If in usermode, hide the repositories so solutions aren't easily visible with a git compare"
+	self isUserMode
+		ifTrue: [ IceRepository reset ].
+
+	"Select, package and then method so it scrolls nicely into view"
+	browser := Smalltalk tools browser openOnPackage: defaultPackage.
+	browser
+		selectPackage: Welcome package atClassTag: Welcome name;
+		selectMethod: (Welcome methodNamed: #testWelcome)
 ]
 
 { #category : #exercism }
