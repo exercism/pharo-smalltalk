@@ -1,6 +1,13 @@
 Extension { #name : #String }
 
 { #category : #'*ExercismTools' }
+String >> ->> aCollectionOfAssociations [
+	"Similar to -> but converts aCollection to anOrderedDictionary, useful when building JSON structures"
+
+	^self -> aCollectionOfAssociations asOrderedDictionary 
+]
+
+{ #category : #'*ExercismTools' }
 String >> asKebabCase [
 	"Answer a String that converts the CamelCase input to camel-case kebab output 
 	used by exercism"

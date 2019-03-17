@@ -32,11 +32,17 @@ ClyExercismSubmitCommand >> execute [
 	| exerciseName |
 
 	exerciseName := self tagGroup name.
-	ExercismManager default
+
+	[ ExercismManager default
 		submitToExercism:
 			(ExercismExercise
 				find: exerciseName
-				ifAbsent: [ :name | ^ self reportErrorFor: name asKebabCase ]).
-				
-	UIManager default inform: ('Successfully submitted "{1}"!' format: { exerciseName })
+				ifAbsent: [ :name | ^ self reportError: nil for: name asKebabCase ]).
+
+	UIManager default
+		inform: ('Successfully submitted "{1}"!' format: {exerciseName}) 
+		
+	]
+		on: Error
+		do: [ :ex | self reportError: ex for: nil ]
 ]
