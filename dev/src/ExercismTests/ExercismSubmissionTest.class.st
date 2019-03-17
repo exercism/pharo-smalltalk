@@ -113,5 +113,12 @@ ExercismSubmissionTest >> testStoreSolutionId [
 	self assert: exercismSubmission solutionId equals: 'submission123'.
 	self assert: TestExerciseTest solutionId equals: 'submission123'.
 	
+	exercismSubmission := ExercismSubmission
+		data: (self class sampleDataFor: 'missing-exercise').
+	
+	exercismSubmission storeSolutionId.
+	self deny: exercismSubmission isValid description: 'Should be invalid with missing data'.
+	
+	
 		
 ]

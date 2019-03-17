@@ -119,5 +119,5 @@ ExercismSubmission >> sourceFilenamesWithContentsDo: aBlockClosure [
 
 { #category : #storing }
 ExercismSubmission >> storeSolutionId [
-	self exercise storeSolutionId: self solutionId
+	self exercise ifNotNil: [:exercise | exercise storeSolutionId: self solutionId]
 ]

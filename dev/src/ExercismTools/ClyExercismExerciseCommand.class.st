@@ -29,3 +29,15 @@ ClyExercismExerciseCommand class >> tagContextMenuActivation [
 		order: self contextMenuOrder
 		for: ClyTaggedClassGroup asCalypsoItemContext
 ]
+
+{ #category : #execution }
+ClyExercismExerciseCommand >> reportErrorFor: name [
+	^ UIManager default
+		abort:
+			(((Smalltalk hasClassNamed: name)
+				ifTrue:
+					[ 'Exercise "{1}" is missing metadata! You need to upgrade it in Exercism and re-fetch!' ]
+				ifFalse:
+					[ 'Exercise "{1}" Not Found! Please check the Exercism website for a valid exercise name!' ])
+				format: {name})
+]
