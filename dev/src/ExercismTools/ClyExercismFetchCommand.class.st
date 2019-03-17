@@ -41,11 +41,14 @@ ClyExercismFetchCommand >> description [
 ClyExercismFetchCommand >> execute [
 	| submission |
 
-	submission := ExercismManager default
-		fetchFromExercismTo: self packages first.
-		
-	submission isValid
-		ifTrue: [ UIManager default inform: 'Success, Happy Coding'.
+	[
+		submission := ExercismManager default
+			fetchFromExercismTo: self packages first.
+			
+		submission ifNotNil: [
+			UIManager default inform: 'Success, Happy Coding'.
 			self browser selectClass: submission exercise exerciseClass ]
-		ifFalse: [ self reportErrorFor: submission exerciseId ]
+	 ] 
+		on: Error do: [ :ex | 
+			self reportError: ex for: (submission ifNotNil: [ :s | s exerciseId ]) ]
 ]

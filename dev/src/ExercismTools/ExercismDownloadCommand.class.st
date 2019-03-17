@@ -28,23 +28,22 @@ ExercismDownloadCommand class >> track: trackId exercise: exerciseId [
 { #category : #execution }
 ExercismDownloadCommand >> execute [
 	[ | submission |
-	
+
 	self httpClient verifyToken.
 	submission := self fetchLatestSubmission.
-	
-	submission isValid ifTrue: [ 
-		self fetchExerciseFilesFor: submission.
-		self installExerciseFor: submission.
-		submission storeSolutionId ].
-	
-	^ submission 
-	]
+
+	self fetchExerciseFilesFor: submission.
+	self installExerciseFor: submission.
+	submission storeSolutionId .
+
+	^ submission ]
 		on: ExUnauthorized
 		do: [ :error | 
 			error configureToken
 				ifTrue: [ error retry ]
-				ifFalse: [ ^ExercismSubmission error: 'Download Aborted' ] ].
-	
+				ifFalse: [ 
+					self inform: 'Download Aborted!'.
+					^nil ] ]
 ]
 
 { #category : #internal }
@@ -59,6 +58,10 @@ ExercismDownloadCommand >> fetchLatestSubmission [
 	| response |
 	
 	response := self retrieveLatestData.
+	
+	response
+		at: 'error'
+		ifPresent: [ :error | DomainError signal: (error at: 'message') ].
 		
 	^ExercismSubmission data: response
 ]

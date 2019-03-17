@@ -31,13 +31,18 @@ ClyExercismExerciseCommand class >> tagContextMenuActivation [
 ]
 
 { #category : #execution }
-ClyExercismExerciseCommand >> reportErrorFor: exerciseId [
-	^ UIManager default
-		abort:
-			(((Smalltalk hasClassNamed: exerciseId kebabAsCamelCase)
+ClyExercismExerciseCommand >> reportError: anError for: exerciseId [
+	| msg |
+
+	msg := exerciseId
+		ifNil: [ anError messageText, '!' ]
+		ifNotNil: [ 
+			((Smalltalk hasClassNamed: exerciseId kebabAsCamelCase)
 				ifTrue:
 					[ 'Exercise "{1}" is missing metadata! You need to upgrade it in Exercism and re-fetch!' ]
 				ifFalse:
-					[ 'Exercise "{1}" Not Found! Please check the Exercism website for a valid exercise name!' ])
-				format: {exerciseId})
+					[ 'Exercise "{1}" not found! Please check the Exercism website for valid exercises!' ])
+				format: {exerciseId} ].
+
+	^ UIManager default abort: msg
 ]

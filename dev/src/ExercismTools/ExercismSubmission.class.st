@@ -22,7 +22,7 @@ ExercismSubmission class >> data: exercismDataDictionary [
 		exercismData:
 			(exercismDataDictionary
 				at: 'solution'
-				ifAbsent: [ self error: 'Invalid data format' ]);
+				ifAbsent: [ exercismDataDictionary ]);
 		yourself
 ]
 
@@ -111,7 +111,7 @@ ExercismSubmission >> initialize [
 ExercismSubmission >> isValid [
 	"Answer true if the submission resulted in a valid exercise"
 	
-	^self exercise notNil
+	^(self exercismData includesKey: 'error') not and: [ self exercise notNil ]
 ]
 
 { #category : #retrieving }

@@ -84,7 +84,7 @@ ExercismManager >> fetchFromExercismTo: package [
 	
 	exerciseName := (UIManager default
 		request: 'Enter a valid exercism exercise (e.g. hello-world):')
-			ifNil: [ ^ self ]
+			ifNil: [ ^ nil ]
 			ifNotNil: [ :value | self parseExerciseName: value ].
 		
 	UIManager default inform: 'Loading: ' , exerciseName.
