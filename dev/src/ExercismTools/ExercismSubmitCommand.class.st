@@ -33,11 +33,18 @@ ExercismSubmitCommand class >> from: anHttpClient exercise: exercise [
 
 { #category : #execution }
 ExercismSubmitCommand >> execute [
-	
-	self httpClient
+	[ self httpClient
 		patchSolution: self exercise solutionId
-		with: self exercise solutionSources.
-		
+		with: self exercise solutionSources 
+	]
+		on: ExUnauthorized
+		do: [ :error | 
+			error configureToken
+				ifTrue: [ error retry ]
+				ifFalse: [ 
+					self inform: 'Submit Aborted!' ]. 
+					^false ].
+
 	^ true
 ]
 
