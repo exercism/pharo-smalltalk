@@ -32,10 +32,10 @@ ExercismDownloadCommand >> execute [
 	self httpClient verifyToken.
 	submission := self fetchLatestSubmission.
 	
-	self fetchExerciseFilesFor: submission.
-	self installExerciseFor: submission.
-
-	submission storeSolutionId.
+	submission isValid ifTrue: [ 
+		self fetchExerciseFilesFor: submission.
+		self installExerciseFor: submission.
+		submission storeSolutionId ].
 	
 	^ submission 
 	]
@@ -43,8 +43,8 @@ ExercismDownloadCommand >> execute [
 		do: [ :error | 
 			error configureToken
 				ifTrue: [ error retry ]
-				ifFalse: [ self inform: 'Aborted' ] ].
-	^ nil
+				ifFalse: [ ^ExercismSubmission new errorMessage: 'Download Aborted' ] ].
+	
 ]
 
 { #category : #internal }
@@ -59,10 +59,6 @@ ExercismDownloadCommand >> fetchLatestSubmission [
 	| response |
 	
 	response := self retrieveLatestData.
-	
-	response
-		at: 'error'
-		ifPresent: [ :error | self error: (error at: 'message'), '!' ].
 		
 	^ExercismSubmission data: response
 ]

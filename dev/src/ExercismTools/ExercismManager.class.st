@@ -113,9 +113,8 @@ ExercismManager >> submitToExercism: packageOrTag [
 	(packageOrTag  = self class exercismPackage) 
 		ifTrue: [ self error: 'Select the sub-package with your solution!' ].
 				
-	(ExercismSubmitCommand exercise: packageOrTag) execute.
+	^(ExercismSubmitCommand exercise: packageOrTag) execute.
 	
-	UIManager default inform: 'Successfully submitted solution!'
 ]
 
 { #category : #exercism }

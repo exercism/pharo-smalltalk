@@ -27,6 +27,14 @@ ExercismSubmission class >> data: exercismDataDictionary [
 ]
 
 { #category : #accessing }
+ExercismSubmission class >> error: aString [
+	^self new 
+		exercismData: { 'exercise' ->> {'id' -> '' }} asDictionary;
+		errorMessage: aString;
+		yourself
+]
+
+{ #category : #accessing }
 ExercismSubmission >> baseUrl [ 
 	^(self exercismData at: self class baseUrlKey) exPathString.
 ]
@@ -46,11 +54,30 @@ ExercismSubmission >> contentsFor: aString ifAbsent: anObject [
 	^self contentData at: aString
 ]
 
+{ #category : #accessing }
+ExercismSubmission >> errorMessage [ 
+
+	^self exercismData at: 'error' ifAbsent: [ '' ]
+
+]
+
+{ #category : #accessing }
+ExercismSubmission >> errorMessage: aString [ 
+
+	self exercismData at: 'error' put: aString
+
+]
+
 { #category : #storing }
 ExercismSubmission >> exercise [
 	"Answer the ExercismExercise associated with this submission"
 	
 	^ExercismExercise find: self exerciseId ifAbsent: nil
+]
+
+{ #category : #accessing }
+ExercismSubmission >> exerciseClassName [ 
+	^self exerciseId kebabAsCamelCase 
 ]
 
 { #category : #accessing }

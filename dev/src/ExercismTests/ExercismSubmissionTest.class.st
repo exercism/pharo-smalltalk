@@ -25,6 +25,27 @@ ExercismSubmissionTest class >> sampleDataFor: testName filenames: filenameList 
 			
 ]
 
+{ #category : #test }
+ExercismSubmissionTest >> testErrorMessage [
+
+	| exercismSubmission |
+	exercismSubmission := ExercismSubmission error: 'an error'.
+	
+	self deny: exercismSubmission isValid description: 'Should not be valid'.	
+	self assert: exercismSubmission errorMessage equals: 'an error'.
+	
+]
+
+{ #category : #test }
+ExercismSubmissionTest >> testExerciseClassName [
+
+	| exercismSubmission |
+	exercismSubmission := ExercismSubmission
+		data: (self class sampleDataFor: 'test-exercise').
+		
+	self assert: exercismSubmission exerciseClassName equals: 'TestExercise'.
+]
+
 { #category : #tests }
 ExercismSubmissionTest >> testFilenames [
 	| exercismSubmission actualNames |
