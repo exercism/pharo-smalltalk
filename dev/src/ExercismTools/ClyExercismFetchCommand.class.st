@@ -47,5 +47,5 @@ ClyExercismFetchCommand >> execute [
 	submission isValid
 		ifTrue: [ UIManager default inform: 'Success, Happy Coding'.
 			self browser selectClass: submission exercise exerciseClass ]
-		ifFalse: [ self reportErrorFor: submission exerciseClassName ]
+		ifFalse: [ self reportErrorFor: submission exerciseId ]
 ]
