@@ -4,7 +4,7 @@
 
 This project is for creating and supporting Exercism exercises for Pharo Smalltalk.
 
-Note: The Pharo exercism track is in alpha development. 
+_Note: The Pharo exercism track is in alpha development._
 
 If you'd like to help out with testing please sign up for the track using this [hidden track link](https://exercism.io/my/tracks/pharo), and review the [setup documentation](https://exercism.io/my/tracks/pharo). 
 
@@ -48,24 +48,27 @@ We welcome pull requests of all kinds. No contribution is too small, particularl
 While there many ways to help, by far the easiest and most useful contribution is to complete a solution for any of the currently "open" exercise. 
 
   * Ensure your image is caught up to the exercism/pharo-smalltalk master (and push any changes back to your fork)
+  
   * The exercises are all TestCases that been automatically generated from the aforementioned problem-specifications repository. You will find them as subclasses of ExercismTest in the ExercismWIP package.
+  
+  * Once you have selected an Exercise you want to work on, create an Issue in Github specifying "Convert Exercise <name>". This will let others know you are working on one, and will also form a basis for your later pull request
 
-  * Each WIP exercise already has the problem description in its class comment, and if you run the tests, you can TDD a solution (in the debugger if you run the first test by itself).
+  * Each WIP exercise already has the problem description in its class comment, and you run its tests and TDD a solution (in the debugger if you run the first test by itself).
 
   * You may need to adjust the test if it's not idiomatic Smalltalk (our generator is pretty basic - however this said, some corrections might be appropriate as PR's back to the upstream [problem-specification](https://github.com/exercism/problem-specifications) text)
   
-  * Update the exercise meta data on the class side of the exercise by overriding the #exercise method and filling in a difficlty, topics etc. You should also fill in some Hint text in the Test comment tab (at the bottom - replacing TBD) 
+  * Update the exercise meta data on the class side of the exercise by overriding the #exercise method and filling in a difficlty, topics etc. You should also fill in some Hint text in the Test comment tab (at the bottom - by replacing the text TBD) 
   
-  * update the package of the chosen example to Exercism (i.e. move it out of the WIP package)
-  * create a new branch in Iceberg with the name of the exercise you chose 
+  * Update the package of the chosen example to Exercism (i.e. move it out of the WIP package)
+  * Create a new branch in Iceberg with the name of the exercise you chose (you can use the Iceberg tool for this, and enter your issue number from above)
   * Before submitting your pull request, Run all the tests for the Pharo exercises and ensure they all pass
-  * Now get your solution reviewed by pushing your branch to your fork and then starting a PR on exercism/pharo-Smalltalk 
+  * Now get your solution reviewed by pushing your branch to your fork and then creating a PR on exercism/pharo-Smalltalk 
   * follow your PR and answer any ensuing questions
   * finally submit any adjustments and a maintainer will run the generator to create the Exercism assets (via configlet) and commit the final solution so it appears on the site
 
 ### Conventions
 
-- We use [SUnit](https://en.wikipedia.org/wiki/SUnit) (the original xUnit libary) and no additional 3rd-party-frameworks.
+- We use [SUnit](https://en.wikipedia.org/wiki/SUnit) (the original xUnit libary) and no additional 3rd-party-frameworks for exercises.
 - For consistency, we use the test parameter order: `self assert: actual equals: expected` 
 
 
@@ -89,21 +92,21 @@ are using that image to test subsequent development baselines - you may need to 
 
 ### Coding Style
 
-The code in this repository should follow [Smalltalk with style](http://sdmeta.gforge.inria.fr/FreeBooks/WithStyle/SmalltalkWithStyle.pdf) conventions wherever possible.
+The code in this repository should follow [Pharo with style](https://github.com/SquareBracketAssociates/Booklet-PharoWithStyle) conventions wherever possible. You can also refer to the more generic [Smalltalk with style](http://sdmeta.gforge.inria.fr/FreeBooks/WithStyle/SmalltalkWithStyle.pdf) as well.
 
-You should also make use of the built-in code formatter (meta-f in the editor) when creating exercises.
+You should also make use of the built-in code formatter (meta-t FO in the editor) when creating exercises, as well as the code critques.
 
 ### Breaking Changes
 
 If you plan to make significant or breaking changes, please open an issue so we can discuss it before merging. If this discussion is relevant to more than just the Pharo track, please also open an issue in [exercism/discussions](https://github.com/exercism/discussions/issues).
 
-### Publishing A Completed Exercise
+### Publishing A Completed Exercise (Maintainers)
 
 When an exercise has been reviewed and is ready to put on the site you need to follow some extra steps.
 
 1. Clone a copy of the repository into a staging location (a directory without any special characters due to [issue 154](https://github.com/exercism/configlet/issues/154))
 1. Right click on the exercism Package and choose "Generate exercise meta data", this will generate exercise meta data in your seperate staging location
-1. Check in your changes into a branch and generate a pull request
+1. Commit the generated changes into the exercise branch so they will appear with the new exerise
 
 
 ### Contributing a New Exercise

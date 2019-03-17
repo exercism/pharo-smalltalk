@@ -1,22 +1,22 @@
 ## Installation
 
-The simplest way to install [Pharo](http://pharo.org) is to use a [zero conf](http://pharo.org/download#//*[@id="main"]/div/h2[3]) download from a terminal command line.
+The simplest way to install [Pharo](http://pharo.org) is to use a [zero conf](http://pharo.org/download#//*[@id="main"]/div/h2[3]) download from a terminal command line. Note: If you are trying to upgrade an existing installation see the upgrade instructions at the end.
 
 Windows users who do not have a UNIX style shell installed should skip to the **Windows Installation** instructions (below).
 
-For Linux/OSX, and assuming you have installed Exercism and have joined the Pharo track, then in your `/Exercism/pharo-smalltalk` directory, type:
+For Linux/OSX (assuming you have installed Exercism and have joined the Pharo track), in your `/Exercism/pharo-smalltalk` directory, type:
 
 ```bash
 curl https://get.pharo.org/64/ | bash
 ```
 
-and then launch Pharo and load the exercism tools by typing:
+and then initally launch Pharo and the exercism tools by typing:
 
 ```smalltalk
 ./pharo-ui Pharo.image eval "
 Metacello new 
  baseline: 'Exercism'; 
- repository: 'github://exercism/pharo-smalltalk:v0.2.1';
+ repository: 'github://exercism/pharo-smalltalk:v0.2.2';
  load.
 #ExercismManager asClass welcome.
 "
@@ -40,7 +40,7 @@ Metacello new
 If everything is working properly, you should see loading progress bars flicker accross the screen, and then a Browser window will appear.
 
 **TIP:** When you come to exit Pharo, save your changes (choose the Pharo menu, and select "Save and Quit").
-You can then start Pharo with Exercism already loaded, by typing:
+You can now start Pharo with Exercism already loaded, by simply typing:
 
 ```bash
 ./pharo-ui Pharo.image
@@ -58,7 +58,7 @@ tree. Click to highlight an image template, then click the create image icon at 
 it a name. 
 3. Once the template is downloaded it will appear on the right in the Existing Images table. Click on it, and then click the launch button at the top right (a green _play_ arrow).
 
-Once the Pharo image has started, open a Playground by choosing the _Tools_ menu, and selecting _Playground_, or use
+4. Once the Pharo image has started, open a Playground by choosing the _Tools_ menu, and selecting _Playground_, or use
 `ctrl + o + w`. 
 
 Finally, copy and paste the following snippet into the playground:
@@ -66,7 +66,7 @@ Finally, copy and paste the following snippet into the playground:
 ```smalltalk
 Metacello new 
  baseline: 'Exercism'; 
- repository: 'github://exercism/pharo-smalltalk:v0.2.1';
+ repository: 'github://exercism/pharo-smalltalk:v0.2.2';
  load.
  
 #ExercismManager asClass welcome.
@@ -105,3 +105,7 @@ you to begin coding.
 **Did you know:** *When you launch Pharo, you are actually restoring an execution image snapshot - similar to a VMWare Operating System image. This
 is a powerful concept that allows you to suspend work mid operation, possibly even when debugging
 something. When you next relaunch Pharo, you can then continue stepping through code in the restored debugger, or possibly continue a refactoring step.*
+
+## How to Upgrade a Previous Installation
+
+From time to time we may need you to update the libraries in your Pharo Exercism image. Before doing an update, it is best to ensure you have submitted any in-progress exercises, then save your image, and finally backup your Pharo.image, and Pharo.changes files. Once you have a backup, follow the Playground steps (#4), of the Windows Installation which will reload the latest version of the libraries. You may need to re-fetch existing exercises that you want to continue working on.
