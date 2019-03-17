@@ -134,6 +134,7 @@ ExercismExercise >> gtInspectorDetailsIn: composite [
 					'unlocks' -> self unlockedExercises.
 					'topics' -> self topics.
 					'tests' -> self testCase.
+					'solution' -> self exerciseClass.
 					'uuid' -> self uuid.
 					'followed by' -> self followedBy.
 					'hint' -> self hintText.

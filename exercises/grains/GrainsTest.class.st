@@ -29,7 +29,9 @@ experiment make the code better? Worse? Did you learn anything from it?
 
 ## Hint
 
-TBD
+These kinds of problems (where an answer is dependent on a previous) one are often called recursion. There are different ways to code for recursion, it might be worth reasearching if you are not familiar with this. Pharo is well optimised for recursion, and it is a commonly used pattern.
+
+Note: in the original problem specification, the grainsCalculator is called via #square, however we have renamed this method #atSquare: which is a more Smalltalk like name, that better describes that you are asking for an answer ""at a square"".  
 
 "
 Class {
@@ -38,8 +40,20 @@ Class {
 	#instVars : [
 		'grainsCalculator'
 	],
-	#category : #'ExercismWIP-Grains'
+	#category : #'Exercism-Grains'
 }
+
+{ #category : #helper }
+GrainsTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+	
+	^(self createExerciseAfter: IsogramTest)
+		isCore: true;
+		difficulty: 2;
+		topics: #('math' 'recursion');
+		yourself
+
+]
 
 { #category : #config }
 GrainsTest class >> uuid [
@@ -62,7 +76,7 @@ GrainsTest >> setUp [
 GrainsTest >> test01_ReturnsTheNumberOfGrainsOnTheSquareAt1 [
 	| result |
 
-	result := grainsCalculator square: 1 .
+	result := grainsCalculator atSquare: 1 .
 	self assert: result equals: 1
 ]
 
@@ -70,23 +84,15 @@ GrainsTest >> test01_ReturnsTheNumberOfGrainsOnTheSquareAt1 [
 GrainsTest >> test02_ReturnsTheNumberOfGrainsOnTheSquareAt2 [
 	| result |
 
-	result := grainsCalculator square: 2 .
+	result := grainsCalculator atSquare: 2 .
 	self assert: result equals: 2
-]
-
-{ #category : #tests }
-GrainsTest >> test02_ReturnsTheTotalNumberOfGrainsOnTheBoard [
-	| result |
-
-	result := grainsCalculator total.
-	self assert: result equals: 18446744073709551615
 ]
 
 { #category : #tests }
 GrainsTest >> test03_ReturnsTheNumberOfGrainsOnTheSquareAt3 [
 	| result |
 
-	result := grainsCalculator square: 3 .
+	result := grainsCalculator atSquare: 3 .
 	self assert: result equals: 4
 ]
 
@@ -94,7 +100,7 @@ GrainsTest >> test03_ReturnsTheNumberOfGrainsOnTheSquareAt3 [
 GrainsTest >> test04_ReturnsTheNumberOfGrainsOnTheSquareAt4 [
 	| result |
 
-	result := grainsCalculator square: 4 .
+	result := grainsCalculator atSquare: 4 .
 	self assert: result equals: 8
 ]
 
@@ -102,7 +108,7 @@ GrainsTest >> test04_ReturnsTheNumberOfGrainsOnTheSquareAt4 [
 GrainsTest >> test05_ReturnsTheNumberOfGrainsOnTheSquareAt16 [
 	| result |
 
-	result := grainsCalculator square: 16 .
+	result := grainsCalculator atSquare: 16 .
 	self assert: result equals: 32768
 ]
 
@@ -110,7 +116,7 @@ GrainsTest >> test05_ReturnsTheNumberOfGrainsOnTheSquareAt16 [
 GrainsTest >> test06_ReturnsTheNumberOfGrainsOnTheSquareAt32 [
 	| result |
 
-	result := grainsCalculator square: 32 .
+	result := grainsCalculator atSquare: 32 .
 	self assert: result equals: 2147483648
 ]
 
@@ -118,30 +124,45 @@ GrainsTest >> test06_ReturnsTheNumberOfGrainsOnTheSquareAt32 [
 GrainsTest >> test07_ReturnsTheNumberOfGrainsOnTheSquareAt64 [
 	| result |
 
-	result := grainsCalculator square: 64 .
+	result := grainsCalculator atSquare: 64 .
 	self assert: result equals: 9223372036854775808
 ]
 
 { #category : #tests }
 GrainsTest >> test08_ReturnsTheNumberOfGrainsOnTheSquareSquare0RaisesAnException [
-	| result |
+	self
+		should: [grainsCalculator atSquare: 0]
+		raise: Exception
+		whoseDescriptionIncludes: 'square must be between 1 and 64'
+		description: 'Should get an error with the correct description'.
+		
+		
+		
 
-	result := grainsCalculator square: 0 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'square must be between 1 and 64'); yourself)
 ]
 
 { #category : #tests }
 GrainsTest >> test09_ReturnsTheNumberOfGrainsOnTheSquareNegativeSquareRaisesAnException [
-	| result |
-
-	result := grainsCalculator square:  -1 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'square must be between 1 and 64'); yourself)
+	self
+		should: [grainsCalculator atSquare: -1]
+		raise: Exception
+		whoseDescriptionIncludes: 'square must be between 1 and 64'
+		description: 'Should get an error with the correct description'.
 ]
 
 { #category : #tests }
 GrainsTest >> test10_ReturnsTheNumberOfGrainsOnTheSquareSquareGreaterThan64RaisesAnException [
+	self
+		should: [grainsCalculator atSquare: 65]
+		raise: Exception
+		whoseDescriptionIncludes: 'square must be between 1 and 64'
+		description: 'Should get an error with the correct description'.
+]
+
+{ #category : #tests }
+GrainsTest >> test11_ReturnsTheTotalNumberOfGrainsOnTheBoard [
 	| result |
 
-	result := grainsCalculator square: 65 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'square must be between 1 and 64'); yourself)
+	result := grainsCalculator total.
+	self assert: result equals: 18446744073709551615
 ]
