@@ -16,7 +16,7 @@ and then initally launch Pharo and the exercism tools by typing:
 ./pharo-ui Pharo.image eval "
 Metacello new 
  baseline: 'Exercism'; 
- repository: 'github://exercism/pharo-smalltalk:v0.2.2';
+ repository: 'github://exercism/pharo-smalltalk:v0.2.3';
  load.
 #ExercismManager asClass welcome.
 "
@@ -66,7 +66,7 @@ Finally, copy and paste the following snippet into the playground:
 ```smalltalk
 Metacello new 
  baseline: 'Exercism'; 
- repository: 'github://exercism/pharo-smalltalk:v0.2.2';
+ repository: 'github://exercism/pharo-smalltalk:v0.2.3';
  load.
  
 #ExercismManager asClass welcome.
