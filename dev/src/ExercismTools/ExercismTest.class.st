@@ -12,11 +12,16 @@ Class {
 
 { #category : #helper }
 ExercismTest class >> createExerciseAfter: anotherTestCase [
+	"protocol: #helper"
+
 	"Helper method to create an exercise meta data object"
-	
-	^(ExercismExercise for: self) 
-			unlockedBy: (anotherTestCase ifNotNil: [:parent | parent exercise]);
-			yourself
+
+	^ (ExercismExercise for: self)
+		unlockedBy:
+			((anotherTestCase notNil and: [ anotherTestCase isObsolete not ])
+				ifTrue: [ anotherTestCase exercise ]
+				ifFalse: [ nil ]);
+		yourself
 ]
 
 { #category : #config }
@@ -51,7 +56,7 @@ ExercismTest class >> next [
 
 { #category : #accessing }
 ExercismTest class >> solutionId [
-	^ solutionId
+	^ solutionId ifNil: [ 'missingSolutionId' ]
 ]
 
 { #category : #accessing }

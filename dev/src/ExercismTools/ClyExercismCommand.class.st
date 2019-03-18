@@ -11,6 +11,12 @@ Class {
 	#category : #'ExercismTools-Menus'
 }
 
+{ #category : #activation }
+ClyExercismCommand class >> canBeExecutedInContext: aToolContext [
+	^ (super canBeExecutedInContext: aToolContext)
+		and: [ self isExercismTagIn: aToolContext ]
+]
+
 { #category : #testing }
 ClyExercismCommand class >> isAbstract [
 	

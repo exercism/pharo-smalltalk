@@ -8,8 +8,26 @@ Class {
 }
 
 { #category : #activation }
+ClyExercismFetchCommand class >> classListMenuActivation [
+	<classAnnotation>
+	
+	^CmdContextMenuActivation byRootGroupItemOrder: 3 for: ClyClassContextOfFullBrowser 
+]
+
+{ #category : #activation }
 ClyExercismFetchCommand class >> contextMenuOrder [
 		^10
+]
+
+{ #category : #activation }
+ClyExercismFetchCommand class >> isExercismTagIn: aToolContext [
+
+	(aToolContext isKindOf: ClyClassContextOfFullBrowser) ifFalse: [ ^super isExercismTagIn: aToolContext ].
+	
+	aToolContext selectedItems isEmpty and: [ aToolContext selectedPackageItems do: [:any |
+		^ any browserItem name = ExercismManager exercismPackageName ]].
+	
+	^false
 ]
 
 { #category : #activation }
@@ -47,7 +65,7 @@ ClyExercismFetchCommand >> execute [
 			
 		submission ifNotNil: [
 			UIManager default inform: 'Success, Happy Coding'.
-			self browser selectClass: submission exercise exerciseClass ]
+			self browser selectClass: submission exercise testCase ]
 	 ] 
 		on: Error do: [ :ex | 
 			self reportError: ex for: (submission ifNotNil: [ :s | s exerciseId ]) ]
