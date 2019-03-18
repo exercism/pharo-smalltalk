@@ -38,7 +38,7 @@ GradeSchool >> addStudents: aCollection [
 
 { #category : #exercism }
 GradeSchool >> desiredGrade: gradeInteger [
-	"Anser the Collection of students filtered by grade, alphabetically"
+	"Answer the Collection of students filtered by grade, alphabetically"
 	
 	^ self
 		formatResult:
