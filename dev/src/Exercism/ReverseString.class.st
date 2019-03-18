@@ -9,7 +9,7 @@ Class {
 	#category : #'Exercism-ReverseString'
 }
 
-{ #category : #exercism }
+{ #category : #alternative }
 ReverseString >> indexedReverse: aString [
 	| result offset |
 	result := String new: aString size.
