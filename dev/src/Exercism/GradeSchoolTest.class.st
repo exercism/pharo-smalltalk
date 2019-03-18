@@ -64,6 +64,14 @@ GradeSchoolTest class >> exercise [
 				
 ]
 
+{ #category : #generator }
+GradeSchoolTest class >> generator [
+	"Potential generator hints"
+	
+	^ {('rosterStudents:' -> #('addStudents:' 'roster')).
+	('gradeStudents:desiredGrade:' -> #('addStudents:' 'desiredGrade:'))}
+]
+
 { #category : #config }
 GradeSchoolTest class >> uuid [
 	"Answer a unique id for this exercise"
