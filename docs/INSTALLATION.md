@@ -108,4 +108,15 @@ something. When you next relaunch Pharo, you can then continue stepping through 
 
 ## How to Upgrade a Previous Installation
 
-From time to time we may need you to update the libraries in your Pharo Exercism image. Before doing an update, it is best to ensure you have submitted any in-progress exercises, then save your image, and finally backup your Pharo.image, and Pharo.changes files. Once you have a backup, follow the Playground steps (#4), of the Windows Installation which will reload the latest version of the libraries. You may need to re-fetch existing exercises that you want to continue working on.
+From time to time we may need you to update the libraries in your Pharo Exercism image. Before doing an update, it is best to ensure you have submitted any in-progress exercises, then saved your Pharo image, and finally backed up your Pharo.image, and Pharo.changes files. Once you have a safe backup, follow the Playground steps (#4), of the Windows Installation which will reload the latest version of the libraries. If you hit any conflict errors you may need to modify the load script as follows:
+
+ ```smalltalk
+ Metacello new 
+  baseline: 'Exercism'; 
+  repository: 'github://exercism/pharo-smalltalk:<version>';
+  onConflict: [ :ex | ex allow ]; 
+  load.
+ ```
+ You may also need to re-fetch any existing exercises that you want to continue working on.
+ 
+ In rare situations, if you continue to have problems, you may need to get a fresh Pharo.image file (by far the easier way is to re-install Pharo in a fresh directory by following the new installation instructions).

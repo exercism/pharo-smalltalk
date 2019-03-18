@@ -1,5 +1,7 @@
 ## Recommended reading
 
+As Smalltalk is widely used, there is rich choice of reading material.
+
 ### Starting Out
 * [Pharo Main Site](http://pharo.org/documentation):
 has a wealth of articles and help
