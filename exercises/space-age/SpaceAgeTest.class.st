@@ -49,6 +49,13 @@ SpaceAgeTest class >> exercise [
 		
 ]
 
+{ #category : #generator }
+SpaceAgeTest class >> generator [
+	"Answer code generator aliases/hints"
+
+	^{'planet'->'onPlanet'}
+]
+
 { #category : #config }
 SpaceAgeTest class >> uuid [
 	"Answer a unique id for this exercise"
