@@ -1,3 +1,6 @@
+"
+I convert a binary string to decimal. Of note is the non-binary string check, that passes an error block to evaluate in case of an error vs. doing a boolean if check for an error.
+"
 Class {
 	#name : #Binary,
 	#superclass : #Object,
