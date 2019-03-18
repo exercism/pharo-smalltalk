@@ -37,7 +37,9 @@ experiment make the code better? Worse? Did you learn anything from it?
 
 ## Hint
 
-TBD
+It isn't strictly necessary to model students as a seperate object, you can use a convenient internal data strcture as long as it doesn't leak out into the results.
+
+Note: this exercise has been slightly modified from problem-specification, as it makes more sense to seperate adding students and querying them in seperate methods (vs. having one method doing both, which feels less Pharo/Smalltalk like).
 
 "
 Class {
@@ -46,8 +48,21 @@ Class {
 	#instVars : [
 		'gradeSchoolCalculator'
 	],
-	#category : #'ExercismWIP-GradeSchool'
+	#category : #'Exercism-GradeSchool'
 }
+
+{ #category : #config }
+GradeSchoolTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+	
+	
+	^(self createExerciseAfter: GrainsTest)
+		isCore: true;
+		difficulty: 4;
+		topics: #('sorting' 'filtering' 'lists' 'object_oriented_programming');
+		yourself
+				
+]
 
 { #category : #config }
 GradeSchoolTest class >> uuid [
@@ -70,31 +85,43 @@ GradeSchoolTest >> setUp [
 GradeSchoolTest >> test01_AddingAStudentAddsThemToTheSortedRoster [
 	| result |
 
-	result := gradeSchoolCalculator rosterStudents: #(#('Aimee' 2 ) ) .
-	self assert: result equals: #('Aimee' )
+	result := gradeSchoolCalculator
+		addStudents: #(#('Aimee' 2));
+		roster.
+		
+	self assert: result equals: #('Aimee')
 ]
 
 { #category : #tests }
 GradeSchoolTest >> test02_AddingMoreStudentAddsThemToTheSortedRoster [
 	| result |
 
-	result := gradeSchoolCalculator rosterStudents: #(#('Blair' 2 ) #('James' 2 ) #('Paul' 2 ) ) .
-	self assert: result equals: #('Blair' 'James' 'Paul' )
+	result := gradeSchoolCalculator
+		addStudents: #(#('Blair' 2) #('James' 2) #('Paul' 2));
+		roster.
+		
+	self assert: result equals: #('Blair' 'James' 'Paul')
 ]
 
 { #category : #tests }
 GradeSchoolTest >> test03_AddingStudentsToDifferentGradesAddsThemToTheSameSortedRoster [
 	| result |
 
-	result := gradeSchoolCalculator rosterStudents: #(#('Chelsea' 3 ) #('Logan' 7 ) ) .
-	self assert: result equals: #('Chelsea' 'Logan' )
+	result := gradeSchoolCalculator
+		addStudents: #(#('Chelsea' 3) #('Logan' 7));
+		roster.
+		
+	self assert: result equals: #('Chelsea' 'Logan')
 ]
 
 { #category : #tests }
 GradeSchoolTest >> test04_RosterReturnsAnEmptyListIfThereAreNoStudentsEnrolled [
 	| result |
 
-	result := gradeSchoolCalculator rosterStudents: #() .
+	result := gradeSchoolCalculator
+		addStudents: #();
+		roster.
+		
 	self assert: result equals: #()
 ]
 
@@ -102,15 +129,21 @@ GradeSchoolTest >> test04_RosterReturnsAnEmptyListIfThereAreNoStudentsEnrolled [
 GradeSchoolTest >> test05_StudentNamesWithGradesAreDisplayedInTheSameSortedRoster [
 	| result |
 
-	result := gradeSchoolCalculator rosterStudents: #(#('Peter' 2 ) #('Anna' 1 ) #('Barb' 1 ) #('Zoe' 2 ) #('Alex' 2 ) #('Jim' 3 ) #('Charlie' 1 ) ) .
-	self assert: result equals: #('Anna' 'Barb' 'Charlie' 'Alex' 'Peter' 'Zoe' 'Jim' )
+	result := gradeSchoolCalculator
+		addStudents:
+			#(#('Peter' 2) #('Anna' 1) #('Barb' 1) #('Zoe' 2) #('Alex' 2) #('Jim' 3) #('Charlie' 1));
+		roster.
+		
+	self
+		assert: result
+		equals: #('Anna' 'Barb' 'Charlie' 'Alex' 'Peter' 'Zoe' 'Jim')
 ]
 
 { #category : #tests }
 GradeSchoolTest >> test06_GradeReturnsTheStudentsInThatGradeInAlphabeticalOrder [
 	| result |
 
-	result := gradeSchoolCalculator gradeDesiredGrade: 5 students: #(#('Franklin' 5 ) #('Bradley' 5 ) #('Jeff' 1 ) ) .
+	result := gradeSchoolCalculator addStudents: #(#('Franklin' 5 ) #('Bradley' 5 ) #('Jeff' 1 ) ); desiredGrade: 5.
 	self assert: result equals: #('Bradley' 'Franklin' )
 ]
 
@@ -118,6 +151,22 @@ GradeSchoolTest >> test06_GradeReturnsTheStudentsInThatGradeInAlphabeticalOrder 
 GradeSchoolTest >> test07_GradeReturnsAnEmptyListIfThereAreNoStudentsInThatGrade [
 	| result |
 
-	result := gradeSchoolCalculator gradeDesiredGrade: 1 students: #() .
+	result := gradeSchoolCalculator
+		addStudents: #();
+		desiredGrade: 1.
+		
 	self assert: result equals: #()
+]
+
+{ #category : #'tests-extra' }
+GradeSchoolTest >> test100_EnsureDataIsImmutable [
+	| result |
+
+	result := gradeSchoolCalculator
+		addStudents: #(#('Chelsea' 3) #('Logan' 7));
+		yourself.
+		
+	result roster at: 1 put: 'Not Chelsea'.
+		
+	self assert: result roster equals: #('Chelsea' 'Logan')
 ]
