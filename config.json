@@ -81,6 +81,20 @@
 			]
 		},
 		{
+			"slug" : "grade-school",
+			"uuid" : "8198e8bb-8040-0d00-812f-dfab01deb008",
+			"core" : true,
+			"auto_approve" : false,
+			"unlocked_by" : null,
+			"difficulty" : 4,
+			"topics" : [
+				"sorting",
+				"filtering",
+				"lists",
+				"object_oriented_programming"
+			]
+		},
+		{
 			"slug" : "acronym",
 			"uuid" : "dc7b1fff-f0be-460d-b146-ee84c2acc10b",
 			"core" : false,
