@@ -8,26 +8,8 @@ Class {
 }
 
 { #category : #activation }
-ClyExercismFetchCommand class >> classListMenuActivation [
-	<classAnnotation>
-	
-	^CmdContextMenuActivation byRootGroupItemOrder: 3 for: ClyClassContextOfFullBrowser 
-]
-
-{ #category : #activation }
 ClyExercismFetchCommand class >> contextMenuOrder [
-		^10
-]
-
-{ #category : #activation }
-ClyExercismFetchCommand class >> isExercismTagIn: aToolContext [
-
-	(aToolContext isKindOf: ClyClassContextOfFullBrowser) ifFalse: [ ^super isExercismTagIn: aToolContext ].
-	
-	aToolContext selectedItems isEmpty and: [ aToolContext selectedPackageItems do: [:any |
-		^ any browserItem name = ExercismManager exercismPackageName ]].
-	
-	^false
+		^5
 ]
 
 { #category : #activation }

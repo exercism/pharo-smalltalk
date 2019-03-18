@@ -9,7 +9,7 @@ Class {
 
 { #category : #activation }
 ClyExercismSubmitCommand class >> contextMenuOrder [
-		^1
+		^10
 ]
 
 { #category : #accessing }
