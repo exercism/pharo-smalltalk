@@ -106,6 +106,19 @@
 			]
 		},
 		{
+			"slug" : "binary",
+			"uuid" : "a90be8bb-8040-0d00-812e-0c1701deb008",
+			"core" : false,
+			"auto_approve" : false,
+			"unlocked_by" : "isogram",
+			"difficulty" : 3,
+			"topics" : [
+				"strings",
+				"iteration",
+				"math"
+			]
+		},
+		{
 			"slug" : "hamming",
 			"uuid" : "69f615da-2b3f-0d00-a2ed-aca409f0590c",
 			"core" : false,
@@ -155,6 +168,19 @@
 				"iteration",
 				"maps",
 				"transforming"
+			]
+		},
+		{
+			"slug" : "sieve",
+			"uuid" : "ffe8dcbb-8040-0d00-8124-bf5801deb008",
+			"core" : false,
+			"auto_approve" : false,
+			"unlocked_by" : "isogram",
+			"difficulty" : 3,
+			"topics" : [
+				"math",
+				"lists",
+				"loops"
 			]
 		},
 		{
