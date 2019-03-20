@@ -19,6 +19,7 @@ ClyExercismFetchCommand class >> packageContextMenuActivation [
 	
 	^ CmdContextMenuActivation
 		byItemOf: ClyExercismMenuGroup
+		order: self contextMenuOrder
 		for: RPackage asCalypsoItemContext
 ]
 

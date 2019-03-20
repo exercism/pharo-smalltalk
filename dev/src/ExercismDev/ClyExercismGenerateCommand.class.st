@@ -3,18 +3,9 @@ Menu command for generating exercism artefacts
 "
 Class {
 	#name : #ClyExercismGenerateCommand,
-	#superclass : #ClyExercismCommand,
+	#superclass : #ClyExercismDevCommand,
 	#category : #'ExercismDev-Menus'
 }
-
-{ #category : #testing }
-ClyExercismGenerateCommand class >> packageContextMenuActivation [
-	<classAnnotation>
-	
-	^ CmdContextMenuActivation
-		byItemOf: ClyExercismMenuGroup
-		for: RPackage asCalypsoItemContext
-]
 
 { #category : #testing }
 ClyExercismGenerateCommand >> defaultMenuItemName [
