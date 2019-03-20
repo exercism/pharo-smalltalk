@@ -27,7 +27,7 @@ ClyExercismFetchCommand class >> packageContextMenuActivation [
 ClyExercismFetchCommand class >> worldMenuCommandOn: aBuilder [
 	<worldMenu>
 	
-	| templateCommand |
+	| templateCommand browser |
 	
 	templateCommand := self new 
 		packages: { ExercismManager exercismPackage }; 
@@ -36,7 +36,10 @@ ClyExercismFetchCommand class >> worldMenuCommandOn: aBuilder [
 	(aBuilder item: templateCommand defaultMenuItemName)
 		parent: #Exercism;
 		order: 1;
-		action: [ templateCommand execute ];
+		action: [ 
+			browser := Smalltalk tools browser openOnPackage: ExercismManager.
+			templateCommand browser: browser.
+			templateCommand execute ];
 		iconName: templateCommand defaultMenuIconName;
 		help: templateCommand description
 		"withSeparatorAfter"
