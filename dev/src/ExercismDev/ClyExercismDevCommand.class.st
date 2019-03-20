@@ -1,3 +1,6 @@
+"
+Top level package enu commands that should only be seen for developers
+"
 Class {
 	#name : #ClyExercismDevCommand,
 	#superclass : #ClyExercismCommand,

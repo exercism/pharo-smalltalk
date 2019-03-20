@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #'world menu' }
-ClyExercismGenerateCommand class >> menuCommandOn: aBuilder [
+ClyExercismGenerateCommand class >> worldMenuCommandOn: aBuilder [
 	<worldMenu>
 	
 	| templateCommand |

@@ -1,3 +1,6 @@
+"
+Menu command for launching a mentor review browser
+"
 Class {
 	#name : #ClyExercismMentorCommand,
 	#superclass : #ClyExercismDevCommand,
@@ -12,7 +15,7 @@ ClyExercismMentorCommand class >> contextMenuOrder [
 ]
 
 { #category : #'world menu' }
-ClyExercismMentorCommand class >> menuCommandOn: aBuilder [
+ClyExercismMentorCommand class >> worldMenuCommandOn: aBuilder [
 	<worldMenu>
 	
 	| templateCommand |

@@ -13,22 +13,6 @@ ClyExercismFetchCommand class >> contextMenuOrder [
 ]
 
 { #category : #activation }
-ClyExercismFetchCommand class >> menuCommandOn: aBuilder [
-	<worldMenu>
-	
-	| templateCommand |
-	
-	templateCommand := self new.
-	(aBuilder item: templateCommand defaultMenuItemName)
-		parent: #Exercism;
-		order: 1;
-		action: [ templateCommand execute ];
-		iconName: templateCommand defaultMenuIconName;
-		help: templateCommand description
-		"withSeparatorAfter"
-]
-
-{ #category : #activation }
 ClyExercismFetchCommand class >> packageContextMenuActivation [
 	"We can use a second annotation to give a similar menu to the Package item"
 	<classAnnotation>
@@ -37,6 +21,25 @@ ClyExercismFetchCommand class >> packageContextMenuActivation [
 		byItemOf: ClyExercismMenuGroup
 		order: self contextMenuOrder
 		for: RPackage asCalypsoItemContext
+]
+
+{ #category : #'world menu' }
+ClyExercismFetchCommand class >> worldMenuCommandOn: aBuilder [
+	<worldMenu>
+	
+	| templateCommand |
+	
+	templateCommand := self new 
+		packages: { ExercismManager exercismPackage }; 
+		yourself.
+	
+	(aBuilder item: templateCommand defaultMenuItemName)
+		parent: #Exercism;
+		order: 1;
+		action: [ templateCommand execute ];
+		iconName: templateCommand defaultMenuIconName;
+		help: templateCommand description
+		"withSeparatorAfter"
 ]
 
 { #category : #accessing }

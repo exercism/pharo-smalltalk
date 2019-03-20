@@ -13,7 +13,7 @@ ClyExercismProgressCommand class >> contextMenuOrder [
 ]
 
 { #category : #'world menu' }
-ClyExercismProgressCommand class >> menuCommandOn: aBuilder [
+ClyExercismProgressCommand class >> worldMenuCommandOn: aBuilder [
 	<worldMenu>
 	
 	| templateCommand |

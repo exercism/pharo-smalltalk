@@ -1,3 +1,6 @@
+"
+A command for retrieving infomation for a review
+"
 Class {
 	#name : #ExercismReviewCommand,
 	#superclass : #ExercismFetchCommand,

@@ -1,3 +1,6 @@
+"
+I hold information pertinent to do a student solution review
+"
 Class {
 	#name : #ExercismReview,
 	#superclass : #Object,
