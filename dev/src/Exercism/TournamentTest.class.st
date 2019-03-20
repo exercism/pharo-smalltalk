@@ -76,8 +76,19 @@ Class {
 	#instVars : [
 		'tournamentCalculator'
 	],
-	#category : #'ExercismWIP-Tournament'
+	#category : #'Exercism-Tournament'
 }
+
+{ #category : #config }
+TournamentTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+	
+	^(self createExerciseAfter: GradeSchoolTest)
+		isCore: false;
+		difficulty: 5;
+		topics: #('sorting' 'filtering' 'iteration' 'parsing' 'transforming');
+		yourself
+]
 
 { #category : #config }
 TournamentTest class >> uuid [
