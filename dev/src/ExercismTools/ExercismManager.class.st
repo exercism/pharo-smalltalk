@@ -44,6 +44,15 @@ ExercismManager class >> isUserMode [
 				ifAbsent: [ nil ]) isNil ]
 ]
 
+{ #category : #'world menu' }
+ExercismManager class >> menuCommandOn: aBuilder [
+	<worldMenu>
+	(aBuilder item: #Exercism)
+		order: 4.0;
+		target: self;
+		help: 'Tools to support Exercism'
+]
+
 { #category : #cache }
 ExercismManager class >> solutionData [
 	^ SolutionData ifNil: [ SolutionData := Dictionary new ]

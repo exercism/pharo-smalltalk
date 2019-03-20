@@ -11,6 +11,22 @@ ClyExercismMentorCommand class >> contextMenuOrder [
 		^10
 ]
 
+{ #category : #'world menu' }
+ClyExercismMentorCommand class >> menuCommandOn: aBuilder [
+	<worldMenu>
+	
+	| templateCommand |
+	
+	templateCommand := self new.
+	(aBuilder item: templateCommand defaultMenuItemName)
+		parent: #Exercism;
+		order: self contextMenuOrder;
+		action: [ templateCommand execute ];
+		iconName: templateCommand defaultMenuIconName;
+		help: templateCommand description.
+		"withSeparatorAfter "
+]
+
 { #category : #testing }
 ClyExercismMentorCommand >> defaultMenuIconName [
 	^#recentMessages

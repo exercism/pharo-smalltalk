@@ -41,6 +41,6 @@ ExercismManager >> viewMenteeSolution [
 	UIManager default inform: 'Retrieving: ' , reviewId.
 	result := (ExercismReviewCommand reviewId: reviewId) execute.
 
-	(MCSnapshotBrowser forSnapshot: (result))
-		showLabelled: ('Exercism Mentor Snapshot ({1})' format: { result })
+	(MCSnapshotBrowser forSnapshot: (result codeSnapshot))
+		showLabelled: ('Exercism Solution ({1})' format: { result reviewName })
 ]

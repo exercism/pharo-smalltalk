@@ -148,3 +148,8 @@ ExercismSubmission >> sourceFilenamesWithContentsDo: aBlockClosure [
 ExercismSubmission >> storeSolutionId [
 	self exercise ifNotNil: [:exercise | exercise storeSolutionId: self solutionId]
 ]
+
+{ #category : #accessing }
+ExercismSubmission >> user [
+	^(self exercismData at: 'user') at: 'handle'
+]

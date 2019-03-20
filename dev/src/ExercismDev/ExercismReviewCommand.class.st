@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'reviewId'
 	],
-	#category : #'ExercismTools-Core'
+	#category : #'ExercismDev-Core'
 }
 
 { #category : #command }
@@ -35,13 +35,16 @@ ExercismReviewCommand >> createSnapshotFor: submission [
 
 { #category : #execution }
 ExercismReviewCommand >> execute [
+	| snapshot |
 	[ | submission |
 
 	self httpClient verifyToken.
 	submission := self fetchLatestSubmission.
 
 	self fetchExerciseFilesFor: submission.
-	^self createSnapshotFor: submission.
+	snapshot := self createSnapshotFor: submission.
+	
+	^ExercismReview for: submission with: snapshot.
 	
 	]
 		on: ExUnauthorized

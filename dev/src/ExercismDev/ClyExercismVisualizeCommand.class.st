@@ -7,6 +7,22 @@ Class {
 	#category : #'ExercismDev-Menus'
 }
 
+{ #category : #'world menu' }
+ClyExercismVisualizeCommand class >> menuCommandOn: aBuilder [
+	<worldMenu>
+	
+	| templateCommand |
+	
+	templateCommand := self new.
+	(aBuilder item: templateCommand defaultMenuItemName)
+		parent: #Exercism;
+		order: self contextMenuOrder;
+		action: [ templateCommand execute ];
+		"iconName: templateCommand defaultMenuIconName;"
+		help: templateCommand description.
+		"withSeparatorAfter "
+]
+
 { #category : #testing }
 ClyExercismVisualizeCommand >> defaultMenuItemName [
 	^'Visualize exercise meta data'
