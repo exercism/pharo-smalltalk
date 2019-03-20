@@ -3,17 +3,24 @@ Menu command for (currently) crudely visualizing exercises
 "
 Class {
 	#name : #ClyExercismVisualizeCommand,
-	#superclass : #ClyExercismCommand,
+	#superclass : #ClyExercismDevCommand,
 	#category : #'ExercismDev-Menus'
 }
 
-{ #category : #testing }
-ClyExercismVisualizeCommand class >> packageContextMenuActivation [
-	<classAnnotation>
+{ #category : #'world menu' }
+ClyExercismVisualizeCommand class >> worldMenuCommandOn: aBuilder [
+	<worldMenu>
 	
-	^ CmdContextMenuActivation
-		byItemOf: ClyExercismMenuGroup
-		for: RPackage asCalypsoItemContext
+	| templateCommand |
+	
+	templateCommand := self new.
+	(aBuilder item: templateCommand defaultMenuItemName)
+		parent: #Exercism;
+		order: self contextMenuOrder;
+		action: [ templateCommand execute ];
+		"iconName: templateCommand defaultMenuIconName;"
+		help: templateCommand description.
+		"withSeparatorAfter "
 ]
 
 { #category : #testing }

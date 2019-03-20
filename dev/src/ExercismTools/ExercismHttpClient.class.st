@@ -131,6 +131,12 @@ ExercismHttpClient >> getResource: filePath with: queryMap [
 	^ self get
 ]
 
+{ #category : #public }
+ExercismHttpClient >> getSpecifiedExercise: uuid [
+
+	^self getResource: (self solutionPathFor: uuid) 
+]
+
 { #category : #accessing }
 ExercismHttpClient >> hostName [
 	^ hostName

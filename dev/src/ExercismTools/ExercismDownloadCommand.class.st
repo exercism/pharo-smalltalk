@@ -3,9 +3,8 @@ I am the command for dowloading an exercise and installing it in the image
 "
 Class {
 	#name : #ExercismDownloadCommand,
-	#superclass : #ExercismHttpCommand,
+	#superclass : #ExercismFetchCommand,
 	#instVars : [
-		'parser',
 		'exerciseId',
 		'trackName'
 	],
@@ -47,32 +46,6 @@ ExercismDownloadCommand >> execute [
 ]
 
 { #category : #internal }
-ExercismDownloadCommand >> fetchExerciseFilesFor: submission [
-
-	submission
-		populateFileContentsWith: [ :filename | self httpClient getResource: filename ]
-]
-
-{ #category : #internal }
-ExercismDownloadCommand >> fetchLatestSubmission [
-	| response |
-	
-	response := self retrieveLatestData.
-	
-	response
-		at: 'error'
-		ifPresent: [ :error | DomainError signal: (error at: 'message') ].
-		
-	^ExercismSubmission data: response
-]
-
-{ #category : #accessing }
-ExercismDownloadCommand >> initialize [
-	super initialize.
-	self parser: TonelParser new.
-]
-
-{ #category : #internal }
 ExercismDownloadCommand >> installExerciseFor: submission [
 
 	submission
@@ -82,16 +55,6 @@ ExercismDownloadCommand >> installExerciseFor: submission [
 	SystemAnnouncer uniqueInstance
 		announce: (RPackageRegistered to: ExercismManager exercismPackage).
 	
-]
-
-{ #category : #accessing }
-ExercismDownloadCommand >> parser [
-	^ parser
-]
-
-{ #category : #accessing }
-ExercismDownloadCommand >> parser: aTonelParser [
-	parser := aTonelParser
 ]
 
 { #category : #internal }

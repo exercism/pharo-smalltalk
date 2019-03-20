@@ -12,6 +12,22 @@ ClyExercismProgressCommand class >> contextMenuOrder [
 		^15
 ]
 
+{ #category : #'world menu' }
+ClyExercismProgressCommand class >> worldMenuCommandOn: aBuilder [
+	<worldMenu>
+	
+	| templateCommand |
+	
+	templateCommand := self new.
+	(aBuilder item: templateCommand defaultMenuItemName)
+		parent: #Exercism;
+		order: 1;
+		action: [ templateCommand execute ];
+		iconName: templateCommand defaultMenuIconName;
+		help: templateCommand description;
+		withSeparatorAfter
+]
+
 { #category : #accessing }
 ClyExercismProgressCommand >> defaultMenuIconName [
 	^#home

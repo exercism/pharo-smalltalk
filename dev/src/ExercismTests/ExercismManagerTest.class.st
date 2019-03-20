@@ -11,8 +11,22 @@ Class {
 ExercismManagerTest >> testParseExerciseProposal [
 	"Ensure we can parse the proposed exercism download command, and extract the exercise id"
 
-	self assert: (ExercismManager default parseExerciseName: 'hello-world') equals: 'hello-world'.
-	self assert: (ExercismManager default parseExerciseName: 'exercism download --exercise=two-fer --track=pharo') equals: 'two-fer'.
-	self assert: (ExercismManager default parseExerciseName: 'exercism download --randome') equals: nil.
-	self assert: (ExercismManager default parseExerciseName: '') equals: nil.
+	self
+		assert: (ExercismManager default parseTokenNamed: 'exercise' from: 'hello-world')
+		equals: 'hello-world'.
+	self
+		assert:
+			(ExercismManager default
+				parseTokenNamed: 'exercise'
+				from: 'exercism download --exercise=two-fer --track=pharo')
+		equals: 'two-fer'.
+	self
+		assert:
+			(ExercismManager default
+				parseTokenNamed: 'exercise'
+				from: 'exercism download --randome')
+		equals: nil.
+	self
+		assert: (ExercismManager default parseTokenNamed: 'exercise' from: '')
+		equals: nil
 ]

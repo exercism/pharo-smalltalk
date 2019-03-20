@@ -47,4 +47,5 @@ ExUnauthorized >> configureToken [
 { #category : #accessing }
 ExUnauthorized >> defaultAction [
 	self badToken: 'Unauthorized, invalid token. Please configure...'.
+	super defaultAction.
 ]

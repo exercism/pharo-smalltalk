@@ -76,32 +76,41 @@ ExercismManager class >> welcome [
 		selectMethod: (Welcome methodNamed: #testWelcome)
 ]
 
+{ #category : #'world menu' }
+ExercismManager class >> worldMenuCommandOn: aBuilder [
+	<worldMenu>
+	(aBuilder item: #Exercism)
+		order: 4.0;
+		target: self;
+		help: 'Tools to support Exercism'
+]
+
 { #category : #exercism }
 ExercismManager >> fetchFromExercismTo: package [
 	"Prompt the user for an exercise to fetch, install it, and if successful, answer the loaded exercise"
-	
+
 	| exerciseName result |
-	
+
 	exerciseName := (UIManager default
 		request: 'Enter a valid exercism exercise (e.g. hello-world):')
-			ifNil: [ ^ nil ]
-			ifNotNil: [ :value | self parseExerciseName: value ].
-		
+		ifNil: [ ^ nil ]
+		ifNotNil: [ :value | self parseTokenNamed: 'exercise' from: value ].
+
 	UIManager default inform: 'Loading: ' , exerciseName.
-	result := (ExercismDownloadCommand track: self class trackId exercise: exerciseName)
-		execute.
-		
-	^result
-	
+	result := (ExercismDownloadCommand
+		track: self class trackId
+		exercise: exerciseName) execute.
+
+	^ result
 ]
 
 { #category : #helpers }
-ExercismManager >> parseExerciseName: aString [ 
+ExercismManager >> parseTokenNamed: tokenName from: aString [ 
 	| parsedTokens exerciseOffset |
 	parsedTokens := aString findTokens: '= '.
 	parsedTokens size = 1 ifTrue: [ ^parsedTokens first ].
 	
-	(exerciseOffset := parsedTokens indexOf: '--exercise') > 1 ifTrue: [ 
+	(exerciseOffset := parsedTokens indexOf: '--',tokenName ) > 1 ifTrue: [ 
 		^parsedTokens at: exerciseOffset + 1 ].
 	
 	^nil

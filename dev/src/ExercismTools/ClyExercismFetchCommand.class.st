@@ -19,7 +19,30 @@ ClyExercismFetchCommand class >> packageContextMenuActivation [
 	
 	^ CmdContextMenuActivation
 		byItemOf: ClyExercismMenuGroup
+		order: self contextMenuOrder
 		for: RPackage asCalypsoItemContext
+]
+
+{ #category : #'world menu' }
+ClyExercismFetchCommand class >> worldMenuCommandOn: aBuilder [
+	<worldMenu>
+	
+	| templateCommand browser |
+	
+	templateCommand := self new 
+		packages: { ExercismManager exercismPackage }; 
+		yourself.
+	
+	(aBuilder item: templateCommand defaultMenuItemName)
+		parent: #Exercism;
+		order: 1;
+		action: [ 
+			browser := Smalltalk tools browser openOnPackage: ExercismManager.
+			templateCommand browser: browser.
+			templateCommand execute ];
+		iconName: templateCommand defaultMenuIconName;
+		help: templateCommand description
+		"withSeparatorAfter"
 ]
 
 { #category : #accessing }
