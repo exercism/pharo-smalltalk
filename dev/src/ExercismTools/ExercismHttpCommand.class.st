@@ -17,6 +17,22 @@ ExercismHttpCommand >> execute [
 	^self subclassResponsibility 
 ]
 
+{ #category : #execution }
+ExercismHttpCommand >> executeCheckingToken: aBlock [
+	"Evaluate aBlock, after verifying the api token"
+
+	^ [ 
+		ExercismHttpClient verifyToken.
+		aBlock value 
+	]
+		on: ExUnauthorized  
+		do: [ :error | 
+			ExercismHttpClient promptForToken
+				ifTrue: [ error retry ]
+				ifFalse: [ self inform: 'Operation Aborted!'.
+					nil ] ]
+]
+
 { #category : #accessing }
 ExercismHttpCommand >> httpClient [
 	"Anser the HttpRetriever used to marshal http requests"

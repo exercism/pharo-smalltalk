@@ -13,11 +13,7 @@ Class {
 
 { #category : #running }
 ExercismHttpClientTest >> setUp [
-	[ ExercismHttpClient verifyToken ] on: ExUnauthorized do: [ :error |
-	 	error configureToken 
-			ifTrue: [ error retry ]
-			ifFalse: [ self inform: 'Aborted'. ^false ]
-		].
+	ExercismHttpClient hasToken ifFalse: [ ExercismHttpClient promptForToken ]
 ]
 
 { #category : #tests }
