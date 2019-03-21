@@ -106,7 +106,18 @@ you to begin coding.
 is a powerful concept that allows you to suspend work mid operation, possibly even when debugging
 something. When you next relaunch Pharo, you can then continue stepping through code in the restored debugger, or possibly continue a refactoring step.*
 
-## How to Upgrade a Previous Installation
+## How to Reset your CLI Token
+
+If you ever need to reset your CLI token due to a security issue, you should visit your [Exercism Settings Page](https://exercism.io/my/settings) page
+and use the reset token button. When you have done this, you need to clear your old token in Pharo Exercism by evaluating the following code in a Playground:
+
+```smalltalk
+ExercismHttpClient 
+    reset; 
+    promptForToken.
+```
+
+## How to Upgrade Pharo Exercism
 
 From time to time we may need you to update the libraries in your Pharo Exercism image. Before doing an update, it is best to ensure you have submitted any in-progress exercises, then saved your Pharo image, and finally backed up your Pharo.image, and Pharo.changes files. Once you have a safe backup, follow the Playground steps (#4), of the Windows Installation which will reload the latest version of the libraries. If you hit any conflict errors you may need to modify the load script as follows:
 
