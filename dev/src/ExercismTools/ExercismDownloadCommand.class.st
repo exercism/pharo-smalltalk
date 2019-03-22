@@ -13,8 +13,7 @@ Class {
 
 { #category : #command }
 ExercismDownloadCommand class >> from: aClient track: trackId exercise: exerciseId [
-	^self new 
-		httpClient: aClient;
+	^(self client: aClient)
 		track: trackId exercise: exerciseId;
 		yourself
 ]
@@ -26,23 +25,16 @@ ExercismDownloadCommand class >> track: trackId exercise: exerciseId [
 
 { #category : #execution }
 ExercismDownloadCommand >> execute [
-	[ | submission |
+	^ self
+		executeCheckingToken: [ | submission |
 
-	self httpClient verifyToken.
-	submission := self fetchLatestSubmission.
+			submission := self fetchLatestSubmission.
 
-	self fetchExerciseFilesFor: submission.
-	self installExerciseFor: submission.
-	submission storeSolutionId .
+			self fetchExerciseFilesFor: submission.
+			self installExerciseFor: submission.
+			submission storeSolutionId.
 
-	^ submission ]
-		on: ExUnauthorized
-		do: [ :error | 
-			error configureToken
-				ifTrue: [ error retry ]
-				ifFalse: [ 
-					self inform: 'Download Aborted!'.
-					^nil ] ]
+			submission ]
 ]
 
 { #category : #internal }

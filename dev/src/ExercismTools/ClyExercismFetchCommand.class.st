@@ -72,6 +72,6 @@ ClyExercismFetchCommand >> execute [
 			UIManager default inform: 'Success, Happy Coding'.
 			self browser selectClass: submission exercise testCase ]
 	 ] 
-		on: Error do: [ :ex | 
+		on: ExDomainError do: [ :ex | 
 			self reportError: ex for: (submission ifNotNil: [ :s | s exerciseId ]) ]
 ]

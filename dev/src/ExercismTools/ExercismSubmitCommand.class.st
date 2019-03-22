@@ -25,27 +25,18 @@ ExercismSubmitCommand class >> from: anHttpClient exercise: exercise [
 	"By default, don't submit TestCases with the solution"
 	exercise verifySolutionForSubmission.
 		
-	^ self new
-		httpClient: anHttpClient;
+	^(self client: anHttpClient)
 		exercise: exercise;
 		yourself
 ]
 
 { #category : #execution }
 ExercismSubmitCommand >> execute [
-	[ self httpClient
-		patchSolution: self exercise solutionId
-		with: self exercise solutionSources 
-	]
-		on: ExUnauthorized
-		do: [ :error | 
-			error configureToken
-				ifTrue: [ error retry ]
-				ifFalse: [ 
-					self inform: 'Submit Aborted!' ]. 
-					^false ].
-
-	^ true
+	^ self
+		executeCheckingToken: [ 
+			self httpClient
+				patchSolution: self exercise solutionId
+				with: self exercise solutionSources ]
 ]
 
 { #category : #accessing }

@@ -47,6 +47,29 @@ ExercismHttpClient class >> newHost: hostName [
 ]
 
 { #category : #caching }
+ExercismHttpClient class >> promptForToken [
+	| url linkText requestText initialAnswer title newToken  |
+	url := 'https://exercism.io/my/settings'.
+	
+	linkText := url asText
+		addAttribute: (TextAction new actOnClickBlock: [WebBrowser openOn: url]);
+		addAttribute: TextColor blue;
+		addAttribute: TextEmphasis underlined.
+		
+  	requestText := 'CLI token available at  ' asText, linkText.
+	initialAnswer := ApiToken ifNil: [ '' ]. 
+	title := (initialAnswer ifEmpty: [ '' ] ifNotEmpty: [ 'Unauthorized or Invalid token. ' ]) , 
+		'Please enter your Exercism student token'.
+		
+	newToken := MorphicUIManager default requestText: requestText initialAnswer: initialAnswer title: title.
+	newToken ifNil: [ ^false ].
+	(newToken = ApiToken)  ifTrue: [ ^false ].
+	
+	ExercismHttpClient configureToken: newToken.
+	^true "retry"
+]
+
+{ #category : #caching }
 ExercismHttpClient class >> reset [
 	ApiToken := nil
 	
@@ -64,7 +87,7 @@ ExercismHttpClient class >> token [
 
 { #category : #testing }
 ExercismHttpClient class >> verifyToken [
-	self hasToken ifFalse: [ (ExUnauthorized badToken: nil) signal ].
+	self hasToken ifFalse: [ ExUnauthorized signal ].
 	^ true
 ]
 
@@ -90,20 +113,21 @@ ExercismHttpClient >> createZnClient [
 	^ ZnClient new
 		https;
 		host: self hostName;
-		headerAt: 'Authorization' put: 'Bearer ' , self class token
+		yourself
 ]
 
 { #category : #internal }
-ExercismHttpClient >> get [ 
+ExercismHttpClient >> get [
 	"Answer the result of an HTTP GET command, thows an Exception if 401 response"
+
 	| result |
-	
+
 	result := self zincClient get.
-	
+
 	self responseCode = 401
-		ifTrue: [ (ExUnauthorized badToken: ApiToken) signal ].
-		
-	^result
+		ifTrue: [ self signalUnauthorized ].
+
+	^ result
 ]
 
 { #category : #public }
@@ -148,30 +172,46 @@ ExercismHttpClient >> hostName: hostNameString [
 ]
 
 { #category : #internal }
+ExercismHttpClient >> parameterString [
+	^ String
+		streamContents: [ :s | 
+			self zincClient request requestLine uri query associations
+				do: [ :params | 
+					s
+						nextPutAll: params key asString;
+						nextPutAll: ': ';
+						nextPutAll: params value ] 
+				separatedBy: [ s nextPutAll: ', ' ]]
+]
+
+{ #category : #internal }
 ExercismHttpClient >> patch [
-	| response status statusCode statusMsgs |
+	| response status statusCode successCodes |
 	
 	response := self zincClient patch.
 	
 	status := self zincClient response statusLine.
 	statusCode := self responseCode.
 	
-	statusMsgs := {201 -> 'SUCCESS'. 400 -> 'NO CHANGES'} asDictionary.
+	successCodes := {201 -> 'SUCCESS'. 400 -> 'NO CHANGES'} asDictionary.
 	
-	(statusMsgs includesKey: statusCode)
+	(successCodes includesKey: statusCode)
 		ifTrue: [ 
-				self inform: 'Exercism submit solution - ' , (statusMsgs at: statusCode) value. 
+				self inform: 'Exercism Submit - ' , (successCodes at: statusCode) value. 
 				^response ].
 		
+	statusCode = 401 ifTrue: [ 
+		ExUnauthorized signalBadToken: ApiToken ].
+	
 	self error:
-			'Exercism submit solution - UNKNOWN ERROR (' , 
+			'Exercism Submit - UNKNOWN ERROR (' , 
 			statusCode printString, ' ' , status reason , ')'
 ]
 
 { #category : #public }
 ExercismHttpClient >> patchSolution: solutionIdString with: solutionDataMap [
 	
-	self
+	^self
 		path: (self solutionPathFor: solutionIdString);
 		addFormEntity: 'files[]' data: solutionDataMap;
 		patch
@@ -184,6 +224,11 @@ ExercismHttpClient >> path: aString [
 ]
 
 { #category : #internal }
+ExercismHttpClient >> promptForToken [ 
+	^self class promptForToken
+]
+
+{ #category : #internal }
 ExercismHttpClient >> queryAt: stringId put: stringValue [
 	self zincClient queryAt: stringId put: stringValue
 		
@@ -192,6 +237,11 @@ ExercismHttpClient >> queryAt: stringId put: stringValue [
 { #category : #public }
 ExercismHttpClient >> responseCode [
 	^ self zincClient response code
+]
+
+{ #category : #internal }
+ExercismHttpClient >> signalUnauthorized [
+	ExUnauthorized signalBadToken: ApiToken
 ]
 
 { #category : #internal }
@@ -215,5 +265,7 @@ ExercismHttpClient >> verifyToken [
 
 { #category : #accessing }
 ExercismHttpClient >> zincClient [
-	^ zincClient ifNil: [ zincClient := self createZnClient ]
+	^ (zincClient ifNil: [ zincClient := self createZnClient ])
+		headerAt: 'Authorization' put: 'Bearer ' , self class token;
+		yourself
 ]
