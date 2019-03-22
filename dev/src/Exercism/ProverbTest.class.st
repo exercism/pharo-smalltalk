@@ -19,7 +19,7 @@ Note that the list of inputs may vary; your solution should be able to handle li
 
 ## Hint
 
-TBD
+This one can be quite simple if you look at ways to iterate over the list of inputs.
 
 "
 Class {
