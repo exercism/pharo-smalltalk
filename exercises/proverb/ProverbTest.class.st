@@ -19,7 +19,7 @@ Note that the list of inputs may vary; your solution should be able to handle li
 
 ## Hint
 
-TBD
+This one can be quite simple if you look at ways to iterate over the list of inputs.
 
 "
 Class {
@@ -28,8 +28,20 @@ Class {
 	#instVars : [
 		'proverbCalculator'
 	],
-	#category : #'ExercismWIP-Proverb'
+	#category : #'Exercism-Proverb'
 }
+
+{ #category : #config }
+ProverbTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+	
+	^(self createExerciseAfter: ReverseStringTest)
+		isCore: false;
+		difficulty: 3;
+		topics: #('strings' 'iteration' );
+		yourself
+
+]
 
 { #category : #config }
 ProverbTest class >> uuid [
