@@ -8,6 +8,13 @@ Class {
 }
 
 { #category : #'world menu' }
+ClyExercismGenerateCommand class >> contextMenuOrder [
+	<classAnnotationDependency>
+	
+		^20
+]
+
+{ #category : #'world menu' }
 ClyExercismGenerateCommand class >> worldMenuCommandOn: aBuilder [
 	<worldMenu>
 	
@@ -19,8 +26,8 @@ ClyExercismGenerateCommand class >> worldMenuCommandOn: aBuilder [
 		order: self contextMenuOrder;
 		action: [ templateCommand execute ];
 		"iconName: templateCommand defaultMenuIconName;"
-		help: templateCommand description.
-		"withSeparatorAfter "
+		help: templateCommand description;
+		withSeparatorAfter
 ]
 
 { #category : #testing }

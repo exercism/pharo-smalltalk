@@ -8,6 +8,13 @@ Class {
 }
 
 { #category : #'world menu' }
+ClyExercismVisualizeCommand class >> contextMenuOrder [
+	<classAnnotationDependency>
+	
+		^15
+]
+
+{ #category : #'world menu' }
 ClyExercismVisualizeCommand class >> worldMenuCommandOn: aBuilder [
 	<worldMenu>
 	
