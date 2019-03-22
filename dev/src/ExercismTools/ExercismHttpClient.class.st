@@ -225,7 +225,7 @@ ExercismHttpClient >> path: aString [
 
 { #category : #internal }
 ExercismHttpClient >> promptForToken [ 
-	self class promptForToken
+	^self class promptForToken
 ]
 
 { #category : #internal }
