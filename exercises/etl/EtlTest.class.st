@@ -49,7 +49,7 @@ game while being scored at 4 in the Hawaiian-language version.
 
 ## Hint
 
-TBD
+While readability is preferred over efficiency, there is a solution that avoids multiple input looksups when solving this.
 
 "
 Class {
@@ -58,19 +58,31 @@ Class {
 	#instVars : [
 		'etlCalculator'
 	],
-	#category : #'ExercismWIP-Etl'
+	#category : #'Exercism-Etl'
 }
+
+{ #category : #config }
+EtlTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+	
+	^(self createExerciseAfter: ReverseStringTest)
+		isCore: false;
+		difficulty: 1;
+		topics: #('maps' 'iteration' 'transforming');
+		yourself
+
+]
 
 { #category : #config }
 EtlTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'99fcc0bb-8040-0d00-8102-934201deb008'
+	^'d6303b3f-0f41-0d00-a5e1-db510c056502'
 ]
 
 { #category : #config }
 EtlTest class >> version [
-	"Generated from specification: 15 March 2019"
-	^'1.0.0'
+	"Generated from specification: 22 March 2019"
+	^'1.0.1'
 ]
 
 { #category : #setup }
@@ -79,33 +91,33 @@ EtlTest >> setUp [
 ]
 
 { #category : #tests }
-EtlTest >> test01_TransformsTheASetOfScrabbleDataPreviouslyIndexedByTheTileScoreToASetOfDataIndexedByTheTileLetterASingleLetter [
+EtlTest >> test01_TransformsASingleLetter [
 	| result |
 
-	result := etlCalculator transform1: #('A' ) .
+	result := etlCalculator transformData: ((Dictionary new) add: ('1'->#('A' )); yourself) .
 	self assert: result equals: ((Dictionary new) add: ('a'->1); yourself)
 ]
 
 { #category : #tests }
-EtlTest >> test02_TransformsTheASetOfScrabbleDataPreviouslyIndexedByTheTileScoreToASetOfDataIndexedByTheTileLetterSingleScoreWithMultipleLetters [
+EtlTest >> test02_TransformASingleScoreWithMultipleLetters [
 	| result |
 
-	result := etlCalculator transform1: #('A' 'E' 'I' 'O' 'U' ) .
+	result := etlCalculator transformData: ((Dictionary new) add: ('1'->#('A' 'E' 'I' 'O' 'U' )); yourself) .
 	self assert: result equals: ((Dictionary new) add: ('i'->1); add: ('e'->1); add: ('a'->1); add: ('u'->1); add: ('o'->1); yourself)
 ]
 
 { #category : #tests }
-EtlTest >> test03_TransformsTheASetOfScrabbleDataPreviouslyIndexedByTheTileScoreToASetOfDataIndexedByTheTileLetterMultipleScoresWithMultipleLetters [
+EtlTest >> test03_TransformMultipleScoresWithMultipleLetters [
 	| result |
 
-	result := etlCalculator transform1: #('A' 'E' ) at2: #('D' 'G' ) .
+	result := etlCalculator transformData: ((Dictionary new) add: ('1'->#('A' 'E' )); add: ('2'->#('D' 'G' )); yourself) .
 	self assert: result equals: ((Dictionary new) add: ('g'->2); add: ('a'->1); add: ('d'->2); add: ('e'->1); yourself)
 ]
 
 { #category : #tests }
-EtlTest >> test04_TransformsTheASetOfScrabbleDataPreviouslyIndexedByTheTileScoreToASetOfDataIndexedByTheTileLetterMultipleScoresWithDifferingNumbersOfLetters [
+EtlTest >> test04_TransformsMultipleScoresWithDifferingNumbersOfLetters [
 	| result |
 
-	result := etlCalculator transform8: #('J' 'X' ) at4: #('F' 'H' 'V' 'W' 'Y' ) at2: #('D' 'G' ) at5: #('K' ) at3: #('B' 'C' 'M' 'P' ) at1: #('A' 'E' 'I' 'O' 'U' 'L' 'N' 'R' 'S' 'T' ) at10: #('Q' 'Z' ) .
+	result := etlCalculator transformData: ((Dictionary new) add: ('8'->#('J' 'X' )); add: ('4'->#('F' 'H' 'V' 'W' 'Y' )); add: ('2'->#('D' 'G' )); add: ('5'->#('K' )); add: ('3'->#('B' 'C' 'M' 'P' )); add: ('1'->#('A' 'E' 'I' 'O' 'U' 'L' 'N' 'R' 'S' 'T' )); add: ('10'->#('Q' 'Z' )); yourself) .
 	self assert: result equals: ((Dictionary new) add: ('g'->2); add: ('z'->10); add: ('s'->1); add: ('l'->1); add: ('e'->1); add: ('x'->8); add: ('q'->10); add: ('j'->8); add: ('c'->3); add: ('v'->4); add: ('o'->1); add: ('h'->4); add: ('a'->1); add: ('t'->1); add: ('m'->3); add: ('f'->4); add: ('y'->4); add: ('r'->1); add: ('k'->5); add: ('d'->2); add: ('w'->4); add: ('p'->3); add: ('i'->1); add: ('b'->3); add: ('u'->1); add: ('n'->1); yourself)
 ]

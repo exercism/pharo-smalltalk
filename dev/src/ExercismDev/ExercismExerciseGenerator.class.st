@@ -41,6 +41,19 @@ ExercismExerciseGenerator class >> generate [
 	path ifNotNil: [ self new generateFrom: (self defaultPath: path) ]
 ]
 
+{ #category : #examples }
+ExercismExerciseGenerator class >> worldMenuCommandOn: aBuilder [
+	<worldMenu>
+	
+	(aBuilder item: 'Generate exercises')
+		parent: #Exercism;
+		order: 150.0;
+		action: [ self generate ];
+		"iconName: templateCommand defaultMenuIconName;"
+		help: 'Re-Generate exercises from the canonical problem-description'.
+		"withSeparatorBefore"
+]
+
 { #category : #internal }
 ExercismExerciseGenerator >> compile: src for: aClass selector: aSelector protocol: aName [
 	| cm aContext |

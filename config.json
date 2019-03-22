@@ -133,6 +133,19 @@
 			]
 		},
 		{
+			"slug" : "etl",
+			"uuid" : "d6303b3f-0f41-0d00-a5e1-db510c056502",
+			"core" : false,
+			"auto_approve" : false,
+			"unlocked_by" : "reverse-string",
+			"difficulty" : 1,
+			"topics" : [
+				"maps",
+				"iteration",
+				"transforming"
+			]
+		},
+		{
 			"slug" : "hamming",
 			"uuid" : "69f615da-2b3f-0d00-a2ed-aca409f0590c",
 			"core" : false,
