@@ -22,7 +22,7 @@ ExercismFetchCommand >> fetchLatestSubmission [
 	
 	response
 		at: 'error'
-		ifPresent: [ :error | DomainError signal: (error at: 'message') ].
+		ifPresent: [ :error | ExDomainError signal: (error at: 'message'), (' ({1})' format: {self httpClient parameterString} ) ].
 		
 	^ExercismSubmission data: response
 ]

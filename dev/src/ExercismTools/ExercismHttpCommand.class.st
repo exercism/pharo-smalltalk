@@ -10,11 +10,34 @@ Class {
 	#category : #'ExercismTools-Core'
 }
 
+{ #category : #private }
+ExercismHttpCommand class >> client: anHttpClient [
+	^self new
+		httpClient: anHttpClient;
+		yourself
+]
+
 { #category : #execution }
 ExercismHttpCommand >> execute [
 	"Execute the command, answers true if successful"
 	
 	^self subclassResponsibility 
+]
+
+{ #category : #execution }
+ExercismHttpCommand >> executeCheckingToken: aBlock [
+	"Evaluate aBlock, after verifying the api token"
+
+	^ [ 
+		self httpClient verifyToken.
+		aBlock value 
+	]
+		on: ExUnauthorized  
+		do: [ :error | 
+			self httpClient promptForToken
+				ifTrue: [ error retry ]
+				ifFalse: [ self inform: 'Operation Aborted!'.
+					nil ] ]
 ]
 
 { #category : #accessing }
