@@ -159,6 +159,18 @@
 			]
 		},
 		{
+			"slug" : "proverb",
+			"uuid" : "b4e3babb-8040-0d00-80fa-71e001deb008",
+			"core" : false,
+			"auto_approve" : false,
+			"unlocked_by" : "reverse-string",
+			"difficulty" : 3,
+			"topics" : [
+				"strings",
+				"iteration"
+			]
+		},
+		{
 			"slug" : "raindrops",
 			"uuid" : "c0bcb6c5-3f3f-0d00-995d-a4720043fb1f",
 			"core" : false,
