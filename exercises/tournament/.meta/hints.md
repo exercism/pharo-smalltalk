@@ -1,0 +1,1 @@
+Build up this exercise piece by piece, and don't be afraid to split out any useful concepts into a new class. Previous exercises should give the foundation for a neat solution.

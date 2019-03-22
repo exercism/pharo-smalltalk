@@ -12,8 +12,7 @@ Class {
 
 { #category : #command }
 ExercismReviewCommand class >> from: aClient reviewId: reviewId [
-	^self new 
-		httpClient: aClient;
+	^(self client: aClient)
 		reviewId: reviewId;
 		yourself
 ]
@@ -38,25 +37,16 @@ ExercismReviewCommand >> createSnapshotFor: submission [
 
 { #category : #execution }
 ExercismReviewCommand >> execute [
-	| snapshot |
-	[ | submission |
-
-	self httpClient verifyToken.
-	submission := self fetchLatestSubmission.
-
-	self fetchExerciseFilesFor: submission.
-	snapshot := self createSnapshotFor: submission.
 	
-	^ExercismReview for: submission with: snapshot.
+	^self executeCheckingToken: [ | submission snapshot |
+
+		submission := self fetchLatestSubmission.
+
+		self fetchExerciseFilesFor: submission.
+		snapshot := self createSnapshotFor: submission.
 	
+		ExercismReview for: submission with: snapshot.
 	]
-		on: ExUnauthorized
-		do: [ :error | 
-			error configureToken
-				ifTrue: [ error retry ]
-				ifFalse: [ 
-					self inform: 'Review Aborted!'.
-					^nil ] ]
 ]
 
 { #category : #internal }

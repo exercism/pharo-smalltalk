@@ -223,6 +223,21 @@
 			]
 		},
 		{
+			"slug" : "tournament",
+			"uuid" : "1109cabb-8040-0d00-810e-7c1b01deb008",
+			"core" : false,
+			"auto_approve" : false,
+			"unlocked_by" : "grade-school",
+			"difficulty" : 5,
+			"topics" : [
+				"sorting",
+				"filtering",
+				"iteration",
+				"parsing",
+				"transforming"
+			]
+		},
+		{
 			"slug" : "word-count",
 			"uuid" : "a5de8cbe-4a3f-0d00-bb5e-8947071d6982",
 			"core" : false,

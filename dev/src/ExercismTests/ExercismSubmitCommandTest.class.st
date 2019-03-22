@@ -17,6 +17,7 @@ ExercismSubmitCommandTest >> testSubmitHelloWorldPackageWithMock [
 	(mockExercise expect solutionSources) willReturn: 
 		{ 'HelloWorld.st'->'HelloWorld content'. 'TwoFer.st'->'twofer content'} asDictionary.
 	
+	mockHttpClient expect verifyToken atLeastOnce.
 	(mockHttpClient expect patchSolution: Any with: Any)
 		specifying: [:solnId :formData | 
 			formData keys should equal: {'HelloWorld.st'. 'TwoFer.st' } asSet.
