@@ -13,8 +13,7 @@ Class {
 
 { #category : #command }
 ExercismDownloadCommand class >> from: aClient track: trackId exercise: exerciseId [
-	^self new 
-		httpClient: aClient;
+	^(self client: aClient)
 		track: trackId exercise: exerciseId;
 		yourself
 ]

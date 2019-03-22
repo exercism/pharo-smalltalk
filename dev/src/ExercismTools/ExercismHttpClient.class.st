@@ -224,6 +224,11 @@ ExercismHttpClient >> path: aString [
 ]
 
 { #category : #internal }
+ExercismHttpClient >> promptForToken [ 
+	self class promptForToken
+]
+
+{ #category : #internal }
 ExercismHttpClient >> queryAt: stringId put: stringValue [
 	self zincClient queryAt: stringId put: stringValue
 		

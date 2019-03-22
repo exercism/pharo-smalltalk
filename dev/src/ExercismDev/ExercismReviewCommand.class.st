@@ -12,8 +12,7 @@ Class {
 
 { #category : #command }
 ExercismReviewCommand class >> from: aClient reviewId: reviewId [
-	^self new 
-		httpClient: aClient;
+	^(self client: aClient)
 		reviewId: reviewId;
 		yourself
 ]

@@ -25,8 +25,7 @@ ExercismSubmitCommand class >> from: anHttpClient exercise: exercise [
 	"By default, don't submit TestCases with the solution"
 	exercise verifySolutionForSubmission.
 		
-	^ self new
-		httpClient: anHttpClient;
+	^(self client: anHttpClient)
 		exercise: exercise;
 		yourself
 ]
