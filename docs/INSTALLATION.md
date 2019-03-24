@@ -119,9 +119,14 @@ ExercismHttpClient
 
 ## How to Upgrade Pharo Exercism
 
-From time to time we may need you to update the libraries in your Pharo Exercism image. Before doing an update, it is best to ensure you have submitted any in-progress exercises, then saved your Pharo image, and finally backed up your Pharo.image, and Pharo.changes files. Once you have a safe backup, follow the Playground steps (#4), of the Windows Installation which will reload the latest version of the libraries. If you hit any conflict errors you may need to modify the load script as follows:
+From time to time we may need you to update the libraries in your Pharo Exercism image. Before doing an update, it is best to ensure you have submitted any in-progress exercises, then saved your Pharo image, and finally backed up your Pharo.image, and Pharo.changes files. Once you have a safe backup, evaluate this code in a Playground:
 
  ```smalltalk
+ 
+ './pharo-local/iceberg/exercism' asFileReference deleteAll.
+ 
+ IceRepository reset.
+ 
  Metacello new 
   baseline: 'Exercism'; 
   repository: 'github://exercism/pharo-smalltalk/releases/latest';
@@ -129,14 +134,12 @@ From time to time we may need you to update the libraries in your Pharo Exercism
   load.
  ```
 
-If you find that you need to upgrade (or downgrade) to a specific version you can modify this slightly to specify a particular version number as follows:
+If you find that you need to upgrade (or downgrade) to a specific version you can modify this slightly to specify a particular version number by changing the respository path as follows:
  
 ```smalltalk
- Metacello new 
-  baseline: 'Exercism'; 
+ ... 
   repository: 'github://exercism/pharo-smalltalk:<version-tag>';
-  onConflict: [ :ex | ex allow ]; 
-  load.
+ ...
  ```
 
 Where `<versison-tag>` would be something like: `v0.2.3`
