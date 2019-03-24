@@ -16,7 +16,7 @@ and then initally launch Pharo and the exercism tools by typing:
 ./pharo-ui Pharo.image eval "
 Metacello new 
  baseline: 'Exercism'; 
- repository: 'github://exercism/pharo-smalltalk:v0.2.3';
+ repository: 'github://exercism/pharo-smalltalk/releases/latest';
  load.
 #ExercismManager asClass welcome.
 "
@@ -66,7 +66,7 @@ Finally, copy and paste the following snippet into the playground:
 ```smalltalk
 Metacello new 
  baseline: 'Exercism'; 
- repository: 'github://exercism/pharo-smalltalk:v0.2.3';
+ repository: 'github://exercism/pharo-smalltalk/releases/latest';
  load.
  
 #ExercismManager asClass welcome.
@@ -124,10 +124,23 @@ From time to time we may need you to update the libraries in your Pharo Exercism
  ```smalltalk
  Metacello new 
   baseline: 'Exercism'; 
-  repository: 'github://exercism/pharo-smalltalk:<version>';
+  repository: 'github://exercism/pharo-smalltalk/releases/latest';
   onConflict: [ :ex | ex allow ]; 
   load.
  ```
- You may also need to re-fetch any existing exercises that you want to continue working on.
+
+If you find that you need to upgrade (or downgrade) to a specific version you can modify this slightly to specify a particular version number as follows:
  
- In rare situations, if you continue to have problems, you may need to get a fresh Pharo.image file (by far the easier way is to re-install Pharo in a fresh directory by following the new installation instructions).
+```smalltalk
+ Metacello new 
+  baseline: 'Exercism'; 
+  repository: 'github://exercism/pharo-smalltalk:<version-tag>';
+  onConflict: [ :ex | ex allow ]; 
+  load.
+ ```
+
+Where `<versison-tag>` would be something like: `v0.2.3`
+ 
+Once you have loaded a specific version, you may also need to "re-fetch" any existing exercises that you want to continue working on, but using the regular Exercism Fetch menu item.
+ 
+In rare situations, if you continue to have problems, you may need to get a fresh Pharo.image file (by far the easier way is to re-install Pharo in a fresh directory by following the regular installation instructions at the top of this page).
