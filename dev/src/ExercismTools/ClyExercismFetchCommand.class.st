@@ -70,7 +70,11 @@ ClyExercismFetchCommand >> execute [
 			
 		submission ifNotNil: [
 			UIManager default inform: 'Success, Happy Coding'.
-			self browser selectClass: submission exercise testCase ]
+			submission exercise 
+				ifNil: [ 
+					ExDomainError signal: 'Missing exercise meta-data' ]
+				ifNotNil: [ :exercise |
+					self browser selectClass: exercise testCase ]]
 	 ] 
 		on: ExDomainError do: [ :ex | 
 			self reportError: ex for: (submission ifNotNil: [ :s | s exerciseId ]) ]
