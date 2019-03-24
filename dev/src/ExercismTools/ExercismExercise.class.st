@@ -281,12 +281,19 @@ ExercismExercise >> solutionId [
 
 { #category : #accessing }
 ExercismExercise >> solutionSources [
-	| sources |
+	"Answer a Dictionary of filename to source code mappings for the solution that will be saved on Exercism"
+	
+	| sources testResult resultDictionary |
 	
 	sources := ExTonelWriter new mappedSnapshot: self exercisePackageTag snapshot.
 	
+	testResult := [ self testCase suite run] on: Error do: [ TestResult new ].
+	resultDictionary := OrderedDictionary new 
+		at: 'TestResults.txt' put: testResult exercismSummary; 
+		yourself.
+	
 	^ (self solutionClasses collect: [ :c | c name ])
-		inject: Dictionary new
+		inject: resultDictionary
 		into: [ :result :c | 
 			result
 				at: c , '.st' put: (sources at: c);
