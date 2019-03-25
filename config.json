@@ -197,6 +197,19 @@
 			]
 		},
 		{
+			"slug" : "resistor-colors",
+			"uuid" : "c698dfbb-8040-0d00-8127-69c701deb008",
+			"core" : false,
+			"auto_approve" : false,
+			"unlocked_by" : "two-fer",
+			"difficulty" : 1,
+			"topics" : [
+				"arrays",
+				"strings",
+				"math"
+			]
+		},
+		{
 			"slug" : "roman-numerals",
 			"uuid" : "973e4910-7940-0d00-bbad-09db01dff3c9",
 			"core" : false,
