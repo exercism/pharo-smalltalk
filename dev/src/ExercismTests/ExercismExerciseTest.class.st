@@ -167,10 +167,11 @@ ExercismExerciseTest >> testUnlockReference [
 ]
 
 { #category : #tests }
-ExercismExerciseTest >> testUnlockeExercises [
+ExercismExerciseTest >> testUnlockedExercises [
 	
 	self assertCollection: HelloWorldTest exercise unlockedExercises asArray equals: #().
-	self assertCollection: TwoFerTest exercise unlockedExercises asArray equals: {SpaceAgeTest exercise}.
+	self assertCollection: TwoFerTest exercise unlockedExercises asArray 
+				equals: {ResistorColorsTest exercise. SpaceAgeTest exercise}.
 
 	
 ]
