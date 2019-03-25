@@ -24,7 +24,7 @@ The band colors are encoded as follows:
 
 ## Hint
 
-TBD
+You will need some form of lookup table of colours to calculate the value. You don't necessarily have to use a Dictionary to do this. 
 
 "
 Class {
@@ -33,8 +33,27 @@ Class {
 	#instVars : [
 		'resistorColorsCalculator'
 	],
-	#category : #'ExercismWIP-ResistorColors'
+	#category : #'Exercism-ResistorColors'
 }
+
+{ #category : #config }
+ResistorColorsTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+	
+	
+	^(self createExerciseAfter: TwoFerTest)
+		isCore: false;
+		difficulty: 1;
+		topics: #('arrays' 'strings' 'math');
+		yourself
+]
+
+{ #category : #generator }
+ResistorColorsTest class >> generator [
+	"Potential generator hints"
+	
+	^ {'valueColours:' -> 'valueOfColours:' }
+]
 
 { #category : #config }
 ResistorColorsTest class >> uuid [
@@ -57,7 +76,7 @@ ResistorColorsTest >> setUp [
 ResistorColorsTest >> test01_BrownAndBlack [
 	| result |
 
-	result := resistorColorsCalculator valueColors: #('brown' 'black' ) .
+	result := resistorColorsCalculator valueOfColors: #('brown' 'black' ) .
 	self assert: result equals: 10
 ]
 
@@ -65,7 +84,7 @@ ResistorColorsTest >> test01_BrownAndBlack [
 ResistorColorsTest >> test02_BlueAndGrey [
 	| result |
 
-	result := resistorColorsCalculator valueColors: #('blue' 'grey' ) .
+	result := resistorColorsCalculator valueOfColors: #('blue' 'grey' ) .
 	self assert: result equals: 68
 ]
 
@@ -73,7 +92,7 @@ ResistorColorsTest >> test02_BlueAndGrey [
 ResistorColorsTest >> test03_YellowAndViolet [
 	| result |
 
-	result := resistorColorsCalculator valueColors: #('yellow' 'violet' ) .
+	result := resistorColorsCalculator valueOfColors: #('yellow' 'violet' ) .
 	self assert: result equals: 47
 ]
 
@@ -81,6 +100,6 @@ ResistorColorsTest >> test03_YellowAndViolet [
 ResistorColorsTest >> test04_OrangeAndOrange [
 	| result |
 
-	result := resistorColorsCalculator valueColors: #('orange' 'orange' ) .
+	result := resistorColorsCalculator valueOfColors: #('orange' 'orange' ) .
 	self assert: result equals: 33
 ]
