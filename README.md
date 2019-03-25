@@ -6,7 +6,7 @@ This project is for creating and supporting Exercism exercises for Pharo Smallta
 
 _Note: The Pharo exercism track is in alpha development._
 
-If you'd like to help out with testing please sign up for the track using this [hidden track link](https://exercism.io/my/tracks/pharo), and review the [setup documentation](https://exercism.io/my/tracks/pharo). 
+If you'd like to help out with testing please sign up for the track using this [hidden track link](https://exercism.io/my/tracks/pharo-smalltalk), and review the [setup documentation](https://exercism.io/tracks/pharo-smalltalk/installation). 
 
 Until we release we have limited mentors, so when testing you many need to switch to independent mode if you can't get a timely response.  If you need to restart testing, you should "leave" the track then rejoin it.  
 
@@ -17,7 +17,7 @@ If you want to help out with development, see below.
 This repository is for the development of [Exercism](http://exercism.io) exercises running in the [Pharo Smalltalk](http://pharo.org) programming environment. It is expected that you are already [familiar](./docs/RESOURCES.md) with development in Pharo and its use of git. If you are new to Pharo or Exercism, consider using [Exercism to learn Pharo](./docs/INSTALLATION.md), so you can then help contribute in the future.
 
 
-NOTE: Pharo support for Exercism is in beta and not publicly visible, however you can still preview it through [this hidden link](https://exercism.io/tracks/pharo).
+NOTE: Pharo support for Exercism is in beta and not publicly visible, however you can still preview it through [this hidden link](https://exercism.io/tracks/pharo-smalltalk).
 
 
 To help with development, you first need to ensure that you have a complete exercism development environment and have installed:
