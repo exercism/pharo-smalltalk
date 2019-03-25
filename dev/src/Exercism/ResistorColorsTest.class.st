@@ -52,7 +52,7 @@ ResistorColorsTest class >> exercise [
 ResistorColorsTest class >> generator [
 	"Potential generator hints"
 	
-	^ {'valueColours:' -> 'valueOfColours:' }
+	^ {'valueColours:' -> 'valueWithColours:' }
 ]
 
 { #category : #config }
@@ -76,7 +76,7 @@ ResistorColorsTest >> setUp [
 ResistorColorsTest >> test01_BrownAndBlack [
 	| result |
 
-	result := resistorColorsCalculator valueOfColors: #('brown' 'black' ) .
+	result := resistorColorsCalculator valueWithColors: #('brown' 'black' ) .
 	self assert: result equals: 10
 ]
 
@@ -84,7 +84,7 @@ ResistorColorsTest >> test01_BrownAndBlack [
 ResistorColorsTest >> test02_BlueAndGrey [
 	| result |
 
-	result := resistorColorsCalculator valueOfColors: #('blue' 'grey' ) .
+	result := resistorColorsCalculator valueWithColors: #('blue' 'grey' ) .
 	self assert: result equals: 68
 ]
 
@@ -92,7 +92,7 @@ ResistorColorsTest >> test02_BlueAndGrey [
 ResistorColorsTest >> test03_YellowAndViolet [
 	| result |
 
-	result := resistorColorsCalculator valueOfColors: #('yellow' 'violet' ) .
+	result := resistorColorsCalculator valueWithColors: #('yellow' 'violet' ) .
 	self assert: result equals: 47
 ]
 
@@ -100,6 +100,6 @@ ResistorColorsTest >> test03_YellowAndViolet [
 ResistorColorsTest >> test04_OrangeAndOrange [
 	| result |
 
-	result := resistorColorsCalculator valueOfColors: #('orange' 'orange' ) .
+	result := resistorColorsCalculator valueWithColors: #('orange' 'orange' ) .
 	self assert: result equals: 33
 ]
