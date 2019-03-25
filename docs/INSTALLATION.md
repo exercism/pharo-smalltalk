@@ -134,7 +134,9 @@ From time to time we may need you to update the libraries in your Pharo Exercism
   load.
  ```
 
-If you find that you need to upgrade (or downgrade) to a specific version you can modify this slightly to specify a particular version number by changing the respository path as follows:
+You will be prompted about losing changes to the package "ExercismTools", and you should choose "Load" to ensure you have a compatible version of the tools. 
+
+If you ever need to upgrade (or downgrade) to a specific version of Exercism, you can also modify this script to specify a particular version number by changing the repository path as follows:
  
 ```smalltalk
  ... 
@@ -144,6 +146,6 @@ If you find that you need to upgrade (or downgrade) to a specific version you ca
 
 Where `<versison-tag>` would be something like: `v0.2.3`
  
-Once you have loaded a specific version, you may also need to "re-fetch" any existing exercises that you want to continue working on, but using the regular Exercism Fetch menu item.
+Once you have loaded a specific version, you may also need to "re-fetch" any existing exercises that you want to continue working on, by using the regular "Exercism Fetch" menu item.
  
-In rare situations, if you continue to have problems, you may need to get a fresh Pharo.image file (by far the easier way is to re-install Pharo in a fresh directory by following the regular installation instructions at the top of this page).
+In rare situations (if you continue to have problems), you might need to get a fresh Pharo.image file (and the easiest way is to re-install Pharo in a fresh directory by following the regular installation instructions at the top of this page).
