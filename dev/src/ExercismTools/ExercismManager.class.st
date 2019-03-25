@@ -38,7 +38,7 @@ ExercismManager class >> isUserMode [
 	"Answer true if exercism is loaded in a clean image with no dev tools"
 	
 	^ ((IceRepository registry collect: [ :repo | repo name ])) asArray
-		= #('iceberg' 'pharo' 'pharo-exercism')
+		= #('iceberg' 'pharo' 'pharo-smalltalk')
 		and: [ (RPackageOrganizer default
 				packageNamed: 'ExercismDev'
 				ifAbsent: [ nil ]) isNil ]
