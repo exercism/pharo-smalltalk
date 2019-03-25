@@ -19,7 +19,7 @@ ExercismTest class >> createExerciseAfter: anotherTestCase [
 	^ (ExercismExercise for: self)
 		unlockedBy:
 			((anotherTestCase notNil and: [ anotherTestCase isObsolete not ])
-				ifTrue: [ anotherTestCase exercise ]
+				ifTrue: [ [anotherTestCase exercise] on: SubclassResponsibility do: [ nil ] ]
 				ifFalse: [ nil ]);
 		yourself
 ]
