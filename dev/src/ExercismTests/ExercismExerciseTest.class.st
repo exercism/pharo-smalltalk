@@ -136,11 +136,12 @@ ExercismExerciseTest >> testSolutionSources [
 	sources := TestmanyTest exercise solutionSources.
 	
 	classes := {Testmany. TestOtherClass}.
-	classNames := classes collect: [ :c | c name, '.st' ].
+	classNames := (classes collect: [ :c | c name, '.st' ]) copyWithFirst: 'TestResults.txt'.
 	
 	self assertCollection: sources keys asSet equals: classNames asSet.
 	
-	(sources at: classNames first) should includeSubstring: '#name : #', classes first name.
+	(sources at: classNames first) should includeSubstring: 'Tested on:'.
+	(sources at: classNames second) should includeSubstring: '#name : #', classes first name.
 	(sources at: classNames last) should includeSubstring: '#name : #', classes last name.
 ]
 
