@@ -49,7 +49,7 @@ RobotSimulatorTest class >> exercise [
 	^(self createExerciseAfter: GradeSchoolTest)
 		isCore: false;
 		difficulty: 4;
-		topics: #('strings' 'iteration' 'parsing');
+		topics: #('iteration' 'tuples' 'object_oriented_programming');
 		yourself
 	
 ]
