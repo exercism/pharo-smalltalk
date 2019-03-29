@@ -15,6 +15,8 @@ Class {
 
 { #category : #config }
 Bearing class >> bearingData [
+	"Answer bearing names in clockwise order, along with the corresponding delta that would move a point location forward in the correct x/y axis for that bearing"
+	
 	^ {
 	('north' -> (0 @ 1)).
 	('east' -> (1 @ 0)).
@@ -22,7 +24,7 @@ Bearing class >> bearingData [
 	('west' -> (-1 @ 0))}
 ]
 
-{ #category : #config }
+{ #category : #'instance creation' }
 Bearing class >> named: directionString [
 	self bearingData
 		detect: [ :data | data key = directionString ]
