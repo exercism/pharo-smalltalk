@@ -135,7 +135,7 @@ ExercismExerciseTest >> testSolutionSources [
 	
 	sources := TestmanyTest exercise solutionSources.
 	
-	classes := {Testmany. TestOtherClass}.
+	classes := {Testmany. TestOtherClass. TestOtherClassTest }.
 	classNames := (classes collect: [ :c | c name, '.st' ]) copyWithFirst: 'TestResults.txt'.
 	
 	self assertCollection: sources keys asSet equals: classNames asSet.
