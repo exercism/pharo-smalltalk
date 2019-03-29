@@ -86,7 +86,7 @@ TournamentTest class >> exercise [
 	^(self createExerciseAfter: GradeSchoolTest)
 		isCore: false;
 		difficulty: 5;
-		topics: #('sorting' 'filtering' 'iteration' 'parsing' 'transforming');
+		topics: #('sorting' 'filtering' 'iteration' 'parsing' 'transforming' 'object_oriented_programming');
 		yourself
 ]
 
