@@ -36,12 +36,12 @@ Class {
 { #category : #config }
 RnaTranscriptionTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'1af1b6bb-8040-0d00-80f4-9f8e01deb008'
+	^'aee2ac16-9d41-0d00-8fce-202108866539'
 ]
 
 { #category : #config }
 RnaTranscriptionTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.3.0'
 ]
 

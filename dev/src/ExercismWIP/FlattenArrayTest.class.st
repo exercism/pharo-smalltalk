@@ -28,12 +28,12 @@ Class {
 { #category : #config }
 FlattenArrayTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'3b84ebbb-8040-0d00-8133-a14701deb008'
+	^'aa15f716-9d41-0d00-9006-3c7208866539'
 ]
 
 { #category : #config }
 FlattenArrayTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.2.0'
 ]
 

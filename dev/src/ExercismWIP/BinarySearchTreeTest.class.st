@@ -71,26 +71,18 @@ Class {
 { #category : #config }
 BinarySearchTreeTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'1992b7bb-8040-0d00-80f5-289201deb008'
+	^'bdecad16-9d41-0d00-8fcf-70df08866539'
 ]
 
 { #category : #config }
 BinarySearchTreeTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.0.0'
 ]
 
 { #category : #setup }
 BinarySearchTreeTest >> setUp [
 	binarySearchTreeCalculator := BinarySearchTree new
-]
-
-{ #category : #tests }
-BinarySearchTreeTest >> test01_CanSortDataCanSortSingleNumber [
-	| result |
-
-	result := binarySearchTreeCalculator sortedDataTreeData: #('2' ) .
-	self assert: result equals: #('2' )
 ]
 
 { #category : #tests }
@@ -102,7 +94,7 @@ BinarySearchTreeTest >> test01_DataIsRetained [
 ]
 
 { #category : #tests }
-BinarySearchTreeTest >> test01_InsertDataAtProperNodeSmallerNumberAtLeftNode [
+BinarySearchTreeTest >> test02_InsertDataAtProperNodeSmallerNumberAtLeftNode [
 	| result |
 
 	result := binarySearchTreeCalculator dataTreeData: #('4' '2' ) .
@@ -110,15 +102,7 @@ BinarySearchTreeTest >> test01_InsertDataAtProperNodeSmallerNumberAtLeftNode [
 ]
 
 { #category : #tests }
-BinarySearchTreeTest >> test02_CanSortDataCanSortIfSecondNumberIsSmallerThanFirst [
-	| result |
-
-	result := binarySearchTreeCalculator sortedDataTreeData: #('2' '1' ) .
-	self assert: result equals: #('1' '2' )
-]
-
-{ #category : #tests }
-BinarySearchTreeTest >> test02_InsertDataAtProperNodeSameNumberAtLeftNode [
+BinarySearchTreeTest >> test03_InsertDataAtProperNodeSameNumberAtLeftNode [
 	| result |
 
 	result := binarySearchTreeCalculator dataTreeData: #('4' '4' ) .
@@ -126,23 +110,7 @@ BinarySearchTreeTest >> test02_InsertDataAtProperNodeSameNumberAtLeftNode [
 ]
 
 { #category : #tests }
-BinarySearchTreeTest >> test03_CanCreateComplexTree [
-	| result |
-
-	result := binarySearchTreeCalculator dataTreeData: #('4' '2' '6' '1' '3' '5' '7' ) .
-	self assert: result equals: ((Dictionary new) add: ('data'->'4'); add: ('right'->((Dictionary new) add: ('data'->'6'); add: ('right'->((Dictionary new) add: ('data'->'7'); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('data'->'5'); add: ('right'->nil); add: ('left'->nil); yourself)); yourself)); add: ('left'->((Dictionary new) add: ('data'->'2'); add: ('right'->((Dictionary new) add: ('data'->'3'); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('data'->'1'); add: ('right'->nil); add: ('left'->nil); yourself)); yourself)); yourself)
-]
-
-{ #category : #tests }
-BinarySearchTreeTest >> test03_CanSortDataCanSortIfSecondNumberIsSameAsFirst [
-	| result |
-
-	result := binarySearchTreeCalculator sortedDataTreeData: #('2' '2' ) .
-	self assert: result equals: #('2' '2' )
-]
-
-{ #category : #tests }
-BinarySearchTreeTest >> test03_InsertDataAtProperNodeGreaterNumberAtRightNode [
+BinarySearchTreeTest >> test04_InsertDataAtProperNodeGreaterNumberAtRightNode [
 	| result |
 
 	result := binarySearchTreeCalculator dataTreeData: #('4' '5' ) .
@@ -150,7 +118,39 @@ BinarySearchTreeTest >> test03_InsertDataAtProperNodeGreaterNumberAtRightNode [
 ]
 
 { #category : #tests }
-BinarySearchTreeTest >> test04_CanSortDataCanSortIfSecondNumberIsGreaterThanFirst [
+BinarySearchTreeTest >> test05_CanCreateComplexTree [
+	| result |
+
+	result := binarySearchTreeCalculator dataTreeData: #('4' '2' '6' '1' '3' '5' '7' ) .
+	self assert: result equals: ((Dictionary new) add: ('data'->'4'); add: ('right'->((Dictionary new) add: ('data'->'6'); add: ('right'->((Dictionary new) add: ('data'->'7'); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('data'->'5'); add: ('right'->nil); add: ('left'->nil); yourself)); yourself)); add: ('left'->((Dictionary new) add: ('data'->'2'); add: ('right'->((Dictionary new) add: ('data'->'3'); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('data'->'1'); add: ('right'->nil); add: ('left'->nil); yourself)); yourself)); yourself)
+]
+
+{ #category : #tests }
+BinarySearchTreeTest >> test06_CanSortDataCanSortSingleNumber [
+	| result |
+
+	result := binarySearchTreeCalculator sortedDataTreeData: #('2' ) .
+	self assert: result equals: #('2' )
+]
+
+{ #category : #tests }
+BinarySearchTreeTest >> test07_CanSortDataCanSortIfSecondNumberIsSmallerThanFirst [
+	| result |
+
+	result := binarySearchTreeCalculator sortedDataTreeData: #('2' '1' ) .
+	self assert: result equals: #('1' '2' )
+]
+
+{ #category : #tests }
+BinarySearchTreeTest >> test08_CanSortDataCanSortIfSecondNumberIsSameAsFirst [
+	| result |
+
+	result := binarySearchTreeCalculator sortedDataTreeData: #('2' '2' ) .
+	self assert: result equals: #('2' '2' )
+]
+
+{ #category : #tests }
+BinarySearchTreeTest >> test09_CanSortDataCanSortIfSecondNumberIsGreaterThanFirst [
 	| result |
 
 	result := binarySearchTreeCalculator sortedDataTreeData: #('2' '3' ) .
@@ -158,7 +158,7 @@ BinarySearchTreeTest >> test04_CanSortDataCanSortIfSecondNumberIsGreaterThanFirs
 ]
 
 { #category : #tests }
-BinarySearchTreeTest >> test05_CanSortDataCanSortComplexTree [
+BinarySearchTreeTest >> test10_CanSortDataCanSortComplexTree [
 	| result |
 
 	result := binarySearchTreeCalculator sortedDataTreeData: #('2' '1' '3' '6' '7' '5' ) .

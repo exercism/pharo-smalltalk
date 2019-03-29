@@ -46,12 +46,12 @@ Class {
 { #category : #config }
 SatelliteTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'5f42e0bb-8040-0d00-8128-aea101deb008'
+	^'6650e916-9d41-0d00-8ffe-3eaf08866539'
 ]
 
 { #category : #config }
 SatelliteTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'2.0.0'
 ]
 

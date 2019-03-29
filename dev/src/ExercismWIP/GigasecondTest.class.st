@@ -23,12 +23,12 @@ Class {
 { #category : #config }
 GigasecondTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'b2b7c5bb-8040-0d00-8108-a76201deb008'
+	^'0d0cc416-9d41-0d00-8fe1-cb3408866539'
 ]
 
 { #category : #config }
 GigasecondTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'2.0.0'
 ]
 

@@ -37,12 +37,12 @@ Class {
 { #category : #config }
 ListOpsTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'dfb1c8bb-8040-0d00-810c-52df01deb008'
+	^'1cdcc816-9d41-0d00-8fe5-82ea08866539'
 ]
 
 { #category : #config }
 ListOpsTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'2.4.0'
 ]
 
@@ -60,123 +60,11 @@ ListOpsTest >> test01_AppendEntriesToAListAndReturnTheNewListEmptyLists [
 ]
 
 { #category : #tests }
-ListOpsTest >> test01_ConcatenateAListOfListsEmptyList [
-	| result |
-
-	result := listOpsCalculator concatLists: #() .
-	self assert: result equals: #()
-]
-
-{ #category : #tests }
-ListOpsTest >> test01_FilterListReturningOnlyValuesThatSatisfyTheFilterFunctionEmptyList [
-	| result |
-
-	result := listOpsCalculator filterFunction: '(x) -> x modulo 2 == 1' list: #() .
-	self assert: result equals: #()
-]
-
-{ #category : #tests }
-ListOpsTest >> test01_FoldsreducesTheGivenListFromTheLeftWithAFunctionEmptyList [
-	| result |
-
-	result := listOpsCalculator foldlFunction: '(x, y) -> x * y' initial: 2 list: #() .
-	self assert: result equals: 2
-]
-
-{ #category : #tests }
-ListOpsTest >> test01_FoldsreducesTheGivenListFromTheRightWithAFunctionEmptyList [
-	| result |
-
-	result := listOpsCalculator foldrFunction: '(x, y) -> x * y' initial: 2 list: #() .
-	self assert: result equals: 2
-]
-
-{ #category : #tests }
-ListOpsTest >> test01_ReturnAListOfElementsWhoseValuesEqualTheListValueTransformedByTheMappingFunctionEmptyList [
-	| result |
-
-	result := listOpsCalculator mapFunction: '(x) -> x + 1' list: #() .
-	self assert: result equals: #()
-]
-
-{ #category : #tests }
-ListOpsTest >> test01_ReturnsTheLengthOfAListEmptyList [
-	| result |
-
-	result := listOpsCalculator lengthList: #() .
-	self assert: result equals: 0
-]
-
-{ #category : #tests }
-ListOpsTest >> test01_ReverseTheElementsOfTheListEmptyList [
-	| result |
-
-	result := listOpsCalculator reverseList: #() .
-	self assert: result equals: #()
-]
-
-{ #category : #tests }
 ListOpsTest >> test02_AppendEntriesToAListAndReturnTheNewListEmptyListToList [
 	| result |
 
 	result := listOpsCalculator appendList1: #() list2: #(1 2 3 4 ) .
 	self assert: result equals: #(1 2 3 4 )
-]
-
-{ #category : #tests }
-ListOpsTest >> test02_ConcatenateAListOfListsListOfLists [
-	| result |
-
-	result := listOpsCalculator concatLists: #(#(1 2 ) #(3 ) #() #(4 5 6 ) ) .
-	self assert: result equals: #(1 2 3 4 5 6 )
-]
-
-{ #category : #tests }
-ListOpsTest >> test02_FilterListReturningOnlyValuesThatSatisfyTheFilterFunctionNonemptyList [
-	| result |
-
-	result := listOpsCalculator filterFunction: '(x) -> x modulo 2 == 1' list: #(1 2 3 5 ) .
-	self assert: result equals: #(1 3 5 )
-]
-
-{ #category : #tests }
-ListOpsTest >> test02_FoldsreducesTheGivenListFromTheLeftWithAFunctionDirectionIndependentFunctionAppliedToNonemptyList [
-	| result |
-
-	result := listOpsCalculator foldlFunction: '(x, y) -> x + y' initial: 5 list: #(1 2 3 4 ) .
-	self assert: result equals: 15
-]
-
-{ #category : #tests }
-ListOpsTest >> test02_FoldsreducesTheGivenListFromTheRightWithAFunctionDirectionIndependentFunctionAppliedToNonemptyList [
-	| result |
-
-	result := listOpsCalculator foldrFunction: '(x, y) -> x + y' initial: 5 list: #(1 2 3 4 ) .
-	self assert: result equals: 15
-]
-
-{ #category : #tests }
-ListOpsTest >> test02_ReturnAListOfElementsWhoseValuesEqualTheListValueTransformedByTheMappingFunctionNonemptyList [
-	| result |
-
-	result := listOpsCalculator mapFunction: '(x) -> x + 1' list: #(1 3 5 7 ) .
-	self assert: result equals: #(2 4 6 8 )
-]
-
-{ #category : #tests }
-ListOpsTest >> test02_ReturnsTheLengthOfAListNonemptyList [
-	| result |
-
-	result := listOpsCalculator lengthList: #(1 2 3 4 ) .
-	self assert: result equals: 4
-]
-
-{ #category : #tests }
-ListOpsTest >> test02_ReverseTheElementsOfTheListNonemptyList [
-	| result |
-
-	result := listOpsCalculator reverseList: #(1 3 5 7 ) .
-	self assert: result equals: #(7 5 3 1 )
 ]
 
 { #category : #tests }
@@ -188,7 +76,23 @@ ListOpsTest >> test03_AppendEntriesToAListAndReturnTheNewListNonemptyLists [
 ]
 
 { #category : #tests }
-ListOpsTest >> test03_ConcatenateAListOfListsListOfNestedLists [
+ListOpsTest >> test04_ConcatenateAListOfListsEmptyList [
+	| result |
+
+	result := listOpsCalculator concatLists: #() .
+	self assert: result equals: #()
+]
+
+{ #category : #tests }
+ListOpsTest >> test05_ConcatenateAListOfListsListOfLists [
+	| result |
+
+	result := listOpsCalculator concatLists: #(#(1 2 ) #(3 ) #() #(4 5 6 ) ) .
+	self assert: result equals: #(1 2 3 4 5 6 )
+]
+
+{ #category : #tests }
+ListOpsTest >> test06_ConcatenateAListOfListsListOfNestedLists [
 	| result |
 
 	result := listOpsCalculator concatLists: #(#(#(1 ) #(2 ) ) #(#(3 ) ) #(#() ) #(#(4 5 6 ) ) ) .
@@ -196,7 +100,71 @@ ListOpsTest >> test03_ConcatenateAListOfListsListOfNestedLists [
 ]
 
 { #category : #tests }
-ListOpsTest >> test03_FoldsreducesTheGivenListFromTheLeftWithAFunctionDirectionDependentFunctionAppliedToNonemptyList [
+ListOpsTest >> test07_FilterListReturningOnlyValuesThatSatisfyTheFilterFunctionEmptyList [
+	| result |
+
+	result := listOpsCalculator filterFunction: '(x) -> x modulo 2 == 1' list: #() .
+	self assert: result equals: #()
+]
+
+{ #category : #tests }
+ListOpsTest >> test08_FilterListReturningOnlyValuesThatSatisfyTheFilterFunctionNonemptyList [
+	| result |
+
+	result := listOpsCalculator filterFunction: '(x) -> x modulo 2 == 1' list: #(1 2 3 5 ) .
+	self assert: result equals: #(1 3 5 )
+]
+
+{ #category : #tests }
+ListOpsTest >> test09_ReturnsTheLengthOfAListEmptyList [
+	| result |
+
+	result := listOpsCalculator lengthList: #() .
+	self assert: result equals: 0
+]
+
+{ #category : #tests }
+ListOpsTest >> test10_ReturnsTheLengthOfAListNonemptyList [
+	| result |
+
+	result := listOpsCalculator lengthList: #(1 2 3 4 ) .
+	self assert: result equals: 4
+]
+
+{ #category : #tests }
+ListOpsTest >> test11_ReturnAListOfElementsWhoseValuesEqualTheListValueTransformedByTheMappingFunctionEmptyList [
+	| result |
+
+	result := listOpsCalculator mapFunction: '(x) -> x + 1' list: #() .
+	self assert: result equals: #()
+]
+
+{ #category : #tests }
+ListOpsTest >> test12_ReturnAListOfElementsWhoseValuesEqualTheListValueTransformedByTheMappingFunctionNonemptyList [
+	| result |
+
+	result := listOpsCalculator mapFunction: '(x) -> x + 1' list: #(1 3 5 7 ) .
+	self assert: result equals: #(2 4 6 8 )
+]
+
+{ #category : #tests }
+ListOpsTest >> test13_FoldsreducesTheGivenListFromTheLeftWithAFunctionEmptyList [
+	| result |
+
+	result := listOpsCalculator foldlFunction: '(x, y) -> x * y' initial: 2 list: #() .
+	self assert: result equals: 2
+]
+
+{ #category : #tests }
+ListOpsTest >> test14_FoldsreducesTheGivenListFromTheLeftWithAFunctionDirectionIndependentFunctionAppliedToNonemptyList [
+	| result |
+
+	result := listOpsCalculator foldlFunction: '(x, y) -> x + y' initial: 5 list: #(1 2 3 4 ) .
+	self assert: result equals: 15
+]
+
+{ #category : #tests }
+ListOpsTest >> test15_FoldsreducesTheGivenListFromTheLeftWithAFunctionDirectionDependentFunctionAppliedToNonemptyList [
 	| result |
 
 	result := listOpsCalculator foldlFunction: '(x, y) -> x / y' initial: 5 list: #(2 5 ) .
@@ -204,7 +172,23 @@ ListOpsTest >> test03_FoldsreducesTheGivenListFromTheLeftWithAFunctionDirectionD
 ]
 
 { #category : #tests }
-ListOpsTest >> test03_FoldsreducesTheGivenListFromTheRightWithAFunctionDirectionDependentFunctionAppliedToNonemptyList [
+ListOpsTest >> test16_FoldsreducesTheGivenListFromTheRightWithAFunctionEmptyList [
+	| result |
+
+	result := listOpsCalculator foldrFunction: '(x, y) -> x * y' initial: 2 list: #() .
+	self assert: result equals: 2
+]
+
+{ #category : #tests }
+ListOpsTest >> test17_FoldsreducesTheGivenListFromTheRightWithAFunctionDirectionIndependentFunctionAppliedToNonemptyList [
+	| result |
+
+	result := listOpsCalculator foldrFunction: '(x, y) -> x + y' initial: 5 list: #(1 2 3 4 ) .
+	self assert: result equals: 15
+]
+
+{ #category : #tests }
+ListOpsTest >> test18_FoldsreducesTheGivenListFromTheRightWithAFunctionDirectionDependentFunctionAppliedToNonemptyList [
 	| result |
 
 	result := listOpsCalculator foldrFunction: '(x, y) -> x / y' initial: 5 list: #(2 5 ) .
@@ -212,7 +196,23 @@ ListOpsTest >> test03_FoldsreducesTheGivenListFromTheRightWithAFunctionDirection
 ]
 
 { #category : #tests }
-ListOpsTest >> test03_ReverseTheElementsOfTheListListOfListsIsNotFlattened [
+ListOpsTest >> test19_ReverseTheElementsOfTheListEmptyList [
+	| result |
+
+	result := listOpsCalculator reverseList: #() .
+	self assert: result equals: #()
+]
+
+{ #category : #tests }
+ListOpsTest >> test20_ReverseTheElementsOfTheListNonemptyList [
+	| result |
+
+	result := listOpsCalculator reverseList: #(1 3 5 7 ) .
+	self assert: result equals: #(7 5 3 1 )
+]
+
+{ #category : #tests }
+ListOpsTest >> test21_ReverseTheElementsOfTheListListOfListsIsNotFlattened [
 	| result |
 
 	result := listOpsCalculator reverseList: #(#(1 2 ) #(3 ) #() #(4 5 6 ) ) .

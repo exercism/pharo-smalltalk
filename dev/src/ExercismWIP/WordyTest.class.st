@@ -85,12 +85,12 @@ Class {
 { #category : #config }
 WordyTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'e6d9dabb-8040-0d00-8121-02b101deb008'
+	^'9b5be316-9d41-0d00-8ff9-f72108866539'
 ]
 
 { #category : #config }
 WordyTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.5.0'
 ]
 

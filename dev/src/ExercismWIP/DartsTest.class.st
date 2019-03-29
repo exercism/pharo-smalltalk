@@ -33,13 +33,13 @@ Class {
 { #category : #config }
 DartsTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'b762dcbb-8040-0d00-8123-8a3501deb008'
+	^'918ae516-9d41-0d00-8ffb-39d308866539'
 ]
 
 { #category : #config }
 DartsTest class >> version [
-	"Generated from specification: 15 March 2019"
-	^'1.1.0'
+	"Generated from specification: 29 March 2019"
+	^'1.2.0'
 ]
 
 { #category : #setup }
@@ -101,4 +101,28 @@ DartsTest >> test07_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInThe
 
 	result := dartsCalculator scoreX:  -0.1 y:  -0.1 .
 	self assert: result equals: 10
+]
+
+{ #category : #tests }
+DartsTest >> test08_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartWhoseCoordinatesSumTo1ButWhoseRadiusToOriginIs1IsScoredInTheInnerCircle [
+	| result |
+
+	result := dartsCalculator scoreX: 0.4 y: 0.8 .
+	self assert: result equals: 10
+]
+
+{ #category : #tests }
+DartsTest >> test09_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartWhoseCoordinatesSumTo5ButWhoseRadiusToOriginIs5IsScoredInTheMiddleCircle [
+	| result |
+
+	result := dartsCalculator scoreX: 2 y: 4 .
+	self assert: result equals: 5
+]
+
+{ #category : #tests }
+DartsTest >> test10_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartWhoseCoordinatesSumTo10ButWhoseRadiusToOriginIs10IsScoredInTheOuterCircle [
+	| result |
+
+	result := dartsCalculator scoreX: 4 y: 8 .
+	self assert: result equals: 1
 ]

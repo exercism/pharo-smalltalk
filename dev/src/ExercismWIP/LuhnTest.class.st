@@ -82,13 +82,13 @@ Class {
 { #category : #config }
 LuhnTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'c0ccdbbb-8040-0d00-8122-f21a01deb008'
+	^'6298e416-9d41-0d00-8ffa-c83508866539'
 ]
 
 { #category : #config }
 LuhnTest class >> version [
-	"Generated from specification: 15 March 2019"
-	^'1.4.0'
+	"Generated from specification: 29 March 2019"
+	^'1.5.0'
 ]
 
 { #category : #setup }
@@ -161,15 +161,7 @@ LuhnTest >> test08_ValidNumberWithAnEvenNumberOfDigits [
 ]
 
 { #category : #tests }
-LuhnTest >> test09_ValidStringsWithANondigitIncludedBecomeInvalid [
-	| result |
-
-	result := luhnCalculator validValue: '055a 444 285' .
-	self assert: result equals: false
-]
-
-{ #category : #tests }
-LuhnTest >> test10_ValidStringsWithANondigitAddedAtTheEndBecomeInvalid [
+LuhnTest >> test09_ValidStringsWithANondigitAddedAtTheEndBecomeInvalid [
 	| result |
 
 	result := luhnCalculator validValue: '059a' .
@@ -177,7 +169,7 @@ LuhnTest >> test10_ValidStringsWithANondigitAddedAtTheEndBecomeInvalid [
 ]
 
 { #category : #tests }
-LuhnTest >> test11_ValidStringsWithPunctuationIncludedBecomeInvalid [
+LuhnTest >> test10_ValidStringsWithPunctuationIncludedBecomeInvalid [
 	| result |
 
 	result := luhnCalculator validValue: '055-444-285' .
@@ -185,7 +177,7 @@ LuhnTest >> test11_ValidStringsWithPunctuationIncludedBecomeInvalid [
 ]
 
 { #category : #tests }
-LuhnTest >> test12_ValidStringsWithSymbolsIncludedBecomeInvalid [
+LuhnTest >> test11_ValidStringsWithSymbolsIncludedBecomeInvalid [
 	| result |
 
 	result := luhnCalculator validValue: '055£ 444$ 285' .
@@ -193,7 +185,7 @@ LuhnTest >> test12_ValidStringsWithSymbolsIncludedBecomeInvalid [
 ]
 
 { #category : #tests }
-LuhnTest >> test13_SingleZeroWithSpaceIsInvalid [
+LuhnTest >> test12_SingleZeroWithSpaceIsInvalid [
 	| result |
 
 	result := luhnCalculator validValue: ' 0' .
@@ -201,7 +193,7 @@ LuhnTest >> test13_SingleZeroWithSpaceIsInvalid [
 ]
 
 { #category : #tests }
-LuhnTest >> test14_MoreThanASingleZeroIsValid [
+LuhnTest >> test13_MoreThanASingleZeroIsValid [
 	| result |
 
 	result := luhnCalculator validValue: '0000 0' .
@@ -209,7 +201,7 @@ LuhnTest >> test14_MoreThanASingleZeroIsValid [
 ]
 
 { #category : #tests }
-LuhnTest >> test15_InputDigit9IsCorrectlyConvertedToOutputDigit9 [
+LuhnTest >> test14_InputDigit9IsCorrectlyConvertedToOutputDigit9 [
 	| result |
 
 	result := luhnCalculator validValue: '091' .
@@ -217,7 +209,15 @@ LuhnTest >> test15_InputDigit9IsCorrectlyConvertedToOutputDigit9 [
 ]
 
 { #category : #tests }
-LuhnTest >> test16_StringsWithNondigitsIsInvalid [
+LuhnTest >> test15_UsingAsciiValueForNondoubledNondigitIsntAllowed [
+	| result |
+
+	result := luhnCalculator validValue: '055b 444 285' .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+LuhnTest >> test16_UsingAsciiValueForDoubledNondigitIsntAllowed [
 	| result |
 
 	result := luhnCalculator validValue: ':9' .

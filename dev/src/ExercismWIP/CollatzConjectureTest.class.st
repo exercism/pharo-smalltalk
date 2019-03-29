@@ -44,12 +44,12 @@ Class {
 { #category : #config }
 CollatzConjectureTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'85c7f1bb-8040-0d00-813b-6aa401deb008'
+	^'a55e0117-9d41-0d00-900e-5c5a08866539'
 ]
 
 { #category : #config }
 CollatzConjectureTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.2.1'
 ]
 

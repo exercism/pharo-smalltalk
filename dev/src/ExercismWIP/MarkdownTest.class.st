@@ -32,12 +32,12 @@ Class {
 { #category : #config }
 MarkdownTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'3865c0bb-8040-0d00-8101-169c01deb008'
+	^'09acbc16-9d41-0d00-8fdb-5bc208866539'
 ]
 
 { #category : #config }
 MarkdownTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.3.0'
 ]
 

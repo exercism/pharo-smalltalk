@@ -96,12 +96,12 @@ Class {
 { #category : #config }
 SimpleCipherTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'393ff7bb-8040-0d00-8142-29ac01deb008'
+	^'3be50a17-9d41-0d00-9015-b90f08866539'
 ]
 
 { #category : #config }
 SimpleCipherTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'2.0.0'
 ]
 
@@ -119,26 +119,10 @@ SimpleCipherTest >> test01_RandomKeyCipherCanEncode [
 ]
 
 { #category : #tests }
-SimpleCipherTest >> test01_SubstitutionCipherCanEncode [
-	| result |
-
-	result := simpleCipherCalculator encodeKey: 'abcdefghij' plaintext: 'aaaaaaaaaa' .
-	self assert: result equals: 'abcdefghij'
-]
-
-{ #category : #tests }
 SimpleCipherTest >> test02_RandomKeyCipherCanDecode [
 	| result |
 
 	result := simpleCipherCalculator decodeCiphertext: 'cipher.key.substring(0, expected.length)' .
-	self assert: result equals: 'aaaaaaaaaa'
-]
-
-{ #category : #tests }
-SimpleCipherTest >> test02_SubstitutionCipherCanDecode [
-	| result |
-
-	result := simpleCipherCalculator decodeCiphertext: 'abcdefghij' key: 'abcdefghij' .
 	self assert: result equals: 'aaaaaaaaaa'
 ]
 
@@ -151,14 +135,6 @@ SimpleCipherTest >> test03_RandomKeyCipherIsReversibleIeIfYouApplyDecodeInAEncod
 ]
 
 { #category : #tests }
-SimpleCipherTest >> test03_SubstitutionCipherIsReversibleIeIfYouApplyDecodeInAEncodedResultYouMustSeeTheSamePlaintextEncodeParameterAsAResultOfTheDecodeMethod [
-	| result |
-
-	result := simpleCipherCalculator decodeCiphertext: 'cipher.encode' key: 'abcdefghij' plaintext: 'abcdefghij' .
-	self assert: result equals: 'abcdefghij'
-]
-
-{ #category : #tests }
 SimpleCipherTest >> test04_RandomKeyCipherKeyIsMadeOnlyOfLowercaseLetters [
 	| result |
 
@@ -167,7 +143,31 @@ SimpleCipherTest >> test04_RandomKeyCipherKeyIsMadeOnlyOfLowercaseLetters [
 ]
 
 { #category : #tests }
-SimpleCipherTest >> test04_SubstitutionCipherCanDoubleShiftEncode [
+SimpleCipherTest >> test05_SubstitutionCipherCanEncode [
+	| result |
+
+	result := simpleCipherCalculator encodeKey: 'abcdefghij' plaintext: 'aaaaaaaaaa' .
+	self assert: result equals: 'abcdefghij'
+]
+
+{ #category : #tests }
+SimpleCipherTest >> test06_SubstitutionCipherCanDecode [
+	| result |
+
+	result := simpleCipherCalculator decodeCiphertext: 'abcdefghij' key: 'abcdefghij' .
+	self assert: result equals: 'aaaaaaaaaa'
+]
+
+{ #category : #tests }
+SimpleCipherTest >> test07_SubstitutionCipherIsReversibleIeIfYouApplyDecodeInAEncodedResultYouMustSeeTheSamePlaintextEncodeParameterAsAResultOfTheDecodeMethod [
+	| result |
+
+	result := simpleCipherCalculator decodeCiphertext: 'cipher.encode' key: 'abcdefghij' plaintext: 'abcdefghij' .
+	self assert: result equals: 'abcdefghij'
+]
+
+{ #category : #tests }
+SimpleCipherTest >> test08_SubstitutionCipherCanDoubleShiftEncode [
 	| result |
 
 	result := simpleCipherCalculator encodeKey: 'iamapandabear' plaintext: 'iamapandabear' .
@@ -175,7 +175,7 @@ SimpleCipherTest >> test04_SubstitutionCipherCanDoubleShiftEncode [
 ]
 
 { #category : #tests }
-SimpleCipherTest >> test05_SubstitutionCipherCanWrapOnEncode [
+SimpleCipherTest >> test09_SubstitutionCipherCanWrapOnEncode [
 	| result |
 
 	result := simpleCipherCalculator encodeKey: 'abcdefghij' plaintext: 'zzzzzzzzzz' .
@@ -183,7 +183,7 @@ SimpleCipherTest >> test05_SubstitutionCipherCanWrapOnEncode [
 ]
 
 { #category : #tests }
-SimpleCipherTest >> test06_SubstitutionCipherCanWrapOnDecode [
+SimpleCipherTest >> test10_SubstitutionCipherCanWrapOnDecode [
 	| result |
 
 	result := simpleCipherCalculator decodeCiphertext: 'zabcdefghi' key: 'abcdefghij' .
@@ -191,7 +191,7 @@ SimpleCipherTest >> test06_SubstitutionCipherCanWrapOnDecode [
 ]
 
 { #category : #tests }
-SimpleCipherTest >> test07_SubstitutionCipherCanEncodeMessagesLongerThanTheKey [
+SimpleCipherTest >> test11_SubstitutionCipherCanEncodeMessagesLongerThanTheKey [
 	| result |
 
 	result := simpleCipherCalculator encodeKey: 'abc' plaintext: 'iamapandabear' .
@@ -199,7 +199,7 @@ SimpleCipherTest >> test07_SubstitutionCipherCanEncodeMessagesLongerThanTheKey [
 ]
 
 { #category : #tests }
-SimpleCipherTest >> test08_SubstitutionCipherCanDecodeMessagesLongerThanTheKey [
+SimpleCipherTest >> test12_SubstitutionCipherCanDecodeMessagesLongerThanTheKey [
 	| result |
 
 	result := simpleCipherCalculator decodeCiphertext: 'iboaqcnecbfcr' key: 'abc' .

@@ -52,7 +52,7 @@ AllergiesTest class >> uuid [
 
 { #category : #config }
 AllergiesTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.2.0'
 ]
 
@@ -70,27 +70,11 @@ AllergiesTest >> test01_AllergicToNoAllergiesMeansNotAllergic [
 ]
 
 { #category : #tests }
-AllergiesTest >> test01_ListNoAllergiesAtAll [
-	| result |
-
-	result := allergiesCalculator listScore: 0 .
-	self assert: result equals: #()
-]
-
-{ #category : #tests }
 AllergiesTest >> test02_AllergicToIsAllergicToEggs [
 	| result |
 
 	result := allergiesCalculator allergicToScore: 1 .
 	self assert: result equals: ((Array new: 1) at: 1 put: ((Dictionary new) add: ('substance'->'eggs'); add: ('result'->true); yourself); yourself)
-]
-
-{ #category : #tests }
-AllergiesTest >> test02_ListAllergicToJustEggs [
-	| result |
-
-	result := allergiesCalculator listScore: 1 .
-	self assert: result equals: #('eggs' )
 ]
 
 { #category : #tests }
@@ -102,14 +86,6 @@ AllergiesTest >> test03_AllergicToAllergicToEggsInAdditionToOtherStuff [
 ]
 
 { #category : #tests }
-AllergiesTest >> test03_ListAllergicToJustPeanuts [
-	| result |
-
-	result := allergiesCalculator listScore: 2 .
-	self assert: result equals: #('peanuts' )
-]
-
-{ #category : #tests }
 AllergiesTest >> test04_AllergicToAllergicToStrawberriesButNotPeanuts [
 	| result |
 
@@ -118,7 +94,31 @@ AllergiesTest >> test04_AllergicToAllergicToStrawberriesButNotPeanuts [
 ]
 
 { #category : #tests }
-AllergiesTest >> test04_ListAllergicToJustStrawberries [
+AllergiesTest >> test05_ListNoAllergiesAtAll [
+	| result |
+
+	result := allergiesCalculator listScore: 0 .
+	self assert: result equals: #()
+]
+
+{ #category : #tests }
+AllergiesTest >> test06_ListAllergicToJustEggs [
+	| result |
+
+	result := allergiesCalculator listScore: 1 .
+	self assert: result equals: #('eggs' )
+]
+
+{ #category : #tests }
+AllergiesTest >> test07_ListAllergicToJustPeanuts [
+	| result |
+
+	result := allergiesCalculator listScore: 2 .
+	self assert: result equals: #('peanuts' )
+]
+
+{ #category : #tests }
+AllergiesTest >> test08_ListAllergicToJustStrawberries [
 	| result |
 
 	result := allergiesCalculator listScore: 8 .
@@ -126,7 +126,7 @@ AllergiesTest >> test04_ListAllergicToJustStrawberries [
 ]
 
 { #category : #tests }
-AllergiesTest >> test05_ListAllergicToEggsAndPeanuts [
+AllergiesTest >> test09_ListAllergicToEggsAndPeanuts [
 	| result |
 
 	result := allergiesCalculator listScore: 3 .
@@ -134,7 +134,7 @@ AllergiesTest >> test05_ListAllergicToEggsAndPeanuts [
 ]
 
 { #category : #tests }
-AllergiesTest >> test06_ListAllergicToMoreThanEggsButNotPeanuts [
+AllergiesTest >> test10_ListAllergicToMoreThanEggsButNotPeanuts [
 	| result |
 
 	result := allergiesCalculator listScore: 5 .
@@ -142,7 +142,7 @@ AllergiesTest >> test06_ListAllergicToMoreThanEggsButNotPeanuts [
 ]
 
 { #category : #tests }
-AllergiesTest >> test07_ListAllergicToLotsOfStuff [
+AllergiesTest >> test11_ListAllergicToLotsOfStuff [
 	| result |
 
 	result := allergiesCalculator listScore: 248 .
@@ -150,7 +150,7 @@ AllergiesTest >> test07_ListAllergicToLotsOfStuff [
 ]
 
 { #category : #tests }
-AllergiesTest >> test08_ListAllergicToEverything [
+AllergiesTest >> test12_ListAllergicToEverything [
 	| result |
 
 	result := allergiesCalculator listScore: 255 .
@@ -158,7 +158,7 @@ AllergiesTest >> test08_ListAllergicToEverything [
 ]
 
 { #category : #tests }
-AllergiesTest >> test09_ListIgnoreNonAllergenScoreParts [
+AllergiesTest >> test13_ListIgnoreNonAllergenScoreParts [
 	| result |
 
 	result := allergiesCalculator listScore: 509 .

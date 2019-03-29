@@ -41,34 +41,18 @@ Class {
 { #category : #config }
 RunLengthEncodingTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'6060c6bb-8040-0d00-8109-2c0801deb008'
+	^'1d19c516-9d41-0d00-8fe2-de9208866539'
 ]
 
 { #category : #config }
 RunLengthEncodingTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
 { #category : #setup }
 RunLengthEncodingTest >> setUp [
 	runLengthEncodingCalculator := RunLengthEncoding new
-]
-
-{ #category : #tests }
-RunLengthEncodingTest >> test01_EncodeAndThenDecodeEncodeFollowedByDecodeGivesOriginalString [
-	| result |
-
-	result := runLengthEncodingCalculator consistencyString: 'zzz ZZ  zZ' .
-	self assert: result equals: 'zzz ZZ  zZ'
-]
-
-{ #category : #tests }
-RunLengthEncodingTest >> test01_RunlengthDecodeAStringEmptyString [
-	| result |
-
-	result := runLengthEncodingCalculator decodeString: '' .
-	self assert: result equals: ''
 ]
 
 { #category : #tests }
@@ -80,27 +64,11 @@ RunLengthEncodingTest >> test01_RunlengthEncodeAStringEmptyString [
 ]
 
 { #category : #tests }
-RunLengthEncodingTest >> test02_RunlengthDecodeAStringSingleCharactersOnly [
-	| result |
-
-	result := runLengthEncodingCalculator decodeString: 'XYZ' .
-	self assert: result equals: 'XYZ'
-]
-
-{ #category : #tests }
 RunLengthEncodingTest >> test02_RunlengthEncodeAStringSingleCharactersOnlyAreEncodedWithoutCount [
 	| result |
 
 	result := runLengthEncodingCalculator encodeString: 'XYZ' .
 	self assert: result equals: 'XYZ'
-]
-
-{ #category : #tests }
-RunLengthEncodingTest >> test03_RunlengthDecodeAStringStringWithNoSingleCharacters [
-	| result |
-
-	result := runLengthEncodingCalculator decodeString: '2A3B4C' .
-	self assert: result equals: 'AABBBCCCC'
 ]
 
 { #category : #tests }
@@ -112,27 +80,11 @@ RunLengthEncodingTest >> test03_RunlengthEncodeAStringStringWithNoSingleCharacte
 ]
 
 { #category : #tests }
-RunLengthEncodingTest >> test04_RunlengthDecodeAStringSingleCharactersWithRepeatedCharacters [
-	| result |
-
-	result := runLengthEncodingCalculator decodeString: '12WB12W3B24WB' .
-	self assert: result equals: 'WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB'
-]
-
-{ #category : #tests }
 RunLengthEncodingTest >> test04_RunlengthEncodeAStringSingleCharactersMixedWithRepeatedCharacters [
 	| result |
 
 	result := runLengthEncodingCalculator encodeString: 'WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB' .
 	self assert: result equals: '12WB12W3B24WB'
-]
-
-{ #category : #tests }
-RunLengthEncodingTest >> test05_RunlengthDecodeAStringMultipleWhitespaceMixedInString [
-	| result |
-
-	result := runLengthEncodingCalculator decodeString: '2 hs2q q2w2 ' .
-	self assert: result equals: '  hsqq qww  '
 ]
 
 { #category : #tests }
@@ -144,7 +96,55 @@ RunLengthEncodingTest >> test05_RunlengthEncodeAStringMultipleWhitespaceMixedInS
 ]
 
 { #category : #tests }
-RunLengthEncodingTest >> test06_RunlengthDecodeAStringLowerCaseString [
+RunLengthEncodingTest >> test06_RunlengthEncodeAStringLowercaseCharacters [
+	| result |
+
+	result := runLengthEncodingCalculator encodeString: 'aabbbcccc' .
+	self assert: result equals: '2a3b4c'
+]
+
+{ #category : #tests }
+RunLengthEncodingTest >> test07_RunlengthDecodeAStringEmptyString [
+	| result |
+
+	result := runLengthEncodingCalculator decodeString: '' .
+	self assert: result equals: ''
+]
+
+{ #category : #tests }
+RunLengthEncodingTest >> test08_RunlengthDecodeAStringSingleCharactersOnly [
+	| result |
+
+	result := runLengthEncodingCalculator decodeString: 'XYZ' .
+	self assert: result equals: 'XYZ'
+]
+
+{ #category : #tests }
+RunLengthEncodingTest >> test09_RunlengthDecodeAStringStringWithNoSingleCharacters [
+	| result |
+
+	result := runLengthEncodingCalculator decodeString: '2A3B4C' .
+	self assert: result equals: 'AABBBCCCC'
+]
+
+{ #category : #tests }
+RunLengthEncodingTest >> test10_RunlengthDecodeAStringSingleCharactersWithRepeatedCharacters [
+	| result |
+
+	result := runLengthEncodingCalculator decodeString: '12WB12W3B24WB' .
+	self assert: result equals: 'WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB'
+]
+
+{ #category : #tests }
+RunLengthEncodingTest >> test11_RunlengthDecodeAStringMultipleWhitespaceMixedInString [
+	| result |
+
+	result := runLengthEncodingCalculator decodeString: '2 hs2q q2w2 ' .
+	self assert: result equals: '  hsqq qww  '
+]
+
+{ #category : #tests }
+RunLengthEncodingTest >> test12_RunlengthDecodeAStringLowerCaseString [
 	| result |
 
 	result := runLengthEncodingCalculator decodeString: '2a3b4c' .
@@ -152,9 +152,9 @@ RunLengthEncodingTest >> test06_RunlengthDecodeAStringLowerCaseString [
 ]
 
 { #category : #tests }
-RunLengthEncodingTest >> test06_RunlengthEncodeAStringLowercaseCharacters [
+RunLengthEncodingTest >> test13_EncodeAndThenDecodeEncodeFollowedByDecodeGivesOriginalString [
 	| result |
 
-	result := runLengthEncodingCalculator encodeString: 'aabbbcccc' .
-	self assert: result equals: '2a3b4c'
+	result := runLengthEncodingCalculator consistencyString: 'zzz ZZ  zZ' .
+	self assert: result equals: 'zzz ZZ  zZ'
 ]

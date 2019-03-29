@@ -44,12 +44,12 @@ Class {
 { #category : #config }
 MinesweeperTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'bc00c7bb-8040-0d00-810a-c50f01deb008'
+	^'1318c616-9d41-0d00-8fe3-676108866539'
 ]
 
 { #category : #config }
 MinesweeperTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 

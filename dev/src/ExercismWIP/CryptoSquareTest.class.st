@@ -90,12 +90,12 @@ Class {
 { #category : #config }
 CryptoSquareTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'0cacc3bb-8040-0d00-8105-c0f301deb008'
+	^'3bfec016-9d41-0d00-8fde-184c08866539'
 ]
 
 { #category : #config }
 CryptoSquareTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'3.2.0'
 ]
 

@@ -77,27 +77,18 @@ Class {
 { #category : #config }
 KindergartenGardenTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'9598e3bb-8040-0d00-812c-7d2101deb008'
+	^'7ec3ec16-9d41-0d00-9001-63c508866539'
 ]
 
 { #category : #config }
 KindergartenGardenTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.1.1'
 ]
 
 { #category : #setup }
 KindergartenGardenTest >> setUp [
 	kindergartenGardenCalculator := KindergartenGarden new
-]
-
-{ #category : #tests }
-KindergartenGardenTest >> test01_FullGardenFirstStudentsGarden [
-	| result |
-
-	result := kindergartenGardenCalculator plantsStudent: 'Alice' diagram: 'VRCGVVRVCGGCCGVRGCVCGCGV
-VRCCCGCRRGVCGCRVVCVGCGCV' .
-	self assert: result equals: #('violets' 'radishes' 'violets' 'radishes' )
 ]
 
 { #category : #tests }
@@ -110,48 +101,12 @@ GG' .
 ]
 
 { #category : #tests }
-KindergartenGardenTest >> test01_PartialGardenMultipleStudentsForTheSameGardenWithThreeStudentsSecondStudentsGarden [
-	| result |
-
-	result := kindergartenGardenCalculator plantsStudent: 'Bob' diagram: 'VVCCGG
-VVCCGG' .
-	self assert: result equals: #('clover' 'clover' 'clover' 'clover' )
-]
-
-{ #category : #tests }
-KindergartenGardenTest >> test02_FullGardenSecondStudentsGarden [
-	| result |
-
-	result := kindergartenGardenCalculator plantsStudent: 'Bob' diagram: 'VRCGVVRVCGGCCGVRGCVCGCGV
-VRCCCGCRRGVCGCRVVCVGCGCV' .
-	self assert: result equals: #('clover' 'grass' 'clover' 'clover' )
-]
-
-{ #category : #tests }
 KindergartenGardenTest >> test02_PartialGardenDifferentGardenWithSingleStudent [
 	| result |
 
 	result := kindergartenGardenCalculator plantsStudent: 'Alice' diagram: 'VC
 RC' .
 	self assert: result equals: #('violets' 'clover' 'radishes' 'clover' )
-]
-
-{ #category : #tests }
-KindergartenGardenTest >> test02_PartialGardenMultipleStudentsForTheSameGardenWithThreeStudentsThirdStudentsGarden [
-	| result |
-
-	result := kindergartenGardenCalculator plantsStudent: 'Charlie' diagram: 'VVCCGG
-VVCCGG' .
-	self assert: result equals: #('grass' 'grass' 'grass' 'grass' )
-]
-
-{ #category : #tests }
-KindergartenGardenTest >> test03_FullGardenSecondToLastStudentsGarden [
-	| result |
-
-	result := kindergartenGardenCalculator plantsStudent: 'Kincaid' diagram: 'VRCGVVRVCGGCCGVRGCVCGCGV
-VRCCCGCRRGVCGCRVVCVGCGCV' .
-	self assert: result equals: #('grass' 'clover' 'clover' 'grass' )
 ]
 
 { #category : #tests }
@@ -164,7 +119,52 @@ VVRC' .
 ]
 
 { #category : #tests }
-KindergartenGardenTest >> test04_FullGardenLastStudentsGarden [
+KindergartenGardenTest >> test04_PartialGardenMultipleStudentsForTheSameGardenWithThreeStudentsSecondStudentsGarden [
+	| result |
+
+	result := kindergartenGardenCalculator plantsStudent: 'Bob' diagram: 'VVCCGG
+VVCCGG' .
+	self assert: result equals: #('clover' 'clover' 'clover' 'clover' )
+]
+
+{ #category : #tests }
+KindergartenGardenTest >> test05_PartialGardenMultipleStudentsForTheSameGardenWithThreeStudentsThirdStudentsGarden [
+	| result |
+
+	result := kindergartenGardenCalculator plantsStudent: 'Charlie' diagram: 'VVCCGG
+VVCCGG' .
+	self assert: result equals: #('grass' 'grass' 'grass' 'grass' )
+]
+
+{ #category : #tests }
+KindergartenGardenTest >> test06_FullGardenFirstStudentsGarden [
+	| result |
+
+	result := kindergartenGardenCalculator plantsStudent: 'Alice' diagram: 'VRCGVVRVCGGCCGVRGCVCGCGV
+VRCCCGCRRGVCGCRVVCVGCGCV' .
+	self assert: result equals: #('violets' 'radishes' 'violets' 'radishes' )
+]
+
+{ #category : #tests }
+KindergartenGardenTest >> test07_FullGardenSecondStudentsGarden [
+	| result |
+
+	result := kindergartenGardenCalculator plantsStudent: 'Bob' diagram: 'VRCGVVRVCGGCCGVRGCVCGCGV
+VRCCCGCRRGVCGCRVVCVGCGCV' .
+	self assert: result equals: #('clover' 'grass' 'clover' 'clover' )
+]
+
+{ #category : #tests }
+KindergartenGardenTest >> test08_FullGardenSecondToLastStudentsGarden [
+	| result |
+
+	result := kindergartenGardenCalculator plantsStudent: 'Kincaid' diagram: 'VRCGVVRVCGGCCGVRGCVCGCGV
+VRCCCGCRRGVCGCRVVCVGCGCV' .
+	self assert: result equals: #('grass' 'clover' 'clover' 'grass' )
+]
+
+{ #category : #tests }
+KindergartenGardenTest >> test09_FullGardenLastStudentsGarden [
 	| result |
 
 	result := kindergartenGardenCalculator plantsStudent: 'Larry' diagram: 'VRCGVVRVCGGCCGVRGCVCGCGV

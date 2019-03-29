@@ -46,12 +46,12 @@ Class {
 { #category : #config }
 SecretHandshakeTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'5070b6bb-8040-0d00-80f3-53ad01deb008'
+	^'2020ac16-9d41-0d00-8fcd-fe0908866539'
 ]
 
 { #category : #config }
 SecretHandshakeTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.2.0'
 ]
 

@@ -45,12 +45,12 @@ Class {
 { #category : #config }
 ZipperTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'ba9dd2bb-8040-0d00-8119-74f801deb008'
+	^'70f8d716-9d41-0d00-8ff1-cfe608866539'
 ]
 
 { #category : #config }
 ZipperTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 

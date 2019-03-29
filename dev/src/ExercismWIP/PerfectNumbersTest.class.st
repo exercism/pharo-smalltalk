@@ -35,42 +35,18 @@ Class {
 { #category : #config }
 PerfectNumbersTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'17ceb5bb-8040-0d00-80f2-2dce01deb008'
+	^'6711ab16-9d41-0d00-8fcc-926408866539'
 ]
 
 { #category : #config }
 PerfectNumbersTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
 { #category : #setup }
 PerfectNumbersTest >> setUp [
 	perfectNumbersCalculator := PerfectNumbers new
-]
-
-{ #category : #tests }
-PerfectNumbersTest >> test01_AbundantNumbersSmallestAbundantNumberIsClassifiedCorrectly [
-	| result |
-
-	result := perfectNumbersCalculator classifyNumber: 12 .
-	self assert: result equals: 'abundant'
-]
-
-{ #category : #tests }
-PerfectNumbersTest >> test01_DeficientNumbersSmallestPrimeDeficientNumberIsClassifiedCorrectly [
-	| result |
-
-	result := perfectNumbersCalculator classifyNumber: 2 .
-	self assert: result equals: 'deficient'
-]
-
-{ #category : #tests }
-PerfectNumbersTest >> test01_InvalidInputsZeroIsRejectednotANaturalNumber [
-	| result |
-
-	result := perfectNumbersCalculator classifyNumber: 0 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Classification is only possible for natural numbers.'); yourself)
 ]
 
 { #category : #tests }
@@ -82,51 +58,11 @@ PerfectNumbersTest >> test01_PerfectNumbersSmallestPerfectNumberIsClassifiedCorr
 ]
 
 { #category : #tests }
-PerfectNumbersTest >> test02_AbundantNumbersMediumAbundantNumberIsClassifiedCorrectly [
-	| result |
-
-	result := perfectNumbersCalculator classifyNumber: 30 .
-	self assert: result equals: 'abundant'
-]
-
-{ #category : #tests }
-PerfectNumbersTest >> test02_DeficientNumbersSmallestNonprimeDeficientNumberIsClassifiedCorrectly [
-	| result |
-
-	result := perfectNumbersCalculator classifyNumber: 4 .
-	self assert: result equals: 'deficient'
-]
-
-{ #category : #tests }
-PerfectNumbersTest >> test02_InvalidInputsNegativeIntegerIsRejectednotANaturalNumber [
-	| result |
-
-	result := perfectNumbersCalculator classifyNumber:  -1 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Classification is only possible for natural numbers.'); yourself)
-]
-
-{ #category : #tests }
 PerfectNumbersTest >> test02_PerfectNumbersMediumPerfectNumberIsClassifiedCorrectly [
 	| result |
 
 	result := perfectNumbersCalculator classifyNumber: 28 .
 	self assert: result equals: 'perfect'
-]
-
-{ #category : #tests }
-PerfectNumbersTest >> test03_AbundantNumbersLargeAbundantNumberIsClassifiedCorrectly [
-	| result |
-
-	result := perfectNumbersCalculator classifyNumber: 33550335 .
-	self assert: result equals: 'abundant'
-]
-
-{ #category : #tests }
-PerfectNumbersTest >> test03_DeficientNumbersMediumDeficientNumberIsClassifiedCorrectly [
-	| result |
-
-	result := perfectNumbersCalculator classifyNumber: 32 .
-	self assert: result equals: 'deficient'
 ]
 
 { #category : #tests }
@@ -138,7 +74,55 @@ PerfectNumbersTest >> test03_PerfectNumbersLargePerfectNumberIsClassifiedCorrect
 ]
 
 { #category : #tests }
-PerfectNumbersTest >> test04_DeficientNumbersLargeDeficientNumberIsClassifiedCorrectly [
+PerfectNumbersTest >> test04_AbundantNumbersSmallestAbundantNumberIsClassifiedCorrectly [
+	| result |
+
+	result := perfectNumbersCalculator classifyNumber: 12 .
+	self assert: result equals: 'abundant'
+]
+
+{ #category : #tests }
+PerfectNumbersTest >> test05_AbundantNumbersMediumAbundantNumberIsClassifiedCorrectly [
+	| result |
+
+	result := perfectNumbersCalculator classifyNumber: 30 .
+	self assert: result equals: 'abundant'
+]
+
+{ #category : #tests }
+PerfectNumbersTest >> test06_AbundantNumbersLargeAbundantNumberIsClassifiedCorrectly [
+	| result |
+
+	result := perfectNumbersCalculator classifyNumber: 33550335 .
+	self assert: result equals: 'abundant'
+]
+
+{ #category : #tests }
+PerfectNumbersTest >> test07_DeficientNumbersSmallestPrimeDeficientNumberIsClassifiedCorrectly [
+	| result |
+
+	result := perfectNumbersCalculator classifyNumber: 2 .
+	self assert: result equals: 'deficient'
+]
+
+{ #category : #tests }
+PerfectNumbersTest >> test08_DeficientNumbersSmallestNonprimeDeficientNumberIsClassifiedCorrectly [
+	| result |
+
+	result := perfectNumbersCalculator classifyNumber: 4 .
+	self assert: result equals: 'deficient'
+]
+
+{ #category : #tests }
+PerfectNumbersTest >> test09_DeficientNumbersMediumDeficientNumberIsClassifiedCorrectly [
+	| result |
+
+	result := perfectNumbersCalculator classifyNumber: 32 .
+	self assert: result equals: 'deficient'
+]
+
+{ #category : #tests }
+PerfectNumbersTest >> test10_DeficientNumbersLargeDeficientNumberIsClassifiedCorrectly [
 	| result |
 
 	result := perfectNumbersCalculator classifyNumber: 33550337 .
@@ -146,9 +130,25 @@ PerfectNumbersTest >> test04_DeficientNumbersLargeDeficientNumberIsClassifiedCor
 ]
 
 { #category : #tests }
-PerfectNumbersTest >> test05_DeficientNumbersEdgeCasenoFactorsOtherThanItselfIsClassifiedCorrectly [
+PerfectNumbersTest >> test11_DeficientNumbersEdgeCasenoFactorsOtherThanItselfIsClassifiedCorrectly [
 	| result |
 
 	result := perfectNumbersCalculator classifyNumber: 1 .
 	self assert: result equals: 'deficient'
+]
+
+{ #category : #tests }
+PerfectNumbersTest >> test12_InvalidInputsZeroIsRejectednotANaturalNumber [
+	| result |
+
+	result := perfectNumbersCalculator classifyNumber: 0 .
+	self assert: result equals: ((Dictionary new) add: ('error'->'Classification is only possible for natural numbers.'); yourself)
+]
+
+{ #category : #tests }
+PerfectNumbersTest >> test13_InvalidInputsNegativeIntegerIsRejectednotANaturalNumber [
+	| result |
+
+	result := perfectNumbersCalculator classifyNumber:  -1 .
+	self assert: result equals: ((Dictionary new) add: ('error'->'Classification is only possible for natural numbers.'); yourself)
 ]

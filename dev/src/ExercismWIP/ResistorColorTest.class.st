@@ -37,12 +37,12 @@ Class {
 { #category : #config }
 ResistorColorTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'ee9accbb-8040-0d00-8112-521201deb008'
+	^'8cc3cd16-9d41-0d00-8fea-8efc08866539'
 ]
 
 { #category : #config }
 ResistorColorTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.0.0'
 ]
 
@@ -68,17 +68,17 @@ ResistorColorTest >> test02_ColorCodesWhite [
 ]
 
 { #category : #tests }
-ResistorColorTest >> test02_Colors [
-	| result |
-
-	result := resistorColorCalculator colors.
-	self assert: result equals: #('black' 'brown' 'red' 'orange' 'yellow' 'green' 'blue' 'violet' 'grey' 'white' )
-]
-
-{ #category : #tests }
 ResistorColorTest >> test03_ColorCodesOrange [
 	| result |
 
 	result := resistorColorCalculator colorCodeColor: 'orange' .
 	self assert: result equals: 3
+]
+
+{ #category : #tests }
+ResistorColorTest >> test04_Colors [
+	| result |
+
+	result := resistorColorCalculator colors.
+	self assert: result equals: #('black' 'brown' 'red' 'orange' 'yellow' 'green' 'blue' 'violet' 'grey' 'white' )
 ]

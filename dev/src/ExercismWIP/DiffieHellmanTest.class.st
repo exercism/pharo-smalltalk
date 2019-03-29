@@ -55,12 +55,12 @@ Class {
 { #category : #config }
 DiffieHellmanTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'df87cabb-8040-0d00-810f-fe8c01deb008'
+	^'b7b1ca16-9d41-0d00-8fe7-d82108866539'
 ]
 
 { #category : #config }
 DiffieHellmanTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.0.0'
 ]
 

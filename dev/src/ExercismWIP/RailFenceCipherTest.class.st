@@ -76,26 +76,18 @@ Class {
 { #category : #config }
 RailFenceCipherTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'4c8cecbb-8040-0d00-8135-664d01deb008'
+	^'d478f816-9d41-0d00-9008-225d08866539'
 ]
 
 { #category : #config }
 RailFenceCipherTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
 { #category : #setup }
 RailFenceCipherTest >> setUp [
 	railFenceCipherCalculator := RailFenceCipher new
-]
-
-{ #category : #tests }
-RailFenceCipherTest >> test01_DecodeDecodeWithThreeRails [
-	| result |
-
-	result := railFenceCipherCalculator decodeRails: 3 msg: 'TEITELHDVLSNHDTISEIIEA' .
-	self assert: result equals: 'THEDEVILISINTHEDETAILS'
 ]
 
 { #category : #tests }
@@ -107,14 +99,6 @@ RailFenceCipherTest >> test01_EncodeEncodeWithTwoRails [
 ]
 
 { #category : #tests }
-RailFenceCipherTest >> test02_DecodeDecodeWithFiveRails [
-	| result |
-
-	result := railFenceCipherCalculator decodeRails: 5 msg: 'EIEXMSMESAORIWSCE' .
-	self assert: result equals: 'EXERCISMISAWESOME'
-]
-
-{ #category : #tests }
 RailFenceCipherTest >> test02_EncodeEncodeWithThreeRails [
 	| result |
 
@@ -123,17 +107,33 @@ RailFenceCipherTest >> test02_EncodeEncodeWithThreeRails [
 ]
 
 { #category : #tests }
-RailFenceCipherTest >> test03_DecodeDecodeWithSixRails [
-	| result |
-
-	result := railFenceCipherCalculator decodeRails: 6 msg: '133714114238148966225439541018335470986172518171757571896261' .
-	self assert: result equals: '112358132134558914423337761098715972584418167651094617711286'
-]
-
-{ #category : #tests }
 RailFenceCipherTest >> test03_EncodeEncodeWithEndingInTheMiddle [
 	| result |
 
 	result := railFenceCipherCalculator encodeRails: 4 msg: 'EXERCISES' .
 	self assert: result equals: 'ESXIEECSR'
+]
+
+{ #category : #tests }
+RailFenceCipherTest >> test04_DecodeDecodeWithThreeRails [
+	| result |
+
+	result := railFenceCipherCalculator decodeRails: 3 msg: 'TEITELHDVLSNHDTISEIIEA' .
+	self assert: result equals: 'THEDEVILISINTHEDETAILS'
+]
+
+{ #category : #tests }
+RailFenceCipherTest >> test05_DecodeDecodeWithFiveRails [
+	| result |
+
+	result := railFenceCipherCalculator decodeRails: 5 msg: 'EIEXMSMESAORIWSCE' .
+	self assert: result equals: 'EXERCISMISAWESOME'
+]
+
+{ #category : #tests }
+RailFenceCipherTest >> test06_DecodeDecodeWithSixRails [
+	| result |
+
+	result := railFenceCipherCalculator decodeRails: 6 msg: '133714114238148966225439541018335470986172518171757571896261' .
+	self assert: result equals: '112358132134558914423337761098715972584418167651094617711286'
 ]
