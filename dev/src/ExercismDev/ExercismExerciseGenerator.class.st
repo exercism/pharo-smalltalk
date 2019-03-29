@@ -9,7 +9,8 @@ Class {
 	#name : #ExercismExerciseGenerator,
 	#superclass : #Object,
 	#instVars : [
-		'numberGenerated'
+		'numberGenerated',
+		'testCounter'
 	],
 	#classVars : [
 		'DefaultPath'
@@ -192,6 +193,8 @@ ExercismExerciseGenerator >> generateSetupOn: testClass using: testVariable assi
 { #category : #generation }
 ExercismExerciseGenerator >> generateTestClass: testName tag: tagName variable: testVariable [
 	
+	self resetTestCounter.
+	
 	^ExercismTest
 		subclass: testName asSymbol
 		instanceVariableNames: testVariable
@@ -204,8 +207,9 @@ ExercismExerciseGenerator >> generateTestClass: testName tag: tagName variable: 
 { #category : #generation }
 ExercismExerciseGenerator >> generateTestMethodsOn: testClass calling: testVariable using: testJson prefix: aPrefixString [
 	| instance methodName parameters testResult testPrefix methodNameSegment |
+	
 	(testJson at: 'cases')
-		doWithIndex: [ :case :i | 
+		do: [ :case | 
 			
 			methodNameSegment := (case at: 'description') asCamelCase asValidKeyword capitalized. 
 			methodName :=  aPrefixString 
@@ -223,7 +227,7 @@ ExercismExerciseGenerator >> generateTestMethodsOn: testClass calling: testVaria
 					parameters := case at: 'input'.
 					testResult := case at: 'expected'.
 					
-					testPrefix := 'test{1}_' format: {i asTwoCharacterString}.
+					testPrefix := 'test{1}_' format: {self nextTestCounter asTwoCharacterString}.
 					self
 						generateTestNamed: (testPrefix, methodName) asSymbol 
 						in: testClass
@@ -281,6 +285,12 @@ ExercismExerciseGenerator >> log: stringMsg for: testNameString [
 ]
 
 { #category : #accessing }
+ExercismExerciseGenerator >> nextTestCounter [
+
+	^testCounter := testCounter + 1
+]
+
+{ #category : #accessing }
 ExercismExerciseGenerator >> numberGenerated [
 	^ numberGenerated
 ]
@@ -288,4 +298,10 @@ ExercismExerciseGenerator >> numberGenerated [
 { #category : #accessing }
 ExercismExerciseGenerator >> numberGenerated: anObject [
 	numberGenerated := anObject
+]
+
+{ #category : #accessing }
+ExercismExerciseGenerator >> resetTestCounter [
+
+	testCounter := 0
 ]

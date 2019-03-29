@@ -114,7 +114,7 @@ ExercismExerciseTest >> testName [
 ExercismExerciseTest >> testSolutionClasses [
 	
 	self assertCollection: TestExerciseTest exercise solutionClasses equals: {TestExercise} asSet.
-	self assertCollection: TestmanyTest exercise solutionClasses equals: {Testmany. TestOtherClass} asSet.
+	self assertCollection: TestmanyTest exercise solutionClasses equals: {Testmany. TestOtherClass. TestOtherClassTest} asSet.
 	self assertCollection: TestEmptyTest exercise solutionClasses equals: {} asSet.
 	
 ]
@@ -171,7 +171,7 @@ ExercismExerciseTest >> testUnlockedExercises [
 	
 	self assertCollection: HelloWorldTest exercise unlockedExercises asArray equals: #().
 	self assertCollection: TwoFerTest exercise unlockedExercises asArray 
-				equals: {ResistorColorsTest exercise. SpaceAgeTest exercise}.
+				equals: {ResistorColorsTest exercise. SpaceAgeTest exercise}. 
 
 	
 ]

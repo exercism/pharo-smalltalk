@@ -4,7 +4,7 @@ An ExercismHttpCommandTest is a test class for testing the behavior of ExercismH
 Class {
 	#name : #ExercismHttpCommandTest,
 	#superclass : #TestCase,
-	#category : #ExercismTests
+	#category : #'ExercismTests-UnitTests'
 }
 
 { #category : #tests }
