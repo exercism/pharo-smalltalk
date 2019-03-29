@@ -81,12 +81,12 @@ Class {
 { #category : #config }
 FoodChainTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'a541f9bb-8040-0d00-8144-068a01deb008'
+	^'24e40d17-9d41-0d00-9017-801f08866539'
 ]
 
 { #category : #config }
 FoodChainTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'2.1.0'
 ]
 

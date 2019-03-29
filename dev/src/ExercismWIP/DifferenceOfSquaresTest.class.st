@@ -34,12 +34,12 @@ Class {
 { #category : #config }
 DifferenceOfSquaresTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'546cb4bb-8040-0d00-80f0-98f501deb008'
+	^'0ce1a816-9d41-0d00-8fca-ed6108866539'
 ]
 
 { #category : #config }
 DifferenceOfSquaresTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.2.0'
 ]
 
@@ -57,43 +57,11 @@ DifferenceOfSquaresTest >> test01_SquareTheSumOfTheNumbersUpToTheGivenNumberSqua
 ]
 
 { #category : #tests }
-DifferenceOfSquaresTest >> test01_SubtractSumOfSquaresFromSquareOfSumsDifferenceOfSquares1 [
-	| result |
-
-	result := differenceOfSquaresCalculator differenceOfSquaresNumber: 1 .
-	self assert: result equals: 0
-]
-
-{ #category : #tests }
-DifferenceOfSquaresTest >> test01_SumTheSquaresOfTheNumbersUpToTheGivenNumberSumOfSquares1 [
-	| result |
-
-	result := differenceOfSquaresCalculator sumOfSquaresNumber: 1 .
-	self assert: result equals: 1
-]
-
-{ #category : #tests }
 DifferenceOfSquaresTest >> test02_SquareTheSumOfTheNumbersUpToTheGivenNumberSquareOfSum5 [
 	| result |
 
 	result := differenceOfSquaresCalculator squareOfSumNumber: 5 .
 	self assert: result equals: 225
-]
-
-{ #category : #tests }
-DifferenceOfSquaresTest >> test02_SubtractSumOfSquaresFromSquareOfSumsDifferenceOfSquares5 [
-	| result |
-
-	result := differenceOfSquaresCalculator differenceOfSquaresNumber: 5 .
-	self assert: result equals: 170
-]
-
-{ #category : #tests }
-DifferenceOfSquaresTest >> test02_SumTheSquaresOfTheNumbersUpToTheGivenNumberSumOfSquares5 [
-	| result |
-
-	result := differenceOfSquaresCalculator sumOfSquaresNumber: 5 .
-	self assert: result equals: 55
 ]
 
 { #category : #tests }
@@ -105,17 +73,49 @@ DifferenceOfSquaresTest >> test03_SquareTheSumOfTheNumbersUpToTheGivenNumberSqua
 ]
 
 { #category : #tests }
-DifferenceOfSquaresTest >> test03_SubtractSumOfSquaresFromSquareOfSumsDifferenceOfSquares100 [
+DifferenceOfSquaresTest >> test04_SumTheSquaresOfTheNumbersUpToTheGivenNumberSumOfSquares1 [
 	| result |
 
-	result := differenceOfSquaresCalculator differenceOfSquaresNumber: 100 .
-	self assert: result equals: 25164150
+	result := differenceOfSquaresCalculator sumOfSquaresNumber: 1 .
+	self assert: result equals: 1
 ]
 
 { #category : #tests }
-DifferenceOfSquaresTest >> test03_SumTheSquaresOfTheNumbersUpToTheGivenNumberSumOfSquares100 [
+DifferenceOfSquaresTest >> test05_SumTheSquaresOfTheNumbersUpToTheGivenNumberSumOfSquares5 [
+	| result |
+
+	result := differenceOfSquaresCalculator sumOfSquaresNumber: 5 .
+	self assert: result equals: 55
+]
+
+{ #category : #tests }
+DifferenceOfSquaresTest >> test06_SumTheSquaresOfTheNumbersUpToTheGivenNumberSumOfSquares100 [
 	| result |
 
 	result := differenceOfSquaresCalculator sumOfSquaresNumber: 100 .
 	self assert: result equals: 338350
+]
+
+{ #category : #tests }
+DifferenceOfSquaresTest >> test07_SubtractSumOfSquaresFromSquareOfSumsDifferenceOfSquares1 [
+	| result |
+
+	result := differenceOfSquaresCalculator differenceOfSquaresNumber: 1 .
+	self assert: result equals: 0
+]
+
+{ #category : #tests }
+DifferenceOfSquaresTest >> test08_SubtractSumOfSquaresFromSquareOfSumsDifferenceOfSquares5 [
+	| result |
+
+	result := differenceOfSquaresCalculator differenceOfSquaresNumber: 5 .
+	self assert: result equals: 170
+]
+
+{ #category : #tests }
+DifferenceOfSquaresTest >> test09_SubtractSumOfSquaresFromSquareOfSumsDifferenceOfSquares100 [
+	| result |
+
+	result := differenceOfSquaresCalculator differenceOfSquaresNumber: 100 .
+	self assert: result equals: 25164150
 ]

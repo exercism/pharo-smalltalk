@@ -53,12 +53,12 @@ Class {
 { #category : #config }
 GoCountingTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'3aabcebb-8040-0d00-8114-220c01deb008'
+	^'fc8bd116-9d41-0d00-8fec-28f108866539'
 ]
 
 { #category : #config }
 GoCountingTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.0.0'
 ]
 

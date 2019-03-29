@@ -46,26 +46,18 @@ Class {
 { #category : #config }
 RationalNumbersTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'4742d5bb-8040-0d00-811b-b6c501deb008'
+	^'a5e3db16-9d41-0d00-8ff3-f02b08866539'
 ]
 
 { #category : #config }
 RationalNumbersTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
 { #category : #setup }
 RationalNumbersTest >> setUp [
 	rationalNumbersCalculator := RationalNumbers new
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test01_AbsoluteValueAbsoluteValueOfAPositiveRationalNumber [
-	| result |
-
-	result := rationalNumbersCalculator absR: #(1 2 ) .
-	self assert: result equals: #(1 2 )
 ]
 
 { #category : #tests }
@@ -77,123 +69,11 @@ RationalNumbersTest >> test01_ArithmeticAdditionAddTwoPositiveRationalNumbers [
 ]
 
 { #category : #tests }
-RationalNumbersTest >> test01_ArithmeticDivisionDivideTwoPositiveRationalNumbers [
-	| result |
-
-	result := rationalNumbersCalculator divR1: #(1 2 ) r2: #(2 3 ) .
-	self assert: result equals: #(3 4 )
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test01_ArithmeticMultiplicationMultiplyTwoPositiveRationalNumbers [
-	| result |
-
-	result := rationalNumbersCalculator mulR1: #(1 2 ) r2: #(2 3 ) .
-	self assert: result equals: #(1 3 )
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test01_ArithmeticSubtractionSubtractTwoPositiveRationalNumbers [
-	| result |
-
-	result := rationalNumbersCalculator subR1: #(1 2 ) r2: #(2 3 ) .
-	self assert: result equals: #( -1 6 )
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test01_ExponentiationOfARationalNumberRaiseAPositiveRationalNumberToAPositiveIntegerPower [
-	| result |
-
-	result := rationalNumbersCalculator exprationalR: #(1 2 ) n: 3 .
-	self assert: result equals: #(1 8 )
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test01_ExponentiationOfARealNumberToARationalNumberRaiseARealNumberToAPositiveRationalNumber [
-	| result |
-
-	result := rationalNumbersCalculator exprealX: 8 r: #(4 3 ) .
-	self assert: result equals: 16.0
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test01_ReductionToLowestTermsReduceAPositiveRationalNumberToLowestTerms [
-	| result |
-
-	result := rationalNumbersCalculator reduceR: #(2 4 ) .
-	self assert: result equals: #(1 2 )
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test02_AbsoluteValueAbsoluteValueOfAPositiveRationalNumberWithNegativeNumeratorAndDenominator [
-	| result |
-
-	result := rationalNumbersCalculator absR: #( -1  -2 ) .
-	self assert: result equals: #(1 2 )
-]
-
-{ #category : #tests }
 RationalNumbersTest >> test02_ArithmeticAdditionAddAPositiveRationalNumberAndANegativeRationalNumber [
 	| result |
 
 	result := rationalNumbersCalculator addR1: #(1 2 ) r2: #( -2 3 ) .
 	self assert: result equals: #( -1 6 )
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test02_ArithmeticDivisionDivideAPositiveRationalNumberByANegativeRationalNumber [
-	| result |
-
-	result := rationalNumbersCalculator divR1: #(1 2 ) r2: #( -2 3 ) .
-	self assert: result equals: #( -3 4 )
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test02_ArithmeticMultiplicationMultiplyANegativeRationalNumberByAPositiveRationalNumber [
-	| result |
-
-	result := rationalNumbersCalculator mulR1: #( -1 2 ) r2: #(2 3 ) .
-	self assert: result equals: #( -1 3 )
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test02_ArithmeticSubtractionSubtractAPositiveRationalNumberAndANegativeRationalNumber [
-	| result |
-
-	result := rationalNumbersCalculator subR1: #(1 2 ) r2: #( -2 3 ) .
-	self assert: result equals: #(7 6 )
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test02_ExponentiationOfARationalNumberRaiseANegativeRationalNumberToAPositiveIntegerPower [
-	| result |
-
-	result := rationalNumbersCalculator exprationalR: #( -1 2 ) n: 3 .
-	self assert: result equals: #( -1 8 )
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test02_ExponentiationOfARealNumberToARationalNumberRaiseARealNumberToANegativeRationalNumber [
-	| result |
-
-	result := rationalNumbersCalculator exprealX: 9 r: #( -1 2 ) .
-	self assert: result equals: 0.3333333333333333
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test02_ReductionToLowestTermsReduceANegativeRationalNumberToLowestTerms [
-	| result |
-
-	result := rationalNumbersCalculator reduceR: #( -4 6 ) .
-	self assert: result equals: #( -2 3 )
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test03_AbsoluteValueAbsoluteValueOfANegativeRationalNumber [
-	| result |
-
-	result := rationalNumbersCalculator absR: #( -1 2 ) .
-	self assert: result equals: #(1 2 )
 ]
 
 { #category : #tests }
@@ -205,62 +85,6 @@ RationalNumbersTest >> test03_ArithmeticAdditionAddTwoNegativeRationalNumbers [
 ]
 
 { #category : #tests }
-RationalNumbersTest >> test03_ArithmeticDivisionDivideTwoNegativeRationalNumbers [
-	| result |
-
-	result := rationalNumbersCalculator divR1: #( -1 2 ) r2: #( -2 3 ) .
-	self assert: result equals: #(3 4 )
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test03_ArithmeticMultiplicationMultiplyTwoNegativeRationalNumbers [
-	| result |
-
-	result := rationalNumbersCalculator mulR1: #( -1 2 ) r2: #( -2 3 ) .
-	self assert: result equals: #(1 3 )
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test03_ArithmeticSubtractionSubtractTwoNegativeRationalNumbers [
-	| result |
-
-	result := rationalNumbersCalculator subR1: #( -1 2 ) r2: #( -2 3 ) .
-	self assert: result equals: #(1 6 )
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test03_ExponentiationOfARationalNumberRaiseZeroToAnIntegerPower [
-	| result |
-
-	result := rationalNumbersCalculator exprationalR: #(0 1 ) n: 5 .
-	self assert: result equals: #(0 1 )
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test03_ExponentiationOfARealNumberToARationalNumberRaiseARealNumberToAZeroRationalNumber [
-	| result |
-
-	result := rationalNumbersCalculator exprealX: 2 r: #(0 1 ) .
-	self assert: result equals: 1.0
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test03_ReductionToLowestTermsReduceARationalNumberWithANegativeDenominatorToLowestTerms [
-	| result |
-
-	result := rationalNumbersCalculator reduceR: #(3  -9 ) .
-	self assert: result equals: #( -1 3 )
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test04_AbsoluteValueAbsoluteValueOfANegativeRationalNumberWithNegativeDenominator [
-	| result |
-
-	result := rationalNumbersCalculator absR: #(1  -2 ) .
-	self assert: result equals: #(1 2 )
-]
-
-{ #category : #tests }
 RationalNumbersTest >> test04_ArithmeticAdditionAddARationalNumberToItsAdditiveInverse [
 	| result |
 
@@ -269,23 +93,31 @@ RationalNumbersTest >> test04_ArithmeticAdditionAddARationalNumberToItsAdditiveI
 ]
 
 { #category : #tests }
-RationalNumbersTest >> test04_ArithmeticDivisionDivideARationalNumberBy1 [
+RationalNumbersTest >> test05_ArithmeticSubtractionSubtractTwoPositiveRationalNumbers [
 	| result |
 
-	result := rationalNumbersCalculator divR1: #(1 2 ) r2: #(1 1 ) .
-	self assert: result equals: #(1 2 )
+	result := rationalNumbersCalculator subR1: #(1 2 ) r2: #(2 3 ) .
+	self assert: result equals: #( -1 6 )
 ]
 
 { #category : #tests }
-RationalNumbersTest >> test04_ArithmeticMultiplicationMultiplyARationalNumberByItsReciprocal [
+RationalNumbersTest >> test06_ArithmeticSubtractionSubtractAPositiveRationalNumberAndANegativeRationalNumber [
 	| result |
 
-	result := rationalNumbersCalculator mulR1: #(1 2 ) r2: #(2 1 ) .
-	self assert: result equals: #(1 1 )
+	result := rationalNumbersCalculator subR1: #(1 2 ) r2: #( -2 3 ) .
+	self assert: result equals: #(7 6 )
 ]
 
 { #category : #tests }
-RationalNumbersTest >> test04_ArithmeticSubtractionSubtractARationalNumberFromItself [
+RationalNumbersTest >> test07_ArithmeticSubtractionSubtractTwoNegativeRationalNumbers [
+	| result |
+
+	result := rationalNumbersCalculator subR1: #( -1 2 ) r2: #( -2 3 ) .
+	self assert: result equals: #(1 6 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test08_ArithmeticSubtractionSubtractARationalNumberFromItself [
 	| result |
 
 	result := rationalNumbersCalculator subR1: #(1 2 ) r2: #(1 2 ) .
@@ -293,31 +125,39 @@ RationalNumbersTest >> test04_ArithmeticSubtractionSubtractARationalNumberFromIt
 ]
 
 { #category : #tests }
-RationalNumbersTest >> test04_ExponentiationOfARationalNumberRaiseOneToAnIntegerPower [
+RationalNumbersTest >> test09_ArithmeticMultiplicationMultiplyTwoPositiveRationalNumbers [
 	| result |
 
-	result := rationalNumbersCalculator exprationalR: #(1 1 ) n: 4 .
+	result := rationalNumbersCalculator mulR1: #(1 2 ) r2: #(2 3 ) .
+	self assert: result equals: #(1 3 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test10_ArithmeticMultiplicationMultiplyANegativeRationalNumberByAPositiveRationalNumber [
+	| result |
+
+	result := rationalNumbersCalculator mulR1: #( -1 2 ) r2: #(2 3 ) .
+	self assert: result equals: #( -1 3 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test11_ArithmeticMultiplicationMultiplyTwoNegativeRationalNumbers [
+	| result |
+
+	result := rationalNumbersCalculator mulR1: #( -1 2 ) r2: #( -2 3 ) .
+	self assert: result equals: #(1 3 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test12_ArithmeticMultiplicationMultiplyARationalNumberByItsReciprocal [
+	| result |
+
+	result := rationalNumbersCalculator mulR1: #(1 2 ) r2: #(2 1 ) .
 	self assert: result equals: #(1 1 )
 ]
 
 { #category : #tests }
-RationalNumbersTest >> test04_ReductionToLowestTermsReduceZeroToLowestTerms [
-	| result |
-
-	result := rationalNumbersCalculator reduceR: #(0 6 ) .
-	self assert: result equals: #(0 1 )
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test05_AbsoluteValueAbsoluteValueOfZero [
-	| result |
-
-	result := rationalNumbersCalculator absR: #(0 1 ) .
-	self assert: result equals: #(0 1 )
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test05_ArithmeticMultiplicationMultiplyARationalNumberBy1 [
+RationalNumbersTest >> test13_ArithmeticMultiplicationMultiplyARationalNumberBy1 [
 	| result |
 
 	result := rationalNumbersCalculator mulR1: #(1 2 ) r2: #(1 1 ) .
@@ -325,23 +165,7 @@ RationalNumbersTest >> test05_ArithmeticMultiplicationMultiplyARationalNumberBy1
 ]
 
 { #category : #tests }
-RationalNumbersTest >> test05_ExponentiationOfARationalNumberRaiseAPositiveRationalNumberToThePowerOfZero [
-	| result |
-
-	result := rationalNumbersCalculator exprationalR: #(1 2 ) n: 0 .
-	self assert: result equals: #(1 1 )
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test05_ReductionToLowestTermsReduceAnIntegerToLowestTerms [
-	| result |
-
-	result := rationalNumbersCalculator reduceR: #( -14 7 ) .
-	self assert: result equals: #( -2 1 )
-]
-
-{ #category : #tests }
-RationalNumbersTest >> test06_ArithmeticMultiplicationMultiplyARationalNumberBy0 [
+RationalNumbersTest >> test14_ArithmeticMultiplicationMultiplyARationalNumberBy0 [
 	| result |
 
 	result := rationalNumbersCalculator mulR1: #(1 2 ) r2: #(0 1 ) .
@@ -349,7 +173,119 @@ RationalNumbersTest >> test06_ArithmeticMultiplicationMultiplyARationalNumberBy0
 ]
 
 { #category : #tests }
-RationalNumbersTest >> test06_ExponentiationOfARationalNumberRaiseANegativeRationalNumberToThePowerOfZero [
+RationalNumbersTest >> test15_ArithmeticDivisionDivideTwoPositiveRationalNumbers [
+	| result |
+
+	result := rationalNumbersCalculator divR1: #(1 2 ) r2: #(2 3 ) .
+	self assert: result equals: #(3 4 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test16_ArithmeticDivisionDivideAPositiveRationalNumberByANegativeRationalNumber [
+	| result |
+
+	result := rationalNumbersCalculator divR1: #(1 2 ) r2: #( -2 3 ) .
+	self assert: result equals: #( -3 4 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test17_ArithmeticDivisionDivideTwoNegativeRationalNumbers [
+	| result |
+
+	result := rationalNumbersCalculator divR1: #( -1 2 ) r2: #( -2 3 ) .
+	self assert: result equals: #(3 4 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test18_ArithmeticDivisionDivideARationalNumberBy1 [
+	| result |
+
+	result := rationalNumbersCalculator divR1: #(1 2 ) r2: #(1 1 ) .
+	self assert: result equals: #(1 2 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test19_AbsoluteValueAbsoluteValueOfAPositiveRationalNumber [
+	| result |
+
+	result := rationalNumbersCalculator absR: #(1 2 ) .
+	self assert: result equals: #(1 2 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test20_AbsoluteValueAbsoluteValueOfAPositiveRationalNumberWithNegativeNumeratorAndDenominator [
+	| result |
+
+	result := rationalNumbersCalculator absR: #( -1  -2 ) .
+	self assert: result equals: #(1 2 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test21_AbsoluteValueAbsoluteValueOfANegativeRationalNumber [
+	| result |
+
+	result := rationalNumbersCalculator absR: #( -1 2 ) .
+	self assert: result equals: #(1 2 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test22_AbsoluteValueAbsoluteValueOfANegativeRationalNumberWithNegativeDenominator [
+	| result |
+
+	result := rationalNumbersCalculator absR: #(1  -2 ) .
+	self assert: result equals: #(1 2 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test23_AbsoluteValueAbsoluteValueOfZero [
+	| result |
+
+	result := rationalNumbersCalculator absR: #(0 1 ) .
+	self assert: result equals: #(0 1 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test24_ExponentiationOfARationalNumberRaiseAPositiveRationalNumberToAPositiveIntegerPower [
+	| result |
+
+	result := rationalNumbersCalculator exprationalR: #(1 2 ) n: 3 .
+	self assert: result equals: #(1 8 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test25_ExponentiationOfARationalNumberRaiseANegativeRationalNumberToAPositiveIntegerPower [
+	| result |
+
+	result := rationalNumbersCalculator exprationalR: #( -1 2 ) n: 3 .
+	self assert: result equals: #( -1 8 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test26_ExponentiationOfARationalNumberRaiseZeroToAnIntegerPower [
+	| result |
+
+	result := rationalNumbersCalculator exprationalR: #(0 1 ) n: 5 .
+	self assert: result equals: #(0 1 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test27_ExponentiationOfARationalNumberRaiseOneToAnIntegerPower [
+	| result |
+
+	result := rationalNumbersCalculator exprationalR: #(1 1 ) n: 4 .
+	self assert: result equals: #(1 1 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test28_ExponentiationOfARationalNumberRaiseAPositiveRationalNumberToThePowerOfZero [
+	| result |
+
+	result := rationalNumbersCalculator exprationalR: #(1 2 ) n: 0 .
+	self assert: result equals: #(1 1 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test29_ExponentiationOfARationalNumberRaiseANegativeRationalNumberToThePowerOfZero [
 	| result |
 
 	result := rationalNumbersCalculator exprationalR: #( -1 2 ) n: 0 .
@@ -357,7 +293,71 @@ RationalNumbersTest >> test06_ExponentiationOfARationalNumberRaiseANegativeRatio
 ]
 
 { #category : #tests }
-RationalNumbersTest >> test06_ReductionToLowestTermsReduceOneToLowestTerms [
+RationalNumbersTest >> test30_ExponentiationOfARealNumberToARationalNumberRaiseARealNumberToAPositiveRationalNumber [
+	| result |
+
+	result := rationalNumbersCalculator exprealX: 8 r: #(4 3 ) .
+	self assert: result equals: 16.0
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test31_ExponentiationOfARealNumberToARationalNumberRaiseARealNumberToANegativeRationalNumber [
+	| result |
+
+	result := rationalNumbersCalculator exprealX: 9 r: #( -1 2 ) .
+	self assert: result equals: 0.3333333333333333
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test32_ExponentiationOfARealNumberToARationalNumberRaiseARealNumberToAZeroRationalNumber [
+	| result |
+
+	result := rationalNumbersCalculator exprealX: 2 r: #(0 1 ) .
+	self assert: result equals: 1.0
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test33_ReductionToLowestTermsReduceAPositiveRationalNumberToLowestTerms [
+	| result |
+
+	result := rationalNumbersCalculator reduceR: #(2 4 ) .
+	self assert: result equals: #(1 2 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test34_ReductionToLowestTermsReduceANegativeRationalNumberToLowestTerms [
+	| result |
+
+	result := rationalNumbersCalculator reduceR: #( -4 6 ) .
+	self assert: result equals: #( -2 3 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test35_ReductionToLowestTermsReduceARationalNumberWithANegativeDenominatorToLowestTerms [
+	| result |
+
+	result := rationalNumbersCalculator reduceR: #(3  -9 ) .
+	self assert: result equals: #( -1 3 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test36_ReductionToLowestTermsReduceZeroToLowestTerms [
+	| result |
+
+	result := rationalNumbersCalculator reduceR: #(0 6 ) .
+	self assert: result equals: #(0 1 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test37_ReductionToLowestTermsReduceAnIntegerToLowestTerms [
+	| result |
+
+	result := rationalNumbersCalculator reduceR: #( -14 7 ) .
+	self assert: result equals: #( -2 1 )
+]
+
+{ #category : #tests }
+RationalNumbersTest >> test38_ReductionToLowestTermsReduceOneToLowestTerms [
 	| result |
 
 	result := rationalNumbersCalculator reduceR: #(13 13 ) .

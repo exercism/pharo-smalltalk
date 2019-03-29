@@ -35,12 +35,12 @@ Class {
 { #category : #config }
 PigLatinTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'c97cd7bb-8040-0d00-811d-e08701deb008'
+	^'ce17df16-9d41-0d00-8ff5-fae608866539'
 ]
 
 { #category : #config }
 PigLatinTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.2.0'
 ]
 
@@ -58,83 +58,11 @@ PigLatinTest >> test01_AyIsAddedToWordsThatStartWithVowelsWordBeginningWithA [
 ]
 
 { #category : #tests }
-PigLatinTest >> test01_FirstLetterAndAyAreMovedToTheEndOfWordsThatStartWithConsonantsWordBeginningWithP [
-	| result |
-
-	result := pigLatinCalculator translatePhrase: 'pig' .
-	self assert: result equals: 'igpay'
-]
-
-{ #category : #tests }
-PigLatinTest >> test01_PhrasesAreTranslatedAWholePhrase [
-	| result |
-
-	result := pigLatinCalculator translatePhrase: 'quick fast run' .
-	self assert: result equals: 'ickquay astfay unray'
-]
-
-{ #category : #tests }
-PigLatinTest >> test01_PositionOfYInAWordDeterminesIfItIsAConsonantOrAVowelYIsTreatedLikeAConsonantAtTheBeginningOfAWord [
-	| result |
-
-	result := pigLatinCalculator translatePhrase: 'yellow' .
-	self assert: result equals: 'ellowyay'
-]
-
-{ #category : #tests }
-PigLatinTest >> test01_SomeLetterClustersAreTreatedLikeASingleConsonantWordBeginningWithCh [
-	| result |
-
-	result := pigLatinCalculator translatePhrase: 'chair' .
-	self assert: result equals: 'airchay'
-]
-
-{ #category : #tests }
-PigLatinTest >> test01_SomeLetterClustersAreTreatedLikeASingleVowelWordBeginningWithYt [
-	| result |
-
-	result := pigLatinCalculator translatePhrase: 'yttria' .
-	self assert: result equals: 'yttriaay'
-]
-
-{ #category : #tests }
 PigLatinTest >> test02_AyIsAddedToWordsThatStartWithVowelsWordBeginningWithE [
 	| result |
 
 	result := pigLatinCalculator translatePhrase: 'ear' .
 	self assert: result equals: 'earay'
-]
-
-{ #category : #tests }
-PigLatinTest >> test02_FirstLetterAndAyAreMovedToTheEndOfWordsThatStartWithConsonantsWordBeginningWithK [
-	| result |
-
-	result := pigLatinCalculator translatePhrase: 'koala' .
-	self assert: result equals: 'oalakay'
-]
-
-{ #category : #tests }
-PigLatinTest >> test02_PositionOfYInAWordDeterminesIfItIsAConsonantOrAVowelYIsTreatedLikeAVowelAtTheEndOfAConsonantCluster [
-	| result |
-
-	result := pigLatinCalculator translatePhrase: 'rhythm' .
-	self assert: result equals: 'ythmrhay'
-]
-
-{ #category : #tests }
-PigLatinTest >> test02_SomeLetterClustersAreTreatedLikeASingleConsonantWordBeginningWithQu [
-	| result |
-
-	result := pigLatinCalculator translatePhrase: 'queen' .
-	self assert: result equals: 'eenquay'
-]
-
-{ #category : #tests }
-PigLatinTest >> test02_SomeLetterClustersAreTreatedLikeASingleVowelWordBeginningWithXr [
-	| result |
-
-	result := pigLatinCalculator translatePhrase: 'xray' .
-	self assert: result equals: 'xrayay'
 ]
 
 { #category : #tests }
@@ -146,51 +74,11 @@ PigLatinTest >> test03_AyIsAddedToWordsThatStartWithVowelsWordBeginningWithI [
 ]
 
 { #category : #tests }
-PigLatinTest >> test03_FirstLetterAndAyAreMovedToTheEndOfWordsThatStartWithConsonantsWordBeginningWithX [
-	| result |
-
-	result := pigLatinCalculator translatePhrase: 'xenon' .
-	self assert: result equals: 'enonxay'
-]
-
-{ #category : #tests }
-PigLatinTest >> test03_PositionOfYInAWordDeterminesIfItIsAConsonantOrAVowelYAsSecondLetterInTwoLetterWord [
-	| result |
-
-	result := pigLatinCalculator translatePhrase: 'my' .
-	self assert: result equals: 'ymay'
-]
-
-{ #category : #tests }
-PigLatinTest >> test03_SomeLetterClustersAreTreatedLikeASingleConsonantWordBeginningWithQuAndAPrecedingConsonant [
-	| result |
-
-	result := pigLatinCalculator translatePhrase: 'square' .
-	self assert: result equals: 'aresquay'
-]
-
-{ #category : #tests }
 PigLatinTest >> test04_AyIsAddedToWordsThatStartWithVowelsWordBeginningWithO [
 	| result |
 
 	result := pigLatinCalculator translatePhrase: 'object' .
 	self assert: result equals: 'objectay'
-]
-
-{ #category : #tests }
-PigLatinTest >> test04_FirstLetterAndAyAreMovedToTheEndOfWordsThatStartWithConsonantsWordBeginningWithQWithoutAFollowingU [
-	| result |
-
-	result := pigLatinCalculator translatePhrase: 'qat' .
-	self assert: result equals: 'atqay'
-]
-
-{ #category : #tests }
-PigLatinTest >> test04_SomeLetterClustersAreTreatedLikeASingleConsonantWordBeginningWithTh [
-	| result |
-
-	result := pigLatinCalculator translatePhrase: 'therapy' .
-	self assert: result equals: 'erapythay'
 ]
 
 { #category : #tests }
@@ -202,14 +90,6 @@ PigLatinTest >> test05_AyIsAddedToWordsThatStartWithVowelsWordBeginningWithU [
 ]
 
 { #category : #tests }
-PigLatinTest >> test05_SomeLetterClustersAreTreatedLikeASingleConsonantWordBeginningWithThr [
-	| result |
-
-	result := pigLatinCalculator translatePhrase: 'thrush' .
-	self assert: result equals: 'ushthray'
-]
-
-{ #category : #tests }
 PigLatinTest >> test06_AyIsAddedToWordsThatStartWithVowelsWordBeginningWithAVowelAndFollowedByAQu [
 	| result |
 
@@ -218,9 +98,129 @@ PigLatinTest >> test06_AyIsAddedToWordsThatStartWithVowelsWordBeginningWithAVowe
 ]
 
 { #category : #tests }
-PigLatinTest >> test06_SomeLetterClustersAreTreatedLikeASingleConsonantWordBeginningWithSch [
+PigLatinTest >> test07_FirstLetterAndAyAreMovedToTheEndOfWordsThatStartWithConsonantsWordBeginningWithP [
+	| result |
+
+	result := pigLatinCalculator translatePhrase: 'pig' .
+	self assert: result equals: 'igpay'
+]
+
+{ #category : #tests }
+PigLatinTest >> test08_FirstLetterAndAyAreMovedToTheEndOfWordsThatStartWithConsonantsWordBeginningWithK [
+	| result |
+
+	result := pigLatinCalculator translatePhrase: 'koala' .
+	self assert: result equals: 'oalakay'
+]
+
+{ #category : #tests }
+PigLatinTest >> test09_FirstLetterAndAyAreMovedToTheEndOfWordsThatStartWithConsonantsWordBeginningWithX [
+	| result |
+
+	result := pigLatinCalculator translatePhrase: 'xenon' .
+	self assert: result equals: 'enonxay'
+]
+
+{ #category : #tests }
+PigLatinTest >> test10_FirstLetterAndAyAreMovedToTheEndOfWordsThatStartWithConsonantsWordBeginningWithQWithoutAFollowingU [
+	| result |
+
+	result := pigLatinCalculator translatePhrase: 'qat' .
+	self assert: result equals: 'atqay'
+]
+
+{ #category : #tests }
+PigLatinTest >> test11_SomeLetterClustersAreTreatedLikeASingleConsonantWordBeginningWithCh [
+	| result |
+
+	result := pigLatinCalculator translatePhrase: 'chair' .
+	self assert: result equals: 'airchay'
+]
+
+{ #category : #tests }
+PigLatinTest >> test12_SomeLetterClustersAreTreatedLikeASingleConsonantWordBeginningWithQu [
+	| result |
+
+	result := pigLatinCalculator translatePhrase: 'queen' .
+	self assert: result equals: 'eenquay'
+]
+
+{ #category : #tests }
+PigLatinTest >> test13_SomeLetterClustersAreTreatedLikeASingleConsonantWordBeginningWithQuAndAPrecedingConsonant [
+	| result |
+
+	result := pigLatinCalculator translatePhrase: 'square' .
+	self assert: result equals: 'aresquay'
+]
+
+{ #category : #tests }
+PigLatinTest >> test14_SomeLetterClustersAreTreatedLikeASingleConsonantWordBeginningWithTh [
+	| result |
+
+	result := pigLatinCalculator translatePhrase: 'therapy' .
+	self assert: result equals: 'erapythay'
+]
+
+{ #category : #tests }
+PigLatinTest >> test15_SomeLetterClustersAreTreatedLikeASingleConsonantWordBeginningWithThr [
+	| result |
+
+	result := pigLatinCalculator translatePhrase: 'thrush' .
+	self assert: result equals: 'ushthray'
+]
+
+{ #category : #tests }
+PigLatinTest >> test16_SomeLetterClustersAreTreatedLikeASingleConsonantWordBeginningWithSch [
 	| result |
 
 	result := pigLatinCalculator translatePhrase: 'school' .
 	self assert: result equals: 'oolschay'
+]
+
+{ #category : #tests }
+PigLatinTest >> test17_SomeLetterClustersAreTreatedLikeASingleVowelWordBeginningWithYt [
+	| result |
+
+	result := pigLatinCalculator translatePhrase: 'yttria' .
+	self assert: result equals: 'yttriaay'
+]
+
+{ #category : #tests }
+PigLatinTest >> test18_SomeLetterClustersAreTreatedLikeASingleVowelWordBeginningWithXr [
+	| result |
+
+	result := pigLatinCalculator translatePhrase: 'xray' .
+	self assert: result equals: 'xrayay'
+]
+
+{ #category : #tests }
+PigLatinTest >> test19_PositionOfYInAWordDeterminesIfItIsAConsonantOrAVowelYIsTreatedLikeAConsonantAtTheBeginningOfAWord [
+	| result |
+
+	result := pigLatinCalculator translatePhrase: 'yellow' .
+	self assert: result equals: 'ellowyay'
+]
+
+{ #category : #tests }
+PigLatinTest >> test20_PositionOfYInAWordDeterminesIfItIsAConsonantOrAVowelYIsTreatedLikeAVowelAtTheEndOfAConsonantCluster [
+	| result |
+
+	result := pigLatinCalculator translatePhrase: 'rhythm' .
+	self assert: result equals: 'ythmrhay'
+]
+
+{ #category : #tests }
+PigLatinTest >> test21_PositionOfYInAWordDeterminesIfItIsAConsonantOrAVowelYAsSecondLetterInTwoLetterWord [
+	| result |
+
+	result := pigLatinCalculator translatePhrase: 'my' .
+	self assert: result equals: 'ymay'
+]
+
+{ #category : #tests }
+PigLatinTest >> test22_PhrasesAreTranslatedAWholePhrase [
+	| result |
+
+	result := pigLatinCalculator translatePhrase: 'quick fast run' .
+	self assert: result equals: 'ickquay astfay unray'
 ]

@@ -46,12 +46,12 @@ Class {
 { #category : #config }
 PhoneNumberTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'d588bebb-8040-0d00-80fe-cf7301deb008'
+	^'3ddfb816-9d41-0d00-8fd7-9efb08866539'
 ]
 
 { #category : #config }
 PhoneNumberTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.7.0'
 ]
 

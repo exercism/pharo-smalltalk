@@ -43,12 +43,12 @@ Class {
 { #category : #config }
 ZebraPuzzleTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'3f52f5bb-8040-0d00-813f-d8ef01deb008'
+	^'5aa20717-9d41-0d00-9012-879708866539'
 ]
 
 { #category : #config }
 ZebraPuzzleTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 

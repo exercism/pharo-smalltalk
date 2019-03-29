@@ -47,12 +47,12 @@ Class {
 { #category : #config }
 PrimeFactorsTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'b009ecbb-8040-0d00-8134-796301deb008'
+	^'7fc4f716-9d41-0d00-9007-6e4f08866539'
 ]
 
 { #category : #config }
 PrimeFactorsTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 

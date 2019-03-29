@@ -83,12 +83,12 @@ Class {
 { #category : #config }
 SgfParsingTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'1114ccbb-8040-0d00-8111-780b01deb008'
+	^'8720cd16-9d41-0d00-8fe9-50d008866539'
 ]
 
 { #category : #config }
 SgfParsingTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.2.0'
 ]
 

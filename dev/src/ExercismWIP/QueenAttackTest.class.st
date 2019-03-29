@@ -44,12 +44,12 @@ Class {
 { #category : #config }
 QueenAttackTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'dc44cbbb-8040-0d00-8110-c80f01deb008'
+	^'7ce8cb16-9d41-0d00-8fe8-8ca708866539'
 ]
 
 { #category : #config }
 QueenAttackTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'2.2.0'
 ]
 
@@ -67,27 +67,11 @@ QueenAttackTest >> test01_TestCreationOfQueensWithValidAndInvalidPositionsQueenW
 ]
 
 { #category : #tests }
-QueenAttackTest >> test01_TestTheAbilityOfOneQueenToAttackAnotherCanNotAttack [
-	| result |
-
-	result := queenAttackCalculator canAttackWhite_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->4); add: ('row'->2); yourself)); yourself) black_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->6); add: ('row'->6); yourself)); yourself) .
-	self assert: result equals: false
-]
-
-{ #category : #tests }
 QueenAttackTest >> test02_TestCreationOfQueensWithValidAndInvalidPositionsQueenMustHavePositiveRow [
 	| result |
 
 	result := queenAttackCalculator createQueen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->2); add: ('row'-> -2); yourself)); yourself) .
 	self assert: result equals: ((Dictionary new) add: ('error'->'row not positive'); yourself)
-]
-
-{ #category : #tests }
-QueenAttackTest >> test02_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnSameRow [
-	| result |
-
-	result := queenAttackCalculator canAttackWhite_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->4); add: ('row'->2); yourself)); yourself) black_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->6); add: ('row'->2); yourself)); yourself) .
-	self assert: result equals: true
 ]
 
 { #category : #tests }
@@ -99,27 +83,11 @@ QueenAttackTest >> test03_TestCreationOfQueensWithValidAndInvalidPositionsQueenM
 ]
 
 { #category : #tests }
-QueenAttackTest >> test03_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnSameColumn [
-	| result |
-
-	result := queenAttackCalculator canAttackWhite_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->5); add: ('row'->4); yourself)); yourself) black_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->5); add: ('row'->2); yourself)); yourself) .
-	self assert: result equals: true
-]
-
-{ #category : #tests }
 QueenAttackTest >> test04_TestCreationOfQueensWithValidAndInvalidPositionsQueenMustHavePositiveColumn [
 	| result |
 
 	result := queenAttackCalculator createQueen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'-> -2); add: ('row'->2); yourself)); yourself) .
 	self assert: result equals: ((Dictionary new) add: ('error'->'column not positive'); yourself)
-]
-
-{ #category : #tests }
-QueenAttackTest >> test04_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnFirstDiagonal [
-	| result |
-
-	result := queenAttackCalculator canAttackWhite_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->2); add: ('row'->2); yourself)); yourself) black_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->4); add: ('row'->0); yourself)); yourself) .
-	self assert: result equals: true
 ]
 
 { #category : #tests }
@@ -131,7 +99,39 @@ QueenAttackTest >> test05_TestCreationOfQueensWithValidAndInvalidPositionsQueenM
 ]
 
 { #category : #tests }
-QueenAttackTest >> test05_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnSecondDiagonal [
+QueenAttackTest >> test06_TestTheAbilityOfOneQueenToAttackAnotherCanNotAttack [
+	| result |
+
+	result := queenAttackCalculator canAttackWhite_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->4); add: ('row'->2); yourself)); yourself) black_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->6); add: ('row'->6); yourself)); yourself) .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+QueenAttackTest >> test07_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnSameRow [
+	| result |
+
+	result := queenAttackCalculator canAttackWhite_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->4); add: ('row'->2); yourself)); yourself) black_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->6); add: ('row'->2); yourself)); yourself) .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+QueenAttackTest >> test08_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnSameColumn [
+	| result |
+
+	result := queenAttackCalculator canAttackWhite_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->5); add: ('row'->4); yourself)); yourself) black_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->5); add: ('row'->2); yourself)); yourself) .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+QueenAttackTest >> test09_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnFirstDiagonal [
+	| result |
+
+	result := queenAttackCalculator canAttackWhite_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->2); add: ('row'->2); yourself)); yourself) black_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->4); add: ('row'->0); yourself)); yourself) .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+QueenAttackTest >> test10_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnSecondDiagonal [
 	| result |
 
 	result := queenAttackCalculator canAttackWhite_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->2); add: ('row'->2); yourself)); yourself) black_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->1); add: ('row'->3); yourself)); yourself) .
@@ -139,7 +139,7 @@ QueenAttackTest >> test05_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnSeco
 ]
 
 { #category : #tests }
-QueenAttackTest >> test06_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnThirdDiagonal [
+QueenAttackTest >> test11_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnThirdDiagonal [
 	| result |
 
 	result := queenAttackCalculator canAttackWhite_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->2); add: ('row'->2); yourself)); yourself) black_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->1); add: ('row'->1); yourself)); yourself) .
@@ -147,7 +147,7 @@ QueenAttackTest >> test06_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnThir
 ]
 
 { #category : #tests }
-QueenAttackTest >> test07_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnFourthDiagonal [
+QueenAttackTest >> test12_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnFourthDiagonal [
 	| result |
 
 	result := queenAttackCalculator canAttackWhite_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->2); add: ('row'->2); yourself)); yourself) black_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->5); add: ('row'->5); yourself)); yourself) .

@@ -50,12 +50,12 @@ Class {
 { #category : #config }
 DndCharacterTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'0172e9bb-8040-0d00-8130-824f01deb008'
+	^'ba4ef416-9d41-0d00-9003-fba308866539'
 ]
 
 { #category : #config }
 DndCharacterTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
@@ -81,14 +81,6 @@ DndCharacterTest >> test02_AbilityModifierAbilityModifierForScore4Is3 [
 ]
 
 { #category : #tests }
-DndCharacterTest >> test02_RandomAbilityIsWithinRange [
-	| result |
-
-	result := dndCharacterCalculator ability.
-	self assert: result equals: 'score >= 3 && score <= 18'
-]
-
-{ #category : #tests }
 DndCharacterTest >> test03_AbilityModifierAbilityModifierForScore5Is3 [
 	| result |
 
@@ -97,27 +89,11 @@ DndCharacterTest >> test03_AbilityModifierAbilityModifierForScore5Is3 [
 ]
 
 { #category : #tests }
-DndCharacterTest >> test03_RandomCharacterIsValid [
-	| result |
-
-	result := dndCharacterCalculator character.
-	self assert: result equals: ((Dictionary new) add: ('charisma'->'charisma >= 3 && charisma <= 18'); add: ('intelligence'->'intelligence >= 3 && intelligence <= 18'); add: ('wisdom'->'wisdom >= 3 && wisdom <= 18'); add: ('strength'->'strength >= 3 && strength <= 18'); add: ('constitution'->'constitution >= 3 && constitution <= 18'); add: ('dexterity'->'dexterity >= 3 && dexterity <= 18'); add: ('hitpoints'->'hitpoints == 10 + modifier(constitution)'); yourself)
-]
-
-{ #category : #tests }
 DndCharacterTest >> test04_AbilityModifierAbilityModifierForScore6Is2 [
 	| result |
 
 	result := dndCharacterCalculator modifierScore: 6 .
 	self assert: result equals:  -2
-]
-
-{ #category : #tests }
-DndCharacterTest >> test04_EachAbilityIsOnlyCalculatedOnce [
-	| result |
-
-	result := dndCharacterCalculator strength.
-	self assert: result equals: 'strength == strength'
 ]
 
 { #category : #tests }
@@ -214,4 +190,28 @@ DndCharacterTest >> test16_AbilityModifierAbilityModifierForScore18Is4 [
 
 	result := dndCharacterCalculator modifierScore: 18 .
 	self assert: result equals: 4
+]
+
+{ #category : #tests }
+DndCharacterTest >> test17_RandomAbilityIsWithinRange [
+	| result |
+
+	result := dndCharacterCalculator ability.
+	self assert: result equals: 'score >= 3 && score <= 18'
+]
+
+{ #category : #tests }
+DndCharacterTest >> test18_RandomCharacterIsValid [
+	| result |
+
+	result := dndCharacterCalculator character.
+	self assert: result equals: ((Dictionary new) add: ('charisma'->'charisma >= 3 && charisma <= 18'); add: ('intelligence'->'intelligence >= 3 && intelligence <= 18'); add: ('wisdom'->'wisdom >= 3 && wisdom <= 18'); add: ('strength'->'strength >= 3 && strength <= 18'); add: ('constitution'->'constitution >= 3 && constitution <= 18'); add: ('dexterity'->'dexterity >= 3 && dexterity <= 18'); add: ('hitpoints'->'hitpoints == 10 + modifier(constitution)'); yourself)
+]
+
+{ #category : #tests }
+DndCharacterTest >> test19_EachAbilityIsOnlyCalculatedOnce [
+	| result |
+
+	result := dndCharacterCalculator strength.
+	self assert: result equals: 'strength == strength'
 ]

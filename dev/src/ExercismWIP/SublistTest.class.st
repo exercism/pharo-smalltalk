@@ -35,12 +35,12 @@ Class {
 { #category : #config }
 SublistTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'3a53eabb-8040-0d00-8131-1ded01deb008'
+	^'de97f516-9d41-0d00-9004-a58f08866539'
 ]
 
 { #category : #config }
 SublistTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 

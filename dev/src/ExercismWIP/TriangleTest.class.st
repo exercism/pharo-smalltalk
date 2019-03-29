@@ -40,13 +40,13 @@ Class {
 { #category : #config }
 TriangleTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'4d93cfbb-8040-0d00-8115-4e2601deb008'
+	^'51fed216-9d41-0d00-8fed-03f808866539'
 ]
 
 { #category : #config }
 TriangleTest class >> version [
-	"Generated from specification: 15 March 2019"
-	^'1.2.0'
+	"Generated from specification: 29 March 2019"
+	^'1.2.1'
 ]
 
 { #category : #setup }
@@ -55,7 +55,7 @@ TriangleTest >> setUp [
 ]
 
 { #category : #tests }
-TriangleTest >> test01_ReturnsTrueIfTheTriangleIsEquilateralTrueIfAllSidesAreEqual [
+TriangleTest >> test01_EquilateralTriangleAllSidesAreEqual [
 	| result |
 
 	result := triangleCalculator equilateralSides: #(2 2 2 ) .
@@ -63,23 +63,7 @@ TriangleTest >> test01_ReturnsTrueIfTheTriangleIsEquilateralTrueIfAllSidesAreEqu
 ]
 
 { #category : #tests }
-TriangleTest >> test01_ReturnsTrueIfTheTriangleIsIsoscelesTrueIfLastTwoSidesAreEqual [
-	| result |
-
-	result := triangleCalculator isoscelesSides: #(3 4 4 ) .
-	self assert: result equals: true
-]
-
-{ #category : #tests }
-TriangleTest >> test01_ReturnsTrueIfTheTriangleIsScaleneTrueIfNoSidesAreEqual [
-	| result |
-
-	result := triangleCalculator scaleneSides: #(5 4 6 ) .
-	self assert: result equals: true
-]
-
-{ #category : #tests }
-TriangleTest >> test02_ReturnsTrueIfTheTriangleIsEquilateralFalseIfAnySideIsUnequal [
+TriangleTest >> test02_EquilateralTriangleAnySideIsUnequal [
 	| result |
 
 	result := triangleCalculator equilateralSides: #(2 3 2 ) .
@@ -87,23 +71,7 @@ TriangleTest >> test02_ReturnsTrueIfTheTriangleIsEquilateralFalseIfAnySideIsUneq
 ]
 
 { #category : #tests }
-TriangleTest >> test02_ReturnsTrueIfTheTriangleIsIsoscelesTrueIfFirstTwoSidesAreEqual [
-	| result |
-
-	result := triangleCalculator isoscelesSides: #(4 4 3 ) .
-	self assert: result equals: true
-]
-
-{ #category : #tests }
-TriangleTest >> test02_ReturnsTrueIfTheTriangleIsScaleneFalseIfAllSidesAreEqual [
-	| result |
-
-	result := triangleCalculator scaleneSides: #(4 4 4 ) .
-	self assert: result equals: false
-]
-
-{ #category : #tests }
-TriangleTest >> test03_ReturnsTrueIfTheTriangleIsEquilateralFalseIfNoSidesAreEqual [
+TriangleTest >> test03_EquilateralTriangleNoSidesAreEqual [
 	| result |
 
 	result := triangleCalculator equilateralSides: #(5 4 6 ) .
@@ -111,23 +79,7 @@ TriangleTest >> test03_ReturnsTrueIfTheTriangleIsEquilateralFalseIfNoSidesAreEqu
 ]
 
 { #category : #tests }
-TriangleTest >> test03_ReturnsTrueIfTheTriangleIsIsoscelesTrueIfFirstAndLastSidesAreEqual [
-	| result |
-
-	result := triangleCalculator isoscelesSides: #(4 3 4 ) .
-	self assert: result equals: true
-]
-
-{ #category : #tests }
-TriangleTest >> test03_ReturnsTrueIfTheTriangleIsScaleneFalseIfTwoSidesAreEqual [
-	| result |
-
-	result := triangleCalculator scaleneSides: #(4 4 3 ) .
-	self assert: result equals: false
-]
-
-{ #category : #tests }
-TriangleTest >> test04_ReturnsTrueIfTheTriangleIsEquilateralAllZeroSidesAreIllegalSoTheTriangleIsNotEquilateral [
+TriangleTest >> test04_EquilateralTriangleAllZeroSidesIsNotATriangle [
 	| result |
 
 	result := triangleCalculator equilateralSides: #(0 0 0 ) .
@@ -135,23 +87,7 @@ TriangleTest >> test04_ReturnsTrueIfTheTriangleIsEquilateralAllZeroSidesAreIlleg
 ]
 
 { #category : #tests }
-TriangleTest >> test04_ReturnsTrueIfTheTriangleIsIsoscelesEquilateralTrianglesAreAlsoIsosceles [
-	| result |
-
-	result := triangleCalculator isoscelesSides: #(4 4 4 ) .
-	self assert: result equals: true
-]
-
-{ #category : #tests }
-TriangleTest >> test04_ReturnsTrueIfTheTriangleIsScaleneSidesThatViolateTriangleInequalityAreNotScaleneEvenIfTheyAreAllDifferent [
-	| result |
-
-	result := triangleCalculator scaleneSides: #(7 3 2 ) .
-	self assert: result equals: false
-]
-
-{ #category : #tests }
-TriangleTest >> test05_ReturnsTrueIfTheTriangleIsEquilateralSidesMayBeFloats [
+TriangleTest >> test05_EquilateralTriangleSidesMayBeFloats [
 	| result |
 
 	result := triangleCalculator equilateralSides: #(0.5 0.5 0.5 ) .
@@ -159,7 +95,39 @@ TriangleTest >> test05_ReturnsTrueIfTheTriangleIsEquilateralSidesMayBeFloats [
 ]
 
 { #category : #tests }
-TriangleTest >> test05_ReturnsTrueIfTheTriangleIsIsoscelesFalseIfNoSidesAreEqual [
+TriangleTest >> test06_IsoscelesTriangleLastTwoSidesAreEqual [
+	| result |
+
+	result := triangleCalculator isoscelesSides: #(3 4 4 ) .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+TriangleTest >> test07_IsoscelesTriangleFirstTwoSidesAreEqual [
+	| result |
+
+	result := triangleCalculator isoscelesSides: #(4 4 3 ) .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+TriangleTest >> test08_IsoscelesTriangleFirstAndLastSidesAreEqual [
+	| result |
+
+	result := triangleCalculator isoscelesSides: #(4 3 4 ) .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+TriangleTest >> test09_IsoscelesTriangleEquilateralTrianglesAreAlsoIsosceles [
+	| result |
+
+	result := triangleCalculator isoscelesSides: #(4 4 4 ) .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+TriangleTest >> test10_IsoscelesTriangleNoSidesAreEqual [
 	| result |
 
 	result := triangleCalculator isoscelesSides: #(2 3 4 ) .
@@ -167,15 +135,7 @@ TriangleTest >> test05_ReturnsTrueIfTheTriangleIsIsoscelesFalseIfNoSidesAreEqual
 ]
 
 { #category : #tests }
-TriangleTest >> test05_ReturnsTrueIfTheTriangleIsScaleneSidesMayBeFloats [
-	| result |
-
-	result := triangleCalculator scaleneSides: #(0.5 0.4 0.6 ) .
-	self assert: result equals: true
-]
-
-{ #category : #tests }
-TriangleTest >> test06_ReturnsTrueIfTheTriangleIsIsoscelesSidesThatViolateTriangleInequalityAreNotIsoscelesEvenIfTwoAreEqual1 [
+TriangleTest >> test11_IsoscelesTriangleFirstTriangleInequalityViolation [
 	| result |
 
 	result := triangleCalculator isoscelesSides: #(1 1 3 ) .
@@ -183,7 +143,7 @@ TriangleTest >> test06_ReturnsTrueIfTheTriangleIsIsoscelesSidesThatViolateTriang
 ]
 
 { #category : #tests }
-TriangleTest >> test07_ReturnsTrueIfTheTriangleIsIsoscelesSidesThatViolateTriangleInequalityAreNotIsoscelesEvenIfTwoAreEqual2 [
+TriangleTest >> test12_IsoscelesTriangleSecondTriangleInequalityViolation [
 	| result |
 
 	result := triangleCalculator isoscelesSides: #(1 3 1 ) .
@@ -191,7 +151,7 @@ TriangleTest >> test07_ReturnsTrueIfTheTriangleIsIsoscelesSidesThatViolateTriang
 ]
 
 { #category : #tests }
-TriangleTest >> test08_ReturnsTrueIfTheTriangleIsIsoscelesSidesThatViolateTriangleInequalityAreNotIsoscelesEvenIfTwoAreEqual3 [
+TriangleTest >> test13_IsoscelesTriangleThirdTriangleInequalityViolation [
 	| result |
 
 	result := triangleCalculator isoscelesSides: #(3 1 1 ) .
@@ -199,9 +159,49 @@ TriangleTest >> test08_ReturnsTrueIfTheTriangleIsIsoscelesSidesThatViolateTriang
 ]
 
 { #category : #tests }
-TriangleTest >> test09_ReturnsTrueIfTheTriangleIsIsoscelesSidesMayBeFloats [
+TriangleTest >> test14_IsoscelesTriangleSidesMayBeFloats [
 	| result |
 
 	result := triangleCalculator isoscelesSides: #(0.5 0.4 0.5 ) .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+TriangleTest >> test15_ScaleneTriangleNoSidesAreEqual [
+	| result |
+
+	result := triangleCalculator scaleneSides: #(5 4 6 ) .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+TriangleTest >> test16_ScaleneTriangleAllSidesAreEqual [
+	| result |
+
+	result := triangleCalculator scaleneSides: #(4 4 4 ) .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+TriangleTest >> test17_ScaleneTriangleTwoSidesAreEqual [
+	| result |
+
+	result := triangleCalculator scaleneSides: #(4 4 3 ) .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+TriangleTest >> test18_ScaleneTriangleMayNotViolateTriangleInequality [
+	| result |
+
+	result := triangleCalculator scaleneSides: #(7 3 2 ) .
+	self assert: result equals: false
+]
+
+{ #category : #tests }
+TriangleTest >> test19_ScaleneTriangleSidesMayBeFloats [
+	| result |
+
+	result := triangleCalculator scaleneSides: #(0.5 0.4 0.6 ) .
 	self assert: result equals: true
 ]

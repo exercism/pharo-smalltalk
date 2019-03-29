@@ -66,12 +66,12 @@ Class {
 { #category : #config }
 ScaleGeneratorTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'408fd1bb-8040-0d00-8118-e85a01deb008'
+	^'cf5dd616-9d41-0d00-8ff0-f57c08866539'
 ]
 
 { #category : #config }
 ScaleGeneratorTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'2.0.0'
 ]
 
@@ -89,14 +89,6 @@ ScaleGeneratorTest >> test01_ChromaticScalesChromaticScaleWithSharps [
 ]
 
 { #category : #tests }
-ScaleGeneratorTest >> test01_ScalesWithSpecifiedIntervalsSimpleMajorScale [
-	| result |
-
-	result := scaleGeneratorCalculator intervalTonic: 'C' intervals: 'MMmMMMm' .
-	self assert: result equals: #('C' 'D' 'E' 'F' 'G' 'A' 'B' )
-]
-
-{ #category : #tests }
 ScaleGeneratorTest >> test02_ChromaticScalesChromaticScaleWithFlats [
 	| result |
 
@@ -105,7 +97,15 @@ ScaleGeneratorTest >> test02_ChromaticScalesChromaticScaleWithFlats [
 ]
 
 { #category : #tests }
-ScaleGeneratorTest >> test02_ScalesWithSpecifiedIntervalsMajorScaleWithSharps [
+ScaleGeneratorTest >> test03_ScalesWithSpecifiedIntervalsSimpleMajorScale [
+	| result |
+
+	result := scaleGeneratorCalculator intervalTonic: 'C' intervals: 'MMmMMMm' .
+	self assert: result equals: #('C' 'D' 'E' 'F' 'G' 'A' 'B' )
+]
+
+{ #category : #tests }
+ScaleGeneratorTest >> test04_ScalesWithSpecifiedIntervalsMajorScaleWithSharps [
 	| result |
 
 	result := scaleGeneratorCalculator intervalTonic: 'G' intervals: 'MMmMMMm' .
@@ -113,7 +113,7 @@ ScaleGeneratorTest >> test02_ScalesWithSpecifiedIntervalsMajorScaleWithSharps [
 ]
 
 { #category : #tests }
-ScaleGeneratorTest >> test03_ScalesWithSpecifiedIntervalsMajorScaleWithFlats [
+ScaleGeneratorTest >> test05_ScalesWithSpecifiedIntervalsMajorScaleWithFlats [
 	| result |
 
 	result := scaleGeneratorCalculator intervalTonic: 'F' intervals: 'MMmMMMm' .
@@ -121,7 +121,7 @@ ScaleGeneratorTest >> test03_ScalesWithSpecifiedIntervalsMajorScaleWithFlats [
 ]
 
 { #category : #tests }
-ScaleGeneratorTest >> test04_ScalesWithSpecifiedIntervalsMinorScaleWithSharps [
+ScaleGeneratorTest >> test06_ScalesWithSpecifiedIntervalsMinorScaleWithSharps [
 	| result |
 
 	result := scaleGeneratorCalculator intervalTonic: 'f#' intervals: 'MmMMmMM' .
@@ -129,7 +129,7 @@ ScaleGeneratorTest >> test04_ScalesWithSpecifiedIntervalsMinorScaleWithSharps [
 ]
 
 { #category : #tests }
-ScaleGeneratorTest >> test05_ScalesWithSpecifiedIntervalsMinorScaleWithFlats [
+ScaleGeneratorTest >> test07_ScalesWithSpecifiedIntervalsMinorScaleWithFlats [
 	| result |
 
 	result := scaleGeneratorCalculator intervalTonic: 'bb' intervals: 'MmMMmMM' .
@@ -137,7 +137,7 @@ ScaleGeneratorTest >> test05_ScalesWithSpecifiedIntervalsMinorScaleWithFlats [
 ]
 
 { #category : #tests }
-ScaleGeneratorTest >> test06_ScalesWithSpecifiedIntervalsDorianMode [
+ScaleGeneratorTest >> test08_ScalesWithSpecifiedIntervalsDorianMode [
 	| result |
 
 	result := scaleGeneratorCalculator intervalTonic: 'd' intervals: 'MmMMMmM' .
@@ -145,7 +145,7 @@ ScaleGeneratorTest >> test06_ScalesWithSpecifiedIntervalsDorianMode [
 ]
 
 { #category : #tests }
-ScaleGeneratorTest >> test07_ScalesWithSpecifiedIntervalsMixolydianMode [
+ScaleGeneratorTest >> test09_ScalesWithSpecifiedIntervalsMixolydianMode [
 	| result |
 
 	result := scaleGeneratorCalculator intervalTonic: 'Eb' intervals: 'MMmMMmM' .
@@ -153,7 +153,7 @@ ScaleGeneratorTest >> test07_ScalesWithSpecifiedIntervalsMixolydianMode [
 ]
 
 { #category : #tests }
-ScaleGeneratorTest >> test08_ScalesWithSpecifiedIntervalsLydianMode [
+ScaleGeneratorTest >> test10_ScalesWithSpecifiedIntervalsLydianMode [
 	| result |
 
 	result := scaleGeneratorCalculator intervalTonic: 'a' intervals: 'MMMmMMm' .
@@ -161,7 +161,7 @@ ScaleGeneratorTest >> test08_ScalesWithSpecifiedIntervalsLydianMode [
 ]
 
 { #category : #tests }
-ScaleGeneratorTest >> test09_ScalesWithSpecifiedIntervalsPhrygianMode [
+ScaleGeneratorTest >> test11_ScalesWithSpecifiedIntervalsPhrygianMode [
 	| result |
 
 	result := scaleGeneratorCalculator intervalTonic: 'e' intervals: 'mMMMmMM' .
@@ -169,7 +169,7 @@ ScaleGeneratorTest >> test09_ScalesWithSpecifiedIntervalsPhrygianMode [
 ]
 
 { #category : #tests }
-ScaleGeneratorTest >> test10_ScalesWithSpecifiedIntervalsLocrianMode [
+ScaleGeneratorTest >> test12_ScalesWithSpecifiedIntervalsLocrianMode [
 	| result |
 
 	result := scaleGeneratorCalculator intervalTonic: 'g' intervals: 'mMMmMMM' .
@@ -177,7 +177,7 @@ ScaleGeneratorTest >> test10_ScalesWithSpecifiedIntervalsLocrianMode [
 ]
 
 { #category : #tests }
-ScaleGeneratorTest >> test11_ScalesWithSpecifiedIntervalsHarmonicMinor [
+ScaleGeneratorTest >> test13_ScalesWithSpecifiedIntervalsHarmonicMinor [
 	| result |
 
 	result := scaleGeneratorCalculator intervalTonic: 'd' intervals: 'MmMMmAm' .
@@ -185,7 +185,7 @@ ScaleGeneratorTest >> test11_ScalesWithSpecifiedIntervalsHarmonicMinor [
 ]
 
 { #category : #tests }
-ScaleGeneratorTest >> test12_ScalesWithSpecifiedIntervalsOctatonic [
+ScaleGeneratorTest >> test14_ScalesWithSpecifiedIntervalsOctatonic [
 	| result |
 
 	result := scaleGeneratorCalculator intervalTonic: 'C' intervals: 'MmMmMmMm' .
@@ -193,7 +193,7 @@ ScaleGeneratorTest >> test12_ScalesWithSpecifiedIntervalsOctatonic [
 ]
 
 { #category : #tests }
-ScaleGeneratorTest >> test13_ScalesWithSpecifiedIntervalsHexatonic [
+ScaleGeneratorTest >> test15_ScalesWithSpecifiedIntervalsHexatonic [
 	| result |
 
 	result := scaleGeneratorCalculator intervalTonic: 'Db' intervals: 'MMMMMM' .
@@ -201,7 +201,7 @@ ScaleGeneratorTest >> test13_ScalesWithSpecifiedIntervalsHexatonic [
 ]
 
 { #category : #tests }
-ScaleGeneratorTest >> test14_ScalesWithSpecifiedIntervalsPentatonic [
+ScaleGeneratorTest >> test16_ScalesWithSpecifiedIntervalsPentatonic [
 	| result |
 
 	result := scaleGeneratorCalculator intervalTonic: 'A' intervals: 'MMAMA' .
@@ -209,7 +209,7 @@ ScaleGeneratorTest >> test14_ScalesWithSpecifiedIntervalsPentatonic [
 ]
 
 { #category : #tests }
-ScaleGeneratorTest >> test15_ScalesWithSpecifiedIntervalsEnigmatic [
+ScaleGeneratorTest >> test17_ScalesWithSpecifiedIntervalsEnigmatic [
 	| result |
 
 	result := scaleGeneratorCalculator intervalTonic: 'G' intervals: 'mAMMMmm' .

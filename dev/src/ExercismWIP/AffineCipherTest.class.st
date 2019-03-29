@@ -92,21 +92,13 @@ AffineCipherTest class >> uuid [
 
 { #category : #config }
 AffineCipherTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'2.0.0'
 ]
 
 { #category : #setup }
 AffineCipherTest >> setUp [
 	affineCipherCalculator := AffineCipher new
-]
-
-{ #category : #tests }
-AffineCipherTest >> test01_DecodeDecodeExercism [
-	| result |
-
-	result := affineCipherCalculator decodeKey: ((Dictionary new) add: ('a'->3); add: ('b'->7); yourself) phrase: 'tytgn fjr' .
-	self assert: result equals: 'exercism'
 ]
 
 { #category : #tests }
@@ -118,27 +110,11 @@ AffineCipherTest >> test01_EncodeEncodeYes [
 ]
 
 { #category : #tests }
-AffineCipherTest >> test02_DecodeDecodeASentence [
-	| result |
-
-	result := affineCipherCalculator decodeKey: ((Dictionary new) add: ('a'->19); add: ('b'->16); yourself) phrase: 'qdwju nqcro muwhn odqun oppmd aunwd o' .
-	self assert: result equals: 'anobstacleisoftenasteppingstone'
-]
-
-{ #category : #tests }
 AffineCipherTest >> test02_EncodeEncodeNo [
 	| result |
 
 	result := affineCipherCalculator encodeKey: ((Dictionary new) add: ('a'->15); add: ('b'->18); yourself) phrase: 'no' .
 	self assert: result equals: 'fu'
-]
-
-{ #category : #tests }
-AffineCipherTest >> test03_DecodeDecodeNumbers [
-	| result |
-
-	result := affineCipherCalculator decodeKey: ((Dictionary new) add: ('a'->25); add: ('b'->7); yourself) phrase: 'odpoz ub123 odpoz ub' .
-	self assert: result equals: 'testing123testing'
 ]
 
 { #category : #tests }
@@ -150,27 +126,11 @@ AffineCipherTest >> test03_EncodeEncodeOMG [
 ]
 
 { #category : #tests }
-AffineCipherTest >> test04_DecodeDecodeAllTheLetters [
-	| result |
-
-	result := affineCipherCalculator decodeKey: ((Dictionary new) add: ('a'->17); add: ('b'->33); yourself) phrase: 'swxtj npvyk lruol iejdc blaxk swxmh qzglf' .
-	self assert: result equals: 'thequickbrownfoxjumpsoverthelazydog'
-]
-
-{ #category : #tests }
 AffineCipherTest >> test04_EncodeEncodeOMG [
 	| result |
 
 	result := affineCipherCalculator encodeKey: ((Dictionary new) add: ('a'->25); add: ('b'->47); yourself) phrase: 'O M G' .
 	self assert: result equals: 'hjp'
-]
-
-{ #category : #tests }
-AffineCipherTest >> test05_DecodeDecodeWithNoSpacesInInput [
-	| result |
-
-	result := affineCipherCalculator decodeKey: ((Dictionary new) add: ('a'->17); add: ('b'->33); yourself) phrase: 'swxtjnpvyklruoliejdcblaxkswxmhqzglf' .
-	self assert: result equals: 'thequickbrownfoxjumpsoverthelazydog'
 ]
 
 { #category : #tests }
@@ -182,27 +142,11 @@ AffineCipherTest >> test05_EncodeEncodeMindblowingly [
 ]
 
 { #category : #tests }
-AffineCipherTest >> test06_DecodeDecodeWithTooManySpaces [
-	| result |
-
-	result := affineCipherCalculator decodeKey: ((Dictionary new) add: ('a'->15); add: ('b'->16); yourself) phrase: 'vszzm    cly   yd cg    qdp' .
-	self assert: result equals: 'jollygreengiant'
-]
-
-{ #category : #tests }
 AffineCipherTest >> test06_EncodeEncodeNumbers [
 	| result |
 
 	result := affineCipherCalculator encodeKey: ((Dictionary new) add: ('a'->3); add: ('b'->4); yourself) phrase: 'Testing,1 2 3, testing.' .
 	self assert: result equals: 'jqgjc rw123 jqgjc rw'
-]
-
-{ #category : #tests }
-AffineCipherTest >> test07_DecodeDecodeWithANotCoprimeToM [
-	| result |
-
-	result := affineCipherCalculator decodeKey: ((Dictionary new) add: ('a'->13); add: ('b'->5); yourself) phrase: 'Test' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'a and m must be coprime.'); yourself)
 ]
 
 { #category : #tests }
@@ -226,5 +170,61 @@ AffineCipherTest >> test09_EncodeEncodeWithANotCoprimeToM [
 	| result |
 
 	result := affineCipherCalculator encodeKey: ((Dictionary new) add: ('a'->6); add: ('b'->17); yourself) phrase: 'This is a test.' .
+	self assert: result equals: ((Dictionary new) add: ('error'->'a and m must be coprime.'); yourself)
+]
+
+{ #category : #tests }
+AffineCipherTest >> test10_DecodeDecodeExercism [
+	| result |
+
+	result := affineCipherCalculator decodeKey: ((Dictionary new) add: ('a'->3); add: ('b'->7); yourself) phrase: 'tytgn fjr' .
+	self assert: result equals: 'exercism'
+]
+
+{ #category : #tests }
+AffineCipherTest >> test11_DecodeDecodeASentence [
+	| result |
+
+	result := affineCipherCalculator decodeKey: ((Dictionary new) add: ('a'->19); add: ('b'->16); yourself) phrase: 'qdwju nqcro muwhn odqun oppmd aunwd o' .
+	self assert: result equals: 'anobstacleisoftenasteppingstone'
+]
+
+{ #category : #tests }
+AffineCipherTest >> test12_DecodeDecodeNumbers [
+	| result |
+
+	result := affineCipherCalculator decodeKey: ((Dictionary new) add: ('a'->25); add: ('b'->7); yourself) phrase: 'odpoz ub123 odpoz ub' .
+	self assert: result equals: 'testing123testing'
+]
+
+{ #category : #tests }
+AffineCipherTest >> test13_DecodeDecodeAllTheLetters [
+	| result |
+
+	result := affineCipherCalculator decodeKey: ((Dictionary new) add: ('a'->17); add: ('b'->33); yourself) phrase: 'swxtj npvyk lruol iejdc blaxk swxmh qzglf' .
+	self assert: result equals: 'thequickbrownfoxjumpsoverthelazydog'
+]
+
+{ #category : #tests }
+AffineCipherTest >> test14_DecodeDecodeWithNoSpacesInInput [
+	| result |
+
+	result := affineCipherCalculator decodeKey: ((Dictionary new) add: ('a'->17); add: ('b'->33); yourself) phrase: 'swxtjnpvyklruoliejdcblaxkswxmhqzglf' .
+	self assert: result equals: 'thequickbrownfoxjumpsoverthelazydog'
+]
+
+{ #category : #tests }
+AffineCipherTest >> test15_DecodeDecodeWithTooManySpaces [
+	| result |
+
+	result := affineCipherCalculator decodeKey: ((Dictionary new) add: ('a'->15); add: ('b'->16); yourself) phrase: 'vszzm    cly   yd cg    qdp' .
+	self assert: result equals: 'jollygreengiant'
+]
+
+{ #category : #tests }
+AffineCipherTest >> test16_DecodeDecodeWithANotCoprimeToM [
+	| result |
+
+	result := affineCipherCalculator decodeKey: ((Dictionary new) add: ('a'->13); add: ('b'->5); yourself) phrase: 'Test' .
 	self assert: result equals: ((Dictionary new) add: ('error'->'a and m must be coprime.'); yourself)
 ]

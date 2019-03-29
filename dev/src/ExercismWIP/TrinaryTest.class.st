@@ -39,12 +39,12 @@ Class {
 { #category : #config }
 TrinaryTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'db68babb-8040-0d00-80f9-228d01deb008'
+	^'9a2cb216-9d41-0d00-8fd3-541d08866539'
 ]
 
 { #category : #config }
 TrinaryTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 

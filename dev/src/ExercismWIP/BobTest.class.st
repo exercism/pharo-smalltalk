@@ -33,12 +33,12 @@ Class {
 { #category : #config }
 BobTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'efb7bdbb-8040-0d00-80fd-b7c001deb008'
+	^'9d62b716-9d41-0d00-8fd6-83f208866539'
 ]
 
 { #category : #config }
 BobTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 29 March 2019"
 	^'1.4.0'
 ]
 
