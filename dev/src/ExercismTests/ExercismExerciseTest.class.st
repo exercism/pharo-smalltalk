@@ -114,7 +114,7 @@ ExercismExerciseTest >> testName [
 ExercismExerciseTest >> testSolutionClasses [
 	
 	self assertCollection: TestExerciseTest exercise solutionClasses equals: {TestExercise} asSet.
-	self assertCollection: TestmanyTest exercise solutionClasses equals: {Testmany. TestOtherClass} asSet.
+	self assertCollection: TestmanyTest exercise solutionClasses equals: {Testmany. TestOtherClass. TestOtherClassTest} asSet.
 	self assertCollection: TestEmptyTest exercise solutionClasses equals: {} asSet.
 	
 ]
@@ -135,7 +135,7 @@ ExercismExerciseTest >> testSolutionSources [
 	
 	sources := TestmanyTest exercise solutionSources.
 	
-	classes := {Testmany. TestOtherClass}.
+	classes := {Testmany. TestOtherClass. TestOtherClassTest }.
 	classNames := (classes collect: [ :c | c name, '.st' ]) copyWithFirst: 'TestResults.txt'.
 	
 	self assertCollection: sources keys asSet equals: classNames asSet.
@@ -171,7 +171,7 @@ ExercismExerciseTest >> testUnlockedExercises [
 	
 	self assertCollection: HelloWorldTest exercise unlockedExercises asArray equals: #().
 	self assertCollection: TwoFerTest exercise unlockedExercises asArray 
-				equals: {ResistorColorsTest exercise. SpaceAgeTest exercise}.
+				equals: {ResistorColorsTest exercise. SpaceAgeTest exercise}. 
 
 	
 ]

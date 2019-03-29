@@ -271,7 +271,7 @@ ExercismExercise >> printOn: aStream [
 ExercismExercise >> solutionClasses [
 	"Answer the classes that are submitted to Exercism"
 	
-	^self exercisePackageTag classes reject: [ :c | c isTestCase  ]
+	^self exercisePackageTag classes reject: [ :c | c isKindOf: ExercismTest class ]
 ]
 
 { #category : #accessing }
