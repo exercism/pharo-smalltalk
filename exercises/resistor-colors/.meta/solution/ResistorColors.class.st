@@ -15,7 +15,7 @@ ResistorColors class >> resistorColorsTable [
 ]
 
 { #category : #exercism }
-ResistorColors >> valueOfColors: coloursCollection [
+ResistorColors >> valueWithColors: coloursCollection [
 	"Answer the value of the resister with colour bands in @coloursCollection"
 	
 	^coloursCollection inject: 0 into: [ :result :colour |

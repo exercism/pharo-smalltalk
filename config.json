@@ -210,6 +210,19 @@
 			]
 		},
 		{
+			"slug" : "robot-simulator",
+			"uuid" : "5438fabb-8040-0d00-8145-63f301deb008",
+			"core" : false,
+			"auto_approve" : false,
+			"unlocked_by" : "grade-school",
+			"difficulty" : 4,
+			"topics" : [
+				"iteration",
+				"tuples",
+				"object_oriented_programming"
+			]
+		},
+		{
 			"slug" : "roman-numerals",
 			"uuid" : "973e4910-7940-0d00-bbad-09db01dff3c9",
 			"core" : false,
@@ -272,7 +285,8 @@
 				"filtering",
 				"iteration",
 				"parsing",
-				"transforming"
+				"transforming",
+				"object_oriented_programming"
 			]
 		},
 		{
