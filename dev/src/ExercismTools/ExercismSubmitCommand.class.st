@@ -32,11 +32,19 @@ ExercismSubmitCommand class >> from: anHttpClient exercise: exercise [
 
 { #category : #execution }
 ExercismSubmitCommand >> execute [
-	^ self
-		executeCheckingToken: [ 
-			self httpClient
+	^ [ self
+		executeCheckingToken: [ self httpClient
 				patchSolution: self exercise solutionId
-				with: self exercise solutionSources ]
+				with: self exercise solutionSources ] ]
+		on: ExSolutionIdError
+		do: [ :error | 
+			| submission |
+
+			submission := (ExercismDownloadCommand
+				track: self exercise trackId
+				exercise: self exercise name) fetchLatestSubmission.
+			submission storeSolutionId.
+			error retry ]
 ]
 
 { #category : #accessing }

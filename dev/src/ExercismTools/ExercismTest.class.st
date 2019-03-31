@@ -56,7 +56,7 @@ ExercismTest class >> next [
 
 { #category : #accessing }
 ExercismTest class >> solutionId [
-	^ solutionId ifNil: [ 'missingSolutionId' ]
+	^ solutionId ifNil: [ ExSolutionIdError signal: 'Missing exercise solutionId' ]
 ]
 
 { #category : #accessing }
