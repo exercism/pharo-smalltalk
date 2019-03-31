@@ -30,14 +30,14 @@ direction it is pointing.
 
 ## Hint
 
-TBD
+It's useful to consider having a seperate Robot oject and even write some of your own tests for it, possibly using TDD to drive out useful behaviour.
 
 "
 Class {
 	#name : #RobotSimulatorTest,
 	#superclass : #ExercismTest,
 	#instVars : [
-		'robotSimulatorCalculator'
+		'robotSimulator'
 	],
 	#category : #'Exercism-RobotSimulator'
 }
@@ -54,6 +54,17 @@ RobotSimulatorTest class >> exercise [
 	
 ]
 
+{ #category : #generator }
+RobotSimulatorTest class >> generator [
+	"Answer code generator aliases/hints"
+
+	^ {('moveDirection:postion:'
+		-> #('startFacing:atPosition:')).
+		('moveDirection:postion:instructions:'
+		-> #('startFacing:atPosition:' 'sendInstructions:')).
+	('robotSimulatorCalculator' -> 'robotSimulator')}
+]
+
 { #category : #config }
 RobotSimulatorTest class >> uuid [
 	"Answer a unique id for this exercise"
@@ -68,14 +79,14 @@ RobotSimulatorTest class >> version [
 
 { #category : #setup }
 RobotSimulatorTest >> setUp [
-	robotSimulatorCalculator := RobotSimulator new
+	robotSimulator := RobotSimulator new
 ]
 
 { #category : #tests }
 RobotSimulatorTest >> test01_ARobotIsCreatedWithAPositionAndADirectionRobotsAreCreatedWithAPositionAndDirection [
 	| result |
 
-	result := robotSimulatorCalculator createDirection: 'north' position: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself) .
+	result := robotSimulator startFacing: 'north' atPosition: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself) .
 	self assert: result equals: ((Dictionary new) add: ('direction'->'north'); add: ('position'->((Dictionary new) add: ('x'->0); add: ('y'->0); yourself)); yourself)
 ]
 
@@ -83,7 +94,7 @@ RobotSimulatorTest >> test01_ARobotIsCreatedWithAPositionAndADirectionRobotsAreC
 RobotSimulatorTest >> test02_ARobotIsCreatedWithAPositionAndADirectionNegativePositionsAreAllowed [
 	| result |
 
-	result := robotSimulatorCalculator createDirection: 'south' position: ((Dictionary new) add: ('x'-> -1); add: ('y'-> -1); yourself) .
+	result := robotSimulator startFacing: 'south' atPosition: ((Dictionary new) add: ('x'-> -1); add: ('y'-> -1); yourself) .
 	self assert: result equals: ((Dictionary new) add: ('direction'->'south'); add: ('position'->((Dictionary new) add: ('x'-> -1); add: ('y'-> -1); yourself)); yourself)
 ]
 
@@ -91,7 +102,7 @@ RobotSimulatorTest >> test02_ARobotIsCreatedWithAPositionAndADirectionNegativePo
 RobotSimulatorTest >> test03_RotatesTheRobotsDirection90DegreesClockwiseChangesTheDirectionFromNorthToEast [
 	| result |
 
-	result := robotSimulatorCalculator moveDirection: 'north' position: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself) instructions: 'R' .
+	result := robotSimulator startFacing: 'north' atPosition: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself); sendInstructions: 'R' .
 	self assert: result equals: ((Dictionary new) add: ('direction'->'east'); add: ('position'->((Dictionary new) add: ('x'->0); add: ('y'->0); yourself)); yourself)
 ]
 
@@ -99,7 +110,7 @@ RobotSimulatorTest >> test03_RotatesTheRobotsDirection90DegreesClockwiseChangesT
 RobotSimulatorTest >> test04_RotatesTheRobotsDirection90DegreesClockwiseChangesTheDirectionFromEastToSouth [
 	| result |
 
-	result := robotSimulatorCalculator moveDirection: 'east' position: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself) instructions: 'R' .
+	result := robotSimulator startFacing: 'east' atPosition: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself); sendInstructions: 'R' .
 	self assert: result equals: ((Dictionary new) add: ('direction'->'south'); add: ('position'->((Dictionary new) add: ('x'->0); add: ('y'->0); yourself)); yourself)
 ]
 
@@ -107,7 +118,7 @@ RobotSimulatorTest >> test04_RotatesTheRobotsDirection90DegreesClockwiseChangesT
 RobotSimulatorTest >> test05_RotatesTheRobotsDirection90DegreesClockwiseChangesTheDirectionFromSouthToWest [
 	| result |
 
-	result := robotSimulatorCalculator moveDirection: 'south' position: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself) instructions: 'R' .
+	result := robotSimulator startFacing: 'south' atPosition: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself); sendInstructions: 'R' .
 	self assert: result equals: ((Dictionary new) add: ('direction'->'west'); add: ('position'->((Dictionary new) add: ('x'->0); add: ('y'->0); yourself)); yourself)
 ]
 
@@ -115,7 +126,7 @@ RobotSimulatorTest >> test05_RotatesTheRobotsDirection90DegreesClockwiseChangesT
 RobotSimulatorTest >> test06_RotatesTheRobotsDirection90DegreesClockwiseChangesTheDirectionFromWestToNorth [
 	| result |
 
-	result := robotSimulatorCalculator moveDirection: 'west' position: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself) instructions: 'R' .
+	result := robotSimulator startFacing: 'west' atPosition: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself); sendInstructions: 'R' .
 	self assert: result equals: ((Dictionary new) add: ('direction'->'north'); add: ('position'->((Dictionary new) add: ('x'->0); add: ('y'->0); yourself)); yourself)
 ]
 
@@ -123,7 +134,7 @@ RobotSimulatorTest >> test06_RotatesTheRobotsDirection90DegreesClockwiseChangesT
 RobotSimulatorTest >> test07_RotatesTheRobotsDirection90DegreesCounterclockwiseChangesTheDirectionFromNorthToWest [
 	| result |
 
-	result := robotSimulatorCalculator moveDirection: 'north' position: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself) instructions: 'L' .
+	result := robotSimulator startFacing: 'north' atPosition: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself); sendInstructions: 'L' .
 	self assert: result equals: ((Dictionary new) add: ('direction'->'west'); add: ('position'->((Dictionary new) add: ('x'->0); add: ('y'->0); yourself)); yourself)
 ]
 
@@ -131,7 +142,7 @@ RobotSimulatorTest >> test07_RotatesTheRobotsDirection90DegreesCounterclockwiseC
 RobotSimulatorTest >> test08_RotatesTheRobotsDirection90DegreesCounterclockwiseChangesTheDirectionFromWestToSouth [
 	| result |
 
-	result := robotSimulatorCalculator moveDirection: 'west' position: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself) instructions: 'L' .
+	result := robotSimulator startFacing: 'west' atPosition: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself); sendInstructions: 'L' .
 	self assert: result equals: ((Dictionary new) add: ('direction'->'south'); add: ('position'->((Dictionary new) add: ('x'->0); add: ('y'->0); yourself)); yourself)
 ]
 
@@ -139,7 +150,7 @@ RobotSimulatorTest >> test08_RotatesTheRobotsDirection90DegreesCounterclockwiseC
 RobotSimulatorTest >> test09_RotatesTheRobotsDirection90DegreesCounterclockwiseChangesTheDirectionFromSouthToEast [
 	| result |
 
-	result := robotSimulatorCalculator moveDirection: 'south' position: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself) instructions: 'L' .
+	result := robotSimulator startFacing: 'south' atPosition: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself); sendInstructions: 'L' .
 	self assert: result equals: ((Dictionary new) add: ('direction'->'east'); add: ('position'->((Dictionary new) add: ('x'->0); add: ('y'->0); yourself)); yourself)
 ]
 
@@ -147,7 +158,7 @@ RobotSimulatorTest >> test09_RotatesTheRobotsDirection90DegreesCounterclockwiseC
 RobotSimulatorTest >> test10_RotatesTheRobotsDirection90DegreesCounterclockwiseChangesTheDirectionFromEastToNorth [
 	| result |
 
-	result := robotSimulatorCalculator moveDirection: 'east' position: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself) instructions: 'L' .
+	result := robotSimulator startFacing: 'east' atPosition: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself); sendInstructions: 'L' .
 	self assert: result equals: ((Dictionary new) add: ('direction'->'north'); add: ('position'->((Dictionary new) add: ('x'->0); add: ('y'->0); yourself)); yourself)
 ]
 
@@ -155,7 +166,7 @@ RobotSimulatorTest >> test10_RotatesTheRobotsDirection90DegreesCounterclockwiseC
 RobotSimulatorTest >> test11_MovesTheRobotForward1SpaceInTheDirectionItIsPointingIncreasesTheYCoordinateOneWhenFacingNorth [
 	| result |
 
-	result := robotSimulatorCalculator moveDirection: 'north' position: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself) instructions: 'A' .
+	result := robotSimulator startFacing: 'north' atPosition: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself); sendInstructions: 'A' .
 	self assert: result equals: ((Dictionary new) add: ('direction'->'north'); add: ('position'->((Dictionary new) add: ('x'->0); add: ('y'->1); yourself)); yourself)
 ]
 
@@ -163,7 +174,7 @@ RobotSimulatorTest >> test11_MovesTheRobotForward1SpaceInTheDirectionItIsPointin
 RobotSimulatorTest >> test12_MovesTheRobotForward1SpaceInTheDirectionItIsPointingDecreasesTheYCoordinateByOneWhenFacingSouth [
 	| result |
 
-	result := robotSimulatorCalculator moveDirection: 'south' position: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself) instructions: 'A' .
+	result := robotSimulator startFacing: 'south' atPosition: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself); sendInstructions: 'A' .
 	self assert: result equals: ((Dictionary new) add: ('direction'->'south'); add: ('position'->((Dictionary new) add: ('x'->0); add: ('y'-> -1); yourself)); yourself)
 ]
 
@@ -171,7 +182,7 @@ RobotSimulatorTest >> test12_MovesTheRobotForward1SpaceInTheDirectionItIsPointin
 RobotSimulatorTest >> test13_MovesTheRobotForward1SpaceInTheDirectionItIsPointingIncreasesTheXCoordinateByOneWhenFacingEast [
 	| result |
 
-	result := robotSimulatorCalculator moveDirection: 'east' position: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself) instructions: 'A' .
+	result := robotSimulator startFacing: 'east' atPosition: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself); sendInstructions: 'A' .
 	self assert: result equals: ((Dictionary new) add: ('direction'->'east'); add: ('position'->((Dictionary new) add: ('x'->1); add: ('y'->0); yourself)); yourself)
 ]
 
@@ -179,7 +190,7 @@ RobotSimulatorTest >> test13_MovesTheRobotForward1SpaceInTheDirectionItIsPointin
 RobotSimulatorTest >> test14_MovesTheRobotForward1SpaceInTheDirectionItIsPointingDecreasesTheXCoordinateByOneWhenFacingWest [
 	| result |
 
-	result := robotSimulatorCalculator moveDirection: 'west' position: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself) instructions: 'A' .
+	result := robotSimulator startFacing: 'west' atPosition: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself); sendInstructions: 'A' .
 	self assert: result equals: ((Dictionary new) add: ('direction'->'west'); add: ('position'->((Dictionary new) add: ('x'-> -1); add: ('y'->0); yourself)); yourself)
 ]
 
@@ -187,7 +198,7 @@ RobotSimulatorTest >> test14_MovesTheRobotForward1SpaceInTheDirectionItIsPointin
 RobotSimulatorTest >> test15_WhereRTurnRightLTurnLeftAndAAdvanceTheRobotCanFollowASeriesOfInstructionsAndEndUpWithTheCorrectPositionAndDirectionInstructionsToMoveEastAndNorthFromREADME [
 	| result |
 
-	result := robotSimulatorCalculator moveDirection: 'north' position: ((Dictionary new) add: ('x'->7); add: ('y'->3); yourself) instructions: 'RAALAL' .
+	result := robotSimulator startFacing: 'north' atPosition: ((Dictionary new) add: ('x'->7); add: ('y'->3); yourself); sendInstructions: 'RAALAL' .
 	self assert: result equals: ((Dictionary new) add: ('direction'->'west'); add: ('position'->((Dictionary new) add: ('x'->9); add: ('y'->4); yourself)); yourself)
 ]
 
@@ -195,7 +206,7 @@ RobotSimulatorTest >> test15_WhereRTurnRightLTurnLeftAndAAdvanceTheRobotCanFollo
 RobotSimulatorTest >> test16_WhereRTurnRightLTurnLeftAndAAdvanceTheRobotCanFollowASeriesOfInstructionsAndEndUpWithTheCorrectPositionAndDirectionInstructionsToMoveWestAndNorth [
 	| result |
 
-	result := robotSimulatorCalculator moveDirection: 'north' position: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself) instructions: 'LAAARALA' .
+	result := robotSimulator startFacing: 'north' atPosition: ((Dictionary new) add: ('x'->0); add: ('y'->0); yourself); sendInstructions: 'LAAARALA' .
 	self assert: result equals: ((Dictionary new) add: ('direction'->'west'); add: ('position'->((Dictionary new) add: ('x'-> -4); add: ('y'->1); yourself)); yourself)
 ]
 
@@ -203,7 +214,7 @@ RobotSimulatorTest >> test16_WhereRTurnRightLTurnLeftAndAAdvanceTheRobotCanFollo
 RobotSimulatorTest >> test17_WhereRTurnRightLTurnLeftAndAAdvanceTheRobotCanFollowASeriesOfInstructionsAndEndUpWithTheCorrectPositionAndDirectionInstructionsToMoveWestAndSouth [
 	| result |
 
-	result := robotSimulatorCalculator moveDirection: 'east' position: ((Dictionary new) add: ('x'->2); add: ('y'-> -7); yourself) instructions: 'RRAAAAALA' .
+	result := robotSimulator startFacing: 'east' atPosition: ((Dictionary new) add: ('x'->2); add: ('y'-> -7); yourself); sendInstructions: 'RRAAAAALA' .
 	self assert: result equals: ((Dictionary new) add: ('direction'->'south'); add: ('position'->((Dictionary new) add: ('x'-> -3); add: ('y'-> -8); yourself)); yourself)
 ]
 
@@ -211,6 +222,6 @@ RobotSimulatorTest >> test17_WhereRTurnRightLTurnLeftAndAAdvanceTheRobotCanFollo
 RobotSimulatorTest >> test18_WhereRTurnRightLTurnLeftAndAAdvanceTheRobotCanFollowASeriesOfInstructionsAndEndUpWithTheCorrectPositionAndDirectionInstructionsToMoveEastAndNorth [
 	| result |
 
-	result := robotSimulatorCalculator moveDirection: 'south' position: ((Dictionary new) add: ('x'->8); add: ('y'->4); yourself) instructions: 'LAAARRRALLLL' .
+	result := robotSimulator startFacing: 'south' atPosition: ((Dictionary new) add: ('x'->8); add: ('y'->4); yourself); sendInstructions: 'LAAARRRALLLL' .
 	self assert: result equals: ((Dictionary new) add: ('direction'->'north'); add: ('position'->((Dictionary new) add: ('x'->11); add: ('y'->5); yourself)); yourself)
 ]
