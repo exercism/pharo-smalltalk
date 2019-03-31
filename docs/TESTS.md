@@ -13,7 +13,7 @@ The tests in Exercism exercises have been purposely numbered to give a defined o
 
 When working on an exercise it is recommended that you click on the orb for the first test, understand the failure and what is required to make it pass, and then add the code to your solution to make it work. In Pharo it is quite normal to make these changes in the debugger where you have access to both the code editor as well as a view of all the variables and parameters that can help you understand the problem. 
 
-_NOTE: It is not a regular practice to label tests with an ordering prefix, and you should NOT do this when writing tests for your own code._
+_NOTE: It is not a regular practice to label tests with an ordering prefix, and you should NOT do this when writing tests for your own project._
 
 ## It Can Run When Broken
 Pharo is happy to run with code that is broken, and the debugger will simply re-open when an error is encountered (either a syntax error, bad value or even a missing class or method). This technique was a primary influencer for test driven development, and you can get a taste of this approach when you try running the first test for any exercise. The debugger will immediately show that your solution class is not found (as you haven't written anything yet). Conveniently, there is a "Create" button that helps you add the missing class and continue running it until it either finishes, or another error is encountered. With your first test, you next encounter a second error as you haven't written any methods yet. Again, the "Create" button in the debugger lets you define one, and continue running. At this point, you can also click further down the stack trace and review the requirements of the failing test and modify your new method to make it pass. 

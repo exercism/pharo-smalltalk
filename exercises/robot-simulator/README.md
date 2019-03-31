@@ -29,7 +29,7 @@ direction it is pointing.
 
 ## Hint
 
-TBD
+It's useful to consider having a seperate Robot oject and even write some of your own tests for it, possibly using TDD to drive out useful behaviour.
 
 
 ## Downloading

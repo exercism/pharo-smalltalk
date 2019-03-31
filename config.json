@@ -81,6 +81,18 @@
 			]
 		},
 		{
+			"slug" : "allergies",
+			"uuid" : "49ae8e78-a641-0d00-ba20-5f9f04641ab1",
+			"core" : true,
+			"auto_approve" : false,
+			"unlocked_by" : null,
+			"difficulty" : 3,
+			"topics" : [
+				"bitwise_operations",
+				"filtering"
+			]
+		},
+		{
 			"slug" : "grade-school",
 			"uuid" : "8198e8bb-8040-0d00-812f-dfab01deb008",
 			"core" : true,
