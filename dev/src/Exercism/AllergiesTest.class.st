@@ -32,8 +32,7 @@ score is 257, your program should only report the eggs (1) allergy.
 
 ## Hint
 
-Notice how each of the items is a power of 2, a property that you can leverage.
-
+TBD
 
 "
 Class {
@@ -72,7 +71,7 @@ AllergiesTest class >> uuid [
 
 { #category : #config }
 AllergiesTest class >> version [
-	"Generated from specification: 30 March 2019"
+	"Generated from specification: 1 April 2019"
 	^'1.2.1'
 ]
 
@@ -82,7 +81,7 @@ AllergiesTest >> setUp [
 ]
 
 { #category : #tests }
-AllergiesTest >> test01_AllergicToNoAllergiesMeansNotAllergicWithPeanuts [
+AllergiesTest >> test01_NoAllergiesMeansNotAllergicToPeanuts [
 	| result |
 
 	result := allergiesCalculator allergicToItem: 'peanuts' forScore: 0 .
@@ -90,7 +89,7 @@ AllergiesTest >> test01_AllergicToNoAllergiesMeansNotAllergicWithPeanuts [
 ]
 
 { #category : #tests }
-AllergiesTest >> test02_AllergicToNoAllergiesMeansNotAllergicWithCats [
+AllergiesTest >> test02_NoAllergiesMeansNotAllergicToCats [
 	| result |
 
 	result := allergiesCalculator allergicToItem: 'cats' forScore: 0 .
@@ -98,7 +97,7 @@ AllergiesTest >> test02_AllergicToNoAllergiesMeansNotAllergicWithCats [
 ]
 
 { #category : #tests }
-AllergiesTest >> test03_AllergicToNoAllergiesMeansNotAllergicWithStrawberries [
+AllergiesTest >> test03_NoAllergiesMeansNotAllergicToStrawberries [
 	| result |
 
 	result := allergiesCalculator allergicToItem: 'strawberries' forScore: 0 .
@@ -114,7 +113,7 @@ AllergiesTest >> test04_AllergicToOnlyEggs [
 ]
 
 { #category : #tests }
-AllergiesTest >> test05_AllergicToEggsInAdditionToOtherStuffLikeStrawberries [
+AllergiesTest >> test05_AllergicToEggsInAdditionToOtherStuffLikeEggsRepeated [
 	| result |
 
 	result := allergiesCalculator allergicToItem: 'eggs' forScore: 5 .
@@ -133,20 +132,12 @@ AllergiesTest >> test06_AllergicToEggsInAdditionToOtherStuffLikeShellfish [
 AllergiesTest >> test07_AllergicToEggsInAdditionToOtherStuffLikeStrawberries [
 	| result |
 
-	result := allergiesCalculator allergicToItem: 'eggs' forScore: 5 .
-	self assert: result equals: true
+	result := allergiesCalculator allergicToItem: 'strawberries' forScore: 5 .
+	self assert: result equals: false
 ]
 
 { #category : #tests }
-AllergiesTest >> test08_AllergicToStrawberriesButNotPeanutsWithEggs [
-	| result |
-
-	result := allergiesCalculator allergicToItem: 'eggs' forScore: 9 .
-	self assert: result equals: true
-]
-
-{ #category : #tests }
-AllergiesTest >> test09_AllergicToStrawberriesButNotPeanutsWithPeanuts [
+AllergiesTest >> test08_AllergicToStrawberriesButNotPeanuts [
 	| result |
 
 	result := allergiesCalculator allergicToItem: 'peanuts' forScore: 9 .
@@ -154,7 +145,7 @@ AllergiesTest >> test09_AllergicToStrawberriesButNotPeanutsWithPeanuts [
 ]
 
 { #category : #tests }
-AllergiesTest >> test10_AllergicToStrawberriesButNotPeanutsWithShellfish [
+AllergiesTest >> test09_AllergicToStrawberriesButNotShellfish [
 	| result |
 
 	result := allergiesCalculator allergicToItem: 'shellfish' forScore: 9 .
@@ -162,7 +153,15 @@ AllergiesTest >> test10_AllergicToStrawberriesButNotPeanutsWithShellfish [
 ]
 
 { #category : #tests }
-AllergiesTest >> test11_AllergicToStrawberriesButNotPeanutsWithStrawberries [
+AllergiesTest >> test10_AllergicToStrawberriesAndAlsoEggs [
+	| result |
+
+	result := allergiesCalculator allergicToItem: 'eggs' forScore: 9 .
+	self assert: result equals: true
+]
+
+{ #category : #tests }
+AllergiesTest >> test11_AllergicToStrawberriesAndAlsoStrawberriesRepeated [
 	| result |
 
 	result := allergiesCalculator allergicToItem: 'strawberries' forScore: 9 .
