@@ -56,7 +56,7 @@ GradeSchoolTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
 	
-	^(self createExerciseAfter: GrainsTest)
+	^(self createExerciseAfter: AllergiesTest)
 		isCore: true;
 		difficulty: 4;
 		topics: #('sorting' 'filtering' 'lists' 'object_oriented_programming');
