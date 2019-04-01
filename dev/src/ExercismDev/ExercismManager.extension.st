@@ -25,8 +25,7 @@ ExercismManager class >> trackConfigHeader [
 
 { #category : #'*ExercismDev' }
 ExercismManager class >> trackDescription [
-	^ 'Pharo is an immersive, open source, Smalltalk programming experience. It has a pure object-oriented language and powerful user extendable environment, that focuses on simplicity and immediate feedback (think IDE and OS rolled into one). It''s elegence gives it wide reach into banking, education, web development and even robotics.'
-
+	^ 'Pharo is a fun and immersive smalltalk programming experience. Featuring a clean object-oriented language and a powerful user extendable environment, it focuses on simplicity and immediate feedback (think IDE and OS rolled into one). It''s elegence and productivity give it wide reach into banking, education, web development and even robotics.'
 ]
 
 { #category : #'*ExercismDev' }
