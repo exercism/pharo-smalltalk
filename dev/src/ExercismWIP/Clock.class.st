@@ -8,7 +8,7 @@ Class {
 Clock >> createMinute: anInteger hour: anInteger2 [ 
 	| hour minute |
 	
-	hour := anInteger2 = 24 ifTrue: [ 0 ] ifFalse: anInteger2.
+	hour := anInteger2 % 24.
 	minute := anInteger.
 	
 	^ '{1}{2}:{3}{4}' format: {
