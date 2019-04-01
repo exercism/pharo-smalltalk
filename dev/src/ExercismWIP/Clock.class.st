@@ -4,6 +4,11 @@ Class {
 	#category : #'ExercismWIP-Clock'
 }
 
+{ #category : #'as yet unclassified' }
+Clock >> addMinute: minute hour: hour value: minutes [ 
+	^ self createMinute: minute + minutes hour: hour
+]
+
 { #category : #creation }
 Clock >> createMinute: anInteger hour: anInteger2 [ 
 	| hour minute |
