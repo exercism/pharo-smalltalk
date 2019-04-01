@@ -6,9 +6,14 @@ Class {
 
 { #category : #creation }
 Clock >> createMinute: anInteger hour: anInteger2 [ 
+	| hour minute |
+	
+	hour := anInteger2 = 24 ifTrue: [ 0 ] ifFalse: anInteger2.
+	minute := anInteger.
+	
 	^ '{1}{2}:{3}{4}' format: {
-		(anInteger2 < 10 ifTrue: [ '0' ] ifFalse: [ '' ]).
-		anInteger2.
-		(anInteger < 10 ifTrue: [ '0' ] ifFalse: [ '' ]).
-		anInteger }
+		(hour < 10 ifTrue: [ '0' ] ifFalse: [ '' ]).
+		hour.
+		(minute < 10 ifTrue: [ '0' ] ifFalse: [ '' ]).
+		minute }
 ]
