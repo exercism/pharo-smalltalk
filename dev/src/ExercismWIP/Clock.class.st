@@ -24,8 +24,12 @@ Clock >> createMinute: anInteger hour: anInteger2 [
 ]
 
 { #category : #comparing }
-Clock >> equalClock1: aCollection clock2: aCollection2 [ 
-	^ aCollection = aCollection2
+Clock >> equalClock1: aCollection clock2: aCollection2 [
+	| clock1 clock2 |
+	
+	clock1 := self createMinute: (aCollection at: #minute) hour: (aCollection at: #hour).
+	clock2 := self createMinute: (aCollection2 at: #minute) hour: (aCollection2 at: #hour).
+	^ clock1 = clock2
 ]
 
 { #category : #'as yet unclassified' }
