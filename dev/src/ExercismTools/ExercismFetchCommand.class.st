@@ -42,3 +42,8 @@ ExercismFetchCommand >> parser [
 ExercismFetchCommand >> parser: aTonelParser [
 	parser := aTonelParser
 ]
+
+{ #category : #internal }
+ExercismFetchCommand >> retrieveLatestData [
+	^self subclassResponsibility 
+]

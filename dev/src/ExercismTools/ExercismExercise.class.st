@@ -326,6 +326,11 @@ ExercismExercise >> topics: aStringArray [
 ]
 
 { #category : #accessing }
+ExercismExercise >> trackId [
+	^ExercismManager trackId
+]
+
+{ #category : #accessing }
 ExercismExercise >> unlockReference [
 	"Answer the String unlock reference for a non-core exercise, otherwise nil"
 

@@ -1,11 +1,11 @@
 "
-I am a simple ""turtle"" robot, that maintains a direction and location.
+I am a simple ""turtle"" robot, that maintains a bearing direction and location.
 "
 Class {
 	#name : #Robot,
 	#superclass : #Object,
 	#instVars : [
-		'name',
+		'bearing',
 		'location'
 	],
 	#classVars : [
@@ -14,31 +14,18 @@ Class {
 	#category : #'Exercism-RobotSimulator'
 }
 
-{ #category : #config }
-Robot class >> bearingData [
-	^ {
-	('north' -> (0 @ 1)).
-	('east' -> (1 @ 0)).
-	('south' -> (0 @ -1)).
-	('west' -> (-1 @ 0))}
-]
-
 { #category : #'instance creation' }
 Robot class >> facing: directionString [
 
-	self bearingData
-		detect: [ :data | data key = directionString ]
-		ifNone: [ DomainError signal: 'invalid direction, ' , directionString ].
-
 	^ self new
-		name: directionString;
+		bearing: (Bearing named: directionString);
 		yourself
 ]
 
 { #category : #converting }
 Robot >> asDictionary [
 	^ Dictionary new
-		at: 'direction' put: self name;
+		at: 'direction' put: self bearing name;
 		at: 'position'
 			put:
 			{('x' -> self location x).
@@ -46,30 +33,14 @@ Robot >> asDictionary [
 		yourself
 ]
 
-{ #category : #internal }
-Robot >> bearingDelta [
-	^ (self class bearingData detect: [ :b | b key = self name ]) value
-]
-
-{ #category : #internal }
-Robot >> bearingLeft [
-	| directions |
-	directions := self bearingNames.
-	^directions before: self name ifAbsent: [directions last].
-	
+{ #category : #accessing }
+Robot >> bearing [
+	^ bearing
 ]
 
 { #category : #accessing }
-Robot >> bearingNames [
-	^ self class bearingData collect: [ :b | b key ]
-]
-
-{ #category : #internal }
-Robot >> bearingRight [
-	| directions |
-	directions := self bearingNames.
-	^directions after: self name ifAbsent: [directions first].
-	
+Robot >> bearing: anObject [
+	bearing := anObject
 ]
 
 { #category : #action }
@@ -101,17 +72,7 @@ Robot >> location: aPoint [
 
 { #category : #action }
 Robot >> moveForward [
-	self location: self location + self bearingDelta
-]
-
-{ #category : #accessing }
-Robot >> name [
-	^ name
-]
-
-{ #category : #accessing }
-Robot >> name: nameString [
-	name := nameString
+	self location: self location + self bearing delta
 ]
 
 { #category : #printing }
@@ -119,16 +80,16 @@ Robot >> printOn: aStream [
 	super printOn: aStream.
 	aStream
 		nextPut: $(;
-		nextPutAll: self name;
+		nextPutAll: self bearing name;
 		nextPut: $)
 ]
 
 { #category : #action }
 Robot >> turnLeft [
-	self name: self bearingLeft
+	self bearing: self bearing left
 ]
 
 { #category : #action }
 Robot >> turnRight [
-	self name: self bearingRight
+	self bearing: self bearing right
 ]
