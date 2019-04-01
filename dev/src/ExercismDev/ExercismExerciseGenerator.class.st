@@ -46,12 +46,12 @@ ExercismExerciseGenerator class >> generate [
 ExercismExerciseGenerator class >> worldMenuCommandOn: aBuilder [
 	<worldMenu>
 	
-	(aBuilder item: 'Generate exercises')
+	(aBuilder item: 'Generate test exercises')
 		parent: #Exercism;
 		order: 150.0;
 		action: [ self generate ];
 		"iconName: templateCommand defaultMenuIconName;"
-		help: 'Re-Generate exercises from the canonical problem-description'.
+		help: 'Generate exercises from the canonical problem-description'.
 		"withSeparatorBefore"
 ]
 
