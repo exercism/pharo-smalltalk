@@ -4,12 +4,12 @@ Class {
 	#category : #'ExercismWIP-Clock'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #computing }
 Clock >> addMinute: minute hour: hour value: minutes [ 
 	^ self createMinute: minute + minutes hour: hour
 ]
 
-{ #category : #creation }
+{ #category : #creating }
 Clock >> createMinute: anInteger hour: anInteger2 [ 
 	| hour minute |
 	
@@ -32,7 +32,7 @@ Clock >> equalClock1: aCollection clock2: aCollection2 [
 	^ clock1 = clock2
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #computing }
 Clock >> subtractMinute: minute hour: hour value: minutes [ 
 	^ self createMinute: minute - minutes hour: hour
 ]
