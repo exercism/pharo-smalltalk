@@ -63,7 +63,7 @@ support two operations:
 
 ## Hint
 
-TBD
+You will need to store some game state.
 
 "
 Class {
@@ -74,6 +74,26 @@ Class {
 	],
 	#category : #'Exercism-Bowling'
 }
+
+{ #category : #config }
+BowlingTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+	
+	^(self createExerciseAfter: TournamentTest)
+		isCore: false;
+		difficulty: 5;
+		topics: #('conditionals' 'object_oriented_programming' 'algorithms');
+		yourself
+	
+]
+
+{ #category : #generator }
+BowlingTest class >> generator [
+	"Potential generator hints"
+	
+	^ {('@roll:previousRolls:' -> #scoreRolling:after:).
+	('@scorePreviousRolls:' -> #scoreAfterRolling:)}
+]
 
 { #category : #config }
 BowlingTest class >> uuid [
@@ -96,7 +116,7 @@ BowlingTest >> setUp [
 BowlingTest >> test01_ShouldBeAbleToScoreAGameWithAllZeros [
 	| result |
 
-	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
+	result := bowlingCalculator scoreAfterRolling: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
 	self assert: result equals: 0
 ]
 
@@ -104,7 +124,7 @@ BowlingTest >> test01_ShouldBeAbleToScoreAGameWithAllZeros [
 BowlingTest >> test02_ShouldBeAbleToScoreAGameWithNoStrikesOrSpares [
 	| result |
 
-	result := bowlingCalculator scorePreviousRolls: #(3 6 3 6 3 6 3 6 3 6 3 6 3 6 3 6 3 6 3 6 ) .
+	result := bowlingCalculator scoreAfterRolling: #(3 6 3 6 3 6 3 6 3 6 3 6 3 6 3 6 3 6 3 6 ) .
 	self assert: result equals: 90
 ]
 
@@ -112,7 +132,7 @@ BowlingTest >> test02_ShouldBeAbleToScoreAGameWithNoStrikesOrSpares [
 BowlingTest >> test03_ASpareFollowedByZerosIsWorthTenPoints [
 	| result |
 
-	result := bowlingCalculator scorePreviousRolls: #(6 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
+	result := bowlingCalculator scoreAfterRolling: #(6 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
 	self assert: result equals: 10
 ]
 
@@ -120,7 +140,7 @@ BowlingTest >> test03_ASpareFollowedByZerosIsWorthTenPoints [
 BowlingTest >> test04_PointsScoredInTheRollAfterASpareAreCountedTwice [
 	| result |
 
-	result := bowlingCalculator scorePreviousRolls: #(6 4 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
+	result := bowlingCalculator scoreAfterRolling: #(6 4 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
 	self assert: result equals: 16
 ]
 
@@ -128,7 +148,7 @@ BowlingTest >> test04_PointsScoredInTheRollAfterASpareAreCountedTwice [
 BowlingTest >> test05_ConsecutiveSparesEachGetAOneRollBonus [
 	| result |
 
-	result := bowlingCalculator scorePreviousRolls: #(5 5 3 7 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
+	result := bowlingCalculator scoreAfterRolling: #(5 5 3 7 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
 	self assert: result equals: 31
 ]
 
@@ -136,7 +156,7 @@ BowlingTest >> test05_ConsecutiveSparesEachGetAOneRollBonus [
 BowlingTest >> test06_ASpareInTheLastFrameGetsAOneRollBonusThatIsCountedOnce [
 	| result |
 
-	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 3 7 ) .
+	result := bowlingCalculator scoreAfterRolling: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 3 7 ) .
 	self assert: result equals: 17
 ]
 
@@ -144,7 +164,7 @@ BowlingTest >> test06_ASpareInTheLastFrameGetsAOneRollBonusThatIsCountedOnce [
 BowlingTest >> test07_AStrikeEarnsTenPointsInAFrameWithASingleRoll [
 	| result |
 
-	result := bowlingCalculator scorePreviousRolls: #(10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
+	result := bowlingCalculator scoreAfterRolling: #(10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
 	self assert: result equals: 10
 ]
 
@@ -152,7 +172,7 @@ BowlingTest >> test07_AStrikeEarnsTenPointsInAFrameWithASingleRoll [
 BowlingTest >> test08_PointsScoredInTheTwoRollsAfterAStrikeAreCountedTwiceAsABonus [
 	| result |
 
-	result := bowlingCalculator scorePreviousRolls: #(10 5 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
+	result := bowlingCalculator scoreAfterRolling: #(10 5 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) .
 	self assert: result equals: 26
 ]
 
@@ -160,7 +180,7 @@ BowlingTest >> test08_PointsScoredInTheTwoRollsAfterAStrikeAreCountedTwiceAsABon
 BowlingTest >> test09_ConsecutiveStrikesEachGetTheTwoRollBonus [
 	| result |
 
-	result := bowlingCalculator scorePreviousRolls: #(10 10 10 5 3 0 0 0 0 0 0 0 0 0 0 0 0 ) .
+	result := bowlingCalculator scoreAfterRolling: #(10 10 10 5 3 0 0 0 0 0 0 0 0 0 0 0 0 ) .
 	self assert: result equals: 81
 ]
 
@@ -168,7 +188,7 @@ BowlingTest >> test09_ConsecutiveStrikesEachGetTheTwoRollBonus [
 BowlingTest >> test10_AStrikeInTheLastFrameGetsATwoRollBonusThatIsCountedOnce [
 	| result |
 
-	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 7 1 ) .
+	result := bowlingCalculator scoreAfterRolling: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 7 1 ) .
 	self assert: result equals: 18
 ]
 
@@ -176,7 +196,7 @@ BowlingTest >> test10_AStrikeInTheLastFrameGetsATwoRollBonusThatIsCountedOnce [
 BowlingTest >> test11_RollingASpareWithTheTwoRollBonusDoesNotGetABonusRoll [
 	| result |
 
-	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 7 3 ) .
+	result := bowlingCalculator scoreAfterRolling: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 7 3 ) .
 	self assert: result equals: 20
 ]
 
@@ -184,7 +204,7 @@ BowlingTest >> test11_RollingASpareWithTheTwoRollBonusDoesNotGetABonusRoll [
 BowlingTest >> test12_StrikesWithTheTwoRollBonusDoNotGetBonusRolls [
 	| result |
 
-	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 10 10 ) .
+	result := bowlingCalculator scoreAfterRolling: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 10 10 ) .
 	self assert: result equals: 30
 ]
 
@@ -192,7 +212,7 @@ BowlingTest >> test12_StrikesWithTheTwoRollBonusDoNotGetBonusRolls [
 BowlingTest >> test13_AStrikeWithTheOneRollBonusAfterASpareInTheLastFrameDoesNotGetABonus [
 	| result |
 
-	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 3 10 ) .
+	result := bowlingCalculator scoreAfterRolling: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 3 10 ) .
 	self assert: result equals: 20
 ]
 
@@ -200,7 +220,7 @@ BowlingTest >> test13_AStrikeWithTheOneRollBonusAfterASpareInTheLastFrameDoesNot
 BowlingTest >> test14_AllStrikesIsAPerfectGame [
 	| result |
 
-	result := bowlingCalculator scorePreviousRolls: #(10 10 10 10 10 10 10 10 10 10 10 10 ) .
+	result := bowlingCalculator scoreAfterRolling: #(10 10 10 10 10 10 10 10 10 10 10 10 ) .
 	self assert: result equals: 300
 ]
 
@@ -209,7 +229,7 @@ BowlingTest >> test15_RollsCannotScoreNegativePoints [
 	| result |
 
 	self
-		should: [ result := bowlingCalculator roll:  -1 previousRolls: #() ]
+		should: [ result := bowlingCalculator scoreRolling:  -1 after: #() ]
 		raise: Exception
 		whoseDescriptionIncludes: 'Negative roll is invalid'
 		description: 'Should get an error with the correct description'
@@ -220,7 +240,7 @@ BowlingTest >> test16_ARollCannotScoreMoreThan10Points [
 	| result |
 
 	self
-		should: [ result := bowlingCalculator roll: 11 previousRolls: #() ]
+		should: [ result := bowlingCalculator scoreRolling: 11 after: #() ]
 		raise: Exception
 		whoseDescriptionIncludes: 'Pin count exceeds pins on the lane'
 		description: 'Should get an error with the correct description'
@@ -231,7 +251,7 @@ BowlingTest >> test17_TwoRollsInAFrameCannotScoreMoreThan10Points [
 	| result |
 
 	self
-		should: [ result := bowlingCalculator roll: 6 previousRolls: #(5 ) ]
+		should: [ result := bowlingCalculator scoreRolling: 6 after: #(5 ) ]
 		raise: Exception
 		whoseDescriptionIncludes: 'Pin count exceeds pins on the lane'
 		description: 'Should get an error with the correct description'
@@ -242,7 +262,7 @@ BowlingTest >> test18_BonusRollAfterAStrikeInTheLastFrameCannotScoreMoreThan10Po
 	| result |
 
 	self
-		should: [ result := bowlingCalculator roll: 11 previousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 ) ]
+		should: [ result := bowlingCalculator scoreRolling: 11 after: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 ) ]
 		raise: Exception
 		whoseDescriptionIncludes: 'Pin count exceeds pins on the lane'
 		description: 'Should get an error with the correct description'
@@ -253,7 +273,7 @@ BowlingTest >> test19_TwoBonusRollsAfterAStrikeInTheLastFrameCannotScoreMoreThan
 	| result |
 
 	self
-		should: [ result := bowlingCalculator roll: 6 previousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 5 ) ]
+		should: [ result := bowlingCalculator scoreRolling: 6 after: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 5 ) ]
 		raise: Exception
 		whoseDescriptionIncludes: 'Pin count exceeds pins on the lane'
 		description: 'Should get an error with the correct description'
@@ -263,7 +283,7 @@ BowlingTest >> test19_TwoBonusRollsAfterAStrikeInTheLastFrameCannotScoreMoreThan
 BowlingTest >> test20_TwoBonusRollsAfterAStrikeInTheLastFrameCanScoreMoreThan10PointsIfOneIsAStrike [
 	| result |
 
-	result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 10 6 ) .
+	result := bowlingCalculator scoreAfterRolling: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 10 6 ) .
 	self assert: result equals: 26
 ]
 
@@ -272,7 +292,7 @@ BowlingTest >> test21_TheSecondBonusRollsAfterAStrikeInTheLastFrameCannotBeAStri
 	| result |
 
 	self
-		should: [ result := bowlingCalculator roll: 10 previousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 6 ) ]
+		should: [ result := bowlingCalculator scoreRolling: 10 after: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 6 ) ]
 		raise: Exception
 		whoseDescriptionIncludes: 'Pin count exceeds pins on the lane'
 		description: 'Should get an error with the correct description'
@@ -283,7 +303,7 @@ BowlingTest >> test22_SecondBonusRollAfterAStrikeInTheLastFrameCannotScoreMoreTh
 	| result |
 
 	self
-		should: [ result := bowlingCalculator roll: 11 previousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 10 ) ]
+		should: [ result := bowlingCalculator scoreRolling: 11 after: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 10 ) ]
 		raise: Exception
 		whoseDescriptionIncludes: 'Pin count exceeds pins on the lane'
 		description: 'Should get an error with the correct description'
@@ -294,7 +314,7 @@ BowlingTest >> test23_AnUnstartedGameCannotBeScored [
 	| result |
 
 	self
-		should: [ result := bowlingCalculator scorePreviousRolls: #() ]
+		should: [ result := bowlingCalculator scoreAfterRolling: #() ]
 		raise: Exception
 		whoseDescriptionIncludes: 'Score cannot be taken until the end of the game'
 		description: 'Should get an error with the correct description'
@@ -305,7 +325,7 @@ BowlingTest >> test24_AnIncompleteGameCannotBeScored [
 	| result |
 
 	self
-		should: [ result := bowlingCalculator scorePreviousRolls: #(0 0 ) ]
+		should: [ result := bowlingCalculator scoreAfterRolling: #(0 0 ) ]
 		raise: Exception
 		whoseDescriptionIncludes: 'Score cannot be taken until the end of the game'
 		description: 'Should get an error with the correct description'
@@ -316,7 +336,7 @@ BowlingTest >> test25_CannotRollIfGameAlreadyHasTenFrames [
 	| result |
 
 	self
-		should: [ result := bowlingCalculator roll: 0 previousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) ]
+		should: [ result := bowlingCalculator scoreRolling: 0 after: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) ]
 		raise: Exception
 		whoseDescriptionIncludes: 'Cannot roll after game is over'
 		description: 'Should get an error with the correct description'
@@ -327,7 +347,7 @@ BowlingTest >> test26_BonusRollsForAStrikeInTheLastFrameMustBeRolledBeforeScoreC
 	| result |
 
 	self
-		should: [ result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 ) ]
+		should: [ result := bowlingCalculator scoreAfterRolling: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 ) ]
 		raise: Exception
 		whoseDescriptionIncludes: 'Score cannot be taken until the end of the game'
 		description: 'Should get an error with the correct description'
@@ -338,7 +358,7 @@ BowlingTest >> test27_BothBonusRollsForAStrikeInTheLastFrameMustBeRolledBeforeSc
 	| result |
 
 	self
-		should: [ result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 10 ) ]
+		should: [ result := bowlingCalculator scoreAfterRolling: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 10 ) ]
 		raise: Exception
 		whoseDescriptionIncludes: 'Score cannot be taken until the end of the game'
 		description: 'Should get an error with the correct description'
@@ -349,7 +369,7 @@ BowlingTest >> test28_BonusRollForASpareInTheLastFrameMustBeRolledBeforeScoreCan
 	| result |
 
 	self
-		should: [ result := bowlingCalculator scorePreviousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 3 ) ]
+		should: [ result := bowlingCalculator scoreAfterRolling: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 3 ) ]
 		raise: Exception
 		whoseDescriptionIncludes: 'Score cannot be taken until the end of the game'
 		description: 'Should get an error with the correct description'
@@ -360,7 +380,7 @@ BowlingTest >> test29_CannotRollAfterBonusRollForSpare [
 	| result |
 
 	self
-		should: [ result := bowlingCalculator roll: 2 previousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 3 2 ) ]
+		should: [ result := bowlingCalculator scoreRolling: 2 after: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 3 2 ) ]
 		raise: Exception
 		whoseDescriptionIncludes: 'Cannot roll after game is over'
 		description: 'Should get an error with the correct description'
@@ -371,7 +391,7 @@ BowlingTest >> test30_CannotRollAfterBonusRollsForStrike [
 	| result |
 
 	self
-		should: [ result := bowlingCalculator roll: 2 previousRolls: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 3 2 ) ]
+		should: [ result := bowlingCalculator scoreRolling: 2 after: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 3 2 ) ]
 		raise: Exception
 		whoseDescriptionIncludes: 'Cannot roll after game is over'
 		description: 'Should get an error with the correct description'

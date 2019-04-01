@@ -52,11 +52,6 @@ Bowling >> roll: pinCount [
 		ifTrue: [ currentFrame beSpareBonus ]
 ]
 
-{ #category : #exercism }
-Bowling >> roll: pinCount previousRolls: countCollection [ 
-	^self scorePreviousRolls: (countCollection copyWith: pinCount)
-]
-
 { #category : #accessing }
 Bowling >> score [
 	| result |
@@ -81,7 +76,12 @@ Bowling >> score [
 ]
 
 { #category : #exercism }
-Bowling >> scorePreviousRolls: countCollection [ 
+Bowling >> scoreAfterRolling: countCollection [ 
 	countCollection do: [ :pinCount | self roll: pinCount ].
 	^self score
+]
+
+{ #category : #exercism }
+Bowling >> scoreRolling: pinCount after: countCollection [ 
+	^self scoreAfterRolling: (countCollection copyWith: pinCount)
 ]
