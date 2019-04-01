@@ -22,3 +22,8 @@ Clock >> createMinute: anInteger hour: anInteger2 [
 		(minute < 10 ifTrue: [ '0' ] ifFalse: [ '' ]).
 		minute }
 ]
+
+{ #category : #'as yet unclassified' }
+Clock >> subtractMinute: minute hour: hour value: minutes [ 
+	^ self createMinute: minute - minutes hour: hour
+]
