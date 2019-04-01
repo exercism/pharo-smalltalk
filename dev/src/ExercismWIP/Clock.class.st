@@ -4,7 +4,11 @@ Class {
 	#category : #'ExercismWIP-Clock'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #creation }
 Clock >> createMinute: anInteger hour: anInteger2 [ 
-	^ '08:00'
+	^ '{1}{2}:{3}{4}' format: {
+		(anInteger2 < 10 ifTrue: [ '0' ] ifFalse: [ '' ]).
+		anInteger2.
+		(anInteger < 10 ifTrue: [ '0' ] ifFalse: [ '' ]).
+		anInteger }
 ]
