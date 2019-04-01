@@ -145,6 +145,19 @@
 			]
 		},
 		{
+			"slug" : "bowling",
+			"uuid" : "494d55f9-d941-0d00-a5c2-334307d29f14",
+			"core" : false,
+			"auto_approve" : false,
+			"unlocked_by" : "tournament",
+			"difficulty" : 5,
+			"topics" : [
+				"conditionals",
+				"object_oriented_programming",
+				"algorithms"
+			]
+		},
+		{
 			"slug" : "etl",
 			"uuid" : "d6303b3f-0f41-0d00-a5e1-db510c056502",
 			"core" : false,
