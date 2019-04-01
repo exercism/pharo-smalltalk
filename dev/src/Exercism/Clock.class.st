@@ -1,7 +1,7 @@
 Class {
 	#name : #Clock,
 	#superclass : #Object,
-	#category : #'ExercismWIP-Clock'
+	#category : #'Exercism-Clock'
 }
 
 { #category : #computing }

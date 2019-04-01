@@ -18,8 +18,21 @@ Class {
 	#instVars : [
 		'clockCalculator'
 	],
-	#category : #'ExercismWIP-Clock'
+	#category : #'Exercism-Clock'
 }
+
+{ #category : #config }
+ClockTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+	
+	^(self createExerciseAfter: LeapTest)
+		isCore: false;
+		difficulty: 2;
+		topics: #('math' 'classes' 'structural_equality');
+		yourself
+	
+				
+]
 
 { #category : #config }
 ClockTest class >> uuid [
