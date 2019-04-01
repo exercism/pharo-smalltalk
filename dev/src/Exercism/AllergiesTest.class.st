@@ -32,7 +32,8 @@ score is 257, your program should only report the eggs (1) allergy.
 
 ## Hint
 
-TBD
+Notice how each of the items is a power of 2, a property that you should be able to leverage.
+
 
 "
 Class {
@@ -59,8 +60,8 @@ AllergiesTest class >> exercise [
 AllergiesTest class >> generator [
 	"Potential generator hints"
 	
-	^ {('allergicToItem:score:' -> #('allergicToItem:forScore:')).
-	('listScore:' -> #('allergyListForScore:'))}
+	^ {('@allergicToItem:score:' -> #allergicToItem:forScore:).
+	('@listScore:' -> #'allergyListForScore:')}
 ]
 
 { #category : #config }
