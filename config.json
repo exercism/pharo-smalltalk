@@ -2,7 +2,7 @@
 	"track_id" : "pharo",
 	"language" : "Pharo",
 	"active" : false,
-	"blurb" : "Pharo is a fun and immersive smalltalk programming experience. Featuring a clean object-oriented language and a powerful user extendable environment, it focuses on simplicity and immediate feedback (think IDE and OS rolled into one). It's elegence and productivity give it wide reach into banking, education, web development and even robotics.",
+	"blurb" : "Pharo is an immersive, open source, Smalltalk programming experience. It has a pure object-oriented language and powerful user extendable environment, that focuses on simplicity and immediate feedback (think IDE and OS rolled into one). It's elegence gives it wide reach into banking, education, web development and even robotics.",
 	"solution_pattern" : "\\.meta/solution/\\w+\\.class\\.st",
 	"test_pattern" : "\\w+Test\\.class\\.st",
 	"exercises" : [
@@ -145,6 +145,32 @@
 			]
 		},
 		{
+			"slug" : "bracket-push",
+			"uuid" : "d126be16-9d41-0d00-8fdc-2ff208866539",
+			"core" : false,
+			"auto_approve" : false,
+			"unlocked_by" : "leap",
+			"difficulty" : 4,
+			"topics" : [
+				"strings",
+				"parsing",
+				"stacks"
+			]
+		},
+		{
+			"slug" : "bowling",
+			"uuid" : "494d55f9-d941-0d00-a5c2-334307d29f14",
+			"core" : false,
+			"auto_approve" : false,
+			"unlocked_by" : "tournament",
+			"difficulty" : 5,
+			"topics" : [
+				"conditionals",
+				"object_oriented_programming",
+				"algorithms"
+      ]
+    },
+    {
 			"slug" : "etl",
 			"uuid" : "d6303b3f-0f41-0d00-a5e1-db510c056502",
 			"core" : false,
