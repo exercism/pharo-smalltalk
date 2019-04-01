@@ -23,6 +23,11 @@ Clock >> createMinute: anInteger hour: anInteger2 [
 		minute }
 ]
 
+{ #category : #comparing }
+Clock >> equalClock1: aCollection clock2: aCollection2 [ 
+	^ aCollection = aCollection2
+]
+
 { #category : #'as yet unclassified' }
 Clock >> subtractMinute: minute hour: hour value: minutes [ 
 	^ self createMinute: minute - minutes hour: hour
