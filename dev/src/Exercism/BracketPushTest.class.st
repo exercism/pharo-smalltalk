@@ -7,7 +7,8 @@ and nested correctly.
 
 ## Hint
 
-TBD
+Saving state in a useful data type can help here.
+
 
 "
 Class {
@@ -16,8 +17,27 @@ Class {
 	#instVars : [
 		'bracketPushCalculator'
 	],
-	#category : #'ExercismWIP-BracketPush'
+	#category : #'Exercism-BracketPush'
 }
+
+{ #category : #config }
+BracketPushTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+	
+	^(self createExerciseAfter: LeapTest)
+		isCore: false;
+		difficulty: 4;
+		topics: #('strings' 'parsing' 'stacks');
+		yourself
+	
+]
+
+{ #category : #generator }
+BracketPushTest class >> generator [
+	"Potential generator hints"
+	
+	^ {('@isPairedValue:' -> #isPaired:)}
+]
 
 { #category : #config }
 BracketPushTest class >> uuid [
@@ -40,7 +60,7 @@ BracketPushTest >> setUp [
 BracketPushTest >> test01_PairedSquareBrackets [
 	| result |
 
-	result := bracketPushCalculator isPairedValue: '[]' .
+	result := bracketPushCalculator isPaired: '[]' .
 	self assert: result equals: true
 ]
 
@@ -48,7 +68,7 @@ BracketPushTest >> test01_PairedSquareBrackets [
 BracketPushTest >> test02_EmptyString [
 	| result |
 
-	result := bracketPushCalculator isPairedValue: '' .
+	result := bracketPushCalculator isPaired: '' .
 	self assert: result equals: true
 ]
 
@@ -56,7 +76,7 @@ BracketPushTest >> test02_EmptyString [
 BracketPushTest >> test03_UnpairedBrackets [
 	| result |
 
-	result := bracketPushCalculator isPairedValue: '[[' .
+	result := bracketPushCalculator isPaired: '[[' .
 	self assert: result equals: false
 ]
 
@@ -64,7 +84,7 @@ BracketPushTest >> test03_UnpairedBrackets [
 BracketPushTest >> test04_WrongOrderedBrackets [
 	| result |
 
-	result := bracketPushCalculator isPairedValue: '}{' .
+	result := bracketPushCalculator isPaired: '}{' .
 	self assert: result equals: false
 ]
 
@@ -72,7 +92,7 @@ BracketPushTest >> test04_WrongOrderedBrackets [
 BracketPushTest >> test05_WrongClosingBracket [
 	| result |
 
-	result := bracketPushCalculator isPairedValue: '{]' .
+	result := bracketPushCalculator isPaired: '{]' .
 	self assert: result equals: false
 ]
 
@@ -80,7 +100,7 @@ BracketPushTest >> test05_WrongClosingBracket [
 BracketPushTest >> test06_PairedWithWhitespace [
 	| result |
 
-	result := bracketPushCalculator isPairedValue: '{ }' .
+	result := bracketPushCalculator isPaired: '{ }' .
 	self assert: result equals: true
 ]
 
@@ -88,7 +108,7 @@ BracketPushTest >> test06_PairedWithWhitespace [
 BracketPushTest >> test07_PartiallyPairedBrackets [
 	| result |
 
-	result := bracketPushCalculator isPairedValue: '{[])' .
+	result := bracketPushCalculator isPaired: '{[])' .
 	self assert: result equals: false
 ]
 
@@ -96,7 +116,7 @@ BracketPushTest >> test07_PartiallyPairedBrackets [
 BracketPushTest >> test08_SimpleNestedBrackets [
 	| result |
 
-	result := bracketPushCalculator isPairedValue: '{[]}' .
+	result := bracketPushCalculator isPaired: '{[]}' .
 	self assert: result equals: true
 ]
 
@@ -104,7 +124,7 @@ BracketPushTest >> test08_SimpleNestedBrackets [
 BracketPushTest >> test09_SeveralPairedBrackets [
 	| result |
 
-	result := bracketPushCalculator isPairedValue: '{}[]' .
+	result := bracketPushCalculator isPaired: '{}[]' .
 	self assert: result equals: true
 ]
 
@@ -112,7 +132,7 @@ BracketPushTest >> test09_SeveralPairedBrackets [
 BracketPushTest >> test10_PairedAndNestedBrackets [
 	| result |
 
-	result := bracketPushCalculator isPairedValue: '([{}({}[])])' .
+	result := bracketPushCalculator isPaired: '([{}({}[])])' .
 	self assert: result equals: true
 ]
 
@@ -120,7 +140,7 @@ BracketPushTest >> test10_PairedAndNestedBrackets [
 BracketPushTest >> test11_UnopenedClosingBrackets [
 	| result |
 
-	result := bracketPushCalculator isPairedValue: '{[)][]}' .
+	result := bracketPushCalculator isPaired: '{[)][]}' .
 	self assert: result equals: false
 ]
 
@@ -128,7 +148,7 @@ BracketPushTest >> test11_UnopenedClosingBrackets [
 BracketPushTest >> test12_UnpairedAndNestedBrackets [
 	| result |
 
-	result := bracketPushCalculator isPairedValue: '([{])' .
+	result := bracketPushCalculator isPaired: '([{])' .
 	self assert: result equals: false
 ]
 
@@ -136,7 +156,7 @@ BracketPushTest >> test12_UnpairedAndNestedBrackets [
 BracketPushTest >> test13_PairedAndWrongNestedBrackets [
 	| result |
 
-	result := bracketPushCalculator isPairedValue: '[({]})' .
+	result := bracketPushCalculator isPaired: '[({]})' .
 	self assert: result equals: false
 ]
 
@@ -144,7 +164,7 @@ BracketPushTest >> test13_PairedAndWrongNestedBrackets [
 BracketPushTest >> test14_PairedAndIncompleteBrackets [
 	| result |
 
-	result := bracketPushCalculator isPairedValue: '{}[' .
+	result := bracketPushCalculator isPaired: '{}[' .
 	self assert: result equals: false
 ]
 
@@ -152,7 +172,7 @@ BracketPushTest >> test14_PairedAndIncompleteBrackets [
 BracketPushTest >> test15_TooManyClosingBrackets [
 	| result |
 
-	result := bracketPushCalculator isPairedValue: '[]]' .
+	result := bracketPushCalculator isPaired: '[]]' .
 	self assert: result equals: false
 ]
 
@@ -160,7 +180,7 @@ BracketPushTest >> test15_TooManyClosingBrackets [
 BracketPushTest >> test16_MathExpression [
 	| result |
 
-	result := bracketPushCalculator isPairedValue: '(((185 + 223.85) * 15) - 543)/2' .
+	result := bracketPushCalculator isPaired: '(((185 + 223.85) * 15) - 543)/2' .
 	self assert: result equals: true
 ]
 
@@ -168,6 +188,6 @@ BracketPushTest >> test16_MathExpression [
 BracketPushTest >> test17_ComplexLatexExpression [
 	| result |
 
-	result := bracketPushCalculator isPairedValue: '\left(\begin{array}{cc} \frac{1}{3} & x\\ \mathrm{e}^{x} &... x^2 \end{array}\right)' .
+	result := bracketPushCalculator isPaired: '\left(\begin{array}{cc} \frac{1}{3} & x\\ \mathrm{e}^{x} &... x^2 \end{array}\right)' .
 	self assert: result equals: true
 ]
