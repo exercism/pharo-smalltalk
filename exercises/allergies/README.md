@@ -31,7 +31,7 @@ score is 257, your program should only report the eggs (1) allergy.
 
 ## Hint
 
-Notice how each of the items is a power of 2, a property that you should be able to leverage.
+Notice how each of the items is a power of 2, a property that you can leverage.
 
 
 ## Downloading

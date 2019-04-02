@@ -46,12 +46,12 @@ ExercismExerciseGenerator class >> generate [
 ExercismExerciseGenerator class >> worldMenuCommandOn: aBuilder [
 	<worldMenu>
 	
-	(aBuilder item: 'Generate test exercises')
+	(aBuilder item: 'Generate exercises')
 		parent: #Exercism;
 		order: 150.0;
 		action: [ self generate ];
 		"iconName: templateCommand defaultMenuIconName;"
-		help: 'Generate exercises from the canonical problem-description'.
+		help: 'Re-Generate exercises from the canonical problem-description'.
 		"withSeparatorBefore"
 ]
 
@@ -82,75 +82,6 @@ ExercismExerciseGenerator >> compile: src for: aClass selector: aSelector protoc
 { #category : #accessing }
 ExercismExerciseGenerator >> defaultPackageName [
 	^ 'ExercismWIP'
-]
-
-{ #category : #generation }
-ExercismExerciseGenerator >> generateCodeAssertEqualsOn: output variable: variableName prefix: aSelectorPrefix parameters: testParameters result: testResults [
-
-	output tab; nextPutAll: 'result := '.
-	
-	self
-		generateCodeModelCallOn: output
-		variable: variableName
-		prefix: aSelectorPrefix
-		parameters: testParameters.
-	
-	output 
-		nextPut: $.; 
-		crlf;
-		tab;
-		nextPutAll: 'self assert: result equals: ' , testResults storeString
-]
-
-{ #category : #generation }
-ExercismExerciseGenerator >> generateCodeModelCallOn: output variable: variableName prefix: aSelectorPrefix parameters: testParameters [
-
-	output
-		nextPutAll: variableName;
-		space;
-		nextPutAll: aSelectorPrefix.
-		
-	testParameters keys
-		doWithIndex: [ :key :index | 
-			output
-				nextPutAll:
-					(index = 1
-						ifTrue: [ self keywordFor: key withPrefix: aSelectorPrefix ]
-						ifFalse: [ key asValidKeyword ]).
-			output
-				nextPut: $:;
-				space.
-			output
-				nextPutAll: (testParameters at: key) storeString;
-				space ]
-]
-
-{ #category : #generation }
-ExercismExerciseGenerator >> generateCodeShouldRaiseOn: output variable: variableName prefix: aSelectorPrefix parameters: testParameters result: testResults [
-
-	output
-		tab;
-		nextPutAll: 'self';
-		crlf; tab; tab;
-		nextPutAll: 'should: [ result := '.
-			
-	self
-		generateCodeModelCallOn: output
-		variable: variableName
-		prefix: aSelectorPrefix
-		parameters: testParameters.
-		
-	output
-		nextPutAll: ']';
-		crlf; tab; tab;
-		nextPutAll: 'raise: Exception';
-		crlf; tab; tab;
-		nextPutAll: ('whoseDescriptionIncludes: ''{1}''' format: { testResults at: 'error' });
-		cr; tab; tab;
-		nextPutAll: 'description: ''Should get an error with the correct description'''.
-		
-	
-	
 ]
 
 { #category : #generation }
@@ -311,21 +242,17 @@ ExercismExerciseGenerator >> generateTestNamed: testName in: aClass variable: va
 	| output src |
 	output := (WriteStream on: '').
 	output nextPutAll: testName; crlf; tab; nextPutAll: '| result |'; crlf; crlf.
+	output tab; nextPutAll: 'result := '; nextPutAll: variableName; space; nextPutAll: aSelectorPrefix.
 	
-	(self isErrorAssertion: testResults) 
-		ifTrue: [ self 
-			generateCodeShouldRaiseOn: output
-			variable: variableName
-			prefix: aSelectorPrefix
-			parameters: testParameters
-			result: testResults ] 
-		ifFalse: [ self 
-			generateCodeAssertEqualsOn: output
-			variable: variableName
-			prefix: aSelectorPrefix
-			parameters: testParameters
-			result: testResults ].
+	testParameters keys doWithIndex: [ :key :index |
+		output nextPutAll: 
+			(index = 1 
+				ifTrue: [self keywordFor: key withPrefix: aSelectorPrefix ] 
+				ifFalse: [key asValidKeyword]).
+		output nextPut: $:; space.
+		output nextPutAll: (testParameters at: key) storeString; space ].
 	
+	output nextPut: $.; crlf; tab; nextPutAll: 'self assert: result equals: ', testResults storeString.
 	src := output contents.
 	
 	self compile: src for: aClass selector: testName protocol: 'tests'
@@ -342,13 +269,6 @@ ExercismExerciseGenerator >> generateTestVariableAccessors: testVariable in: aCl
 		classVariable: false.
 	aRefactoring execute.
 	
-]
-
-{ #category : #generation }
-ExercismExerciseGenerator >> isErrorAssertion: testResults [
-	testResults isDictionary ifFalse: [ ^false ].
-	
-	^testResults size = 1 and: [ testResults includesKey: 'error' ]
 ]
 
 { #category : #generation }

@@ -30,17 +30,17 @@ ClyExercismMentorCommand class >> worldMenuCommandOn: aBuilder [
 		"withSeparatorAfter "
 ]
 
-{ #category : #menus }
+{ #category : #testing }
 ClyExercismMentorCommand >> defaultMenuIconName [
 	^#recentMessages
 ]
 
-{ #category : #menus }
+{ #category : #testing }
 ClyExercismMentorCommand >> defaultMenuItemName [
 	^'View Mentee Solution...'
 ]
 
-{ #category : #menus }
+{ #category : #testing }
 ClyExercismMentorCommand >> description [
 	^'View a mentee solution in a shadow browser'
 ]

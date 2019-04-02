@@ -30,12 +30,12 @@ ClyExercismGenerateCommand class >> worldMenuCommandOn: aBuilder [
 		withSeparatorAfter
 ]
 
-{ #category : #menus }
+{ #category : #testing }
 ClyExercismGenerateCommand >> defaultMenuItemName [
-	^'Regenerate meta data'
+	^'Generate exercise meta data'
 ]
 
-{ #category : #menus }
+{ #category : #testing }
 ClyExercismGenerateCommand >> description [
 	^'Walk the exercises and generate the Exercism templates into an existing git repository'
 ]

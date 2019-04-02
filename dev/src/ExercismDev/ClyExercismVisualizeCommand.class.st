@@ -32,7 +32,7 @@ ClyExercismVisualizeCommand class >> worldMenuCommandOn: aBuilder [
 
 { #category : #testing }
 ClyExercismVisualizeCommand >> defaultMenuItemName [
-	^'Visualize exercises...'
+	^'Visualize exercise meta data'
 ]
 
 { #category : #testing }
