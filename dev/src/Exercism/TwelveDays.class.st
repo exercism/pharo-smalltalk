@@ -1,7 +1,10 @@
+"
+This solution is pretty straight forward.
+"
 Class {
 	#name : #TwelveDays,
 	#superclass : #Object,
-	#category : #'ExercismWIP-TwelveDays'
+	#category : #'Exercism-TwelveDays'
 }
 
 { #category : #gifts }
@@ -34,7 +37,7 @@ TwelveDays >> giftsOnDay: anInteger [
 
 { #category : #converting }
 TwelveDays >> ordinal: anInteger [
-	"This would ideally be an extenssion on Integer or something on those lines"
+	"This would ideally be an extension on Integer or something on those lines"
 	^ #(first second third fourth fifth sixth seventh eighth ninth tenth eleventh twelfth) at: anInteger 
 ]
 

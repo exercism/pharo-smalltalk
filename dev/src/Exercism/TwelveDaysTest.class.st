@@ -31,7 +31,22 @@ On the twelfth day of Christmas my true love gave to me: twelve Drummers Drummin
 
 ## Hint
 
-TBD
+Its handy to have a list of the verses:
+
+^ #(
+	'a Partridge in a Pear Tree'
+	'two Turtle Doves'
+	'three French Hens'
+	'four Calling Birds'
+	'five Gold Rings'
+	'six Geese-a-Laying' 
+	'seven Swans-a-Swimming' 
+	'eight Maids-a-Milking' 
+	'nine Ladies Dancing'
+	'ten Lords-a-Leaping' 
+	'eleven Pipers Piping' 
+	'twelve Drummers Drumming' )
+
 
 "
 Class {
@@ -40,8 +55,21 @@ Class {
 	#instVars : [
 		'twelveDaysCalculator'
 	],
-	#category : #'ExercismWIP-TwelveDays'
+	#category : #'Exercism-TwelveDays'
 }
+
+{ #category : #config }
+TwelveDaysTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+	
+	^(self createExerciseAfter: TwoFerTest)
+		isCore: false;
+		difficulty: 2;
+		topics: #('strings' 'iteration' 'text_formatting');
+		yourself
+	
+				
+]
 
 { #category : #config }
 TwelveDaysTest class >> uuid [
