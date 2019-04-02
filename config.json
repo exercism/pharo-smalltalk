@@ -149,7 +149,7 @@
 			"uuid" : "494d55f9-d941-0d00-a5c2-334307d29f14",
 			"core" : false,
 			"auto_approve" : false,
-			"unlocked_by" : "tournament",
+			"unlocked_by" : "grade-school",
 			"difficulty" : 5,
 			"topics" : [
 				"conditionals",
@@ -168,6 +168,19 @@
 				"strings",
 				"parsing",
 				"stacks"
+			]
+		},
+		{
+			"slug" : "clock",
+			"uuid" : "f8080717-9d41-0d00-9011-755a08866539",
+			"core" : false,
+			"auto_approve" : false,
+			"unlocked_by" : "leap",
+			"difficulty" : 2,
+			"topics" : [
+				"math",
+				"classes",
+				"structural_equality"
 			]
 		},
 		{
