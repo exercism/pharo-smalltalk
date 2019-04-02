@@ -1,3 +1,6 @@
+"
+A simple solution to bracket exercise using a Stack
+"
 Class {
 	#name : #BracketPush,
 	#superclass : #Object,
