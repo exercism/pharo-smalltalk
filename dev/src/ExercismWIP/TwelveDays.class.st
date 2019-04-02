@@ -21,6 +21,17 @@ TwelveDays >> gifts [
 	'twelve Drummers Drumming' )
 ]
 
+{ #category : #gifts }
+TwelveDays >> giftsOnDay: anInteger [
+	^ anInteger = 1
+		ifTrue: [ self gifts first ]
+		ifFalse: [
+			| gifts |
+			
+			gifts := (self gifts copyFrom: 1 to: anInteger) reverse.
+			(gifts allButLast inject: '' into: [ :str :each | str , each , ', ' ]) , 'and ', gifts last ]
+]
+
 { #category : #reciting }
 TwelveDays >> reciteStartVerse: anInteger endVerse: anInteger2 [
 	^ Array with:
