@@ -32,6 +32,12 @@ TwelveDays >> giftsOnDay: anInteger [
 			(gifts allButLast inject: '' into: [ :str :each | str , each , ', ' ]) , 'and ', gifts last ]
 ]
 
+{ #category : #converting }
+TwelveDays >> ordinal: anInteger [
+	"This would ideally be an extenssion on Integer or something on those lines"
+	^ #(first second third fourth fifth sixth seventh eighth ninth tenth eleventh twelfth) at: anInteger 
+]
+
 { #category : #reciting }
 TwelveDays >> reciteStartVerse: anInteger endVerse: anInteger2 [
 	^ Array with:
