@@ -45,6 +45,12 @@ TwelveDays >> reciteStartVerse: anInteger endVerse: anInteger2 [
 ]
 
 { #category : #reciting }
+TwelveDays >> verse: anInteger [
+	^ 'On the {1} day of Christmas my true love gave to me: {2}.'
+		format: { self ordinal: anInteger. self giftsOnDay: anInteger }
+]
+
+{ #category : #reciting }
 TwelveDays >> verses [
 	^ #(
 	'On the first day of Christmas my true love gave to me: a Partridge in a Pear Tree.'
