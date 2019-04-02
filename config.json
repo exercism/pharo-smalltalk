@@ -341,6 +341,19 @@
 			]
 		},
 		{
+			"slug" : "twelve-days",
+			"uuid" : "7047d916-9d41-0d00-8ff2-3a9808866539",
+			"core" : false,
+			"auto_approve" : false,
+			"unlocked_by" : "two-fer",
+			"difficulty" : 2,
+			"topics" : [
+				"strings",
+				"iteration",
+				"text_formatting"
+			]
+		},
+		{
 			"slug" : "word-count",
 			"uuid" : "a5de8cbe-4a3f-0d00-bb5e-8947071d6982",
 			"core" : false,
