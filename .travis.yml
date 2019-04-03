@@ -15,3 +15,6 @@ smalltalk:
 
 before_script:
   - bin/configlet lint --track-id pharo .
+
+after_script:
+  - bin/configlet tree --track_id pharo .
