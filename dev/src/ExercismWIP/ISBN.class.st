@@ -23,6 +23,16 @@ ISBN class >> isValidControlChar: aCharacter [
 		or: [ aCharacter lowercase = $x ]
 ]
 
+{ #category : #testing }
+ISBN >> hasValidChecksum [
+	| acc |
+	
+	acc := digits
+		with: (10 to: 2 by: -1)
+		collect: [ :digit :multiplier | digit * multiplier ].
+	^ (acc sum + (control digitValue min: 10) % 11) isZero
+]
+
 { #category : #initialization }
 ISBN >> initialize [ 
 	super initialize.
@@ -34,9 +44,10 @@ ISBN >> initialize [
 
 { #category : #testing }
 ISBN >> isValid [
-	^ (ISBN isValidControlChar: string last)
+	^ (self class isValidControlChar: string last)
 		and: [ (string last = $9) not
-			and: [ digits size = 9 ] ]
+			and: [ digits size = 9
+				and: [ self hasValidChecksum ] ] ]
 ]
 
 { #category : #accessing }
