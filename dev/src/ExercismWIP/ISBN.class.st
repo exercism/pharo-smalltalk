@@ -21,6 +21,12 @@ ISBN class >> isValidControlChar: aCharacter [
 		or: [ aCharacter lowercase = $x ]
 ]
 
+{ #category : #testing }
+ISBN >> isValid [
+	^ (ISBN isValidControlChar: string last)
+		and: [ (string last = $9) not ]
+]
+
 { #category : #accessing }
 ISBN >> string: aString [ 
 	string := aString

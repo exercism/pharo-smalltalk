@@ -5,7 +5,9 @@ Class {
 }
 
 { #category : #verifying }
-IsbnVerifier >> isValidIsbn: aString [ 
-	^ (ISBN isValidControlChar: aString last)
-		and: [ (aString last = $9) not ]
+IsbnVerifier >> isValidIsbn: aString [
+	| isbn |
+	
+	isbn := ISBN fromString: aString.
+	^ isbn isValid
 ]
