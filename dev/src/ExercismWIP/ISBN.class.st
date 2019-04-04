@@ -2,7 +2,9 @@ Class {
 	#name : #ISBN,
 	#superclass : #Object,
 	#instVars : [
-		'string'
+		'string',
+		'digits',
+		'control'
 	],
 	#category : #'ExercismWIP-IsbnVerifier'
 }
@@ -19,6 +21,15 @@ ISBN class >> fromString: aString [
 ISBN class >> isValidControlChar: aCharacter [ 
 	^ (aCharacter between: $0 and: $9)
 		or: [ aCharacter lowercase = $x ]
+]
+
+{ #category : #initialization }
+ISBN >> initialize [ 
+	super initialize.
+	digits := string allButLast asOrderedCollection 
+		select: [ :each | each isDecimalDigit ]
+		thenCollect: [ :each | each digitValue ].
+	control := string last.
 ]
 
 { #category : #testing }
