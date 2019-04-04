@@ -6,5 +6,5 @@ Class {
 
 { #category : #verifying }
 IsbnVerifier >> isValidIsbn: aString [ 
-	^ true
+	^ (aString endsWith: '9') not
 ]
