@@ -35,7 +35,8 @@ ISBN >> initialize [
 { #category : #testing }
 ISBN >> isValid [
 	^ (ISBN isValidControlChar: string last)
-		and: [ (string last = $9) not ]
+		and: [ (string last = $9) not
+			and: [ digits size = 9 ] ]
 ]
 
 { #category : #accessing }
