@@ -5,6 +5,9 @@
 .gitignore text
 .gitattributes text
 
+./bin/fetch-configlet text
+
 *.md text
 *.yml text
+*.st text
 *.json text

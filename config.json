@@ -291,7 +291,7 @@
       "uuid" : "ffe8dcbb-8040-0d00-8124-bf5801deb008",
       "core" : false,
       "auto_approve" : false,
-      "unlocked_by" : "isogram",
+      "unlocked_by" : "grains",
       "difficulty" : 3,
       "topics" : [
         "math",
@@ -358,7 +358,7 @@
       "uuid" : "a5de8cbe-4a3f-0d00-bb5e-8947071d6982",
       "core" : false,
       "auto_approve" : false,
-      "unlocked_by" : "isogram",
+      "unlocked_by" : "allergies",
       "difficulty" : 3,
       "topics" : [
         "strings",
