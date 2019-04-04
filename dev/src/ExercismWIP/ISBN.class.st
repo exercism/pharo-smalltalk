@@ -7,6 +7,14 @@ Class {
 	#category : #'ExercismWIP-IsbnVerifier'
 }
 
+{ #category : #'instance creation' }
+ISBN class >> fromString: aString [ 
+	^ self basicNew 
+		string: aString;
+		initialize;
+		yourself
+]
+
 { #category : #testing }
 ISBN class >> isValidControlChar: aCharacter [ 
 	^ (aCharacter between: $0 and: $9)
