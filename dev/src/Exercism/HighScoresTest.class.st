@@ -17,7 +17,7 @@ Class {
 	#instVars : [
 		'highScoresCalculator'
 	],
-	#category : #'ExercismWIP-HighScores'
+	#category : #'Exercism-HighScores'
 }
 
 { #category : #config }

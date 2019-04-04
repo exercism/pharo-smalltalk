@@ -1,7 +1,10 @@
+"
+A simple exercise, of note is how to handle the top three scores - ideally you can sort and then take the min of 3 and the score list size, but there are equally other options.
+"
 Class {
 	#name : #HighScores,
 	#superclass : #Object,
-	#category : #'ExercismWIP-HighScores'
+	#category : #'Exercism-HighScores'
 }
 
 { #category : #exercism }
@@ -15,8 +18,9 @@ HighScores >> personalBestScores: scoreCollection [
 ]
 
 { #category : #exercism }
-HighScores >> personalTopThreeScores: aCollection [ 
-	^(aCollection asSortedCollection: [ :a :b | a > b ]) asArray first: (3 min: aCollection size)
+HighScores >> personalTopThreeScores: aCollection [
+	^ (aCollection asSortedCollection: [ :a :b | a > b ]) asArray
+			first: (3 min: aCollection size)
 ]
 
 { #category : #exercism }
