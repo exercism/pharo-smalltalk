@@ -51,7 +51,7 @@ ExercismManager class >> solutionData [
 
 { #category : #config }
 ExercismManager class >> trackId [
-	^'pharo'
+	^'pharo-smalltalk'
 ]
 
 { #category : #exercism }
