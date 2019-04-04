@@ -6,8 +6,7 @@ Class {
 
 { #category : #verifying }
 IsbnVerifier >> isValidIsbn: aString [
-	| isbn |
-	
-	isbn := ISBN fromString: aString.
-	^ isbn isValid
+	^ aString
+		ifEmpty: [ false ]
+		ifNotEmpty: [ :it | (ISBN fromString: it) isValid ]
 ]
