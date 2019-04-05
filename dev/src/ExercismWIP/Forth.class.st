@@ -8,13 +8,6 @@ Class {
 }
 
 { #category : #validating }
-Forth >> checkStack [
-	stack ifEmpty: [ self error: 'empty stack' ].
-	stack size = 1
-		ifTrue: [ self error: 'only one value on the stack' ]
-]
-
-{ #category : #validating }
 Forth >> checkStackHas: anInteger [
 	stack size < anInteger ifFalse: [ ^ self ].
 	stack ifEmpty: [ self error: 'empty stack' ].
