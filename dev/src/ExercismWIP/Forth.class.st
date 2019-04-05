@@ -19,7 +19,9 @@ Forth >> evaluateInstructions: aCollection [
 Forth >> evaluateWord: aString [ 
 	^ (self isSignedInteger: aString)
 		ifTrue: [ aString asInteger ]
-		ifFalse: [ aString ]
+		ifFalse: [ aString = '+'
+			ifTrue: [ stack pop + stack pop ]
+			ifFalse: [ aString ] ]
 ]
 
 { #category : #initialization }
