@@ -31,6 +31,7 @@ Forth >> evaluateWord: aString [
 			aString = '-' ifTrue: [ stack push: self performSubtraction ].
 			aString = '*' ifTrue: [ stack push: self performMultiplication ].
 			aString = '/' ifTrue: [ stack push: self performDivision ].
+			aString = 'dup' ifTrue: [ self performDup ].
 			aString = 'swap' ifTrue: [ self performSwap ].
 		^ aString ]
 ]
@@ -66,6 +67,13 @@ Forth >> performDivision [
 ]
 
 { #category : #operating }
+Forth >> performDup [
+	self
+		checkStackHas: 1;
+		primitiveDup
+]
+
+{ #category : #operating }
 Forth >> performMultiplication [
 	self checkStackHas: 2.
 	^ stack pop * stack pop
@@ -81,6 +89,11 @@ Forth >> performSubtraction [
 { #category : #operating }
 Forth >> performSwap [
 	self checkStack primitiveSwap
+]
+
+{ #category : #primitives }
+Forth >> primitiveDup [
+	stack push: stack top
 ]
 
 { #category : #primitives }
