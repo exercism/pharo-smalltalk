@@ -8,14 +8,6 @@ Class {
 }
 
 { #category : #encoding }
-AtbashCipher >> encodeChar: aCharacter [ 
-	| index |
-	
-	index := 	Character alphabet indexOf: aCharacter.
-	^ key at: index ifAbsent: aCharacter
-]
-
-{ #category : #encoding }
 AtbashCipher >> encodePhrase: aString [
 	^ self splitInGroupsOfFive: (self transcodePhrase: aString)
 ]
