@@ -17,8 +17,8 @@ AtbashCipher >> encodeChar: aCharacter [
 
 { #category : #encoding }
 AtbashCipher >> encodePhrase: aString [
-	^ aString onlyLetters asLowercase
-		collect: [ :each | self encodeChar: each ]
+	^ self splitInGroupsOfFive: (aString onlyLetters asLowercase
+		collect: [ :each | self encodeChar: each ])
 ]
 
 { #category : #initialization }
