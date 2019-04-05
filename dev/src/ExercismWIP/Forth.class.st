@@ -31,6 +31,7 @@ Forth >> evaluateWord: aString [
 			aString = '-' ifTrue: [ stack push: self performSubtraction ].
 			aString = '*' ifTrue: [ stack push: self performMultiplication ].
 			aString = '/' ifTrue: [ stack push: self performDivision ].
+			aString = 'swap' ifTrue: [ self performSwap ].
 		^ aString ]
 ]
 
