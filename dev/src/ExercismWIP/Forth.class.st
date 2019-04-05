@@ -14,6 +14,13 @@ Forth >> checkStack [
 		ifTrue: [ self error: 'only one value on the stack' ]
 ]
 
+{ #category : #validating }
+Forth >> checkStackHas: anInteger [
+	stack size < anInteger ifFalse: [ ^ self ].
+	stack ifEmpty: [ self error: 'empty stack' ].
+	stack size = 1 ifTrue: [ self error: 'only one value on the stack' ]
+]
+
 { #category : #evaluating }
 Forth >> evaluateInstructions: aCollection [
 	aCollection do: [ :string |
