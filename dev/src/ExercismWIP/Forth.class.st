@@ -9,6 +9,13 @@ Class {
 	#category : #'ExercismWIP-Forth'
 }
 
+{ #category : #vocabulary }
+Forth >> addWord: aString definition: aCollection [
+	^ self vocabulary
+		at: aString
+		put: aCollection
+]
+
 { #category : #validating }
 Forth >> checkStackHas: anInteger [
 	stack size < anInteger ifFalse: [ ^ self ].
@@ -16,11 +23,27 @@ Forth >> checkStackHas: anInteger [
 	stack size = 1 ifTrue: [ self error: 'only one value on the stack' ]
 ]
 
+{ #category : #compiling }
+Forth >> compileWord: aString [
+	currentDefinition
+		ifEmpty: [ currentDefinition add: aString ]
+		ifNotEmpty: [
+			(self isSignedInteger: aString)
+				ifTrue: [ currentDefinition add: (ForthWord new
+					name: #literal;
+					definition: [ stack push: aString asInteger ];
+					yourself) ]
+				ifFalse: [ | word |
+					word := self lookupWord: aString.
+					currentDefinition add: word.
+				^ aString ] ]
+]
+
 { #category : #evaluating }
 Forth >> evaluateInstructions: aCollection [
 	aCollection do: [ :string |
 		(string splitOn: Character space)
-			do: [ :each | self evaluateWord: each ] ].
+			do: [ :each | self processWord: each ] ].
 	^ stack reverse asArray
 ]
 
@@ -28,10 +51,25 @@ Forth >> evaluateInstructions: aCollection [
 Forth >> evaluateWord: aString [
 	(self isSignedInteger: aString)
 		ifTrue: [ stack push: aString asInteger ]
-		ifFalse: [ | word |
-			word := self lookupWord: aString.
-			word value.
+		ifFalse: [ | definition |
+			definition := self lookupWord: aString.
+			definition execute.
 			^ aString ]
+]
+
+{ #category : #compiling }
+Forth >> finishCompilation [
+	| name definition |
+	
+	name := currentDefinition first.
+	definition := currentDefinition allButFirst.
+	self
+		addWord: name
+		definition: (ForthWord new
+			name: name;
+			definition: definition;
+			yourself).
+	currentDefinition := nil
 ]
 
 { #category : #initialization }
@@ -145,19 +183,31 @@ Forth >> primitiveSwap [
 		push: b
 ]
 
+{ #category : #evaluating }
+Forth >> processWord: aString [
+	(currentDefinition isNil or: [ aString = ';' ])
+		ifTrue: [ self evaluateWord: aString ]
+		ifFalse: [ self compileWord: aString ]
+]
+
+{ #category : #compiling }
+Forth >> startCompilation [
+	currentDefinition := OrderedCollection new
+]
+
 { #category : #vocabulary }
 Forth >> vocabulary [
 	^ vocabulary ifNil: [ vocabulary := {
-		#+ -> [ stack push: self performAddition ].
-		#- -> [ stack push: self performSubtraction ].
-		#* -> [ stack push: self performMultiplication ].
-		#/ -> [ stack push: self performDivision ].
-		#dup -> [ self performDup ].
-		#drop -> [ self performDrop ].
-		#over -> [ self performOver ].
-		#swap -> [ self performSwap ].
-		':' -> [ self startCompilation ].
-		';' -> [ self finishCompilation ]
+		#+ -> (ForthWord new name: #+; definition: [ stack push: self performAddition ]).
+		#- -> (ForthWord new name: #-; definition: [ stack push: self performSubtraction ]).
+		#* -> (ForthWord new name: #*; definition: [ stack push: self performMultiplication ]).
+		#/ -> (ForthWord new name: #/; definition: [ stack push: self performDivision ]).
+		#dup -> (ForthWord new name: #dup; definition: [ self performDup ]).
+		#drop -> (ForthWord new name: #drop; definition: [ self performDrop ]).
+		#over -> (ForthWord new name: #over; definition: [ self performOver ]).
+		#swap -> (ForthWord new name: #swap; definition: [ self performSwap ]).
+		':' -> (ForthWord new name: ':'; definition: [ self startCompilation ]).
+		';' -> (ForthWord new name: '+'; definition: [ self finishCompilation ])
 	} asDictionary ]
 
 ]
