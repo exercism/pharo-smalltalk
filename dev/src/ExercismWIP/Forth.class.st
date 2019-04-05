@@ -22,6 +22,7 @@ Forth >> evaluateWord: aString [
 		ifFalse: [
 			aString = '+' ifTrue: [ ^ self performAddition ].
 			aString = '-' ifTrue: [ ^ self performSubtraction ].
+			aString = '*' ifTrue: [ ^ self performMultiplication ].
 			^ aString ]
 ]
 
@@ -42,6 +43,12 @@ Forth >> isSignedInteger: aString [
 Forth >> performAddition [
 	stack size < 2 ifTrue: [ self error: 'empty stack' ].
 	^ stack pop + stack pop
+]
+
+{ #category : #operating }
+Forth >> performMultiplication [
+	stack size < 2 ifTrue: [ self error: 'empty stack' ].
+	^ stack pop * stack pop
 ]
 
 { #category : #operating }
