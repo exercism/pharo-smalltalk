@@ -24,6 +24,13 @@ Forth >> checkStackHas: anInteger [
 ]
 
 { #category : #compiling }
+Forth >> compileName: aString [
+	(self isSignedInteger: aString)
+		ifTrue: [ self error: 'illegal operation' ].
+	currentDefinition add: aString
+]
+
+{ #category : #compiling }
 Forth >> compileWord: aString [
 	currentDefinition
 		ifEmpty: [ currentDefinition add: aString ]
