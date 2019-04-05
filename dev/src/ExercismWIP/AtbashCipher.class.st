@@ -48,3 +48,21 @@ AtbashCipher >> splitInGroupsOfFive: aString [
 				ifTrue: [ stream << Character space ].
 			stream << each ] ]
 ]
+
+{ #category : #encoding }
+AtbashCipher >> transcodeChar: aCharacter [ 
+	| index |
+	
+	index := 	Character alphabet indexOf: aCharacter.
+	^ key at: index ifAbsent: aCharacter
+]
+
+{ #category : #encoding }
+AtbashCipher >> transcodePhrase: aString [
+	| sanitizedInput transcodedString |
+
+	sanitizedInput := self sanitizeString: aString.
+	transcodedString := sanitizedInput
+		collect: [ :each | self transcodeChar: each ].
+	^ transcodedString
+]
