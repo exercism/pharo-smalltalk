@@ -48,20 +48,21 @@ Forth >> isSignedInteger: aString [
 
 { #category : #operating }
 Forth >> performAddition [
-	stack size < 2 ifTrue: [ self error: 'empty stack' ].
+	self checkStack.
 	^ stack pop + stack pop
 ]
 
 { #category : #operating }
 Forth >> performMultiplication [
-	stack size < 2 ifTrue: [ self error: 'empty stack' ].
+	self checkStack.
 	^ stack pop * stack pop
 ]
 
 { #category : #operating }
 Forth >> performSubtraction [
-	stack size < 2 ifTrue: [ self error: 'empty stack' ].
-	^ stack pop negated + stack pop
+	self checkStack.
+	self primitiveSwap.
+	^ stack pop - stack pop
 ]
 
 { #category : #operating }
