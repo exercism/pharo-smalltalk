@@ -18,20 +18,20 @@ Forth >> checkStack [
 Forth >> evaluateInstructions: aCollection [
 	aCollection do: [ :string |
 		(string splitOn: Character space)
-			do: [ :each | stack push: (self evaluateWord: each) ] ].
+			do: [ :each | self evaluateWord: each ] ].
 	^ stack reverse asArray
 ]
 
 { #category : #evaluating }
 Forth >> evaluateWord: aString [ 
 	(self isSignedInteger: aString)
-		ifTrue: [ ^ aString asInteger ]
+		ifTrue: [ stack push: aString asInteger ]
 		ifFalse: [
-			aString = '+' ifTrue: [ ^ self performAddition ].
-			aString = '-' ifTrue: [ ^ self performSubtraction ].
-			aString = '*' ifTrue: [ ^ self performMultiplication ].
-			aString = '/' ifTrue: [ ^ self performDivision ].
-			^ aString ]
+			aString = '+' ifTrue: [ stack push: self performAddition ].
+			aString = '-' ifTrue: [ stack push: self performSubtraction ].
+			aString = '*' ifTrue: [ stack push: self performMultiplication ].
+			aString = '/' ifTrue: [ stack push: self performDivision ].
+		^ aString ]
 ]
 
 { #category : #initialization }
