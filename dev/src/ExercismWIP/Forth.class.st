@@ -23,15 +23,13 @@ Forth >> evaluateInstructions: aCollection [
 ]
 
 { #category : #evaluating }
-Forth >> evaluateWord: aString [ 
+Forth >> evaluateWord: aString [
 	(self isSignedInteger: aString)
 		ifTrue: [ stack push: aString asInteger ]
-		ifFalse: [
-			self vocabulary
-			at: aString
-			ifPresent: [ :word | word value ]
-			ifAbsent: [ self error: 'undefined operation' ].
-		^ aString ]
+		ifFalse: [ | word |
+			word := self lookupWord: aString.
+			word value.
+			^ aString ]
 ]
 
 { #category : #initialization }
@@ -45,6 +43,13 @@ Forth >> isSignedInteger: aString [
 	^ aString isAllDigits
 		or: [ aString first = $-
 			and: [ aString allButFirst isAllDigits ] ]
+]
+
+{ #category : #evaluating }
+Forth >> lookupWord: aString [
+	^ self vocabulary
+		at: aString
+		ifAbsent: [ self error: 'undefined operation' ]
 ]
 
 { #category : #operating }
