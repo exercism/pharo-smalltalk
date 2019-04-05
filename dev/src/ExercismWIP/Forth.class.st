@@ -17,11 +17,12 @@ Forth >> evaluateInstructions: aCollection [
 
 { #category : #evaluating }
 Forth >> evaluateWord: aString [ 
-	^ (self isSignedInteger: aString)
-		ifTrue: [ aString asInteger ]
-		ifFalse: [ aString = '+'
-			ifTrue: [ stack pop + stack pop ]
-			ifFalse: [ aString ] ]
+	(self isSignedInteger: aString)
+		ifTrue: [ ^ aString asInteger ]
+		ifFalse: [
+			aString = '+' ifTrue: [ ^ self performAddition ].
+			aString = '-' ifTrue: [ ^ self performSubtraction ].
+			^ aString ]
 ]
 
 { #category : #initialization }
@@ -35,4 +36,16 @@ Forth >> isSignedInteger: aString [
 	^ aString isAllDigits
 		or: [ aString first = $-
 			and: [ aString allButFirst isAllDigits ] ]
+]
+
+{ #category : #operating }
+Forth >> performAddition [
+	stack size < 2 ifTrue: [ self error: 'empty stack' ].
+	^ stack pop + stack pop
+]
+
+{ #category : #operating }
+Forth >> performSubtraction [
+	stack size < 2 ifTrue: [ self error: 'empty stack' ].
+	^ stack pop negated + stack pop
 ]
