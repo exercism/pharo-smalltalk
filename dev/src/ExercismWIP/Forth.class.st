@@ -82,7 +82,7 @@ Forth >> performSwap [
 	self checkStack primitiveSwap
 ]
 
-{ #category : #operating }
+{ #category : #primitives }
 Forth >> primitiveSwap [
 	| a b |
 	
