@@ -7,6 +7,13 @@ Class {
 	#category : #'ExercismWIP-Forth'
 }
 
+{ #category : #validating }
+Forth >> checkStack [
+	stack ifEmpty: [ self error: 'empty stack' ].
+	stack size = 1
+		ifTrue: [ self error: 'only one value on the stack' ]
+]
+
 { #category : #evaluating }
 Forth >> evaluateInstructions: aCollection [
 	aCollection do: [ :string |
