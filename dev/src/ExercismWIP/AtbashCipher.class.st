@@ -17,12 +17,7 @@ AtbashCipher >> encodeChar: aCharacter [
 
 { #category : #encoding }
 AtbashCipher >> encodePhrase: aString [
-	| sanitizedInput encodedString |
-	
-	sanitizedInput := self sanitizeString: aString.
-	encodedString := sanitizedInput
-		collect: [ :each | self encodeChar: each ].
-	^ self splitInGroupsOfFive: encodedString
+	^ self splitInGroupsOfFive: (self transcodePhrase: aString)
 ]
 
 { #category : #initialization }
