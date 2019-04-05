@@ -8,8 +8,11 @@ Class {
 }
 
 { #category : #evaluating }
-Forth >> evaluateInstructions: aCollection [ 
-	^ #(1 2 3 4 5)
+Forth >> evaluateInstructions: aCollection [
+	aCollection do: [ :string |
+		(string splitOn: Character space)
+			do: [ :each | stack push: (self evaluateWord: each) ] ].
+	^ stack reverse asArray
 ]
 
 { #category : #evaluating }
