@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #encoding }
+AtbashCipher >> decodePhrase: aString [
+	^ self transcodePhrase: aString
+]
+
+{ #category : #encoding }
 AtbashCipher >> encodePhrase: aString [
 	^ self splitInGroupsOfFive: (self transcodePhrase: aString)
 ]
