@@ -57,14 +57,14 @@ Forth >> isSignedInteger: aString [
 
 { #category : #operating }
 Forth >> performAddition [
-	self checkStack.
+	self checkStackHas: 2.
 	^ stack pop + stack pop
 ]
 
 { #category : #operating }
 Forth >> performDivision [
 	| a b |
-	self checkStack.
+	self checkStackHas: 2.
 	self primitiveSwap.
 	a := stack pop.
 	b := stack pop.
@@ -74,13 +74,13 @@ Forth >> performDivision [
 
 { #category : #operating }
 Forth >> performMultiplication [
-	self checkStack.
+	self checkStackHas: 2.
 	^ stack pop * stack pop
 ]
 
 { #category : #operating }
 Forth >> performSubtraction [
-	self checkStack.
+	self checkStackHas: 2.
 	self primitiveSwap.
 	^ stack pop - stack pop
 ]
