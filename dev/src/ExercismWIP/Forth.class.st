@@ -30,6 +30,7 @@ Forth >> evaluateWord: aString [
 			aString = '+' ifTrue: [ ^ self performAddition ].
 			aString = '-' ifTrue: [ ^ self performSubtraction ].
 			aString = '*' ifTrue: [ ^ self performMultiplication ].
+			aString = '/' ifTrue: [ ^ self performDivision ].
 			^ aString ]
 ]
 
@@ -50,6 +51,17 @@ Forth >> isSignedInteger: aString [
 Forth >> performAddition [
 	self checkStack.
 	^ stack pop + stack pop
+]
+
+{ #category : #operating }
+Forth >> performDivision [
+	| a b |
+	self checkStack.
+	self primitiveSwap.
+	a := stack pop.
+	b := stack pop.
+	b isZero ifTrue: [ self error: 'divide by zero' ].
+	^ a // b
 ]
 
 { #category : #operating }
