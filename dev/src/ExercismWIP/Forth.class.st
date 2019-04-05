@@ -33,17 +33,18 @@ Forth >> compileName: aString [
 { #category : #compiling }
 Forth >> compileWord: aString [
 	currentDefinition
-		ifEmpty: [ currentDefinition add: aString ]
-		ifNotEmpty: [
-			(self isSignedInteger: aString)
-				ifTrue: [ currentDefinition add: (ForthWord new
-					name: #literal;
-					definition: [ stack push: aString asInteger ];
-					yourself) ]
+		ifEmpty: [ self compileName: aString asLowercase ]
+		ifNotEmpty: [ (self isSignedInteger: aString)
+				ifTrue: [ currentDefinition
+						add:
+							(ForthWord new
+								name: #literal;
+								definition: [ stack push: aString asInteger ];
+								yourself) ]
 				ifFalse: [ | word |
-					word := self lookupWord: aString.
+					word := self lookupWord: aString asLowercase.
 					currentDefinition add: word.
-				^ aString ] ]
+					^ aString ] ]
 ]
 
 { #category : #evaluating }
@@ -59,7 +60,7 @@ Forth >> evaluateWord: aString [
 	(self isSignedInteger: aString)
 		ifTrue: [ stack push: aString asInteger ]
 		ifFalse: [ | definition |
-			definition := self lookupWord: aString.
+			definition := self lookupWord: aString asLowercase.
 			definition execute.
 			^ aString ]
 ]
