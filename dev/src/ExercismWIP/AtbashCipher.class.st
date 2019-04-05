@@ -17,7 +17,7 @@ AtbashCipher >> encodeChar: aCharacter [
 
 { #category : #encoding }
 AtbashCipher >> encodePhrase: aString [
-	^ aString asLowercase
+	^ aString onlyLetters asLowercase
 		collect: [ :each | self encodeChar: each ]
 ]
 
