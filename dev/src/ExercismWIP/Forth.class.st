@@ -141,3 +141,18 @@ Forth >> primitiveSwap [
 		push: a;
 		push: b
 ]
+
+{ #category : #'as yet unclassified' }
+Forth >> vocabulary [
+	^ {
+		#+ -> [ stack push: self performAddition ].
+		#- -> [ stack push: self performSubtraction ].
+		#* -> [ stack push: self performMultiplication ].
+		#/ -> [ stack push: self performDivision ].
+		#dup -> [ self performDup ].
+		#drop -> [ self performDrop ].
+		#over -> [ self performOver ].
+		#swap -> [ self performSwap ]
+	} asDictionary
+
+]
