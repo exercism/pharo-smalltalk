@@ -8,6 +8,14 @@ Class {
 }
 
 { #category : #encoding }
+AtbashCipher >> encodeChar: aCharacter [ 
+	| index |
+	
+	index := 	Character alphabet indexOf: aCharacter.
+	^ key at: index
+]
+
+{ #category : #encoding }
 AtbashCipher >> encodePhrase: aString [ 
 	^ aString = 'yes'
 		ifTrue: [ 'bvh' ]
