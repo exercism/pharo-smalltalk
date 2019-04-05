@@ -2,7 +2,9 @@ Class {
 	#name : #Forth,
 	#superclass : #Object,
 	#instVars : [
-		'stack'
+		'stack',
+		'vocabulary',
+		'currentDefinition'
 	],
 	#category : #'ExercismWIP-Forth'
 }
@@ -45,7 +47,7 @@ Forth >> isSignedInteger: aString [
 			and: [ aString allButFirst isAllDigits ] ]
 ]
 
-{ #category : #evaluating }
+{ #category : #vocabulary }
 Forth >> lookupWord: aString [
 	^ self vocabulary
 		at: aString
@@ -143,9 +145,9 @@ Forth >> primitiveSwap [
 		push: b
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #vocabulary }
 Forth >> vocabulary [
-	^ {
+	^ vocabulary ifNil: [ vocabulary := {
 		#+ -> [ stack push: self performAddition ].
 		#- -> [ stack push: self performSubtraction ].
 		#* -> [ stack push: self performMultiplication ].
@@ -153,7 +155,9 @@ Forth >> vocabulary [
 		#dup -> [ self performDup ].
 		#drop -> [ self performDrop ].
 		#over -> [ self performOver ].
-		#swap -> [ self performSwap ]
-	} asDictionary
+		#swap -> [ self performSwap ].
+		':' -> [ self startCompilation ].
+		';' -> [ self finishCompilation ]
+	} asDictionary ]
 
 ]
