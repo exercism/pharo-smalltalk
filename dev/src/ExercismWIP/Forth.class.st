@@ -63,3 +63,19 @@ Forth >> performSubtraction [
 	stack size < 2 ifTrue: [ self error: 'empty stack' ].
 	^ stack pop negated + stack pop
 ]
+
+{ #category : #operating }
+Forth >> performSwap [
+	self checkStack primitiveSwap
+]
+
+{ #category : #operating }
+Forth >> primitiveSwap [
+	| a b |
+	
+	a := stack pop.
+	b := stack pop.
+	stack
+		push: a;
+		push: b
+]
