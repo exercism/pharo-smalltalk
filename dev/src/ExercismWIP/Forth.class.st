@@ -54,13 +54,13 @@ Forth >> lookupWord: aString [
 		ifAbsent: [ self error: 'undefined operation' ]
 ]
 
-{ #category : #operating }
+{ #category : #'builtin words' }
 Forth >> performAddition [
 	self checkStackHas: 2.
 	^ stack pop + stack pop
 ]
 
-{ #category : #operating }
+{ #category : #'builtin words' }
 Forth >> performDivision [
 	| a b |
 	self checkStackHas: 2.
@@ -71,41 +71,41 @@ Forth >> performDivision [
 	^ a // b
 ]
 
-{ #category : #operating }
+{ #category : #'builtin words' }
 Forth >> performDrop [
 	self
 		checkStackHas: 1;
 		primitiveDrop
 ]
 
-{ #category : #operating }
+{ #category : #'builtin words' }
 Forth >> performDup [
 	self
 		checkStackHas: 1;
 		primitiveDup
 ]
 
-{ #category : #operating }
+{ #category : #'builtin words' }
 Forth >> performMultiplication [
 	self checkStackHas: 2.
 	^ stack pop * stack pop
 ]
 
-{ #category : #operating }
+{ #category : #'builtin words' }
 Forth >> performOver [
 	self
 		checkStackHas:2;
 		primitiveOver
 ]
 
-{ #category : #operating }
+{ #category : #'builtin words' }
 Forth >> performSubtraction [
 	self checkStackHas: 2.
 	self primitiveSwap.
 	^ stack pop - stack pop
 ]
 
-{ #category : #operating }
+{ #category : #'builtin words' }
 Forth >> performSwap [
 	self
 		checkStackHas:2;
