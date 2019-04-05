@@ -17,3 +17,10 @@ Forth >> initialize [
 	super initialize.
 	stack := Stack new
 ]
+
+{ #category : #testing }
+Forth >> isSignedInteger: aString [ 
+	^ aString isAllDigits
+		or: [ aString first = $-
+			and: [ aString allButFirst isAllDigits ] ]
+]
