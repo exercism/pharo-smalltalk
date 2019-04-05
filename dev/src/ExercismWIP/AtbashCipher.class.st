@@ -16,10 +16,8 @@ AtbashCipher >> encodeChar: aCharacter [
 ]
 
 { #category : #encoding }
-AtbashCipher >> encodePhrase: aString [ 
-	^ aString = 'yes'
-		ifTrue: [ 'bvh' ]
-		ifFalse: [ 'ml' ]
+AtbashCipher >> encodePhrase: aString [
+	^ aString collect: [ :each | self encodeChar: each ]
 ]
 
 { #category : #initialization }
