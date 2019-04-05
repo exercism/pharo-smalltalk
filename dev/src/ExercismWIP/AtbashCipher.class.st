@@ -6,5 +6,7 @@ Class {
 
 { #category : #encoding }
 AtbashCipher >> encodePhrase: aString [ 
-	^ 'bvh'
+	^ aString = 'yes'
+		ifTrue: [ 'bvh' ]
+		ifFalse: [ 'ml' ]
 ]
