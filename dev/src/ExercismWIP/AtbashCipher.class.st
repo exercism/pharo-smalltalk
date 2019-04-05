@@ -17,14 +17,25 @@ AtbashCipher >> encodeChar: aCharacter [
 
 { #category : #encoding }
 AtbashCipher >> encodePhrase: aString [
-	^ self splitInGroupsOfFive: (aString onlyLetters asLowercase
-		collect: [ :each | self encodeChar: each ])
+	| sanitizedInput encodedString |
+	
+	sanitizedInput := self sanitizeString: aString.
+	encodedString := sanitizedInput
+		collect: [ :each | self encodeChar: each ].
+	^ self splitInGroupsOfFive: encodedString
 ]
 
 { #category : #initialization }
 AtbashCipher >> initialize [
 	key := Character alphabet reversed
 
+]
+
+{ #category : #encoding }
+AtbashCipher >> sanitizeString: aString [
+	^ aString
+		select: [ :each | each isAlphaNumeric ]
+		thenCollect: #asLowercase
 ]
 
 { #category : #splitjoin }
