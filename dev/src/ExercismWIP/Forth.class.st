@@ -27,14 +27,10 @@ Forth >> evaluateWord: aString [
 	(self isSignedInteger: aString)
 		ifTrue: [ stack push: aString asInteger ]
 		ifFalse: [
-			aString = '+' ifTrue: [ stack push: self performAddition ].
-			aString = '-' ifTrue: [ stack push: self performSubtraction ].
-			aString = '*' ifTrue: [ stack push: self performMultiplication ].
-			aString = '/' ifTrue: [ stack push: self performDivision ].
-			aString = 'dup' ifTrue: [ self performDup ].
-			aString = 'drop' ifTrue: [ self performDrop ].
-			aString = 'over' ifTrue: [ self performOver ].
-			aString = 'swap' ifTrue: [ self performSwap ].
+			self vocabulary
+			at: aString
+			ifPresent: [ :word | word value ]
+			ifAbsent: [ self error: 'undefined operation' ].
 		^ aString ]
 ]
 
