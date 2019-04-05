@@ -12,7 +12,7 @@ AtbashCipher >> encodeChar: aCharacter [
 	| index |
 	
 	index := 	Character alphabet indexOf: aCharacter.
-	^ key at: index
+	^ key at: index ifAbsent: aCharacter
 ]
 
 { #category : #encoding }
