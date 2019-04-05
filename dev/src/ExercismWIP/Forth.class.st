@@ -88,7 +88,9 @@ Forth >> performSubtraction [
 
 { #category : #operating }
 Forth >> performSwap [
-	self checkStack primitiveSwap
+	self
+		checkStackHas:2;
+		primitiveSwap
 ]
 
 { #category : #primitives }
