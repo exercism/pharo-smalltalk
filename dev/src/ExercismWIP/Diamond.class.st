@@ -5,6 +5,11 @@ Class {
 }
 
 { #category : #formatting }
-Diamond >> rowsLetter: aString [ 
-	^ { aString }
+Diamond >> rowsLetter: aString [
+	| number result |
+	
+	aString size isZero ifTrue: [ ^ #() ].
+	number := aString first digitValue - 9.
+	number = 1 ifTrue: [ ^ { aString } ].
+	^ result
 ]
