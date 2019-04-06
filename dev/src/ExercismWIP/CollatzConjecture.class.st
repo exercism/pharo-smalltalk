@@ -6,5 +6,5 @@ Class {
 
 { #category : #calculating }
 CollatzConjecture >> stepsNumber: anInteger [ 
-	^ 0
+	^ anInteger // 4
 ]
