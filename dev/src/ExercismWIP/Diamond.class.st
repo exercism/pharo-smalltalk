@@ -27,10 +27,17 @@ Diamond >> paddingSpaces: anInteger [
 
 { #category : #formatting }
 Diamond >> rowsLetter: aString [
-	| number result |
-	
+	| baseChar topHalf fullGrid |
+
 	aString size isZero ifTrue: [ ^ #() ].
-	number := aString first digitValue - 9.
-	number = 1 ifTrue: [ ^ { aString } ].
-	^ result
+	
+	baseChar := aString first.
+	baseChar = $A ifTrue: [ ^ {aString} ].
+	
+	topHalf := OrderedCollection new.
+	topHalf addAll: (($A to: baseChar)
+		collect: [ :char | self makeRow: char baseChar: baseChar ]).
+
+	fullGrid := topHalf , topHalf allButLast reverse.
+	^ fullGrid asArray
 ]
