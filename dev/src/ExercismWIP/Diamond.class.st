@@ -19,18 +19,6 @@ Diamond >> makeRow: char baseChar: baseChar [
 ]
 
 { #category : #formatting }
-Diamond >> makeTipBaseChar: baseChar [
-	| totalRows paddingSpaces |
-
-	totalRows := (baseChar asInteger - $A asInteger + 1) * 2 - 1.
-	paddingSpaces := totalRows // 2.
-	^ '{1}A{2}'
-		format: {
-			self paddingSpaces: paddingSpaces.
-			self paddingSpaces: paddingSpaces }
-]
-
-{ #category : #formatting }
 Diamond >> paddingSpaces: anInteger [
 	^ anInteger isZero
 		ifTrue: [ '' ]
