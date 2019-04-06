@@ -5,6 +5,20 @@ Class {
 }
 
 { #category : #formatting }
+Diamond >> makeRow: char baseChar: baseChar [
+	| maxValue letterValue halfRow |
+
+	maxValue := baseChar asInteger - $A asInteger + 1.
+	letterValue := char asInteger - $A asInteger + 1.
+	halfRow := String streamContents: [ :stream |
+		stream
+		 << (self paddingSpaces: maxValue - 1 - (letterValue - 1))
+		 << char
+		 << (self paddingSpaces: letterValue - 1) ].
+	^ halfRow , halfRow allButLast reversed
+]
+
+{ #category : #formatting }
 Diamond >> makeTipBaseChar: baseChar [
 	| totalRows paddingSpaces |
 
