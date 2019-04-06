@@ -12,6 +12,16 @@ CollatzConjecture >> collatzStep: anInteger [
 ]
 
 { #category : #calculating }
+CollatzConjecture >> recursiveCollatzStep: steps value: anInteger [
+	^ anInteger = 1
+		ifTrue: [ ^ steps ]
+		ifFalse: [ 
+			self
+				recursiveCollatzStep: steps + 1
+				value: (self collatzStep: anInteger) ]
+]
+
+{ #category : #calculating }
 CollatzConjecture >> stepsNumber: anInteger [
 	| steps result |
 	
