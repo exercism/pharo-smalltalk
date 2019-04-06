@@ -12,6 +12,15 @@ CollatzConjecture >> collatzStep: anInteger [
 ]
 
 { #category : #calculating }
-CollatzConjecture >> stepsNumber: anInteger [ 
-	^ anInteger // 4
+CollatzConjecture >> stepsNumber: anInteger [
+	| steps result |
+	
+  "anInteger <= 0 ifTrue: [ self error: 'Only positive numbers are allowed' ]."
+	anInteger <= 0 ifTrue: [ ^ Dictionary with: (#error -> 'Only positive numbers are allowed')].
+	steps := 0.
+	result := anInteger.
+	[ result = 1 ] whileFalse: [
+		steps := steps + 1.
+		result := self collatzStep: result ].
+	^ steps
 ]
