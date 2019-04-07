@@ -38,6 +38,15 @@ STONJSONWriter class >> streamContentsOf: anObject [
 ]
 
 { #category : #writing }
+STONJSONWriter >> newlineIndent [
+	"Override to adopt a json space identation convention"
+
+	prettyPrint
+		ifTrue: [ writeStream nextPutAll: newLine.
+			level timesRepeat: [ writeStream space: 2 ] ]
+]
+
+{ #category : #writing }
 STONJSONWriter >> writeAssociation: association [
 	"Overriden to support associations"
 	

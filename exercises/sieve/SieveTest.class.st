@@ -48,7 +48,7 @@ Class {
 SieveTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 
-	^(self createExerciseAfter: IsogramTest)
+	^(self createExerciseAfter: GrainsTest)
 		isCore: false;
 		difficulty: 3;
 		topics: #('math' 'lists' 'loops');
