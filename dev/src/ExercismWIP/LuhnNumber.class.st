@@ -43,3 +43,9 @@ LuhnNumber >> number [
 LuhnNumber >> number: aString [ 
 	number := aString trimBoth
 ]
+
+{ #category : #printing }
+LuhnNumber >> printOn: aStream [
+	super printOn: aStream.
+	aStream << ' (' << number << ')'
+]
