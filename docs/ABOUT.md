@@ -12,4 +12,4 @@ It features a world that is:
 
 - **Active, Friendly, Helpful Community:** Pharo is yours, made by an incredible [community](http://pharo.org/community), with more than 100 contributors on the last revision and many more constantly [contributing](http://pharo.org/contribute) with frameworks, libraries and advice.
 
-Still not convinced? Pharo has a rich and fascinating [history](http://worrydream.com/EarlyHistoryOfSmalltalk/), that has influenced most of today's languages and techniques in one form or another. [Learning the source](https://twitter.com/dhh/status/950145591379742727) of these ideas is the road to being a good programmer in any language. But most of all, its just incredibly fun! Why not join in?
+Still not convinced? Pharo has a rich and fascinating [history](http://worrydream.com/EarlyHistoryOfSmalltalk/), that has influenced most of today's languages and techniques in one form or another. [Learning the source](https://twitter.com/dhh/status/950145591379742727) of these ideas is the road to being a good programmer in any language. But most of all, it's just incredibly fun! Why not join in?
