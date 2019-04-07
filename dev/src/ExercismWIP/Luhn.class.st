@@ -5,6 +5,9 @@ Class {
 }
 
 { #category : #validating }
-Luhn >> validValue: aString [ 
-	^ false
+Luhn >> validValue: aString [
+	| luhn |
+	
+	luhn := LuhnNumber from: aString.
+	^ luhn isValid
 ]
