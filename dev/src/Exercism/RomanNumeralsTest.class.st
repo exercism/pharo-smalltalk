@@ -63,7 +63,7 @@ RomanNumeralsTest class >> exercise [
 	
 	^(self createExerciseAfter: ReverseStringTest)
 		isCore: false;
-		difficulty: 1;
+		difficulty: 3;
 		topics: #('iteration' 'maps' 'transforming');
 		yourself
 ]
