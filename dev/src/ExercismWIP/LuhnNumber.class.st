@@ -34,6 +34,28 @@ LuhnNumber class >> from: aString [
 		yourself 
 ]
 
+{ #category : #testing }
+LuhnNumber >> isValid [
+	| step1 step2 |
+	
+	step1 := number asOrderedCollection
+		select: [ :each |
+			(each isSpaceSeparator not and: [ each isDecimalDigit not ]) ifTrue: [ ^ false ].
+			each isDecimalDigit ]
+		thenCollect: [ :each | each digitValue ].
+	step1 size < 2 ifTrue: [ ^ false ].
+	step2 := step1 reversed
+		collectWithIndex: [ :each : i |
+			i even
+				ifTrue: [ | tmp |
+					tmp := each * 2.
+					tmp > 9
+						ifTrue: [ tmp - 9 ]
+						ifFalse: [ tmp ] ]
+				ifFalse: [ each ] ].
+	^ step2 sum isDivisibleBy: 10
+]
+
 { #category : #accessing }
 LuhnNumber >> number [
 	^ number
