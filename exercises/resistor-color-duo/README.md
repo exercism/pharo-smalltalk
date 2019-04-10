@@ -1,4 +1,4 @@
-# Resistor Colors
+# Resistor Color Duo
 
 If you want to build something using a Raspberry Pi, you'll probably use _resistors_. For this exercise, you need to know two things about them:
 
@@ -28,12 +28,12 @@ You will need some form of lookup table of colours to calculate the value. You d
 
 ## Downloading
 
-To download this exercise in Pharo, type: `resistor-colors` into the `Exercism | Fetch Exercise` package menu prompt (right click on the Exercism package in the Pharo System Browser). You can also submit your solution from the same menu for any selected package. You don't normally need to use the exercism cli (as indicated on the right hand panel).
+To download this exercise in Pharo, type: `resistor-color-duo` into the `Exercism | Fetch Exercise` package menu prompt (right click on the Exercism package in the Pharo System Browser). You can also submit your solution from the same menu for any selected package. You don't normally need to use the exercism cli (as indicated on the right hand panel).
 
 ## Running The Tests
 
 Tests can be run directly from the Pharo IDE, by clicking on the test orb next to any test.
-The SUnit convention is that the provided `ResistorColorsTest`, will test the functionality of `ResistorColors`.
+The SUnit convention is that the provided `ResistorColorDuoTest`, will test the functionality of `ResistorColorDuo`.
 
 If you are still stuck, the track documentation has more detailed help on [running tests](https://exercism.io/tracks/pharo/tests).
 
