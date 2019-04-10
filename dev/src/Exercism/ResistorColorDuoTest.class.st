@@ -59,7 +59,7 @@ ResistorColorDuoTest class >> generator [
 { #category : #config }
 ResistorColorDuoTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'5defc6b8-9442-0d00-9418-2b5e01ba6094'
+	^'c698dfbb-8040-0d00-8127-69c701deb008'
 ]
 
 { #category : #config }
