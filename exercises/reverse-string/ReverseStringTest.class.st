@@ -117,6 +117,5 @@ ReverseStringTest >> test05_APalindrome [
 
 { #category : #extra }
 ReverseStringTest >> testMisuseOfSelector [
-	self verifySolution: reverseStringCalculator class avoidsSelector: #reverse.
-	self verifySolution: reverseStringCalculator class avoidsSelector: #reversed
+	self verifySolution: reverseStringCalculator class avoidsSelector: #reverse
 ]

@@ -38,7 +38,7 @@ RaindropsTest class >> exercise [
 	
 	^(self createExerciseAfter: LeapTest)
 		isCore: false;
-		difficulty: 1;
+		difficulty: 2;
 		topics: #('strings' 'conditionals' 'logic');
 		yourself
 	
