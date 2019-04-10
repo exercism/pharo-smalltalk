@@ -2,7 +2,7 @@
   "track_id" : "pharo-smalltalk",
   "language" : "Pharo",
   "active" : true,
-  "blurb" : "Pharo is a fun and immersive Smalltalk programming experience. Featuring a clean object-oriented language and a powerful user extendable environment, it focuses on simplicity and immediate feedback (think IDE and OS rolled into one). It's elegence and productivity give it wide reach into banking, education, web development and even robotics.",
+  "blurb" : "Pharo is a fun and immersive Smalltalk programming experience. Featuring a clean object-oriented language and a powerful user extendable environment, it focuses on simplicity and immediate feedback (think IDE and OS rolled into one). Its elegance and productivity give it wide reach into banking, education, web development and even robotics.",
   "solution_pattern" : "\\.meta/solution/\\w+\\.class\\.st",
   "test_pattern" : "\\w+Test\\.class\\.st",
   "exercises" : [
@@ -189,7 +189,7 @@
       "core" : false,
       "auto_approve" : false,
       "unlocked_by" : "reverse-string",
-      "difficulty" : 1,
+      "difficulty" : 2,
       "topics" : [
         "maps",
         "iteration",
@@ -208,6 +208,19 @@
         "loops",
         "strings",
         "exception_handling"
+      ]
+    },
+    {
+      "slug" : "high-scores",
+      "uuid" : "5f1a9f16-9d41-0d00-8fc2-6a7408866539",
+      "core" : false,
+      "auto_approve" : false,
+      "unlocked_by" : "reverse-string",
+      "difficulty" : 2,
+      "topics" : [
+        "lists",
+        "sorting",
+        "filtering"
       ]
     },
     {
@@ -240,7 +253,7 @@
       "core" : false,
       "auto_approve" : false,
       "unlocked_by" : "leap",
-      "difficulty" : 1,
+      "difficulty" : 2,
       "topics" : [
         "strings",
         "conditionals",
@@ -279,7 +292,7 @@
       "core" : false,
       "auto_approve" : false,
       "unlocked_by" : "reverse-string",
-      "difficulty" : 1,
+      "difficulty" : 3,
       "topics" : [
         "iteration",
         "maps",
