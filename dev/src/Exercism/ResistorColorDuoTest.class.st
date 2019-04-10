@@ -1,5 +1,5 @@
 "
-# Resistor Colors
+# Resistor Color Duo
 
 If you want to build something using a Raspberry Pi, you'll probably use _resistors_. For this exercise, you need to know two things about them:
 
@@ -24,20 +24,20 @@ The band colors are encoded as follows:
 
 ## Hint
 
-You will need some form of lookup table of colours to calculate the value. You don't necessarily have to use a Dictionary to do this. 
+TBD
 
 "
 Class {
-	#name : #ResistorColorsTest,
+	#name : #ResistorColorDuoTest,
 	#superclass : #ExercismTest,
 	#instVars : [
-		'resistorColorsCalculator'
+		'resistorColorDuoCalculator'
 	],
-	#category : #'Exercism-ResistorColors'
+	#category : #'Exercism-ResistorColorDuo'
 }
 
 { #category : #config }
-ResistorColorsTest class >> exercise [
+ResistorColorDuoTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
 	
@@ -49,57 +49,57 @@ ResistorColorsTest class >> exercise [
 ]
 
 { #category : #generator }
-ResistorColorsTest class >> generator [
+ResistorColorDuoTest class >> generator [
 	"Potential generator hints"
 	
 	^ {'valueColours:' -> 'valueWithColours:' }
 ]
 
 { #category : #config }
-ResistorColorsTest class >> uuid [
+ResistorColorDuoTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'c698dfbb-8040-0d00-8127-69c701deb008'
+	^'5defc6b8-9442-0d00-9418-2b5e01ba6094'
 ]
 
 { #category : #config }
-ResistorColorsTest class >> version [
-	"Generated from specification: 15 March 2019"
-	^'1.0.0'
+ResistorColorDuoTest class >> version [
+	"Generated from specification: 10 April 2019"
+	^'2.0.0'
 ]
 
 { #category : #setup }
-ResistorColorsTest >> setUp [
-	resistorColorsCalculator := ResistorColors new
+ResistorColorDuoTest >> setUp [
+	resistorColorDuoCalculator := ResistorColorDuo new
 ]
 
 { #category : #tests }
-ResistorColorsTest >> test01_BrownAndBlack [
+ResistorColorDuoTest >> test01_BrownAndBlack [
 	| result |
 
-	result := resistorColorsCalculator valueWithColors: #('brown' 'black' ) .
+	result := resistorColorDuoCalculator valueWithColors: #('brown' 'black' ) .
 	self assert: result equals: 10
 ]
 
 { #category : #tests }
-ResistorColorsTest >> test02_BlueAndGrey [
+ResistorColorDuoTest >> test02_BlueAndGrey [
 	| result |
 
-	result := resistorColorsCalculator valueWithColors: #('blue' 'grey' ) .
+	result := resistorColorDuoCalculator valueWithColors: #('blue' 'grey' ) .
 	self assert: result equals: 68
 ]
 
 { #category : #tests }
-ResistorColorsTest >> test03_YellowAndViolet [
+ResistorColorDuoTest >> test03_YellowAndViolet [
 	| result |
 
-	result := resistorColorsCalculator valueWithColors: #('yellow' 'violet' ) .
+	result := resistorColorDuoCalculator valueWithColors: #('yellow' 'violet' ) .
 	self assert: result equals: 47
 ]
 
 { #category : #tests }
-ResistorColorsTest >> test04_OrangeAndOrange [
+ResistorColorDuoTest >> test04_OrangeAndOrange [
 	| result |
 
-	result := resistorColorsCalculator valueWithColors: #('orange' 'orange' ) .
+	result := resistorColorDuoCalculator valueWithColors: #('orange' 'orange' ) .
 	self assert: result equals: 33
 ]
