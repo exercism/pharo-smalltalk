@@ -1,3 +1,7 @@
+"
+I answer the value of a resister with the specified colour coding. Of interest is the fact that the resistor colour table is specified by a zero based offset index, while in Smalltalk, array indexes are 1 based.
+
+"
 Class {
 	#name : #ResistorColorDuo,
 	#superclass : #Object,
