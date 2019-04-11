@@ -224,6 +224,19 @@
       ]
     },
     {
+      "slug" : "luhn",
+      "uuid" : "6298e416-9d41-0d00-8ffa-c83508866539",
+      "core" : false,
+      "auto_approve" : false,
+      "unlocked_by" : "grains",
+      "difficulty" : 4,
+      "topics" : [
+        "strings",
+        "math",
+        "algorithms"
+      ]
+    },
+    {
       "slug" : "pangram",
       "uuid" : "6be398be-4a3f-0d00-bb67-0d71071d6982",
       "core" : false,
