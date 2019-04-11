@@ -76,7 +76,7 @@ Class {
 	#instVars : [
 		'luhnCalculator'
 	],
-	#category : #'ExercismWIP-Luhn'
+	#category : #'Exercism-Luhn'
 }
 
 { #category : #config }

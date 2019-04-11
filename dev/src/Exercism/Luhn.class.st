@@ -1,7 +1,7 @@
 Class {
 	#name : #Luhn,
 	#superclass : #Object,
-	#category : #'ExercismWIP-Luhn'
+	#category : #'Exercism-Luhn'
 }
 
 { #category : #validating }
