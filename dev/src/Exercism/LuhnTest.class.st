@@ -67,7 +67,8 @@ Sum the digits
 
 ## Hint
 
-TBD
+Read the instructions carefully, if you skim you might miss some important details about direction. 
+
 
 "
 Class {
@@ -78,6 +79,17 @@ Class {
 	],
 	#category : #'Exercism-Luhn'
 }
+
+{ #category : #config }
+LuhnTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+	
+	^(self createExerciseAfter: GrainsTest)
+		isCore: false;
+		difficulty: 4;
+		topics: #('strings' 'math' 'algorithms');
+		yourself
+]
 
 { #category : #config }
 LuhnTest class >> uuid [
