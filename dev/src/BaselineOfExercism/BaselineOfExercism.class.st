@@ -64,5 +64,5 @@ BaselineOfExercism >> setUpDependencies: spec [
 	
 	spec
     	baseline: 'Ring2'
-    	with: [ spec repository: 'github://pavel-krivanek/Ring2'; versionString: #calypso ].
+    	with: [ spec repository: 'github://pavel-krivanek/Ring2'; loads: #(calypso)].
 ]
