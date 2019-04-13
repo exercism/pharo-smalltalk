@@ -1,6 +1,39 @@
 Extension { #name : #ExercismManager }
 
 { #category : #'*ExercismDev' }
+ExercismManager >> browseAsDifference: result [
+	| referenceSnapshot |
+	referenceSnapshot := result referenceSnapshot.
+	(MCPatch fromBase: referenceSnapshot target: result codeSnapshot)
+		browse
+]
+
+{ #category : #'*ExercismDev' }
+ExercismManager >> browseAsMCSnaphot: result [
+	(MCSnapshotBrowser forSnapshot: result codeSnapshot)
+		showLabelled: ('Exercism Solution ({1})' format: {result reviewName})
+]
+
+{ #category : #'*ExercismDev' }
+ExercismManager >> browseAsRingModel: result [
+	| browser pkgs rgEnv |
+	rgEnv := result codeSnapshot asExRingEnvironment.
+	pkgs := OrderedCollection new.
+	rgEnv
+		packagesDo: [ :p | 
+			(p name includesSubstring: result submission exerciseClassName)
+				ifTrue: [ pkgs add: p ] ].
+	browser := rgEnv
+		createBrowserWithTitle: ('Exercism Solution ({1})' format: {result reviewName}).
+	browser
+		prepareInitialStateBy: [ :b | 
+			b
+				switchToPackageScopeOf: {pkgs first};
+				selectPackage: pkgs first ];
+		open
+]
+
+{ #category : #'*ExercismDev' }
 ExercismManager >> dependencyGraph [
 	
 	^ExercismExercise coreExercises
@@ -30,16 +63,20 @@ ExercismManager class >> trackDescription [
 
 { #category : #'*ExercismDev' }
 ExercismManager >> viewMenteeSolution [
-	| reviewId result |
+	| reviewId result rgEnv pkgs browser |
 
 	reviewId := (UIManager default
 		request: 'Enter a valid mentor exercism uuid:')
 		ifNil: [ ^ nil ]
 		ifNotNil: [ :value | self parseTokenNamed: 'uuid' from: value ].
 
-	UIManager default inform: 'Retrieving: ' , reviewId.
+	UIManager default inform: 'Retrieving: ' , (reviewId ifNil: ['']).
 	result := (ExercismReviewCommand reviewId: reviewId) execute.
-
-	(MCSnapshotBrowser forSnapshot: (result codeSnapshot))
-		showLabelled: ('Exercism Solution ({1})' format: { result reviewName })
+	
+	"
+	self browseAsMCSnaphot: result.
+	self browseAsDifference: result.
+	"
+	
+	self browseAsRingModel: result
 ]

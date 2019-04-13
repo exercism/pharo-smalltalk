@@ -30,6 +30,7 @@ BaselineOfExercism >> baseline: spec [
 				package: 'ExercismDev'
 					with: [ spec requires: #(
 						'OSProcess' "For shelling out to configlet"
+						'Ring2' "For mentoring support of shadow browsing"
 						'ExercismTools' 'Exercism' 'ExercismWIP' 
 						'ExercismTests' 'ExercismSystemTests'
 						)];
@@ -39,6 +40,11 @@ BaselineOfExercism >> baseline: spec [
 				
 				group: 'dev'
 					with: #('ExercismDev')]
+]
+
+{ #category : #baselines }
+BaselineOfExercism >> projectClass [
+	^ MetacelloCypressBaselineProject
 ]
 
 { #category : #baselines }
@@ -54,5 +60,9 @@ BaselineOfExercism >> setUpDependencies: spec [
 				
 	spec
     	baseline: 'Mocketry'
-    	with: [ spec repository: 'github://dionisiydk/Mocketry:v4.0.x' ]
+    	with: [ spec repository: 'github://dionisiydk/Mocketry:v4.0.x' ].
+	
+	spec
+    	baseline: 'Ring2'
+    	with: [ spec repository: 'github://pavel-krivanek/Ring2'; versionString: #calypso ].
 ]
