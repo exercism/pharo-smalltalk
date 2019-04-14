@@ -198,6 +198,19 @@
       ]
     },
     {
+      "slug" : "collatz-conjecture",
+      "uuid" : "0dc70bf9-e642-0d00-8e2f-4d97059054ed",
+      "core" : false,
+      "auto_approve" : false,
+      "unlocked_by" : "grains",
+      "difficulty" : 2,
+      "topics" : [
+        "recursion",
+        "control_flow",
+        "math"
+      ]
+    },
+    {
       "slug" : "darts",
       "uuid" : "98fc253b-e642-0d00-8e1a-5ef3059054ed",
       "core" : false,
