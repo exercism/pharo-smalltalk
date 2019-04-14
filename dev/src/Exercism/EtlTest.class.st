@@ -67,7 +67,7 @@ EtlTest class >> exercise [
 	
 	^(self createExerciseAfter: ReverseStringTest)
 		isCore: false;
-		difficulty: 1;
+		difficulty: 2;
 		topics: #('maps' 'iteration' 'transforming');
 		yourself
 

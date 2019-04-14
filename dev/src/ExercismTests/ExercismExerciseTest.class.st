@@ -171,7 +171,7 @@ ExercismExerciseTest >> testUnlockedExercises [
 	
 	self assertCollection: HelloWorldTest exercise unlockedExercises asArray equals: #().
 	self assertCollection: TwoFerTest exercise unlockedExercises asArray 
-				includesAll: {ResistorColorsTest exercise. SpaceAgeTest exercise}.
+				includesAll: {ResistorColorDuoTest exercise. SpaceAgeTest exercise}.
 ]
 
 { #category : #tests }

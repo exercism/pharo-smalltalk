@@ -7,7 +7,8 @@ Your task is to build a high-score component of the classic Frogger game, one of
 
 ## Hint
 
-TBD
+This is a nice exercise to just test drive (TDD), and let each test guide your solution
+
 
 "
 Class {
@@ -16,8 +17,21 @@ Class {
 	#instVars : [
 		'highScoresCalculator'
 	],
-	#category : #'ExercismWIP-HighScores'
+	#category : #'Exercism-HighScores'
 }
+
+{ #category : #config }
+HighScoresTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+	
+	^(self createExerciseAfter: ReverseStringTest)
+		isCore: false;
+		difficulty: 2;
+		topics: #('lists' 'sorting' 'filtering');
+		yourself
+	
+				
+]
 
 { #category : #config }
 HighScoresTest class >> uuid [
@@ -48,7 +62,7 @@ HighScoresTest >> test01_ListOfScores [
 HighScoresTest >> test02_LatestScore [
 	| result |
 
-	result := highScoresCalculator latestScores: #(100 0 90 30 ) .
+	result := highScoresCalculator latestScore: #(100 0 90 30 ) .
 	self assert: result equals: 30
 ]
 
