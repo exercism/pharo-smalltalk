@@ -1,3 +1,6 @@
+"
+This is pretty straight forward if the soluton uses c = sqrt of a^2 + b^2
+"
 Class {
 	#name : #Darts,
 	#superclass : #Object,
@@ -12,6 +15,5 @@ Darts >> scoreX: anInteger y: anotherInteger [
 	length > 10 ifTrue: [ ^ 0 ].
 	length > 5 ifTrue: [ ^ 1 ].
 	length > 1 ifTrue: [ ^ 5 ].
-	length >= 0 ifTrue: [ ^ 10 ].
-	^ 0
+	^ 10
 ]
