@@ -1,6 +1,6 @@
 Class {
 	#name : #ClyExercismReviewSummaryCommand,
-	#superclass : #ClyExercismReviewCommand,
+	#superclass : #ClyExercismCommand,
 	#category : #'ExercismDev-Menus'
 }
 
@@ -40,7 +40,7 @@ ClyExercismReviewSummaryCommand >> defaultMenuIconName [
 
 { #category : #accessing }
 ClyExercismReviewSummaryCommand >> defaultMenuItemName [
-	^'Review Summary...'
+	^'View Review Summary...'
 ]
 
 { #category : #accessing }

@@ -30,7 +30,7 @@ ClyExercismReviewCommand >> defaultMenuIconName [
 
 { #category : #accessing }
 ClyExercismReviewCommand >> defaultMenuItemName [
-	^'Review Code...'
+	^'Add Review...'
 ]
 
 { #category : #accessing }
