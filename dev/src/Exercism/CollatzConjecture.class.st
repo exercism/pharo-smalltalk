@@ -1,3 +1,6 @@
+"
+This problem can be solved either by recursion or a simple while loop.
+"
 Class {
 	#name : #CollatzConjecture,
 	#superclass : #Object,
@@ -22,7 +25,7 @@ CollatzConjecture >> recursiveCollatzStep: steps value: anInteger [
 ]
 
 { #category : #calculating }
-CollatzConjecture >> stepsNumber: anInteger [
+CollatzConjecture >> stepsFrom: anInteger [
 	anInteger <= 0
 		ifTrue: [ DomainError signal: 'Only positive numbers are allowed' ].
 		

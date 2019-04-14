@@ -29,7 +29,7 @@ Resulting in 9 steps. So for input n = 12, the return value would be 9.
 
 ## Hint
 
-TBD
+This is nicely suited for recursion
 
 "
 Class {
@@ -44,14 +44,20 @@ Class {
 { #category : #config }
 CollatzConjectureTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
-	
-	^(self createExerciseAfter: HelloWorldTest)
+
+	^ (self createExerciseAfter: GrainsTest)
 		isCore: false;
-		difficulty: 1;
-		topics: #('strings' 'iteration' 'parsing');
+		difficulty: 2;
+		topics:
+			#('recursion' 'control_flow' 'math');
 		yourself
+]
+
+{ #category : #generator }
+CollatzConjectureTest class >> generator [
+	"Potential generator hints"
 	
-				
+	^ {('@stepsNumber:' -> #stepsFrom:)}
 ]
 
 { #category : #config }
@@ -75,7 +81,7 @@ CollatzConjectureTest >> setUp [
 CollatzConjectureTest >> test01_ZeroStepsForOne [
 	| result |
 
-	result := collatzConjectureCalculator stepsNumber: 1 .
+	result := collatzConjectureCalculator stepsFrom: 1 .
 	self assert: result equals: 0
 ]
 
@@ -83,7 +89,7 @@ CollatzConjectureTest >> test01_ZeroStepsForOne [
 CollatzConjectureTest >> test02_DivideIfEven [
 	| result |
 
-	result := collatzConjectureCalculator stepsNumber: 16 .
+	result := collatzConjectureCalculator stepsFrom: 16 .
 	self assert: result equals: 4
 ]
 
@@ -91,15 +97,15 @@ CollatzConjectureTest >> test02_DivideIfEven [
 CollatzConjectureTest >> test03_EvenAndOddSteps [
 	| result |
 
-	result := collatzConjectureCalculator stepsNumber: 12 .
+	result := collatzConjectureCalculator stepsFrom: 12 .
 	self assert: result equals: 9
 ]
 
 { #category : #tests }
 CollatzConjectureTest >> test04_LargeNumberOfEvenAndOddSteps [
 	| result |
-
-	result := collatzConjectureCalculator stepsNumber: 1000000 .
+	
+	result := collatzConjectureCalculator stepsFrom: 1000000.
 	self assert: result equals: 152
 ]
 
@@ -108,7 +114,7 @@ CollatzConjectureTest >> test05_ZeroIsAnError [
 	| result |
 
 	self
-		should: [ result := collatzConjectureCalculator stepsNumber: 0 ]
+		should: [ result := collatzConjectureCalculator stepsFrom: 0 ]
 		raise: Exception
 		whoseDescriptionIncludes: 'Only positive numbers are allowed'
 		description: 'Should get an error with the correct description'
@@ -119,7 +125,7 @@ CollatzConjectureTest >> test06_NegativeValueIsAnError [
 	| result |
 
 	self
-		should: [ result := collatzConjectureCalculator stepsNumber:  -15 ]
+		should: [ result := collatzConjectureCalculator stepsFrom:  -15 ]
 		raise: Exception
 		whoseDescriptionIncludes: 'Only positive numbers are allowed'
 		description: 'Should get an error with the correct description'
