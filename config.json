@@ -132,6 +132,20 @@
       ]
     },
     {
+      "slug" : "atbash-cipher",
+      "uuid" : "c728b116-9d41-0d00-8fd2-aa8a08866539",
+      "core" : false,
+      "auto_approve" : false,
+      "unlocked_by" : "grains",
+      "difficulty" : 3,
+      "topics" : [
+        "algorithms",
+        "strings",
+        "transforming",
+        "cryptography"
+      ]
+    },
+    {
       "slug" : "binary",
       "uuid" : "a90be8bb-8040-0d00-812e-0c1701deb008",
       "core" : false,
@@ -221,6 +235,19 @@
         "lists",
         "sorting",
         "filtering"
+      ]
+    },
+    {
+      "slug" : "luhn",
+      "uuid" : "6298e416-9d41-0d00-8ffa-c83508866539",
+      "core" : false,
+      "auto_approve" : false,
+      "unlocked_by" : "grains",
+      "difficulty" : 4,
+      "topics" : [
+        "strings",
+        "math",
+        "algorithms"
       ]
     },
     {

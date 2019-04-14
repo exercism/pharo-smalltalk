@@ -5,8 +5,8 @@ Class {
 	#name : #ClyExercismCommand,
 	#superclass : #SycPackageCommand,
 	#instVars : [
-		'tagGroup',
-		'browser'
+		'browser',
+		'selectedItem'
 	],
 	#category : #'ExercismTools-Menus'
 }
@@ -44,19 +44,23 @@ ClyExercismCommand >> browser: anObject [
 
 { #category : #accessing }
 ClyExercismCommand >> prepareFullExecutionInContext: aToolContext [
-	
 	super prepareFullExecutionInContext: aToolContext.
 	
-	self tagGroup: aToolContext lastSelectedClassGroup.
-	self browser: aToolContext tool.
+	self selectedItem: (self selectedItemIn: aToolContext).
+	self browser: aToolContext tool
 ]
 
 { #category : #accessing }
-ClyExercismCommand >> tagGroup [
-	^ tagGroup
+ClyExercismCommand >> selectedItem [
+	^ selectedItem
 ]
 
 { #category : #accessing }
-ClyExercismCommand >> tagGroup: anObject [
-	tagGroup := anObject
+ClyExercismCommand >> selectedItem: anObject [
+	selectedItem := anObject
+]
+
+{ #category : #accessing }
+ClyExercismCommand >> selectedItemIn: aToolContext [
+	^ aToolContext lastSelectedClassGroup
 ]
