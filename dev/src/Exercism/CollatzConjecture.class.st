@@ -1,7 +1,7 @@
 Class {
 	#name : #CollatzConjecture,
 	#superclass : #Object,
-	#category : #'ExercismWIP-CollatzConjecture'
+	#category : #'Exercism-CollatzConjecture'
 }
 
 { #category : #calculating }
@@ -23,8 +23,8 @@ CollatzConjecture >> recursiveCollatzStep: steps value: anInteger [
 
 { #category : #calculating }
 CollatzConjecture >> stepsNumber: anInteger [
-  "anInteger <= 0 ifTrue: [ self error: 'Only positive numbers are allowed' ]."
-	anInteger <= 0 ifTrue: [ ^ Dictionary with: (#error -> 'Only positive numbers are allowed')].
-	^ self recursiveCollatzStep: 0 value: anInteger 
-
+	anInteger <= 0
+		ifTrue: [ DomainError signal: 'Only positive numbers are allowed' ].
+		
+	^ self recursiveCollatzStep: 0 value: anInteger
 ]

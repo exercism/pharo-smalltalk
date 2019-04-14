@@ -38,18 +38,31 @@ Class {
 	#instVars : [
 		'collatzConjectureCalculator'
 	],
-	#category : #'ExercismWIP-CollatzConjecture'
+	#category : #'Exercism-CollatzConjecture'
 }
+
+{ #category : #config }
+CollatzConjectureTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+	
+	^(self createExerciseAfter: HelloWorldTest)
+		isCore: false;
+		difficulty: 1;
+		topics: #('strings' 'iteration' 'parsing');
+		yourself
+	
+				
+]
 
 { #category : #config }
 CollatzConjectureTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'a55e0117-9d41-0d00-900e-5c5a08866539'
+	^'0dc70bf9-e642-0d00-8e2f-4d97059054ed'
 ]
 
 { #category : #config }
 CollatzConjectureTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 14 April 2019"
 	^'1.2.1'
 ]
 
@@ -94,14 +107,20 @@ CollatzConjectureTest >> test04_LargeNumberOfEvenAndOddSteps [
 CollatzConjectureTest >> test05_ZeroIsAnError [
 	| result |
 
-	result := collatzConjectureCalculator stepsNumber: 0 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Only positive numbers are allowed'); yourself)
+	self
+		should: [ result := collatzConjectureCalculator stepsNumber: 0 ]
+		raise: Exception
+		whoseDescriptionIncludes: 'Only positive numbers are allowed'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 CollatzConjectureTest >> test06_NegativeValueIsAnError [
 	| result |
 
-	result := collatzConjectureCalculator stepsNumber:  -15 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Only positive numbers are allowed'); yourself)
+	self
+		should: [ result := collatzConjectureCalculator stepsNumber:  -15 ]
+		raise: Exception
+		whoseDescriptionIncludes: 'Only positive numbers are allowed'
+		description: 'Should get an error with the correct description'
 ]
