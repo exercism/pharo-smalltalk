@@ -1,7 +1,7 @@
 Class {
 	#name : #Darts,
 	#superclass : #Object,
-	#category : #'ExercismWIP-Darts'
+	#category : #'Exercism-Darts'
 }
 
 { #category : #scoring }
