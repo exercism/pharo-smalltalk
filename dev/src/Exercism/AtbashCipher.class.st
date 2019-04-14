@@ -1,10 +1,15 @@
+"
+Fairly straightforward implementation:
+- extracting the split into groups of 5 as a seperate methods makes this much clearer
+
+"
 Class {
 	#name : #AtbashCipher,
 	#superclass : #Object,
 	#instVars : [
 		'key'
 	],
-	#category : #'ExercismWIP-AtbashCipher'
+	#category : #'Exercism-AtbashCipher'
 }
 
 { #category : #encoding }
