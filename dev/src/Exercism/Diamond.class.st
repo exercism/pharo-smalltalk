@@ -1,7 +1,11 @@
+"
+As the output is symetrical, you only have to generate the top half and then mirror it reversed.
+
+"
 Class {
 	#name : #Diamond,
 	#superclass : #Object,
-	#category : #'ExercismWIP-Diamond'
+	#category : #'Exercism-Diamond'
 }
 
 { #category : #formatting }
