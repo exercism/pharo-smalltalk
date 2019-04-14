@@ -198,6 +198,18 @@
       ]
     },
     {
+      "slug" : "darts",
+      "uuid" : "98fc253b-e642-0d00-8e1a-5ef3059054ed",
+      "core" : false,
+      "auto_approve" : false,
+      "unlocked_by" : "leap",
+      "difficulty" : 2,
+      "topics" : [
+        "conditionals",
+        "math"
+      ]
+    },
+    {
       "slug" : "etl",
       "uuid" : "d6303b3f-0f41-0d00-a5e1-db510c056502",
       "core" : false,
