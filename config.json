@@ -198,6 +198,18 @@
       ]
     },
     {
+      "slug" : "darts",
+      "uuid" : "98fc253b-e642-0d00-8e1a-5ef3059054ed",
+      "core" : false,
+      "auto_approve" : false,
+      "unlocked_by" : "leap",
+      "difficulty" : 2,
+      "topics" : [
+        "conditionals",
+        "math"
+      ]
+    },
+    {
       "slug" : "diamond",
       "uuid" : "c0b69b16-9d41-0d00-8fbf-acfc08866539",
       "core" : false,
