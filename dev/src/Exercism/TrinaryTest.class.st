@@ -24,7 +24,7 @@ conversion, pretend it doesn't exist and implement it yourself.
 
 ## Hint
 
-TBD
+It can be worthwhile to familiarize yourself with the protocols of 'base' objects such as Numbers and Strings.
 
 "
 Class {
@@ -33,8 +33,17 @@ Class {
 	#instVars : [
 		'trinaryCalculator'
 	],
-	#category : #'ExercismWIP-Trinary'
+	#category : #'Exercism-Trinary'
 }
+
+{ #category : #config }
+TrinaryTest class >> exercise [
+	^ (self createExerciseAfter: TrinaryTest)
+		isCore: false;
+		difficulty: 1;
+		topics: #('math' 'iteration');
+		yourself
+]
 
 { #category : #config }
 TrinaryTest class >> uuid [
@@ -54,7 +63,7 @@ TrinaryTest >> setUp [
 ]
 
 { #category : #tests }
-TrinaryTest >> test01_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary1IsDecimal1 [
+TrinaryTest >> test01_TheTrinaryValue1IsDecimal1 [
 	| result |
 
 	result := trinaryCalculator toDecimalTrinary: 1 .
@@ -62,7 +71,7 @@ TrinaryTest >> test01_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrina
 ]
 
 { #category : #tests }
-TrinaryTest >> test02_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary2IsDecimal2 [
+TrinaryTest >> test02_TheTrinaryValue2IsDecimal2 [
 	| result |
 
 	result := trinaryCalculator toDecimalTrinary: 2 .
@@ -70,7 +79,7 @@ TrinaryTest >> test02_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrina
 ]
 
 { #category : #tests }
-TrinaryTest >> test03_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary10IsDecimal3 [
+TrinaryTest >> test03_TheTrinaryValue10IsDecimal3 [
 	| result |
 
 	result := trinaryCalculator toDecimalTrinary: 10 .
@@ -78,7 +87,7 @@ TrinaryTest >> test03_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrina
 ]
 
 { #category : #tests }
-TrinaryTest >> test04_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary11IsDecimal4 [
+TrinaryTest >> test04_TheTrinaryValue11IsDecimal4 [
 	| result |
 
 	result := trinaryCalculator toDecimalTrinary: 11 .
@@ -86,7 +95,7 @@ TrinaryTest >> test04_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrina
 ]
 
 { #category : #tests }
-TrinaryTest >> test05_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary100IsDecimal9 [
+TrinaryTest >> test05_TheTrinaryValue100IsDecimal9 [
 	| result |
 
 	result := trinaryCalculator toDecimalTrinary: 100 .
@@ -94,7 +103,7 @@ TrinaryTest >> test05_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrina
 ]
 
 { #category : #tests }
-TrinaryTest >> test06_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary112IsDecimal14 [
+TrinaryTest >> test06_TheTrinaryValue112IsDecimal14 [
 	| result |
 
 	result := trinaryCalculator toDecimalTrinary: 112 .
@@ -102,7 +111,7 @@ TrinaryTest >> test06_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrina
 ]
 
 { #category : #tests }
-TrinaryTest >> test07_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary222IsDecimal26 [
+TrinaryTest >> test07_TheTrinaryValue222IsDecimal26 [
 	| result |
 
 	result := trinaryCalculator toDecimalTrinary: 222 .
@@ -110,7 +119,7 @@ TrinaryTest >> test07_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrina
 ]
 
 { #category : #tests }
-TrinaryTest >> test08_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrinary1122000120IsDecimal32091 [
+TrinaryTest >> test08_TheTrinaryValue1122000120IsDecimal32091 [
 	| result |
 
 	result := trinaryCalculator toDecimalTrinary: 1122000120 .
@@ -118,7 +127,7 @@ TrinaryTest >> test08_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueTrina
 ]
 
 { #category : #tests }
-TrinaryTest >> test09_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueInvalidTrinaryDigitsReturns0 [
+TrinaryTest >> test09_TheInvalidTrinaryDigitsValueReturns0 [
 	| result |
 
 	result := trinaryCalculator toDecimalTrinary: '1234' .
@@ -126,7 +135,7 @@ TrinaryTest >> test09_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueInval
 ]
 
 { #category : #tests }
-TrinaryTest >> test10_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueInvalidWordAsInputReturns0 [
+TrinaryTest >> test10_TheInvalidTrinaryWordReturns0 [
 	| result |
 
 	result := trinaryCalculator toDecimalTrinary: 'carrot' .
@@ -134,7 +143,7 @@ TrinaryTest >> test10_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueInval
 ]
 
 { #category : #tests }
-TrinaryTest >> test11_ReturnsTheDecimalRepresentationOfTheInputTrinaryValueInvalidNumbersWithLettersAsInputReturns0 [
+TrinaryTest >> test11_TheInvalidTrinaryNumbersWithLettersReturns0 [
 	| result |
 
 	result := trinaryCalculator toDecimalTrinary: '0a1b2c' .
