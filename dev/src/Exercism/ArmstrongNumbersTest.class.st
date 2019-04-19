@@ -12,9 +12,6 @@ For example:
 
 Write some code to determine whether a number is an Armstrong number.
 
-## Hint
-
-TBD
 
 "
 Class {
@@ -23,8 +20,17 @@ Class {
 	#instVars : [
 		'armstrongNumbersCalculator'
 	],
-	#category : #'ExercismWIP-ArmstrongNumbers'
+	#category : #'Exercism-ArmstrongNumbers'
 }
+
+{ #category : #config }
+ArmstrongNumbersTest class >> exercise [
+	^ (self createExerciseAfter: CollatzConjectureTest)
+		isCore: false;
+		difficulty: 1;
+		topics: #('math' 'integers');
+		yourself
+]
 
 { #category : #config }
 ArmstrongNumbersTest class >> uuid [
