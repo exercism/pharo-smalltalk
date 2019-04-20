@@ -31,7 +31,7 @@ has caused the array to be reversed.
 
 ## Hint
 
-TBD
+Integer class has a bit manipulation protocol which may be useful.
 
 "
 Class {
@@ -40,8 +40,17 @@ Class {
 	#instVars : [
 		'secretHandshakeCalculator'
 	],
-	#category : #'ExercismWIP-SecretHandshake'
+	#category : #'Exercism-SecretHandshake'
 }
+
+{ #category : #config }
+SecretHandshakeTest class >> exercise [
+	^ (self createExerciseAfter: IsogramTest)
+		isCore: false;
+		difficulty: 1;
+		topics: #('arrays' 'bitwise operations');
+		yourself
+]
 
 { #category : #config }
 SecretHandshakeTest class >> uuid [
