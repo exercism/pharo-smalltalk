@@ -6,7 +6,18 @@ String >> asValidKeyword [
 
 	| validName |
 	
-	validName := self select: [ :c | c isAlphaNumeric or: [ c == $_ ] ].
+	validName :=self.
+	
+	{  
+	'<='->'Less Than Or Equal To'. 
+	'>='-> 'Greater Than Or Equal To'.
+	'<>'->'Not Equal To'.
+	'<'->'Less Than'. 
+	'>'->'Greater Than'. 
+	'='->'Equals'} do: 
+		[ :assoc | validName := validName copyReplaceAll: assoc key with: assoc value  ].
+	
+	validName := validName select: [ :c | c isAlphaNumeric or: [ c == $_ ] ].
 	
 	^(validName first isDigit 
 		ifTrue: [ (self isAllDigits ifTrue: ['at' ] ifFalse: ['and']) , validName ]
