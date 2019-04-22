@@ -27,6 +27,15 @@ ClyExercismReviewSummaryCommand class >> contextMenuOrder [
 ]
 
 { #category : #activation }
+ClyExercismReviewSummaryCommand class >> isExercismTagIn: aToolContext [
+
+	^ aToolContext selectedClassItems
+		detect: [ :any | any actualObject isKindOf: RGObject ]
+		ifFound: [ true ]
+		ifNone: [ false ]
+]
+
+{ #category : #activation }
 ClyExercismReviewSummaryCommand class >> rcmdShortcutActivation [
 	<classAnnotation>
 	
