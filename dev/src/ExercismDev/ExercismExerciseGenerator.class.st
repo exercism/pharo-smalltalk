@@ -163,7 +163,7 @@ ExercismExerciseGenerator >> generateExerciseFrom: aFileSystemReference [
 	testVariable := (testRoot, 'Calculator') asValidSelector asString.
 	
 	(aFileSystemReference fileNames includes: '.deprecated')
-		ifTrue: [ self log: 'is deprecated (skipping)' for: testName ].
+		ifTrue: [ ^self log: 'is deprecated (skipping)' for: testName ].
 
 	(Smalltalk hasClassNamed: testName) ifTrue: [ ^self log: 'already exists (skipping)' for: testName ].
 	
@@ -279,8 +279,9 @@ ExercismExerciseGenerator >> generateTestMethodsOn: testClass calling: testVaria
 	
 	(testJson at: 'cases')
 		do: [ :case | 
-			
-			methodNameSegment := (case at: 'description') asCamelCase asValidKeyword capitalized. 
+			methodNameSegment := (testJson at: 'cases') size > 1 
+				ifTrue: [ (case at: 'description') asCamelCase asValidKeyword capitalized ]
+				ifFalse: [ '' ].
 			methodName :=  aPrefixString 
 				ifEmpty: [ methodNameSegment withoutPrefix: 'And' ] 
 				ifNotEmpty: [ aPrefixString, methodNameSegment ].
