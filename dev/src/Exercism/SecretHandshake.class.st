@@ -1,3 +1,9 @@
+"
+Mentor hints:
+- fairly straight forward solution, using an OrderedDictionary (or OrderedCollection of Associations)
+- look for using the bit radix 2rX, and mask messages
+
+"
 Class {
 	#name : #SecretHandshake,
 	#superclass : #Object,
