@@ -31,7 +31,7 @@ has caused the array to be reversed.
 
 ## Hint
 
-Integer class has a bit manipulation protocol which may be useful.
+The Integer class has a bit manipulation protocol which may be useful.
 
 "
 Class {
@@ -47,7 +47,7 @@ Class {
 SecretHandshakeTest class >> exercise [
 	^ (self createExerciseAfter: IsogramTest)
 		isCore: false;
-		difficulty: 1;
+		difficulty: 2;
 		topics: #('arrays' 'bitwise operations');
 		yourself
 ]
