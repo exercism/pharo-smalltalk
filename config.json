@@ -132,6 +132,18 @@
       ]
     },
     {
+      "slug" : "armstrong-numbers",
+      "uuid" : "15f1a716-9d41-0d00-8fc9-66a908866539",
+      "core" : false,
+      "auto_approve" : false,
+      "unlocked_by" : "two-fer",
+      "difficulty" : 2,
+      "topics" : [
+        "math",
+        "integers"
+      ]
+    },
+    {
       "slug" : "atbash-cipher",
       "uuid" : "c728b116-9d41-0d00-8fd2-aa8a08866539",
       "core" : false,

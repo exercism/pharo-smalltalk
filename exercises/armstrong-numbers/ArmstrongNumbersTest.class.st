@@ -14,8 +14,7 @@ Write some code to determine whether a number is an Armstrong number.
 
 ## Hint
 
-TBD
-
+Browse the class Integer for some inspiration
 "
 Class {
 	#name : #ArmstrongNumbersTest,
@@ -23,8 +22,17 @@ Class {
 	#instVars : [
 		'armstrongNumbersCalculator'
 	],
-	#category : #'ExercismWIP-ArmstrongNumbers'
+	#category : #'Exercism-ArmstrongNumbers'
 }
+
+{ #category : #config }
+ArmstrongNumbersTest class >> exercise [
+	^ (self createExerciseAfter: TwoFerTest)
+		isCore: false;
+		difficulty: 2;
+		topics: #('math' 'integers');
+		yourself
+]
 
 { #category : #config }
 ArmstrongNumbersTest class >> uuid [
