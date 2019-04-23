@@ -366,6 +366,18 @@
       ]
     },
     {
+      "slug" : "secret-handshake",
+      "uuid" : "2020ac16-9d41-0d00-8fcd-fe0908866539",
+      "core" : false,
+      "auto_approve" : false,
+      "unlocked_by" : "isogram",
+      "difficulty" : 2,
+      "topics" : [
+        "arrays",
+        "bitwise operations"
+      ]
+    },
+    {
       "slug" : "sieve",
       "uuid" : "ffe8dcbb-8040-0d00-8124-bf5801deb008",
       "core" : false,
