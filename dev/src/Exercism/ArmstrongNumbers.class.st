@@ -1,3 +1,8 @@
+"
+If you spot the following useful methods in Integer, this solution is quite trivial:
+- #decimalDigitLength
+- #decimalDigitAt: 
+"
 Class {
 	#name : #ArmstrongNumbers,
 	#superclass : #Object,

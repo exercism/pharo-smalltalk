@@ -12,7 +12,9 @@ For example:
 
 Write some code to determine whether a number is an Armstrong number.
 
+## Hint
 
+Browse the class Integer for some inspiration
 "
 Class {
 	#name : #ArmstrongNumbersTest,
@@ -25,9 +27,9 @@ Class {
 
 { #category : #config }
 ArmstrongNumbersTest class >> exercise [
-	^ (self createExerciseAfter: CollatzConjectureTest)
+	^ (self createExerciseAfter: TwoFerTest)
 		isCore: false;
-		difficulty: 1;
+		difficulty: 2;
 		topics: #('math' 'integers');
 		yourself
 ]
