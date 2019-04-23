@@ -45,5 +45,5 @@ ClyExercismProgressCommand >> description [
 
 { #category : #execution }
 ClyExercismProgressCommand >> execute [
-	ExercismManager default viewOnExercism: self tagGroup
+	ExercismManager default viewOnExercism: self selectedItem
 ]
