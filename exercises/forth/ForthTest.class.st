@@ -28,7 +28,7 @@ Words are case-insensitive.
 
 ## Hint
 
-TBD
+It might take several classes and/or instances to model this
 
 "
 Class {
@@ -37,18 +37,29 @@ Class {
 	#instVars : [
 		'forthCalculator'
 	],
-	#category : #'ExercismWIP-Forth'
+	#category : #'Exercism-Forth'
 }
+
+{ #category : #config }
+ForthTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+
+	^ (self createExerciseAfter: GradeSchoolTest)
+		isCore: true;
+		difficulty: 6;
+		topics: #('parsing' 'stacks');
+		yourself
+]
 
 { #category : #config }
 ForthTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'29a3fb16-9d41-0d00-9009-443508866539'
+	^'98e35398-a743-0d00-aeac-1c4207045670'
 ]
 
 { #category : #config }
 ForthTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 24 April 2019"
 	^'1.7.0'
 ]
 
@@ -77,16 +88,22 @@ ForthTest >> test02_AdditionCanAddTwoNumbers [
 ForthTest >> test03_AdditionErrorsIfThereIsNothingOnTheStack [
 	| result |
 
-	result := forthCalculator evaluateInstructions: #('+' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
+	self
+		should: [ result := forthCalculator evaluateInstructions: #('+' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'empty stack'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 ForthTest >> test04_AdditionErrorsIfThereIsOnlyOneValueOnTheStack [
 	| result |
 
-	result := forthCalculator evaluateInstructions: #('1 +' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'only one value on stack'); yourself)
+	self
+		should: [ result := forthCalculator evaluateInstructions: #('1 +' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'only one value on the stack'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
@@ -101,16 +118,22 @@ ForthTest >> test05_SubtractionCanSubtractTwoNumbers [
 ForthTest >> test06_SubtractionErrorsIfThereIsNothingOnTheStack [
 	| result |
 
-	result := forthCalculator evaluateInstructions: #('-' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
+	self
+		should: [ result := forthCalculator evaluateInstructions: #('-' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'empty stack'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 ForthTest >> test07_SubtractionErrorsIfThereIsOnlyOneValueOnTheStack [
 	| result |
 
-	result := forthCalculator evaluateInstructions: #('1 -' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'only one value on the stack'); yourself)
+	self
+		should: [ result := forthCalculator evaluateInstructions: #('1 -' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'only one value on the stack'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
@@ -125,16 +148,22 @@ ForthTest >> test08_MultiplicationCanMultiplyTwoNumbers [
 ForthTest >> test09_MultiplicationErrorsIfThereIsNothingOnTheStack [
 	| result |
 
-	result := forthCalculator evaluateInstructions: #('*' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
+	self
+		should: [ result := forthCalculator evaluateInstructions: #('*' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'empty stack'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 ForthTest >> test10_MultiplicationErrorsIfThereIsOnlyOneValueOnTheStack [
 	| result |
 
-	result := forthCalculator evaluateInstructions: #('1 *' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'only one value on the stack'); yourself)
+	self
+		should: [ result := forthCalculator evaluateInstructions: #('1 *' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'only one value on the stack'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
@@ -157,24 +186,33 @@ ForthTest >> test12_DivisionPerformsIntegerDivision [
 ForthTest >> test13_DivisionErrorsIfDividingByZero [
 	| result |
 
-	result := forthCalculator evaluateInstructions: #('4 0 /' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'divide by zero'); yourself)
+	self
+		should: [ result := forthCalculator evaluateInstructions: #('4 0 /' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'divide by zero'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 ForthTest >> test14_DivisionErrorsIfThereIsNothingOnTheStack [
 	| result |
 
-	result := forthCalculator evaluateInstructions: #('/' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
+	self
+		should: [ result := forthCalculator evaluateInstructions: #('/' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'empty stack'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 ForthTest >> test15_DivisionErrorsIfThereIsOnlyOneValueOnTheStack [
 	| result |
 
-	result := forthCalculator evaluateInstructions: #('1 /' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'only one value on the stack'); yourself)
+	self
+		should: [ result := forthCalculator evaluateInstructions: #('1 /' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'only one value on the stack'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
@@ -213,8 +251,11 @@ ForthTest >> test19_DupCopiesTheTopValueOnTheStack [
 ForthTest >> test20_DupErrorsIfThereIsNothingOnTheStack [
 	| result |
 
-	result := forthCalculator evaluateInstructions: #('dup' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
+	self
+		should: [ result := forthCalculator evaluateInstructions: #('dup' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'empty stack'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
@@ -237,8 +278,11 @@ ForthTest >> test22_DropRemovesTheTopValueOnTheStackIfItIsNotTheOnlyOne [
 ForthTest >> test23_DropErrorsIfThereIsNothingOnTheStack [
 	| result |
 
-	result := forthCalculator evaluateInstructions: #('drop' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
+	self
+		should: [ result := forthCalculator evaluateInstructions: #('drop' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'empty stack'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
@@ -261,16 +305,22 @@ ForthTest >> test25_SwapSwapsTheTopTwoValuesOnTheStackIfTheyAreNotTheOnlyOnes [
 ForthTest >> test26_SwapErrorsIfThereIsNothingOnTheStack [
 	| result |
 
-	result := forthCalculator evaluateInstructions: #('swap' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
+	self
+		should: [ result := forthCalculator evaluateInstructions: #('swap' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'empty stack'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 ForthTest >> test27_SwapErrorsIfThereIsOnlyOneValueOnTheStack [
 	| result |
 
-	result := forthCalculator evaluateInstructions: #('1 swap' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'only one value on the stack'); yourself)
+	self
+		should: [ result := forthCalculator evaluateInstructions: #('1 swap' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'only one value on the stack'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
@@ -293,16 +343,22 @@ ForthTest >> test29_OverCopiesTheSecondElementIfThereAreMoreThanTwo [
 ForthTest >> test30_OverErrorsIfThereIsNothingOnTheStack [
 	| result |
 
-	result := forthCalculator evaluateInstructions: #('over' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'empty stack'); yourself)
+	self
+		should: [ result := forthCalculator evaluateInstructions: #('over' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'empty stack'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 ForthTest >> test31_OverErrorsIfThereIsOnlyOneValueOnTheStack [
 	| result |
 
-	result := forthCalculator evaluateInstructions: #('1 over' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'only one value on the stack stack'); yourself)
+	self
+		should: [ result := forthCalculator evaluateInstructions: #('1 over' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'only one value on the stack'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
@@ -365,16 +421,22 @@ ForthTest >> test38_UserdefinedWordsCanDefineWordThatUsesWordWithTheSameName [
 ForthTest >> test39_UserdefinedWordsCannotRedefineNumbers [
 	| result |
 
-	result := forthCalculator evaluateInstructions: #(': 1 2 ;' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'illegal operation'); yourself)
+	self
+		should: [ result := forthCalculator evaluateInstructions: #(': 1 2 ;' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'illegal operation'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 ForthTest >> test40_UserdefinedWordsErrorsIfExecutingANonexistentWord [
 	| result |
 
-	result := forthCalculator evaluateInstructions: #('foo' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'undefined operation'); yourself)
+	self
+		should: [ result := forthCalculator evaluateInstructions: #('foo' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'undefined operation'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }

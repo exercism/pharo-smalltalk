@@ -107,6 +107,18 @@
       ]
     },
     {
+      "slug" : "forth",
+      "uuid" : "98e35398-a743-0d00-aeac-1c4207045670",
+      "core" : true,
+      "auto_approve" : false,
+      "unlocked_by" : null,
+      "difficulty" : 6,
+      "topics" : [
+        "parsing",
+        "stacks"
+      ]
+    },
+    {
       "slug" : "acronym",
       "uuid" : "dc7b1fff-f0be-460d-b146-ee84c2acc10b",
       "core" : false,
