@@ -55,7 +55,7 @@ E·······E
 
 ## Hint
 
-TBD
+Use the tests to build up the solution. Using a pencil and paper to write pseudo-code and diagrams may prove useful in building the algorithm for each line of the diamond.
 
 "
 Class {
@@ -64,8 +64,17 @@ Class {
 	#instVars : [
 		'diamondCalculator'
 	],
-	#category : #'ExercismWIP-Diamond'
+	#category : #'Exercism-Diamond'
 }
+
+{ #category : #config }
+DiamondTest class >> exercise [
+	^ (self createExerciseAfter: HighScoresTest)
+		isCore: false;
+		difficulty: 2;
+		topics: #('loops' 'algorithms' 'conditionals');
+		yourself
+]
 
 { #category : #config }
 DiamondTest class >> uuid [
