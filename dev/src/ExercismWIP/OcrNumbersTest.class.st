@@ -96,12 +96,12 @@ Class {
 { #category : #config }
 OcrNumbersTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'57000917-9d41-0d00-9013-f4a808866539'
+	^'8720d12e-b043-0d00-9286-652802a76407'
 ]
 
 { #category : #config }
 OcrNumbersTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'1.2.0'
 ]
 
@@ -111,7 +111,7 @@ OcrNumbersTest >> setUp [
 ]
 
 { #category : #tests }
-OcrNumbersTest >> test01_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizes0 [
+OcrNumbersTest >> test01_Recognizes0 [
 	| result |
 
 	result := ocrNumbersCalculator convertRows: #(' _ ' '| |' '|_|' '   ' ) .
@@ -119,7 +119,7 @@ OcrNumbersTest >> test01_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizes0
 ]
 
 { #category : #tests }
-OcrNumbersTest >> test02_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizes1 [
+OcrNumbersTest >> test02_Recognizes1 [
 	| result |
 
 	result := ocrNumbersCalculator convertRows: #('   ' '  |' '  |' '   ' ) .
@@ -127,7 +127,7 @@ OcrNumbersTest >> test02_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizes1
 ]
 
 { #category : #tests }
-OcrNumbersTest >> test03_ConvertsLinesOfOCRNumbersToAStringOfIntegersUnreadableButCorrectlySizedInputsReturn [
+OcrNumbersTest >> test03_UnreadableButCorrectlySizedInputsReturn [
 	| result |
 
 	result := ocrNumbersCalculator convertRows: #('   ' '  _' '  |' '   ' ) .
@@ -135,23 +135,29 @@ OcrNumbersTest >> test03_ConvertsLinesOfOCRNumbersToAStringOfIntegersUnreadableB
 ]
 
 { #category : #tests }
-OcrNumbersTest >> test04_ConvertsLinesOfOCRNumbersToAStringOfIntegersInputWithANumberOfLinesThatIsNotAMultipleOfFourRaisesAnError [
+OcrNumbersTest >> test04_InputWithANumberOfLinesThatIsNotAMultipleOfFourRaisesAnError [
 	| result |
 
-	result := ocrNumbersCalculator convertRows: #(' _ ' '| |' '   ' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Number of input lines is not a multiple of four'); yourself)
+	self
+		should: [ result := ocrNumbersCalculator convertRows: #(' _ ' '| |' '   ' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'Number of input lines is not a multiple of four'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
-OcrNumbersTest >> test05_ConvertsLinesOfOCRNumbersToAStringOfIntegersInputWithANumberOfColumnsThatIsNotAMultipleOfThreeRaisesAnError [
+OcrNumbersTest >> test05_InputWithANumberOfColumnsThatIsNotAMultipleOfThreeRaisesAnError [
 	| result |
 
-	result := ocrNumbersCalculator convertRows: #('    ' '   |' '   |' '    ' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Number of input columns is not a multiple of three'); yourself)
+	self
+		should: [ result := ocrNumbersCalculator convertRows: #('    ' '   |' '   |' '    ' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'Number of input columns is not a multiple of three'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
-OcrNumbersTest >> test06_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizes110101100 [
+OcrNumbersTest >> test06_Recognizes110101100 [
 	| result |
 
 	result := ocrNumbersCalculator convertRows: #('       _     _        _  _ ' '  |  || |  || |  |  || || |' '  |  ||_|  ||_|  |  ||_||_|' '                           ' ) .
@@ -159,7 +165,7 @@ OcrNumbersTest >> test06_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizes1
 ]
 
 { #category : #tests }
-OcrNumbersTest >> test07_ConvertsLinesOfOCRNumbersToAStringOfIntegersGarbledNumbersInAStringAreReplacedWith [
+OcrNumbersTest >> test07_GarbledNumbersInAStringAreReplacedWith [
 	| result |
 
 	result := ocrNumbersCalculator convertRows: #('       _     _           _ ' '  |  || |  || |     || || |' '  |  | _|  ||_|  |  ||_||_|' '                           ' ) .
@@ -167,7 +173,7 @@ OcrNumbersTest >> test07_ConvertsLinesOfOCRNumbersToAStringOfIntegersGarbledNumb
 ]
 
 { #category : #tests }
-OcrNumbersTest >> test08_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizes2 [
+OcrNumbersTest >> test08_Recognizes2 [
 	| result |
 
 	result := ocrNumbersCalculator convertRows: #(' _ ' ' _|' '|_ ' '   ' ) .
@@ -175,7 +181,7 @@ OcrNumbersTest >> test08_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizes2
 ]
 
 { #category : #tests }
-OcrNumbersTest >> test09_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizes3 [
+OcrNumbersTest >> test09_Recognizes3 [
 	| result |
 
 	result := ocrNumbersCalculator convertRows: #(' _ ' ' _|' ' _|' '   ' ) .
@@ -183,7 +189,7 @@ OcrNumbersTest >> test09_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizes3
 ]
 
 { #category : #tests }
-OcrNumbersTest >> test10_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizes4 [
+OcrNumbersTest >> test10_Recognizes4 [
 	| result |
 
 	result := ocrNumbersCalculator convertRows: #('   ' '|_|' '  |' '   ' ) .
@@ -191,7 +197,7 @@ OcrNumbersTest >> test10_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizes4
 ]
 
 { #category : #tests }
-OcrNumbersTest >> test11_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizes5 [
+OcrNumbersTest >> test11_Recognizes5 [
 	| result |
 
 	result := ocrNumbersCalculator convertRows: #(' _ ' '|_ ' ' _|' '   ' ) .
@@ -199,7 +205,7 @@ OcrNumbersTest >> test11_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizes5
 ]
 
 { #category : #tests }
-OcrNumbersTest >> test12_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizes6 [
+OcrNumbersTest >> test12_Recognizes6 [
 	| result |
 
 	result := ocrNumbersCalculator convertRows: #(' _ ' '|_ ' '|_|' '   ' ) .
@@ -207,7 +213,7 @@ OcrNumbersTest >> test12_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizes6
 ]
 
 { #category : #tests }
-OcrNumbersTest >> test13_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizes7 [
+OcrNumbersTest >> test13_Recognizes7 [
 	| result |
 
 	result := ocrNumbersCalculator convertRows: #(' _ ' '  |' '  |' '   ' ) .
@@ -215,7 +221,7 @@ OcrNumbersTest >> test13_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizes7
 ]
 
 { #category : #tests }
-OcrNumbersTest >> test14_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizes8 [
+OcrNumbersTest >> test14_Recognizes8 [
 	| result |
 
 	result := ocrNumbersCalculator convertRows: #(' _ ' '|_|' '|_|' '   ' ) .
@@ -223,7 +229,7 @@ OcrNumbersTest >> test14_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizes8
 ]
 
 { #category : #tests }
-OcrNumbersTest >> test15_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizes9 [
+OcrNumbersTest >> test15_Recognizes9 [
 	| result |
 
 	result := ocrNumbersCalculator convertRows: #(' _ ' '|_|' ' _|' '   ' ) .
@@ -231,7 +237,7 @@ OcrNumbersTest >> test15_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizes9
 ]
 
 { #category : #tests }
-OcrNumbersTest >> test16_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizesStringOfDecimalNumbers [
+OcrNumbersTest >> test16_RecognizesStringOfDecimalNumbers [
 	| result |
 
 	result := ocrNumbersCalculator convertRows: #('    _  _     _  _  _  _  _  _ ' '  | _| _||_||_ |_   ||_||_|| |' '  ||_  _|  | _||_|  ||_| _||_|' '                              ' ) .
@@ -239,7 +245,7 @@ OcrNumbersTest >> test16_ConvertsLinesOfOCRNumbersToAStringOfIntegersRecognizesS
 ]
 
 { #category : #tests }
-OcrNumbersTest >> test17_ConvertsLinesOfOCRNumbersToAStringOfIntegersNumbersSeparatedByEmptyLinesAreRecognizedLinesAreJoinedByCommas [
+OcrNumbersTest >> test17_NumbersSeparatedByEmptyLinesAreRecognizedLinesAreJoinedByCommas [
 	| result |
 
 	result := ocrNumbersCalculator convertRows: #('    _  _ ' '  | _| _|' '  ||_  _|' '         ' '    _  _ ' '|_||_ |_ ' '  | _||_|' '         ' ' _  _  _ ' '  ||_||_|' '  ||_| _|' '         ' ) .

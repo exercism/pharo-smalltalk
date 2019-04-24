@@ -44,13 +44,13 @@ Class {
 { #category : #config }
 QueenAttackTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'7ce8cb16-9d41-0d00-8fe8-8ca708866539'
+	^'3d6bb52e-b043-0d00-9262-b3f002a76407'
 ]
 
 { #category : #config }
 QueenAttackTest class >> version [
-	"Generated from specification: 29 March 2019"
-	^'2.2.0'
+	"Generated from specification: 25 April 2019"
+	^'2.3.0'
 ]
 
 { #category : #setup }
@@ -70,32 +70,44 @@ QueenAttackTest >> test01_TestCreationOfQueensWithValidAndInvalidPositionsQueenW
 QueenAttackTest >> test02_TestCreationOfQueensWithValidAndInvalidPositionsQueenMustHavePositiveRow [
 	| result |
 
-	result := queenAttackCalculator createQueen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->2); add: ('row'-> -2); yourself)); yourself) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'row not positive'); yourself)
+	self
+		should: [ result := queenAttackCalculator createQueen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->2); add: ('row'-> -2); yourself)); yourself) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'row not positive'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 QueenAttackTest >> test03_TestCreationOfQueensWithValidAndInvalidPositionsQueenMustHaveRowOnBoard [
 	| result |
 
-	result := queenAttackCalculator createQueen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->4); add: ('row'->8); yourself)); yourself) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'row not on board'); yourself)
+	self
+		should: [ result := queenAttackCalculator createQueen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->4); add: ('row'->8); yourself)); yourself) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'row not on board'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 QueenAttackTest >> test04_TestCreationOfQueensWithValidAndInvalidPositionsQueenMustHavePositiveColumn [
 	| result |
 
-	result := queenAttackCalculator createQueen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'-> -2); add: ('row'->2); yourself)); yourself) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'column not positive'); yourself)
+	self
+		should: [ result := queenAttackCalculator createQueen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'-> -2); add: ('row'->2); yourself)); yourself) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'column not positive'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 QueenAttackTest >> test05_TestCreationOfQueensWithValidAndInvalidPositionsQueenMustHaveColumnOnBoard [
 	| result |
 
-	result := queenAttackCalculator createQueen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->8); add: ('row'->4); yourself)); yourself) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'column not on board'); yourself)
+	self
+		should: [ result := queenAttackCalculator createQueen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->8); add: ('row'->4); yourself)); yourself) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'column not on board'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
@@ -150,6 +162,6 @@ QueenAttackTest >> test11_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnThir
 QueenAttackTest >> test12_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnFourthDiagonal [
 	| result |
 
-	result := queenAttackCalculator canAttackWhite_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->2); add: ('row'->2); yourself)); yourself) black_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->5); add: ('row'->5); yourself)); yourself) .
+	result := queenAttackCalculator canAttackWhite_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->7); add: ('row'->1); yourself)); yourself) black_queen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->6); add: ('row'->0); yourself)); yourself) .
 	self assert: result equals: true
 ]

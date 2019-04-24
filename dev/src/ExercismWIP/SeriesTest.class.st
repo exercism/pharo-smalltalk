@@ -38,12 +38,12 @@ Class {
 { #category : #config }
 SeriesTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'26949c16-9d41-0d00-8fc0-e20c08866539'
+	^'164e9e2e-b043-0d00-9241-1e3602a76407'
 ]
 
 { #category : #config }
 SeriesTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'1.0.0'
 ]
 
@@ -104,30 +104,42 @@ SeriesTest >> test06_SlicesOfALongSeries [
 SeriesTest >> test07_SliceLengthIsTooLarge [
 	| result |
 
-	result := seriesCalculator slicesSliceLength: 6 series: '12345' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'slice length cannot be greater than series length'); yourself)
+	self
+		should: [ result := seriesCalculator slicesSliceLength: 6 series: '12345' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'slice length cannot be greater than series length'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 SeriesTest >> test08_SliceLengthCannotBeZero [
 	| result |
 
-	result := seriesCalculator slicesSliceLength: 0 series: '12345' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'slice length cannot be zero'); yourself)
+	self
+		should: [ result := seriesCalculator slicesSliceLength: 0 series: '12345' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'slice length cannot be zero'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 SeriesTest >> test09_SliceLengthCannotBeNegative [
 	| result |
 
-	result := seriesCalculator slicesSliceLength:  -1 series: '123' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'slice length cannot be negative'); yourself)
+	self
+		should: [ result := seriesCalculator slicesSliceLength:  -1 series: '123' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'slice length cannot be negative'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 SeriesTest >> test10_EmptySeriesIsInvalid [
 	| result |
 
-	result := seriesCalculator slicesSliceLength: 1 series: '' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'series cannot be empty'); yourself)
+	self
+		should: [ result := seriesCalculator slicesSliceLength: 1 series: '' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'series cannot be empty'
+		description: 'Should get an error with the correct description'
 ]

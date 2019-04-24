@@ -31,12 +31,12 @@ Class {
 { #category : #config }
 LargestSeriesProductTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'d03dc716-9d41-0d00-8fe4-231a08866539'
+	^'77e0b22e-b043-0d00-925e-07fa02a76407'
 ]
 
 { #category : #config }
 LargestSeriesProductTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'1.2.0'
 ]
 
@@ -121,8 +121,11 @@ LargestSeriesProductTest >> test09_ReportsZeroIfAllSpansIncludeZero [
 LargestSeriesProductTest >> test10_RejectsSpanLongerThanStringLength [
 	| result |
 
-	result := largestSeriesProductCalculator largestProductSpan: 4 digits: '123' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'span must be smaller than string length'); yourself)
+	self
+		should: [ result := largestSeriesProductCalculator largestProductSpan: 4 digits: '123' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'span must be smaller than string length'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
@@ -145,22 +148,31 @@ LargestSeriesProductTest >> test12_Reports1ForNonemptyStringAndEmptyProduct0Span
 LargestSeriesProductTest >> test13_RejectsEmptyStringAndNonzeroSpan [
 	| result |
 
-	result := largestSeriesProductCalculator largestProductSpan: 1 digits: '' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'span must be smaller than string length'); yourself)
+	self
+		should: [ result := largestSeriesProductCalculator largestProductSpan: 1 digits: '' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'span must be smaller than string length'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 LargestSeriesProductTest >> test14_RejectsInvalidCharacterInDigits [
 	| result |
 
-	result := largestSeriesProductCalculator largestProductSpan: 2 digits: '1234a5' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'digits input must only contain digits'); yourself)
+	self
+		should: [ result := largestSeriesProductCalculator largestProductSpan: 2 digits: '1234a5' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'digits input must only contain digits'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 LargestSeriesProductTest >> test15_RejectsNegativeSpan [
 	| result |
 
-	result := largestSeriesProductCalculator largestProductSpan:  -1 digits: '12345' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'span must be greater than zero'); yourself)
+	self
+		should: [ result := largestSeriesProductCalculator largestProductSpan:  -1 digits: '12345' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'span must be greater than zero'
+		description: 'Should get an error with the correct description'
 ]

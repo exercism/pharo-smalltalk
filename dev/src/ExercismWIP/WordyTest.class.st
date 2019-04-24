@@ -85,12 +85,12 @@ Class {
 { #category : #config }
 WordyTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'9b5be316-9d41-0d00-8ff9-f72108866539'
+	^'717ac12e-b043-0d00-9272-9da202a76407'
 ]
 
 { #category : #config }
 WordyTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'1.5.0'
 ]
 
@@ -223,62 +223,86 @@ WordyTest >> test15_MultipleDivision [
 WordyTest >> test16_UnknownOperation [
 	| result |
 
-	result := wordyCalculator answerQuestion: 'What is 52 cubed?' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'unknown operation'); yourself)
+	self
+		should: [ result := wordyCalculator answerQuestion: 'What is 52 cubed?' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'unknown operation'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 WordyTest >> test17_NonMathQuestion [
 	| result |
 
-	result := wordyCalculator answerQuestion: 'Who is the President of the United States?' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'unknown operation'); yourself)
+	self
+		should: [ result := wordyCalculator answerQuestion: 'Who is the President of the United States?' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'unknown operation'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 WordyTest >> test18_RejectProblemMissingAnOperand [
 	| result |
 
-	result := wordyCalculator answerQuestion: 'What is 1 plus?' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'syntax error'); yourself)
+	self
+		should: [ result := wordyCalculator answerQuestion: 'What is 1 plus?' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'syntax error'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 WordyTest >> test19_RejectProblemWithNoOperandsOrOperators [
 	| result |
 
-	result := wordyCalculator answerQuestion: 'What is?' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'syntax error'); yourself)
+	self
+		should: [ result := wordyCalculator answerQuestion: 'What is?' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'syntax error'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 WordyTest >> test20_RejectTwoOperationsInARow [
 	| result |
 
-	result := wordyCalculator answerQuestion: 'What is 1 plus plus 2?' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'syntax error'); yourself)
+	self
+		should: [ result := wordyCalculator answerQuestion: 'What is 1 plus plus 2?' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'syntax error'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 WordyTest >> test21_RejectTwoNumbersInARow [
 	| result |
 
-	result := wordyCalculator answerQuestion: 'What is 1 plus 2 1?' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'syntax error'); yourself)
+	self
+		should: [ result := wordyCalculator answerQuestion: 'What is 1 plus 2 1?' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'syntax error'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 WordyTest >> test22_RejectPostfixNotation [
 	| result |
 
-	result := wordyCalculator answerQuestion: 'What is 1 2 plus?' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'syntax error'); yourself)
+	self
+		should: [ result := wordyCalculator answerQuestion: 'What is 1 2 plus?' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'syntax error'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 WordyTest >> test23_RejectPrefixNotation [
 	| result |
 
-	result := wordyCalculator answerQuestion: 'What is plus 1 2?' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'syntax error'); yourself)
+	self
+		should: [ result := wordyCalculator answerQuestion: 'What is plus 1 2?' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'syntax error'
+		description: 'Should get an error with the correct description'
 ]

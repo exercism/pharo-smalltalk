@@ -49,12 +49,12 @@ Class {
 { #category : #config }
 AlphameticsTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'731de016-9d41-0d00-8ff6-49d408866539'
+	^'2aa5bf2e-b043-0d00-926f-453302a76407'
 ]
 
 { #category : #config }
 AlphameticsTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'1.3.0'
 ]
 
@@ -64,7 +64,7 @@ AlphameticsTest >> setUp [
 ]
 
 { #category : #tests }
-AlphameticsTest >> test01_SolveTheAlphameticsPuzzlePuzzleWithThreeLetters [
+AlphameticsTest >> test01_PuzzleWithThreeLetters [
 	| result |
 
 	result := alphameticsCalculator solvePuzzle: 'I + BB == ILL' .
@@ -72,7 +72,7 @@ AlphameticsTest >> test01_SolveTheAlphameticsPuzzlePuzzleWithThreeLetters [
 ]
 
 { #category : #tests }
-AlphameticsTest >> test02_SolveTheAlphameticsPuzzleSolutionMustHaveUniqueValueForEachLetter [
+AlphameticsTest >> test02_SolutionMustHaveUniqueValueForEachLetter [
 	| result |
 
 	result := alphameticsCalculator solvePuzzle: 'A == B' .
@@ -80,7 +80,7 @@ AlphameticsTest >> test02_SolveTheAlphameticsPuzzleSolutionMustHaveUniqueValueFo
 ]
 
 { #category : #tests }
-AlphameticsTest >> test03_SolveTheAlphameticsPuzzleLeadingZeroSolutionIsInvalid [
+AlphameticsTest >> test03_LeadingZeroSolutionIsInvalid [
 	| result |
 
 	result := alphameticsCalculator solvePuzzle: 'ACA + DD == BD' .
@@ -88,7 +88,7 @@ AlphameticsTest >> test03_SolveTheAlphameticsPuzzleLeadingZeroSolutionIsInvalid 
 ]
 
 { #category : #tests }
-AlphameticsTest >> test04_SolveTheAlphameticsPuzzlePuzzleWithTwoDigitsFinalCarry [
+AlphameticsTest >> test04_PuzzleWithTwoDigitsFinalCarry [
 	| result |
 
 	result := alphameticsCalculator solvePuzzle: 'A + A + A + A + A + A + A + A + A + A + A + B == BCC' .
@@ -96,7 +96,7 @@ AlphameticsTest >> test04_SolveTheAlphameticsPuzzlePuzzleWithTwoDigitsFinalCarry
 ]
 
 { #category : #tests }
-AlphameticsTest >> test05_SolveTheAlphameticsPuzzlePuzzleWithFourLetters [
+AlphameticsTest >> test05_PuzzleWithFourLetters [
 	| result |
 
 	result := alphameticsCalculator solvePuzzle: 'AS + A == MOM' .
@@ -104,7 +104,7 @@ AlphameticsTest >> test05_SolveTheAlphameticsPuzzlePuzzleWithFourLetters [
 ]
 
 { #category : #tests }
-AlphameticsTest >> test06_SolveTheAlphameticsPuzzlePuzzleWithSixLetters [
+AlphameticsTest >> test06_PuzzleWithSixLetters [
 	| result |
 
 	result := alphameticsCalculator solvePuzzle: 'NO + NO + TOO == LATE' .
@@ -112,7 +112,7 @@ AlphameticsTest >> test06_SolveTheAlphameticsPuzzlePuzzleWithSixLetters [
 ]
 
 { #category : #tests }
-AlphameticsTest >> test07_SolveTheAlphameticsPuzzlePuzzleWithSevenLetters [
+AlphameticsTest >> test07_PuzzleWithSevenLetters [
 	| result |
 
 	result := alphameticsCalculator solvePuzzle: 'HE + SEES + THE == LIGHT' .
@@ -120,7 +120,7 @@ AlphameticsTest >> test07_SolveTheAlphameticsPuzzlePuzzleWithSevenLetters [
 ]
 
 { #category : #tests }
-AlphameticsTest >> test08_SolveTheAlphameticsPuzzlePuzzleWithEightLetters [
+AlphameticsTest >> test08_PuzzleWithEightLetters [
 	| result |
 
 	result := alphameticsCalculator solvePuzzle: 'SEND + MORE == MONEY' .
@@ -128,7 +128,7 @@ AlphameticsTest >> test08_SolveTheAlphameticsPuzzlePuzzleWithEightLetters [
 ]
 
 { #category : #tests }
-AlphameticsTest >> test09_SolveTheAlphameticsPuzzlePuzzleWithTenLetters [
+AlphameticsTest >> test09_PuzzleWithTenLetters [
 	| result |
 
 	result := alphameticsCalculator solvePuzzle: 'AND + A + STRONG + OFFENSE + AS + A + GOOD == DEFENSE' .
@@ -136,7 +136,7 @@ AlphameticsTest >> test09_SolveTheAlphameticsPuzzlePuzzleWithTenLetters [
 ]
 
 { #category : #tests }
-AlphameticsTest >> test10_SolveTheAlphameticsPuzzlePuzzleWithTenLettersAnd199Addends [
+AlphameticsTest >> test10_PuzzleWithTenLettersAnd199Addends [
 	| result |
 
 	result := alphameticsCalculator solvePuzzle: 'THIS + A + FIRE + THEREFORE + FOR + ALL + HISTORIES + I + TELL + A + TALE + THAT + FALSIFIES + ITS + TITLE + TIS + A + LIE + THE + TALE + OF + THE + LAST + FIRE + HORSES + LATE + AFTER + THE + FIRST + FATHERS + FORESEE + THE + HORRORS + THE + LAST + FREE + TROLL + TERRIFIES + THE + HORSES + OF + FIRE + THE + TROLL + RESTS + AT + THE + HOLE + OF + LOSSES + IT + IS + THERE + THAT + SHE + STORES + ROLES + OF + LEATHERS + AFTER + SHE + SATISFIES + HER + HATE + OFF + THOSE + FEARS + A + TASTE + RISES + AS + SHE + HEARS + THE + LEAST + FAR + HORSE + THOSE + FAST + HORSES + THAT + FIRST + HEAR + THE + TROLL + FLEE + OFF + TO + THE + FOREST + THE + HORSES + THAT + ALERTS + RAISE + THE + STARES + OF + THE + OTHERS + AS + THE + TROLL + ASSAILS + AT + THE + TOTAL + SHIFT + HER + TEETH + TEAR + HOOF + OFF + TORSO + AS + THE + LAST + HORSE + FORFEITS + ITS + LIFE + THE + FIRST + FATHERS + HEAR + OF + THE + HORRORS + THEIR + FEARS + THAT + THE + FIRES + FOR + THEIR + FEASTS + ARREST + AS + THE + FIRST + FATHERS + RESETTLE + THE + LAST + OF + THE + FIRE + HORSES + THE + LAST + TROLL + HARASSES + THE + FOREST + HEART + FREE + AT + LAST + OF + THE + LAST + TROLL + ALL + OFFER + THEIR + FIRE + HEAT + TO + THE + ASSISTERS + FAR + OFF + THE + TROLL + FASTS + ITS + LIFE + SHORTER + AS + STARS + RISE + THE + HORSES + REST + SAFE + AFTER + ALL + SHARE + HOT + FISH + AS + THEIR + AFFILIATES + TAILOR + A + ROOFS + FOR + THEIR + SAFE == FORTRESSES' .

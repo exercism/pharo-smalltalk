@@ -128,6 +128,7 @@ ExercismExerciseGenerator >> generateCodeModelCallOn: output variable: variableN
 { #category : #generation }
 ExercismExerciseGenerator >> generateCodeShouldRaiseOn: output variable: variableName prefix: aSelectorPrefix parameters: testParameters result: testResults [
 
+	| errorMessage |
 	output
 		tab;
 		nextPutAll: 'self';
@@ -140,12 +141,14 @@ ExercismExerciseGenerator >> generateCodeShouldRaiseOn: output variable: variabl
 		prefix: aSelectorPrefix
 		parameters: testParameters.
 		
+	errorMessage := (testResults at: 'error') printString.
+	
 	output
 		nextPutAll: ']';
 		crlf; tab; tab;
 		nextPutAll: 'raise: Exception';
 		crlf; tab; tab;
-		nextPutAll: ('whoseDescriptionIncludes: ''{1}''' format: { testResults at: 'error' });
+		nextPutAll: ('whoseDescriptionIncludes: {1}' format: { errorMessage });
 		cr; tab; tab;
 		nextPutAll: 'description: ''Should get an error with the correct description'''.
 		
@@ -279,7 +282,7 @@ ExercismExerciseGenerator >> generateTestMethodsOn: testClass calling: testVaria
 	
 	(testJson at: 'cases')
 		do: [ :case | 
-			methodNameSegment := (testJson at: 'cases') size > 1 
+			methodNameSegment := (((testJson at: 'cases') size > 1 ) or: [ aPrefixString notEmpty ])
 				ifTrue: [ (case at: 'description') asCamelCase asValidKeyword capitalized ]
 				ifFalse: [ '' ].
 			methodName :=  aPrefixString 

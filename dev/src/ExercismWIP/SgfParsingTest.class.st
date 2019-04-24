@@ -83,12 +83,12 @@ Class {
 { #category : #config }
 SgfParsingTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'8720cd16-9d41-0d00-8fe9-50d008866539'
+	^'fd10b62e-b043-0d00-9263-55bb02a76407'
 ]
 
 { #category : #config }
 SgfParsingTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'1.2.0'
 ]
 
@@ -101,24 +101,33 @@ SgfParsingTest >> setUp [
 SgfParsingTest >> test01_EmptyInput [
 	| result |
 
-	result := sgfParsingCalculator parseEncoded: '' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'tree missing'); yourself)
+	self
+		should: [ result := sgfParsingCalculator parseEncoded: '' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'tree missing'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 SgfParsingTest >> test02_TreeWithNoNodes [
 	| result |
 
-	result := sgfParsingCalculator parseEncoded: '()' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'tree with no nodes'); yourself)
+	self
+		should: [ result := sgfParsingCalculator parseEncoded: '()' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'tree with no nodes'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 SgfParsingTest >> test03_NodeWithoutTree [
 	| result |
 
-	result := sgfParsingCalculator parseEncoded: ';' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'tree missing'); yourself)
+	self
+		should: [ result := sgfParsingCalculator parseEncoded: ';' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'tree missing'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
@@ -149,24 +158,33 @@ SgfParsingTest >> test06_MultipleProperties [
 SgfParsingTest >> test07_PropertiesWithoutDelimiter [
 	| result |
 
-	result := sgfParsingCalculator parseEncoded: '(;A)' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'properties without delimiter'); yourself)
+	self
+		should: [ result := sgfParsingCalculator parseEncoded: '(;A)' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'properties without delimiter'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 SgfParsingTest >> test08_AllLowercaseProperty [
 	| result |
 
-	result := sgfParsingCalculator parseEncoded: '(;a[b])' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'property must be in uppercase'); yourself)
+	self
+		should: [ result := sgfParsingCalculator parseEncoded: '(;a[b])' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'property must be in uppercase'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 SgfParsingTest >> test09_UpperAndLowercaseProperty [
 	| result |
 
-	result := sgfParsingCalculator parseEncoded: '(;Aa[b])' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'property must be in uppercase'); yourself)
+	self
+		should: [ result := sgfParsingCalculator parseEncoded: '(;Aa[b])' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'property must be in uppercase'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }

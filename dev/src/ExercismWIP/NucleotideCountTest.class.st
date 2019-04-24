@@ -30,12 +30,12 @@ Class {
 { #category : #config }
 NucleotideCountTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'e8a6bb16-9d41-0d00-8fda-45f308866539'
+	^'4a33ae2e-b043-0d00-9256-8c7102a76407'
 ]
 
 { #category : #config }
 NucleotideCountTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'1.3.0'
 ]
 
@@ -45,7 +45,7 @@ NucleotideCountTest >> setUp [
 ]
 
 { #category : #tests }
-NucleotideCountTest >> test01_CountAllNucleotidesInAStrandEmptyStrand [
+NucleotideCountTest >> test01_EmptyStrand [
 	| result |
 
 	result := nucleotideCountCalculator nucleotideCountsStrand: '' .
@@ -53,7 +53,7 @@ NucleotideCountTest >> test01_CountAllNucleotidesInAStrandEmptyStrand [
 ]
 
 { #category : #tests }
-NucleotideCountTest >> test02_CountAllNucleotidesInAStrandCanCountOneNucleotideInSinglecharacterInput [
+NucleotideCountTest >> test02_CanCountOneNucleotideInSinglecharacterInput [
 	| result |
 
 	result := nucleotideCountCalculator nucleotideCountsStrand: 'G' .
@@ -61,7 +61,7 @@ NucleotideCountTest >> test02_CountAllNucleotidesInAStrandCanCountOneNucleotideI
 ]
 
 { #category : #tests }
-NucleotideCountTest >> test03_CountAllNucleotidesInAStrandStrandWithRepeatedNucleotide [
+NucleotideCountTest >> test03_StrandWithRepeatedNucleotide [
 	| result |
 
 	result := nucleotideCountCalculator nucleotideCountsStrand: 'GGGGGGG' .
@@ -69,7 +69,7 @@ NucleotideCountTest >> test03_CountAllNucleotidesInAStrandStrandWithRepeatedNucl
 ]
 
 { #category : #tests }
-NucleotideCountTest >> test04_CountAllNucleotidesInAStrandStrandWithMultipleNucleotides [
+NucleotideCountTest >> test04_StrandWithMultipleNucleotides [
 	| result |
 
 	result := nucleotideCountCalculator nucleotideCountsStrand: 'AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC' .
@@ -77,9 +77,12 @@ NucleotideCountTest >> test04_CountAllNucleotidesInAStrandStrandWithMultipleNucl
 ]
 
 { #category : #tests }
-NucleotideCountTest >> test05_CountAllNucleotidesInAStrandStrandWithInvalidNucleotides [
+NucleotideCountTest >> test05_StrandWithInvalidNucleotides [
 	| result |
 
-	result := nucleotideCountCalculator nucleotideCountsStrand: 'AGXXACT' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Invalid nucleotide in strand'); yourself)
+	self
+		should: [ result := nucleotideCountCalculator nucleotideCountsStrand: 'AGXXACT' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'Invalid nucleotide in strand'
+		description: 'Should get an error with the correct description'
 ]

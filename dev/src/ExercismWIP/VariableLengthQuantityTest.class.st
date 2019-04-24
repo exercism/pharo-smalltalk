@@ -49,12 +49,12 @@ Class {
 { #category : #config }
 VariableLengthQuantityTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'2f1ba716-9d41-0d00-8fc8-c2f108866539'
+	^'065da42e-b043-0d00-9248-fda102a76407'
 ]
 
 { #category : #config }
 VariableLengthQuantityTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'1.2.0'
 ]
 
@@ -251,16 +251,22 @@ VariableLengthQuantityTest >> test23_DecodeASeriesOfBytesProducingASeriesOfInteg
 VariableLengthQuantityTest >> test24_DecodeASeriesOfBytesProducingASeriesOfIntegersIncompleteSequenceCausesError [
 	| result |
 
-	result := variableLengthQuantityCalculator decodeIntegers: #(255 ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'incomplete sequence'); yourself)
+	self
+		should: [ result := variableLengthQuantityCalculator decodeIntegers: #(255 ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'incomplete sequence'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 VariableLengthQuantityTest >> test25_DecodeASeriesOfBytesProducingASeriesOfIntegersIncompleteSequenceCausesErrorEvenIfValueIsZero [
 	| result |
 
-	result := variableLengthQuantityCalculator decodeIntegers: #(128 ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'incomplete sequence'); yourself)
+	self
+		should: [ result := variableLengthQuantityCalculator decodeIntegers: #(128 ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'incomplete sequence'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }

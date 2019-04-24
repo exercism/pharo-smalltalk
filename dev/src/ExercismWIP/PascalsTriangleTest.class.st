@@ -32,12 +32,12 @@ Class {
 { #category : #config }
 PascalsTriangleTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'e3bec116-9d41-0d00-8fdf-430008866539'
+	^'5ed7af2e-b043-0d00-9259-d72102a76407'
 ]
 
 { #category : #config }
 PascalsTriangleTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'1.5.0'
 ]
 
@@ -47,7 +47,7 @@ PascalsTriangleTest >> setUp [
 ]
 
 { #category : #tests }
-PascalsTriangleTest >> test01_GivenACountReturnACollectionOfThatManyRowsOfPascalsTriangleZeroRows [
+PascalsTriangleTest >> test01_ZeroRows [
 	| result |
 
 	result := pascalsTriangleCalculator rowsCount: 0 .
@@ -55,7 +55,7 @@ PascalsTriangleTest >> test01_GivenACountReturnACollectionOfThatManyRowsOfPascal
 ]
 
 { #category : #tests }
-PascalsTriangleTest >> test02_GivenACountReturnACollectionOfThatManyRowsOfPascalsTriangleSingleRow [
+PascalsTriangleTest >> test02_SingleRow [
 	| result |
 
 	result := pascalsTriangleCalculator rowsCount: 1 .
@@ -63,7 +63,7 @@ PascalsTriangleTest >> test02_GivenACountReturnACollectionOfThatManyRowsOfPascal
 ]
 
 { #category : #tests }
-PascalsTriangleTest >> test03_GivenACountReturnACollectionOfThatManyRowsOfPascalsTriangleTwoRows [
+PascalsTriangleTest >> test03_TwoRows [
 	| result |
 
 	result := pascalsTriangleCalculator rowsCount: 2 .
@@ -71,7 +71,7 @@ PascalsTriangleTest >> test03_GivenACountReturnACollectionOfThatManyRowsOfPascal
 ]
 
 { #category : #tests }
-PascalsTriangleTest >> test04_GivenACountReturnACollectionOfThatManyRowsOfPascalsTriangleThreeRows [
+PascalsTriangleTest >> test04_ThreeRows [
 	| result |
 
 	result := pascalsTriangleCalculator rowsCount: 3 .
@@ -79,7 +79,7 @@ PascalsTriangleTest >> test04_GivenACountReturnACollectionOfThatManyRowsOfPascal
 ]
 
 { #category : #tests }
-PascalsTriangleTest >> test05_GivenACountReturnACollectionOfThatManyRowsOfPascalsTriangleFourRows [
+PascalsTriangleTest >> test05_FourRows [
 	| result |
 
 	result := pascalsTriangleCalculator rowsCount: 4 .
@@ -87,7 +87,7 @@ PascalsTriangleTest >> test05_GivenACountReturnACollectionOfThatManyRowsOfPascal
 ]
 
 { #category : #tests }
-PascalsTriangleTest >> test06_GivenACountReturnACollectionOfThatManyRowsOfPascalsTriangleFiveRows [
+PascalsTriangleTest >> test06_FiveRows [
 	| result |
 
 	result := pascalsTriangleCalculator rowsCount: 5 .
@@ -95,7 +95,7 @@ PascalsTriangleTest >> test06_GivenACountReturnACollectionOfThatManyRowsOfPascal
 ]
 
 { #category : #tests }
-PascalsTriangleTest >> test07_GivenACountReturnACollectionOfThatManyRowsOfPascalsTriangleSixRows [
+PascalsTriangleTest >> test07_SixRows [
 	| result |
 
 	result := pascalsTriangleCalculator rowsCount: 6 .
@@ -103,7 +103,7 @@ PascalsTriangleTest >> test07_GivenACountReturnACollectionOfThatManyRowsOfPascal
 ]
 
 { #category : #tests }
-PascalsTriangleTest >> test08_GivenACountReturnACollectionOfThatManyRowsOfPascalsTriangleTenRows [
+PascalsTriangleTest >> test08_TenRows [
 	| result |
 
 	result := pascalsTriangleCalculator rowsCount: 10 .

@@ -53,12 +53,12 @@ Class {
 { #category : #config }
 GoCountingTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'fc8bd116-9d41-0d00-8fec-28f108866539'
+	^'af56b82e-b043-0d00-9266-15ec02a76407'
 ]
 
 { #category : #config }
 GoCountingTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'1.0.0'
 ]
 
@@ -103,32 +103,44 @@ GoCountingTest >> test04_AStoneAndNotATerritoryOn5x5Board [
 GoCountingTest >> test05_InvalidBecauseXIsTooLowFor5x5Board [
 	| result |
 
-	result := goCountingCalculator territoryX:  -1 y: 1 board: #('  B  ' ' B B ' 'B W B' ' W W ' '  W  ' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Invalid coordinate'); yourself)
+	self
+		should: [ result := goCountingCalculator territoryX:  -1 y: 1 board: #('  B  ' ' B B ' 'B W B' ' W W ' '  W  ' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'Invalid coordinate'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 GoCountingTest >> test06_InvalidBecauseXIsTooHighFor5x5Board [
 	| result |
 
-	result := goCountingCalculator territoryX: 5 y: 1 board: #('  B  ' ' B B ' 'B W B' ' W W ' '  W  ' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Invalid coordinate'); yourself)
+	self
+		should: [ result := goCountingCalculator territoryX: 5 y: 1 board: #('  B  ' ' B B ' 'B W B' ' W W ' '  W  ' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'Invalid coordinate'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 GoCountingTest >> test07_InvalidBecauseYIsTooLowFor5x5Board [
 	| result |
 
-	result := goCountingCalculator territoryX: 1 y:  -1 board: #('  B  ' ' B B ' 'B W B' ' W W ' '  W  ' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Invalid coordinate'); yourself)
+	self
+		should: [ result := goCountingCalculator territoryX: 1 y:  -1 board: #('  B  ' ' B B ' 'B W B' ' W W ' '  W  ' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'Invalid coordinate'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 GoCountingTest >> test08_InvalidBecauseYIsTooHighFor5x5Board [
 	| result |
 
-	result := goCountingCalculator territoryX: 1 y: 5 board: #('  B  ' ' B B ' 'B W B' ' W W ' '  W  ' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Invalid coordinate'); yourself)
+	self
+		should: [ result := goCountingCalculator territoryX: 1 y: 5 board: #('  B  ' ' B B ' 'B W B' ' W W ' '  W  ' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'Invalid coordinate'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }

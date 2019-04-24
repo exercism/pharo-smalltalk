@@ -81,12 +81,12 @@ Class {
 { #category : #config }
 FoodChainTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'24e40d17-9d41-0d00-9017-801f08866539'
+	^'de39d42e-b043-0d00-928a-7ef602a76407'
 ]
 
 { #category : #config }
 FoodChainTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'2.1.0'
 ]
 
@@ -96,7 +96,7 @@ FoodChainTest >> setUp [
 ]
 
 { #category : #tests }
-FoodChainTest >> test01_ReturnSpecifiedVerseOrSeriesOfVersesFly [
+FoodChainTest >> test01_Fly [
 	| result |
 
 	result := foodChainCalculator reciteStartVerse: 1 endVerse: 1 .
@@ -104,7 +104,7 @@ FoodChainTest >> test01_ReturnSpecifiedVerseOrSeriesOfVersesFly [
 ]
 
 { #category : #tests }
-FoodChainTest >> test02_ReturnSpecifiedVerseOrSeriesOfVersesSpider [
+FoodChainTest >> test02_Spider [
 	| result |
 
 	result := foodChainCalculator reciteStartVerse: 2 endVerse: 2 .
@@ -112,7 +112,7 @@ FoodChainTest >> test02_ReturnSpecifiedVerseOrSeriesOfVersesSpider [
 ]
 
 { #category : #tests }
-FoodChainTest >> test03_ReturnSpecifiedVerseOrSeriesOfVersesBird [
+FoodChainTest >> test03_Bird [
 	| result |
 
 	result := foodChainCalculator reciteStartVerse: 3 endVerse: 3 .
@@ -120,7 +120,7 @@ FoodChainTest >> test03_ReturnSpecifiedVerseOrSeriesOfVersesBird [
 ]
 
 { #category : #tests }
-FoodChainTest >> test04_ReturnSpecifiedVerseOrSeriesOfVersesCat [
+FoodChainTest >> test04_Cat [
 	| result |
 
 	result := foodChainCalculator reciteStartVerse: 4 endVerse: 4 .
@@ -128,7 +128,7 @@ FoodChainTest >> test04_ReturnSpecifiedVerseOrSeriesOfVersesCat [
 ]
 
 { #category : #tests }
-FoodChainTest >> test05_ReturnSpecifiedVerseOrSeriesOfVersesDog [
+FoodChainTest >> test05_Dog [
 	| result |
 
 	result := foodChainCalculator reciteStartVerse: 5 endVerse: 5 .
@@ -136,7 +136,7 @@ FoodChainTest >> test05_ReturnSpecifiedVerseOrSeriesOfVersesDog [
 ]
 
 { #category : #tests }
-FoodChainTest >> test06_ReturnSpecifiedVerseOrSeriesOfVersesGoat [
+FoodChainTest >> test06_Goat [
 	| result |
 
 	result := foodChainCalculator reciteStartVerse: 6 endVerse: 6 .
@@ -144,7 +144,7 @@ FoodChainTest >> test06_ReturnSpecifiedVerseOrSeriesOfVersesGoat [
 ]
 
 { #category : #tests }
-FoodChainTest >> test07_ReturnSpecifiedVerseOrSeriesOfVersesCow [
+FoodChainTest >> test07_Cow [
 	| result |
 
 	result := foodChainCalculator reciteStartVerse: 7 endVerse: 7 .
@@ -152,7 +152,7 @@ FoodChainTest >> test07_ReturnSpecifiedVerseOrSeriesOfVersesCow [
 ]
 
 { #category : #tests }
-FoodChainTest >> test08_ReturnSpecifiedVerseOrSeriesOfVersesHorse [
+FoodChainTest >> test08_Horse [
 	| result |
 
 	result := foodChainCalculator reciteStartVerse: 8 endVerse: 8 .
@@ -160,7 +160,7 @@ FoodChainTest >> test08_ReturnSpecifiedVerseOrSeriesOfVersesHorse [
 ]
 
 { #category : #tests }
-FoodChainTest >> test09_ReturnSpecifiedVerseOrSeriesOfVersesMultipleVerses [
+FoodChainTest >> test09_MultipleVerses [
 	| result |
 
 	result := foodChainCalculator reciteStartVerse: 1 endVerse: 3 .
@@ -168,7 +168,7 @@ FoodChainTest >> test09_ReturnSpecifiedVerseOrSeriesOfVersesMultipleVerses [
 ]
 
 { #category : #tests }
-FoodChainTest >> test10_ReturnSpecifiedVerseOrSeriesOfVersesFullSong [
+FoodChainTest >> test10_FullSong [
 	| result |
 
 	result := foodChainCalculator reciteStartVerse: 1 endVerse: 8 .
