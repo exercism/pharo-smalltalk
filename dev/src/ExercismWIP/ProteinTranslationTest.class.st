@@ -59,12 +59,12 @@ Class {
 { #category : #config }
 ProteinTranslationTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'b13d9e16-9d41-0d00-8fc1-b96c08866539'
+	^'a9419f2e-b043-0d00-9242-6e7c02a76407'
 ]
 
 { #category : #config }
 ProteinTranslationTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'1.1.1'
 ]
 
@@ -74,7 +74,7 @@ ProteinTranslationTest >> setUp [
 ]
 
 { #category : #tests }
-ProteinTranslationTest >> test01_TranslateInputRNASequencesIntoProteinsMethionineRNASequence [
+ProteinTranslationTest >> test01_MethionineRNASequence [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'AUG' .
@@ -82,7 +82,7 @@ ProteinTranslationTest >> test01_TranslateInputRNASequencesIntoProteinsMethionin
 ]
 
 { #category : #tests }
-ProteinTranslationTest >> test02_TranslateInputRNASequencesIntoProteinsPhenylalanineRNASequence1 [
+ProteinTranslationTest >> test02_PhenylalanineRNASequence1 [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UUU' .
@@ -90,7 +90,7 @@ ProteinTranslationTest >> test02_TranslateInputRNASequencesIntoProteinsPhenylala
 ]
 
 { #category : #tests }
-ProteinTranslationTest >> test03_TranslateInputRNASequencesIntoProteinsPhenylalanineRNASequence2 [
+ProteinTranslationTest >> test03_PhenylalanineRNASequence2 [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UUC' .
@@ -98,7 +98,7 @@ ProteinTranslationTest >> test03_TranslateInputRNASequencesIntoProteinsPhenylala
 ]
 
 { #category : #tests }
-ProteinTranslationTest >> test04_TranslateInputRNASequencesIntoProteinsLeucineRNASequence1 [
+ProteinTranslationTest >> test04_LeucineRNASequence1 [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UUA' .
@@ -106,7 +106,7 @@ ProteinTranslationTest >> test04_TranslateInputRNASequencesIntoProteinsLeucineRN
 ]
 
 { #category : #tests }
-ProteinTranslationTest >> test05_TranslateInputRNASequencesIntoProteinsLeucineRNASequence2 [
+ProteinTranslationTest >> test05_LeucineRNASequence2 [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UUG' .
@@ -114,7 +114,7 @@ ProteinTranslationTest >> test05_TranslateInputRNASequencesIntoProteinsLeucineRN
 ]
 
 { #category : #tests }
-ProteinTranslationTest >> test06_TranslateInputRNASequencesIntoProteinsSerineRNASequence1 [
+ProteinTranslationTest >> test06_SerineRNASequence1 [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UCU' .
@@ -122,7 +122,7 @@ ProteinTranslationTest >> test06_TranslateInputRNASequencesIntoProteinsSerineRNA
 ]
 
 { #category : #tests }
-ProteinTranslationTest >> test07_TranslateInputRNASequencesIntoProteinsSerineRNASequence2 [
+ProteinTranslationTest >> test07_SerineRNASequence2 [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UCC' .
@@ -130,7 +130,7 @@ ProteinTranslationTest >> test07_TranslateInputRNASequencesIntoProteinsSerineRNA
 ]
 
 { #category : #tests }
-ProteinTranslationTest >> test08_TranslateInputRNASequencesIntoProteinsSerineRNASequence3 [
+ProteinTranslationTest >> test08_SerineRNASequence3 [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UCA' .
@@ -138,7 +138,7 @@ ProteinTranslationTest >> test08_TranslateInputRNASequencesIntoProteinsSerineRNA
 ]
 
 { #category : #tests }
-ProteinTranslationTest >> test09_TranslateInputRNASequencesIntoProteinsSerineRNASequence4 [
+ProteinTranslationTest >> test09_SerineRNASequence4 [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UCG' .
@@ -146,7 +146,7 @@ ProteinTranslationTest >> test09_TranslateInputRNASequencesIntoProteinsSerineRNA
 ]
 
 { #category : #tests }
-ProteinTranslationTest >> test10_TranslateInputRNASequencesIntoProteinsTyrosineRNASequence1 [
+ProteinTranslationTest >> test10_TyrosineRNASequence1 [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UAU' .
@@ -154,7 +154,7 @@ ProteinTranslationTest >> test10_TranslateInputRNASequencesIntoProteinsTyrosineR
 ]
 
 { #category : #tests }
-ProteinTranslationTest >> test11_TranslateInputRNASequencesIntoProteinsTyrosineRNASequence2 [
+ProteinTranslationTest >> test11_TyrosineRNASequence2 [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UAC' .
@@ -162,7 +162,7 @@ ProteinTranslationTest >> test11_TranslateInputRNASequencesIntoProteinsTyrosineR
 ]
 
 { #category : #tests }
-ProteinTranslationTest >> test12_TranslateInputRNASequencesIntoProteinsCysteineRNASequence1 [
+ProteinTranslationTest >> test12_CysteineRNASequence1 [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UGU' .
@@ -170,7 +170,7 @@ ProteinTranslationTest >> test12_TranslateInputRNASequencesIntoProteinsCysteineR
 ]
 
 { #category : #tests }
-ProteinTranslationTest >> test13_TranslateInputRNASequencesIntoProteinsCysteineRNASequence2 [
+ProteinTranslationTest >> test13_CysteineRNASequence2 [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UGC' .
@@ -178,7 +178,7 @@ ProteinTranslationTest >> test13_TranslateInputRNASequencesIntoProteinsCysteineR
 ]
 
 { #category : #tests }
-ProteinTranslationTest >> test14_TranslateInputRNASequencesIntoProteinsTryptophanRNASequence [
+ProteinTranslationTest >> test14_TryptophanRNASequence [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UGG' .
@@ -186,7 +186,7 @@ ProteinTranslationTest >> test14_TranslateInputRNASequencesIntoProteinsTryptopha
 ]
 
 { #category : #tests }
-ProteinTranslationTest >> test15_TranslateInputRNASequencesIntoProteinsSTOPCodonRNASequence1 [
+ProteinTranslationTest >> test15_STOPCodonRNASequence1 [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UAA' .
@@ -194,7 +194,7 @@ ProteinTranslationTest >> test15_TranslateInputRNASequencesIntoProteinsSTOPCodon
 ]
 
 { #category : #tests }
-ProteinTranslationTest >> test16_TranslateInputRNASequencesIntoProteinsSTOPCodonRNASequence2 [
+ProteinTranslationTest >> test16_STOPCodonRNASequence2 [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UAG' .
@@ -202,7 +202,7 @@ ProteinTranslationTest >> test16_TranslateInputRNASequencesIntoProteinsSTOPCodon
 ]
 
 { #category : #tests }
-ProteinTranslationTest >> test17_TranslateInputRNASequencesIntoProteinsSTOPCodonRNASequence3 [
+ProteinTranslationTest >> test17_STOPCodonRNASequence3 [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UGA' .
@@ -210,7 +210,7 @@ ProteinTranslationTest >> test17_TranslateInputRNASequencesIntoProteinsSTOPCodon
 ]
 
 { #category : #tests }
-ProteinTranslationTest >> test18_TranslateInputRNASequencesIntoProteinsTranslateRNAStrandIntoCorrectProteinList [
+ProteinTranslationTest >> test18_TranslateRNAStrandIntoCorrectProteinList [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'AUGUUUUGG' .
@@ -218,7 +218,7 @@ ProteinTranslationTest >> test18_TranslateInputRNASequencesIntoProteinsTranslate
 ]
 
 { #category : #tests }
-ProteinTranslationTest >> test19_TranslateInputRNASequencesIntoProteinsTranslationStopsIfSTOPCodonAtBeginningOfSequence [
+ProteinTranslationTest >> test19_TranslationStopsIfSTOPCodonAtBeginningOfSequence [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UAGUGG' .
@@ -226,7 +226,7 @@ ProteinTranslationTest >> test19_TranslateInputRNASequencesIntoProteinsTranslati
 ]
 
 { #category : #tests }
-ProteinTranslationTest >> test20_TranslateInputRNASequencesIntoProteinsTranslationStopsIfSTOPCodonAtEndOfTwocodonSequence [
+ProteinTranslationTest >> test20_TranslationStopsIfSTOPCodonAtEndOfTwocodonSequence [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UGGUAG' .
@@ -234,7 +234,7 @@ ProteinTranslationTest >> test20_TranslateInputRNASequencesIntoProteinsTranslati
 ]
 
 { #category : #tests }
-ProteinTranslationTest >> test21_TranslateInputRNASequencesIntoProteinsTranslationStopsIfSTOPCodonAtEndOfThreecodonSequence [
+ProteinTranslationTest >> test21_TranslationStopsIfSTOPCodonAtEndOfThreecodonSequence [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'AUGUUUUAA' .
@@ -242,7 +242,7 @@ ProteinTranslationTest >> test21_TranslateInputRNASequencesIntoProteinsTranslati
 ]
 
 { #category : #tests }
-ProteinTranslationTest >> test22_TranslateInputRNASequencesIntoProteinsTranslationStopsIfSTOPCodonInMiddleOfThreecodonSequence [
+ProteinTranslationTest >> test22_TranslationStopsIfSTOPCodonInMiddleOfThreecodonSequence [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UGGUAGUGG' .
@@ -250,7 +250,7 @@ ProteinTranslationTest >> test22_TranslateInputRNASequencesIntoProteinsTranslati
 ]
 
 { #category : #tests }
-ProteinTranslationTest >> test23_TranslateInputRNASequencesIntoProteinsTranslationStopsIfSTOPCodonInMiddleOfSixcodonSequence [
+ProteinTranslationTest >> test23_TranslationStopsIfSTOPCodonInMiddleOfSixcodonSequence [
 	| result |
 
 	result := proteinTranslationCalculator proteinsStrand: 'UGGUGUUAUUAAUGGUUU' .

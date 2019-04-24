@@ -46,12 +46,12 @@ Class {
 { #category : #config }
 SatelliteTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'6650e916-9d41-0d00-8ffe-3eaf08866539'
+	^'0ca3c32e-b043-0d00-9275-6ca802a76407'
 ]
 
 { #category : #config }
 SatelliteTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'2.0.0'
 ]
 
@@ -88,22 +88,31 @@ SatelliteTest >> test03_TreeWithManyItems [
 SatelliteTest >> test04_RejectTraversalsOfDifferentLength [
 	| result |
 
-	result := satelliteCalculator treeFromTraversalsPreorder: #('a' 'b' ) inorder: #('b' 'a' 'r' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'traversals must have the same length'); yourself)
+	self
+		should: [ result := satelliteCalculator treeFromTraversalsPreorder: #('a' 'b' ) inorder: #('b' 'a' 'r' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'traversals must have the same length'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 SatelliteTest >> test05_RejectInconsistentTraversalsOfSameLength [
 	| result |
 
-	result := satelliteCalculator treeFromTraversalsPreorder: #('x' 'y' 'z' ) inorder: #('a' 'b' 'c' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'traversals must have the same elements'); yourself)
+	self
+		should: [ result := satelliteCalculator treeFromTraversalsPreorder: #('x' 'y' 'z' ) inorder: #('a' 'b' 'c' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'traversals must have the same elements'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 SatelliteTest >> test06_RejectTraversalsWithRepeatedItems [
 	| result |
 
-	result := satelliteCalculator treeFromTraversalsPreorder: #('a' 'b' 'a' ) inorder: #('b' 'a' 'a' ) .
-	self assert: result equals: ((Dictionary new) add: ('error'->'traversals must contain unique items'); yourself)
+	self
+		should: [ result := satelliteCalculator treeFromTraversalsPreorder: #('a' 'b' 'a' ) inorder: #('b' 'a' 'a' ) ]
+		raise: Exception
+		whoseDescriptionIncludes: 'traversals must contain unique items'
+		description: 'Should get an error with the correct description'
 ]

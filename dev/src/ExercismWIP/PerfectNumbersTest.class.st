@@ -35,12 +35,12 @@ Class {
 { #category : #config }
 PerfectNumbersTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'6711ab16-9d41-0d00-8fcc-926408866539'
+	^'fa43a62e-b043-0d00-924b-c94902a76407'
 ]
 
 { #category : #config }
 PerfectNumbersTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'1.1.0'
 ]
 
@@ -141,14 +141,20 @@ PerfectNumbersTest >> test11_DeficientNumbersEdgeCasenoFactorsOtherThanItselfIsC
 PerfectNumbersTest >> test12_InvalidInputsZeroIsRejectednotANaturalNumber [
 	| result |
 
-	result := perfectNumbersCalculator classifyNumber: 0 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Classification is only possible for natural numbers.'); yourself)
+	self
+		should: [ result := perfectNumbersCalculator classifyNumber: 0 ]
+		raise: Exception
+		whoseDescriptionIncludes: 'Classification is only possible for natural numbers.'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 PerfectNumbersTest >> test13_InvalidInputsNegativeIntegerIsRejectednotANaturalNumber [
 	| result |
 
-	result := perfectNumbersCalculator classifyNumber:  -1 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'Classification is only possible for natural numbers.'); yourself)
+	self
+		should: [ result := perfectNumbersCalculator classifyNumber:  -1 ]
+		raise: Exception
+		whoseDescriptionIncludes: 'Classification is only possible for natural numbers.'
+		description: 'Should get an error with the correct description'
 ]

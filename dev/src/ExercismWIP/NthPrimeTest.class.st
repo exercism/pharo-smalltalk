@@ -26,12 +26,12 @@ Class {
 { #category : #config }
 NthPrimeTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'ffbe0917-9d41-0d00-9014-7b1508866539'
+	^'9097d12e-b043-0d00-9287-620802a76407'
 ]
 
 { #category : #config }
 NthPrimeTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'2.1.0'
 ]
 
@@ -76,6 +76,9 @@ NthPrimeTest >> test04_BigPrime [
 NthPrimeTest >> test05_ThereIsNoZerothPrime [
 	| result |
 
-	result := nthPrimeCalculator primeNumber: 0 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'there is no zeroth prime'); yourself)
+	self
+		should: [ result := nthPrimeCalculator primeNumber: 0 ]
+		raise: Exception
+		whoseDescriptionIncludes: 'there is no zeroth prime'
+		description: 'Should get an error with the correct description'
 ]

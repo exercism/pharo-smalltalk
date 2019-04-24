@@ -85,12 +85,12 @@ Class {
 { #category : #config }
 BookStoreTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'3222a516-9d41-0d00-8fc7-c59508866539'
+	^'872ba32e-b043-0d00-9247-dbee02a76407'
 ]
 
 { #category : #config }
 BookStoreTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'1.4.0'
 ]
 
@@ -100,7 +100,7 @@ BookStoreTest >> setUp [
 ]
 
 { #category : #tests }
-BookStoreTest >> test01_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountOnlyASingleBook [
+BookStoreTest >> test01_OnlyASingleBook [
 	| result |
 
 	result := bookStoreCalculator totalBasket: #(1 ) .
@@ -108,7 +108,7 @@ BookStoreTest >> test01_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountOnl
 ]
 
 { #category : #tests }
-BookStoreTest >> test02_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwoOfTheSameBook [
+BookStoreTest >> test02_TwoOfTheSameBook [
 	| result |
 
 	result := bookStoreCalculator totalBasket: #(2 2 ) .
@@ -116,7 +116,7 @@ BookStoreTest >> test02_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwo
 ]
 
 { #category : #tests }
-BookStoreTest >> test03_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountEmptyBasket [
+BookStoreTest >> test03_EmptyBasket [
 	| result |
 
 	result := bookStoreCalculator totalBasket: #() .
@@ -124,7 +124,7 @@ BookStoreTest >> test03_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountEmp
 ]
 
 { #category : #tests }
-BookStoreTest >> test04_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwoDifferentBooks [
+BookStoreTest >> test04_TwoDifferentBooks [
 	| result |
 
 	result := bookStoreCalculator totalBasket: #(1 2 ) .
@@ -132,7 +132,7 @@ BookStoreTest >> test04_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwo
 ]
 
 { #category : #tests }
-BookStoreTest >> test05_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountThreeDifferentBooks [
+BookStoreTest >> test05_ThreeDifferentBooks [
 	| result |
 
 	result := bookStoreCalculator totalBasket: #(1 2 3 ) .
@@ -140,7 +140,7 @@ BookStoreTest >> test05_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountThr
 ]
 
 { #category : #tests }
-BookStoreTest >> test06_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountFourDifferentBooks [
+BookStoreTest >> test06_FourDifferentBooks [
 	| result |
 
 	result := bookStoreCalculator totalBasket: #(1 2 3 4 ) .
@@ -148,7 +148,7 @@ BookStoreTest >> test06_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountFou
 ]
 
 { #category : #tests }
-BookStoreTest >> test07_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountFiveDifferentBooks [
+BookStoreTest >> test07_FiveDifferentBooks [
 	| result |
 
 	result := bookStoreCalculator totalBasket: #(1 2 3 4 5 ) .
@@ -156,7 +156,7 @@ BookStoreTest >> test07_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountFiv
 ]
 
 { #category : #tests }
-BookStoreTest >> test08_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwoGroupsOfFourIsCheaperThanGroupOfFivePlusGroupOfThree [
+BookStoreTest >> test08_TwoGroupsOfFourIsCheaperThanGroupOfFivePlusGroupOfThree [
 	| result |
 
 	result := bookStoreCalculator totalBasket: #(1 1 2 2 3 3 4 5 ) .
@@ -164,7 +164,7 @@ BookStoreTest >> test08_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwo
 ]
 
 { #category : #tests }
-BookStoreTest >> test09_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwoGroupsOfFourIsCheaperThanGroupsOfFiveAndThree [
+BookStoreTest >> test09_TwoGroupsOfFourIsCheaperThanGroupsOfFiveAndThree [
 	| result |
 
 	result := bookStoreCalculator totalBasket: #(1 1 2 3 4 4 5 5 ) .
@@ -172,7 +172,7 @@ BookStoreTest >> test09_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwo
 ]
 
 { #category : #tests }
-BookStoreTest >> test10_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountGroupOfFourPlusGroupOfTwoIsCheaperThanTwoGroupsOfThree [
+BookStoreTest >> test10_GroupOfFourPlusGroupOfTwoIsCheaperThanTwoGroupsOfThree [
 	| result |
 
 	result := bookStoreCalculator totalBasket: #(1 1 2 2 3 4 ) .
@@ -180,7 +180,7 @@ BookStoreTest >> test10_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountGro
 ]
 
 { #category : #tests }
-BookStoreTest >> test11_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwoEachOfFirst4BooksAnd1CopyEachOfRest [
+BookStoreTest >> test11_TwoEachOfFirst4BooksAnd1CopyEachOfRest [
 	| result |
 
 	result := bookStoreCalculator totalBasket: #(1 1 2 2 3 3 4 4 5 ) .
@@ -188,7 +188,7 @@ BookStoreTest >> test11_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwo
 ]
 
 { #category : #tests }
-BookStoreTest >> test12_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwoCopiesOfEachBook [
+BookStoreTest >> test12_TwoCopiesOfEachBook [
 	| result |
 
 	result := bookStoreCalculator totalBasket: #(1 1 2 2 3 3 4 4 5 5 ) .
@@ -196,7 +196,7 @@ BookStoreTest >> test12_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountTwo
 ]
 
 { #category : #tests }
-BookStoreTest >> test13_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountThreeCopiesOfFirstBookAnd2EachOfRemaining [
+BookStoreTest >> test13_ThreeCopiesOfFirstBookAnd2EachOfRemaining [
 	| result |
 
 	result := bookStoreCalculator totalBasket: #(1 1 2 2 3 3 4 4 5 5 1 ) .
@@ -204,7 +204,7 @@ BookStoreTest >> test13_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountThr
 ]
 
 { #category : #tests }
-BookStoreTest >> test14_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountThreeEachOfFirst2BooksAnd2EachOfRemainingBooks [
+BookStoreTest >> test14_ThreeEachOfFirst2BooksAnd2EachOfRemainingBooks [
 	| result |
 
 	result := bookStoreCalculator totalBasket: #(1 1 2 2 3 3 4 4 5 5 1 2 ) .
@@ -212,7 +212,7 @@ BookStoreTest >> test14_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountThr
 ]
 
 { #category : #tests }
-BookStoreTest >> test15_ReturnTheTotalBasketPriceAfterApplyingTheBestDiscountFourGroupsOfFourAreCheaperThanTwoGroupsEachOfFiveAndThree [
+BookStoreTest >> test15_FourGroupsOfFourAreCheaperThanTwoGroupsEachOfFiveAndThree [
 	| result |
 
 	result := bookStoreCalculator totalBasket: #(1 1 2 2 3 3 4 5 1 1 2 2 3 3 4 5 ) .

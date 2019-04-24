@@ -49,12 +49,12 @@ Class {
 { #category : #config }
 AllYourBaseTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'ccb7efbb-8040-0d00-8138-443001deb008'
+	^'d5e9cc2e-b043-0d00-9280-13b302a76407'
 ]
 
 { #category : #config }
 AllYourBaseTest class >> version [
-	"Generated from specification: 15 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'2.3.0'
 ]
 
@@ -163,70 +163,97 @@ AllYourBaseTest >> test12_LeadingZeros [
 AllYourBaseTest >> test13_InputBaseIsOne [
 	| result |
 
-	result := allYourBaseCalculator rebaseInputBase: 1 digits: #(0 ) outputBase: 10 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'input base must be >= 2'); yourself)
+	self
+		should: [ result := allYourBaseCalculator rebaseInputBase: 1 digits: #(0 ) outputBase: 10 ]
+		raise: Exception
+		whoseDescriptionIncludes: 'input base must be >= 2'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 AllYourBaseTest >> test14_InputBaseIsZero [
 	| result |
 
-	result := allYourBaseCalculator rebaseInputBase: 0 digits: #() outputBase: 10 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'input base must be >= 2'); yourself)
+	self
+		should: [ result := allYourBaseCalculator rebaseInputBase: 0 digits: #() outputBase: 10 ]
+		raise: Exception
+		whoseDescriptionIncludes: 'input base must be >= 2'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 AllYourBaseTest >> test15_InputBaseIsNegative [
 	| result |
 
-	result := allYourBaseCalculator rebaseInputBase:  -2 digits: #(1 ) outputBase: 10 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'input base must be >= 2'); yourself)
+	self
+		should: [ result := allYourBaseCalculator rebaseInputBase:  -2 digits: #(1 ) outputBase: 10 ]
+		raise: Exception
+		whoseDescriptionIncludes: 'input base must be >= 2'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 AllYourBaseTest >> test16_NegativeDigit [
 	| result |
 
-	result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1  -1 1 0 1 0 ) outputBase: 10 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'all digits must satisfy 0 <= d < input base'); yourself)
+	self
+		should: [ result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1  -1 1 0 1 0 ) outputBase: 10 ]
+		raise: Exception
+		whoseDescriptionIncludes: 'all digits must satisfy 0 <= d < input base'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 AllYourBaseTest >> test17_InvalidPositiveDigit [
 	| result |
 
-	result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1 2 1 0 1 0 ) outputBase: 10 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'all digits must satisfy 0 <= d < input base'); yourself)
+	self
+		should: [ result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1 2 1 0 1 0 ) outputBase: 10 ]
+		raise: Exception
+		whoseDescriptionIncludes: 'all digits must satisfy 0 <= d < input base'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 AllYourBaseTest >> test18_OutputBaseIsOne [
 	| result |
 
-	result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1 0 1 0 1 0 ) outputBase: 1 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'output base must be >= 2'); yourself)
+	self
+		should: [ result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1 0 1 0 1 0 ) outputBase: 1 ]
+		raise: Exception
+		whoseDescriptionIncludes: 'output base must be >= 2'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 AllYourBaseTest >> test19_OutputBaseIsZero [
 	| result |
 
-	result := allYourBaseCalculator rebaseInputBase: 10 digits: #(7 ) outputBase: 0 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'output base must be >= 2'); yourself)
+	self
+		should: [ result := allYourBaseCalculator rebaseInputBase: 10 digits: #(7 ) outputBase: 0 ]
+		raise: Exception
+		whoseDescriptionIncludes: 'output base must be >= 2'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 AllYourBaseTest >> test20_OutputBaseIsNegative [
 	| result |
 
-	result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1 ) outputBase:  -7 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'output base must be >= 2'); yourself)
+	self
+		should: [ result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1 ) outputBase:  -7 ]
+		raise: Exception
+		whoseDescriptionIncludes: 'output base must be >= 2'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 AllYourBaseTest >> test21_BothBasesAreNegative [
 	| result |
 
-	result := allYourBaseCalculator rebaseInputBase:  -2 digits: #(1 ) outputBase:  -7 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'input base must be >= 2'); yourself)
+	self
+		should: [ result := allYourBaseCalculator rebaseInputBase:  -2 digits: #(1 ) outputBase:  -7 ]
+		raise: Exception
+		whoseDescriptionIncludes: 'input base must be >= 2'
+		description: 'Should get an error with the correct description'
 ]

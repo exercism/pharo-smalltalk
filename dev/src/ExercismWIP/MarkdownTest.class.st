@@ -32,13 +32,13 @@ Class {
 { #category : #config }
 MarkdownTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'09acbc16-9d41-0d00-8fdb-5bc208866539'
+	^'97c3ae2e-b043-0d00-9257-896802a76407'
 ]
 
 { #category : #config }
 MarkdownTest class >> version [
-	"Generated from specification: 29 March 2019"
-	^'1.3.0'
+	"Generated from specification: 25 April 2019"
+	^'1.4.0'
 ]
 
 { #category : #setup }
@@ -144,4 +144,15 @@ MarkdownTest >> test12_WithMarkdownSymbolsInTheParagraphTextThatShouldNotBeInter
 
 	result := markdownCalculator parseMarkdown: 'This is a paragraph with # and * in the text' .
 	self assert: result equals: '<p>This is a paragraph with # and * in the text</p>'
+]
+
+{ #category : #tests }
+MarkdownTest >> test13_UnorderedListsCloseProperlyWithPrecedingAndFollowingLines [
+	| result |
+
+	result := markdownCalculator parseMarkdown: '# Start a list
+* Item 1
+* Item 2
+End a list' .
+	self assert: result equals: '<h1>Start a list</h1><ul><li>Item 1</li><li>Item 2</li></ul><p>End a list</p>'
 ]

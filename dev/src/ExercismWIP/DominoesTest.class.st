@@ -32,12 +32,12 @@ Class {
 { #category : #config }
 DominoesTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'5109d416-9d41-0d00-8fee-c3aa08866539'
+	^'30abb92e-b043-0d00-9268-8a4902a76407'
 ]
 
 { #category : #config }
 DominoesTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'2.1.0'
 ]
 
@@ -47,7 +47,7 @@ DominoesTest >> setUp [
 ]
 
 { #category : #tests }
-DominoesTest >> test01_EmptyInputEmptyOutput [
+DominoesTest >> test01_EmptyInputEqualsEmptyOutput [
 	| result |
 
 	result := dominoesCalculator canChainDominoes: #() .
@@ -55,7 +55,7 @@ DominoesTest >> test01_EmptyInputEmptyOutput [
 ]
 
 { #category : #tests }
-DominoesTest >> test02_SingletonInputSingletonOutput [
+DominoesTest >> test02_SingletonInputEqualsSingletonOutput [
 	| result |
 
 	result := dominoesCalculator canChainDominoes: #(#(1 1 ) ) .
