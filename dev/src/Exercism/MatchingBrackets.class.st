@@ -2,18 +2,18 @@
 A simple solution to bracket exercise using a Stack
 "
 Class {
-	#name : #BracketPush,
+	#name : #MatchingBrackets,
 	#superclass : #Object,
-	#category : #'Exercism-BracketPush'
+	#category : #'Exercism-MatchingBrackets'
 }
 
 { #category : #'private-constants' }
-BracketPush >> delimiterPairs [
+MatchingBrackets >> delimiterPairs [
 	^ #('()' '[]' '{}')
 ]
 
 { #category : #'private-testing' }
-BracketPush >> is: closeChar closingBracketFor: openChar [
+MatchingBrackets >> is: closeChar closingBracketFor: openChar [
 	^ self delimiterPairs
 		detect: [ :each | each first = openChar & (each last = closeChar) ]
 		ifFound: [ true ]
@@ -21,7 +21,7 @@ BracketPush >> is: closeChar closingBracketFor: openChar [
 ]
 
 { #category : #exercism }
-BracketPush >> isPaired: aString [
+MatchingBrackets >> isPaired: aString [
 	| stack |
 	
 	stack := Stack new.
