@@ -196,19 +196,6 @@
       ]
     },
     {
-      "slug" : "bracket-push",
-      "uuid" : "d126be16-9d41-0d00-8fdc-2ff208866539",
-      "core" : false,
-      "auto_approve" : false,
-      "unlocked_by" : "leap",
-      "difficulty" : 4,
-      "topics" : [
-        "strings",
-        "parsing",
-        "stacks"
-      ]
-    },
-    {
       "slug" : "clock",
       "uuid" : "f8080717-9d41-0d00-9011-755a08866539",
       "core" : false,
@@ -311,6 +298,19 @@
         "strings",
         "math",
         "algorithms"
+      ]
+    },
+    {
+      "slug" : "matching-brackets",
+      "uuid" : "d126be16-9d41-0d00-8fdc-2ff208866539",
+      "core" : false,
+      "auto_approve" : false,
+      "unlocked_by" : "leap",
+      "difficulty" : 4,
+      "topics" : [
+        "strings",
+        "parsing",
+        "stacks"
       ]
     },
     {
