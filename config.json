@@ -184,6 +184,19 @@
       ]
     },
     {
+      "slug" : "diamond",
+      "uuid" : "c0b69b16-9d41-0d00-8fbf-acfc08866539",
+      "core" : false,
+      "auto_approve" : false,
+      "unlocked_by" : "reverse-string",
+      "difficulty" : 2,
+      "topics" : [
+        "loops",
+        "algorithms",
+        "conditionals"
+      ]
+    },
+    {
       "slug" : "etl",
       "uuid" : "d6303b3f-0f41-0d00-a5e1-db510c056502",
       "core" : false,
