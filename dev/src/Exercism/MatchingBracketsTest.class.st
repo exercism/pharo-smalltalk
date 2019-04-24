@@ -1,5 +1,5 @@
 "
-# Bracket Push
+# Matching Brackets
 
 Given a string containing brackets `[]`, braces `{}`, parentheses `()`,
 or any combination thereof, verify that any and all pairs are matched
@@ -12,16 +12,16 @@ Saving state in a useful data type can help here.
 
 "
 Class {
-	#name : #BracketPushTest,
+	#name : #MatchingBracketsTest,
 	#superclass : #ExercismTest,
 	#instVars : [
 		'bracketPushCalculator'
 	],
-	#category : #'Exercism-BracketPush'
+	#category : #'Exercism-MatchingBrackets'
 }
 
 { #category : #config }
-BracketPushTest class >> exercise [
+MatchingBracketsTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
 	^(self createExerciseAfter: LeapTest)
@@ -33,31 +33,31 @@ BracketPushTest class >> exercise [
 ]
 
 { #category : #generator }
-BracketPushTest class >> generator [
+MatchingBracketsTest class >> generator [
 	"Potential generator hints"
 	
 	^ {('@isPairedValue:' -> #isPaired:)}
 ]
 
 { #category : #config }
-BracketPushTest class >> uuid [
+MatchingBracketsTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'d126be16-9d41-0d00-8fdc-2ff208866539'
 ]
 
 { #category : #config }
-BracketPushTest class >> version [
-	"Generated from specification: 29 March 2019"
-	^'1.5.0'
+MatchingBracketsTest class >> version [
+	"Generated from specification: 24 April 2019"
+	^'2.0.0'
 ]
 
 { #category : #setup }
-BracketPushTest >> setUp [
-	bracketPushCalculator := BracketPush new
+MatchingBracketsTest >> setUp [
+	bracketPushCalculator := MatchingBrackets new
 ]
 
 { #category : #tests }
-BracketPushTest >> test01_PairedSquareBrackets [
+MatchingBracketsTest >> test01_PairedSquareBrackets [
 	| result |
 
 	result := bracketPushCalculator isPaired: '[]' .
@@ -65,7 +65,7 @@ BracketPushTest >> test01_PairedSquareBrackets [
 ]
 
 { #category : #tests }
-BracketPushTest >> test02_EmptyString [
+MatchingBracketsTest >> test02_EmptyString [
 	| result |
 
 	result := bracketPushCalculator isPaired: '' .
@@ -73,7 +73,7 @@ BracketPushTest >> test02_EmptyString [
 ]
 
 { #category : #tests }
-BracketPushTest >> test03_UnpairedBrackets [
+MatchingBracketsTest >> test03_UnpairedBrackets [
 	| result |
 
 	result := bracketPushCalculator isPaired: '[[' .
@@ -81,7 +81,7 @@ BracketPushTest >> test03_UnpairedBrackets [
 ]
 
 { #category : #tests }
-BracketPushTest >> test04_WrongOrderedBrackets [
+MatchingBracketsTest >> test04_WrongOrderedBrackets [
 	| result |
 
 	result := bracketPushCalculator isPaired: '}{' .
@@ -89,7 +89,7 @@ BracketPushTest >> test04_WrongOrderedBrackets [
 ]
 
 { #category : #tests }
-BracketPushTest >> test05_WrongClosingBracket [
+MatchingBracketsTest >> test05_WrongClosingBracket [
 	| result |
 
 	result := bracketPushCalculator isPaired: '{]' .
@@ -97,7 +97,7 @@ BracketPushTest >> test05_WrongClosingBracket [
 ]
 
 { #category : #tests }
-BracketPushTest >> test06_PairedWithWhitespace [
+MatchingBracketsTest >> test06_PairedWithWhitespace [
 	| result |
 
 	result := bracketPushCalculator isPaired: '{ }' .
@@ -105,7 +105,7 @@ BracketPushTest >> test06_PairedWithWhitespace [
 ]
 
 { #category : #tests }
-BracketPushTest >> test07_PartiallyPairedBrackets [
+MatchingBracketsTest >> test07_PartiallyPairedBrackets [
 	| result |
 
 	result := bracketPushCalculator isPaired: '{[])' .
@@ -113,7 +113,7 @@ BracketPushTest >> test07_PartiallyPairedBrackets [
 ]
 
 { #category : #tests }
-BracketPushTest >> test08_SimpleNestedBrackets [
+MatchingBracketsTest >> test08_SimpleNestedBrackets [
 	| result |
 
 	result := bracketPushCalculator isPaired: '{[]}' .
@@ -121,7 +121,7 @@ BracketPushTest >> test08_SimpleNestedBrackets [
 ]
 
 { #category : #tests }
-BracketPushTest >> test09_SeveralPairedBrackets [
+MatchingBracketsTest >> test09_SeveralPairedBrackets [
 	| result |
 
 	result := bracketPushCalculator isPaired: '{}[]' .
@@ -129,7 +129,7 @@ BracketPushTest >> test09_SeveralPairedBrackets [
 ]
 
 { #category : #tests }
-BracketPushTest >> test10_PairedAndNestedBrackets [
+MatchingBracketsTest >> test10_PairedAndNestedBrackets [
 	| result |
 
 	result := bracketPushCalculator isPaired: '([{}({}[])])' .
@@ -137,7 +137,7 @@ BracketPushTest >> test10_PairedAndNestedBrackets [
 ]
 
 { #category : #tests }
-BracketPushTest >> test11_UnopenedClosingBrackets [
+MatchingBracketsTest >> test11_UnopenedClosingBrackets [
 	| result |
 
 	result := bracketPushCalculator isPaired: '{[)][]}' .
@@ -145,7 +145,7 @@ BracketPushTest >> test11_UnopenedClosingBrackets [
 ]
 
 { #category : #tests }
-BracketPushTest >> test12_UnpairedAndNestedBrackets [
+MatchingBracketsTest >> test12_UnpairedAndNestedBrackets [
 	| result |
 
 	result := bracketPushCalculator isPaired: '([{])' .
@@ -153,7 +153,7 @@ BracketPushTest >> test12_UnpairedAndNestedBrackets [
 ]
 
 { #category : #tests }
-BracketPushTest >> test13_PairedAndWrongNestedBrackets [
+MatchingBracketsTest >> test13_PairedAndWrongNestedBrackets [
 	| result |
 
 	result := bracketPushCalculator isPaired: '[({]})' .
@@ -161,7 +161,7 @@ BracketPushTest >> test13_PairedAndWrongNestedBrackets [
 ]
 
 { #category : #tests }
-BracketPushTest >> test14_PairedAndIncompleteBrackets [
+MatchingBracketsTest >> test14_PairedAndIncompleteBrackets [
 	| result |
 
 	result := bracketPushCalculator isPaired: '{}[' .
@@ -169,7 +169,7 @@ BracketPushTest >> test14_PairedAndIncompleteBrackets [
 ]
 
 { #category : #tests }
-BracketPushTest >> test15_TooManyClosingBrackets [
+MatchingBracketsTest >> test15_TooManyClosingBrackets [
 	| result |
 
 	result := bracketPushCalculator isPaired: '[]]' .
@@ -177,7 +177,7 @@ BracketPushTest >> test15_TooManyClosingBrackets [
 ]
 
 { #category : #tests }
-BracketPushTest >> test16_MathExpression [
+MatchingBracketsTest >> test16_MathExpression [
 	| result |
 
 	result := bracketPushCalculator isPaired: '(((185 + 223.85) * 15) - 543)/2' .
@@ -185,7 +185,7 @@ BracketPushTest >> test16_MathExpression [
 ]
 
 { #category : #tests }
-BracketPushTest >> test17_ComplexLatexExpression [
+MatchingBracketsTest >> test17_ComplexLatexExpression [
 	| result |
 
 	result := bracketPushCalculator isPaired: '\left(\begin{array}{cc} \frac{1}{3} & x\\ \mathrm{e}^{x} &... x^2 \end{array}\right)' .
