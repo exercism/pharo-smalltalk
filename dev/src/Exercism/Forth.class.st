@@ -1,3 +1,8 @@
+"
+Mentor notes:
+- having a dictionary of commands to executable objects (in this case a ForthWord that has an execute block) makes this much easier
+
+"
 Class {
 	#name : #Forth,
 	#superclass : #Object,
@@ -6,7 +11,7 @@ Class {
 		'vocabulary',
 		'currentDefinition'
 	],
-	#category : #'ExercismWIP-Forth'
+	#category : #'Exercism-Forth'
 }
 
 { #category : #vocabulary }
