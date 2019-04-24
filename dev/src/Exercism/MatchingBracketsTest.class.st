@@ -15,7 +15,7 @@ Class {
 	#name : #MatchingBracketsTest,
 	#superclass : #ExercismTest,
 	#instVars : [
-		'bracketPushCalculator'
+		'matchingBracketsCalculator'
 	],
 	#category : #'Exercism-MatchingBrackets'
 }
@@ -53,14 +53,14 @@ MatchingBracketsTest class >> version [
 
 { #category : #setup }
 MatchingBracketsTest >> setUp [
-	bracketPushCalculator := MatchingBrackets new
+	matchingBracketsCalculator := MatchingBrackets new
 ]
 
 { #category : #tests }
 MatchingBracketsTest >> test01_PairedSquareBrackets [
 	| result |
 
-	result := bracketPushCalculator isPaired: '[]' .
+	result := matchingBracketsCalculator isPaired: '[]' .
 	self assert: result equals: true
 ]
 
@@ -68,7 +68,7 @@ MatchingBracketsTest >> test01_PairedSquareBrackets [
 MatchingBracketsTest >> test02_EmptyString [
 	| result |
 
-	result := bracketPushCalculator isPaired: '' .
+	result := matchingBracketsCalculator isPaired: '' .
 	self assert: result equals: true
 ]
 
@@ -76,7 +76,7 @@ MatchingBracketsTest >> test02_EmptyString [
 MatchingBracketsTest >> test03_UnpairedBrackets [
 	| result |
 
-	result := bracketPushCalculator isPaired: '[[' .
+	result := matchingBracketsCalculator isPaired: '[[' .
 	self assert: result equals: false
 ]
 
@@ -84,7 +84,7 @@ MatchingBracketsTest >> test03_UnpairedBrackets [
 MatchingBracketsTest >> test04_WrongOrderedBrackets [
 	| result |
 
-	result := bracketPushCalculator isPaired: '}{' .
+	result := matchingBracketsCalculator isPaired: '}{' .
 	self assert: result equals: false
 ]
 
@@ -92,7 +92,7 @@ MatchingBracketsTest >> test04_WrongOrderedBrackets [
 MatchingBracketsTest >> test05_WrongClosingBracket [
 	| result |
 
-	result := bracketPushCalculator isPaired: '{]' .
+	result := matchingBracketsCalculator isPaired: '{]' .
 	self assert: result equals: false
 ]
 
@@ -100,7 +100,7 @@ MatchingBracketsTest >> test05_WrongClosingBracket [
 MatchingBracketsTest >> test06_PairedWithWhitespace [
 	| result |
 
-	result := bracketPushCalculator isPaired: '{ }' .
+	result := matchingBracketsCalculator isPaired: '{ }' .
 	self assert: result equals: true
 ]
 
@@ -108,7 +108,7 @@ MatchingBracketsTest >> test06_PairedWithWhitespace [
 MatchingBracketsTest >> test07_PartiallyPairedBrackets [
 	| result |
 
-	result := bracketPushCalculator isPaired: '{[])' .
+	result := matchingBracketsCalculator isPaired: '{[])' .
 	self assert: result equals: false
 ]
 
@@ -116,7 +116,7 @@ MatchingBracketsTest >> test07_PartiallyPairedBrackets [
 MatchingBracketsTest >> test08_SimpleNestedBrackets [
 	| result |
 
-	result := bracketPushCalculator isPaired: '{[]}' .
+	result := matchingBracketsCalculator isPaired: '{[]}' .
 	self assert: result equals: true
 ]
 
@@ -124,7 +124,7 @@ MatchingBracketsTest >> test08_SimpleNestedBrackets [
 MatchingBracketsTest >> test09_SeveralPairedBrackets [
 	| result |
 
-	result := bracketPushCalculator isPaired: '{}[]' .
+	result := matchingBracketsCalculator isPaired: '{}[]' .
 	self assert: result equals: true
 ]
 
@@ -132,7 +132,7 @@ MatchingBracketsTest >> test09_SeveralPairedBrackets [
 MatchingBracketsTest >> test10_PairedAndNestedBrackets [
 	| result |
 
-	result := bracketPushCalculator isPaired: '([{}({}[])])' .
+	result := matchingBracketsCalculator isPaired: '([{}({}[])])' .
 	self assert: result equals: true
 ]
 
@@ -140,7 +140,7 @@ MatchingBracketsTest >> test10_PairedAndNestedBrackets [
 MatchingBracketsTest >> test11_UnopenedClosingBrackets [
 	| result |
 
-	result := bracketPushCalculator isPaired: '{[)][]}' .
+	result := matchingBracketsCalculator isPaired: '{[)][]}' .
 	self assert: result equals: false
 ]
 
@@ -148,7 +148,7 @@ MatchingBracketsTest >> test11_UnopenedClosingBrackets [
 MatchingBracketsTest >> test12_UnpairedAndNestedBrackets [
 	| result |
 
-	result := bracketPushCalculator isPaired: '([{])' .
+	result := matchingBracketsCalculator isPaired: '([{])' .
 	self assert: result equals: false
 ]
 
@@ -156,7 +156,7 @@ MatchingBracketsTest >> test12_UnpairedAndNestedBrackets [
 MatchingBracketsTest >> test13_PairedAndWrongNestedBrackets [
 	| result |
 
-	result := bracketPushCalculator isPaired: '[({]})' .
+	result := matchingBracketsCalculator isPaired: '[({]})' .
 	self assert: result equals: false
 ]
 
@@ -164,7 +164,7 @@ MatchingBracketsTest >> test13_PairedAndWrongNestedBrackets [
 MatchingBracketsTest >> test14_PairedAndIncompleteBrackets [
 	| result |
 
-	result := bracketPushCalculator isPaired: '{}[' .
+	result := matchingBracketsCalculator isPaired: '{}[' .
 	self assert: result equals: false
 ]
 
@@ -172,7 +172,7 @@ MatchingBracketsTest >> test14_PairedAndIncompleteBrackets [
 MatchingBracketsTest >> test15_TooManyClosingBrackets [
 	| result |
 
-	result := bracketPushCalculator isPaired: '[]]' .
+	result := matchingBracketsCalculator isPaired: '[]]' .
 	self assert: result equals: false
 ]
 
@@ -180,7 +180,7 @@ MatchingBracketsTest >> test15_TooManyClosingBrackets [
 MatchingBracketsTest >> test16_MathExpression [
 	| result |
 
-	result := bracketPushCalculator isPaired: '(((185 + 223.85) * 15) - 543)/2' .
+	result := matchingBracketsCalculator isPaired: '(((185 + 223.85) * 15) - 543)/2' .
 	self assert: result equals: true
 ]
 
@@ -188,6 +188,6 @@ MatchingBracketsTest >> test16_MathExpression [
 MatchingBracketsTest >> test17_ComplexLatexExpression [
 	| result |
 
-	result := bracketPushCalculator isPaired: '\left(\begin{array}{cc} \frac{1}{3} & x\\ \mathrm{e}^{x} &... x^2 \end{array}\right)' .
+	result := matchingBracketsCalculator isPaired: '\left(\begin{array}{cc} \frac{1}{3} & x\\ \mathrm{e}^{x} &... x^2 \end{array}\right)' .
 	self assert: result equals: true
 ]
