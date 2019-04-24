@@ -55,7 +55,7 @@ E·······E
 
 ## Hint
 
-TBD
+Extract clear, single purpose methods to keep your solution understandable
 
 "
 Class {
@@ -64,8 +64,20 @@ Class {
 	#instVars : [
 		'diamondCalculator'
 	],
-	#category : #'ExercismWIP-Diamond'
+	#category : #'Exercism-Diamond'
 }
+
+{ #category : #config }
+DiamondTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+	
+	^(self createExerciseAfter: ReverseStringTest )
+		isCore: false;
+		difficulty: 3;
+		topics: #('strings' 'algorithms' 'lists' 'text_formatting');
+		yourself
+	
+]
 
 { #category : #config }
 DiamondTest class >> uuid [

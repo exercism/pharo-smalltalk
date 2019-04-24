@@ -31,7 +31,7 @@ things based on word boundaries.
 
 ## Hint
 
-TBD
+This is a fun little exercise, just follow the tests.
 
 "
 Class {
@@ -40,8 +40,19 @@ Class {
 	#instVars : [
 		'atbashCipherCalculator'
 	],
-	#category : #'ExercismWIP-AtbashCipher'
+	#category : #'Exercism-AtbashCipher'
 }
+
+{ #category : #config }
+AtbashCipherTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+
+	^ (self createExerciseAfter: GrainsTest)
+		isCore: false;
+		difficulty: 3;
+		topics: #('algorithms' 'strings' 'transforming' 'cryptography');
+		yourself
+]
 
 { #category : #config }
 AtbashCipherTest class >> uuid [

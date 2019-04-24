@@ -16,9 +16,10 @@ In our particular instance of the game, the target rewards with 4 different amou
 The outer circle has a radius of 10 units (This is equivalent to the total radius for the entire target), the middle circle a radius of 5 units, and the inner circle a radius of 1. Of course, they are all centered to the same point (That is, the circles are [concentric](http://mathworld.wolfram.com/ConcentricCircles.html)) defined by the coordinates (0, 0).
 
 Write a function that given a point in the target (defined by its `real` cartesian coordinates `x` and `y`), returns the correct amount earned by a dart landing in that point.
+
 ## Hint
 
-TBD
+The Pythagorean theorum will help.
 
 "
 Class {
@@ -27,19 +28,30 @@ Class {
 	#instVars : [
 		'dartsCalculator'
 	],
-	#category : #'ExercismWIP-Darts'
+	#category : #'Exercism-Darts'
 }
+
+{ #category : #config }
+DartsTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+
+	^ (self createExerciseAfter: LeapTest)
+		isCore: false;
+		difficulty: 2;
+		topics: #('conditionals' 'math');
+		yourself
+]
 
 { #category : #config }
 DartsTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'918ae516-9d41-0d00-8ffb-39d308866539'
+	^'98fc253b-e642-0d00-8e1a-5ef3059054ed'
 ]
 
 { #category : #config }
 DartsTest class >> version [
-	"Generated from specification: 29 March 2019"
-	^'1.2.0'
+	"Generated from specification: 14 April 2019"
+	^'1.2.1'
 ]
 
 { #category : #setup }
@@ -48,7 +60,7 @@ DartsTest >> setUp [
 ]
 
 { #category : #tests }
-DartsTest >> test01_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartLandsOutsideTheTarget [
+DartsTest >> test01_ADartLandsOutsideTheTarget [
 	| result |
 
 	result := dartsCalculator scoreX:  -9 y: 9 .
@@ -56,7 +68,7 @@ DartsTest >> test01_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInThe
 ]
 
 { #category : #tests }
-DartsTest >> test02_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartLandsJustInTheBorderOfTheTarget [
+DartsTest >> test02_ADartLandsJustInTheBorderOfTheTarget [
 	| result |
 
 	result := dartsCalculator scoreX: 0 y: 10 .
@@ -64,7 +76,7 @@ DartsTest >> test02_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInThe
 ]
 
 { #category : #tests }
-DartsTest >> test03_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartLandsInTheOuterCircle [
+DartsTest >> test03_ADartLandsInTheOuterCircle [
 	| result |
 
 	result := dartsCalculator scoreX: 4 y: 4 .
@@ -72,7 +84,7 @@ DartsTest >> test03_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInThe
 ]
 
 { #category : #tests }
-DartsTest >> test04_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartLandsRightInTheBorderBetweenOuterAndMiddleCircles [
+DartsTest >> test04_ADartLandsRightInTheBorderBetweenOuterAndMiddleCircles [
 	| result |
 
 	result := dartsCalculator scoreX: 5 y: 0 .
@@ -80,7 +92,7 @@ DartsTest >> test04_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInThe
 ]
 
 { #category : #tests }
-DartsTest >> test05_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartLandsInTheMiddleCircle [
+DartsTest >> test05_ADartLandsInTheMiddleCircle [
 	| result |
 
 	result := dartsCalculator scoreX: 0.8 y:  -0.8 .
@@ -88,7 +100,7 @@ DartsTest >> test05_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInThe
 ]
 
 { #category : #tests }
-DartsTest >> test06_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartLandsRightInTheBorderBetweenMiddleAndInnerCircles [
+DartsTest >> test06_ADartLandsRightInTheBorderBetweenMiddleAndInnerCircles [
 	| result |
 
 	result := dartsCalculator scoreX: 0 y:  -1 .
@@ -96,7 +108,7 @@ DartsTest >> test06_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInThe
 ]
 
 { #category : #tests }
-DartsTest >> test07_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartLandsInTheInnerCircle [
+DartsTest >> test07_ADartLandsInTheInnerCircle [
 	| result |
 
 	result := dartsCalculator scoreX:  -0.1 y:  -0.1 .
@@ -104,7 +116,7 @@ DartsTest >> test07_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInThe
 ]
 
 { #category : #tests }
-DartsTest >> test08_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartWhoseCoordinatesSumTo1ButWhoseRadiusToOriginIs1IsScoredInTheInnerCircle [
+DartsTest >> test08_ADartWhoseCoordinatesSumToGreaterThan1ButWhoseRadiusToOriginIsLessThanOrEqualTo1IsScoredInTheInnerCircle [
 	| result |
 
 	result := dartsCalculator scoreX: 0.4 y: 0.8 .
@@ -112,7 +124,7 @@ DartsTest >> test08_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInThe
 ]
 
 { #category : #tests }
-DartsTest >> test09_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartWhoseCoordinatesSumTo5ButWhoseRadiusToOriginIs5IsScoredInTheMiddleCircle [
+DartsTest >> test09_ADartWhoseCoordinatesSumToGreaterThan5ButWhoseRadiusToOriginIsLessThanOrEqualTo5IsScoredInTheMiddleCircle [
 	| result |
 
 	result := dartsCalculator scoreX: 2 y: 4 .
@@ -120,7 +132,7 @@ DartsTest >> test09_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInThe
 ]
 
 { #category : #tests }
-DartsTest >> test10_ReturnTheCorrectAmountEarnedByADartLandingInAGivenPointInTheTargetProblemADartWhoseCoordinatesSumTo10ButWhoseRadiusToOriginIs10IsScoredInTheOuterCircle [
+DartsTest >> test10_ADartWhoseCoordinatesSumToGreaterThan10ButWhoseRadiusToOriginIsLessThanOrEqualTo10IsScoredInTheOuterCircle [
 	| result |
 
 	result := dartsCalculator scoreX: 4 y: 8 .

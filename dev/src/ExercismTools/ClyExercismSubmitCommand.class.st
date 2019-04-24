@@ -31,7 +31,7 @@ ClyExercismSubmitCommand >> description [
 ClyExercismSubmitCommand >> execute [
 	| exerciseName result |
 
-	exerciseName := self tagGroup name.
+	exerciseName := self selectedItem name.
 
 	[ result := ExercismManager default
 		submitToExercism:

@@ -175,13 +175,14 @@ ExercismHttpClient >> hostName: hostNameString [
 ExercismHttpClient >> parameterString [
 	^ String
 		streamContents: [ :s | 
-			self zincClient request requestLine uri query associations
-				do: [ :params | 
+			self zincClient request requestLine uri query 
+			ifNotNil: [ :q |
+				q associations do: [ :params | 
 					s
 						nextPutAll: params key asString;
 						nextPutAll: ': ';
 						nextPutAll: params value ] 
-				separatedBy: [ s nextPutAll: ', ' ]]
+				separatedBy: [ s nextPutAll: ', ' ]]]
 ]
 
 { #category : #internal }
