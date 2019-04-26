@@ -78,7 +78,7 @@ NthPrimeTest >> test05_ThereIsNoZerothPrime [
 
 	self
 		should: [ result := nthPrimeCalculator primeNumber: 0 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'there is no zeroth prime'
 		description: 'Should get an error with the correct description'
 ]

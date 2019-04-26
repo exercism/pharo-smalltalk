@@ -82,7 +82,7 @@ NucleotideCountTest >> test05_StrandWithInvalidNucleotides [
 
 	self
 		should: [ result := nucleotideCountCalculator nucleotideCountsStrand: 'AGXXACT' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Invalid nucleotide in strand'
 		description: 'Should get an error with the correct description'
 ]

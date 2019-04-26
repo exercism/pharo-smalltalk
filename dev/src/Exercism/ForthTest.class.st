@@ -90,7 +90,7 @@ ForthTest >> test03_AdditionErrorsIfThereIsNothingOnTheStack [
 
 	self
 		should: [ result := forthCalculator evaluateInstructions: #('+' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'empty stack'
 		description: 'Should get an error with the correct description'
 ]
@@ -101,7 +101,7 @@ ForthTest >> test04_AdditionErrorsIfThereIsOnlyOneValueOnTheStack [
 
 	self
 		should: [ result := forthCalculator evaluateInstructions: #('1 +' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'only one value on the stack'
 		description: 'Should get an error with the correct description'
 ]
@@ -120,7 +120,7 @@ ForthTest >> test06_SubtractionErrorsIfThereIsNothingOnTheStack [
 
 	self
 		should: [ result := forthCalculator evaluateInstructions: #('-' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'empty stack'
 		description: 'Should get an error with the correct description'
 ]
@@ -131,7 +131,7 @@ ForthTest >> test07_SubtractionErrorsIfThereIsOnlyOneValueOnTheStack [
 
 	self
 		should: [ result := forthCalculator evaluateInstructions: #('1 -' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'only one value on the stack'
 		description: 'Should get an error with the correct description'
 ]
@@ -150,7 +150,7 @@ ForthTest >> test09_MultiplicationErrorsIfThereIsNothingOnTheStack [
 
 	self
 		should: [ result := forthCalculator evaluateInstructions: #('*' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'empty stack'
 		description: 'Should get an error with the correct description'
 ]
@@ -161,7 +161,7 @@ ForthTest >> test10_MultiplicationErrorsIfThereIsOnlyOneValueOnTheStack [
 
 	self
 		should: [ result := forthCalculator evaluateInstructions: #('1 *' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'only one value on the stack'
 		description: 'Should get an error with the correct description'
 ]
@@ -188,7 +188,7 @@ ForthTest >> test13_DivisionErrorsIfDividingByZero [
 
 	self
 		should: [ result := forthCalculator evaluateInstructions: #('4 0 /' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'divide by zero'
 		description: 'Should get an error with the correct description'
 ]
@@ -199,7 +199,7 @@ ForthTest >> test14_DivisionErrorsIfThereIsNothingOnTheStack [
 
 	self
 		should: [ result := forthCalculator evaluateInstructions: #('/' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'empty stack'
 		description: 'Should get an error with the correct description'
 ]
@@ -210,7 +210,7 @@ ForthTest >> test15_DivisionErrorsIfThereIsOnlyOneValueOnTheStack [
 
 	self
 		should: [ result := forthCalculator evaluateInstructions: #('1 /' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'only one value on the stack'
 		description: 'Should get an error with the correct description'
 ]
@@ -253,7 +253,7 @@ ForthTest >> test20_DupErrorsIfThereIsNothingOnTheStack [
 
 	self
 		should: [ result := forthCalculator evaluateInstructions: #('dup' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'empty stack'
 		description: 'Should get an error with the correct description'
 ]
@@ -280,7 +280,7 @@ ForthTest >> test23_DropErrorsIfThereIsNothingOnTheStack [
 
 	self
 		should: [ result := forthCalculator evaluateInstructions: #('drop' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'empty stack'
 		description: 'Should get an error with the correct description'
 ]
@@ -307,7 +307,7 @@ ForthTest >> test26_SwapErrorsIfThereIsNothingOnTheStack [
 
 	self
 		should: [ result := forthCalculator evaluateInstructions: #('swap' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'empty stack'
 		description: 'Should get an error with the correct description'
 ]
@@ -318,7 +318,7 @@ ForthTest >> test27_SwapErrorsIfThereIsOnlyOneValueOnTheStack [
 
 	self
 		should: [ result := forthCalculator evaluateInstructions: #('1 swap' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'only one value on the stack'
 		description: 'Should get an error with the correct description'
 ]
@@ -345,7 +345,7 @@ ForthTest >> test30_OverErrorsIfThereIsNothingOnTheStack [
 
 	self
 		should: [ result := forthCalculator evaluateInstructions: #('over' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'empty stack'
 		description: 'Should get an error with the correct description'
 ]
@@ -356,7 +356,7 @@ ForthTest >> test31_OverErrorsIfThereIsOnlyOneValueOnTheStack [
 
 	self
 		should: [ result := forthCalculator evaluateInstructions: #('1 over' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'only one value on the stack'
 		description: 'Should get an error with the correct description'
 ]
@@ -423,7 +423,7 @@ ForthTest >> test39_UserdefinedWordsCannotRedefineNumbers [
 
 	self
 		should: [ result := forthCalculator evaluateInstructions: #(': 1 2 ;' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'illegal operation'
 		description: 'Should get an error with the correct description'
 ]
@@ -434,7 +434,7 @@ ForthTest >> test40_UserdefinedWordsErrorsIfExecutingANonexistentWord [
 
 	self
 		should: [ result := forthCalculator evaluateInstructions: #('foo' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'undefined operation'
 		description: 'Should get an error with the correct description'
 ]

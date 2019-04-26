@@ -123,7 +123,7 @@ LargestSeriesProductTest >> test10_RejectsSpanLongerThanStringLength [
 
 	self
 		should: [ result := largestSeriesProductCalculator largestProductSpan: 4 digits: '123' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'span must be smaller than string length'
 		description: 'Should get an error with the correct description'
 ]
@@ -150,7 +150,7 @@ LargestSeriesProductTest >> test13_RejectsEmptyStringAndNonzeroSpan [
 
 	self
 		should: [ result := largestSeriesProductCalculator largestProductSpan: 1 digits: '' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'span must be smaller than string length'
 		description: 'Should get an error with the correct description'
 ]
@@ -161,7 +161,7 @@ LargestSeriesProductTest >> test14_RejectsInvalidCharacterInDigits [
 
 	self
 		should: [ result := largestSeriesProductCalculator largestProductSpan: 2 digits: '1234a5' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'digits input must only contain digits'
 		description: 'Should get an error with the correct description'
 ]
@@ -172,7 +172,7 @@ LargestSeriesProductTest >> test15_RejectsNegativeSpan [
 
 	self
 		should: [ result := largestSeriesProductCalculator largestProductSpan:  -1 digits: '12345' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'span must be greater than zero'
 		description: 'Should get an error with the correct description'
 ]

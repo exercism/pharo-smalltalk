@@ -230,7 +230,7 @@ BowlingTest >> test15_RollsCannotScoreNegativePoints [
 
 	self
 		should: [ result := bowlingCalculator scoreRolling:  -1 after: #() ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Negative roll is invalid'
 		description: 'Should get an error with the correct description'
 ]
@@ -241,7 +241,7 @@ BowlingTest >> test16_ARollCannotScoreMoreThan10Points [
 
 	self
 		should: [ result := bowlingCalculator scoreRolling: 11 after: #() ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Pin count exceeds pins on the lane'
 		description: 'Should get an error with the correct description'
 ]
@@ -252,7 +252,7 @@ BowlingTest >> test17_TwoRollsInAFrameCannotScoreMoreThan10Points [
 
 	self
 		should: [ result := bowlingCalculator scoreRolling: 6 after: #(5 ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Pin count exceeds pins on the lane'
 		description: 'Should get an error with the correct description'
 ]
@@ -263,7 +263,7 @@ BowlingTest >> test18_BonusRollAfterAStrikeInTheLastFrameCannotScoreMoreThan10Po
 
 	self
 		should: [ result := bowlingCalculator scoreRolling: 11 after: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Pin count exceeds pins on the lane'
 		description: 'Should get an error with the correct description'
 ]
@@ -274,7 +274,7 @@ BowlingTest >> test19_TwoBonusRollsAfterAStrikeInTheLastFrameCannotScoreMoreThan
 
 	self
 		should: [ result := bowlingCalculator scoreRolling: 6 after: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 5 ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Pin count exceeds pins on the lane'
 		description: 'Should get an error with the correct description'
 ]
@@ -293,7 +293,7 @@ BowlingTest >> test21_TheSecondBonusRollsAfterAStrikeInTheLastFrameCannotBeAStri
 
 	self
 		should: [ result := bowlingCalculator scoreRolling: 10 after: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 6 ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Pin count exceeds pins on the lane'
 		description: 'Should get an error with the correct description'
 ]
@@ -304,7 +304,7 @@ BowlingTest >> test22_SecondBonusRollAfterAStrikeInTheLastFrameCannotScoreMoreTh
 
 	self
 		should: [ result := bowlingCalculator scoreRolling: 11 after: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 10 ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Pin count exceeds pins on the lane'
 		description: 'Should get an error with the correct description'
 ]
@@ -315,7 +315,7 @@ BowlingTest >> test23_AnUnstartedGameCannotBeScored [
 
 	self
 		should: [ result := bowlingCalculator scoreAfterRolling: #() ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Score cannot be taken until the end of the game'
 		description: 'Should get an error with the correct description'
 ]
@@ -326,7 +326,7 @@ BowlingTest >> test24_AnIncompleteGameCannotBeScored [
 
 	self
 		should: [ result := bowlingCalculator scoreAfterRolling: #(0 0 ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Score cannot be taken until the end of the game'
 		description: 'Should get an error with the correct description'
 ]
@@ -337,7 +337,7 @@ BowlingTest >> test25_CannotRollIfGameAlreadyHasTenFrames [
 
 	self
 		should: [ result := bowlingCalculator scoreRolling: 0 after: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Cannot roll after game is over'
 		description: 'Should get an error with the correct description'
 ]
@@ -348,7 +348,7 @@ BowlingTest >> test26_BonusRollsForAStrikeInTheLastFrameMustBeRolledBeforeScoreC
 
 	self
 		should: [ result := bowlingCalculator scoreAfterRolling: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Score cannot be taken until the end of the game'
 		description: 'Should get an error with the correct description'
 ]
@@ -359,7 +359,7 @@ BowlingTest >> test27_BothBonusRollsForAStrikeInTheLastFrameMustBeRolledBeforeSc
 
 	self
 		should: [ result := bowlingCalculator scoreAfterRolling: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 10 ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Score cannot be taken until the end of the game'
 		description: 'Should get an error with the correct description'
 ]
@@ -370,7 +370,7 @@ BowlingTest >> test28_BonusRollForASpareInTheLastFrameMustBeRolledBeforeScoreCan
 
 	self
 		should: [ result := bowlingCalculator scoreAfterRolling: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 3 ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Score cannot be taken until the end of the game'
 		description: 'Should get an error with the correct description'
 ]
@@ -381,7 +381,7 @@ BowlingTest >> test29_CannotRollAfterBonusRollForSpare [
 
 	self
 		should: [ result := bowlingCalculator scoreRolling: 2 after: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 3 2 ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Cannot roll after game is over'
 		description: 'Should get an error with the correct description'
 ]
@@ -392,7 +392,7 @@ BowlingTest >> test30_CannotRollAfterBonusRollsForStrike [
 
 	self
 		should: [ result := bowlingCalculator scoreRolling: 2 after: #(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 3 2 ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Cannot roll after game is over'
 		description: 'Should get an error with the correct description'
 ]

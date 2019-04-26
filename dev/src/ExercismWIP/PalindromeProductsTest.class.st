@@ -150,7 +150,7 @@ PalindromeProductsTest >> test11_ErrorResultForSmallestIfMinIsMoreThanMax [
 
 	self
 		should: [ result := palindromeProductsCalculator smallestMin: 10000 max: 1 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'min must be <= max'
 		description: 'Should get an error with the correct description'
 ]
@@ -161,7 +161,7 @@ PalindromeProductsTest >> test12_ErrorResultForLargestIfMinIsMoreThanMax [
 
 	self
 		should: [ result := palindromeProductsCalculator largestMin: 2 max: 1 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'min must be <= max'
 		description: 'Should get an error with the correct description'
 ]

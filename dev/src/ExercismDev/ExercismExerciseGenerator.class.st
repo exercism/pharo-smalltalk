@@ -146,7 +146,7 @@ ExercismExerciseGenerator >> generateCodeShouldRaiseOn: output variable: variabl
 	output
 		nextPutAll: ']';
 		crlf; tab; tab;
-		nextPutAll: 'raise: Exception';
+		nextPutAll: 'raise: Error';
 		crlf; tab; tab;
 		nextPutAll: ('whoseDescriptionIncludes: {1}' format: { errorMessage });
 		cr; tab; tab;

@@ -72,7 +72,7 @@ QueenAttackTest >> test02_TestCreationOfQueensWithValidAndInvalidPositionsQueenM
 
 	self
 		should: [ result := queenAttackCalculator createQueen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->2); add: ('row'-> -2); yourself)); yourself) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'row not positive'
 		description: 'Should get an error with the correct description'
 ]
@@ -83,7 +83,7 @@ QueenAttackTest >> test03_TestCreationOfQueensWithValidAndInvalidPositionsQueenM
 
 	self
 		should: [ result := queenAttackCalculator createQueen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->4); add: ('row'->8); yourself)); yourself) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'row not on board'
 		description: 'Should get an error with the correct description'
 ]
@@ -94,7 +94,7 @@ QueenAttackTest >> test04_TestCreationOfQueensWithValidAndInvalidPositionsQueenM
 
 	self
 		should: [ result := queenAttackCalculator createQueen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'-> -2); add: ('row'->2); yourself)); yourself) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'column not positive'
 		description: 'Should get an error with the correct description'
 ]
@@ -105,7 +105,7 @@ QueenAttackTest >> test05_TestCreationOfQueensWithValidAndInvalidPositionsQueenM
 
 	self
 		should: [ result := queenAttackCalculator createQueen: ((Dictionary new) add: ('position'->((Dictionary new) add: ('column'->8); add: ('row'->4); yourself)); yourself) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'column not on board'
 		description: 'Should get an error with the correct description'
 ]

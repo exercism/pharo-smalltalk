@@ -165,7 +165,7 @@ AllYourBaseTest >> test13_InputBaseIsOne [
 
 	self
 		should: [ result := allYourBaseCalculator rebaseInputBase: 1 digits: #(0 ) outputBase: 10 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'input base must be >= 2'
 		description: 'Should get an error with the correct description'
 ]
@@ -176,7 +176,7 @@ AllYourBaseTest >> test14_InputBaseIsZero [
 
 	self
 		should: [ result := allYourBaseCalculator rebaseInputBase: 0 digits: #() outputBase: 10 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'input base must be >= 2'
 		description: 'Should get an error with the correct description'
 ]
@@ -187,7 +187,7 @@ AllYourBaseTest >> test15_InputBaseIsNegative [
 
 	self
 		should: [ result := allYourBaseCalculator rebaseInputBase:  -2 digits: #(1 ) outputBase: 10 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'input base must be >= 2'
 		description: 'Should get an error with the correct description'
 ]
@@ -198,7 +198,7 @@ AllYourBaseTest >> test16_NegativeDigit [
 
 	self
 		should: [ result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1  -1 1 0 1 0 ) outputBase: 10 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'all digits must satisfy 0 <= d < input base'
 		description: 'Should get an error with the correct description'
 ]
@@ -209,7 +209,7 @@ AllYourBaseTest >> test17_InvalidPositiveDigit [
 
 	self
 		should: [ result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1 2 1 0 1 0 ) outputBase: 10 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'all digits must satisfy 0 <= d < input base'
 		description: 'Should get an error with the correct description'
 ]
@@ -220,7 +220,7 @@ AllYourBaseTest >> test18_OutputBaseIsOne [
 
 	self
 		should: [ result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1 0 1 0 1 0 ) outputBase: 1 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'output base must be >= 2'
 		description: 'Should get an error with the correct description'
 ]
@@ -231,7 +231,7 @@ AllYourBaseTest >> test19_OutputBaseIsZero [
 
 	self
 		should: [ result := allYourBaseCalculator rebaseInputBase: 10 digits: #(7 ) outputBase: 0 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'output base must be >= 2'
 		description: 'Should get an error with the correct description'
 ]
@@ -242,7 +242,7 @@ AllYourBaseTest >> test20_OutputBaseIsNegative [
 
 	self
 		should: [ result := allYourBaseCalculator rebaseInputBase: 2 digits: #(1 ) outputBase:  -7 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'output base must be >= 2'
 		description: 'Should get an error with the correct description'
 ]
@@ -253,7 +253,7 @@ AllYourBaseTest >> test21_BothBasesAreNegative [
 
 	self
 		should: [ result := allYourBaseCalculator rebaseInputBase:  -2 digits: #(1 ) outputBase:  -7 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'input base must be >= 2'
 		description: 'Should get an error with the correct description'
 ]

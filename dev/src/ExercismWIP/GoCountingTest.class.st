@@ -105,7 +105,7 @@ GoCountingTest >> test05_InvalidBecauseXIsTooLowFor5x5Board [
 
 	self
 		should: [ result := goCountingCalculator territoryX:  -1 y: 1 board: #('  B  ' ' B B ' 'B W B' ' W W ' '  W  ' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Invalid coordinate'
 		description: 'Should get an error with the correct description'
 ]
@@ -116,7 +116,7 @@ GoCountingTest >> test06_InvalidBecauseXIsTooHighFor5x5Board [
 
 	self
 		should: [ result := goCountingCalculator territoryX: 5 y: 1 board: #('  B  ' ' B B ' 'B W B' ' W W ' '  W  ' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Invalid coordinate'
 		description: 'Should get an error with the correct description'
 ]
@@ -127,7 +127,7 @@ GoCountingTest >> test07_InvalidBecauseYIsTooLowFor5x5Board [
 
 	self
 		should: [ result := goCountingCalculator territoryX: 1 y:  -1 board: #('  B  ' ' B B ' 'B W B' ' W W ' '  W  ' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Invalid coordinate'
 		description: 'Should get an error with the correct description'
 ]
@@ -138,7 +138,7 @@ GoCountingTest >> test08_InvalidBecauseYIsTooHighFor5x5Board [
 
 	self
 		should: [ result := goCountingCalculator territoryX: 1 y: 5 board: #('  B  ' ' B B ' 'B W B' ' W W ' '  W  ' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Invalid coordinate'
 		description: 'Should get an error with the correct description'
 ]

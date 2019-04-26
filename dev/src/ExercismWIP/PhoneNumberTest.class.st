@@ -90,7 +90,7 @@ PhoneNumberTest >> test04_InvalidWhen9Digits [
 
 	self
 		should: [ result := phoneNumberCalculator cleanPhrase: '123456789' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'incorrect number of digits'
 		description: 'Should get an error with the correct description'
 ]
@@ -101,7 +101,7 @@ PhoneNumberTest >> test05_InvalidWhen11DigitsDoesNotStartWithA1 [
 
 	self
 		should: [ result := phoneNumberCalculator cleanPhrase: '22234567890' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: '11 digits must start with 1'
 		description: 'Should get an error with the correct description'
 ]
@@ -128,7 +128,7 @@ PhoneNumberTest >> test08_InvalidWhenMoreThan11Digits [
 
 	self
 		should: [ result := phoneNumberCalculator cleanPhrase: '321234567890' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'more than 11 digits'
 		description: 'Should get an error with the correct description'
 ]
@@ -139,7 +139,7 @@ PhoneNumberTest >> test09_InvalidWithLetters [
 
 	self
 		should: [ result := phoneNumberCalculator cleanPhrase: '123-abc-7890' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'letters not permitted'
 		description: 'Should get an error with the correct description'
 ]
@@ -150,7 +150,7 @@ PhoneNumberTest >> test10_InvalidWithPunctuations [
 
 	self
 		should: [ result := phoneNumberCalculator cleanPhrase: '123-@:!-7890' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'punctuations not permitted'
 		description: 'Should get an error with the correct description'
 ]
@@ -161,7 +161,7 @@ PhoneNumberTest >> test11_InvalidIfAreaCodeStartsWith0 [
 
 	self
 		should: [ result := phoneNumberCalculator cleanPhrase: '(023) 456-7890' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'area code cannot start with zero'
 		description: 'Should get an error with the correct description'
 ]
@@ -172,7 +172,7 @@ PhoneNumberTest >> test12_InvalidIfAreaCodeStartsWith1 [
 
 	self
 		should: [ result := phoneNumberCalculator cleanPhrase: '(123) 456-7890' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'area code cannot start with one'
 		description: 'Should get an error with the correct description'
 ]
@@ -183,7 +183,7 @@ PhoneNumberTest >> test13_InvalidIfExchangeCodeStartsWith0 [
 
 	self
 		should: [ result := phoneNumberCalculator cleanPhrase: '(223) 056-7890' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'exchange code cannot start with zero'
 		description: 'Should get an error with the correct description'
 ]
@@ -194,7 +194,7 @@ PhoneNumberTest >> test14_InvalidIfExchangeCodeStartsWith1 [
 
 	self
 		should: [ result := phoneNumberCalculator cleanPhrase: '(223) 156-7890' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'exchange code cannot start with one'
 		description: 'Should get an error with the correct description'
 ]
@@ -205,7 +205,7 @@ PhoneNumberTest >> test15_InvalidIfAreaCodeStartsWith0OnValid11digitNumber [
 
 	self
 		should: [ result := phoneNumberCalculator cleanPhrase: '1 (023) 456-7890' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'area code cannot start with zero'
 		description: 'Should get an error with the correct description'
 ]
@@ -216,7 +216,7 @@ PhoneNumberTest >> test16_InvalidIfAreaCodeStartsWith1OnValid11digitNumber [
 
 	self
 		should: [ result := phoneNumberCalculator cleanPhrase: '1 (123) 456-7890' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'area code cannot start with one'
 		description: 'Should get an error with the correct description'
 ]
@@ -227,7 +227,7 @@ PhoneNumberTest >> test17_InvalidIfExchangeCodeStartsWith0OnValid11digitNumber [
 
 	self
 		should: [ result := phoneNumberCalculator cleanPhrase: '1 (223) 056-7890' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'exchange code cannot start with zero'
 		description: 'Should get an error with the correct description'
 ]
@@ -238,7 +238,7 @@ PhoneNumberTest >> test18_InvalidIfExchangeCodeStartsWith1OnValid11digitNumber [
 
 	self
 		should: [ result := phoneNumberCalculator cleanPhrase: '1 (223) 156-7890' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'exchange code cannot start with one'
 		description: 'Should get an error with the correct description'
 ]

@@ -103,7 +103,7 @@ SgfParsingTest >> test01_EmptyInput [
 
 	self
 		should: [ result := sgfParsingCalculator parseEncoded: '' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'tree missing'
 		description: 'Should get an error with the correct description'
 ]
@@ -114,7 +114,7 @@ SgfParsingTest >> test02_TreeWithNoNodes [
 
 	self
 		should: [ result := sgfParsingCalculator parseEncoded: '()' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'tree with no nodes'
 		description: 'Should get an error with the correct description'
 ]
@@ -125,7 +125,7 @@ SgfParsingTest >> test03_NodeWithoutTree [
 
 	self
 		should: [ result := sgfParsingCalculator parseEncoded: ';' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'tree missing'
 		description: 'Should get an error with the correct description'
 ]
@@ -160,7 +160,7 @@ SgfParsingTest >> test07_PropertiesWithoutDelimiter [
 
 	self
 		should: [ result := sgfParsingCalculator parseEncoded: '(;A)' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'properties without delimiter'
 		description: 'Should get an error with the correct description'
 ]
@@ -171,7 +171,7 @@ SgfParsingTest >> test08_AllLowercaseProperty [
 
 	self
 		should: [ result := sgfParsingCalculator parseEncoded: '(;a[b])' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'property must be in uppercase'
 		description: 'Should get an error with the correct description'
 ]
@@ -182,7 +182,7 @@ SgfParsingTest >> test09_UpperAndLowercaseProperty [
 
 	self
 		should: [ result := sgfParsingCalculator parseEncoded: '(;Aa[b])' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'property must be in uppercase'
 		description: 'Should get an error with the correct description'
 ]

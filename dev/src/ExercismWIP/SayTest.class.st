@@ -204,7 +204,7 @@ SayTest >> test14_NumbersBelowZeroAreOutOfRange [
 
 	self
 		should: [ result := sayCalculator sayNumber:  -1 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'input out of range'
 		description: 'Should get an error with the correct description'
 ]
@@ -215,7 +215,7 @@ SayTest >> test15_NumbersAbove999999999999AreOutOfRange [
 
 	self
 		should: [ result := sayCalculator sayNumber: 1000000000000 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'input out of range'
 		description: 'Should get an error with the correct description'
 ]

@@ -225,7 +225,7 @@ WordyTest >> test16_UnknownOperation [
 
 	self
 		should: [ result := wordyCalculator answerQuestion: 'What is 52 cubed?' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'unknown operation'
 		description: 'Should get an error with the correct description'
 ]
@@ -236,7 +236,7 @@ WordyTest >> test17_NonMathQuestion [
 
 	self
 		should: [ result := wordyCalculator answerQuestion: 'Who is the President of the United States?' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'unknown operation'
 		description: 'Should get an error with the correct description'
 ]
@@ -247,7 +247,7 @@ WordyTest >> test18_RejectProblemMissingAnOperand [
 
 	self
 		should: [ result := wordyCalculator answerQuestion: 'What is 1 plus?' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'syntax error'
 		description: 'Should get an error with the correct description'
 ]
@@ -258,7 +258,7 @@ WordyTest >> test19_RejectProblemWithNoOperandsOrOperators [
 
 	self
 		should: [ result := wordyCalculator answerQuestion: 'What is?' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'syntax error'
 		description: 'Should get an error with the correct description'
 ]
@@ -269,7 +269,7 @@ WordyTest >> test20_RejectTwoOperationsInARow [
 
 	self
 		should: [ result := wordyCalculator answerQuestion: 'What is 1 plus plus 2?' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'syntax error'
 		description: 'Should get an error with the correct description'
 ]
@@ -280,7 +280,7 @@ WordyTest >> test21_RejectTwoNumbersInARow [
 
 	self
 		should: [ result := wordyCalculator answerQuestion: 'What is 1 plus 2 1?' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'syntax error'
 		description: 'Should get an error with the correct description'
 ]
@@ -291,7 +291,7 @@ WordyTest >> test22_RejectPostfixNotation [
 
 	self
 		should: [ result := wordyCalculator answerQuestion: 'What is 1 2 plus?' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'syntax error'
 		description: 'Should get an error with the correct description'
 ]
@@ -302,7 +302,7 @@ WordyTest >> test23_RejectPrefixNotation [
 
 	self
 		should: [ result := wordyCalculator answerQuestion: 'What is plus 1 2?' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'syntax error'
 		description: 'Should get an error with the correct description'
 ]
