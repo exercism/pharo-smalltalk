@@ -1,3 +1,8 @@
+"
+Should be quite straigt forward.
+
+More mentor notes to come.
+"
 Class {
 	#name : #ISBN,
 	#superclass : #Object,

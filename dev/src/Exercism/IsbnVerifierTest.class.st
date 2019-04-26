@@ -44,7 +44,7 @@ Now, it's even trickier since the check digit of an ISBN-10 may be 'X' (represen
 
 ## Hint
 
-TBD
+Use the lessons from previous exercises, try and keep your methods small
 
 "
 Class {
