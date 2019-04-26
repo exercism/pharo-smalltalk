@@ -1,7 +1,7 @@
 Class {
 	#name : #IsbnVerifier,
 	#superclass : #Object,
-	#category : #'ExercismWIP-IsbnVerifier'
+	#category : #'Exercism-IsbnVerifier'
 }
 
 { #category : #verifying }

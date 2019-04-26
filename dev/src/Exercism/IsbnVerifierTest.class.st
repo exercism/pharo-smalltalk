@@ -41,6 +41,7 @@ Now, it's even trickier since the check digit of an ISBN-10 may be 'X' (represen
 * Generate a valid ISBN-13 from the input ISBN-10 (and maybe verify it again with a derived verifier).
 
 * Generate valid ISBN, maybe even from a given starting ISBN.
+
 ## Hint
 
 TBD
@@ -52,7 +53,7 @@ Class {
 	#instVars : [
 		'isbnVerifierCalculator'
 	],
-	#category : #'ExercismWIP-IsbnVerifier'
+	#category : #'Exercism-IsbnVerifier'
 }
 
 { #category : #config }

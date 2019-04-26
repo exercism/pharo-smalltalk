@@ -6,7 +6,7 @@ Class {
 		'digits',
 		'control'
 	],
-	#category : #'ExercismWIP-IsbnVerifier'
+	#category : #'Exercism-IsbnVerifier'
 }
 
 { #category : #'instance creation' }
