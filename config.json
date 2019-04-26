@@ -107,6 +107,18 @@
       ]
     },
     {
+      "slug" : "forth",
+      "uuid" : "98e35398-a743-0d00-aeac-1c4207045670",
+      "core" : true,
+      "auto_approve" : false,
+      "unlocked_by" : null,
+      "difficulty" : 6,
+      "topics" : [
+        "parsing",
+        "stacks"
+      ]
+    },
+    {
       "slug" : "acronym",
       "uuid" : "dc7b1fff-f0be-460d-b146-ee84c2acc10b",
       "core" : false,
@@ -129,6 +141,32 @@
       "topics" : [
         "strings",
         "filtering"
+      ]
+    },
+    {
+      "slug" : "armstrong-numbers",
+      "uuid" : "15f1a716-9d41-0d00-8fc9-66a908866539",
+      "core" : false,
+      "auto_approve" : false,
+      "unlocked_by" : "two-fer",
+      "difficulty" : 2,
+      "topics" : [
+        "math",
+        "integers"
+      ]
+    },
+    {
+      "slug" : "atbash-cipher",
+      "uuid" : "c728b116-9d41-0d00-8fd2-aa8a08866539",
+      "core" : false,
+      "auto_approve" : false,
+      "unlocked_by" : "grains",
+      "difficulty" : 3,
+      "topics" : [
+        "algorithms",
+        "strings",
+        "transforming",
+        "cryptography"
       ]
     },
     {
@@ -158,19 +196,6 @@
       ]
     },
     {
-      "slug" : "bracket-push",
-      "uuid" : "d126be16-9d41-0d00-8fdc-2ff208866539",
-      "core" : false,
-      "auto_approve" : false,
-      "unlocked_by" : "leap",
-      "difficulty" : 4,
-      "topics" : [
-        "strings",
-        "parsing",
-        "stacks"
-      ]
-    },
-    {
       "slug" : "clock",
       "uuid" : "f8080717-9d41-0d00-9011-755a08866539",
       "core" : false,
@@ -181,6 +206,45 @@
         "math",
         "classes",
         "structural_equality"
+      ]
+    },
+    {
+      "slug" : "collatz-conjecture",
+      "uuid" : "0dc70bf9-e642-0d00-8e2f-4d97059054ed",
+      "core" : false,
+      "auto_approve" : false,
+      "unlocked_by" : "grains",
+      "difficulty" : 2,
+      "topics" : [
+        "recursion",
+        "control_flow",
+        "math"
+      ]
+    },
+    {
+      "slug" : "darts",
+      "uuid" : "98fc253b-e642-0d00-8e1a-5ef3059054ed",
+      "core" : false,
+      "auto_approve" : false,
+      "unlocked_by" : "leap",
+      "difficulty" : 2,
+      "topics" : [
+        "conditionals",
+        "math"
+      ]
+    },
+    {
+      "slug" : "diamond",
+      "uuid" : "c0b69b16-9d41-0d00-8fbf-acfc08866539",
+      "core" : false,
+      "auto_approve" : false,
+      "unlocked_by" : "reverse-string",
+      "difficulty" : 3,
+      "topics" : [
+        "strings",
+        "algorithms",
+        "lists",
+        "text_formatting"
       ]
     },
     {
@@ -221,6 +285,32 @@
         "lists",
         "sorting",
         "filtering"
+      ]
+    },
+    {
+      "slug" : "luhn",
+      "uuid" : "6298e416-9d41-0d00-8ffa-c83508866539",
+      "core" : false,
+      "auto_approve" : false,
+      "unlocked_by" : "grains",
+      "difficulty" : 4,
+      "topics" : [
+        "strings",
+        "math",
+        "algorithms"
+      ]
+    },
+    {
+      "slug" : "matching-brackets",
+      "uuid" : "d126be16-9d41-0d00-8fdc-2ff208866539",
+      "core" : false,
+      "auto_approve" : false,
+      "unlocked_by" : "leap",
+      "difficulty" : 4,
+      "topics" : [
+        "strings",
+        "parsing",
+        "stacks"
       ]
     },
     {
@@ -297,6 +387,18 @@
         "iteration",
         "maps",
         "transforming"
+      ]
+    },
+    {
+      "slug" : "secret-handshake",
+      "uuid" : "2020ac16-9d41-0d00-8fcd-fe0908866539",
+      "core" : false,
+      "auto_approve" : false,
+      "unlocked_by" : "isogram",
+      "difficulty" : 2,
+      "topics" : [
+        "arrays",
+        "bitwise operations"
       ]
     },
     {

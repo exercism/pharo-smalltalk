@@ -23,12 +23,12 @@ Class {
 { #category : #config }
 GigasecondTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'0d0cc416-9d41-0d00-8fe1-cb3408866539'
+	^'a225b12e-b043-0d00-925b-cdc102a76407'
 ]
 
 { #category : #config }
 GigasecondTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'2.0.0'
 ]
 
@@ -38,7 +38,7 @@ GigasecondTest >> setUp [
 ]
 
 { #category : #tests }
-GigasecondTest >> test01_AddOneGigasecondToTheInputDateOnlySpecificationOfTime [
+GigasecondTest >> test01_DateOnlySpecificationOfTime [
 	| result |
 
 	result := gigasecondCalculator addMoment: '2011-04-25' .
@@ -46,7 +46,7 @@ GigasecondTest >> test01_AddOneGigasecondToTheInputDateOnlySpecificationOfTime [
 ]
 
 { #category : #tests }
-GigasecondTest >> test02_AddOneGigasecondToTheInputSecondTestForDateOnlySpecificationOfTime [
+GigasecondTest >> test02_SecondTestForDateOnlySpecificationOfTime [
 	| result |
 
 	result := gigasecondCalculator addMoment: '1977-06-13' .
@@ -54,7 +54,7 @@ GigasecondTest >> test02_AddOneGigasecondToTheInputSecondTestForDateOnlySpecific
 ]
 
 { #category : #tests }
-GigasecondTest >> test03_AddOneGigasecondToTheInputThirdTestForDateOnlySpecificationOfTime [
+GigasecondTest >> test03_ThirdTestForDateOnlySpecificationOfTime [
 	| result |
 
 	result := gigasecondCalculator addMoment: '1959-07-19' .
@@ -62,7 +62,7 @@ GigasecondTest >> test03_AddOneGigasecondToTheInputThirdTestForDateOnlySpecifica
 ]
 
 { #category : #tests }
-GigasecondTest >> test04_AddOneGigasecondToTheInputFullTimeSpecified [
+GigasecondTest >> test04_FullTimeSpecified [
 	| result |
 
 	result := gigasecondCalculator addMoment: '2015-01-24T22:00:00' .
@@ -70,7 +70,7 @@ GigasecondTest >> test04_AddOneGigasecondToTheInputFullTimeSpecified [
 ]
 
 { #category : #tests }
-GigasecondTest >> test05_AddOneGigasecondToTheInputFullTimeWithDayRollover [
+GigasecondTest >> test05_FullTimeWithDayRollover [
 	| result |
 
 	result := gigasecondCalculator addMoment: '2015-01-24T23:59:59' .

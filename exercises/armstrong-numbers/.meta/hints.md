@@ -1,0 +1,1 @@
+Browse the class Integer for some inspiration

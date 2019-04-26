@@ -80,12 +80,12 @@ Class {
 { #category : #config }
 SayTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'1609af16-9d41-0d00-8fd0-546d08866539'
+	^'b12ca82e-b043-0d00-924e-65ac02a76407'
 ]
 
 { #category : #config }
 SayTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'1.2.0'
 ]
 
@@ -202,14 +202,20 @@ SayTest >> test13_ABigNumber [
 SayTest >> test14_NumbersBelowZeroAreOutOfRange [
 	| result |
 
-	result := sayCalculator sayNumber:  -1 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'input out of range'); yourself)
+	self
+		should: [ result := sayCalculator sayNumber:  -1 ]
+		raise: Exception
+		whoseDescriptionIncludes: 'input out of range'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 SayTest >> test15_NumbersAbove999999999999AreOutOfRange [
 	| result |
 
-	result := sayCalculator sayNumber: 1000000000000 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'input out of range'); yourself)
+	self
+		should: [ result := sayCalculator sayNumber: 1000000000000 ]
+		raise: Exception
+		whoseDescriptionIncludes: 'input out of range'
+		description: 'Should get an error with the correct description'
 ]

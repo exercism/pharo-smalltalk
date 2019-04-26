@@ -47,12 +47,12 @@ Class {
 { #category : #config }
 PrimeFactorsTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'7fc4f716-9d41-0d00-9007-6e4f08866539'
+	^'fe7dcb2e-b043-0d00-927e-370e02a76407'
 ]
 
 { #category : #config }
 PrimeFactorsTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'1.1.0'
 ]
 
@@ -62,7 +62,7 @@ PrimeFactorsTest >> setUp [
 ]
 
 { #category : #tests }
-PrimeFactorsTest >> test01_ReturnsPrimeFactorsForTheGivenInputNumberNoFactors [
+PrimeFactorsTest >> test01_NoFactors [
 	| result |
 
 	result := primeFactorsCalculator factorsValue: 1 .
@@ -70,7 +70,7 @@ PrimeFactorsTest >> test01_ReturnsPrimeFactorsForTheGivenInputNumberNoFactors [
 ]
 
 { #category : #tests }
-PrimeFactorsTest >> test02_ReturnsPrimeFactorsForTheGivenInputNumberPrimeNumber [
+PrimeFactorsTest >> test02_PrimeNumber [
 	| result |
 
 	result := primeFactorsCalculator factorsValue: 2 .
@@ -78,7 +78,7 @@ PrimeFactorsTest >> test02_ReturnsPrimeFactorsForTheGivenInputNumberPrimeNumber 
 ]
 
 { #category : #tests }
-PrimeFactorsTest >> test03_ReturnsPrimeFactorsForTheGivenInputNumberSquareOfAPrime [
+PrimeFactorsTest >> test03_SquareOfAPrime [
 	| result |
 
 	result := primeFactorsCalculator factorsValue: 9 .
@@ -86,7 +86,7 @@ PrimeFactorsTest >> test03_ReturnsPrimeFactorsForTheGivenInputNumberSquareOfAPri
 ]
 
 { #category : #tests }
-PrimeFactorsTest >> test04_ReturnsPrimeFactorsForTheGivenInputNumberCubeOfAPrime [
+PrimeFactorsTest >> test04_CubeOfAPrime [
 	| result |
 
 	result := primeFactorsCalculator factorsValue: 8 .
@@ -94,7 +94,7 @@ PrimeFactorsTest >> test04_ReturnsPrimeFactorsForTheGivenInputNumberCubeOfAPrime
 ]
 
 { #category : #tests }
-PrimeFactorsTest >> test05_ReturnsPrimeFactorsForTheGivenInputNumberProductOfPrimesAndNonprimes [
+PrimeFactorsTest >> test05_ProductOfPrimesAndNonprimes [
 	| result |
 
 	result := primeFactorsCalculator factorsValue: 12 .
@@ -102,7 +102,7 @@ PrimeFactorsTest >> test05_ReturnsPrimeFactorsForTheGivenInputNumberProductOfPri
 ]
 
 { #category : #tests }
-PrimeFactorsTest >> test06_ReturnsPrimeFactorsForTheGivenInputNumberProductOfPrimes [
+PrimeFactorsTest >> test06_ProductOfPrimes [
 	| result |
 
 	result := primeFactorsCalculator factorsValue: 901255 .
@@ -110,7 +110,7 @@ PrimeFactorsTest >> test06_ReturnsPrimeFactorsForTheGivenInputNumberProductOfPri
 ]
 
 { #category : #tests }
-PrimeFactorsTest >> test07_ReturnsPrimeFactorsForTheGivenInputNumberFactorsIncludeALargePrime [
+PrimeFactorsTest >> test07_FactorsIncludeALargePrime [
 	| result |
 
 	result := primeFactorsCalculator factorsValue: 93819012551 .

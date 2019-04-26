@@ -123,12 +123,12 @@ Class {
 { #category : #config }
 HouseTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'658eea16-9d41-0d00-8fff-6f0908866539'
+	^'724ec42e-b043-0d00-9276-8eee02a76407'
 ]
 
 { #category : #config }
 HouseTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'2.2.0'
 ]
 
@@ -138,7 +138,7 @@ HouseTest >> setUp [
 ]
 
 { #category : #tests }
-HouseTest >> test01_ReturnSpecifiedVerseOrSeriesOfVersesVerseOneTheHouseThatJackBuilt [
+HouseTest >> test01_VerseOneTheHouseThatJackBuilt [
 	| result |
 
 	result := houseCalculator reciteStartVerse: 1 endVerse: 1 .
@@ -146,7 +146,7 @@ HouseTest >> test01_ReturnSpecifiedVerseOrSeriesOfVersesVerseOneTheHouseThatJack
 ]
 
 { #category : #tests }
-HouseTest >> test02_ReturnSpecifiedVerseOrSeriesOfVersesVerseTwoTheMaltThatLay [
+HouseTest >> test02_VerseTwoTheMaltThatLay [
 	| result |
 
 	result := houseCalculator reciteStartVerse: 2 endVerse: 2 .
@@ -154,7 +154,7 @@ HouseTest >> test02_ReturnSpecifiedVerseOrSeriesOfVersesVerseTwoTheMaltThatLay [
 ]
 
 { #category : #tests }
-HouseTest >> test03_ReturnSpecifiedVerseOrSeriesOfVersesVerseThreeTheRatThatAte [
+HouseTest >> test03_VerseThreeTheRatThatAte [
 	| result |
 
 	result := houseCalculator reciteStartVerse: 3 endVerse: 3 .
@@ -162,7 +162,7 @@ HouseTest >> test03_ReturnSpecifiedVerseOrSeriesOfVersesVerseThreeTheRatThatAte 
 ]
 
 { #category : #tests }
-HouseTest >> test04_ReturnSpecifiedVerseOrSeriesOfVersesVerseFourTheCatThatKilled [
+HouseTest >> test04_VerseFourTheCatThatKilled [
 	| result |
 
 	result := houseCalculator reciteStartVerse: 4 endVerse: 4 .
@@ -170,7 +170,7 @@ HouseTest >> test04_ReturnSpecifiedVerseOrSeriesOfVersesVerseFourTheCatThatKille
 ]
 
 { #category : #tests }
-HouseTest >> test05_ReturnSpecifiedVerseOrSeriesOfVersesVerseFiveTheDogThatWorried [
+HouseTest >> test05_VerseFiveTheDogThatWorried [
 	| result |
 
 	result := houseCalculator reciteStartVerse: 5 endVerse: 5 .
@@ -178,7 +178,7 @@ HouseTest >> test05_ReturnSpecifiedVerseOrSeriesOfVersesVerseFiveTheDogThatWorri
 ]
 
 { #category : #tests }
-HouseTest >> test06_ReturnSpecifiedVerseOrSeriesOfVersesVerseSixTheCowWithTheCrumpledHorn [
+HouseTest >> test06_VerseSixTheCowWithTheCrumpledHorn [
 	| result |
 
 	result := houseCalculator reciteStartVerse: 6 endVerse: 6 .
@@ -186,7 +186,7 @@ HouseTest >> test06_ReturnSpecifiedVerseOrSeriesOfVersesVerseSixTheCowWithTheCru
 ]
 
 { #category : #tests }
-HouseTest >> test07_ReturnSpecifiedVerseOrSeriesOfVersesVerseSevenTheMaidenAllForlorn [
+HouseTest >> test07_VerseSevenTheMaidenAllForlorn [
 	| result |
 
 	result := houseCalculator reciteStartVerse: 7 endVerse: 7 .
@@ -194,7 +194,7 @@ HouseTest >> test07_ReturnSpecifiedVerseOrSeriesOfVersesVerseSevenTheMaidenAllFo
 ]
 
 { #category : #tests }
-HouseTest >> test08_ReturnSpecifiedVerseOrSeriesOfVersesVerseEightTheManAllTatteredAndTorn [
+HouseTest >> test08_VerseEightTheManAllTatteredAndTorn [
 	| result |
 
 	result := houseCalculator reciteStartVerse: 8 endVerse: 8 .
@@ -202,7 +202,7 @@ HouseTest >> test08_ReturnSpecifiedVerseOrSeriesOfVersesVerseEightTheManAllTatte
 ]
 
 { #category : #tests }
-HouseTest >> test09_ReturnSpecifiedVerseOrSeriesOfVersesVerseNineThePriestAllShavenAndShorn [
+HouseTest >> test09_VerseNineThePriestAllShavenAndShorn [
 	| result |
 
 	result := houseCalculator reciteStartVerse: 9 endVerse: 9 .
@@ -210,7 +210,7 @@ HouseTest >> test09_ReturnSpecifiedVerseOrSeriesOfVersesVerseNineThePriestAllSha
 ]
 
 { #category : #tests }
-HouseTest >> test10_ReturnSpecifiedVerseOrSeriesOfVersesVerse10TheRoosterThatCrowedInTheMorn [
+HouseTest >> test10_Verse10TheRoosterThatCrowedInTheMorn [
 	| result |
 
 	result := houseCalculator reciteStartVerse: 10 endVerse: 10 .
@@ -218,7 +218,7 @@ HouseTest >> test10_ReturnSpecifiedVerseOrSeriesOfVersesVerse10TheRoosterThatCro
 ]
 
 { #category : #tests }
-HouseTest >> test11_ReturnSpecifiedVerseOrSeriesOfVersesVerse11TheFarmerSowingHisCorn [
+HouseTest >> test11_Verse11TheFarmerSowingHisCorn [
 	| result |
 
 	result := houseCalculator reciteStartVerse: 11 endVerse: 11 .
@@ -226,7 +226,7 @@ HouseTest >> test11_ReturnSpecifiedVerseOrSeriesOfVersesVerse11TheFarmerSowingHi
 ]
 
 { #category : #tests }
-HouseTest >> test12_ReturnSpecifiedVerseOrSeriesOfVersesVerse12TheHorseAndTheHoundAndTheHorn [
+HouseTest >> test12_Verse12TheHorseAndTheHoundAndTheHorn [
 	| result |
 
 	result := houseCalculator reciteStartVerse: 12 endVerse: 12 .
@@ -234,7 +234,7 @@ HouseTest >> test12_ReturnSpecifiedVerseOrSeriesOfVersesVerse12TheHorseAndTheHou
 ]
 
 { #category : #tests }
-HouseTest >> test13_ReturnSpecifiedVerseOrSeriesOfVersesMultipleVerses [
+HouseTest >> test13_MultipleVerses [
 	| result |
 
 	result := houseCalculator reciteStartVerse: 4 endVerse: 8 .
@@ -242,7 +242,7 @@ HouseTest >> test13_ReturnSpecifiedVerseOrSeriesOfVersesMultipleVerses [
 ]
 
 { #category : #tests }
-HouseTest >> test14_ReturnSpecifiedVerseOrSeriesOfVersesFullRhyme [
+HouseTest >> test14_FullRhyme [
 	| result |
 
 	result := houseCalculator reciteStartVerse: 1 endVerse: 12 .

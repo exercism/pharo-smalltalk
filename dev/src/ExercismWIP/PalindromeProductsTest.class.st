@@ -50,12 +50,12 @@ Class {
 { #category : #config }
 PalindromeProductsTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'ace7ba16-9d41-0d00-8fd9-632108866539'
+	^'9acfad2e-b043-0d00-9255-125502a76407'
 ]
 
 { #category : #config }
 PalindromeProductsTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'1.2.0'
 ]
 
@@ -148,14 +148,20 @@ PalindromeProductsTest >> test10_EmptyResultForLargestIfNoPalindromeInTheRange [
 PalindromeProductsTest >> test11_ErrorResultForSmallestIfMinIsMoreThanMax [
 	| result |
 
-	result := palindromeProductsCalculator smallestMin: 10000 max: 1 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'min must be <= max'); yourself)
+	self
+		should: [ result := palindromeProductsCalculator smallestMin: 10000 max: 1 ]
+		raise: Exception
+		whoseDescriptionIncludes: 'min must be <= max'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 PalindromeProductsTest >> test12_ErrorResultForLargestIfMinIsMoreThanMax [
 	| result |
 
-	result := palindromeProductsCalculator largestMin: 2 max: 1 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'min must be <= max'); yourself)
+	self
+		should: [ result := palindromeProductsCalculator largestMin: 2 max: 1 ]
+		raise: Exception
+		whoseDescriptionIncludes: 'min must be <= max'
+		description: 'Should get an error with the correct description'
 ]

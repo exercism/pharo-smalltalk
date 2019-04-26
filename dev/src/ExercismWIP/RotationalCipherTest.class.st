@@ -48,12 +48,12 @@ Class {
 { #category : #config }
 RotationalCipherTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'215ba116-9d41-0d00-8fc4-37f008866539'
+	^'8fcda02e-b043-0d00-9244-594802a76407'
 ]
 
 { #category : #config }
 RotationalCipherTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'1.2.0'
 ]
 
@@ -63,7 +63,7 @@ RotationalCipherTest >> setUp [
 ]
 
 { #category : #tests }
-RotationalCipherTest >> test01_TestRotationFromEnglishToROTnRotateABy0SameOutputAsInput [
+RotationalCipherTest >> test01_RotateABy0SameOutputAsInput [
 	| result |
 
 	result := rotationalCipherCalculator rotateText: 'a' shiftKey: 0 .
@@ -71,7 +71,7 @@ RotationalCipherTest >> test01_TestRotationFromEnglishToROTnRotateABy0SameOutput
 ]
 
 { #category : #tests }
-RotationalCipherTest >> test02_TestRotationFromEnglishToROTnRotateABy1 [
+RotationalCipherTest >> test02_RotateABy1 [
 	| result |
 
 	result := rotationalCipherCalculator rotateText: 'a' shiftKey: 1 .
@@ -79,7 +79,7 @@ RotationalCipherTest >> test02_TestRotationFromEnglishToROTnRotateABy1 [
 ]
 
 { #category : #tests }
-RotationalCipherTest >> test03_TestRotationFromEnglishToROTnRotateABy26SameOutputAsInput [
+RotationalCipherTest >> test03_RotateABy26SameOutputAsInput [
 	| result |
 
 	result := rotationalCipherCalculator rotateText: 'a' shiftKey: 26 .
@@ -87,7 +87,7 @@ RotationalCipherTest >> test03_TestRotationFromEnglishToROTnRotateABy26SameOutpu
 ]
 
 { #category : #tests }
-RotationalCipherTest >> test04_TestRotationFromEnglishToROTnRotateMBy13 [
+RotationalCipherTest >> test04_RotateMBy13 [
 	| result |
 
 	result := rotationalCipherCalculator rotateText: 'm' shiftKey: 13 .
@@ -95,7 +95,7 @@ RotationalCipherTest >> test04_TestRotationFromEnglishToROTnRotateMBy13 [
 ]
 
 { #category : #tests }
-RotationalCipherTest >> test05_TestRotationFromEnglishToROTnRotateNBy13WithWrapAroundAlphabet [
+RotationalCipherTest >> test05_RotateNBy13WithWrapAroundAlphabet [
 	| result |
 
 	result := rotationalCipherCalculator rotateText: 'n' shiftKey: 13 .
@@ -103,7 +103,7 @@ RotationalCipherTest >> test05_TestRotationFromEnglishToROTnRotateNBy13WithWrapA
 ]
 
 { #category : #tests }
-RotationalCipherTest >> test06_TestRotationFromEnglishToROTnRotateCapitalLetters [
+RotationalCipherTest >> test06_RotateCapitalLetters [
 	| result |
 
 	result := rotationalCipherCalculator rotateText: 'OMG' shiftKey: 5 .
@@ -111,7 +111,7 @@ RotationalCipherTest >> test06_TestRotationFromEnglishToROTnRotateCapitalLetters
 ]
 
 { #category : #tests }
-RotationalCipherTest >> test07_TestRotationFromEnglishToROTnRotateSpaces [
+RotationalCipherTest >> test07_RotateSpaces [
 	| result |
 
 	result := rotationalCipherCalculator rotateText: 'O M G' shiftKey: 5 .
@@ -119,7 +119,7 @@ RotationalCipherTest >> test07_TestRotationFromEnglishToROTnRotateSpaces [
 ]
 
 { #category : #tests }
-RotationalCipherTest >> test08_TestRotationFromEnglishToROTnRotateNumbers [
+RotationalCipherTest >> test08_RotateNumbers [
 	| result |
 
 	result := rotationalCipherCalculator rotateText: 'Testing 1 2 3 testing' shiftKey: 4 .
@@ -127,7 +127,7 @@ RotationalCipherTest >> test08_TestRotationFromEnglishToROTnRotateNumbers [
 ]
 
 { #category : #tests }
-RotationalCipherTest >> test09_TestRotationFromEnglishToROTnRotatePunctuation [
+RotationalCipherTest >> test09_RotatePunctuation [
 	| result |
 
 	result := rotationalCipherCalculator rotateText: 'Let''s eat, Grandma!' shiftKey: 21 .
@@ -135,7 +135,7 @@ RotationalCipherTest >> test09_TestRotationFromEnglishToROTnRotatePunctuation [
 ]
 
 { #category : #tests }
-RotationalCipherTest >> test10_TestRotationFromEnglishToROTnRotateAllLetters [
+RotationalCipherTest >> test10_RotateAllLetters [
 	| result |
 
 	result := rotationalCipherCalculator rotateText: 'The quick brown fox jumps over the lazy dog.' shiftKey: 13 .

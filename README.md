@@ -4,11 +4,11 @@
 
 This project is for creating and supporting Exercism exercises for Pharo Smalltalk.
 
-_Note: The Pharo exercism track is in beta development._
+The Pharo Smalltalk exercism track is active and can be accessed [here](https://exercism.io/tracks/pharo-smalltalk).
 
-If you'd like to help out with testing please sign up for the track using this [hidden track link](https://exercism.io/my/tracks/pharo-smalltalk), and review the [setup documentation](https://exercism.io/tracks/pharo-smalltalk/installation). 
+If you'd like to help out with testing please sign up for the track using the link above, and review the [setup documentation](https://exercism.io/tracks/pharo-smalltalk/installation). 
 
-Until we release we have limited mentors, so when testing you many need to switch to independent mode if you can't get a timely response.  If you need to restart testing, you should "leave" the track then rejoin it.  
+Currently we have limited mentor support, so when testing you many need to switch to independent mode if you can't get a timely response.  If you need to restart testing, you should "leave" the track then rejoin it.  
 
 If you want to help out with development, see below.
 

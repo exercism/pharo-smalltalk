@@ -34,12 +34,12 @@ Class {
 { #category : #config }
 ChangeTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'92e0a916-9d41-0d00-8fcb-b60b08866539'
+	^'eb88a52e-b043-0d00-924a-1dc202a76407'
 ]
 
 { #category : #config }
 ChangeTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'1.3.0'
 ]
 
@@ -116,22 +116,31 @@ ChangeTest >> test08_NoCoinsMake0Change [
 ChangeTest >> test09_ErrorTestingForChangeSmallerThanTheSmallestOfCoins [
 	| result |
 
-	result := changeCalculator findFewestCoins: #(5 10 ) target: 3 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'can''t make target with given coins'); yourself)
+	self
+		should: [ result := changeCalculator findFewestCoins: #(5 10 ) target: 3 ]
+		raise: Exception
+		whoseDescriptionIncludes: 'can''t make target with given coins'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 ChangeTest >> test10_ErrorIfNoCombinationCanAddUpToTarget [
 	| result |
 
-	result := changeCalculator findFewestCoins: #(5 10 ) target: 94 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'can''t make target with given coins'); yourself)
+	self
+		should: [ result := changeCalculator findFewestCoins: #(5 10 ) target: 94 ]
+		raise: Exception
+		whoseDescriptionIncludes: 'can''t make target with given coins'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
 ChangeTest >> test11_CannotFindNegativeChangeValues [
 	| result |
 
-	result := changeCalculator findFewestCoins: #(1 2 5 ) target:  -5 .
-	self assert: result equals: ((Dictionary new) add: ('error'->'target can''t be negative'); yourself)
+	self
+		should: [ result := changeCalculator findFewestCoins: #(1 2 5 ) target:  -5 ]
+		raise: Exception
+		whoseDescriptionIncludes: 'target can''t be negative'
+		description: 'Should get an error with the correct description'
 ]

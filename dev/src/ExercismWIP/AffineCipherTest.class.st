@@ -87,12 +87,12 @@ Class {
 { #category : #config }
 AffineCipherTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'deb9bcbb-8040-0d00-80fc-1fff01deb008'
+	^'1a14ab2e-b043-0d00-9251-dd7702a76407'
 ]
 
 { #category : #config }
 AffineCipherTest class >> version [
-	"Generated from specification: 29 March 2019"
+	"Generated from specification: 25 April 2019"
 	^'2.0.0'
 ]
 
@@ -169,8 +169,11 @@ AffineCipherTest >> test08_EncodeEncodeAllTheLetters [
 AffineCipherTest >> test09_EncodeEncodeWithANotCoprimeToM [
 	| result |
 
-	result := affineCipherCalculator encodeKey: ((Dictionary new) add: ('a'->6); add: ('b'->17); yourself) phrase: 'This is a test.' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'a and m must be coprime.'); yourself)
+	self
+		should: [ result := affineCipherCalculator encodeKey: ((Dictionary new) add: ('a'->6); add: ('b'->17); yourself) phrase: 'This is a test.' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'a and m must be coprime.'
+		description: 'Should get an error with the correct description'
 ]
 
 { #category : #tests }
@@ -225,6 +228,9 @@ AffineCipherTest >> test15_DecodeDecodeWithTooManySpaces [
 AffineCipherTest >> test16_DecodeDecodeWithANotCoprimeToM [
 	| result |
 
-	result := affineCipherCalculator decodeKey: ((Dictionary new) add: ('a'->13); add: ('b'->5); yourself) phrase: 'Test' .
-	self assert: result equals: ((Dictionary new) add: ('error'->'a and m must be coprime.'); yourself)
+	self
+		should: [ result := affineCipherCalculator decodeKey: ((Dictionary new) add: ('a'->13); add: ('b'->5); yourself) phrase: 'Test' ]
+		raise: Exception
+		whoseDescriptionIncludes: 'a and m must be coprime.'
+		description: 'Should get an error with the correct description'
 ]
