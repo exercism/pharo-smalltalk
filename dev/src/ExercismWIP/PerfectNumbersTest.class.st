@@ -143,7 +143,7 @@ PerfectNumbersTest >> test12_InvalidInputsZeroIsRejectednotANaturalNumber [
 
 	self
 		should: [ result := perfectNumbersCalculator classifyNumber: 0 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Classification is only possible for natural numbers.'
 		description: 'Should get an error with the correct description'
 ]
@@ -154,7 +154,7 @@ PerfectNumbersTest >> test13_InvalidInputsNegativeIntegerIsRejectednotANaturalNu
 
 	self
 		should: [ result := perfectNumbersCalculator classifyNumber:  -1 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Classification is only possible for natural numbers.'
 		description: 'Should get an error with the correct description'
 ]

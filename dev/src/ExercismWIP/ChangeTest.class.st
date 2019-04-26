@@ -118,7 +118,7 @@ ChangeTest >> test09_ErrorTestingForChangeSmallerThanTheSmallestOfCoins [
 
 	self
 		should: [ result := changeCalculator findFewestCoins: #(5 10 ) target: 3 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'can''t make target with given coins'
 		description: 'Should get an error with the correct description'
 ]
@@ -129,7 +129,7 @@ ChangeTest >> test10_ErrorIfNoCombinationCanAddUpToTarget [
 
 	self
 		should: [ result := changeCalculator findFewestCoins: #(5 10 ) target: 94 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'can''t make target with given coins'
 		description: 'Should get an error with the correct description'
 ]
@@ -140,7 +140,7 @@ ChangeTest >> test11_CannotFindNegativeChangeValues [
 
 	self
 		should: [ result := changeCalculator findFewestCoins: #(1 2 5 ) target:  -5 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'target can''t be negative'
 		description: 'Should get an error with the correct description'
 ]

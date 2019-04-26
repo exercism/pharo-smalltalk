@@ -106,7 +106,7 @@ SeriesTest >> test07_SliceLengthIsTooLarge [
 
 	self
 		should: [ result := seriesCalculator slicesSliceLength: 6 series: '12345' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'slice length cannot be greater than series length'
 		description: 'Should get an error with the correct description'
 ]
@@ -117,7 +117,7 @@ SeriesTest >> test08_SliceLengthCannotBeZero [
 
 	self
 		should: [ result := seriesCalculator slicesSliceLength: 0 series: '12345' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'slice length cannot be zero'
 		description: 'Should get an error with the correct description'
 ]
@@ -128,7 +128,7 @@ SeriesTest >> test09_SliceLengthCannotBeNegative [
 
 	self
 		should: [ result := seriesCalculator slicesSliceLength:  -1 series: '123' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'slice length cannot be negative'
 		description: 'Should get an error with the correct description'
 ]
@@ -139,7 +139,7 @@ SeriesTest >> test10_EmptySeriesIsInvalid [
 
 	self
 		should: [ result := seriesCalculator slicesSliceLength: 1 series: '' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'series cannot be empty'
 		description: 'Should get an error with the correct description'
 ]

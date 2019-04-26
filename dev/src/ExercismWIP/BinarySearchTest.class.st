@@ -120,7 +120,7 @@ BinarySearchTest >> test07_IdentifiesThatAValueIsNotIncludedInTheArray [
 
 	self
 		should: [ result := binarySearchCalculator findArray: #(1 3 4 6 8 9 11 ) value: 7 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'value not in array'
 		description: 'Should get an error with the correct description'
 ]
@@ -131,7 +131,7 @@ BinarySearchTest >> test08_AValueSmallerThanTheArraysSmallestValueIsNotFound [
 
 	self
 		should: [ result := binarySearchCalculator findArray: #(1 3 4 6 8 9 11 ) value: 0 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'value not in array'
 		description: 'Should get an error with the correct description'
 ]
@@ -142,7 +142,7 @@ BinarySearchTest >> test09_AValueLargerThanTheArraysLargestValueIsNotFound [
 
 	self
 		should: [ result := binarySearchCalculator findArray: #(1 3 4 6 8 9 11 ) value: 13 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'value not in array'
 		description: 'Should get an error with the correct description'
 ]
@@ -153,7 +153,7 @@ BinarySearchTest >> test10_NothingIsFoundInAnEmptyArray [
 
 	self
 		should: [ result := binarySearchCalculator findArray: #() value: 1 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'value not in array'
 		description: 'Should get an error with the correct description'
 ]
@@ -164,7 +164,7 @@ BinarySearchTest >> test11_NothingIsFoundWhenTheLeftAndRightBoundsCross [
 
 	self
 		should: [ result := binarySearchCalculator findArray: #(1 2 ) value: 0 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'value not in array'
 		description: 'Should get an error with the correct description'
 ]

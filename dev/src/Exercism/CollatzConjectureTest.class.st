@@ -115,7 +115,7 @@ CollatzConjectureTest >> test05_ZeroIsAnError [
 
 	self
 		should: [ result := collatzConjectureCalculator stepsFrom: 0 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Only positive numbers are allowed'
 		description: 'Should get an error with the correct description'
 ]
@@ -126,7 +126,7 @@ CollatzConjectureTest >> test06_NegativeValueIsAnError [
 
 	self
 		should: [ result := collatzConjectureCalculator stepsFrom:  -15 ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Only positive numbers are allowed'
 		description: 'Should get an error with the correct description'
 ]

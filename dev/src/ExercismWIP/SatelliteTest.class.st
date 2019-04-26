@@ -90,7 +90,7 @@ SatelliteTest >> test04_RejectTraversalsOfDifferentLength [
 
 	self
 		should: [ result := satelliteCalculator treeFromTraversalsPreorder: #('a' 'b' ) inorder: #('b' 'a' 'r' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'traversals must have the same length'
 		description: 'Should get an error with the correct description'
 ]
@@ -101,7 +101,7 @@ SatelliteTest >> test05_RejectInconsistentTraversalsOfSameLength [
 
 	self
 		should: [ result := satelliteCalculator treeFromTraversalsPreorder: #('x' 'y' 'z' ) inorder: #('a' 'b' 'c' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'traversals must have the same elements'
 		description: 'Should get an error with the correct description'
 ]
@@ -112,7 +112,7 @@ SatelliteTest >> test06_RejectTraversalsWithRepeatedItems [
 
 	self
 		should: [ result := satelliteCalculator treeFromTraversalsPreorder: #('a' 'b' 'a' ) inorder: #('b' 'a' 'a' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'traversals must contain unique items'
 		description: 'Should get an error with the correct description'
 ]

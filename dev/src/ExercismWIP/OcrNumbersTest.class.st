@@ -140,7 +140,7 @@ OcrNumbersTest >> test04_InputWithANumberOfLinesThatIsNotAMultipleOfFourRaisesAn
 
 	self
 		should: [ result := ocrNumbersCalculator convertRows: #(' _ ' '| |' '   ' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Number of input lines is not a multiple of four'
 		description: 'Should get an error with the correct description'
 ]
@@ -151,7 +151,7 @@ OcrNumbersTest >> test05_InputWithANumberOfColumnsThatIsNotAMultipleOfThreeRaise
 
 	self
 		should: [ result := ocrNumbersCalculator convertRows: #('    ' '   |' '   |' '    ' ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'Number of input columns is not a multiple of three'
 		description: 'Should get an error with the correct description'
 ]

@@ -253,7 +253,7 @@ VariableLengthQuantityTest >> test24_DecodeASeriesOfBytesProducingASeriesOfInteg
 
 	self
 		should: [ result := variableLengthQuantityCalculator decodeIntegers: #(255 ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'incomplete sequence'
 		description: 'Should get an error with the correct description'
 ]
@@ -264,7 +264,7 @@ VariableLengthQuantityTest >> test25_DecodeASeriesOfBytesProducingASeriesOfInteg
 
 	self
 		should: [ result := variableLengthQuantityCalculator decodeIntegers: #(128 ) ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'incomplete sequence'
 		description: 'Should get an error with the correct description'
 ]

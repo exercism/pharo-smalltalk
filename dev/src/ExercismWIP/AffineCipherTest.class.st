@@ -171,7 +171,7 @@ AffineCipherTest >> test09_EncodeEncodeWithANotCoprimeToM [
 
 	self
 		should: [ result := affineCipherCalculator encodeKey: ((Dictionary new) add: ('a'->6); add: ('b'->17); yourself) phrase: 'This is a test.' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'a and m must be coprime.'
 		description: 'Should get an error with the correct description'
 ]
@@ -230,7 +230,7 @@ AffineCipherTest >> test16_DecodeDecodeWithANotCoprimeToM [
 
 	self
 		should: [ result := affineCipherCalculator decodeKey: ((Dictionary new) add: ('a'->13); add: ('b'->5); yourself) phrase: 'Test' ]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'a and m must be coprime.'
 		description: 'Should get an error with the correct description'
 ]
