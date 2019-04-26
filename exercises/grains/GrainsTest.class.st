@@ -132,7 +132,7 @@ GrainsTest >> test07_ReturnsTheNumberOfGrainsOnTheSquareAt64 [
 GrainsTest >> test08_ReturnsTheNumberOfGrainsOnTheSquareSquare0RaisesAnException [
 	self
 		should: [grainsCalculator atSquare: 0]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'square must be between 1 and 64'
 		description: 'Should get an error with the correct description'.
 		
@@ -145,7 +145,7 @@ GrainsTest >> test08_ReturnsTheNumberOfGrainsOnTheSquareSquare0RaisesAnException
 GrainsTest >> test09_ReturnsTheNumberOfGrainsOnTheSquareNegativeSquareRaisesAnException [
 	self
 		should: [grainsCalculator atSquare: -1]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'square must be between 1 and 64'
 		description: 'Should get an error with the correct description'.
 ]
@@ -154,7 +154,7 @@ GrainsTest >> test09_ReturnsTheNumberOfGrainsOnTheSquareNegativeSquareRaisesAnEx
 GrainsTest >> test10_ReturnsTheNumberOfGrainsOnTheSquareSquareGreaterThan64RaisesAnException [
 	self
 		should: [grainsCalculator atSquare: 65]
-		raise: Exception
+		raise: Error
 		whoseDescriptionIncludes: 'square must be between 1 and 64'
 		description: 'Should get an error with the correct description'.
 ]
