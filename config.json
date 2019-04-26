@@ -288,6 +288,19 @@
       ]
     },
     {
+      "slug" : "isbn-verifier",
+      "uuid" : "d166a016-9d41-0d00-8fc3-1ee008866539",
+      "core" : false,
+      "auto_approve" : false,
+      "unlocked_by" : "leap",
+      "difficulty" : 3,
+      "topics" : [
+        "characters",
+        "collections",
+        "validation"
+      ]
+    },
+    {
       "slug" : "luhn",
       "uuid" : "6298e416-9d41-0d00-8ffa-c83508866539",
       "core" : false,
