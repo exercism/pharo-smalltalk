@@ -309,112 +309,112 @@ ClockTest >> test36_SubtractMinutesSubtractMoreThanTwoDays [
 
 { #category : #tests }
 ClockTest >> test37_CompareTwoClocksForEqualityClocksWithSameTime [
-	clock1 := (Clock hour: 15 minute: 37) asString.
-	clock2 := (Clock hour: 15 minute: 37) asString.
+	clock1 := Clock hour: 15 minute: 37.
+	clock2 := Clock hour: 15 minute: 37.
 	self assert: clock1 equals: clock2
 ]
 
 { #category : #tests }
 ClockTest >> test38_CompareTwoClocksForEqualityClocksAMinuteApart [
-	clock1 := (Clock hour: 15 minute: 36) asString.
-	clock2 := (Clock hour: 15 minute: 37) asString.
+	clock1 := Clock hour: 15 minute: 36.
+	clock2 := Clock hour: 15 minute: 37.
 	self deny: clock1 equals: clock2
 ]
 
 { #category : #tests }
 ClockTest >> test39_CompareTwoClocksForEqualityClocksAnHourApart [
-	clock1 := (Clock hour: 14 minute: 37) asString.
-	clock2 := (Clock hour: 15 minute: 37) asString.
+	clock1 := Clock hour: 14 minute: 37.
+	clock2 := Clock hour: 15 minute: 37.
 	self deny: clock1 equals: clock2
 ]
 
 { #category : #tests }
 ClockTest >> test40_CompareTwoClocksForEqualityClocksWithHourOverflow [
-	clock1 := (Clock hour: 10 minute: 37) asString.
-	clock2 := (Clock hour: 34 minute: 37) asString.
+	clock1 := Clock hour: 10 minute: 37.
+	clock2 := Clock hour: 34 minute: 37.
 	self assert: clock1 equals: clock2
 ]
 
 { #category : #tests }
 ClockTest >> test41_CompareTwoClocksForEqualityClocksWithHourOverflowBySeveralDays [
-	clock1 := (Clock hour: 3 minute: 11) asString.
-	clock2 := (Clock hour: 99 minute: 11) asString.
+	clock1 := Clock hour: 3 minute: 11.
+	clock2 := Clock hour: 99 minute: 11.
 	self assert: clock1 equals: clock2
 ]
 
 { #category : #tests }
 ClockTest >> test42_CompareTwoClocksForEqualityClocksWithNegativeHour [
-	clock1 := (Clock hour: 22 minute: 40) asString.
-	clock2 := (Clock hour: -2 minute: 40) asString.
+	clock1 := Clock hour: 22 minute: 40.
+	clock2 := Clock hour: -2 minute: 40.
 	self assert: clock1 equals: clock2
 ]
 
 { #category : #tests }
 ClockTest >> test43_CompareTwoClocksForEqualityClocksWithNegativeHourThatWraps [
-	clock1 := (Clock hour: 17 minute: 3) asString.
-	clock2 := (Clock hour: -31 minute: 3) asString.
+	clock1 := Clock hour: 17 minute: 3.
+	clock2 := Clock hour: -31 minute: 3.
 	self assert: clock1 equals: clock2
 ]
 
 { #category : #tests }
 ClockTest >> test44_CompareTwoClocksForEqualityClocksWithNegativeHourThatWrapsMultipleTimes [
-	clock1 := (Clock hour: 13 minute: 49) asString.
-	clock2 := (Clock hour: -83 minute: 49) asString.
+	clock1 := Clock hour: 13 minute: 49.
+	clock2 := Clock hour: -83 minute: 49.
 	self assert: clock1 equals: clock2
 ]
 
 { #category : #tests }
 ClockTest >> test45_CompareTwoClocksForEqualityClocksWithMinuteOverflow [
-	clock1 := (Clock hour: 0 minute: 1) asString.
-	clock2 := (Clock hour: 0 minute: 1441) asString.
+	clock1 := Clock hour: 0 minute: 1.
+	clock2 := Clock hour: 0 minute: 1441.
 	self assert: clock1 equals: clock2
 ]
 
 { #category : #tests }
 ClockTest >> test46_CompareTwoClocksForEqualityClocksWithMinuteOverflowBySeveralDays [
-	clock1 := (Clock hour: 2 minute: 2) asString.
-	clock2 := (Clock hour: 2 minute: 4322) asString.
+	clock1 := Clock hour: 2 minute: 2.
+	clock2 := Clock hour: 2 minute: 4322.
 	self assert: clock1 equals: clock2
 ]
 
 { #category : #tests }
 ClockTest >> test47_CompareTwoClocksForEqualityClocksWithNegativeMinute [
-	clock1 := (Clock hour: 2 minute: 40) asString.
-	clock2 := (Clock hour: 3 minute: -20) asString.
+	clock1 := Clock hour: 2 minute: 40.
+	clock2 := Clock hour: 3 minute: -20.
 	self assert: clock1 equals: clock2
 ]
 
 { #category : #tests }
 ClockTest >> test48_CompareTwoClocksForEqualityClocksWithNegativeMinuteThatWraps [
-	clock1 := (Clock hour: 4 minute: 10) asString.
-	clock2 := (Clock hour: 5 minute: -1490) asString.
+	clock1 := Clock hour: 4 minute: 10.
+	clock2 := Clock hour: 5 minute: -1490.
 	self assert: clock1 equals: clock2
 ]
 
 { #category : #tests }
 ClockTest >> test49_CompareTwoClocksForEqualityClocksWithNegativeMinuteThatWrapsMultipleTimes [
-	clock1 := (Clock hour: 6 minute: 15) asString.
-	clock2 := (Clock hour: 6 minute: -4305) asString.
+	clock1 := Clock hour: 6 minute: 15.
+	clock2 := Clock hour: 6 minute: -4305.
 	self assert: clock1 equals: clock2
 ]
 
 { #category : #tests }
 ClockTest >> test50_CompareTwoClocksForEqualityClocksWithNegativeHoursAndMinutes [
-	clock1 := (Clock hour: 7 minute: 32) asString.
-	clock2 := (Clock hour: -12 minute: -268) asString.
+	clock1 := Clock hour: 7 minute: 32.
+	clock2 := Clock hour: -12 minute: -268.
 	self assert: clock1 equals: clock2
 ]
 
 { #category : #tests }
 ClockTest >> test51_CompareTwoClocksForEqualityClocksWithNegativeHoursAndMinutesThatWrap [
-	clock1 := (Clock hour: 18 minute: 7) asString.
-	clock2 := (Clock hour: -54 minute: -11513) asString.
+	clock1 := Clock hour: 18 minute: 7.
+	clock2 := Clock hour: -54 minute: -11513.
 	self assert: clock1 equals: clock2
 ]
 
 { #category : #tests }
 ClockTest >> test52_CompareTwoClocksForEqualityFullClockAndZeroedClock [
-	clock1 := (Clock hour: 24 minute: 0) asString.
-	clock2 := (Clock hour: 0 minute: 0) asString.
+	clock1 := Clock hour: 24 minute: 0.
+	clock2 := Clock hour: 0 minute: 0.
 	self assert: clock1 equals: clock2
 ]
