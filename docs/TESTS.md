@@ -3,7 +3,9 @@ At its most basic level, Exercism is all about the tests and
 
 ## Immediate Feedback
 Pharo has great support for working with tests, and incremental testing! You can run any test for an exercise by clicking on the orb next to a test case class or method.
+
 ![Browser Test Orbs](https://github.com/exercism/pharo-smalltalk/raw/master/docs/images/TestOrbs.png)
+
 
 The test orbs are coloured according to the result of the last test run: 
 - green for a pass 
@@ -19,6 +21,7 @@ _NOTE: It is not a regular practice to label tests with an ordering prefix, and 
 
 ## It Can Run When Broken
 Pharo is happy to run with code that is broken, and the debugger will simply re-open when an error is encountered (either a syntax error, bad value or even a missing class or method). This technique was a primary influence for test driven development, and you can get a taste of this approach when you try running the first test for any exercise. The debugger will immediately show that your solution class is not found (as you haven't written anything yet). Conveniently, there is a "Create" button that helps you add the missing class and continue running it until it either finishes, or another error is encountered.
+
  ![Creating a class in the debugger](https://github.com/exercism/pharo-smalltalk/raw/master/docs/images/DebuggerCreate.png)
  
  With your first test, you next encounter a second error as you haven't written any methods yet. Again, the "Create" button in the debugger lets you define one, and continue running. At this point, you can also click further down the stack trace and review the requirements of the failing test and modify your new method to make it pass. 
