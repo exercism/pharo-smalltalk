@@ -20,7 +20,9 @@ provides a series of full programming courses and videos
 ### More Advanced
 * [Deep Into Pharo](http://books.pharo.org/deep-into-pharo/):
 takes you through more advanced topics like graphics and parsing
+* [Pharo with style](https://github.com/SquareBracketAssociates/Booklet-PharoWithStyle):
+is the guide for formatting and designing the Pharo way
 * [Smalltalk with style](http://sdmeta.gforge.inria.fr/FreeBooks/WithStyle/SmalltalkWithStyle.pdf):
-is the guide for formatting and designing the Smalltalk way
+is a broader guide for formatting and designing in Smalltalk
 * [Enterprise Pharo - Web Perspective](http://books.pharo.org/enterprise-pharo/):
 covers web applications, http and data
