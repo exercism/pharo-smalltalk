@@ -4,13 +4,13 @@ The simplest way to install [Pharo](http://pharo.org) is to use a [zero conf](ht
 
 Windows users who do not have a UNIX style shell installed should skip to the **Windows Installation** instructions (below).
 
-For Linux/OSX (assuming you have installed Exercism and have joined the Pharo track), in your `/Exercism/pharo-smalltalk` directory, type:
+For Linux/OSX (assuming you have [installed Exercism](https://exercism.io/getting-started) and have joined the [Pharo track](https://exercism.io/my/tracks/pharo-smalltalk)), in your `/Exercism/pharo-smalltalk` directory, type:
 
 ```bash
 curl https://get.pharo.org/64/ | bash
 ```
 
-and then initally launch Pharo and the exercism tools by typing:
+and then launch Pharo with the exercism tools by typing:
 
 ```smalltalk
 ./pharo-ui Pharo.image eval "
@@ -22,13 +22,13 @@ Metacello new
 "
 ```
 
-If you have any TIMEOUT problems when loading the initial tools, you can should exit Pharo and clear the git cache by typing:
+If you have any TIMEOUT problems when loading the tools, you should exit Pharo and clear the git cache by typing:
 
 ```rm -rf pharo-local/iceberg/```
 
 And then repeat the ```./pharo-ui ...``` example above.
 
-If you continue to have problems (some corporate firewalls block git access), clear the cache and add an additional command to the beginning of the eval script like this:
+If you continue to have problems (some corporate firewalls block git access), clear the cache and also add an additional command to the beginning of the eval script like this:
 
 ```smalltalk
 ./pharo-ui Pharo.image eval "
@@ -37,7 +37,9 @@ Metacello new
 ...
 ```
 
-If everything is working properly, you should see loading progress bars flicker accross the screen, and then a Browser window will appear.
+If everything is working properly, you should see loading progress bars flicker across the screen, and then a System Browser window will appear.
+
+![Pharo Welcome Screen](PharoWelcomeScreen.png)
 
 **TIP:** When you come to exit Pharo, save your changes (choose the Pharo menu, and select "Save and Quit").
 You can now start Pharo with Exercism already loaded, by simply typing:
