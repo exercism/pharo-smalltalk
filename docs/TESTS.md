@@ -3,7 +3,9 @@ At its most basic level, Exercism is all about the tests and
 
 ## Immediate Feedback
 Pharo has great support for working with tests, and incremental testing! You can run any test for an exercise by clicking on the orb next to a test case class or method.
-The orb is then coloured according to the result of the last test run: 
+[Browser Test Orbs](https://github.com/exercism/pharo-smalltalk/raw/master/docs/images/TestOrbs.png)
+
+The test orbs are coloured according to the result of the last test run: 
 - green for a pass 
 - yellow for an assertion failure 
 - red for a runtime error or exception
@@ -16,12 +18,17 @@ When working on an exercise it is recommended that you click on the orb for the 
 _NOTE: It is not a regular practice to label tests with an ordering prefix, and you should NOT do this when writing tests for your own project._
 
 ## It Can Run When Broken
-Pharo is happy to run with code that is broken, and the debugger will simply re-open when an error is encountered (either a syntax error, bad value or even a missing class or method). This technique was a primary influencer for test driven development, and you can get a taste of this approach when you try running the first test for any exercise. The debugger will immediately show that your solution class is not found (as you haven't written anything yet). Conveniently, there is a "Create" button that helps you add the missing class and continue running it until it either finishes, or another error is encountered. With your first test, you next encounter a second error as you haven't written any methods yet. Again, the "Create" button in the debugger lets you define one, and continue running. At this point, you can also click further down the stack trace and review the requirements of the failing test and modify your new method to make it pass. 
+Pharo is happy to run with code that is broken, and the debugger will simply re-open when an error is encountered (either a syntax error, bad value or even a missing class or method). This technique was a primary influence for test driven development, and you can get a taste of this approach when you try running the first test for any exercise. The debugger will immediately show that your solution class is not found (as you haven't written anything yet). Conveniently, there is a "Create" button that helps you add the missing class and continue running it until it either finishes, or another error is encountered.
+ [Creating a class in the debugger](https://github.com/exercism/pharo-smalltalk/raw/master/docs/images/DebuggerCreate.png)
+ 
+ With your first test, you next encounter a second error as you haven't written any methods yet. Again, the "Create" button in the debugger lets you define one, and continue running. At this point, you can also click further down the stack trace and review the requirements of the failing test and modify your new method to make it pass. 
 
 ## Loving The Debugger
 Later in your development cycle you might also find it useful to click further back in the stack and use the "Restart" button to resume program execution at an earlier point, so you can then step through your program to see what is going on. This is an important and useful way to understand why your program isn't working.  
 
 As well as seeing variables in the debugger, you can also highlight any statement and click on inspect/print to see the result of evaluating it. This can be useful when testing results from a method, or for examining the internal state of an object. 
+
+[Inspect a statement](https://github.com/exercism/pharo-smalltalk/raw/master/docs/images/DebuggerInspect.png)
 
 Don't forget that you can also make changes to live code in the debugger, and saving a change will simply cause execution to restart in the method that was just saved. This allows you to experiment with changes and view their results while you are still "in the moment". 
 

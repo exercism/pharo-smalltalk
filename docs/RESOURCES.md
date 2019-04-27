@@ -18,6 +18,7 @@ The following are useful starting points for getting more detailed information a
 * [Pharo Git Versioning Explained](http://blog.yuriy.tymch.uk/2015/07/pharo-and-github-versioning-revision-2.html)
 
 ### Docs
+* [Pharo with style](https://github.com/SquareBracketAssociates/Booklet-PharoWithStyle)
 * [Smalltalk with style](http://sdmeta.gforge.inria.fr/FreeBooks/WithStyle/SmalltalkWithStyle.pdf)
 * [Smalltalk ANSI Standard](http://wiki.squeak.org/squeak/uploads/172/standard_v1_9-indexed.pdf)
 * [Smalltalk Grammar](https://gist.github.com/sin3141592/602700)

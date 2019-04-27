@@ -39,7 +39,7 @@ Metacello new
 
 If everything is working properly, you should see loading progress bars flicker across the screen, and then a System Browser window will appear.
 
-![Pharo Welcome Screen](PharoWelcomeScreen.png)
+![Pharo Welcome Screen](https://github.com/exercism/pharo-smalltalk/raw/master/docs/images/PharoWelcomeScreen.png)
 
 **TIP:** When you come to exit Pharo, save your changes (choose the Pharo menu, and select "Save and Quit").
 You can now start Pharo with Exercism already loaded, by simply typing:
