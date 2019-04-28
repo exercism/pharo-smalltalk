@@ -78,5 +78,7 @@ BaselineOfExercism >> setUpDependencies: spec [
 
 { #category : #baselines }
 BaselineOfExercism >> setUpExercisesFor: spec [
-	self exercisePackageNames do: [ :name | spec package: name ]
+	self exercisePackageNames
+		do:
+			[ :name | spec package: name with: [ spec requires: #('ExercismTests') ] ]
 ]
