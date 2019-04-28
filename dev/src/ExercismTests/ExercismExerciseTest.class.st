@@ -36,7 +36,7 @@ ExercismExerciseTest >> testExerciseClassName [
 ExercismExerciseTest >> testExercisePackage [
 	
 	self assert: TestExerciseTest exercise exercisePackage name equals: #ExercismTests.	
-	self assert: HelloWorldTest exercise exercisePackage equals: ExercismManager exercismPackage.
+	self assert: HelloWorldTest exercise exercisePackage equals: HelloWorldTest package.
 	self assert: TestEmptyTest exercise exercisePackage name equals: #ExercismTests.
 	
 ]
@@ -44,9 +44,9 @@ ExercismExerciseTest >> testExercisePackage [
 { #category : #tests }
 ExercismExerciseTest >> testExercisePackageTag [
 	
-	self assert: TestExerciseTest exercise exercisePackageContainer class equals: RPackageTag.
-	self assert: TestExerciseTest exercise exercisePackageContainer name equals: #TestExercise.	
-	self assert: TestmanyTest exercise exercisePackageContainer name equals: #Testmany.
+	self assert: TestExerciseTest exercise exercisePackageContainer class equals: RPackage.
+	self assert: TestExerciseTest exercise exercisePackageContainer equals: TestExerciseTest package.	
+	self assert: TestmanyTest exercise exercisePackageContainer equals: TestmanyTest package.
 ]
 
 { #category : #tests }

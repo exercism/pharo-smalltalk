@@ -31,7 +31,7 @@ ExercismExercise class >> bonusExercises [
 
 	^ (self allExercises
 		reject:
-			[ :exercise | exercise isCore or: [ exercise exercisePackage ~= HelloWorldTest package ] ])
+			[ :exercise | exercise isCore or: [ (exercise exercisePackage name includes: $@) not ] ])
 		asSortedCollection: [ :a :b | a name < b name ]
 ]
 
