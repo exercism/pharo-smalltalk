@@ -21,11 +21,12 @@ BaselineOfExercism >> baseline: spec [
 				package: 'ExercismMocking' 
 					with: [ spec requires: #('Mocketry') ];
 				package: 'ExercismTests'
-					with: [ spec requires: #('ExercismMocking') ];
+					with: [ spec requires: #('ExercismTools' 'ExercismMocking') ];
 				package: 'ExercismSystemTests'
 					with: [ spec requires: #('ExercismTests') ];
 				
-				package: 'ExercismWIP';
+				package: 'ExercismWIP'
+					with: [ spec requires: #('ExercismTools') ];
 					
 				package: 'ExercismDev'
 					with: [ spec requires: #(
