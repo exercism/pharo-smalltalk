@@ -112,9 +112,15 @@ ExercismExercise >> exercisePackage [
 	^self testCase package
 ]
 
-{ #category : #accessing }
-ExercismExercise >> exercisePackageTag [
-	^self testCase package classTagForClass: self testCase
+{ #category : #internal }
+ExercismExercise >> exercisePackageContainer [
+	"Answer the package or legacy tag, that containts the exercise - must conform to #classes, #snapshot protocols"
+	
+	| pkg |
+	
+	^ (pkg := self exercisePackage) = ExercismManager exercismPackage
+		ifTrue: [ pkg classTagForClass: self testCase ]
+		ifFalse: [ pkg ]
 ]
 
 { #category : #navigating }
@@ -268,10 +274,17 @@ ExercismExercise >> printOn: aStream [
 ]
 
 { #category : #accessing }
+ExercismExercise >> snapshot [
+	"Answer the MCSnapshot for the exercise"
+	
+	^self exercisePackageContainer snapshot
+]
+
+{ #category : #accessing }
 ExercismExercise >> solutionClasses [
 	"Answer the classes that are submitted to Exercism"
 	
-	^self exercisePackageTag classes reject: [ :c | c isKindOf: ExercismTest class ]
+	^self exercisePackageContainer classes reject: [ :c | c isKindOf: ExercismTest class ]
 ]
 
 { #category : #accessing }
@@ -285,7 +298,7 @@ ExercismExercise >> solutionSources [
 	
 	| sources testResult resultDictionary |
 	
-	sources := ExTonelWriter new mappedSnapshot: self exercisePackageTag snapshot.
+	sources := ExTonelWriter new mappedSnapshot: self snapshot.
 	
 	testResult := [ self testCase suite run] on: Error do: [ TestResult new ].
 	resultDictionary := OrderedDictionary new 

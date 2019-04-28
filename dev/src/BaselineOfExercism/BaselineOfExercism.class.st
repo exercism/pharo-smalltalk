@@ -14,9 +14,8 @@ BaselineOfExercism >> baseline: spec [
 			spec
 				package: 'ExercismPharo70'; "Pharo override/patch methods"
 				package: 'ExercismTools' 
-					with: [ spec requires: #('ExercismPharo70') ];
+					with: [ spec requires: #('ExercismPharo70' 'Exercism@Welcome') ];
 				
-				package: 'Exercism'; "For dev group (as this has all solutions & tests)"
 				
 				package: 'ExercismMocking' 
 					with: [ spec requires: #('Mocketry') ];
@@ -31,15 +30,22 @@ BaselineOfExercism >> baseline: spec [
 					with: [ spec requires: #(
 						'OSProcess' "For shelling out to configlet"
 						'Ring2' "For mentoring support of shadow browsing"
-						'ExercismTools' 'Exercism' 'ExercismWIP' 
+						'ExercismTools' 'ExercismWIP' 
 						'ExercismTests' 'ExercismSystemTests'
-						)];
+						), self exercisePackageNames];
 				
 				group: 'default'
 					with: #('ExercismTools');
 				
 				group: 'dev'
 					with: #('ExercismDev')]
+]
+
+{ #category : #baselines }
+BaselineOfExercism >> exercisePackageNames [
+	"Answer the list of exercise package names (as we don't yet have proper projects)"
+
+	^ #('Exercism@Acronym' 'Exercism@Allergies' 'Exercism@Anagram' 'Exercism@ArmstrongNumbers' 'Exercism@AtbashCipher' 'Exercism@Binary' 'Exercism@Bowling' 'Exercism@Clock' 'Exercism@CollatzConjecture' 'Exercism@Darts' 'Exercism@Diamond' 'Exercism@Etl' 'Exercism@Forth' 'Exercism@GradeSchool' 'Exercism@Grains' 'Exercism@Hamming' 'Exercism@HelloWorld' 'Exercism@HighScores' 'Exercism@IsbnVerifier' 'Exercism@Isogram' 'Exercism@Leap' 'Exercism@Luhn' 'Exercism@MatchingBrackets' 'Exercism@Pangram' 'Exercism@Proverb' 'Exercism@Raindrops' 'Exercism@ResistorColorDuo' 'Exercism@ReverseString' 'Exercism@RobotSimulator' 'Exercism@RomanNumerals' 'Exercism@SecretHandshake' 'Exercism@Sieve' 'Exercism@SpaceAge' 'Exercism@SumOfMultiples' 'Exercism@Tournament' 'Exercism@TwelveDays' 'Exercism@TwoFer' 'Exercism@WordCount')
 ]
 
 { #category : #baselines }

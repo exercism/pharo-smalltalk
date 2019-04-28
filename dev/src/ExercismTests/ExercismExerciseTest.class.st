@@ -44,9 +44,9 @@ ExercismExerciseTest >> testExercisePackage [
 { #category : #tests }
 ExercismExerciseTest >> testExercisePackageTag [
 	
-	self assert: TestExerciseTest exercise exercisePackageTag class equals: RPackageTag.
-	self assert: TestExerciseTest exercise exercisePackageTag name equals: #TestExercise.	
-	self assert: TestmanyTest exercise exercisePackageTag name equals: #Testmany.
+	self assert: TestExerciseTest exercise exercisePackageContainer class equals: RPackageTag.
+	self assert: TestExerciseTest exercise exercisePackageContainer name equals: #TestExercise.	
+	self assert: TestmanyTest exercise exercisePackageContainer name equals: #Testmany.
 ]
 
 { #category : #tests }

@@ -19,6 +19,12 @@ Class {
 }
 
 { #category : #examples }
+ExercismExerciseGenerator class >> convertLegacyTagsToPackages [
+	ExercismManager exercismPackage classTags
+		do: [ :t | t promoteAsExercismRPackage ]
+]
+
+{ #category : #examples }
 ExercismExerciseGenerator class >> defaultPath [
 	^ DefaultPath ifNil: [ self defaultPath: FileLocator home pathString]
 ]
@@ -53,6 +59,16 @@ ExercismExerciseGenerator class >> worldMenuCommandOn: aBuilder [
 		"iconName: templateCommand defaultMenuIconName;"
 		help: 'Generate exercises from the canonical problem-description'.
 		"withSeparatorBefore"
+]
+
+{ #category : #examples }
+ExercismExerciseGenerator class >> writeLegacyPackageBaselineNames [
+	(ExercismManager exercismPackage classTags collect: [ :t | t name ])
+		asSortedCollection
+		do: [ :n | 
+			Transcript
+				cr;
+				show: '''Exercism@' , n , '''' ]
 ]
 
 { #category : #internal }

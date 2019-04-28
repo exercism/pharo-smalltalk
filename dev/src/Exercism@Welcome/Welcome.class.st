@@ -6,7 +6,7 @@ Note: Each new exercise will have some instructions in its test Comment, so be s
 Class {
 	#name : #Welcome,
 	#superclass : #TestCase,
-	#category : #'ExercismTools-Welcome'
+	#category : #'Exercism@Welcome'
 }
 
 { #category : #config }

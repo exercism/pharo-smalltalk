@@ -58,21 +58,16 @@ ExercismManager class >> trackId [
 ExercismManager class >> welcome [
 	"Setup the initial environment for a new user"
 
-	| defaultPackage browser |
-
-	defaultPackage := self exercismPackage.
-	defaultPackage
-		moveClass: Welcome
-		toTag: (RPackageTag package: defaultPackage name: 'Welcome').
+	| browser |
 		
 	"If in usermode, hide the repositories so solutions aren't easily visible with a git compare"
 	self isUserMode
 		ifTrue: [ IceRepository reset ].
 
 	"Select, package and then method so it scrolls nicely into view"
-	browser := Smalltalk tools browser openOnPackage: defaultPackage.
+	browser := Smalltalk tools browser openOnPackage: Welcome package.
 	browser
-		selectPackage: Welcome package atClassTag: Welcome name;
+		"selectPackage: Welcome package;"
 		selectMethod: (Welcome methodNamed: #testWelcome)
 ]
 
