@@ -1,6 +1,11 @@
 Extension { #name : #RPackageTag }
 
 { #category : #'*ExercismTools' }
+RPackageTag >> definedClasses [
+	^ self classes
+]
+
+{ #category : #'*ExercismTools' }
 RPackageTag >> promoteAsExercismRPackage [
 	"This method converts this rpackage tag into an rpackage, removes the tag from the parent package with all classes included and registers the new package in the system.
 	The tag has to be removed before registering to avoid conflicts.
