@@ -1,16 +1,16 @@
 ## Installation
 
-The simplest way to install [Pharo](http://pharo.org) is to use a [zero conf](http://pharo.org/download#//*[@id="main"]/div/h2[3]) download from a terminal command line. Note: If you are trying to upgrade an existing installation see the upgrade instructions at the end.
+The simplest way to install [Pharo](http://pharo.org) is to use a [zero conf](http://pharo.org/download#//*[@id="main"]/div/h2[3]) download from a terminal command line. _Note: If you are trying to upgrade an existing installation see the upgrade instructions at the end_.
 
 Windows users who do not have a UNIX style shell installed should skip to the **Windows Installation** instructions (below).
 
-For Linux/OSX (assuming you have [installed Exercism](https://exercism.io/getting-started) and have joined the [Pharo track](https://exercism.io/my/tracks/pharo-smalltalk)), in your `/Exercism/pharo-smalltalk` directory, type:
+For Linux/OSX (assuming you have [installed Exercism](https://exercism.io/getting-started) and have joined the [Pharo track](https://exercism.io/my/tracks/pharo-smalltalk)), navigate to your `/Exercism/pharo-smalltalk` directory and type:
 
 ```bash
 curl https://get.pharo.org/64/ | bash
 ```
 
-and then launch Pharo with the exercism tools by typing:
+and launch Pharo with the exercism tools by typing:
 
 ```smalltalk
 ./pharo-ui Pharo.image eval "
@@ -38,8 +38,6 @@ Metacello new
 ```
 
 If everything is working properly, you should see loading progress bars flicker across the screen, and then a System Browser window will appear.
-
-![Pharo Welcome Screen](https://github.com/exercism/pharo-smalltalk/raw/master/docs/images/PharoWelcomeScreen.png)
 
 **TIP:** When you come to exit Pharo, save your changes (choose the Pharo menu, and select "Save and Quit").
 You can now start Pharo with Exercism already loaded, by simply typing:
@@ -82,6 +80,9 @@ Now you can you can proceed below.
 
 When you launch Pharo, you will see a Welcome project, in a [System Browser](https://medium.com/@richardeng/pharo-quick-start-5bab70944ce2#3099) (_tip:_ if you ever lose this window you can open a new one from the Tools|System Browser menu).
 
+
+![Pharo Welcome Screen](https://github.com/exercism/pharo-smalltalk/raw/master/docs/images/PharoWelcomeScreen.png)
+
 The top, left hand panel of the System browser shows packages in your environment, and you will notice the install script has already configured
 a package called `Exercism`, which contains a sub-project tag called `Welcome`. The second panel shows classes, which also has a class called `Welcome`. Underneath the classes panel there are 4 radio buttons, "Flat" (shows the classes in the package), "Hier." (shows a class hierachy), "Inst. side" (shows instance methods), "Class side" (shows class methods/constructors).
 
@@ -93,15 +94,20 @@ next exercise. While Pharo can work with files in a similar manner, the environm
 ## Loading Exercises
 
 For Exercism, we have included a plugin that will let you retrieve and submit Pharo exercises from within the IDE.
-All you need to do is right click on a package (in this case, the Welcome package in the top left panel), and select the Exercism|Fetch Exercise
-menu item. This will prompt you for an exercise name (e.g. hello-world), and will then retrieve it automatically for you.
+All you need to do is right click on an exercise package (in this case, the Welcome package in the top left panel), and select the `Exercism | Fetch Exercise`
+menu item. This will prompt you for an exercise name (e.g. hello-world), and when entered, it will retrieve it automatically for you.
 
 Exercise names can be found on each exercise description on your [Pharo track](https://exercism.io/my/tracks/pharo) page (far right).
-There is a *Download* instruction with a cli string that contains each exercise key. You can use the copy button next to the cli instructions and paste the entire string into the fetch prompt (and we will extract the key automatically).
+There is a *Download* instruction with a cli string that contains each exercise key. You can also use the copy button next to the cli instructions and paste the entire string into the fetch prompt (and we will extract the key automatically).
 
 When you have entered a valid exercise, the plugin will retrieve the relevant code and display it in the System Browser, ready for
-you to begin coding.
+you to begin [coding with tests](tests.md).
 
+When all your tests are passing, you can submit your solution using the same context menu for your exercise package (right click on the package tag and select `Exercism | Submit Exercise...`)
+
+![Exercism Submit Menu](https://github.com/exercism/pharo-smalltalk/raw/master/docs/images/SubmitExercise.png)
+
+Finally use the `Exercism | View Track Progress` menu to visit the exercism website and see what other exercises have been unlocked for you, as well as post questions about your submission for mentors to read.
 <br/>
   
 **Did you know:** *When you launch Pharo, you are actually restoring an execution image snapshot - similar to a VMWare Operating System image. This
