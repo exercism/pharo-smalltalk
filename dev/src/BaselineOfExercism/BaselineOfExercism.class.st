@@ -15,8 +15,7 @@ BaselineOfExercism >> baseline: spec [
 			spec
 				package: 'ExercismPharo70'; "Pharo override/patch methods"
 				package: 'ExercismTools' 
-					with: [ spec requires: #('ExercismPharo70' 'Exercism@Welcome') ];
-				
+					with: [ spec requires: #('ExercismPharo70') ];
 				
 				package: 'ExercismMocking' 
 					with: [ spec requires: #('Mocketry') ];
@@ -39,7 +38,7 @@ BaselineOfExercism >> baseline: spec [
 						'ExercismSystemTests')];
 				
 				group: 'default'
-					with: #('ExercismTools');
+					with: #('ExercismTools' 'Exercism@Welcome');
 				
 				group: 'dev'
 					with: #('ExercismDev')]
