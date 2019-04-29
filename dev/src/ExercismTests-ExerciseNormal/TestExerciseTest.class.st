@@ -1,7 +1,10 @@
+"
+Example data of an exercise package with just a test class and solution
+"
 Class {
 	#name : #TestExerciseTest,
 	#superclass : #ExercismTest,
-	#category : #'ExercismTests-TestExercise'
+	#category : #'ExercismTests-ExerciseNormal'
 }
 
 { #category : #config }

@@ -35,9 +35,9 @@ ExercismExerciseTest >> testExerciseClassName [
 { #category : #tests }
 ExercismExerciseTest >> testExercisePackage [
 	
-	self assert: TestExerciseTest exercise exercisePackage name equals: #ExercismTests.	
-	self assert: HelloWorldTest exercise exercisePackage equals: HelloWorldTest package.
-	self assert: TestEmptyTest exercise exercisePackage name equals: #ExercismTests.
+	self assert: TestExerciseTest exercise exercisePackage equals: TestExerciseTest package.	
+	self assert: TestEmptyTest exercise exercisePackage equals: TestEmptyTest package.
+	self assert: TestmanyTest exercise exercisePackage equals: TestmanyTest package.
 	
 ]
 

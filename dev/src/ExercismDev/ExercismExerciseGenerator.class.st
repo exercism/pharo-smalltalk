@@ -20,7 +20,7 @@ Class {
 
 { #category : #examples }
 ExercismExerciseGenerator class >> convertLegacyTagsToPackages [
-	ExercismManager exercismPackage classTags
+	ExercismManager legacyExercismPackage classTags
 		do: [ :t | t promoteAsExercismRPackage ]
 ]
 
@@ -63,7 +63,7 @@ ExercismExerciseGenerator class >> worldMenuCommandOn: aBuilder [
 
 { #category : #examples }
 ExercismExerciseGenerator class >> writeLegacyPackageBaselineNames [
-	(ExercismManager exercismPackage classTags collect: [ :t | t name ])
+	(ExercismManager legacyExercismPackage classTags collect: [ :t | t name ])
 		asSortedCollection
 		do: [ :n | 
 			Transcript

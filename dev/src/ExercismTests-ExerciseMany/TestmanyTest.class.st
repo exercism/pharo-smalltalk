@@ -1,7 +1,10 @@
+"
+Example data of an exercise package with several test classes and solutions
+"
 Class {
 	#name : #TestmanyTest,
 	#superclass : #ExercismTest,
-	#category : #'ExercismTests-Testmany'
+	#category : #'ExercismTests-ExerciseMany'
 }
 
 { #category : #config }

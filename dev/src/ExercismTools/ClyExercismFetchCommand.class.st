@@ -19,7 +19,7 @@ ClyExercismFetchCommand class >> worldMenuCommandOn: aBuilder [
 	| templateCommand browser |
 	
 	templateCommand := self new 
-		packages: { ExercismManager exercismPackage }; 
+		packages: { self package }; 
 		yourself.
 	
 	(aBuilder item: templateCommand defaultMenuItemName)

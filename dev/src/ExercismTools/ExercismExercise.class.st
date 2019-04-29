@@ -118,7 +118,7 @@ ExercismExercise >> exercisePackageContainer [
 	
 	| pkg |
 	
-	^ (pkg := self exercisePackage) = ExercismManager exercismPackage
+	^ (pkg := self exercisePackage) = ExercismManager legacyExercismPackage
 		ifTrue: [ pkg classTagForClass: self testCase ]
 		ifFalse: [ pkg ]
 ]

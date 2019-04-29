@@ -17,22 +17,6 @@ ExercismManager class >> default [
 	^self new
 ]
 
-{ #category : #config }
-ExercismManager class >> exercismPackage [
-	"Answer the default exercism package, or create one if missing"
-	| packageOrganiser |
-	
-	packageOrganiser := RPackageOrganizer default.
-	^ packageOrganiser
-		packageNamed: self exercismPackageName
-		ifAbsent: [ packageOrganiser createPackageNamed: self exercismPackageName ]
-]
-
-{ #category : #config }
-ExercismManager class >> exercismPackageName [
-	^ 'Exercism'
-]
-
 { #category : #exercism }
 ExercismManager class >> isUserMode [
 	"Answer true if exercism is loaded in a clean image with no dev tools"
@@ -42,6 +26,22 @@ ExercismManager class >> isUserMode [
 		and: [ (RPackageOrganizer default
 				packageNamed: 'ExercismDev'
 				ifAbsent: [ nil ]) isNil ]
+]
+
+{ #category : #config }
+ExercismManager class >> legacyExercismPackage [
+	"Answer the default exercism package, or create one if missing"
+	| packageOrganiser |
+	
+	packageOrganiser := RPackageOrganizer default.
+	^ packageOrganiser
+		packageNamed: self packagePrefix
+		ifAbsent: [ packageOrganiser createPackageNamed: self packagePrefix ]
+]
+
+{ #category : #config }
+ExercismManager class >> packagePrefix [
+	^ 'Exercism'
 ]
 
 { #category : #cache }
@@ -114,7 +114,7 @@ ExercismManager >> parseTokenNamed: tokenName from: aString [
 { #category : #exercism }
 ExercismManager >> submitToExercism: packageOrTag [
 		
-	(packageOrTag  = self class exercismPackage) 
+	(packageOrTag  = self class legacyExercismPackage) 
 		ifTrue: [ self error: 'Select the sub-package with your solution!' ].
 				
 	^(ExercismSubmitCommand exercise: packageOrTag) execute.

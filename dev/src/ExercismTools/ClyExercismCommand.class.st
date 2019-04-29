@@ -25,9 +25,6 @@ ClyExercismCommand class >> isAbstract [
 
 { #category : #testing }
 ClyExercismCommand class >> isExercismTagIn: aToolContext [
-
-	aToolContext lastSelectedClassGroup classes do: [:any |
-		^any package name = ExercismManager exercismPackageName]. 
 	
 	^false
 ]

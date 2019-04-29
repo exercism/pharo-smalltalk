@@ -18,9 +18,10 @@ ClyExercismReviewCommand class >> isAbstract [
 { #category : #testing }
 ClyExercismReviewCommand class >> isExercismTagIn: aToolContext [
 
-	aToolContext selectedClassItems do: [:any |
-		^any actualObject isKindOf: RGObject ].
-	^false
+	^ aToolContext selectedClassItems
+		detect: [ :any | any actualObject isKindOf: RGObject ]
+		ifFound: [ true ]
+		ifNone: [ false ]
 ]
 
 { #category : #accessing }

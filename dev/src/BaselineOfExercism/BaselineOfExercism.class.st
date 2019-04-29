@@ -20,7 +20,8 @@ BaselineOfExercism >> baseline: spec [
 				package: 'ExercismMocking' 
 					with: [ spec requires: #('Mocketry') ];
 				package: 'ExercismTests'
-					with: [ spec requires: #('ExercismTools' 'ExercismMocking') ];
+					with: [ spec requires: #('ExercismTools' 'ExercismMocking'), 
+						self exerciseTestPackageNames ];
 				package: 'ExercismSystemTests'
 					with: [ spec requires: #('ExercismTests') ];
 				
@@ -52,6 +53,13 @@ BaselineOfExercism >> exercisePackageNames [
 ]
 
 { #category : #baselines }
+BaselineOfExercism >> exerciseTestPackageNames [
+	"Answer the list of exercise package names used for testing (as we don't yet have proper projects)"
+
+	^ #('ExercismTests-ExerciseEmpty' 'ExercismTests-ExerciseMany' 'ExercismTests-ExerciseNormal')
+]
+
+{ #category : #baselines }
 BaselineOfExercism >> projectClass [
 	^ MetacelloCypressBaselineProject
 ]
@@ -78,7 +86,7 @@ BaselineOfExercism >> setUpDependencies: spec [
 
 { #category : #baselines }
 BaselineOfExercism >> setUpExercisesFor: spec [
-	self exercisePackageNames
+	self exercisePackageNames, self exerciseTestPackageNames 
 		do:
 			[ :name | spec package: name with: [ spec requires: #('ExercismTests') ] ]
 ]
