@@ -22,6 +22,7 @@ BaselineOfExercism >> baseline: spec [
 				package: 'ExercismTests'
 					with: [ spec requires: #('ExercismTools' 'ExercismMocking'), 
 						self exerciseTestPackageNames ];
+					
 				package: 'ExercismSystemTests'
 					with: [ spec requires: #('ExercismTests') ];
 				
@@ -88,5 +89,5 @@ BaselineOfExercism >> setUpDependencies: spec [
 BaselineOfExercism >> setUpExercisesFor: spec [
 	self exercisePackageNames, self exerciseTestPackageNames 
 		do:
-			[ :name | spec package: name with: [ spec requires: #('ExercismTests') ] ]
+			[ :name | spec package: name with: [ spec requires: #('ExercismTools') ] ]
 ]
