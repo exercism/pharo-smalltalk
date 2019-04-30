@@ -40,7 +40,7 @@ BaselineOfExercism >> baseline: spec [
 						'ExercismSystemTests')];
 				
 				group: 'default'
-					with: #('ExercismTools' 'Exercism@Welcome');
+					with: #('ExercismTools' 'Exercise@Welcome');
 				
 				group: 'dev'
 					with: #('ExercismDev')]
@@ -50,7 +50,7 @@ BaselineOfExercism >> baseline: spec [
 BaselineOfExercism >> exercisePackageNames [
 	"Answer the list of exercise package names (as we don't yet have proper projects)"
 
-	^ #('Exercism@Acronym' 'Exercism@Allergies' 'Exercism@Anagram' 'Exercism@ArmstrongNumbers' 'Exercism@AtbashCipher' 'Exercism@Binary' 'Exercism@Bowling' 'Exercism@Clock' 'Exercism@CollatzConjecture' 'Exercism@Darts' 'Exercism@Diamond' 'Exercism@Etl' 'Exercism@Forth' 'Exercism@GradeSchool' 'Exercism@Grains' 'Exercism@Hamming' 'Exercism@HelloWorld' 'Exercism@HighScores' 'Exercism@IsbnVerifier' 'Exercism@Isogram' 'Exercism@Leap' 'Exercism@Luhn' 'Exercism@MatchingBrackets' 'Exercism@Pangram' 'Exercism@Proverb' 'Exercism@Raindrops' 'Exercism@ResistorColorDuo' 'Exercism@ReverseString' 'Exercism@RobotSimulator' 'Exercism@RomanNumerals' 'Exercism@SecretHandshake' 'Exercism@Sieve' 'Exercism@SpaceAge' 'Exercism@SumOfMultiples' 'Exercism@Tournament' 'Exercism@TwelveDays' 'Exercism@TwoFer' 'Exercism@Welcome' 'Exercism@WordCount')
+	^ #('Exercise@Acronym' 'Exercise@Allergies' 'Exercise@Anagram' 'Exercise@ArmstrongNumbers' 'Exercise@AtbashCipher' 'Exercise@Binary' 'Exercise@Bowling' 'Exercise@Clock' 'Exercise@CollatzConjecture' 'Exercise@Darts' 'Exercise@Diamond' 'Exercise@Etl' 'Exercise@Forth' 'Exercise@GradeSchool' 'Exercise@Grains' 'Exercise@Hamming' 'Exercise@HelloWorld' 'Exercise@HighScores' 'Exercise@IsbnVerifier' 'Exercise@Isogram' 'Exercise@Leap' 'Exercise@Luhn' 'Exercise@MatchingBrackets' 'Exercise@Pangram' 'Exercise@Proverb' 'Exercise@Raindrops' 'Exercise@ResistorColorDuo' 'Exercise@ReverseString' 'Exercise@RobotSimulator' 'Exercise@RomanNumerals' 'Exercise@SecretHandshake' 'Exercise@Sieve' 'Exercise@SpaceAge' 'Exercise@SumOfMultiples' 'Exercise@Tournament' 'Exercise@TwelveDays' 'Exercise@TwoFer' 'Exercise@Welcome' 'Exercise@WordCount')
 ]
 
 { #category : #baselines }

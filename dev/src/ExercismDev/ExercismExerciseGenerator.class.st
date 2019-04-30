@@ -68,7 +68,7 @@ ExercismExerciseGenerator class >> writeLegacyPackageBaselineNames [
 		do: [ :n | 
 			Transcript
 				cr;
-				show: '''Exercism@' , n , '''' ]
+				show: '''Exercise@' , n , '''' ]
 ]
 
 { #category : #internal }

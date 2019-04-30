@@ -22,12 +22,12 @@ ClyExercismExerciseCommand class >> isAbstract [
 
 { #category : #activation }
 ClyExercismExerciseCommand class >> isExercismTagIn: aToolContext [
-	^ aToolContext lastSelectedClassGroup name ~= ExercismManager packagePrefix
+	^ aToolContext lastSelectedClassGroup name ~= ExercismManager legacyPackagePrefix
 		and: [ aToolContext lastSelectedClassGroup classes
 				detect: [ :any | 
 					(any package name
-						beginsWith: ExercismManager packagePrefix , '@')
-						or: [ any package name = ExercismManager packagePrefix ] ]
+						beginsWith: ExercismManager exercisePrefix , '@')
+						or: [ any package name = ExercismManager legacyPackagePrefix ] ]
 				ifFound: [ true ]
 				ifNone: [ false ] ]
 ]

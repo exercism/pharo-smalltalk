@@ -17,6 +17,11 @@ ExercismManager class >> default [
 	^self new
 ]
 
+{ #category : #config }
+ExercismManager class >> exercisePrefix [
+	^ 'Exercise'
+]
+
 { #category : #exercism }
 ExercismManager class >> isUserMode [
 	"Answer true if exercism is loaded in a clean image with no dev tools"
@@ -35,12 +40,11 @@ ExercismManager class >> legacyExercismPackage [
 	
 	packageOrganiser := RPackageOrganizer default.
 	^ packageOrganiser
-		packageNamed: self packagePrefix
-		ifAbsent: [ packageOrganiser createPackageNamed: self packagePrefix ]
+		packageNamed: self legacyPackagePrefix
 ]
 
 { #category : #config }
-ExercismManager class >> packagePrefix [
+ExercismManager class >> legacyPackagePrefix [
 	^ 'Exercism'
 ]
 
