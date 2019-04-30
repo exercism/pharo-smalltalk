@@ -26,6 +26,9 @@ BaselineOfExercism >> baseline: spec [
 				package: 'ExercismSystemTests'
 					with: [ spec requires: #('ExercismTests') ];
 				
+				package: 'Exercism' "Legacy Package for Testing"
+					with: [ spec requires: #('ExercismTools') ];
+					
 				package: 'ExercismWIP'
 					with: [ spec requires: #('ExercismTools') ];
 					
@@ -33,9 +36,10 @@ BaselineOfExercism >> baseline: spec [
 					with: [ spec requires: #(
 						'OSProcess' "For shelling out to configlet"
 						'Ring2' "For mentoring support of shadow browsing"
-						'ExercismTools'),  
+						'ExercismTools' ),  
 						self exercisePackageNames,
-						#('ExercismWIP' 
+						#('Exercism'
+						'ExercismWIP' 
 						'ExercismTests' 
 						'ExercismSystemTests')];
 				
