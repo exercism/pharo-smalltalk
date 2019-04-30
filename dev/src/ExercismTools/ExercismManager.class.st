@@ -40,7 +40,8 @@ ExercismManager class >> legacyExercismPackage [
 	
 	packageOrganiser := RPackageOrganizer default.
 	^ packageOrganiser
-		packageNamed: self legacyPackagePrefix
+		packageNamed: self legacyPackagePrefix 
+		ifAbsent: [ nil ]
 ]
 
 { #category : #config }
