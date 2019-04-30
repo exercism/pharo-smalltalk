@@ -7,9 +7,8 @@ The following are useful starting points for getting more detailed information a
 * [Pharo Syntax Cheatsheet](http://files.pharo.org/media/pharoCheatSheet.pdf)
 
 ### Community
-* [Pharo Community Resources](http://pharo.org/community)
+* [Pharo Community Resources](http://pharo.org/community) (including Discord chat link)
 * [Contribute to Pharo](http://pharo.org/contribute)
-* [Discord Chat](https://discordapp.com/invite/Sj2rhxn)
 
 ### Environment
 * [Pharo Screencasts](https://www.youtube.com/channel/UCp3mNigANqkesFzdm058bvw)
