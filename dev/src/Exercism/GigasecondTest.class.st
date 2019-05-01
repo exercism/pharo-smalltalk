@@ -8,7 +8,7 @@ A gigasecond is 10^9 (1,000,000,000) seconds.
 
 ## Hint
 
-TBD
+The Kernel-Chronology package has many useful date and time related classes and protocols. The Date and Time class have useful printing methods which you can use to create your own ISO8601 date and time representation. 
 
 "
 Class {
@@ -17,8 +17,17 @@ Class {
 	#instVars : [
 		'gigasecondCalculator'
 	],
-	#category : #'ExercismWIP-Gigasecond'
+	#category : #'Exercism-Gigasecond'
 }
+
+{ #category : #config }
+GigasecondTest class >> exercise [
+	^ (self createExerciseAfter: TournamentTest)
+		isCore: false;
+		difficulty: 1;
+		topics: #('time');
+		yourself
+]
 
 { #category : #config }
 GigasecondTest class >> uuid [
