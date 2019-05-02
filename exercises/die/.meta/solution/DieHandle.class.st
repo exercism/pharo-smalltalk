@@ -16,7 +16,7 @@ Class {
 	#instVars : [
 		'dice'
 	],
-	#category : #'Exercise@Dice'
+	#category : #'Exercise@Die'
 }
 
 { #category : #adding }

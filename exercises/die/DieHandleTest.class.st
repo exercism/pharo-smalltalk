@@ -1,7 +1,7 @@
 Class {
 	#name : #DieHandleTest,
 	#superclass : #ExercismTest,
-	#category : #'Exercise@Dice'
+	#category : #'Exercise@Die'
 }
 
 { #category : #tests }

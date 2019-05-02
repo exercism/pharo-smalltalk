@@ -1,5 +1,5 @@
 "
-# Dice
+# Die
 
 Experimental Custom Exercise (Don't use yet)
 
@@ -13,7 +13,7 @@ It is used in the book: Learning Object-Oriented Programming, Design and TDD wit
 Class {
 	#name : #DieTest,
 	#superclass : #ExercismTest,
-	#category : #'Exercise@Dice'
+	#category : #'Exercise@Die'
 }
 
 { #category : #config }

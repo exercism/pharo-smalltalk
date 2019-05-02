@@ -8,7 +8,7 @@ Class {
 	#instVars : [
 		'faces'
 	],
-	#category : #'Exercise@Dice'
+	#category : #'Exercise@Die'
 }
 
 { #category : #'instance creation' }

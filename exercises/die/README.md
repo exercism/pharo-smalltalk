@@ -1,6 +1,6 @@
-# Dice
+# Die
 
-# DiceExperimental Custom Exercise (Don't use yet)A small DSL for dice rolling: a nice example to get started with Pharo.## HintIt is used in the book: Learning Object-Oriented Programming, Design and TDD with Pharo available at http://books.pharo.org
+# DieExperimental Custom Exercise (Don't use yet)A small DSL for dice rolling: a nice example to get started with Pharo.## HintIt is used in the book: Learning Object-Oriented Programming, Design and TDD with Pharo available at http://books.pharo.org
 ## Hint
 
 It is used in the book: Learning Object-Oriented Programming, Design and TDD with Pharo available at http://books.pharo.org
@@ -8,12 +8,12 @@ It is used in the book: Learning Object-Oriented Programming, Design and TDD wit
 
 ## Downloading
 
-To download this exercise in Pharo, type: `dice` into the `Exercism | Fetch Exercise` package menu prompt (right click on the Exercism package in the Pharo System Browser). You can also submit your solution from the same menu for any selected package. You don't normally need to use the exercism cli (as indicated on the right hand panel).
+To download this exercise in Pharo, type: `die` into the `Exercism | Fetch Exercise` package menu prompt (right click on the Exercism package in the Pharo System Browser). You can also submit your solution from the same menu for any selected package. You don't normally need to use the exercism cli (as indicated on the right hand panel).
 
 ## Running The Tests
 
 Tests can be run directly from the Pharo IDE, by clicking on the test orb next to any test.
-The SUnit convention is that the provided `DiceTest`, will test the functionality of `Dice`.
+The SUnit convention is that the provided `DieTest`, will test the functionality of `Die`.
 
 If you are still stuck, the track documentation has more detailed help on [running tests](https://exercism.io/tracks/pharo/tests).
 
