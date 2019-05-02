@@ -1,0 +1,1 @@
+# DiceExperimental Custom Exercise (Don't use yet)A small DSL for dice rolling: a nice example to get started with Pharo.## HintIt is used in the book: Learning Object-Oriented Programming, Design and TDD with Pharo available at http://books.pharo.org
