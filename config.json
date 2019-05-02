@@ -248,6 +248,17 @@
       ]
     },
     {
+      "slug" : "die",
+      "uuid" : "dbea4db3-5044-0d00-ab77-b35a0c226d01",
+      "core" : false,
+      "auto_approve" : false,
+      "unlocked_by" : null,
+      "difficulty" : 1,
+      "topics" : [
+        "math"
+      ]
+    },
+    {
       "slug" : "etl",
       "uuid" : "d6303b3f-0f41-0d00-a5e1-db510c056502",
       "core" : false,
