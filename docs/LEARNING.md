@@ -12,8 +12,8 @@ it fits on a postcard
 a full pdf book with step by step examples
 * [Learning OOP and TDD in Pharo](http://books.pharo.org/learning-oop/):
 introduces more programming techniques and concepts
-* [Discord Chat](https://discordapp.com/invite/Sj2rhxn):
-is an active online Pharo discussions fourm
+* [Discord](https://discordapp.com/invite/Sj2rhxn) has an
+active online Pharo discussions forum (use the invite link at the top of the [Community Page](http://pharo.org/community))
 * [Pharo Mooc](http://mooc.pharo.org/):
 provides a series of full programming courses and videos
 
