@@ -88,7 +88,6 @@ The following instructions are very WIP and based on ArchLinux but may apply to 
 - Now try a simple command line test to verify if the VM and Image are working: `pharo Pharo.image eval "100 factorial"`. If all is well, you should get an answer.
 - Now try the "load script" described in the OSX section. You may find you get an error mentioning `libgit2`, if this is the case you should also install it and try again. We have also had reports that installing `libcurl-gnutls` can help (but this is not yet proven)
 - We have also had reports that for some libgit2 failures there is an internal loadModule change that we may backport from the development pharo. In this case you need to replace the method `unixModuleName` in Class `LGitLibrary` as follows:
-
   1. Launch a headfull Pharo by typing `pharo-ui Pharo.image`
   1. Press Ctrl-Space and type `unixModuleName`
   1. Select the `LGitLibrary >> unixModuleName` entry and press enter
