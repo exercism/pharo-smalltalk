@@ -3,8 +3,8 @@
 The simplest way to install [Pharo](http://pharo.org) is to use a [zero conf](http://pharo.org/download#//*[@id="main"]/div/h2[3]) download from a terminal command line. 
 <br/>_Note: If you are trying to upgrade an existing installation see the [upgrade instructions](*How-to-Upgrade-Pharo-Exercism) at the end_.
 
-Windows users who do not have a UNIX style shell installed should skip to the [Windows Installation](#windows-installation) instructions (below).
-More advanced Linux users may also want to refer to the [Linux Hackers Installation](#linux-hackers-installation).
+Windows users who do not have a UNIX style shell installed should skip to the [Windows Installation](#windows-installation-skip-for-osxlinux) instructions (below).<br/>
+More advanced Linux users may also want to refer to the [Linux Hackers Installation](#linux-hackers-installation-for-advanced-linux-use-only) (below).
 
 ### Linux/OSX Installation
 
@@ -88,11 +88,10 @@ The following instructions are very WIP and based on ArchLinux but may apply to 
 - Now try a simple command line test to verify if the VM and Image are working: `pharo Pharo.image eval "100 factorial"`. If all is well, you should get an answer.
 - Now try the "load script" described in the OSX section. You may find you get an error mentioning `libgit2`, if this is the case you should also install it and try again. We have also had reports that installing `libcurl-gnutls` can help (but this is not yet proven)
 - We have also had reports that for some libgit2 failures there is an internal loadModule change that we may backport from the development pharo. In this case you need to replace the method `unixModuleName` in Class `LGitLibrary` as follows:
-
-1. Launch a headfull Pharo by typing `pharo-ui Pharo.image`
-1. Press Ctrl-Space and type `unixModuleName`
-1. Select the `LGitLibrary >> unixModuleName` entry and press enter
-1. In the resulting browser, replace the method source for `unixModuleName` with the following (copy and paste it), press save (ctrl-s), and finally save and exit pharo.
+  1. Launch a headfull Pharo by typing `pharo-ui Pharo.image`
+  1. Press Ctrl-Space and type `unixModuleName`
+  1. Select the `LGitLibrary >> unixModuleName` entry and press enter
+  1. In the resulting browser, replace the method source for `unixModuleName` with the following (copy and paste it), press save (ctrl-s), and finally save and exit pharo.
 ```
 LGitLibrary >> unixModuleName
 	| pluginDir |
