@@ -10,12 +10,15 @@ All Endpoints require headers on the request to be set to the following values:
 
 ```
 Authorization: Bearer <token>
-Content-Type: application/json
 ```
 
 The value `<token>` is the users CLI authentication token available at `https://exercism.io/my/settings`.
 
 ## Fetching Exercises
+
+```
+Content-Type: application/json
+```
 
 `GET api.exercism.io/v1/solutions/latest?exercise_id=<name>&track_id<language> HTTP/1.1`
 
@@ -31,7 +34,7 @@ A sucessful request will respond with the exercise.
 
 #### 400
 
-The language track name is ambiguous.
+The language track name is ambiguous, or the submitted exercise files have not changed.
 
 #### 403
 
@@ -41,7 +44,33 @@ The solution not unlocked for the user or the language track is not joined.
 
 The language track or exercise could not be found.
 
-## References
+## Submitting Exercises
+
+```
+Content-Type: application/octet-stream
+```
+
+`PATCH api.exercism.io//v1/solutions/<some-kind-of-token-or-hash> HTTP/1.1`
+
+### Response
+
+#### 201
+
+A successful submission.
+
+#### 400
+
+A submitted file is too large (greater than one megabyte), or the solution is a duplicate.
+
+#### 403
+
+The solution is not accessable to the user. The solution user ID and the current user ID don't match.
+
+#### 404
+
+The solution ID was not found.
+
+## Reference
 
 - [exercism/pharo-smalltalk issue-32](https://github.com/exercism/pharo-smalltalk/issues/32)
 - [exercism/exercism issue-4087](https://github.com/exercism/exercism/issues/4087)
