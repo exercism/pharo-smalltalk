@@ -51,12 +51,12 @@ While there many ways to help, by far the easiest and most useful contribution i
 
   * You may need to adjust the test if it's not idiomatic Smalltalk (our generator is pretty basic - however this said, some corrections might be appropriate as PR's back to the upstream [problem-specification](https://github.com/exercism/problem-specifications) text)
   
-  * Update the exercise meta data on the class side of the exercise by overriding the #exercise method and filling in a difficlty, topics etc. You should also fill in some Hint text in the Test comment tab (at the bottom - by replacing the text TBD) 
+  * Update the exercise meta data on the class side of the exercise by overriding the #exercise method and filling in a difficulty, topics etc. You should also fill in some Hint text in the Test comment tab (at the bottom - by replacing the text TBD) 
   
-  * Update the package of the chosen example to Exercism (i.e. move it out of the WIP package)
+  * Update the package of the chosen example to `Exercise@<ExerciseName>` (i.e. move it out of the WIP package)
   * Create a new branch in Iceberg with the name of the exercise you chose (you can use the Iceberg tool for this, and enter your issue number from above)
   * Before submitting your pull request, Run all the tests for the Pharo exercises and ensure they all pass
-  * Now get your solution reviewed by pushing your branch to your fork and then creating a PR on exercism/pharo-Smalltalk 
+  * Now get your solution reviewed by pushing your branch to your fork and then creating a PR on exercism/pharo-Smalltalk. It is important to [enable maintainer edits](https://help.github.com/en/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork), so we can collaborate with you in your branch
   * follow your PR and answer any ensuing questions
   * finally submit any adjustments and a maintainer will run the generator to create the Exercism assets (via configlet) and commit the final solution so it appears on the site
 
