@@ -56,6 +56,31 @@ ExercismGenerator >> createTagSnapshotFor: packageOrTag [
 ]
 
 { #category : #helper }
+ExercismGenerator >> generateCustomDataFor: anExercismExercise to: destinationDirectory [
+	"Generate markdown hints, that exercism configlet will pickup for readme.md files
+	see: https://github.com/exercism/docs/blob/master/language-tracks/exercises/anatomy/readmes.md#generating-a-readme"
+
+	(destinationDirectory / 'description.md') ensureCreateFile
+		writeStreamDo: [ :stream | 
+			| description |
+			description := anExercismExercise descriptionText.
+				
+			stream nextPutAll: description ].
+		
+	(destinationDirectory / 'metadata.yml') ensureCreateFile
+		writeStreamDo: [ :stream | 
+			| data |
+			data := anExercismExercise testCase customData.
+				
+			stream nextPutAll: '---'; lf.
+			data keysAndValuesDo: [ :key :value |
+				stream nextPutAll: key, ': "';
+					nextPutAll: value;
+					nextPut: $";
+					lf ]]
+]
+
+{ #category : #helper }
 ExercismGenerator >> generateReadmeHintFor: anExercismExercise to: destinationDirectory [
 	"Generate markdown hints, that exercism configlet will pickup for readme.md files
 	see: https://github.com/exercism/docs/blob/master/language-tracks/exercises/anatomy/readmes.md#generating-a-readme"
@@ -74,14 +99,14 @@ ExercismGenerator >> generateReadmeHintFor: anExercismExercise to: destinationDi
 ExercismGenerator >> generateSourceFilesFor: packageOrTag to: filePathString [
 	"Generate the Tonel source files for a package (normally a tag). Answer the exercise directory reference"
 
-	| exampleDirectoryRef exerciseDirectoryRef metaDirectoryRef  solutionDirectoryRef testClass testClassFilename exerciseName |
+	| exampleDirectoryRef exerciseDirectoryRef metaDirectoryRef  solutionDirectoryRef testClass testClassFilename exerciseName testClasses |
 	
 	"Note: could create the writer on a memory stream to then pick what should be stored on disk
 	e.g.
 		mem := FileSystem memory root.
 		writer := ExTonelWriter on: mem."
 
-	exerciseName := packageOrTag name asKebabCase.
+	exerciseName := ExercismExercise exerciseNameFrom: packageOrTag.
 	exampleDirectoryRef := filePathString asFileReference.
 	exerciseDirectoryRef := exampleDirectoryRef / exerciseName.
 	metaDirectoryRef :=  exerciseDirectoryRef / '.meta'.
@@ -98,11 +123,15 @@ ExercismGenerator >> generateSourceFilesFor: packageOrTag to: filePathString [
 	(solutionDirectoryRef / 'package.st') delete.
 	
 	"Move the test file down to the exerciseDirectory"
-	testClass := packageOrTag classes detect: [ :cls | cls isTestCase  ].	
-	testClassFilename := testClass name, '.class.st'.
-	(solutionDirectoryRef / testClassFilename) moveTo: exerciseDirectoryRef / testClassFilename.
+	testClasses := packageOrTag classes select: [ :cls | cls inheritsFrom: ExercismTest ].	
+	testClasses do: [ :tc |
+		testClassFilename := tc name, '.class.st'.
+		(solutionDirectoryRef / testClassFilename) moveTo: exerciseDirectoryRef / testClassFilename ].
 	
+	testClass := testClasses detect: [ :tc | tc class includesSelector: #exercise  ].
 	self generateReadmeHintFor: testClass exercise to: metaDirectoryRef.
+	
+	testClass isCustom ifTrue: [ self generateCustomDataFor: testClass exercise to: metaDirectoryRef  ].
 	
 	^exerciseDirectoryRef 
 
@@ -112,10 +141,9 @@ ExercismGenerator >> generateSourceFilesFor: packageOrTag to: filePathString [
 ExercismGenerator >> generateTo: filePathReference [
 	| cmd result basePathReference |
 	
-	(RPackage organizer packageNamed: 'Exercism') packages do: [:pkg |
-			self generateSourceFilesFor: pkg to: filePathReference ].
+	ExercismExercise allExercises select: [:ex | ex isActive ] thenDo: [:ex |
+			self generateSourceFilesFor: ex exercisePackage to: filePathReference ].
 		
-	
 	basePathReference := filePathReference parent.
 	ExercismConfigGenerator generateTo: basePathReference.
 	

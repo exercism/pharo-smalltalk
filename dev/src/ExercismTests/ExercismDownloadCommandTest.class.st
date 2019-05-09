@@ -13,6 +13,8 @@ ExercismDownloadCommandTest >> testExecuteDownloading [
 	mockHttpClient := ExercismHttpClient asMock.
 	mockParser := TonelParser asMock.
 	
+	(ExercismExercise stub find: Any ifAbsent: Any) willReturn: HelloWorldTest exercise.
+	
 	[  
 	cmd := (ExercismDownloadCommand
 				from: mockHttpClient track: 'pharo' exercise: 'test-exercise')

@@ -17,6 +17,13 @@ TestExerciseTest class >> exercise [
 ]
 
 { #category : #config }
+TestExerciseTest class >> isActive [
+	"Answer true if an exercise is active (not deprecated or for testing)"
+	
+	^false
+]
+
+{ #category : #config }
 TestExerciseTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'dc7b1fff-f0be-460d-b146-ee84c2acc000'

@@ -16,6 +16,28 @@ ExercismExerciseTest >> testAsJsonData [
 ]
 
 { #category : #tests }
+ExercismExerciseTest >> testBonusExercises [
+	
+	self assert: ExercismExercise bonusExercises notEmpty 
+	
+	
+]
+
+{ #category : #tests }
+ExercismExerciseTest >> testCoreExercises [
+	
+	self assert: ExercismExercise coreExercises notEmpty 	
+	
+	
+]
+
+{ #category : #tests }
+ExercismExerciseTest >> testDescriptionText [
+	
+	self assert: (HelloWorldTest exercise descriptionText endsWith: 'real exercise')
+]
+
+{ #category : #tests }
 ExercismExerciseTest >> testExerciseClass [
 	
 	self assert: TestExerciseTest exercise exerciseClass equals: TestExercise.	
@@ -169,7 +191,7 @@ ExercismExerciseTest >> testUnlockReference [
 { #category : #tests }
 ExercismExerciseTest >> testUnlockedExercises [
 	
-	self assertCollection: HelloWorldTest exercise unlockedExercises asArray equals: #().
+	self assertCollection: HelloWorldTest exercise unlockedExercises asArray equals: {DieTest exercise }.
 	self assertCollection: TwoFerTest exercise unlockedExercises asArray 
 				includesAll: {ResistorColorDuoTest exercise. SpaceAgeTest exercise}.
 ]
