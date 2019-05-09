@@ -31,14 +31,22 @@ ExercismExercise class >> bonusExercises [
 
 	^ (self allExercises
 		reject:
-			[ :exercise | exercise isCore or: [ (exercise exercisePackage name includes: $@) not ] ])
+			[ :exercise | exercise isCore or: [ exercise isActive not ] ])
 		asSortedCollection: [ :a :b | a name < b name ]
 ]
 
 { #category : #'instance creation' }
 ExercismExercise class >> coreExercises [
-	^(self allExercises select: [:e | e isCore ])
+	^(self allExercises select: [:e | e isCore and: [e isActive]])
 		asSortedCollection: [ :a :b | a isFollowedBy: b  ]
+]
+
+{ #category : #'instance creation' }
+ExercismExercise class >> exerciseNameFrom: packageOrTag [
+	"Answer the name of the exercise given its storage RPackage or tag"	
+		
+	^($@ split: packageOrTag name) last asKebabCase.
+
 ]
 
 { #category : #'instance creation' }
@@ -80,6 +88,18 @@ ExercismExercise >> asJsonData [
 		'unlocked_by' -> self unlockReference.
 		'difficulty' -> self difficulty.
 		'topics' -> self topics } asOrderedDictionary 
+]
+
+{ #category : #accessing }
+ExercismExercise >> descriptionText [
+	"Answer the String, that is the hint text for exerciems (this is the text afer the markdown heading ## Hint"
+
+	| text offset |
+	text := self testCase comment.
+	(offset := text findString: self hintMarker) = 0 ifTrue: [ ^ text ].
+	
+	^(text truncateTo: offset - 1) trimBoth
+	
 ]
 
 { #category : #accessing }
@@ -160,6 +180,11 @@ ExercismExercise >> hash [
 ]
 
 { #category : #accessing }
+ExercismExercise >> hintMarker [
+	^ '## Hint'
+]
+
+{ #category : #accessing }
 ExercismExercise >> hintText [
 	"Answer the String, that is the hint text for exerciems (this is the text afer the markdown heading ## Hint"
 
@@ -167,7 +192,7 @@ ExercismExercise >> hintText [
 	self testCase comment
 		ifNotNil: [ :comment | 
 			| hintMarker |
-			hintMarker := '## Hint'.
+			hintMarker := self hintMarker.
 			hintIndex := comment findString: hintMarker.
 			hintIndex > 0
 				ifTrue: [ ^ (comment allButFirst: hintIndex + hintMarker size) trimBoth ] ].
@@ -187,6 +212,11 @@ ExercismExercise >> initialize [
 		isDeprecated: false;
 		isAutoApproved: false;
 		topics: #()
+]
+
+{ #category : #accessing }
+ExercismExercise >> isActive [
+	^self testCase isActive 
 ]
 
 { #category : #accessing }
