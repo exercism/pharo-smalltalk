@@ -13,9 +13,9 @@ Class {
 
 { #category : #private }
 AllExercismTests class >> allExercismTests [
-	"gather all the TestCases in the Execercsim package"
+	"gather all the TestCases in the Execercism package"
 
-	^ self allExercismTestsFor: #( #Exercism #ExercismTests)
+	^ self allExercismTestsFor: #( #ExercismTests #ExercismSystemTests), BaselineOfExercism exercisePackageNames 
 ]
 
 { #category : #private }
@@ -37,7 +37,7 @@ AllExercismTests class >> allExercismTestsFor: packagesNameList [
 AllExercismTests class >> allUserExercismTests [
 	"gather all the TestCases in the Execercsim package"
 
-	^ self allExercismTestsFor: #( #Exercism )
+	^ self allExercismTestsFor: BaselineOfExercism exercisePackageNames
 ]
 
 { #category : #private }
