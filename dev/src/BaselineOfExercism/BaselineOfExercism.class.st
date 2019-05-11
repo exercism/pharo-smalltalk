@@ -5,6 +5,20 @@ Class {
 }
 
 { #category : #baselines }
+BaselineOfExercism class >> exercisePackageNames [
+	"Answer the list of exercise package names (as we don't yet have proper projects)"
+
+	^ #('Exercise@Acronym' 'Exercise@Allergies' 'Exercise@Anagram' 'Exercise@ArmstrongNumbers' 'Exercise@AtbashCipher' 'Exercise@Binary' 'Exercise@Bowling' 'Exercise@Clock' 'Exercise@CollatzConjecture' 'Exercise@Darts' 'Exercise@Diamond' 'Exercise@Die' 'Exercise@Etl' 'Exercise@Forth' 'Exercise@GradeSchool' 'Exercise@Grains' 'Exercise@Hamming' 'Exercise@HelloWorld' 'Exercise@HighScores' 'Exercise@IsbnVerifier' 'Exercise@Isogram' 'Exercise@Leap' 'Exercise@Luhn' 'Exercise@MatchingBrackets' 'Exercise@Pangram' 'Exercise@Proverb' 'Exercise@Raindrops' 'Exercise@ResistorColorDuo' 'Exercise@ReverseString' 'Exercise@RobotSimulator' 'Exercise@RomanNumerals' 'Exercise@SecretHandshake' 'Exercise@Sieve' 'Exercise@SpaceAge' 'Exercise@SumOfMultiples' 'Exercise@Tournament' 'Exercise@TwelveDays' 'Exercise@TwoFer' 'Exercise@Welcome' 'Exercise@WordCount')
+]
+
+{ #category : #baselines }
+BaselineOfExercism class >> exerciseTestPackageNames [
+	"Answer the list of exercise package names used for testing (as we don't yet have proper projects)"
+
+	^ #('ExercismTests-ExerciseEmpty' 'ExercismTests-ExerciseMany' 'ExercismTests-ExerciseNormal')
+]
+
+{ #category : #baselines }
 BaselineOfExercism >> baseline: spec [
 	<baseline>
 	
@@ -21,7 +35,7 @@ BaselineOfExercism >> baseline: spec [
 					with: [ spec requires: #('Mocketry') ];
 				package: 'ExercismTests'
 					with: [ spec requires: #('ExercismTools' 'ExercismMocking'), 
-						self exerciseTestPackageNames ];
+						self class exerciseTestPackageNames ];
 					
 				package: 'ExercismSystemTests'
 					with: [ spec requires: #('ExercismTests') ];
@@ -37,9 +51,8 @@ BaselineOfExercism >> baseline: spec [
 						'OSProcess' "For shelling out to configlet"
 						'Ring2' "For mentoring support of shadow browsing"
 						'ExercismTools' ),  
-						self exercisePackageNames,
-						#('Exercism'
-						'ExercismWIP' 
+						self class exercisePackageNames,
+						#('ExercismWIP' 
 						'ExercismTests' 
 						'ExercismSystemTests')];
 				
@@ -48,20 +61,6 @@ BaselineOfExercism >> baseline: spec [
 				
 				group: 'dev'
 					with: #('ExercismDev')]
-]
-
-{ #category : #baselines }
-BaselineOfExercism >> exercisePackageNames [
-	"Answer the list of exercise package names (as we don't yet have proper projects)"
-
-	^ #('Exercise@Acronym' 'Exercise@Allergies' 'Exercise@Anagram' 'Exercise@ArmstrongNumbers' 'Exercise@AtbashCipher' 'Exercise@Binary' 'Exercise@Bowling' 'Exercise@Clock' 'Exercise@CollatzConjecture' 'Exercise@Darts' 'Exercise@Diamond' 'Exercise@Die' 'Exercise@Etl' 'Exercise@Forth' 'Exercise@GradeSchool' 'Exercise@Grains' 'Exercise@Hamming' 'Exercise@HelloWorld' 'Exercise@HighScores' 'Exercise@IsbnVerifier' 'Exercise@Isogram' 'Exercise@Leap' 'Exercise@Luhn' 'Exercise@MatchingBrackets' 'Exercise@Pangram' 'Exercise@Proverb' 'Exercise@Raindrops' 'Exercise@ResistorColorDuo' 'Exercise@ReverseString' 'Exercise@RobotSimulator' 'Exercise@RomanNumerals' 'Exercise@SecretHandshake' 'Exercise@Sieve' 'Exercise@SpaceAge' 'Exercise@SumOfMultiples' 'Exercise@Tournament' 'Exercise@TwelveDays' 'Exercise@TwoFer' 'Exercise@Welcome' 'Exercise@WordCount')
-]
-
-{ #category : #baselines }
-BaselineOfExercism >> exerciseTestPackageNames [
-	"Answer the list of exercise package names used for testing (as we don't yet have proper projects)"
-
-	^ #('ExercismTests-ExerciseEmpty' 'ExercismTests-ExerciseMany' 'ExercismTests-ExerciseNormal')
 ]
 
 { #category : #baselines }
@@ -91,7 +90,7 @@ BaselineOfExercism >> setUpDependencies: spec [
 
 { #category : #baselines }
 BaselineOfExercism >> setUpExercisesFor: spec [
-	self exercisePackageNames, self exerciseTestPackageNames 
+	self class exercisePackageNames, self class exerciseTestPackageNames 
 		do:
 			[ :name | spec package: name with: [ spec requires: #('ExercismTools') ] ]
 ]
