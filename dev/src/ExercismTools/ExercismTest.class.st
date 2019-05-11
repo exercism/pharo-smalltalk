@@ -25,6 +25,11 @@ ExercismTest class >> createExerciseAfter: anotherTestCase [
 ]
 
 { #category : #config }
+ExercismTest class >> customData [
+	^{}
+]
+
+{ #category : #config }
 ExercismTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise
 	e.g.
@@ -48,10 +53,15 @@ ExercismTest class >> generator [
 ]
 
 { #category : #config }
-ExercismTest class >> next [
-	"Answer the String id of the exercise name that follows (For future usage)"
+ExercismTest class >> isActive [
+	"Answer true if an exercise is active (not deprecated or for testing)"
 	
-	^''
+	^true
+]
+
+{ #category : #config }
+ExercismTest class >> isCustom [
+	^self customData notEmpty
 ]
 
 { #category : #accessing }

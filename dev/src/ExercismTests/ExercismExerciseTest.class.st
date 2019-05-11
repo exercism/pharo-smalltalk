@@ -16,6 +16,28 @@ ExercismExerciseTest >> testAsJsonData [
 ]
 
 { #category : #tests }
+ExercismExerciseTest >> testBonusExercises [
+	
+	self assert: ExercismExercise bonusExercises notEmpty 
+	
+	
+]
+
+{ #category : #tests }
+ExercismExerciseTest >> testCoreExercises [
+	
+	self assert: ExercismExercise coreExercises notEmpty 	
+	
+	
+]
+
+{ #category : #tests }
+ExercismExerciseTest >> testDescriptionText [
+	
+	self assert: (HelloWorldTest exercise descriptionText endsWith: 'real exercise')
+]
+
+{ #category : #tests }
 ExercismExerciseTest >> testExerciseClass [
 	
 	self assert: TestExerciseTest exercise exerciseClass equals: TestExercise.	
@@ -35,18 +57,18 @@ ExercismExerciseTest >> testExerciseClassName [
 { #category : #tests }
 ExercismExerciseTest >> testExercisePackage [
 	
-	self assert: TestExerciseTest exercise exercisePackage name equals: #ExercismTests.	
-	self assert: HelloWorldTest exercise exercisePackage equals: ExercismManager exercismPackage.
-	self assert: TestEmptyTest exercise exercisePackage name equals: #ExercismTests.
+	self assert: TestExerciseTest exercise exercisePackage equals: TestExerciseTest package.	
+	self assert: TestEmptyTest exercise exercisePackage equals: TestEmptyTest package.
+	self assert: TestmanyTest exercise exercisePackage equals: TestmanyTest package.
 	
 ]
 
 { #category : #tests }
 ExercismExerciseTest >> testExercisePackageTag [
 	
-	self assert: TestExerciseTest exercise exercisePackageTag class equals: RPackageTag.
-	self assert: TestExerciseTest exercise exercisePackageTag name equals: #TestExercise.	
-	self assert: TestmanyTest exercise exercisePackageTag name equals: #Testmany.
+	self assert: TestExerciseTest exercise exercisePackageContainer class equals: RPackage.
+	self assert: TestExerciseTest exercise exercisePackageContainer equals: TestExerciseTest package.	
+	self assert: TestmanyTest exercise exercisePackageContainer equals: TestmanyTest package.
 ]
 
 { #category : #tests }
@@ -169,7 +191,7 @@ ExercismExerciseTest >> testUnlockReference [
 { #category : #tests }
 ExercismExerciseTest >> testUnlockedExercises [
 	
-	self assertCollection: HelloWorldTest exercise unlockedExercises asArray equals: #().
+	self assertCollection: HelloWorldTest exercise unlockedExercises asArray equals: {DieTest exercise }.
 	self assertCollection: TwoFerTest exercise unlockedExercises asArray 
 				includesAll: {ResistorColorDuoTest exercise. SpaceAgeTest exercise}.
 ]

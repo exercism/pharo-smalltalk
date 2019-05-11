@@ -18,19 +18,8 @@ ExercismManager class >> default [
 ]
 
 { #category : #config }
-ExercismManager class >> exercismPackage [
-	"Answer the default exercism package, or create one if missing"
-	| packageOrganiser |
-	
-	packageOrganiser := RPackageOrganizer default.
-	^ packageOrganiser
-		packageNamed: self exercismPackageName
-		ifAbsent: [ packageOrganiser createPackageNamed: self exercismPackageName ]
-]
-
-{ #category : #config }
-ExercismManager class >> exercismPackageName [
-	^ 'Exercism'
+ExercismManager class >> exercisePrefix [
+	^ 'Exercise'
 ]
 
 { #category : #exercism }
@@ -42,6 +31,22 @@ ExercismManager class >> isUserMode [
 		and: [ (RPackageOrganizer default
 				packageNamed: 'ExercismDev'
 				ifAbsent: [ nil ]) isNil ]
+]
+
+{ #category : #config }
+ExercismManager class >> legacyExercismPackage [
+	"Answer the default exercism package, or create one if missing"
+	| packageOrganiser |
+	
+	packageOrganiser := RPackageOrganizer default.
+	^ packageOrganiser
+		packageNamed: self legacyPackagePrefix 
+		ifAbsent: [ nil ]
+]
+
+{ #category : #config }
+ExercismManager class >> legacyPackagePrefix [
+	^ 'Exercism'
 ]
 
 { #category : #cache }
@@ -58,21 +63,16 @@ ExercismManager class >> trackId [
 ExercismManager class >> welcome [
 	"Setup the initial environment for a new user"
 
-	| defaultPackage browser |
-
-	defaultPackage := self exercismPackage.
-	defaultPackage
-		moveClass: Welcome
-		toTag: (RPackageTag package: defaultPackage name: 'Welcome').
+	| browser |
 		
 	"If in usermode, hide the repositories so solutions aren't easily visible with a git compare"
 	self isUserMode
 		ifTrue: [ IceRepository reset ].
 
 	"Select, package and then method so it scrolls nicely into view"
-	browser := Smalltalk tools browser openOnPackage: defaultPackage.
+	browser := Smalltalk tools browser openOnPackage: Welcome package.
 	browser
-		selectPackage: Welcome package atClassTag: Welcome name;
+		"selectPackage: Welcome package;"
 		selectMethod: (Welcome methodNamed: #testWelcome)
 ]
 
@@ -119,7 +119,7 @@ ExercismManager >> parseTokenNamed: tokenName from: aString [
 { #category : #exercism }
 ExercismManager >> submitToExercism: packageOrTag [
 		
-	(packageOrTag  = self class exercismPackage) 
+	(packageOrTag  = self class legacyExercismPackage) 
 		ifTrue: [ self error: 'Select the sub-package with your solution!' ].
 				
 	^(ExercismSubmitCommand exercise: packageOrTag) execute.

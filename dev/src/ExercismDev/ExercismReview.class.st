@@ -34,7 +34,7 @@ ExercismReview >> codeSnapshot: anObject [
 
 { #category : #accessing }
 ExercismReview >> referenceSnapshot [
-	^ self submission exercise exercisePackageTag snapshot
+	^ self submission exercise snapshot
 ]
 
 { #category : #accessing }

@@ -21,6 +21,29 @@ ClyExercismExerciseCommand class >> isAbstract [
 ]
 
 { #category : #activation }
+ClyExercismExerciseCommand class >> isExercismTagIn: aToolContext [
+	^ aToolContext lastSelectedClassGroup name ~= ExercismManager legacyPackagePrefix
+		and: [ aToolContext lastSelectedClassGroup classes
+				detect: [ :any | 
+					(any package name
+						beginsWith: ExercismManager exercisePrefix , '@')
+						or: [ any package name = ExercismManager legacyPackagePrefix ] ]
+				ifFound: [ true ]
+				ifNone: [ false ] ]
+]
+
+{ #category : #activation }
+ClyExercismExerciseCommand class >> packageContextMenuActivation [
+	"We can use a second annotation to give a similar menu to the Package item"
+	<classAnnotation>
+	
+	^ CmdContextMenuActivation
+		byItemOf: ClyExercismMenuGroup
+		order: self contextMenuOrder
+		for: RPackage asCalypsoItemContext
+]
+
+{ #category : #activation }
 ClyExercismExerciseCommand class >> tagContextMenuActivation [
 	<classAnnotation>
 	

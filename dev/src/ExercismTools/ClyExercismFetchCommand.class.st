@@ -12,17 +12,6 @@ ClyExercismFetchCommand class >> contextMenuOrder [
 		^5
 ]
 
-{ #category : #activation }
-ClyExercismFetchCommand class >> packageContextMenuActivation [
-	"We can use a second annotation to give a similar menu to the Package item"
-	<classAnnotation>
-	
-	^ CmdContextMenuActivation
-		byItemOf: ClyExercismMenuGroup
-		order: self contextMenuOrder
-		for: RPackage asCalypsoItemContext
-]
-
 { #category : #'world menu' }
 ClyExercismFetchCommand class >> worldMenuCommandOn: aBuilder [
 	<worldMenu>
@@ -30,7 +19,7 @@ ClyExercismFetchCommand class >> worldMenuCommandOn: aBuilder [
 	| templateCommand browser |
 	
 	templateCommand := self new 
-		packages: { ExercismManager exercismPackage }; 
+		packages: { self package }; 
 		yourself.
 	
 	(aBuilder item: templateCommand defaultMenuItemName)

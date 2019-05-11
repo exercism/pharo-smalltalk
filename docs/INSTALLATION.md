@@ -184,8 +184,8 @@ If you ever need to upgrade (or downgrade) to a specific version of Exercism, yo
  ...
  ```
 
-Where `<versison-tag>` would be something like: `v0.2.3`
+Where `<versison-tag>` could be something like: `v0.2.3` or `master`
  
-Once you have loaded a specific version, you may also need to "re-fetch" any existing exercises that you want to continue working on, by using the regular "Exercism Fetch" menu item.
+Once you have loaded a specific version, you may also need to "re-fetch" any existing exercises that you want to continue working on by using the regular `Exercism | Fetch...` menu item.
  
-In rare situations (if you continue to have problems), you might need to get a fresh Pharo.image file (and the easiest way is to re-install Pharo in a fresh directory by following the regular installation instructions at the top of this page).
+In rare situations (if you continue to have problems), you might need to get a fresh Pharo.image file ( the easiest way is to re-install Pharo in a fresh directory by following the regular installation instructions at the top of this page).

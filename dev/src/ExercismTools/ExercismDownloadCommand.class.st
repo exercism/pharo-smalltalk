@@ -45,7 +45,7 @@ ExercismDownloadCommand >> installExerciseFor: submission [
 			[ :filename :contents | (self parser documentFrom: contents) do: [ :def | def load ] ].
 		
 	SystemAnnouncer uniqueInstance
-		announce: (RPackageRegistered to: ExercismManager exercismPackage).
+		announce: (RPackageRegistered to: submission exercise exercisePackage).
 	
 ]
 

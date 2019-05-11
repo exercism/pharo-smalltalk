@@ -1,6 +1,26 @@
 Extension { #name : #RPackageTag }
 
 { #category : #'*ExercismTools' }
+RPackageTag >> definedClasses [
+	^ self classes
+]
+
+{ #category : #'*ExercismTools' }
+RPackageTag >> promoteAsExercismRPackage [
+	"This method converts this rpackage tag into an rpackage compatible with exercism"
+	|  tagName pkgName promotedName pkg |
+	
+	tagName := self name.
+	pkgName := self packageName.
+	promotedName := self categoryName.
+	
+	self promoteAsRPackage.
+	
+	pkg := RPackageOrganizer default packageNamed: promotedName.
+	pkg renameTo: pkgName, '@', tagName
+]
+
+{ #category : #'*ExercismTools' }
 RPackageTag >> root [
 	^self package
 ]

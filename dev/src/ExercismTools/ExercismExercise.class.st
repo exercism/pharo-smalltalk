@@ -31,14 +31,22 @@ ExercismExercise class >> bonusExercises [
 
 	^ (self allExercises
 		reject:
-			[ :exercise | exercise isCore or: [ exercise exercisePackage ~= HelloWorldTest package ] ])
+			[ :exercise | exercise isCore or: [ exercise isActive not ] ])
 		asSortedCollection: [ :a :b | a name < b name ]
 ]
 
 { #category : #'instance creation' }
 ExercismExercise class >> coreExercises [
-	^(self allExercises select: [:e | e isCore ])
+	^(self allExercises select: [:e | e isCore and: [e isActive]])
 		asSortedCollection: [ :a :b | a isFollowedBy: b  ]
+]
+
+{ #category : #'instance creation' }
+ExercismExercise class >> exerciseNameFrom: packageOrTag [
+	"Answer the name of the exercise given its storage RPackage or tag"	
+		
+	^($@ split: packageOrTag name) last asKebabCase.
+
 ]
 
 { #category : #'instance creation' }
@@ -83,6 +91,18 @@ ExercismExercise >> asJsonData [
 ]
 
 { #category : #accessing }
+ExercismExercise >> descriptionText [
+	"Answer the String, that is the hint text for exerciems (this is the text afer the markdown heading ## Hint"
+
+	| text offset |
+	text := self testCase comment.
+	(offset := text findString: self hintMarker) = 0 ifTrue: [ ^ text ].
+	
+	^(text truncateTo: offset - 1) trimBoth
+	
+]
+
+{ #category : #accessing }
 ExercismExercise >> difficulty [
 	^ difficulty
 ]
@@ -112,9 +132,15 @@ ExercismExercise >> exercisePackage [
 	^self testCase package
 ]
 
-{ #category : #accessing }
-ExercismExercise >> exercisePackageTag [
-	^self testCase package classTagForClass: self testCase
+{ #category : #internal }
+ExercismExercise >> exercisePackageContainer [
+	"Answer the package or legacy tag, that containts the exercise - must conform to #classes, #snapshot protocols"
+	
+	| pkg |
+	
+	^ (pkg := self exercisePackage) = ExercismManager legacyExercismPackage
+		ifTrue: [ pkg classTagForClass: self testCase ]
+		ifFalse: [ pkg ]
 ]
 
 { #category : #navigating }
@@ -154,6 +180,11 @@ ExercismExercise >> hash [
 ]
 
 { #category : #accessing }
+ExercismExercise >> hintMarker [
+	^ '## Hint'
+]
+
+{ #category : #accessing }
 ExercismExercise >> hintText [
 	"Answer the String, that is the hint text for exerciems (this is the text afer the markdown heading ## Hint"
 
@@ -161,7 +192,7 @@ ExercismExercise >> hintText [
 	self testCase comment
 		ifNotNil: [ :comment | 
 			| hintMarker |
-			hintMarker := '## Hint'.
+			hintMarker := self hintMarker.
 			hintIndex := comment findString: hintMarker.
 			hintIndex > 0
 				ifTrue: [ ^ (comment allButFirst: hintIndex + hintMarker size) trimBoth ] ].
@@ -181,6 +212,11 @@ ExercismExercise >> initialize [
 		isDeprecated: false;
 		isAutoApproved: false;
 		topics: #()
+]
+
+{ #category : #accessing }
+ExercismExercise >> isActive [
+	^self testCase isActive 
 ]
 
 { #category : #accessing }
@@ -268,10 +304,17 @@ ExercismExercise >> printOn: aStream [
 ]
 
 { #category : #accessing }
+ExercismExercise >> snapshot [
+	"Answer the MCSnapshot for the exercise"
+	
+	^self exercisePackageContainer snapshot
+]
+
+{ #category : #accessing }
 ExercismExercise >> solutionClasses [
 	"Answer the classes that are submitted to Exercism"
 	
-	^self exercisePackageTag classes reject: [ :c | c isKindOf: ExercismTest class ]
+	^self exercisePackageContainer classes reject: [ :c | c isKindOf: ExercismTest class ]
 ]
 
 { #category : #accessing }
@@ -285,7 +328,7 @@ ExercismExercise >> solutionSources [
 	
 	| sources testResult resultDictionary |
 	
-	sources := ExTonelWriter new mappedSnapshot: self exercisePackageTag snapshot.
+	sources := ExTonelWriter new mappedSnapshot: self snapshot.
 	
 	testResult := [ self testCase suite run] on: Error do: [ TestResult new ].
 	resultDictionary := OrderedDictionary new 

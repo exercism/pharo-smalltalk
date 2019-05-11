@@ -11,35 +11,57 @@ BaselineOfExercism >> baseline: spec [
 	spec
 		for: #common
 		do: [ self setUpDependencies: spec.
+			self setUpExercisesFor: spec.
 			spec
 				package: 'ExercismPharo70'; "Pharo override/patch methods"
 				package: 'ExercismTools' 
 					with: [ spec requires: #('ExercismPharo70') ];
 				
-				package: 'Exercism'; "For dev group (as this has all solutions & tests)"
-				
 				package: 'ExercismMocking' 
 					with: [ spec requires: #('Mocketry') ];
 				package: 'ExercismTests'
-					with: [ spec requires: #('ExercismMocking') ];
+					with: [ spec requires: #('ExercismTools' 'ExercismMocking'), 
+						self exerciseTestPackageNames ];
+					
 				package: 'ExercismSystemTests'
 					with: [ spec requires: #('ExercismTests') ];
 				
-				package: 'ExercismWIP';
+				package: 'Exercism' "Legacy Package for Testing"
+					with: [ spec requires: #('ExercismTools') ];
+					
+				package: 'ExercismWIP'
+					with: [ spec requires: #('ExercismTools') ];
 					
 				package: 'ExercismDev'
 					with: [ spec requires: #(
 						'OSProcess' "For shelling out to configlet"
 						'Ring2' "For mentoring support of shadow browsing"
-						'ExercismTools' 'Exercism' 'ExercismWIP' 
-						'ExercismTests' 'ExercismSystemTests'
-						)];
+						'ExercismTools' ),  
+						self exercisePackageNames,
+						#('Exercism'
+						'ExercismWIP' 
+						'ExercismTests' 
+						'ExercismSystemTests')];
 				
 				group: 'default'
-					with: #('ExercismTools');
+					with: #('ExercismTools' 'Exercise@Welcome');
 				
 				group: 'dev'
 					with: #('ExercismDev')]
+]
+
+{ #category : #baselines }
+BaselineOfExercism >> exercisePackageNames [
+	"Answer the list of exercise package names (as we don't yet have proper projects)"
+
+	^ #('Exercise@Acronym' 'Exercise@Allergies' 'Exercise@Anagram' 'Exercise@ArmstrongNumbers' 'Exercise@AtbashCipher' 'Exercise@Binary' 'Exercise@Bowling' 'Exercise@Clock' 'Exercise@CollatzConjecture' 'Exercise@Darts' 'Exercise@Diamond' 'Exercise@Die' 'Exercise@Etl' 'Exercise@Forth' 'Exercise@GradeSchool' 'Exercise@Grains' 'Exercise@Hamming' 'Exercise@HelloWorld' 'Exercise@HighScores' 'Exercise@IsbnVerifier' 'Exercise@Isogram' 'Exercise@Leap' 'Exercise@Luhn' 'Exercise@MatchingBrackets' 'Exercise@Pangram' 'Exercise@Proverb' 'Exercise@Raindrops' 'Exercise@ResistorColorDuo' 'Exercise@ReverseString' 'Exercise@RobotSimulator' 'Exercise@RomanNumerals' 'Exercise@SecretHandshake' 'Exercise@Sieve' 'Exercise@SpaceAge' 'Exercise@SumOfMultiples' 'Exercise@Tournament' 'Exercise@TwelveDays' 'Exercise@TwoFer' 'Exercise@Welcome' 'Exercise@WordCount')
+]
+
+{ #category : #baselines }
+BaselineOfExercism >> exerciseTestPackageNames [
+	"Answer the list of exercise package names used for testing (as we don't yet have proper projects)"
+
+	^ #('ExercismTests-ExerciseEmpty' 'ExercismTests-ExerciseMany' 'ExercismTests-ExerciseNormal')
 ]
 
 { #category : #baselines }
@@ -65,4 +87,11 @@ BaselineOfExercism >> setUpDependencies: spec [
 	spec
     	baseline: 'Ring2'
     	with: [ spec repository: 'github://pavel-krivanek/Ring2'; loads: #(calypso)].
+]
+
+{ #category : #baselines }
+BaselineOfExercism >> setUpExercisesFor: spec [
+	self exercisePackageNames, self exerciseTestPackageNames 
+		do:
+			[ :name | spec package: name with: [ spec requires: #('ExercismTools') ] ]
 ]

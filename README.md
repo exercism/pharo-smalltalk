@@ -2,25 +2,23 @@
 
 ![build status](https://travis-ci.org/exercism/pharo-smalltalk.svg?branch=master)
 
-This project is for creating and supporting Exercism exercises for Pharo Smalltalk.
+This repository is for the development of [Exercism](http://exercism.io) exercises running in the [Pharo Smalltalk](http://pharo.org) programming environment.
 
-The Pharo Smalltalk exercism track is active and can be accessed [here](https://exercism.io/tracks/pharo-smalltalk).
 
-If you'd like to help out with testing please sign up for the track using the link above, and review the [setup documentation](https://exercism.io/tracks/pharo-smalltalk/installation). 
+If you are new to Pharo or Exercism, consider using [Exercism to learn Pharo](https://exercism.io/tracks/pharo-smalltalk), so you can help contribute in the future. 
 
-Currently we have limited mentor support, so when testing you many need to switch to independent mode if you can't get a timely response.  If you need to restart testing, you should "leave" the track then rejoin it.  
+If you already know Pharo, but would just like to help out with testing, please sign up for the track as above, review the [setup documentation](https://exercism.io/tracks/pharo-smalltalk/installation), and also visit the Discord channel (as described in [resources](./docs/RESOURCES.md)). 
 
-If you want to help out with development, see below.
 
 ## Development Setup
 
-This repository is for the development of [Exercism](http://exercism.io) exercises running in the [Pharo Smalltalk](http://pharo.org) programming environment. It is expected that you are already [familiar](./docs/RESOURCES.md) with development in Pharo and its use of [Iceberg Git](https://github.com/pharo-vcs/iceberg). If you are new to Pharo or Exercism, consider using [Exercism to learn Pharo](./docs/INSTALLATION.md), so you can then help contribute in the future.
+It is expected that you are already [familiar](./docs/RESOURCES.md) with development in Pharo and its use of [Iceberg Git](https://github.com/pharo-vcs/iceberg). 
 
-To help with development, you first need to ensure that you have a complete exercism development environment and have installed:
+To begin, you need to ensure that you have a complete exercism development environment and have installed:
 1. the [exercism command line interface](https://exercism.io/cli-walkthrough) and configured it to point to somewhere sensible for development (e.g. `exercism configure -w ~/development/exercism`)
 1. the Exercism [configlet](https://github.com/exercism/configlet#usage) linter/generator
-1. the exercism/[pharo](https://github.com/exercism/pharo) repo, as a staging repository to which you will generate exercises and assets to check-in (separately from coding in pharo). I suggest calling it something like `~/development/exercism/pharo-staging` to avoid any confusion (note: it can reside anywhere)
-1. (Optionally) cloned the exercism/[problem specifications](https://github.com/exercism/problem-specifications) repo in a subdirectory of the exercism workspace configured above (this repo was used to generate exercise readme.md files, and is a reference to the suggested tests)
+1. a clone of this repository (`git clone https://github.com/exercism/pharo-smalltalk`), as a staging repository to which you will generate exercises and assets to check-in (separately from coding in pharo). I suggest calling it something like `~/development/exercism/pharo-staging` to avoid any confusion (note: it can reside anywhere)
+1. (Optionally) a clone of exercism/[problem specifications](https://github.com/exercism/problem-specifications), also in a subdirectory of the exercism workspace configured above (this repo is used to generate exercise readme.md files, and is a reference to the suggested tests)
 
 Next setup a Pharo environment for creating the actual coding examples. You need to load a development exercism baseline:
 
@@ -53,12 +51,12 @@ While there many ways to help, by far the easiest and most useful contribution i
 
   * You may need to adjust the test if it's not idiomatic Smalltalk (our generator is pretty basic - however this said, some corrections might be appropriate as PR's back to the upstream [problem-specification](https://github.com/exercism/problem-specifications) text)
   
-  * Update the exercise meta data on the class side of the exercise by overriding the #exercise method and filling in a difficlty, topics etc. You should also fill in some Hint text in the Test comment tab (at the bottom - by replacing the text TBD) 
+  * Update the exercise meta data on the class side of the exercise by overriding the #exercise method and filling in a difficulty, topics etc. You should also fill in some Hint text in the Test comment tab (at the bottom - by replacing the text TBD) 
   
-  * Update the package of the chosen example to Exercism (i.e. move it out of the WIP package)
+  * Update the package of the chosen example to `Exercise@<ExerciseName>` (i.e. move it out of the WIP package)
   * Create a new branch in Iceberg with the name of the exercise you chose (you can use the Iceberg tool for this, and enter your issue number from above)
   * Before submitting your pull request, Run all the tests for the Pharo exercises and ensure they all pass
-  * Now get your solution reviewed by pushing your branch to your fork and then creating a PR on exercism/pharo-Smalltalk 
+  * Now get your solution reviewed by pushing your branch to your fork and then creating a PR on exercism/pharo-Smalltalk. It is important to [enable maintainer edits](https://help.github.com/en/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork), so we can collaborate with you in your branch
   * follow your PR and answer any ensuing questions
   * finally submit any adjustments and a maintainer will run the generator to create the Exercism assets (via configlet) and commit the final solution so it appears on the site
 
@@ -102,12 +100,14 @@ When an exercise has been reviewed and is ready to put on the site you need to f
 
 1. Clone a copy of the repository into a staging location (a directory without any special characters due to [issue 154](https://github.com/exercism/configlet/issues/154))
 1. Right click on the exercism Package and choose "Generate exercise meta data", this will generate exercise meta data in your seperate staging location
-1. Commit the generated changes into the exercise branch so they will appear with the new exerise
+1. Commit the generated changes into the exercise branch so they will appear with the new exercise
 
 
 ### Contributing a New Exercise
 
 If you have an interesting idea, refer to the documentation about [adding new exercises](https://github.com/exercism/docs/blob/master/you-can-help/make-up-new-exercises.md).
+
+There is an example of a user defined exercise in the project, see: `DieTest`. By overriding the method `customData`, the generator will create the relevant files for you.
 
 Note that:
 
@@ -115,11 +115,11 @@ Note that:
 - Exercises must conform to the [Exercism-wide standards](https://github.com/exercism/docs/tree/master/language-tracks/exercises).
 - Exercises should only use the Pharo core libraries.
 - Each exercise should be:
-  - stored in a sub-project of Exercism named `Exercism-<ExerciseName>`
-  - have a TestCase named `<ExerciseName>Tests` (in CamelCase) and an example solution named `<ExerciseName>`
+  - stored in a top level project named `Exercism@<ExerciseName>`
+  - have a TestCase named `<ExerciseName>Test` (in CamelCase) and an example solution named `<ExerciseName>`
   - the TestCase should have a class comment in markdown format that describes the exercise. This text is also used to generate a README.md file.
 - Do not commit any configuration files or directories inside the exercise (this may be reviewed for future exercises, let us know if it becomes a problem)
-- Be sure to generate a new UUID for the exercise using the [Exercism configlet](https://github.com/exercism/configlet), and add it to a new exercise entry in the `config.json` file.
+- Be sure to generate a new UUID for the exercise using `UUIDGenerator next`, and place that value in the `uuid` method for the test
 
 ### Submitting a Pull Request
 

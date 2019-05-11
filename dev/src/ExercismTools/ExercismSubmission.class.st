@@ -72,7 +72,7 @@ ExercismSubmission >> errorMessage: aString [
 ExercismSubmission >> exercise [
 	"Answer the ExercismExercise associated with this submission"
 	
-	^ExercismExercise find: self exerciseId ifAbsent: nil
+	^ExercismExercise find: self exerciseId ifAbsent: [nil]
 ]
 
 { #category : #accessing }
