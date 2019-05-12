@@ -53,7 +53,7 @@ Class {
 	#instVars : [
 		'isbnVerifierCalculator'
 	],
-	#category : #'Exercism-IsbnVerifier'
+	#category : #'Exercise@IsbnVerifier'
 }
 
 { #category : #config }

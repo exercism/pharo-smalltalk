@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'robot'
 	],
-	#category : #'Exercism-RobotSimulator'
+	#category : #'Exercise@RobotSimulator'
 }
 
 { #category : #internal }

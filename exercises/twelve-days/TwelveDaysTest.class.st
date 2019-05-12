@@ -55,7 +55,7 @@ Class {
 	#instVars : [
 		'twelveDaysCalculator'
 	],
-	#category : #'Exercism-TwelveDays'
+	#category : #'Exercise@TwelveDays'
 }
 
 { #category : #config }

@@ -6,7 +6,7 @@ Of interest in this example is that classes in Pharo are singleton objects in th
 Class {
 	#name : #HelloWorld,
 	#superclass : #Object,
-	#category : #'Exercism-HelloWorld'
+	#category : #'Exercise@HelloWorld'
 }
 
 { #category : #example }

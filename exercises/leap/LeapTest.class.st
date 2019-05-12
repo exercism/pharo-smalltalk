@@ -37,7 +37,7 @@ Class {
 	#instVars : [
 		'leapCalculator'
 	],
-	#category : #'Exercism-Leap'
+	#category : #'Exercise@Leap'
 }
 
 { #category : #config }

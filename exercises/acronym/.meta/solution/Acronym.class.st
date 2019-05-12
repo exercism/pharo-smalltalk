@@ -4,7 +4,7 @@ This solution shows the use of Stream processing.
 Class {
 	#name : #Acronym,
 	#superclass : #Object,
-	#category : #'Exercism-Acronym'
+	#category : #'Exercise@Acronym'
 }
 
 { #category : #exercism }

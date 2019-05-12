@@ -23,7 +23,7 @@ Class {
 	#instVars : [
 		'sumOfMultiplesCalculator'
 	],
-	#category : #'Exercism-SumOfMultiples'
+	#category : #'Exercise@SumOfMultiples'
 }
 
 { #category : #config }

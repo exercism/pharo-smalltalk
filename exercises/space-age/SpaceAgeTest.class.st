@@ -34,7 +34,7 @@ Class {
 	#instVars : [
 		'spaceAgeCalculator'
 	],
-	#category : #'Exercism-SpaceAge'
+	#category : #'Exercise@SpaceAge'
 }
 
 { #category : #config }

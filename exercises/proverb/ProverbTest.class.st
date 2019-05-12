@@ -28,7 +28,7 @@ Class {
 	#instVars : [
 		'proverbCalculator'
 	],
-	#category : #'Exercism-Proverb'
+	#category : #'Exercise@Proverb'
 }
 
 { #category : #config }

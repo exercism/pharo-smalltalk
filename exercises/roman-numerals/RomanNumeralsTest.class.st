@@ -54,7 +54,7 @@ Class {
 	#instVars : [
 		'romanNumeralsCalculator'
 	],
-	#category : #'Exercism-RomanNumerals'
+	#category : #'Exercise@RomanNumerals'
 }
 
 { #category : #helper }

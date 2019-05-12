@@ -11,7 +11,7 @@ Class {
 		'vocabulary',
 		'currentDefinition'
 	],
-	#category : #'Exercism-Forth'
+	#category : #'Exercise@Forth'
 }
 
 { #category : #vocabulary }

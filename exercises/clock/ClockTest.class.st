@@ -19,7 +19,7 @@ Class {
 		'clock1',
 		'clock2'
 	],
-	#category : #'Exercism-Clock'
+	#category : #'Exercise@Clock'
 }
 
 { #category : #config }

@@ -5,7 +5,7 @@ I adapt the LuhnTest to a more Smalltalk like LuhnNumber domain object.
 Class {
 	#name : #Luhn,
 	#superclass : #Object,
-	#category : #'Exercism-Luhn'
+	#category : #'Exercise@Luhn'
 }
 
 { #category : #validating }

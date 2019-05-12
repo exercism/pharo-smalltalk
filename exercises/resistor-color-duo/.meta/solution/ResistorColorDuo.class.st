@@ -5,7 +5,7 @@ I answer the value of a resister with the specified colour coding. Of interest i
 Class {
 	#name : #ResistorColorDuo,
 	#superclass : #Object,
-	#category : #'Exercism-ResistorColorDuo'
+	#category : #'Exercise@ResistorColorDuo'
 }
 
 { #category : #constants }

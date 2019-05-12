@@ -31,7 +31,7 @@ Try doing this with your HelloWorld example, by simply running any one of the un
 Class {
 	#name : #HelloWorldTest,
 	#superclass : #ExercismTest,
-	#category : #'Exercism-HelloWorld'
+	#category : #'Exercise@HelloWorld'
 }
 
 { #category : #config }

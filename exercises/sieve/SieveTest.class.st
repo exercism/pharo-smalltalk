@@ -41,7 +41,7 @@ Class {
 	#instVars : [
 		'sieveCalculator'
 	],
-	#category : #'Exercism-Sieve'
+	#category : #'Exercise@Sieve'
 }
 
 { #category : #helper }

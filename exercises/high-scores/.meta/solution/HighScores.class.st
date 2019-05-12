@@ -4,7 +4,7 @@ A simple exercise, of note is how to handle the top three scores - ideally you c
 Class {
 	#name : #HighScores,
 	#superclass : #Object,
-	#category : #'Exercism-HighScores'
+	#category : #'Exercise@HighScores'
 }
 
 { #category : #exercism }

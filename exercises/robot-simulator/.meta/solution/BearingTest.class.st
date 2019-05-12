@@ -4,7 +4,7 @@ Some simple unit tests to check the robot can change direction.
 Class {
 	#name : #BearingTest,
 	#superclass : #TestCase,
-	#category : #'Exercism-RobotSimulator'
+	#category : #'Exercise@RobotSimulator'
 }
 
 { #category : #tests }

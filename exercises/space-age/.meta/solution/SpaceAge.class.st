@@ -7,7 +7,7 @@ Class {
 	#classVars : [
 		'OrbitalPeriods'
 	],
-	#category : #'Exercism-SpaceAge'
+	#category : #'Exercise@SpaceAge'
 }
 
 { #category : #exercism }

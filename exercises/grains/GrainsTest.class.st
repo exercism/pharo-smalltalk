@@ -40,7 +40,7 @@ Class {
 	#instVars : [
 		'grainsCalculator'
 	],
-	#category : #'Exercism-Grains'
+	#category : #'Exercise@Grains'
 }
 
 { #category : #helper }

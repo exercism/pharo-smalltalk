@@ -4,7 +4,7 @@ As Characters are an object, we can ask them if they are a letter, and compare o
 Class {
 	#name : #Pangram,
 	#superclass : #Object,
-	#category : #'Exercism-Pangram'
+	#category : #'Exercise@Pangram'
 }
 
 { #category : #exercism }

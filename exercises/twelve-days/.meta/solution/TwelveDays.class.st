@@ -4,7 +4,7 @@ This solution is pretty straight forward.
 Class {
 	#name : #TwelveDays,
 	#superclass : #Object,
-	#category : #'Exercism-TwelveDays'
+	#category : #'Exercise@TwelveDays'
 }
 
 { #category : #gifts }

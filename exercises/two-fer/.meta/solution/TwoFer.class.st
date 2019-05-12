@@ -8,7 +8,7 @@ Of interest, in this example is that classes can define instance methods with th
 Class {
 	#name : #TwoFer,
 	#superclass : #Object,
-	#category : #'Exercism-TwoFer'
+	#category : #'Exercise@TwoFer'
 }
 
 { #category : #example }

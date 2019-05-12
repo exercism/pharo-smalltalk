@@ -4,7 +4,7 @@ This problem can be solved either by recursion or a simple while loop.
 Class {
 	#name : #CollatzConjecture,
 	#superclass : #Object,
-	#category : #'Exercism-CollatzConjecture'
+	#category : #'Exercise@CollatzConjecture'
 }
 
 { #category : #calculating }

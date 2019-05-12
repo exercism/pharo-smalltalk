@@ -17,7 +17,7 @@ Class {
 	#instVars : [
 		'matchingBracketsCalculator'
 	],
-	#category : #'Exercism-MatchingBrackets'
+	#category : #'Exercise@MatchingBrackets'
 }
 
 { #category : #config }

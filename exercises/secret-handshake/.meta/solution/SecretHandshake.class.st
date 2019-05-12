@@ -10,7 +10,7 @@ Class {
 	#classVars : [
 		'Secrets'
 	],
-	#category : #'Exercism-SecretHandshake'
+	#category : #'Exercise@SecretHandshake'
 }
 
 { #category : #accessing }

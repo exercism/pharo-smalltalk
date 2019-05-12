@@ -4,7 +4,7 @@ There are several ways of solving this one, however on option (often used in oth
 Class {
 	#name : #WordCount,
 	#superclass : #Object,
-	#category : #'Exercism-WordCount'
+	#category : #'Exercise@WordCount'
 }
 
 { #category : #exercism }
