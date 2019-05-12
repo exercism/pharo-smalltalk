@@ -40,9 +40,6 @@ BaselineOfExercism >> baseline: spec [
 				package: 'ExercismSystemTests'
 					with: [ spec requires: #('ExercismTests') ];
 				
-				package: 'Exercism' "Legacy Package for Testing"
-					with: [ spec requires: #('ExercismTools') ];
-					
 				package: 'ExercismWIP'
 					with: [ spec requires: #('ExercismTools') ];
 					
