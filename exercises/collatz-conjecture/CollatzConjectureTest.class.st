@@ -38,7 +38,7 @@ Class {
 	#instVars : [
 		'collatzConjectureCalculator'
 	],
-	#category : #'Exercism-CollatzConjecture'
+	#category : #'Exercise@CollatzConjecture'
 }
 
 { #category : #config }

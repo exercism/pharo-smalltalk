@@ -7,7 +7,7 @@ Class {
 	#classVars : [
 		'NumeralsTable'
 	],
-	#category : #'Exercism-RomanNumerals'
+	#category : #'Exercise@RomanNumerals'
 }
 
 { #category : #constants }

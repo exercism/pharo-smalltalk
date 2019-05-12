@@ -4,7 +4,7 @@ This solution demonstrates the use of a while loop in Pharo. Notice how while is
 Class {
 	#name : #Sieve,
 	#superclass : #Object,
-	#category : #'Exercism-Sieve'
+	#category : #'Exercise@Sieve'
 }
 
 { #category : #helper }

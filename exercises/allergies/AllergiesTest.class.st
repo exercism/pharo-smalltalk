@@ -42,7 +42,7 @@ Class {
 	#instVars : [
 		'allergiesCalculator'
 	],
-	#category : #'Exercism-Allergies'
+	#category : #'Exercise@Allergies'
 }
 
 { #category : #config }

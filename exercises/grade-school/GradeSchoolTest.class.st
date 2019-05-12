@@ -48,7 +48,7 @@ Class {
 	#instVars : [
 		'gradeSchoolCalculator'
 	],
-	#category : #'Exercism-GradeSchool'
+	#category : #'Exercise@GradeSchool'
 }
 
 { #category : #config }

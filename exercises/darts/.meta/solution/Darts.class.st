@@ -4,7 +4,7 @@ This is pretty straight forward if the soluton uses c = sqrt of a^2 + b^2
 Class {
 	#name : #Darts,
 	#superclass : #Object,
-	#category : #'Exercism-Darts'
+	#category : #'Exercise@Darts'
 }
 
 { #category : #scoring }

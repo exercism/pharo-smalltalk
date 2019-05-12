@@ -4,7 +4,7 @@ I convert a binary string to decimal. Of note is the non-binary string check, th
 Class {
 	#name : #Binary,
 	#superclass : #Object,
-	#category : #'Exercism-Binary'
+	#category : #'Exercise@Binary'
 }
 
 { #category : #exercism }

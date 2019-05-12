@@ -39,7 +39,7 @@ Class {
 	#instVars : [
 		'robotSimulator'
 	],
-	#category : #'Exercism-RobotSimulator'
+	#category : #'Exercise@RobotSimulator'
 }
 
 { #category : #config }

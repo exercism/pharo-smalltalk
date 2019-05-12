@@ -18,7 +18,7 @@ Class {
 	#instVars : [
 		'anagramCalculator'
 	],
-	#category : #'Exercism-Anagram'
+	#category : #'Exercise@Anagram'
 }
 
 { #category : #helper }

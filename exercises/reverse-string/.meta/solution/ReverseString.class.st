@@ -6,7 +6,7 @@ This solution shows a linear approach to solving the problem, but also has an ex
 Class {
 	#name : #ReverseString,
 	#superclass : #Object,
-	#category : #'Exercism-ReverseString'
+	#category : #'Exercise@ReverseString'
 }
 
 { #category : #alternative }

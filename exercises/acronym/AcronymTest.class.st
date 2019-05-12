@@ -19,7 +19,7 @@ Class {
 	#instVars : [
 		'acronymCalculator'
 	],
-	#category : #'Exercism-Acronym'
+	#category : #'Exercise@Acronym'
 }
 
 { #category : #config }

@@ -8,7 +8,7 @@ Class {
 		'frames',
 		'currentFrame'
 	],
-	#category : #'Exercism-Bowling'
+	#category : #'Exercise@Bowling'
 }
 
 { #category : #rolling }

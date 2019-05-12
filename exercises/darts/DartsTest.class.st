@@ -28,7 +28,7 @@ Class {
 	#instVars : [
 		'dartsCalculator'
 	],
-	#category : #'Exercism-Darts'
+	#category : #'Exercise@Darts'
 }
 
 { #category : #config }

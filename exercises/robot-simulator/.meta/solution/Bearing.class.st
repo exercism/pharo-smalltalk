@@ -10,7 +10,7 @@ Class {
 	#classVars : [
 		'Bearings'
 	],
-	#category : #'Exercism-RobotSimulator'
+	#category : #'Exercise@RobotSimulator'
 }
 
 { #category : #config }

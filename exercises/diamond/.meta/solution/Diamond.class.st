@@ -5,7 +5,7 @@ As the output is symetrical, you only have to generate the top half and then mir
 Class {
 	#name : #Diamond,
 	#superclass : #Object,
-	#category : #'Exercism-Diamond'
+	#category : #'Exercise@Diamond'
 }
 
 { #category : #formatting }

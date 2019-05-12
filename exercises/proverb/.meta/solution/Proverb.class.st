@@ -4,7 +4,7 @@ This solution is greatly simplified if you browse the iterators over the collect
 Class {
 	#name : #Proverb,
 	#superclass : #Object,
-	#category : #'Exercism-Proverb'
+	#category : #'Exercise@Proverb'
 }
 
 { #category : #exercism }

@@ -40,7 +40,7 @@ Class {
 	#instVars : [
 		'secretHandshakeCalculator'
 	],
-	#category : #'Exercism-SecretHandshake'
+	#category : #'Exercise@SecretHandshake'
 }
 
 { #category : #config }

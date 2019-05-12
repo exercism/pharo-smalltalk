@@ -37,7 +37,7 @@ Class {
 	#instVars : [
 		'forthCalculator'
 	],
-	#category : #'Exercism-Forth'
+	#category : #'Exercise@Forth'
 }
 
 { #category : #config }

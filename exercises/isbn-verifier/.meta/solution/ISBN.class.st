@@ -11,7 +11,7 @@ Class {
 		'digits',
 		'control'
 	],
-	#category : #'Exercism-IsbnVerifier'
+	#category : #'Exercise@IsbnVerifier'
 }
 
 { #category : #'instance creation' }

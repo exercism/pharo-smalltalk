@@ -9,7 +9,7 @@ Class {
 		'roll2',
 		'bonus'
 	],
-	#category : #'Exercism-Bowling'
+	#category : #'Exercise@Bowling'
 }
 
 { #category : #accessing }

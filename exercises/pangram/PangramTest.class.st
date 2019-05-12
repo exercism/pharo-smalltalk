@@ -20,7 +20,7 @@ Class {
 	#instVars : [
 		'pangramCalculator'
 	],
-	#category : #'Exercism-Pangram'
+	#category : #'Exercise@Pangram'
 }
 
 { #category : #helper }

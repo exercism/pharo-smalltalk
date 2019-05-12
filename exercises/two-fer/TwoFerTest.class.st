@@ -40,7 +40,7 @@ Class {
 	#instVars : [
 		'twoFer'
 	],
-	#category : #'Exercism-TwoFer'
+	#category : #'Exercise@TwoFer'
 }
 
 { #category : #config }

@@ -58,7 +58,7 @@ Class {
 	#instVars : [
 		'etlCalculator'
 	],
-	#category : #'Exercism-Etl'
+	#category : #'Exercise@Etl'
 }
 
 { #category : #config }
