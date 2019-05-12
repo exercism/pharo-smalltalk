@@ -7,8 +7,28 @@ This repository is for the development of [Exercism](http://exercism.io) exercis
 
 If you are new to Pharo or Exercism, consider using [Exercism to learn Pharo](https://exercism.io/tracks/pharo-smalltalk), so you can help contribute in the future. 
 
-If you already know Pharo, but would just like to help out with testing, please sign up for the track as above, review the [setup documentation](https://exercism.io/tracks/pharo-smalltalk/installation), and also visit the Discord channel (as described in [resources](./docs/RESOURCES.md)). 
+If you already know Pharo, but would just like to help out with testing, please sign up for the track as above, review the [setup documentation](https://exercism.io/tracks/pharo-smalltalk/installation), and also visit the Discord channel (as described in [resources](./docs/RESOURCES.md)).
 
+## Mentor Setup
+
+If you are familiar with Pharo, but not quite sure about developing exercises, we are always happy to get extra help [mentoring](https://exercism.io/become-a-mentor) exercises.
+
+If you sign up as a [Pharo Mentor](https://exercism.io/mentor/registrations/new) by choosing Pharo in the mentor list, you then need to [update your bio](https://github.com/exercism/website-copy/blob/master/mentors/README.md#mentors) and load up a special (dev-light) image.
+
+Simply evalaluate the following in a fresh Pharo image:
+
+```smalltalk
+Metacello new 
+ baseline: 'Exercism'; 
+ repository: 'github://exercism/pharo-smalltalk/releases/latest';
+ load: 'mentor'
+```
+
+You will then find a "View Mentee Solution..." entry in the Exercism menu, which allows you to safely download a mentee code submission into your image so you can browse code and references. 
+
+To use this browser, you need to paste the download link at the bottom of a submission into the menu prompt, and it will download and show the solution.
+
+When looking at a solution, there is also a context menu to leave comments on methods and classes, as well as an option to view a summary report that can be pasted into the mentor panel.
 
 ## Development Setup
 
