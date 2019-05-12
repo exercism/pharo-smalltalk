@@ -4,22 +4,28 @@ Extension { #name : #ExTonelWriter }
 ExTonelWriter >> mappedSnapshot: aSnapshot [
 	"extracted from #writeSnapshot: to customise behavior"
 	
-	|tonelMap|
+	|tonelMap extensionDefinitions|
 	snapshot := aSnapshot.
 	tonelMap := Dictionary new.
-	
-	"ignore packages (as done in #writeSnapshot:"
-	
-	"now export classes - but to a map"
+		
+	"Tonel export classes with their methods, mapped from their filename to content streams"
 	(snapshot definitions select: #isClassDefinition)
-		do: [ :classdef |  |tonelStream|
+		do: [ :classDef |  |filename tonelStream|
+			filename := classDef className, '.class.st'.
 			tonelStream := WriteStream on: String new.
-	 		self writeClass: classdef on: tonelStream.
-	  		tonelMap at: classdef className put: tonelStream contents ].
+	 		self writeClass: classDef on: tonelStream.
+	  		tonelMap at: filename put: tonelStream ].
 	
 	"... and method extensions"
-	"tbd - self writeMethodExtensions"
-	
+	extensionDefinitions := (snapshot definitions select: [ :each | 
+		each isMethodDefinition and: [ each isExtensionMethod ] ]) removeDuplicates.
+
+	extensionDefinitions do: [ :methodDef | |filename|
+		filename := methodDef className, '.extension.st'.
+		tonelMap at: filename ifAbsentPut: [ 
+			(WriteStream on: String new) nextPutAll: 'Extension { #name : #', methodDef className, ' }' ; lf; yourself ].
+		self writeMethodDefinition: methodDef on: (tonelMap at: filename). 
+		].
 	^tonelMap
 
 ]
