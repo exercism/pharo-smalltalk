@@ -48,16 +48,16 @@ BaselineOfExercism >> baseline: spec [
 						'OSProcess' "For shelling out to configlet"
 						'Ring2' "For mentoring support of shadow browsing"
 						'ExercismTools' ),  
-						self class exercisePackageNames,
-						#('ExercismWIP' 
-						'ExercismTests' 
-						'ExercismSystemTests')];
-				
+						self class exercisePackageNames ];
+			
 				group: 'default'
 					with: #('ExercismTools' 'Exercise@Welcome');
+					
+				group: 'mentor'
+					with: #('ExercismDev' );
 				
 				group: 'dev'
-					with: #('ExercismDev')]
+					with: #('ExercismDev' 'ExercismWIP' 'ExercismSystemTests')]
 ]
 
 { #category : #baselines }
