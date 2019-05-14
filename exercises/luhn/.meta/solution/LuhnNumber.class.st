@@ -24,7 +24,7 @@ Class {
 	#instVars : [
 		'number'
 	],
-	#category : #'Exercism-Luhn'
+	#category : #'Exercise@Luhn'
 }
 
 { #category : #'instance creation' }

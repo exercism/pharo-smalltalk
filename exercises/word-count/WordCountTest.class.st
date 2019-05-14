@@ -23,7 +23,7 @@ Class {
 	#instVars : [
 		'wordCountCalculator'
 	],
-	#category : #'Exercism-WordCount'
+	#category : #'Exercise@WordCount'
 }
 
 { #category : #config }

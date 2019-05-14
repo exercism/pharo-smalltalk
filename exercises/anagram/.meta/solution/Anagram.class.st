@@ -4,7 +4,7 @@ Using the often maligned Bag datatype, makes this exercise quite easy
 Class {
 	#name : #Anagram,
 	#superclass : #Object,
-	#category : #'Exercism-Anagram'
+	#category : #'Exercise@Anagram'
 }
 
 { #category : #exercism }

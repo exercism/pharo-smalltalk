@@ -42,7 +42,7 @@ Class {
 	#instVars : [
 		'reverseStringCalculator'
 	],
-	#category : #'Exercism-ReverseString'
+	#category : #'Exercise@ReverseString'
 }
 
 { #category : #config }

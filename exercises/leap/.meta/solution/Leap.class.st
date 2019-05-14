@@ -6,7 +6,7 @@ Of interest, in this example is that boolean operations like and: and or: are im
 Class {
 	#name : #Leap,
 	#superclass : #Object,
-	#category : #'Exercism-Leap'
+	#category : #'Exercise@Leap'
 }
 
 { #category : #example }

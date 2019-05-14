@@ -6,7 +6,7 @@ If you spot the following useful methods in Integer, this solution is quite triv
 Class {
 	#name : #ArmstrongNumbers,
 	#superclass : #Object,
-	#category : #'Exercism-ArmstrongNumbers'
+	#category : #'Exercise@ArmstrongNumbers'
 }
 
 { #category : #testing }

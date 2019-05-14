@@ -10,7 +10,7 @@ Class {
 	#classVars : [
 		'OutcomeTable'
 	],
-	#category : #'Exercism-Tournament'
+	#category : #'Exercise@Tournament'
 }
 
 { #category : #config }

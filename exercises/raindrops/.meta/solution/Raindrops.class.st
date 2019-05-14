@@ -4,7 +4,7 @@ I iterate through a list of associations to check the factor and obtain the corr
 Class {
 	#name : #Raindrops,
 	#superclass : #Object,
-	#category : #'Exercism-Raindrops'
+	#category : #'Exercise@Raindrops'
 }
 
 { #category : #exercism }

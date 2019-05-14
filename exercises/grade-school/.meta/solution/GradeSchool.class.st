@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'students'
 	],
-	#category : #'Exercism-GradeSchool'
+	#category : #'Exercise@GradeSchool'
 }
 
 { #category : #helper }

@@ -72,7 +72,7 @@ Class {
 	#instVars : [
 		'bowlingCalculator'
 	],
-	#category : #'Exercism-Bowling'
+	#category : #'Exercise@Bowling'
 }
 
 { #category : #config }

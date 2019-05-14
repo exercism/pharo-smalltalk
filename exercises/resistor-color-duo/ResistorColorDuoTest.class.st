@@ -34,7 +34,7 @@ Class {
 	#instVars : [
 		'resistorColorDuoCalculator'
 	],
-	#category : #'Exercism-ResistorColorDuo'
+	#category : #'Exercise@ResistorColorDuo'
 }
 
 { #category : #config }

@@ -8,7 +8,7 @@ Class {
 		'hour',
 		'minute'
 	],
-	#category : #'Exercism-Clock'
+	#category : #'Exercise@Clock'
 }
 
 { #category : #exercism }

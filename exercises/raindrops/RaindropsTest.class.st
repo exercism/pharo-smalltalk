@@ -29,7 +29,7 @@ Class {
 	#instVars : [
 		'raindropsCalculator'
 	],
-	#category : #'Exercism-Raindrops'
+	#category : #'Exercise@Raindrops'
 }
 
 { #category : #config }

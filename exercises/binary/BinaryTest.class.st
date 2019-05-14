@@ -42,7 +42,7 @@ Class {
 	#instVars : [
 		'binaryCalculator'
 	],
-	#category : #'Exercism-Binary'
+	#category : #'Exercise@Binary'
 }
 
 { #category : #helper }

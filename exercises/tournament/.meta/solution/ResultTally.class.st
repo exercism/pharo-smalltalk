@@ -8,7 +8,7 @@ Class {
 		'tallys',
 		'name'
 	],
-	#category : #'Exercism-Tournament'
+	#category : #'Exercise@Tournament'
 }
 
 { #category : #'instance creation' }

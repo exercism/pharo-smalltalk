@@ -4,7 +4,7 @@ I invert the storage of score/letter storage. While efficiency is not always the
 Class {
 	#name : #Etl,
 	#superclass : #Object,
-	#category : #'Exercism-Etl'
+	#category : #'Exercise@Etl'
 }
 
 { #category : #exercism }

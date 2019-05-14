@@ -64,7 +64,7 @@ Class {
 	#instVars : [
 		'diamondCalculator'
 	],
-	#category : #'Exercism-Diamond'
+	#category : #'Exercise@Diamond'
 }
 
 { #category : #config }

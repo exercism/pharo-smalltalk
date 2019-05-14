@@ -22,7 +22,7 @@ Class {
 	#instVars : [
 		'armstrongNumbersCalculator'
 	],
-	#category : #'Exercism-ArmstrongNumbers'
+	#category : #'Exercise@ArmstrongNumbers'
 }
 
 { #category : #config }

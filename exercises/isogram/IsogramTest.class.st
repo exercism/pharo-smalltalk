@@ -25,7 +25,7 @@ Class {
 	#instVars : [
 		'isogramCalculator'
 	],
-	#category : #'Exercism-Isogram'
+	#category : #'Exercise@Isogram'
 }
 
 { #category : #helper }

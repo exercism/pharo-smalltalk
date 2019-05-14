@@ -4,7 +4,7 @@ This solution shows how Pharo can access bit sequences to solve this exercise. I
 Class {
 	#name : #Allergies,
 	#superclass : #Object,
-	#category : #'Exercism-Allergies'
+	#category : #'Exercise@Allergies'
 }
 
 { #category : #config }

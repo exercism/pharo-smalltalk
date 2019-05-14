@@ -40,7 +40,7 @@ Class {
 	#instVars : [
 		'atbashCipherCalculator'
 	],
-	#category : #'Exercism-AtbashCipher'
+	#category : #'Exercise@AtbashCipher'
 }
 
 { #category : #config }

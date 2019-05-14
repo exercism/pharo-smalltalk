@@ -4,7 +4,7 @@ A simple solution to bracket exercise using a Stack
 Class {
 	#name : #MatchingBrackets,
 	#superclass : #Object,
-	#category : #'Exercism-MatchingBrackets'
+	#category : #'Exercise@MatchingBrackets'
 }
 
 { #category : #'private-constants' }

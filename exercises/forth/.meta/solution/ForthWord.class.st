@@ -11,7 +11,7 @@ Class {
 		'name',
 		'definition'
 	],
-	#category : #'Exercism-Forth'
+	#category : #'Exercise@Forth'
 }
 
 { #category : #accessing }

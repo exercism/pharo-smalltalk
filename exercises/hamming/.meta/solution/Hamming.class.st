@@ -4,7 +4,7 @@ It's useful to extract the error message into a seperate method for readability
 Class {
 	#name : #Hamming,
 	#superclass : #Object,
-	#category : #'Exercism-Hamming'
+	#category : #'Exercise@Hamming'
 }
 
 { #category : #exercism }

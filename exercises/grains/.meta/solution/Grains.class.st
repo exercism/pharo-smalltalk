@@ -4,7 +4,7 @@ I am a recursive solution to the Grains problem.
 Class {
 	#name : #Grains,
 	#superclass : #Object,
-	#category : #'Exercism-Grains'
+	#category : #'Exercise@Grains'
 }
 
 { #category : #exercism }

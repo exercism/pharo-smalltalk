@@ -4,7 +4,7 @@ This solution uses inject:into: to sum the runnning interval, as well as extract
 Class {
 	#name : #SumOfMultiples,
 	#superclass : #Object,
-	#category : #'Exercism-SumOfMultiples'
+	#category : #'Exercise@SumOfMultiples'
 }
 
 { #category : #internal }

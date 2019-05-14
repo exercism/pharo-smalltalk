@@ -35,7 +35,7 @@ Class {
 	#instVars : [
 		'hammingCalculator'
 	],
-	#category : #'Exercism-Hamming'
+	#category : #'Exercise@Hamming'
 }
 
 { #category : #config }

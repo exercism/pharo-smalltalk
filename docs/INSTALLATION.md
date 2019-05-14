@@ -159,11 +159,12 @@ ExercismHttpClient
 
 ## How to Upgrade Pharo Exercism
 
-From time to time we may need you to update the libraries in your Pharo Exercism image. Before doing an update, it is best to ensure you have submitted any in-progress exercises, then saved your Pharo image, and finally backed up your Pharo.image, and Pharo.changes files. Once you have a safe backup, evaluate this code in a Playground:
+From time to time we may need you to update the libraries in your Pharo Exercism image. Before doing an update, it is best to ensure you have submitted any in-progress exercises, then saved and backed up your Pharo.image, and Pharo.changes files. Once you have a safe backup, evaluate this code in a Playground:
 
  ```smalltalk
  
  './pharo-local/iceberg/exercism' asFileReference deleteAll.
+ './pharo-local/package-cache' asFileReference deleteAll.
  
  IceRepository reset.
  
@@ -174,7 +175,7 @@ From time to time we may need you to update the libraries in your Pharo Exercism
   load.
  ```
 
-You will be prompted about losing changes to the package "ExercismTools", and you should choose "Load" to ensure you have a compatible version of the tools. 
+You may be prompted about losing changes to the package "ExercismTools", and you should choose "Load" to ensure you have a compatible version of the tools. 
 
 If you ever need to upgrade (or downgrade) to a specific version of Exercism, you can also modify this script to specify a particular version number by changing the repository path as follows:
  

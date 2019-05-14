@@ -79,7 +79,7 @@ Class {
 	#instVars : [
 		'tournamentCalculator'
 	],
-	#category : #'Exercism-Tournament'
+	#category : #'Exercise@Tournament'
 }
 
 { #category : #config }

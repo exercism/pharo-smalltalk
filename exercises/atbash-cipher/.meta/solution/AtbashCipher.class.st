@@ -9,7 +9,7 @@ Class {
 	#instVars : [
 		'key'
 	],
-	#category : #'Exercism-AtbashCipher'
+	#category : #'Exercise@AtbashCipher'
 }
 
 { #category : #encoding }
