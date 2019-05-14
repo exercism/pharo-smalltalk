@@ -21,7 +21,7 @@ ExTonelWriter >> mappedSnapshot: aSnapshot [
 	"Tonel export classes with their methods, mapped from their filename to content streams"
 	(snapshot definitions select: #isClassDefinition)
 		do: [ :classDef |  |filename tonelStream|
-			filename := classDef className, '.class.st'.
+			filename := classDef exTonelFilename.
 			tonelStream := WriteStream on: String new.
 	 		self writeClass: classDef on: tonelStream.
 	  		tonelMap at: filename put: tonelStream ].
@@ -31,7 +31,7 @@ ExTonelWriter >> mappedSnapshot: aSnapshot [
 		each isMethodDefinition and: [ each isExtensionMethod ] ]) removeDuplicates.
 
 	extensionDefinitions do: [ :methodDef | |filename|
-		filename := methodDef className, '.extension.st'.
+		filename := methodDef exTonelFilename.
 		tonelMap at: filename ifAbsentPut: [ 
 			(WriteStream on: String new) nextPutAll: 'Extension { #name : #', methodDef className, ' }' ; lf; yourself ].
 		self writeMethodDefinition: methodDef on: (tonelMap at: filename). 
