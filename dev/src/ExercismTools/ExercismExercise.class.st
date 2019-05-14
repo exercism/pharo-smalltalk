@@ -324,23 +324,33 @@ ExercismExercise >> solutionId [
 
 { #category : #accessing }
 ExercismExercise >> solutionSources [
-	"Answer a Dictionary of filename to source code mappings for the solution that will be saved on Exercism"
+	"Answer a Dictionary of filename to source code mappings for the solution that will be saved on Exercism. Exercism web interface displays files in order of upload."
 	
-	| sources testResult resultDictionary |
+	| packageFileMap testResult resultDictionary solutionClassNames solutionFileNames |
 	
-	sources := ExTonelWriter new mappedSnapshot: self snapshot.
+	packageFileMap := ExTonelWriter new mappedSnapshot: self snapshot.
 	
+	"Exclude non-solution classes, i.e. filter out tests"
+	solutionClassNames := self solutionClasses collect: [ :c | c name ].
+	solutionFileNames := packageFileMap keys select: [ :filename | 
+		solutionClassNames includes: (filename findTokens: '.') first ]. 
+
+	"Sort classes before extensions, then sort by class name"
+	solutionFileNames sort: [ :filenameA :filenameB | |tokensA tokensB|
+		tokensA := filenameA findTokens: '.'.
+		tokensB := filenameB findTokens: '.'.
+		(tokensA second, tokensA first) < (tokensB second, tokensB first) ].
+
+	"Summarise test results to show with solution"
 	testResult := [ self testCase suite run] on: Error do: [ TestResult new ].
-	resultDictionary := OrderedDictionary new 
-		at: 'TestResults.txt' put: testResult exercismSummary; 
-		yourself.
 	
-	^ (self solutionClasses collect: [ :c | c name ])
-		inject: resultDictionary
-		into: [ :result :c | 
-			result
-				at: c , '.st' put: (sources at: c);
-				yourself ]
+	"Build result in the order we want files displayed by Exercism web interface"
+	resultDictionary := OrderedDictionary new.
+	resultDictionary at: 'TestResults.txt' put: testResult exercismSummary.
+	solutionFileNames do: [ :filename | 
+		resultDictionary at: filename put: ( packageFileMap at: filename) contents ].
+	^ resultDictionary
+
 ]
 
 { #category : #storing }
