@@ -15,7 +15,7 @@ BaselineOfExercism class >> exercisePackageNames [
 BaselineOfExercism class >> exerciseTestPackageNames [
 	"Answer the list of exercise package names used for testing (as we don't yet have proper projects)"
 
-	^ #('ExercismTests-ExerciseEmpty' 'ExercismTests-ExerciseMany' 'ExercismTests-ExerciseNormal')
+	^ #('ExercismTests-ExerciseEmpty' 'ExercismTests-ExerciseMany' 'ExercismTests-ExerciseNormal' 'ExercismTests-ExerciseExtension')
 ]
 
 { #category : #baselines }
