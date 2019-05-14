@@ -1,7 +1,7 @@
 "
-To start your Exercism journey, right click on the Exercism@Welcome package (or use the top level Exercism manu) and select 'Exercism | Fetch new exercise', and then type: hello-world.
+To start your Exercism journey, right click on the Exercise@Welcome package (or use the top level Exercism manu) and select 'Exercism | Fetch new exercise', and then type: hello-world.
 
-Note: Each new exercise will have some instructions in its test Comment tab, so be sure to read them when starting a new challenge.
+Note: Each exercise will have some instructions in its test Comment tab, so be sure to read them when starting a new challenge.
 "
 Class {
 	#name : #Welcome,
