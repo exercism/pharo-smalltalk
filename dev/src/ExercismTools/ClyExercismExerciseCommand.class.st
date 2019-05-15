@@ -25,9 +25,9 @@ ClyExercismExerciseCommand class >> isExercismTagIn: aToolContext [
 	^ aToolContext lastSelectedClassGroup name ~= ExercismManager legacyPackagePrefix
 		and: [ aToolContext lastSelectedClassGroup classes
 				detect: [ :any | 
-					(any package name
-						beginsWith: ExercismManager exercisePrefix , '@')
-						or: [ any package name = ExercismManager legacyPackagePrefix ] ]
+					(any package name beginsWith: ExercismManager exercisePrefix , '@')
+						or: [ (any package name beginsWith: ExercismManager legacyPackagePrefix , '-')
+							or: [ any package name = ExercismManager legacyPackagePrefix ] ] ]
 				ifFound: [ true ]
 				ifNone: [ false ] ]
 ]

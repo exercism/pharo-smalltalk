@@ -17,6 +17,14 @@ ExercismManager class >> default [
 	^self new
 ]
 
+{ #category : #exercism }
+ExercismManager class >> disableStudentCritics [
+
+	RBUtilityMethodsRule enabled: false.
+	ReTestClassNotInPackageWithTestEndingName enabled: false
+	
+]
+
 { #category : #config }
 ExercismManager class >> exercisePrefix [
 	^ 'Exercise'
@@ -35,7 +43,7 @@ ExercismManager class >> isUserMode [
 
 { #category : #config }
 ExercismManager class >> legacyExercismPackage [
-	"Answer the default exercism package, or create one if missing"
+	"Answer the default exercism package, or nil if missing"
 	| packageOrganiser |
 	
 	packageOrganiser := RPackageOrganizer default.
@@ -67,13 +75,15 @@ ExercismManager class >> welcome [
 		
 	"If in usermode, hide the repositories so solutions aren't easily visible with a git compare"
 	self isUserMode
-		ifTrue: [ IceRepository reset ].
+		ifTrue: [ 
+			IceRepository reset.
+			self disableStudentCritics ].
 
 	"Select, package and then method so it scrolls nicely into view"
-	browser := Smalltalk tools browser openOnPackage: Welcome package.
+	browser := Smalltalk tools browser openOnPackage: WelcomeTest package.
 	browser
 		"selectPackage: Welcome package;"
-		selectMethod: (Welcome methodNamed: #testWelcome)
+		selectMethod: (WelcomeTest methodNamed: #testWelcome)
 ]
 
 { #category : #'world menu' }

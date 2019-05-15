@@ -271,10 +271,11 @@ ExercismExerciseGenerator >> generateSetupOn: testClass using: testVariable assi
 	
 	output := (WriteStream on: '').
 	output nextPutAll: 'setUp'; crlf.
+	output tab; nextPutAll: 'super setUp.'; crlf. 
 	output tab; nextPutAll: testVariable, ' := '; nextPutAll: testRoot, ' new'.
 	
 	src := output contents.
-	self compile: src for: testClass selector: #setUp protocol: 'setup'
+	self compile: src for: testClass selector: #setUp protocol: 'running'
 		
 ]
 
