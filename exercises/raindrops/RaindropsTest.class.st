@@ -56,8 +56,9 @@ RaindropsTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 RaindropsTest >> setUp [
+	super setUp.
 	raindropsCalculator := Raindrops new
 ]
 

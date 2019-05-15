@@ -46,8 +46,9 @@ ArmstrongNumbersTest class >> version [
 	^'1.0.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 ArmstrongNumbersTest >> setUp [
+	super setUp.
 	armstrongNumbersCalculator := ArmstrongNumbers new
 ]
 

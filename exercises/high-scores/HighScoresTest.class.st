@@ -45,8 +45,9 @@ HighScoresTest class >> version [
 	^'4.0.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 HighScoresTest >> setUp [
+	super setUp.
 	highScoresCalculator := HighScores new
 ]
 

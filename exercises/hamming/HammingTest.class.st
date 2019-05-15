@@ -59,8 +59,9 @@ HammingTest class >> version [
 	^'2.3.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 HammingTest >> setUp [
+	super setUp.
 	hammingCalculator := Hamming new
 ]
 

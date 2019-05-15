@@ -51,8 +51,9 @@ MatchingBracketsTest class >> version [
 	^'2.0.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 MatchingBracketsTest >> setUp [
+	super setUp.
 	matchingBracketsCalculator := MatchingBrackets new
 ]
 

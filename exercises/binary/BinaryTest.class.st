@@ -79,8 +79,9 @@ BinaryTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 BinaryTest >> setUp [
+	super setUp.
 	binaryCalculator := Binary new
 ]
 

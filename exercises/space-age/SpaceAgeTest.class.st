@@ -73,8 +73,9 @@ SpaceAgeTest >> assert: aNumber closeEnoughTo: aNumber2 [
 	self assert: aNumber closeEnoughTo: aNumber2 by: 2
 ]
 
-{ #category : #setup }
+{ #category : #running }
 SpaceAgeTest >> setUp [
+	super setUp.
 	spaceAgeCalculator := SpaceAge new
 ]
 

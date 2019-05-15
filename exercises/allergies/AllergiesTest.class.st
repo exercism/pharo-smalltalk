@@ -76,8 +76,9 @@ AllergiesTest class >> version [
 	^'1.2.1'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 AllergiesTest >> setUp [
+	super setUp.
 	allergiesCalculator := Allergies new
 ]
 
