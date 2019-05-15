@@ -67,8 +67,9 @@ GrainsTest class >> version [
 	^'1.2.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 GrainsTest >> setUp [
+	super setUp.
 	grainsCalculator := Grains new
 ]
 

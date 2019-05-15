@@ -103,8 +103,9 @@ LuhnTest class >> version [
 	^'1.5.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 LuhnTest >> setUp [
+	super setUp.
 	luhnCalculator := Luhn new
 ]
 

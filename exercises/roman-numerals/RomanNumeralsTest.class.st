@@ -80,8 +80,9 @@ RomanNumeralsTest class >> version [
 	^'1.2.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 RomanNumeralsTest >> setUp [
+	super setUp.
 	romanNumeralsCalculator := RomanNumerals new
 ]
 

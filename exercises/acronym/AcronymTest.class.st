@@ -43,8 +43,9 @@ AcronymTest class >> version [
 	^'1.7.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 AcronymTest >> setUp [
+	super setUp.
 	acronymCalculator := Acronym new
 ]
 
