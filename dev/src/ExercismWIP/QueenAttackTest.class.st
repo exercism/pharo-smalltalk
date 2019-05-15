@@ -53,8 +53,9 @@ QueenAttackTest class >> version [
 	^'2.3.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 QueenAttackTest >> setUp [
+	super setUp.
 	queenAttackCalculator := QueenAttack new
 ]
 

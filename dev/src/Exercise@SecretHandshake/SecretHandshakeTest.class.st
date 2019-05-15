@@ -64,8 +64,9 @@ SecretHandshakeTest class >> version [
 	^'1.2.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 SecretHandshakeTest >> setUp [
+	super setUp.
 	secretHandshakeCalculator := SecretHandshake new
 ]
 

@@ -68,8 +68,9 @@ TwoFerTest class >> version [
 	^'1.2.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 TwoFerTest >> setUp [
+	super setUp.
 	twoFer := TwoFer new.
 ]
 

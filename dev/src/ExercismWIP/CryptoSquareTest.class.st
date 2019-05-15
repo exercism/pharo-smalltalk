@@ -99,8 +99,9 @@ CryptoSquareTest class >> version [
 	^'3.2.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 CryptoSquareTest >> setUp [
+	super setUp.
 	cryptoSquareCalculator := CryptoSquare new
 ]
 

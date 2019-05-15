@@ -41,8 +41,9 @@ DominoesTest class >> version [
 	^'2.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 DominoesTest >> setUp [
+	super setUp.
 	dominoesCalculator := Dominoes new
 ]
 

@@ -46,8 +46,9 @@ ListOpsTest class >> version [
 	^'2.4.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 ListOpsTest >> setUp [
+	super setUp.
 	listOpsCalculator := ListOps new
 ]
 

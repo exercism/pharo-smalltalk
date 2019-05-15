@@ -77,8 +77,9 @@ CircularBufferTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 CircularBufferTest >> setUp [
+	super setUp.
 	circularBufferCalculator := CircularBuffer new
 ]
 

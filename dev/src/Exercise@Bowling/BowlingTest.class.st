@@ -107,8 +107,9 @@ BowlingTest class >> version [
 	^'1.2.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 BowlingTest >> setUp [
+	super setUp.
 	bowlingCalculator := Bowling new
 ]
 

@@ -55,8 +55,9 @@ ProverbTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 ProverbTest >> setUp [
+	super setUp.
 	proverbCalculator := Proverb new
 ]
 

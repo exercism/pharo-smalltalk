@@ -59,8 +59,9 @@ DndCharacterTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 DndCharacterTest >> setUp [
+	super setUp.
 	dndCharacterCalculator := DndCharacter new
 ]
 

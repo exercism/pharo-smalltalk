@@ -85,8 +85,9 @@ RailFenceCipherTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 RailFenceCipherTest >> setUp [
+	super setUp.
 	railFenceCipherCalculator := RailFenceCipher new
 ]
 

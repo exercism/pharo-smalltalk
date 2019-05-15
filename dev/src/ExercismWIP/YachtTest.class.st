@@ -63,8 +63,9 @@ YachtTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 YachtTest >> setUp [
+	super setUp.
 	yachtCalculator := Yacht new
 ]
 

@@ -68,8 +68,9 @@ ProteinTranslationTest class >> version [
 	^'1.1.1'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 ProteinTranslationTest >> setUp [
+	super setUp.
 	proteinTranslationCalculator := ProteinTranslation new
 ]
 

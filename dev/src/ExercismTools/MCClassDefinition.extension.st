@@ -1,6 +1,6 @@
 Extension { #name : #MCClassDefinition }
 
-{ #category : #'*ExercismTests' }
+{ #category : #'*ExercismTools' }
 MCClassDefinition >> exTonelFilename [
 	^ClassDescription exTonelClassFilenameFor: self className 
 ]

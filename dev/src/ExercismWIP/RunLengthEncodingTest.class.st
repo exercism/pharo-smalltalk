@@ -50,8 +50,9 @@ RunLengthEncodingTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 RunLengthEncodingTest >> setUp [
+	super setUp.
 	runLengthEncodingCalculator := RunLengthEncoding new
 ]
 

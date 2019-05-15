@@ -53,8 +53,9 @@ MeetupTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 MeetupTest >> setUp [
+	super setUp.
 	meetupCalculator := Meetup new
 ]
 

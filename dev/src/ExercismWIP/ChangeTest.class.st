@@ -43,8 +43,9 @@ ChangeTest class >> version [
 	^'1.3.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 ChangeTest >> setUp [
+	super setUp.
 	changeCalculator := Change new
 ]
 

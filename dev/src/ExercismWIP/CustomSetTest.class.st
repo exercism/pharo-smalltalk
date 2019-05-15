@@ -34,8 +34,9 @@ CustomSetTest class >> version [
 	^'1.3.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 CustomSetTest >> setUp [
+	super setUp.
 	customSetCalculator := CustomSet new
 ]
 

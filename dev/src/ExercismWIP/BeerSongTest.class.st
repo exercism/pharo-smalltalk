@@ -347,8 +347,9 @@ BeerSongTest class >> version [
 	^'2.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 BeerSongTest >> setUp [
+	super setUp.
 	beerSongCalculator := BeerSong new
 ]
 

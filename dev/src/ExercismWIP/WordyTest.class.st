@@ -94,8 +94,9 @@ WordyTest class >> version [
 	^'1.5.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 WordyTest >> setUp [
+	super setUp.
 	wordyCalculator := Wordy new
 ]
 

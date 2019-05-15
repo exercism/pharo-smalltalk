@@ -42,8 +42,9 @@ BobTest class >> version [
 	^'1.4.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 BobTest >> setUp [
+	super setUp.
 	bobCalculator := Bob new
 ]
 

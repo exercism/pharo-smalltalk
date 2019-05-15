@@ -57,8 +57,9 @@ RotationalCipherTest class >> version [
 	^'1.2.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 RotationalCipherTest >> setUp [
+	super setUp.
 	rotationalCipherCalculator := RotationalCipher new
 ]
 

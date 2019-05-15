@@ -55,8 +55,9 @@ SatelliteTest class >> version [
 	^'2.0.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 SatelliteTest >> setUp [
+	super setUp.
 	satelliteCalculator := Satellite new
 ]
 

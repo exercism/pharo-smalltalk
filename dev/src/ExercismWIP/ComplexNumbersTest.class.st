@@ -55,8 +55,9 @@ ComplexNumbersTest class >> version [
 	^'1.3.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 ComplexNumbersTest >> setUp [
+	super setUp.
 	complexNumbersCalculator := ComplexNumbers new
 ]
 

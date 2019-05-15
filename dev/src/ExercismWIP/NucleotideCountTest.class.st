@@ -39,8 +39,9 @@ NucleotideCountTest class >> version [
 	^'1.3.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 NucleotideCountTest >> setUp [
+	super setUp.
 	nucleotideCountCalculator := NucleotideCount new
 ]
 
