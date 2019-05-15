@@ -1,7 +1,7 @@
 ## Installation
 
 The simplest way to install [Pharo](http://pharo.org) is to use a [zero conf](http://pharo.org/download#//*[@id="main"]/div/h2[3]) download from a terminal command line. 
-<br/>_Note: If you are trying to upgrade an existing installation see the [upgrade instructions](*How-to-Upgrade-Pharo-Exercism) at the end_.
+<br/>_Note: If you are trying to upgrade an existing installation see the [upgrade instructions](https://github.com/exercism/pharo-smalltalk/blob/master/docs/UPGRADE.md).
 
 Windows users who do not have a UNIX style shell installed should skip to the [Windows Installation](#windows-installation-skip-for-osxlinux) instructions (below).<br/>
 More advanced Linux users may also want to refer to the [Linux Hackers Installation](#linux-hackers-installation-for-advanced-linux-use-only) (below).
@@ -159,34 +159,4 @@ ExercismHttpClient
 
 ## How to Upgrade Pharo Exercism
 
-From time to time we may need you to update the libraries in your Pharo Exercism image. Before doing an update, it is best to ensure you have submitted any in-progress exercises, then saved and backed up your Pharo.image, and Pharo.changes files. Once you have a safe backup, evaluate this code in a Playground:
-
- ```smalltalk
- 
- './pharo-local/iceberg/exercism' asFileReference deleteAll.
- './pharo-local/package-cache' asFileReference deleteAll.
- 
- IceRepository reset.
- 
- Metacello new 
-  baseline: 'Exercism'; 
-  repository: 'github://exercism/pharo-smalltalk/releases/latest';
-  onConflict: [ :ex | ex allow ]; 
-  load.
- ```
-
-You may be prompted about losing changes to the package "ExercismTools", and you should choose "Load" to ensure you have a compatible version of the tools. 
-
-If you ever need to upgrade (or downgrade) to a specific version of Exercism, you can also modify this script to specify a particular version number by changing the repository path as follows:
- 
-```smalltalk
- ... 
-  repository: 'github://exercism/pharo-smalltalk:<version-tag>';
- ...
- ```
-
-Where `<versison-tag>` could be something like: `v0.2.3` or `master`
- 
-Once you have loaded a specific version, you may also need to "re-fetch" any existing exercises that you want to continue working on by using the regular `Exercism | Fetch...` menu item.
- 
-In rare situations (if you continue to have problems), you might need to get a fresh Pharo.image file ( the easiest way is to re-install Pharo in a fresh directory by following the regular installation instructions at the top of this page).
+From time to time we may need you to update the libraries in your Pharo Exercism image. Please follow [these instructions](https://github.com/exercism/pharo-smalltalk/blob/master/docs/UPGRADE.md)
