@@ -28,9 +28,35 @@ In the URL above `<name>` is the name of the exercise e.g. `hello-world` and `<l
 
 #### 200
 
-A sucessful request will respond with the exercise.
+A sucessful request will send a response containing a JSON payload. Inside the JSON will be information on the exercise and a url from which to download the exercise files.
 
-`TODO` show response contents
+```json
+"solution":{
+	"id":"<id-string>",
+	"url":"https://exercism.io/my/solutions/<id-string>",
+	"team":null,
+	"user":{
+		"handle":"<exercism-user-name>",
+		"is_requester":true
+		},
+		"exercise":{
+			"id":"isogram",
+			"instructions_url":"https://exercism.io/my/solutions/<id-string>",
+			"auto_approve":false,
+			"track":{
+				"id":"pharo-smalltalk",
+				"language":"Pharo"
+				}
+			},
+			"file_download_base_url":"https://api.exercism.io/v1/solutions/<id-string>/files/",
+			"files":[
+				"IsogramTest.class.st",
+				"README.md"
+				],
+			"iteration":null
+		}
+	}
+```
 
 #### 400
 
