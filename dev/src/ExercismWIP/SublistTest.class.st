@@ -44,8 +44,9 @@ SublistTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 SublistTest >> setUp [
+	super setUp.
 	sublistCalculator := Sublist new
 ]
 

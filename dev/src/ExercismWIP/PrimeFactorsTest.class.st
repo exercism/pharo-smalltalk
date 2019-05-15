@@ -56,8 +56,9 @@ PrimeFactorsTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 PrimeFactorsTest >> setUp [
+	super setUp.
 	primeFactorsCalculator := PrimeFactors new
 ]
 

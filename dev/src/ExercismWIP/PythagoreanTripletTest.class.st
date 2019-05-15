@@ -50,8 +50,9 @@ PythagoreanTripletTest class >> version [
 	^'1.0.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 PythagoreanTripletTest >> setUp [
+	super setUp.
 	pythagoreanTripletCalculator := PythagoreanTriplet new
 ]
 

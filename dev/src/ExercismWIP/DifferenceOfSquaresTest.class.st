@@ -43,8 +43,9 @@ DifferenceOfSquaresTest class >> version [
 	^'1.2.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 DifferenceOfSquaresTest >> setUp [
+	super setUp.
 	differenceOfSquaresCalculator := DifferenceOfSquares new
 ]
 

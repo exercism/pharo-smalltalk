@@ -77,8 +77,9 @@ RobotSimulatorTest class >> version [
 	^'3.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 RobotSimulatorTest >> setUp [
+	super setUp.
 	robotSimulator := RobotSimulator new
 ]
 

@@ -45,8 +45,9 @@ RnaTranscriptionTest class >> version [
 	^'1.3.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 RnaTranscriptionTest >> setUp [
+	super setUp.
 	rnaTranscriptionCalculator := RnaTranscription new
 ]
 

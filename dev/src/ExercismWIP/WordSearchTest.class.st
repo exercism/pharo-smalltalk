@@ -53,8 +53,9 @@ WordSearchTest class >> version [
 	^'1.2.1'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 WordSearchTest >> setUp [
+	super setUp.
 	wordSearchCalculator := WordSearch new
 ]
 

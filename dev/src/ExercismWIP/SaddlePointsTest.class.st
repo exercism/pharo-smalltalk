@@ -55,8 +55,9 @@ SaddlePointsTest class >> version [
 	^'1.5.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 SaddlePointsTest >> setUp [
+	super setUp.
 	saddlePointsCalculator := SaddlePoints new
 ]
 

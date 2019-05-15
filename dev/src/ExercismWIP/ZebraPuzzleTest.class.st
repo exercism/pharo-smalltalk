@@ -52,8 +52,9 @@ ZebraPuzzleTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 ZebraPuzzleTest >> setUp [
+	super setUp.
 	zebraPuzzleCalculator := ZebraPuzzle new
 ]
 

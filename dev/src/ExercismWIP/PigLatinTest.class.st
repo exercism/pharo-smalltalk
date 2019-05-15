@@ -44,8 +44,9 @@ PigLatinTest class >> version [
 	^'1.2.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 PigLatinTest >> setUp [
+	super setUp.
 	pigLatinCalculator := PigLatin new
 ]
 

@@ -63,8 +63,9 @@ KnapsackTest class >> version [
 	^'1.0.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 KnapsackTest >> setUp [
+	super setUp.
 	knapsackCalculator := Knapsack new
 ]
 

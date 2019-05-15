@@ -90,8 +90,9 @@ FoodChainTest class >> version [
 	^'2.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 FoodChainTest >> setUp [
+	super setUp.
 	foodChainCalculator := FoodChain new
 ]
 

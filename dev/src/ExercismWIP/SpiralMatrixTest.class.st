@@ -50,8 +50,9 @@ SpiralMatrixTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 SpiralMatrixTest >> setUp [
+	super setUp.
 	spiralMatrixCalculator := SpiralMatrix new
 ]
 

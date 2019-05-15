@@ -94,8 +94,9 @@ BookStoreTest class >> version [
 	^'1.4.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 BookStoreTest >> setUp [
+	super setUp.
 	bookStoreCalculator := BookStore new
 ]
 

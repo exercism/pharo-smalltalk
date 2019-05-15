@@ -75,8 +75,9 @@ ScaleGeneratorTest class >> version [
 	^'2.0.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 ScaleGeneratorTest >> setUp [
+	super setUp.
 	scaleGeneratorCalculator := ScaleGenerator new
 ]
 

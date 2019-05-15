@@ -57,8 +57,9 @@ ConnectTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 ConnectTest >> setUp [
+	super setUp.
 	connectCalculator := Connect new
 ]
 

@@ -69,8 +69,9 @@ SieveTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 SieveTest >> setUp [
+	super setUp.
 	sieveCalculator := Sieve new
 ]
 

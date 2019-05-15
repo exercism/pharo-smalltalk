@@ -270,8 +270,8 @@ ExercismExerciseGenerator >> generateSetupOn: testClass using: testVariable assi
 	| output src |
 	
 	output := (WriteStream on: '').
-	output nextPutAll: 'setUp'; crlf.
-	output tab; nextPutAll: 'super setUp.'; crlf. 
+	output nextPutAll: 'setUp'; cr.
+	output tab; nextPutAll: 'super setUp.'; cr. 
 	output tab; nextPutAll: testVariable, ' := '; nextPutAll: testRoot, ' new'.
 	
 	src := output contents.
@@ -331,7 +331,7 @@ ExercismExerciseGenerator >> generateTestMethodsOn: testClass calling: testVaria
 ExercismExerciseGenerator >> generateTestNamed: testName in: aClass variable: variableName selector: aSelectorPrefix parameters: testParameters expecting: testResults [ 
 	| output src |
 	output := (WriteStream on: '').
-	output nextPutAll: testName; crlf; tab; nextPutAll: '| result |'; crlf; crlf.
+	output nextPutAll: testName; cr; tab; nextPutAll: '| result |'; cr; cr.
 	
 	(self isErrorAssertion: testResults) 
 		ifTrue: [ self 
@@ -405,4 +405,31 @@ ExercismExerciseGenerator >> numberGenerated: anObject [
 ExercismExerciseGenerator >> resetTestCounter [
 
 	testCounter := 0
+]
+
+{ #category : #internal }
+ExercismExerciseGenerator >> updateTests [
+	| cm src newSrc |
+	ExercismTest
+		allSubclassesDo: [ :c | 
+			cm := c localMethodNamed: #setUp ifAbsent: [ nil ].
+			cm
+				ifNotNil: [ src := cm sourceCode lines.
+					newSrc := String
+						streamContents: [ :s | 
+							s
+								nextPutAll: src first;
+								cr;
+								tab;
+								nextPutAll: 'super setUp.'.
+							src
+								allButFirstDo: [ :l | 
+									s
+										cr;
+										nextPutAll: l ] ].
+					self
+						compile: newSrc
+						for: c
+						selector: cm selector
+						protocol: 'running' ] ]
 ]

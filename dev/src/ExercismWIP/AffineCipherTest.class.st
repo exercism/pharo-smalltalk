@@ -96,8 +96,9 @@ AffineCipherTest class >> version [
 	^'2.0.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 AffineCipherTest >> setUp [
+	super setUp.
 	affineCipherCalculator := AffineCipher new
 ]
 

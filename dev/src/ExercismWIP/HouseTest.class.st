@@ -132,8 +132,9 @@ HouseTest class >> version [
 	^'2.2.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 HouseTest >> setUp [
+	super setUp.
 	houseCalculator := House new
 ]
 

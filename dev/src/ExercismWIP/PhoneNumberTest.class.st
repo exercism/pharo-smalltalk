@@ -55,8 +55,9 @@ PhoneNumberTest class >> version [
 	^'1.7.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 PhoneNumberTest >> setUp [
+	super setUp.
 	phoneNumberCalculator := PhoneNumber new
 ]
 

@@ -67,8 +67,9 @@ MatrixTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 MatrixTest >> setUp [
+	super setUp.
 	matrixCalculator := Matrix new
 ]
 

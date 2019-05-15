@@ -105,8 +105,9 @@ SimpleCipherTest class >> version [
 	^'2.0.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 SimpleCipherTest >> setUp [
+	super setUp.
 	simpleCipherCalculator := SimpleCipher new
 ]
 

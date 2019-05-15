@@ -49,8 +49,9 @@ TriangleTest class >> version [
 	^'1.2.1'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 TriangleTest >> setUp [
+	super setUp.
 	triangleCalculator := Triangle new
 ]
 

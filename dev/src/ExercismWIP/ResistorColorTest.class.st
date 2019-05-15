@@ -46,8 +46,9 @@ ResistorColorTest class >> version [
 	^'1.0.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 ResistorColorTest >> setUp [
+	super setUp.
 	resistorColorCalculator := ResistorColor new
 ]
 

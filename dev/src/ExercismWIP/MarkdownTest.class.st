@@ -41,8 +41,9 @@ MarkdownTest class >> version [
 	^'1.4.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 MarkdownTest >> setUp [
+	super setUp.
 	markdownCalculator := Markdown new
 ]
 

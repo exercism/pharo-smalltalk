@@ -56,8 +56,9 @@ TwoBucketTest class >> version [
 	^'1.4.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 TwoBucketTest >> setUp [
+	super setUp.
 	twoBucketCalculator := TwoBucket new
 ]
 

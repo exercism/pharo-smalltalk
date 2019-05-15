@@ -105,8 +105,9 @@ OcrNumbersTest class >> version [
 	^'1.2.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 OcrNumbersTest >> setUp [
+	super setUp.
 	ocrNumbersCalculator := OcrNumbers new
 ]
 

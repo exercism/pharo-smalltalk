@@ -40,8 +40,9 @@ LargestSeriesProductTest class >> version [
 	^'1.2.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 LargestSeriesProductTest >> setUp [
+	super setUp.
 	largestSeriesProductCalculator := LargestSeriesProduct new
 ]
 

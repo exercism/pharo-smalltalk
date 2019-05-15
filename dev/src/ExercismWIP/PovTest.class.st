@@ -64,8 +64,9 @@ PovTest class >> version [
 	^'1.3.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 PovTest >> setUp [
+	super setUp.
 	povCalculator := Pov new
 ]
 

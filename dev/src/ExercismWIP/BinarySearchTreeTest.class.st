@@ -80,8 +80,9 @@ BinarySearchTreeTest class >> version [
 	^'1.0.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 BinarySearchTreeTest >> setUp [
+	super setUp.
 	binarySearchTreeCalculator := BinarySearchTree new
 ]
 
