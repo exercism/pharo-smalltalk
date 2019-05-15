@@ -29,7 +29,7 @@ DieTest class >> customData [
 DieTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
-	^(self createExerciseAfter: HelloWorldTest)
+	^(ExercismExercise for: self)
 		isCore: false;
 		difficulty: 1;
 		topics: #('math');
