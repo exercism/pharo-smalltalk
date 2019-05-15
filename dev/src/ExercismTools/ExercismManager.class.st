@@ -35,7 +35,7 @@ ExercismManager class >> isUserMode [
 
 { #category : #config }
 ExercismManager class >> legacyExercismPackage [
-	"Answer the default exercism package, or create one if missing"
+	"Answer the default exercism package, or nil if missing"
 	| packageOrganiser |
 	
 	packageOrganiser := RPackageOrganizer default.
