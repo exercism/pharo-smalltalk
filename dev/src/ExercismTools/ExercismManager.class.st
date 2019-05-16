@@ -68,6 +68,14 @@ ExercismManager class >> trackId [
 ]
 
 { #category : #exercism }
+ExercismManager class >> upgrade [
+	"upgrade an environment (called from ugrade instructions)"
+
+	self disableStudentCritics.
+	World closeUnchangedWindows.
+]
+
+{ #category : #exercism }
 ExercismManager class >> welcome [
 	"Setup the initial environment for a new user"
 

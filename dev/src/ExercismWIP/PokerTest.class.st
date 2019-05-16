@@ -32,8 +32,9 @@ PokerTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 PokerTest >> setUp [
+	super setUp.
 	pokerCalculator := Poker new
 ]
 

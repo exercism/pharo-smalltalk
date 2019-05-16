@@ -63,8 +63,9 @@ ForthTest class >> version [
 	^'1.7.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 ForthTest >> setUp [
+	super setUp.
 	forthCalculator := Forth new
 ]
 

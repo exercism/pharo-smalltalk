@@ -55,8 +55,9 @@ RationalNumbersTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 RationalNumbersTest >> setUp [
+	super setUp.
 	rationalNumbersCalculator := RationalNumbers new
 ]
 

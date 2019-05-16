@@ -89,8 +89,9 @@ SayTest class >> version [
 	^'1.2.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 SayTest >> setUp [
+	super setUp.
 	sayCalculator := Say new
 ]
 

@@ -37,8 +37,9 @@ FlattenArrayTest class >> version [
 	^'1.2.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 FlattenArrayTest >> setUp [
+	super setUp.
 	flattenArrayCalculator := FlattenArray new
 ]
 

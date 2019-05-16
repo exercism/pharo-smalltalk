@@ -62,8 +62,9 @@ GoCountingTest class >> version [
 	^'1.0.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 GoCountingTest >> setUp [
+	super setUp.
 	goCountingCalculator := GoCounting new
 ]
 

@@ -53,8 +53,9 @@ MinesweeperTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 MinesweeperTest >> setUp [
+	super setUp.
 	minesweeperCalculator := Minesweeper new
 ]
 

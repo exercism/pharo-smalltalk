@@ -58,8 +58,9 @@ AlphameticsTest class >> version [
 	^'1.3.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 AlphameticsTest >> setUp [
+	super setUp.
 	alphameticsCalculator := Alphametics new
 ]
 

@@ -50,8 +50,9 @@ WordCountTest class >> version [
 	^'1.3.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 WordCountTest >> setUp [
+	super setUp.
 	wordCountCalculator := WordCount new
 ]
 

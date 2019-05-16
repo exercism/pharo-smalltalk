@@ -58,8 +58,9 @@ AllYourBaseTest class >> version [
 	^'2.3.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 AllYourBaseTest >> setUp [
+	super setUp.
 	allYourBaseCalculator := AllYourBase new
 ]
 

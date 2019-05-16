@@ -65,8 +65,9 @@ RestApiTest class >> version [
 	^'1.1.1'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 RestApiTest >> setUp [
+	super setUp.
 	restApiCalculator := RestApi new
 ]
 

@@ -46,6 +46,7 @@ variety of languages, each with its own unique scoring table. For
 example, an "E" is scored at 2 in the Māori-language version of the
 game while being scored at 4 in the Hawaiian-language version.
 
+
 ## Hint
 
 While readability is preferred over efficiency, there is a solution that avoids multiple input looksups when solving this.
@@ -53,14 +54,16 @@ While readability is preferred over efficiency, there is a solution that avoids 
 
 ## Downloading
 
-To download this exercise in Pharo, type: `etl` into the `Exercism | Fetch Exercise` package menu prompt (right click on the Exercism package in the Pharo System Browser). You can also submit your solution from the same menu for any selected package. You don't normally need to use the exercism cli (as indicated on the right hand panel).
+To download this exercise in Pharo, type: `etl` into the `Exercism | Fetch new exercise` top menu prompt (or right click on any `Exercise@<Name>` package in the Pharo System Browser).
+
+When you are finished writing and testing your solution, and want to submit it, you should right click on the `Exercise@Etl` package and choose `Exercism | Submit exercise` in the context menu. You DON'T use the exercism cli (as indicated on the right hand panel).
 
 ## Running The Tests
 
 Tests can be run directly from the Pharo IDE, by clicking on the test orb next to any test.
 The SUnit convention is that the provided `EtlTest`, will test the functionality of `Etl`.
 
-If you are still stuck, the track documentation has more detailed help on [running tests](https://exercism.io/tracks/pharo/tests).
+If you are still stuck, the track documentation has detailed help for [running tests](https://exercism.io/tracks/pharo/tests).
 
 ## Language and Environment Help
 

@@ -92,8 +92,9 @@ SgfParsingTest class >> version [
 	^'1.2.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 SgfParsingTest >> setUp [
+	super setUp.
 	sgfParsingCalculator := SgfParsing new
 ]
 

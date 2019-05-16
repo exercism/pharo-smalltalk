@@ -86,8 +86,9 @@ KindergartenGardenTest class >> version [
 	^'1.1.1'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 KindergartenGardenTest >> setUp [
+	super setUp.
 	kindergartenGardenCalculator := KindergartenGarden new
 ]
 

@@ -65,8 +65,9 @@ LeapTest class >> version [
 	^'1.5.1'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 LeapTest >> setUp [
+	super setUp.
 	leapCalculator := Leap new
 ]
 

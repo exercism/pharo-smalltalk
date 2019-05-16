@@ -54,8 +54,9 @@ ZipperTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 ZipperTest >> setUp [
+	super setUp.
 	zipperCalculator := Zipper new
 ]
 

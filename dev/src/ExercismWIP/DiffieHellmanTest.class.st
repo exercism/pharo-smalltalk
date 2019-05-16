@@ -64,8 +64,9 @@ DiffieHellmanTest class >> version [
 	^'1.0.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 DiffieHellmanTest >> setUp [
+	super setUp.
 	diffieHellmanCalculator := DiffieHellman new
 ]
 

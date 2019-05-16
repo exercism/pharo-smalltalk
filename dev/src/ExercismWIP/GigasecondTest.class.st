@@ -32,8 +32,9 @@ GigasecondTest class >> version [
 	^'2.0.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 GigasecondTest >> setUp [
+	super setUp.
 	gigasecondCalculator := Gigasecond new
 ]
 

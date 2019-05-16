@@ -72,8 +72,9 @@ CollatzConjectureTest class >> version [
 	^'1.2.1'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 CollatzConjectureTest >> setUp [
+	super setUp.
 	collatzConjectureCalculator := CollatzConjecture new
 ]
 

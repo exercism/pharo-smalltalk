@@ -85,8 +85,9 @@ TransposeTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 TransposeTest >> setUp [
+	super setUp.
 	transposeCalculator := Transpose new
 ]
 

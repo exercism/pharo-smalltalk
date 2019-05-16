@@ -85,8 +85,9 @@ EtlTest class >> version [
 	^'1.0.1'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 EtlTest >> setUp [
+	super setUp.
 	etlCalculator := Etl new
 ]
 

@@ -52,8 +52,9 @@ IsogramTest class >> version [
 	^'1.7.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 IsogramTest >> setUp [
+	super setUp.
 	isogramCalculator := Isogram new
 ]
 

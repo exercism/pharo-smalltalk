@@ -66,8 +66,9 @@ ScrabbleScoreTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 ScrabbleScoreTest >> setUp [
+	super setUp.
 	scrabbleScoreCalculator := ScrabbleScore new
 ]
 

@@ -41,8 +41,9 @@ PascalsTriangleTest class >> version [
 	^'1.5.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 PascalsTriangleTest >> setUp [
+	super setUp.
 	pascalsTriangleCalculator := PascalsTriangle new
 ]
 

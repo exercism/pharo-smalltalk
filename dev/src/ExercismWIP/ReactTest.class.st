@@ -42,8 +42,9 @@ ReactTest class >> version [
 	^'2.0.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 ReactTest >> setUp [
+	super setUp.
 	reactCalculator := React new
 ]
 

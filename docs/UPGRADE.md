@@ -16,6 +16,8 @@ From time to time we may need you to update the libraries in your Pharo Exercism
   repository: 'github://exercism/pharo-smalltalk/releases/latest';
   onConflict: [ :ex | ex allow ]; 
   load.
+  
+ #ExercismManager asClass upgrade. 
  ```
 
 You may be prompted about losing changes to the package "ExercismTools", and you should choose "Load" to ensure you have a compatible version of the tools. 

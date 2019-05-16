@@ -70,8 +70,9 @@ ReverseStringTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 ReverseStringTest >> setUp [
+	super setUp.
 	reverseStringCalculator := ReverseString new
 ]
 

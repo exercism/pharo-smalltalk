@@ -59,8 +59,9 @@ PalindromeProductsTest class >> version [
 	^'1.2.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 PalindromeProductsTest >> setUp [
+	super setUp.
 	palindromeProductsCalculator := PalindromeProducts new
 ]
 

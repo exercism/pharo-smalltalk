@@ -34,6 +34,7 @@ are some additional things you could try:
 Then please share your thoughts in a comment on the submission. Did this
 experiment make the code better? Worse? Did you learn anything from it?
 
+
 ## Hint
 
 It isn't strictly necessary to model students as a seperate object, you can use a convenient internal data strcture as the requirements are quite simple (and as long as it doesn't leak out into the results).Note: this exercise has been slightly modified from the problem-specification, as it makes more sense to seperate adding students and querying them in seperate methods (vs. having one method doing both, which feels less Pharo/Smalltalk like).
@@ -41,14 +42,16 @@ It isn't strictly necessary to model students as a seperate object, you can use 
 
 ## Downloading
 
-To download this exercise in Pharo, type: `grade-school` into the `Exercism | Fetch Exercise` package menu prompt (right click on the Exercism package in the Pharo System Browser). You can also submit your solution from the same menu for any selected package. You don't normally need to use the exercism cli (as indicated on the right hand panel).
+To download this exercise in Pharo, type: `grade-school` into the `Exercism | Fetch new exercise` top menu prompt (or right click on any `Exercise@<Name>` package in the Pharo System Browser).
+
+When you are finished writing and testing your solution, and want to submit it, you should right click on the `Exercise@GradeSchool` package and choose `Exercism | Submit exercise` in the context menu. You DON'T use the exercism cli (as indicated on the right hand panel).
 
 ## Running The Tests
 
 Tests can be run directly from the Pharo IDE, by clicking on the test orb next to any test.
 The SUnit convention is that the provided `GradeSchoolTest`, will test the functionality of `GradeSchool`.
 
-If you are still stuck, the track documentation has more detailed help on [running tests](https://exercism.io/tracks/pharo/tests).
+If you are still stuck, the track documentation has detailed help for [running tests](https://exercism.io/tracks/pharo/tests).
 
 ## Language and Environment Help
 

@@ -50,8 +50,9 @@ SumOfMultiplesTest class >> version [
 	^'1.5.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 SumOfMultiplesTest >> setUp [
+	super setUp.
 	sumOfMultiplesCalculator := SumOfMultiples new
 ]
 

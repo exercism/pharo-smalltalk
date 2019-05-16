@@ -47,8 +47,9 @@ PangramTest class >> version [
 	^'1.4.1'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 PangramTest >> setUp [
+	super setUp.
 	pangramCalculator := Pangram new
 ]
 

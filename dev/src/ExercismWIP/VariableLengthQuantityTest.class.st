@@ -58,8 +58,9 @@ VariableLengthQuantityTest class >> version [
 	^'1.2.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 VariableLengthQuantityTest >> setUp [
+	super setUp.
 	variableLengthQuantityCalculator := VariableLengthQuantity new
 ]
 

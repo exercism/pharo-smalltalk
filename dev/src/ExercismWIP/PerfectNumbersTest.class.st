@@ -44,8 +44,9 @@ PerfectNumbersTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 PerfectNumbersTest >> setUp [
+	super setUp.
 	perfectNumbersCalculator := PerfectNumbers new
 ]
 
