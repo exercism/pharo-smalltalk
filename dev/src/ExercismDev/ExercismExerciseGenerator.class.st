@@ -333,7 +333,7 @@ ExercismExerciseGenerator >> generateTestNamed: testName in: aClass variable: va
 
 	output := (WriteStream on: '').
 	output << testName; crlf.
-	testCounter = 1 ifTrue: [ output tab << '"Review the class [Comment] tab"' ; crlf].
+	testCounter = 1 ifTrue: [ output tab << '"Tip: Remember to review the class [Comment] tab"' ; crlf].
 	output tab << '| result |'; crlf; crlf.
 	
 	(self isErrorAssertion: testResults) 
