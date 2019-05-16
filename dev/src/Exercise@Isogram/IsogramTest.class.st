@@ -28,7 +28,7 @@ Class {
 	#category : #'Exercise@Isogram'
 }
 
-{ #category : #helper }
+{ #category : #config }
 IsogramTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	

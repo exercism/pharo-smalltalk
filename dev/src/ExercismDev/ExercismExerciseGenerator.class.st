@@ -408,7 +408,19 @@ ExercismExerciseGenerator >> resetTestCounter [
 ]
 
 { #category : #internal }
+ExercismExerciseGenerator >> updateCategorisation [
+	"utility script to fix categorisations"
+	| cm |
+	ExercismTest
+		allSubclassesDo: [ :c | 
+			cm := c class localMethodNamed: #exercise ifAbsent: [ nil ].
+			cm ifNotNil: [ cm protocol: 'config']]
+]
+
+{ #category : #internal }
 ExercismExerciseGenerator >> updateTests [
+	"utility script to fix previously generated test methods"
+	
 	| cm src newSrc |
 	ExercismTest
 		allSubclassesDo: [ :c | 
