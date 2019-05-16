@@ -20,7 +20,7 @@ If everything goes well, you will be ready to fetch your first real exercise
 If you are editting this file in a text editor and not in Pharo - 
 please review the [Getting Started](https://exercism.io/tracks/pharo/installation) section. 
 
-While you can use a text editor, the Pharo IDE is partly what makes the langauge so special.
+While you can use a text editor, the Pharo IDE is partly what makes the language so special.
 
 In Pharo you can run code (including tests) with broken methods and missing classes.  When the VM encounters broken code, it raises a debugger which lets you explore the problem a little better.  
 

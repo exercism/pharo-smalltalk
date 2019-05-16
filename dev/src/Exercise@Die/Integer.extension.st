@@ -1,32 +1,32 @@
 Extension { #name : #Integer }
 
 { #category : #'*Exercise@Die' }
-Integer >> D10 [
-	^ self D: 10
+Integer >> d10 [
+	^ self d: 10
 ]
 
 { #category : #'*Exercise@Die' }
-Integer >> D2 [
-	^ self D: 3
+Integer >> d2 [
+	^ self d: 3
 ]
 
 { #category : #'*Exercise@Die' }
-Integer >> D20 [
-	^ self D: 20
+Integer >> d20 [
+	^ self d: 20
 ]
 
 { #category : #'*Exercise@Die' }
-Integer >> D4 [
-	^ self D: 4
+Integer >> d4 [
+	^ self d: 4
 ]
 
 { #category : #'*Exercise@Die' }
-Integer >> D6 [
-	^ self D: 6
+Integer >> d6 [
+	^ self d: 6
 ]
 
 { #category : #'*Exercise@Die' }
-Integer >> D: anInteger [
+Integer >> d: anInteger [
 	
 	| handle |
 	handle := DieHandle new.
