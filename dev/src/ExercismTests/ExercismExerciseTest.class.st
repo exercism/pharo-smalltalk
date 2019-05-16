@@ -204,7 +204,7 @@ ExercismExerciseTest >> testUnlockReference [
 { #category : #tests }
 ExercismExerciseTest >> testUnlockedExercises [
 	
-	self assertCollection: HelloWorldTest exercise unlockedExercises asArray equals: {}.
+	self assertCollection: HelloWorldTest exercise unlockedExercises asArray equals: {} .
 	self assertCollection: TwoFerTest exercise unlockedExercises asArray 
 				includesAll: {ResistorColorDuoTest exercise. SpaceAgeTest exercise}.
 ]
