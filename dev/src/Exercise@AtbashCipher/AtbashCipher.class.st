@@ -36,14 +36,14 @@ AtbashCipher >> sanitizeString: aString [
 ]
 
 { #category : #splitjoin }
-AtbashCipher >> splitInGroupsOfFive: aString [ 
-	aString size < 6
-		ifTrue: [ ^ aString ].
-	^ String streamContents: [ :stream |
-		aString doWithIndex: [ :each :i |
-			(i > 1 and: [ i - 1 isDivisibleBy: 5 ])
-				ifTrue: [ stream << Character space ].
-			stream << each ] ]
+AtbashCipher >> splitInGroupsOfFive: stringToSplit [
+	|input|
+	input := ReadStream on: stringToSplit.
+	^ String streamContents: [ :output |
+		output << (input next: 5).
+		[ input atEnd ] whileFalse: [ output space << (input next: 5) ] 
+	].
+
 ]
 
 { #category : #encoding }
