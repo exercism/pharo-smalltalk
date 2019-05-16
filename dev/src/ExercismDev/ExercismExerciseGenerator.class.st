@@ -330,8 +330,11 @@ ExercismExerciseGenerator >> generateTestMethodsOn: testClass calling: testVaria
 { #category : #generation }
 ExercismExerciseGenerator >> generateTestNamed: testName in: aClass variable: variableName selector: aSelectorPrefix parameters: testParameters expecting: testResults [ 
 	| output src |
+
 	output := (WriteStream on: '').
-	output nextPutAll: testName; cr; tab; nextPutAll: '| result |'; cr; cr.
+	output << testName; crlf.
+	testCounter = 1 ifTrue: [ output tab << '"Tip: Remember to review the class [Comment] tab"' ; crlf].
+	output tab << '| result |'; crlf; crlf.
 	
 	(self isErrorAssertion: testResults) 
 		ifTrue: [ self 
