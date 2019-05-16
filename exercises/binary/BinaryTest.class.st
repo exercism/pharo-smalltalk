@@ -45,7 +45,7 @@ Class {
 	#category : #'Exercise@Binary'
 }
 
-{ #category : #helper }
+{ #category : #config }
 BinaryTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -79,8 +79,9 @@ BinaryTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 BinaryTest >> setUp [
+	super setUp.
 	binaryCalculator := Binary new
 ]
 

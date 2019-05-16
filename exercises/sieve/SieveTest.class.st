@@ -44,7 +44,7 @@ Class {
 	#category : #'Exercise@Sieve'
 }
 
-{ #category : #helper }
+{ #category : #config }
 SieveTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 
@@ -69,8 +69,9 @@ SieveTest class >> version [
 	^'1.1.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 SieveTest >> setUp [
+	super setUp.
 	sieveCalculator := Sieve new
 ]
 

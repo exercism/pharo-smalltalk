@@ -21,7 +21,7 @@ Class {
 	#category : #'Exercise@Anagram'
 }
 
-{ #category : #helper }
+{ #category : #config }
 AnagramTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -46,8 +46,9 @@ AnagramTest class >> version [
 	^'1.4.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 AnagramTest >> setUp [
+	super setUp.
 	anagramCalculator := Anagram new
 ]
 

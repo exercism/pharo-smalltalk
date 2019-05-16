@@ -23,7 +23,7 @@ Class {
 	#category : #'Exercise@Pangram'
 }
 
-{ #category : #helper }
+{ #category : #config }
 PangramTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -47,8 +47,9 @@ PangramTest class >> version [
 	^'1.4.1'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 PangramTest >> setUp [
+	super setUp.
 	pangramCalculator := Pangram new
 ]
 

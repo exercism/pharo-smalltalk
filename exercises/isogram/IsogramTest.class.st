@@ -28,7 +28,7 @@ Class {
 	#category : #'Exercise@Isogram'
 }
 
-{ #category : #helper }
+{ #category : #config }
 IsogramTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -52,8 +52,9 @@ IsogramTest class >> version [
 	^'1.7.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 IsogramTest >> setUp [
+	super setUp.
 	isogramCalculator := Isogram new
 ]
 

@@ -57,7 +57,7 @@ Class {
 	#category : #'Exercise@RomanNumerals'
 }
 
-{ #category : #helper }
+{ #category : #config }
 RomanNumeralsTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -80,8 +80,9 @@ RomanNumeralsTest class >> version [
 	^'1.2.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 RomanNumeralsTest >> setUp [
+	super setUp.
 	romanNumeralsCalculator := RomanNumerals new
 ]
 

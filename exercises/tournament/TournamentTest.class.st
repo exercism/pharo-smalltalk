@@ -105,8 +105,9 @@ TournamentTest class >> version [
 	^'1.4.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 TournamentTest >> setUp [
+	super setUp.
 	tournamentCalculator := Tournament new
 ]
 

@@ -79,8 +79,9 @@ IsbnVerifierTest class >> version [
 	^'2.7.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 IsbnVerifierTest >> setUp [
+	super setUp.
 	isbnVerifierCalculator := IsbnVerifier new
 ]
 

@@ -68,8 +68,9 @@ ResistorColorDuoTest class >> version [
 	^'2.0.0'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 ResistorColorDuoTest >> setUp [
+	super setUp.
 	resistorColorDuoCalculator := ResistorColorDuo new
 ]
 

@@ -54,8 +54,9 @@ DartsTest class >> version [
 	^'1.2.1'
 ]
 
-{ #category : #setup }
+{ #category : #running }
 DartsTest >> setUp [
+	super setUp.
 	dartsCalculator := Darts new
 ]
 
