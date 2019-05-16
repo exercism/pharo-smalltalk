@@ -23,6 +23,7 @@ phenomenon, go watch [this youtube video][video].
 
 [video]: http://www.youtube.com/watch?v=xX96xng7sAE
 
+
 ## Hint
 
 The tests for this exercise (and future exercises), are prefix numbered 'test0X_'. This is not a normal convention in Pharo, however to ease the study of the language it is useful to present tests in a useful and deterministic order.For this exercise, study the 'arithmetic' method category for class Number, as well as how boolean operators are also defined as messages. Notice how "and:" and "or:" are implented in the classes True and False. You can use the context menu item "senders of..." to view how other parts of Pharo use these operators.
@@ -30,14 +31,16 @@ The tests for this exercise (and future exercises), are prefix numbered 'test0X_
 
 ## Downloading
 
-To download this exercise in Pharo, type: `leap` into the `Exercism | Fetch Exercise` package menu prompt (right click on the Exercism package in the Pharo System Browser). You can also submit your solution from the same menu for any selected package. You don't normally need to use the exercism cli (as indicated on the right hand panel).
+To download this exercise in Pharo, type: `leap` into the `Exercism | Fetch new exercise` top menu prompt (or right click on any `Exercise@<Name>` package in the Pharo System Browser).
+
+When you are finished writing and testing your solution, and want to submit it, you should right click on the `Exercise@Leap` package and choose `Exercism | Submit exercise` in the context menu. You DON'T use the exercism cli (as indicated on the right hand panel).
 
 ## Running The Tests
 
 Tests can be run directly from the Pharo IDE, by clicking on the test orb next to any test.
 The SUnit convention is that the provided `LeapTest`, will test the functionality of `Leap`.
 
-If you are still stuck, the track documentation has more detailed help on [running tests](https://exercism.io/tracks/pharo/tests).
+If you are still stuck, the track documentation has detailed help for [running tests](https://exercism.io/tracks/pharo/tests).
 
 ## Language and Environment Help
 
