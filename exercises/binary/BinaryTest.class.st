@@ -45,7 +45,7 @@ Class {
 	#category : #'Exercise@Binary'
 }
 
-{ #category : #helper }
+{ #category : #config }
 BinaryTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	

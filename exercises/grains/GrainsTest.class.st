@@ -43,7 +43,7 @@ Class {
 	#category : #'Exercise@Grains'
 }
 
-{ #category : #helper }
+{ #category : #config }
 GrainsTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	

@@ -1,6 +1,11 @@
 # Die
 
-# DieExperimental Custom Exercise (Don't use yet)A small DSL for dice rolling: a nice example to get started with Pharo.
+# Die
+
+Experimental Custom Exercise (Don't use yet)
+
+A small DSL for dice rolling: a nice example to get started with Pharo.
+
 
 ## Hint
 

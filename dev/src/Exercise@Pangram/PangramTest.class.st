@@ -23,7 +23,7 @@ Class {
 	#category : #'Exercise@Pangram'
 }
 
-{ #category : #helper }
+{ #category : #config }
 PangramTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	

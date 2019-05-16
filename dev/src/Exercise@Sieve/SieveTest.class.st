@@ -44,7 +44,7 @@ Class {
 	#category : #'Exercise@Sieve'
 }
 
-{ #category : #helper }
+{ #category : #config }
 SieveTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 

@@ -57,7 +57,7 @@ Class {
 	#category : #'Exercise@RomanNumerals'
 }
 
-{ #category : #helper }
+{ #category : #config }
 RomanNumeralsTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
