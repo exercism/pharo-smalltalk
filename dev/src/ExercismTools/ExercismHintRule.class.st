@@ -1,7 +1,7 @@
 Class {
 	#name : #ExercismHintRule,
 	#superclass : #ReAbstractRule,
-	#category : #'Exercism-TwoFer'
+	#category : #ExercismTools
 }
 
 { #category : #accessing }

@@ -5,7 +5,7 @@ For practice, your '#who'  method should reuse your  '#who:'  method.
 Class {
 	#name : #ExercismHintTwoFerReuseRule,
 	#superclass : #ExercismHintRule,
-	#category : #'Exercism-TwoFer'
+	#category : #ExercismTools
 }
 
 { #category : #'testing-interest' }
