@@ -135,6 +135,56 @@ ExercismManager >> parseTokenNamed: tokenName from: aString [
 ]
 
 { #category : #exercism }
+ExercismManager >> shareExercise: package [
+	| source |
+	package = self class legacyExercismPackage
+		ifTrue: [ self error: 'Select the sub-package with your solution!' ].
+	source := String
+		streamContents: [ :s | 
+			package solutionSources
+				keysAndValuesDo: [ :filename :code | 
+					s << $" << filename << $".
+					s
+						cr;
+						cr;
+						nextPutAll: code;
+						cr;
+						cr ] ].
+	^ ZnClient new
+		systemPolicy;
+		beOneShot;
+		url: 'http://dpaste.com/api/v2/';
+		formAt: 'title' put: 'Pharo Exercism for ', package name;
+		formAt: 'syntax' put: 'smalltalk';
+		formAt: 'expiry_days' put: '7';
+		formAt: 'content' put: source;
+		post
+]
+
+{ #category : #exercism }
+ExercismManager >> shareExerciseStfx: package [
+	| source |
+	package = self class legacyExercismPackage
+		ifTrue: [ self error: 'Select the sub-package with your solution!' ].
+		
+	source := String
+		streamContents: [ :s | 
+			package solutionSources
+				keysAndValuesDo: [ :filename :code | 
+					s << $" << filename << $".
+					s cr; cr;
+						nextPutAll: code;
+						cr; cr ] ].
+				
+	^ ZnClient new
+		systemPolicy;
+		beOneShot;
+		url: 'http://ws.stfx.eu';
+		contents: source;
+		post
+]
+
+{ #category : #exercism }
 ExercismManager >> submitToExercism: packageOrTag [
 		
 	(packageOrTag  = self class legacyExercismPackage) 
