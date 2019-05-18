@@ -75,7 +75,8 @@ ExercismExerciseTest >> testExercisePackageTag [
 ExercismExerciseTest >> testFind [
 
 	self assert: (ExercismExercise find: 'hello-world' ifAbsent: [nil]) equals: HelloWorldTest exercise.
-	self assert: (ExercismExercise find: 'missing-exercise' ifAbsent: [ 'missing' ]) equals: 'missing'
+	self assert: (ExercismExercise find: 'missing-exercise' ifAbsent: [ 'missing' ]) equals: 'missing'.
+	self assert: (ExercismExercise find: 'missing-exercise' ifAbsent: [ :name | 'missing param' ]) equals: 'missing param' 
 ]
 
 { #category : #tests }

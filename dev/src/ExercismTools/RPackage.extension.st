@@ -1,6 +1,11 @@
 Extension { #name : #RPackage }
 
 { #category : #'*ExercismTools' }
+RPackage >> exerciseName [
+	^ (name allRegexMatches: '\w+') last
+]
+
+{ #category : #'*ExercismTools' }
 RPackage >> root [
 	^self
 ]

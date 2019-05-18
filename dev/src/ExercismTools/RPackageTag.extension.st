@@ -6,6 +6,12 @@ RPackageTag >> definedClasses [
 ]
 
 { #category : #'*ExercismTools' }
+RPackageTag >> exerciseName [
+	"Provided for legacy compatibility"
+	^self name
+]
+
+{ #category : #'*ExercismTools' }
 RPackageTag >> promoteAsExercismRPackage [
 	"This method converts this rpackage tag into an rpackage compatible with exercism"
 	|  tagName pkgName promotedName pkg |

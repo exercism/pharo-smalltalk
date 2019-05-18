@@ -56,7 +56,7 @@ ExercismExercise class >> find: exercismName ifAbsent: aBlock [
 	kebabedName := exercismName asKebabCase.
 	^ self allExercises
 		detect: [ :ex | ex name = kebabedName ]
-		ifNone: aBlock
+		ifNone: [ aBlock cull: exercismName ]
 ]
 
 { #category : #'instance creation' }

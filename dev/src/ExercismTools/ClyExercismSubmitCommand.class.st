@@ -31,7 +31,7 @@ ClyExercismSubmitCommand >> description [
 ClyExercismSubmitCommand >> execute [
 	| exerciseName result |
 
-	exerciseName := ($@ split: self selectedItem name) last.
+	exerciseName := self selectedItem exerciseName.
 
 	[ result := ExercismManager default
 		submitToExercism:
