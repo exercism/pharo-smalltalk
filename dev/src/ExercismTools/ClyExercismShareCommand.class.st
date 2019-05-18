@@ -28,12 +28,12 @@ ClyExercismShareCommand >> description [
 ClyExercismShareCommand >> execute [
 	| exerciseName result url |
 
-	exerciseName := ($@ split: self selectedItem name) last.
+	exerciseName := self selectedItem exerciseName.
 
 	[ UIManager default 
 		informUser: 'Sharing...'
 		during: [result := ExercismManager default
-		shareExercise:
+		shareExercise: 
 			(ExercismExercise
 				find: exerciseName
 				ifAbsent: [ :name | ^ self reportError: nil for: name asKebabCase ])].
@@ -43,7 +43,9 @@ ClyExercismShareCommand >> execute [
 			url := result.
 			UIManager default
 				inform: ('Successfully shared to: "{1}"!' format: {url}).
-			Clipboard clipboardText: url ] 
+			Clipboard clipboardText: url.
+			WebBrowser openOn: url.
+			 ] 
 	]
 		on: ExercismError 
 		do: [ :ex | self reportError: ex for: nil ]

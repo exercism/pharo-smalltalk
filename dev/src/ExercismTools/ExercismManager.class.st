@@ -154,10 +154,10 @@ ExercismManager >> shareExercise: package [
 		systemPolicy;
 		beOneShot;
 		url: 'http://dpaste.com/api/v2/';
-		formAt: 'title' put: 'Pharo Exercism for ', package name;
-		formAt: 'syntax' put: 'smalltalk';
-		formAt: 'expiry_days' put: '7';
-		formAt: 'content' put: source;
+		addPart: (ZnMimePart fieldName: 'title' value: 'Pharo Exercism for ', package name);
+		addPart: (ZnMimePart fieldName: 'syntax' value: 'smalltalk');
+		addPart: (ZnMimePart fieldName: 'expiry_days' value: '7');
+		addPart: (ZnMimePart fieldName: 'content' value: source);
 		post
 ]
 
