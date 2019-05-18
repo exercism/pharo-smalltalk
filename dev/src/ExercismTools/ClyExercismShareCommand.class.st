@@ -16,12 +16,12 @@ ClyExercismShareCommand >> defaultMenuIconName [
 
 { #category : #accessing }
 ClyExercismShareCommand >> defaultMenuItemName [
-	^'Share exercise...'
+	^'Share on web'
 ]
 
 { #category : #accessing }
 ClyExercismShareCommand >> description [ 
-	^'Share your proposed solution in the cloud to discuss with others...'
+	^'Share your proposed solution on the web to discuss with others'
 ]
 
 { #category : #execution }
