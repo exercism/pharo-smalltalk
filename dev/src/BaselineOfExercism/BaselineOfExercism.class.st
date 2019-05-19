@@ -78,7 +78,7 @@ BaselineOfExercism >> setUpDependencies: spec [
 				
 	spec
     	baseline: 'Mocketry'
-    	with: [ spec repository: 'github://dionisiydk/Mocketry:v4.0.x' ].
+    	with: [ spec repository: 'github://pharo-exercism/Mocketry:v4.0.x' ].
 	
 	spec
     	baseline: 'Ring2'
