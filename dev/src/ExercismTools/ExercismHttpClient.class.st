@@ -225,6 +225,20 @@ ExercismHttpClient >> path: aString [
 ]
 
 { #category : #internal }
+ExercismHttpClient >> post [
+	"Answer the result of an HTTP GET command, thows an Exception if 401 response"
+
+	| result |
+
+	result := self zincClient post.
+
+	self responseCode = 401
+		ifTrue: [ self signalUnauthorized ].
+
+	^ result
+]
+
+{ #category : #internal }
 ExercismHttpClient >> promptForToken [ 
 	^self class promptForToken
 ]
@@ -257,6 +271,12 @@ ExercismHttpClient >> solutionPathFor: aString [
 					(aString first = Path delimeter
 						ifTrue: [ aString allButFirst ]
 						ifFalse: [ aString ]) ]
+]
+
+{ #category : #internal }
+ExercismHttpClient >> username: nameString password: pwdString [
+	self zincClient username: nameString password: pwdString
+
 ]
 
 { #category : #public }
