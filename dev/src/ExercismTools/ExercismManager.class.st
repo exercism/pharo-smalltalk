@@ -140,6 +140,11 @@ ExercismManager >> shareExerciseDPaste: exercise [
 	
 	source := String
 		streamContents: [ :s | 
+			s nextPutAll: '"This is a sample Pharo Exercism solution (see: https://exercism.io/my/tracks/pharo-smalltalk)'; 
+			cr; 
+			nextPutAll: 'For the reference exercise, refer to: https://github.com/exercism/pharo-smalltalk/tree/master/exercises/', exercise name, '"'; 
+			cr; cr.
+			
 			(exercise solutionClasses asSortedCollection: [ :a :b | a name <= b name ]) do: [ :class |
 					(exercise exercisePackage extendsClass: class)
 						ifTrue: [ 
@@ -150,7 +155,7 @@ ExercismManager >> shareExerciseDPaste: exercise [
 		systemPolicy;
 		beOneShot;
 		url: 'http://dpaste.com/api/v2/';
-		addPart: (ZnMimePart fieldName: 'title' value: 'Pharo Exercism for ', exercise name);
+		addPart: (ZnMimePart fieldName: 'title' value: 'Pharo Exercism for: ', exercise name);
 		addPart: (ZnMimePart fieldName: 'syntax' value: 'smalltalk');
 		addPart: (ZnMimePart fieldName: 'expiry_days' value: '7');
 		addPart: (ZnMimePart fieldName: 'content' value: source);

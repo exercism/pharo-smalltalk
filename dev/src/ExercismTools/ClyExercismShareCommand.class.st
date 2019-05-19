@@ -32,11 +32,12 @@ ClyExercismShareCommand >> execute [
 
 	[ UIManager default 
 		informUser: 'Sharing...'
-		during: [result := ExercismManager default
-		shareExerciseDPaste: 
-			(ExercismExercise
-				find: exerciseName
-				ifAbsent: [ :name | ^ self reportError: nil for: name asKebabCase ])].
+		during: [
+			result := ExercismManager default
+				shareExerciseDPaste: 
+					(ExercismExercise
+						find: exerciseName
+						ifAbsent: [ :name | ^ self reportError: nil for: name asKebabCase ])].
 
 	result
 		ifNotNil: [ 
