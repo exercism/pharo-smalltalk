@@ -135,30 +135,64 @@ ExercismManager >> parseTokenNamed: tokenName from: aString [
 ]
 
 { #category : #exercism }
-ExercismManager >> shareExercise: package [
+ExercismManager >> shareExerciseDPaste: exercise [
 	| source |
-	package = self class legacyExercismPackage
-		ifTrue: [ self error: 'Select the sub-package with your solution!' ].
+	
 	source := String
 		streamContents: [ :s | 
-			package solutionSources
-				keysAndValuesDo: [ :filename :code | 
-					s << $" << filename << $".
-					s
-						cr;
-						cr;
-						nextPutAll: code;
-						cr;
-						cr ] ].
+			(exercise solutionClasses asSortedCollection: [ :a :b | a name <= b name ]) do: [ :class |
+					(exercise exercisePackage extendsClass: class)
+						ifTrue: [ 
+							class exPrintOutExtensionsFor: exercise exercisePackage on: s ] 
+						ifFalse: [ 
+							class exPrintOutOn: s ] ] ].
 	^ ZnClient new
 		systemPolicy;
 		beOneShot;
 		url: 'http://dpaste.com/api/v2/';
-		addPart: (ZnMimePart fieldName: 'title' value: 'Pharo Exercism for ', package name);
+		addPart: (ZnMimePart fieldName: 'title' value: 'Pharo Exercism for ', exercise name);
 		addPart: (ZnMimePart fieldName: 'syntax' value: 'smalltalk');
 		addPart: (ZnMimePart fieldName: 'expiry_days' value: '7');
 		addPart: (ZnMimePart fieldName: 'content' value: source);
 		post
+]
+
+{ #category : #exercism }
+ExercismManager >> shareExercisePasteEE: package [
+	| source i result |
+	package = self class legacyExercismPackage
+		ifTrue: [ self error: 'Select the sub-package with your solution!' ].
+	source := String
+		streamContents: [ :s | 
+			s << '{"description":"test","sections":['.
+			i := 0.
+			package solutionSources
+				keysAndValuesDo: [ :filename :code | 
+					i > 0
+						ifTrue: [ s << ', ' ].
+					s
+						<<
+							('\{"name":"{1}","syntax":"{3}","contents":{2}\}'
+								format:
+									{filename.
+									code asJSON.
+									((filename endsWith: '.st')
+										ifTrue: [ 'smalltalk' ]
+										ifFalse: [ 'autodetect' ])}).
+					i := i + 1 ].
+			s << ']}' ].
+	result := ZnClient new
+		systemPolicy;
+		beOneShot;
+		https;
+		host: 'api.paste.ee';
+		path: '/v1/pastes';
+		setBasicAuthenticationUsername: 'ub4sqYh4qD5I1eLrYgn3M19DQza5F6ckpZDmPov2C'
+			password: '';
+		entity: (ZnEntity text: source);
+		contentType: ZnMimeType applicationJson;
+		post.
+	^ (STONJSON fromString: result) at: 'link'
 ]
 
 { #category : #exercism }

@@ -22,6 +22,17 @@ String >> asKebabCase [
 ]
 
 { #category : #'*ExercismTools' }
+String >> encodeDoublingDoubleQuotesOn: s [
+	"Print inside string quotes, doubling inbedded quotes."
+
+	self
+		do: [ :c | 
+			c = $"
+				ifTrue: [ s << $" ].
+			s << c ]
+]
+
+{ #category : #'*ExercismTools' }
 String >> exPathString [
 	"Answer the receiver as a valid path, with a trailing /"
 

@@ -1,6 +1,22 @@
 Extension { #name : #RPackage }
 
 { #category : #'*ExercismTools' }
+RPackage >> exPrintOutExtensionsFor: aClass on: aWriteStream [
+
+	| selectors |
+	(selectors := self extensionSelectorsForClass: aClass) ifEmpty: [  ^self ].
+	
+	aWriteStream 
+		nextPutAll: '"-- #'; 
+		nextPutAll: aClass name; 
+		nextPutAll: ' (extension) --"'; 
+		cr; cr.
+	
+	selectors do: [ :sel |  
+		aClass exPrintOutMethod: sel on: aWriteStream ]
+]
+
+{ #category : #'*ExercismTools' }
 RPackage >> exerciseName [
 	^ (name allRegexMatches: '\w+') last
 ]
