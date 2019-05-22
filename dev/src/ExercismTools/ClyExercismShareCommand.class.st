@@ -46,7 +46,7 @@ ClyExercismShareCommand >> defaultMenuItemName [
 
 { #category : #accessing }
 ClyExercismShareCommand >> description [ 
-	^'Share your proposed solution on the web to discuss with others'
+	^'Create a web link to anonymously share your proposed solution on dpaste.com to discuss with others'
 ]
 
 { #category : #execution }
