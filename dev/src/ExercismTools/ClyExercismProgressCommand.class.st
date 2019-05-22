@@ -40,7 +40,7 @@ ClyExercismProgressCommand >> defaultMenuItemName [
 
 { #category : #accessing }
 ClyExercismProgressCommand >> description [ 
-	^'Open track progress in a web browser'
+	^'Open your Exercism track progress in a web browser'
 ]
 
 { #category : #execution }

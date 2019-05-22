@@ -73,9 +73,10 @@ ClassDescription >> exPrintOutOn: aWriteStream [
 		nextPutAll: self definition; 
 		nextPut: $.; cr; cr.
 	
-	aWriteStream nextPut: $".
-	self comment trimBoth encodeDoublingDoubleQuotesOn: aWriteStream.
-	aWriteStream nextPut: $"; cr; cr.
+	self hasComment ifTrue: [ 
+		aWriteStream nextPut: $".
+		self comment trimBoth encodeDoublingDoubleQuotesOn: aWriteStream.
+		aWriteStream nextPut: $"; cr; cr ].
 	
 	self exPrintOutCategoriesFor: self class on: aWriteStream.
 	self exPrintOutCategoriesFor: self on: aWriteStream

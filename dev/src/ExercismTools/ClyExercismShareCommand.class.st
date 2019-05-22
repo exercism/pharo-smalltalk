@@ -1,6 +1,9 @@
 Class {
 	#name : #ClyExercismShareCommand,
 	#superclass : #ClyExercismExerciseCommand,
+	#classVars : [
+		'hasConfirmedSharing'
+	],
 	#category : #'ExercismTools-Menus'
 }
 
@@ -10,18 +13,40 @@ ClyExercismShareCommand class >> contextMenuOrder [
 ]
 
 { #category : #accessing }
+ClyExercismShareCommand class >> hasConfirmedSharing [
+	^ hasConfirmedSharing ifNil: [ false ]
+]
+
+{ #category : #accessing }
+ClyExercismShareCommand class >> hasConfirmedSharing: aBoolean [
+	^hasConfirmedSharing := aBoolean
+]
+
+{ #category : #internal }
+ClyExercismShareCommand >> confirmSharing [
+	self class hasConfirmedSharing
+		ifTrue: [ ^ true ].
+		
+	^ (UIManager default
+		proceed:
+			'Please confirm you are happy to anonymously store your exercise code, on a temporary (7 day) random url at dpaste.com.\Exercism and Pharo.org are not associated with this service, it is provided as a convenience to help users\more easily discuss ideas with a wider community.' withCRs)
+		ifTrue: [ self class hasConfirmedSharing: true ]
+		ifFalse: [ false ]
+]
+
+{ #category : #accessing }
 ClyExercismShareCommand >> defaultMenuIconName [
 	^#publish
 ]
 
 { #category : #accessing }
 ClyExercismShareCommand >> defaultMenuItemName [
-	^'Share on web'
+	^'Share on web...'
 ]
 
 { #category : #accessing }
 ClyExercismShareCommand >> description [ 
-	^'Share your proposed solution on the web to discuss with others'
+	^'Create a web link to anonymously share your proposed solution on dpaste.com to discuss with others'
 ]
 
 { #category : #execution }
@@ -29,7 +54,7 @@ ClyExercismShareCommand >> execute [
 	| exerciseName result url |
 
 	exerciseName := self selectedItem exerciseName.
-
+	self confirmSharing ifTrue: [ 
 	[ UIManager default 
 		informUser: 'Sharing...'
 		during: [
@@ -49,5 +74,5 @@ ClyExercismShareCommand >> execute [
 			 ] 
 	]
 		on: ExercismError 
-		do: [ :ex | self reportError: ex for: nil ]
+		do: [ :ex | self reportError: ex for: nil ] ]
 ]

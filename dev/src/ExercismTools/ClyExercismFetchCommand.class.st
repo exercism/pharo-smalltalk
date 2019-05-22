@@ -46,7 +46,7 @@ ClyExercismFetchCommand >> defaultMenuItemName [
 
 { #category : #accessing }
 ClyExercismFetchCommand >> description [ 
-	^'Fetch a named exercise to begin solving it'
+	^'Fetch a named Exercism exercise to begin solving it'
 ]
 
 { #category : #execution }
