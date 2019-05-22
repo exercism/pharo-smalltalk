@@ -8,7 +8,7 @@ RPackageTag >> definedClasses [
 { #category : #'*ExercismTools' }
 RPackageTag >> exerciseName [
 	"Provided for legacy compatibility"
-	^self name
+	^self name asString
 ]
 
 { #category : #'*ExercismTools' }

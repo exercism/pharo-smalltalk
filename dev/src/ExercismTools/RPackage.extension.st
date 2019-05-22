@@ -18,7 +18,7 @@ RPackage >> exPrintOutExtensionsFor: aClass on: aWriteStream [
 
 { #category : #'*ExercismTools' }
 RPackage >> exerciseName [
-	^ (name allRegexMatches: '\w+') last
+	^ (self name allRegexMatches: '\w+') last
 ]
 
 { #category : #'*ExercismTools' }

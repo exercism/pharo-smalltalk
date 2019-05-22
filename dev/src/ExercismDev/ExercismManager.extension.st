@@ -42,6 +42,44 @@ ExercismManager >> dependencyGraph [
 ]
 
 { #category : #'*ExercismDev' }
+ExercismManager >> shareExercisePasteEE: package [
+	| source i result |
+	package = self class legacyExercismPackage
+		ifTrue: [ self error: 'Select the sub-package with your solution!' ].
+	source := String
+		streamContents: [ :s | 
+			s << '{"description":"test","sections":['.
+			i := 0.
+			package solutionSources
+				keysAndValuesDo: [ :filename :code | 
+					i > 0
+						ifTrue: [ s << ', ' ].
+					s
+						<<
+							('\{"name":"{1}","syntax":"{3}","contents":{2}\}'
+								format:
+									{filename.
+									code asJSON.
+									((filename endsWith: '.st')
+										ifTrue: [ 'smalltalk' ]
+										ifFalse: [ 'autodetect' ])}).
+					i := i + 1 ].
+			s << ']}' ].
+	result := ZnClient new
+		systemPolicy;
+		beOneShot;
+		https;
+		host: 'api.paste.ee';
+		path: '/v1/pastes';
+		setBasicAuthenticationUsername: 'ub4sqYh4qD5I1eLrYgn3M19DQza5F6ckpZDmPov2C'
+			password: '';
+		entity: (ZnEntity text: source);
+		contentType: ZnMimeType applicationJson;
+		post.
+	^ (STONJSON fromString: result) at: 'link'
+]
+
+{ #category : #'*ExercismDev' }
 ExercismManager class >> trackActive [
 	^true
 ]
