@@ -29,7 +29,7 @@ into this:
 
 ## Hint
 
-TBD
+This looks a lot like a 2D Array
 
 "
 Class {
@@ -38,8 +38,20 @@ Class {
 	#instVars : [
 		'minesweeperCalculator'
 	],
-	#category : #'ExercismWIP-Minesweeper'
+	#category : #'Exercise@Minesweeper'
 }
+
+{ #category : #config }
+MinesweeperTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+	
+	^(self createExerciseAfter: AllergiesTest)
+		isCore: false;
+		difficulty: 5;
+		topics: #('parsing' 'iteration' 'transforming');
+		yourself
+	
+]
 
 { #category : #config }
 MinesweeperTest class >> uuid [
