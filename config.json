@@ -338,6 +338,19 @@
       ]
     },
     {
+      "slug" : "minesweeper",
+      "uuid" : "1318c616-9d41-0d00-8fe3-676108866539",
+      "core" : false,
+      "auto_approve" : false,
+      "unlocked_by" : "allergies",
+      "difficulty" : 5,
+      "topics" : [
+        "parsing",
+        "iteration",
+        "transforming"
+      ]
+    },
+    {
       "slug" : "pangram",
       "uuid" : "6be398be-4a3f-0d00-bb67-0d71071d6982",
       "core" : false,

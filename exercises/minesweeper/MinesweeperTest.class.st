@@ -29,7 +29,7 @@ into this:
 
 ## Hint
 
-TBD
+x,y locations are often represented as a Point, which then leads to some useful point functions that can help with this. Alternatively, representing this as a 2D Array can also be useful. Either way,  defining some descriptive extension methods that can make your solution much more readable and elegant.
 
 "
 Class {
@@ -38,8 +38,20 @@ Class {
 	#instVars : [
 		'minesweeperCalculator'
 	],
-	#category : #'ExercismWIP-Minesweeper'
+	#category : #'Exercise@Minesweeper'
 }
+
+{ #category : #config }
+MinesweeperTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+	
+	^(self createExerciseAfter: AllergiesTest)
+		isCore: false;
+		difficulty: 5;
+		topics: #('parsing' 'iteration' 'transforming');
+		yourself
+	
+]
 
 { #category : #config }
 MinesweeperTest class >> uuid [
