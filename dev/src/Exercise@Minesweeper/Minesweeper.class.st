@@ -11,22 +11,20 @@ Class {
 
 { #category : #exercism }
 Minesweeper >> annotateMinefield: aCollection [
-	| result flattenedValues matrix |
+	| result matrix |
+	
 	aCollection ifEmpty: [ ^ aCollection ].
-
-	flattenedValues := String
-		streamContents: [ :s | aCollection do: [ :i | s nextPutAll: i ] ].
 
 	matrix := Array2D
 		rows: aCollection size
 		columns: aCollection first size
-		contents: flattenedValues.
+		contents: (aCollection flatCollect: [ :c | c ]).
 
 	result := matrix
 		withIndicesCollect: [ :value :row :col | 
-			value = Character space
-				ifTrue: [ self neighbourCountIn: matrix at: row at: col ]
-				ifFalse: [ $* ] ].
+			value = $*
+				ifTrue: [ value ]
+				ifFalse: [ self neighbourCountIn: matrix at: row at: col ]].
 
 	^ self rowsAsArray: result
 ]
@@ -34,27 +32,16 @@ Minesweeper >> annotateMinefield: aCollection [
 { #category : #helper }
 Minesweeper >> neighbourCountIn: aMatrix at: row at: col [
 	"Count the number of non-space neighbours around the position"
-	
-	| value |
-	
-	value := 0.
-	
-	row - 1 to: row + 1 do: [ :r | 
-		col - 1 to: col + 1 do: [ :c | 
-			(aMatrix at: r at: c ifInvalid: Character space) isSpaceSeparator 
-				ifFalse: [ value := value + 1 ] ] ].
 
-	^ value = 0
-		ifTrue: [ Character space ]
-		ifFalse: [ Character digitValue: value ]
+	^ ((row @ col) eightNeighbors
+		sum: [ :point | 
+			(aMatrix at: point x at: point y ifInvalid: Character space)
+				asMinesweeperValue ]) asMinesweeperChar
 ]
 
 { #category : #converting }
 Minesweeper >> rowsAsArray: matrix [
-	^ ((1 to: matrix rowCount)
-		inject: OrderedCollection new
-		into: [ :answer :row | 
-			answer
-				add: (matrix atRow: row);
-				yourself ]) asArray
+	^ (1 to: matrix rowCount)
+		collect: [ :rowId | 
+			(String streamContents: [:s | (matrix atRow: rowId) do: [:char | s << char ]]) ]
 ]
