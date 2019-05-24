@@ -1,7 +1,8 @@
 "
 Mentor notes:
 
-- using an Array2d makes this quite simple, particularly the use of #at:at:invalid:
+- using the method #eightNeighbors inspires many simplifications, as well as the use of some extension methods
+- it also possible to do something more matrix like using an Array2D and its row/column manipulations
 "
 Class {
 	#name : #Minesweeper,
@@ -11,37 +12,18 @@ Class {
 
 { #category : #exercism }
 Minesweeper >> annotateMinefield: aCollection [
-	| result matrix |
-	
 	aCollection ifEmpty: [ ^ aCollection ].
 
-	matrix := Array2D
-		rows: aCollection size
-		columns: aCollection first size
-		contents: (aCollection flatCollect: [ :c | c ]).
-
-	result := matrix
-		withIndicesCollect: [ :value :row :col | 
-			value = $*
-				ifTrue: [ value ]
-				ifFalse: [ self neighbourCountIn: matrix at: row at: col ]].
-
-	^ self rowsAsArray: result
+	^ aCollection
+		withIndexCollect: [ :row :y | 
+			row withIndexCollect: [ :cell :x | 
+					cell = $*
+						ifTrue: [ cell ]
+						ifFalse: [ self neighbourValueIn: aCollection at: (x@y) ] ] ]
 ]
 
-{ #category : #helper }
-Minesweeper >> neighbourCountIn: aMatrix at: row at: col [
-	"Count the number of non-space neighbours around the position"
-
-	^ ((row @ col) eightNeighbors
-		sum: [ :point | 
-			(aMatrix at: point x at: point y ifInvalid: Character space)
-				asMinesweeperValue ]) asMinesweeperChar
-]
-
-{ #category : #converting }
-Minesweeper >> rowsAsArray: matrix [
-	^ (1 to: matrix rowCount)
-		collect: [ :rowId | 
-			(String streamContents: [:s | (matrix atRow: rowId) do: [:char | s << char ]]) ]
+{ #category : #exercism }
+Minesweeper >> neighbourValueIn: aCollection at: aPoint [
+	^ (aPoint eightNeighbors sum: [ :p | aCollection mineAt: p ])
+		asMinesweeperChar
 ]

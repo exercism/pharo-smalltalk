@@ -29,7 +29,7 @@ into this:
 
 ## Hint
 
-This looks a lot like a 2D Array
+Point has some intersting methods that can help with this, and/or a 2D Array can help too. Defining some descriptive extension methods that can also make your solution much more readable and elegant
 
 "
 Class {
