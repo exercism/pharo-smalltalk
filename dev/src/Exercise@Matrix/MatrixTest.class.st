@@ -47,7 +47,7 @@ Try using the Finder - Examples searcher, to see if there is a useful method for
 
 "
 Class {
-	#name : #DigitMatrixTest,
+	#name : #MatrixTest,
 	#superclass : #ExercismTest,
 	#instVars : [
 		'matrixCalculator'
@@ -56,7 +56,7 @@ Class {
 }
 
 { #category : #config }
-DigitMatrixTest class >> exercise [
+MatrixTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
 	^(self createExerciseAfter: AllergiesTest)
@@ -68,32 +68,32 @@ DigitMatrixTest class >> exercise [
 ]
 
 { #category : #config }
-DigitMatrixTest class >> generator [
+MatrixTest class >> generator [
 	"Potential generator hints"
 	
 	^ {('Matrix' -> 'DigitMatrix')}
 ]
 
 { #category : #config }
-DigitMatrixTest class >> uuid [
+MatrixTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'bea80017-9d41-0d00-900d-a13308866539'
 ]
 
 { #category : #config }
-DigitMatrixTest class >> version [
+MatrixTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
 { #category : #running }
-DigitMatrixTest >> setUp [
+MatrixTest >> setUp [
 	super setUp.
 	matrixCalculator := DigitMatrix new
 ]
 
 { #category : #tests }
-DigitMatrixTest >> test01_ExtractRowFromOneNumberMatrix [
+MatrixTest >> test01_ExtractRowFromOneNumberMatrix [
 	| result |
 
 	result := matrixCalculator rowString: '1' index: 1 .
@@ -101,7 +101,7 @@ DigitMatrixTest >> test01_ExtractRowFromOneNumberMatrix [
 ]
 
 { #category : #tests }
-DigitMatrixTest >> test02_CanExtractRow [
+MatrixTest >> test02_CanExtractRow [
 	| result |
 
 	result := matrixCalculator rowString: '1 2
@@ -110,7 +110,7 @@ DigitMatrixTest >> test02_CanExtractRow [
 ]
 
 { #category : #tests }
-DigitMatrixTest >> test03_ExtractRowWhereNumbersHaveDifferentWidths [
+MatrixTest >> test03_ExtractRowWhereNumbersHaveDifferentWidths [
 	| result |
 
 	result := matrixCalculator rowString: '1 2
@@ -119,7 +119,7 @@ DigitMatrixTest >> test03_ExtractRowWhereNumbersHaveDifferentWidths [
 ]
 
 { #category : #tests }
-DigitMatrixTest >> test04_CanExtractRowFromNonsquareMatrix [
+MatrixTest >> test04_CanExtractRowFromNonsquareMatrix [
 	| result |
 
 	result := matrixCalculator rowString: '1 2 3
@@ -130,7 +130,7 @@ DigitMatrixTest >> test04_CanExtractRowFromNonsquareMatrix [
 ]
 
 { #category : #tests }
-DigitMatrixTest >> test05_ExtractColumnFromOneNumberMatrix [
+MatrixTest >> test05_ExtractColumnFromOneNumberMatrix [
 	| result |
 
 	result := matrixCalculator columnString: '1' index: 1 .
@@ -138,7 +138,7 @@ DigitMatrixTest >> test05_ExtractColumnFromOneNumberMatrix [
 ]
 
 { #category : #tests }
-DigitMatrixTest >> test06_CanExtractColumn [
+MatrixTest >> test06_CanExtractColumn [
 	| result |
 
 	result := matrixCalculator columnString: '1 2 3
@@ -148,7 +148,7 @@ DigitMatrixTest >> test06_CanExtractColumn [
 ]
 
 { #category : #tests }
-DigitMatrixTest >> test07_CanExtractColumnFromNonsquareMatrix [
+MatrixTest >> test07_CanExtractColumnFromNonsquareMatrix [
 	| result |
 
 	result := matrixCalculator columnString: '1 2 3
@@ -159,7 +159,7 @@ DigitMatrixTest >> test07_CanExtractColumnFromNonsquareMatrix [
 ]
 
 { #category : #tests }
-DigitMatrixTest >> test08_ExtractColumnWhereNumbersHaveDifferentWidths [
+MatrixTest >> test08_ExtractColumnWhereNumbersHaveDifferentWidths [
 	| result |
 
 	result := matrixCalculator columnString: '89 1903 3
