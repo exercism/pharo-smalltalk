@@ -93,6 +93,18 @@
       ]
     },
     {
+      "slug" : "matrix",
+      "uuid" : "bea80017-9d41-0d00-900d-a13308866539",
+      "core" : true,
+      "auto_approve" : false,
+      "unlocked_by" : null,
+      "difficulty" : 4,
+      "topics" : [
+        "matrices",
+        "parsing"
+      ]
+    },
+    {
       "slug" : "grade-school",
       "uuid" : "8198e8bb-8040-0d00-812f-dfab01deb008",
       "core" : true,
