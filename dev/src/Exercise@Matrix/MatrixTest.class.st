@@ -70,8 +70,10 @@ MatrixTest class >> exercise [
 { #category : #config }
 MatrixTest class >> generator [
 	"Potential generator hints"
-	
-	^ {('Matrix' -> 'DigitMatrix')}
+
+	^ {('@Matrix' -> 'DigitMatrix').
+	('@columnString:index:' -> '#input:atColumn:').
+	('@rowString:index:' -> '#input:atRow:')}
 ]
 
 { #category : #config }
@@ -96,7 +98,7 @@ MatrixTest >> setUp [
 MatrixTest >> test01_ExtractRowFromOneNumberMatrix [
 	| result |
 
-	result := matrixCalculator rowString: '1' index: 1 .
+	result := matrixCalculator input: '1' atRow: 1 .
 	self assert: result equals: #(1 )
 ]
 
@@ -104,8 +106,8 @@ MatrixTest >> test01_ExtractRowFromOneNumberMatrix [
 MatrixTest >> test02_CanExtractRow [
 	| result |
 
-	result := matrixCalculator rowString: '1 2
-3 4' index: 2 .
+	result := matrixCalculator input: '1 2
+3 4' atRow: 2 .
 	self assert: result equals: #(3 4 )
 ]
 
@@ -113,8 +115,8 @@ MatrixTest >> test02_CanExtractRow [
 MatrixTest >> test03_ExtractRowWhereNumbersHaveDifferentWidths [
 	| result |
 
-	result := matrixCalculator rowString: '1 2
-10 20' index: 2 .
+	result := matrixCalculator input: '1 2
+10 20' atRow: 2 .
 	self assert: result equals: #(10 20 )
 ]
 
@@ -122,10 +124,10 @@ MatrixTest >> test03_ExtractRowWhereNumbersHaveDifferentWidths [
 MatrixTest >> test04_CanExtractRowFromNonsquareMatrix [
 	| result |
 
-	result := matrixCalculator rowString: '1 2 3
+	result := matrixCalculator input: '1 2 3
 4 5 6
 7 8 9
-8 7 6' index: 3 .
+8 7 6' atRow: 3 .
 	self assert: result equals: #(7 8 9 )
 ]
 
@@ -133,7 +135,7 @@ MatrixTest >> test04_CanExtractRowFromNonsquareMatrix [
 MatrixTest >> test05_ExtractColumnFromOneNumberMatrix [
 	| result |
 
-	result := matrixCalculator columnString: '1' index: 1 .
+	result := matrixCalculator input: '1' atColumn: 1 .
 	self assert: result equals: #(1 )
 ]
 
@@ -141,9 +143,9 @@ MatrixTest >> test05_ExtractColumnFromOneNumberMatrix [
 MatrixTest >> test06_CanExtractColumn [
 	| result |
 
-	result := matrixCalculator columnString: '1 2 3
+	result := matrixCalculator input: '1 2 3
 4 5 6
-7 8 9' index: 3 .
+7 8 9' atColumn: 3 .
 	self assert: result equals: #(3 6 9 )
 ]
 
@@ -151,10 +153,10 @@ MatrixTest >> test06_CanExtractColumn [
 MatrixTest >> test07_CanExtractColumnFromNonsquareMatrix [
 	| result |
 
-	result := matrixCalculator columnString: '1 2 3
+	result := matrixCalculator input: '1 2 3
 4 5 6
 7 8 9
-8 7 6' index: 3 .
+8 7 6' atColumn: 3 .
 	self assert: result equals: #(3 6 9 6 )
 ]
 
@@ -162,8 +164,8 @@ MatrixTest >> test07_CanExtractColumnFromNonsquareMatrix [
 MatrixTest >> test08_ExtractColumnWhereNumbersHaveDifferentWidths [
 	| result |
 
-	result := matrixCalculator columnString: '89 1903 3
+	result := matrixCalculator input: '89 1903 3
 18 3 1
-9 4 800' index: 2 .
+9 4 800' atColumn: 2 .
 	self assert: result equals: #(1903 3 4 )
 ]
