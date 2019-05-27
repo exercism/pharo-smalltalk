@@ -104,5 +104,5 @@ ExercismTest >> verifySolution: aClass avoidsSelector: aSelector [
  
 	badSelector := aClass methods detect: [ :m | m ast sentMessages includes: aSelector ] ifNone: [ ^self ].
 	
-	self fail: 'Your #', badSelector name, ' uses a library method #', aSelector, ' - try writing a solution that avoids it'
+	self fail: 'Your code in ', badSelector name, ' uses the library method #', aSelector, ' - try writing a different solution that avoids it'
 ]

@@ -13,8 +13,7 @@ output: [1,2,3,4,5]
 
 ## Hint
 
-TBD
-
+Without using the built-in flattening method, you can easily derive your own, but you will need to differeniate between what is a collection and what is not
 "
 Class {
 	#name : #FlattenArrayTest,
@@ -22,8 +21,19 @@ Class {
 	#instVars : [
 		'flattenArrayCalculator'
 	],
-	#category : #'ExercismWIP-FlattenArray'
+	#category : #'Exercis@FlattenArray'
 }
+
+{ #category : #config }
+FlattenArrayTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+
+	^ (self createExerciseAfter: ReverseStringTest)
+		isCore: false;
+		difficulty: 2;
+		topics: #('lists' 'iteration' 'recursion' 'transforming');
+		yourself
+]
 
 { #category : #config }
 FlattenArrayTest class >> uuid [
@@ -89,4 +99,9 @@ FlattenArrayTest >> test06_AllValuesInNestedListAreNull [
 
 	result := flattenArrayCalculator flattenArray: #(nil #(#(#(nil ) ) ) nil nil #(#(nil nil ) nil ) nil ) .
 	self assert: result equals: #()
+]
+
+{ #category : #tests }
+FlattenArrayTest >> testMisuseOfSelector [
+	self verifySolution: flattenArrayCalculator class avoidsSelector: #flattened
 ]
