@@ -1,0 +1,1 @@
+Without using the built-in flattening method, you can easily derive your own, but you will need to differeniate between what is a collection and what is not
