@@ -9,14 +9,9 @@ Class {
 	#category : #'Exercise@Leap'
 }
 
-{ #category : #example }
-Leap >> is: anInteger evenlyDivisibleBy: divisorInteger [
-	^(anInteger \\ divisorInteger) = 0
-]
-
 { #category : #exercism }
 Leap >> leapYear: anInteger [
-	^ (self is: anInteger evenlyDivisibleBy: 4)
-		and: [ (self is: anInteger evenlyDivisibleBy: 400)
-				or: [ (self is: anInteger evenlyDivisibleBy: 100) not ] ]
+	^ (anInteger isDivisibleBy: 4)
+		and: [ (anInteger isDivisibleBy: 400)
+				or: [ (anInteger isDivisibleBy: 100) not ] ]
 ]
