@@ -13,7 +13,7 @@ output: [1,2,3,4,5]
 
 ## Hint
 
-Without using the built-in flattening method, you can easily derive your own, but you will need to differeniate between what is a collection and what is not
+Without using the built-in flattening method, you can derive your own, but you will need to differentiate between what is a collection and what is not. Alternatively, if you decide to use the built-in flattening methods, you will need to create a new Stream type to override incorrect behaviour.
 "
 Class {
 	#name : #FlattenArrayTest,
@@ -99,9 +99,4 @@ FlattenArrayTest >> test06_AllValuesInNestedListAreNull [
 
 	result := flattenArrayCalculator flattenArray: #(nil #(#(#(nil ) ) ) nil nil #(#(nil nil ) nil ) nil ) .
 	self assert: result equals: #()
-]
-
-{ #category : #tests }
-FlattenArrayTest >> testMisuseOfSelector [
-	self verifySolution: flattenArrayCalculator class avoidsSelector: #flattened
 ]

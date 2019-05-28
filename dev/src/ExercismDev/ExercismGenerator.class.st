@@ -123,7 +123,7 @@ ExercismGenerator >> generateSourceFilesFor: packageOrTag to: filePathString [
 	(solutionDirectoryRef / 'package.st') delete.
 	
 	"Move the test file down to the exerciseDirectory"
-	testClasses := packageOrTag classes select: [ :cls | cls inheritsFrom: ExercismTest ].	
+	testClasses := packageOrTag classes select: [ :cls | cls superclass = ExercismTest ].	
 	testClasses do: [ :tc |
 		testClassFilename := tc name, '.class.st'.
 		(solutionDirectoryRef / testClassFilename) moveTo: exerciseDirectoryRef / testClassFilename ].
