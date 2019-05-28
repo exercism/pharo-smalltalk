@@ -21,6 +21,6 @@ FlattenArray >> flatten: anObject onto: result [
 FlattenArray >> flattenArray: aCollection [ 
 	
 	^(OrderedCollection streamContents: [ :s |
-		self flatten: aCollection onto: s ]) asArray 
+		self flatten: aCollection onto: s ]) asArray
 	
 ]
