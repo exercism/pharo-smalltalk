@@ -13,7 +13,8 @@ Class {
 	#name : #ExercismGenerator,
 	#superclass : #Object,
 	#classVars : [
-		'DefaultPath'
+		'DefaultPath',
+		'UseConfigletGenerate'
 	],
 	#category : #'ExercismDev-Generator'
 }
@@ -96,61 +97,54 @@ ExercismGenerator >> generateReadmeHintFor: anExercismExercise to: destinationDi
 ]
 
 { #category : #helper }
-ExercismGenerator >> generateSourceFilesFor: packageOrTag to: filePathString [
-	"Generate the Tonel source files for a package (normally a tag). Answer the exercise directory reference"
+ExercismGenerator >> generateSourceFilesFor: package to: filePathString [
+	"Generate the Tonel source files for a package. Answer the exercise directory reference"
 
-	| exampleDirectoryRef exerciseDirectoryRef metaDirectoryRef  solutionDirectoryRef testClass testClassFilename exerciseName testClasses |
-	
-	"Note: could create the writer on a memory stream to then pick what should be stored on disk
-	e.g.
-		mem := FileSystem memory root.
-		writer := ExTonelWriter on: mem."
+	| definitions exerciseDefs solutionDefs exerciseFileMap exampleDirectoryRef exerciseDirectoryRef metaDirectoryRef solutionDirectoryRef testClass  exerciseName  solutionFileMap |
+	definitions := package snapshot definitions
+		reject: #isOrganizationDefinition.
+	exerciseDefs := definitions select: #isExerciseDefinition.
+	solutionDefs := definitions select: #isSolutionDefinition.
 
-	exerciseName := ExercismExercise exerciseNameFrom: packageOrTag.
+	"The following directory structure is expected by Exercism infrastructure. 
+	 Canonical reference is output of their utlitity command `configlet generate` "
+	exerciseName := ExercismExercise exerciseNameFrom: package.
 	exampleDirectoryRef := filePathString asFileReference.
 	exerciseDirectoryRef := exampleDirectoryRef / exerciseName.
-	metaDirectoryRef :=  exerciseDirectoryRef / '.meta'.
+	metaDirectoryRef := exerciseDirectoryRef / '.meta'.
 	solutionDirectoryRef := metaDirectoryRef / 'solution'.
 	
 	exerciseDirectoryRef ensureCreateDirectory.
 	exerciseDirectoryRef deleteAll.
 	
-	(ExTonelWriter on: exampleDirectoryRef)
-		sourceDirectory: (solutionDirectoryRef relativeTo: exampleDirectoryRef) pathString;
-		writeSnapshot: (self createTagSnapshotFor: packageOrTag).
-
-	"Remove the package file as its not needed for Exercism"
-	(solutionDirectoryRef / 'package.st') delete.
-	
-	"Move the test file down to the exerciseDirectory"
-	testClasses := packageOrTag classes select: [ :cls | cls inheritsFrom: ExercismTest ].	
-	testClasses do: [ :tc |
-		testClassFilename := tc name, '.class.st'.
-		(solutionDirectoryRef / testClassFilename) moveTo: exerciseDirectoryRef / testClassFilename ].
-	
-	testClass := testClasses detect: [ :tc | tc class includesSelector: #exercise  ].
+	exerciseFileMap := ExTonelWriter new mappedSnapshot: (MCSnapshot fromDefinitions: exerciseDefs).
+	exerciseFileMap
+		keysAndValuesDo: [ :file :stream | 
+			(exerciseDirectoryRef / file) ensureCreateFile
+				writeStreamDo: [ :fileStream | fileStream nextPutAll: stream contents ] ].
+			
+	solutionFileMap := ExTonelWriter new mappedSnapshot: (MCSnapshot fromDefinitions: solutionDefs).
+	solutionFileMap
+		keysAndValuesDo: [ :file :stream | 
+			(solutionDirectoryRef / file) ensureCreateFile
+				writeStreamDo: [ :fileStream | fileStream nextPutAll: stream contents ] ].
+			
+	testClass := exerciseDefs first actualClass instanceSide.
 	self generateReadmeHintFor: testClass exercise to: metaDirectoryRef.
 	
-	testClass isCustom ifTrue: [ self generateCustomDataFor: testClass exercise to: metaDirectoryRef  ].
-	
-	^exerciseDirectoryRef 
-
+	testClass isCustom
+		ifTrue:
+			[ self generateCustomDataFor: testClass exercise to: metaDirectoryRef ]
 ]
 
 { #category : #generation }
 ExercismGenerator >> generateTo: filePathReference [
-	| cmd result basePathReference |
+	| basePathReference |
 	
-	ExercismExercise allExercises select: [:ex | ex isActive ] thenDo: [:ex |
+	ExercismExercise allExercises select: [:ex | ex isActive ] thenDo: [:ex | 
 			self generateSourceFilesFor: ex exercisePackage to: filePathReference ].
 		
 	basePathReference := filePathReference parent.
 	ExercismConfigGenerator generateTo: basePathReference.
-	
-	cmd := 'configlet generate ', (basePathReference pathString surroundedBySingleQuotes).		
-	result := PipeableOSProcess waitForCommand: cmd.
-	
-	result succeeded
-		ifFalse: [ 
-			self error: 'failure running "configlet generate" - ' , result outputAndError printString ]
+
 ]
