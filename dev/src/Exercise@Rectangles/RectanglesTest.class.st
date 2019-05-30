@@ -66,7 +66,7 @@ every line equals the length of the first line).
 
 ## Hint
 
-TBD
+You may be able to use a brute force strategy to solve this one.
 
 "
 Class {
@@ -75,8 +75,21 @@ Class {
 	#instVars : [
 		'rectanglesCalculator'
 	],
-	#category : #'ExercismWIP-Rectangles'
+	#category : #'Exercise@Rectangles'
 }
+
+{ #category : #config }
+RectanglesTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+	
+	^(self createExerciseAfter: MatrixTest)
+		isCore: false;
+		difficulty: 7;
+		topics: #('transforming' 'parsing' 'pattern_recognition');
+		yourself
+	
+				
+]
 
 { #category : #config }
 RectanglesTest class >> uuid [
@@ -124,7 +137,11 @@ RectanglesTest >> test03_NoRectangles [
 RectanglesTest >> test04_OneRectangle [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #('+-+' '| |' '+-+' ) .
+	result := rectanglesCalculator rectanglesStrings: #(
+	'+-+' 
+	'| |' 
+	'+-+' ) .
+	
 	self assert: result equals: 1
 ]
 
@@ -132,7 +149,13 @@ RectanglesTest >> test04_OneRectangle [
 RectanglesTest >> test05_TwoRectanglesWithoutSharedParts [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #('  +-+' '  | |' '+-+-+' '| |  ' '+-+  ' ) .
+	result := rectanglesCalculator rectanglesStrings: #(
+	'  +-+' 
+	'  | |' 
+	'+-+-+' 
+	'| |  ' 
+	'+-+  ' ) .
+	
 	self assert: result equals: 2
 ]
 
@@ -140,7 +163,12 @@ RectanglesTest >> test05_TwoRectanglesWithoutSharedParts [
 RectanglesTest >> test06_FiveRectanglesWithSharedParts [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #('  +-+' '  | |' '+-+-+' '| | |' '+-+-+' ) .
+	result := rectanglesCalculator rectanglesStrings: #(
+	'  +-+' 
+	'  | |' 
+	'+-+-+' 
+	'| | |' 
+	'+-+-+' ) .
 	self assert: result equals: 5
 ]
 
@@ -148,7 +176,10 @@ RectanglesTest >> test06_FiveRectanglesWithSharedParts [
 RectanglesTest >> test07_RectangleOfHeight1IsCounted [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #('+--+' '+--+' ) .
+	result := rectanglesCalculator rectanglesStrings: #(
+	'+--+' 
+	'+--+' ) .
+	
 	self assert: result equals: 1
 ]
 
@@ -156,7 +187,11 @@ RectanglesTest >> test07_RectangleOfHeight1IsCounted [
 RectanglesTest >> test08_RectangleOfWidth1IsCounted [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #('++' '||' '++' ) .
+	result := rectanglesCalculator rectanglesStrings: #(
+	'++' 
+	'||' 
+	'++' ) .
+	
 	self assert: result equals: 1
 ]
 
@@ -164,7 +199,10 @@ RectanglesTest >> test08_RectangleOfWidth1IsCounted [
 RectanglesTest >> test09_1x1SquareIsCounted [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #('++' '++' ) .
+	result := rectanglesCalculator rectanglesStrings: #(
+	'++' 
+	'++' ) .
+	
 	self assert: result equals: 1
 ]
 
@@ -172,7 +210,13 @@ RectanglesTest >> test09_1x1SquareIsCounted [
 RectanglesTest >> test10_OnlyCompleteRectanglesAreCounted [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #('  +-+' '    |' '+-+-+' '| | -' '+-+-+' ) .
+	result := rectanglesCalculator rectanglesStrings: #(
+	'  +-+' 
+	'    |' 
+	'+-+-+' 
+	'| | -' 
+	'+-+-+' ) .
+	
 	self assert: result equals: 1
 ]
 
@@ -180,7 +224,12 @@ RectanglesTest >> test10_OnlyCompleteRectanglesAreCounted [
 RectanglesTest >> test11_RectanglesCanBeOfDifferentSizes [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #('+------+----+' '|      |    |' '+---+--+    |' '|   |       |' '+---+-------+' ) .
+	result := rectanglesCalculator rectanglesStrings: #(
+	'+------+----+' 
+	'|      |    |' 
+	'+---+--+    |' 
+	'|   |       |' 
+	'+---+-------+' ) .
 	self assert: result equals: 3
 ]
 
@@ -196,6 +245,15 @@ RectanglesTest >> test12_CornerIsRequiredForARectangleToBeComplete [
 RectanglesTest >> test13_LargeInputWithManyRectangles [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #('+---+--+----+' '|   +--+----+' '+---+--+    |' '|   +--+----+' '+---+--+--+-+' '+---+--+--+-+' '+------+  | |' '          +-+' ) .
+	result := rectanglesCalculator rectanglesStrings: #(
+	'+---+--+----+' 
+	'|   +--+----+' 
+	'+---+--+    |' 
+	'|   +--+----+' 
+	'+---+--+--+-+' 
+	'+---+--+--+-+' 
+	'+------+  | |' 
+	'          +-+' ) .
+	
 	self assert: result equals: 60
 ]
