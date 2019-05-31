@@ -66,6 +66,27 @@ ExercismExercise class >> for: anExercismTestCase [
 		yourself
 ]
 
+{ #category : #'instance creation' }
+ExercismExercise class >> templateReadMePost [
+	^'
+## Downloading
+
+To download this exercise in Pharo, type: `{{Slug}}` into the `Exercism | Fetch new exercise` top menu prompt (or right click on any `Exercise@<Name>` package in the Pharo System Browser).
+
+When you are finished writing and testing your solution, and want to submit it, you should right click on the `Exercise@{{MixedCaseName}}` package and choose `Exercism | Submit exercise` in the context menu. You DON''T use the exercism cli (as indicated on the right hand panel).
+
+## Running The Tests
+
+Tests can be run directly from the Pharo IDE, by clicking on the test orb next to any test.
+The SUnit convention is that the provided `{{MixedCaseName}}Test`, will test the functionality of `{{MixedCaseName}}`.
+
+If you are still stuck, the track documentation has detailed help for [running tests](https://exercism.io/tracks/pharo/tests).
+
+## Language and Environment Help
+
+For Pharo installation and learning resources, refer to the [track help page](https://exercism.io/tracks/pharo/learning).'
+]
+
 { #category : #comparing }
 ExercismExercise >> = anObject [
 	"Answer whether the receiver and anObject represent the same object."
@@ -88,6 +109,14 @@ ExercismExercise >> asJsonData [
 		'unlocked_by' -> self unlockReference.
 		'difficulty' -> self difficulty.
 		'topics' -> self topics } asOrderedDictionary 
+]
+
+{ #category : #'as yet unclassified' }
+ExercismExercise >> definitions [
+	"We are only concerned with classes and methods. Exercism has its own organisation
+	 (and `anMCOrganizationDefinition actualClass` returns  `nil` that gets in the way later.)
+	"
+	^ self exercisePackage snapshot definitions reject: #isOrganizationDefinition 
 ]
 
 { #category : #accessing }
@@ -239,6 +268,11 @@ ExercismExercise >> isCore: aBoolean [
 	isCore := aBoolean
 ]
 
+{ #category : #'as yet unclassified' }
+ExercismExercise >> isCustom [
+	^testCase isCustom
+]
+
 { #category : #accessing }
 ExercismExercise >> isDefined [
 	^self exerciseClass notNil
@@ -282,9 +316,17 @@ ExercismExercise >> isUnlockedBy: anExercise [
 		ifNotNil: [ :exercise | exercise = anExercise ]
 ]
 
-{ #category : #accessing }
+{ #category : #'problem-specification' }
+ExercismExercise >> mixedCaseName [
+	^self exerciseClassName 
+]
+
+{ #category : #'problem-specification' }
 ExercismExercise >> name [ 
 	^self exerciseClassName asKebabCase 
+	
+	"@tim, Discuss to align with... https://github.com/exercism/docs/blob/master/language-tracks/exercises/anatomy/readmes.md#generating-a-readme
+	making this wordified not kebabcase.  Just need to update senders to use #slug."
 ]
 
 { #category : #printing }
@@ -301,6 +343,29 @@ ExercismExercise >> printOn: aStream [
 				print: self difficulty ]
 		ifFalse: [ aStream nextPut: $? ].
 	aStream nextPut: $)
+]
+
+{ #category : #'as yet unclassified' }
+ExercismExercise >> readme [
+	"Generate readme file similar to Exercism `configlet` https://github.com/exercism/docs/blob/master/language-tracks/exercises/anatomy/readmes.md#generating-a-readme
+	TODO: Add source and credits
+	"
+	^ testCase comment , 
+		 self class templateReadMePost format2: { 
+			#Slug -> self slug . 
+			#MixedCaseName -> self mixedCaseName
+		 	} asDictionary
+		
+]
+
+{ #category : #'problem-specification' }
+ExercismExercise >> slug [
+	^self exerciseClassName asKebabCase 
+]
+
+{ #category : #'problem-specification' }
+ExercismExercise >> snakeCaseName [
+	^self exerciseClassName asKebabCase copyReplaceAll: '-' with: '_'  
 ]
 
 { #category : #accessing }
@@ -422,7 +487,7 @@ ExercismExercise >> version [
 	^self testCase version
 ]
 
-{ #category : #accessing }
+{ #category : #'problem-specification' }
 ExercismExercise >> wordifiedName [
 	"Answer the english readable name of the exercise"
 

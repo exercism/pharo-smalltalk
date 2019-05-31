@@ -81,6 +81,50 @@ ExercismGenerator >> generateCustomDataFor: anExercismExercise to: destinationDi
 					lf ]]
 ]
 
+{ #category : #'as yet unclassified' }
+ExercismGenerator >> generateDefinitions: definitions to: aFileReference [ 
+	| tonelFileMap |
+	tonelFileMap := ExTonelWriter new mappedSnapshot: (MCSnapshot fromDefinitions: definitions).
+	tonelFileMap
+		keysAndValuesDo: [ :file :stream | 
+			(aFileReference / file) ensureCreateFile
+				writeStreamDo: [ :fileStream | fileStream nextPutAll: stream contents ] ].
+]
+
+{ #category : #helper }
+ExercismGenerator >> generateExercise: exercise to: exerciseRootDirRef [
+	"Generate the Tonel source files for a package. Answer the exercise directory reference"
+
+	| exerciseName exerciseDirRef metaDirRef solutionDirRef exerciseDefs solutionDefs |
+
+	"The following directory structure is expected by Exercism infrastructure. 
+	 Canonical reference is output of their utlitity command `configlet generate` "
+	exerciseName := ExercismExercise exerciseNameFrom: exercise exercisePackage.
+	exerciseDirRef := exerciseRootDirRef / exerciseName.
+	metaDirRef     := exerciseRootDirRef / exerciseName / '.meta'.
+	solutionDirRef := exerciseRootDirRef / exerciseName / '.meta' / 'solution'.		
+			
+	exerciseDirRef ensureCreateDirectory.
+	exerciseDirRef deleteAll.
+	
+	exerciseDefs := exercise definitions select: #isExercise.
+	self generateDefinitions: exerciseDefs to: exerciseDirRef.
+	
+	solutionDefs := exercise definitions select: #isSolution.
+	self generateDefinitions: solutionDefs to: solutionDirRef.
+
+	self generateReadmeFor: exercise to: exerciseDirRef.
+	self generateReadmeHintFor: exercise to: metaDirRef.
+	
+	exercise isCustom ifTrue: [ self generateCustomDataFor: exercise to: metaDirRef ]
+]
+
+{ #category : #helper }
+ExercismGenerator >> generateReadmeFor: exercise to: destinationDirectory [
+	(destinationDirectory / 'README.md') ensureCreateFile
+		writeStreamDo: [ :stream | stream nextPutAll: exercise readme withUnixLineEndings ]
+]
+
 { #category : #helper }
 ExercismGenerator >> generateReadmeHintFor: anExercismExercise to: destinationDirectory [
 	"Generate markdown hints, that exercism configlet will pickup for readme.md files
@@ -96,55 +140,15 @@ ExercismGenerator >> generateReadmeHintFor: anExercismExercise to: destinationDi
 			stream nextPutAll: hint ]
 ]
 
-{ #category : #helper }
-ExercismGenerator >> generateSourceFilesFor: package to: filePathString [
-	"Generate the Tonel source files for a package. Answer the exercise directory reference"
-
-	| definitions exerciseDefs solutionDefs exerciseFileMap exampleDirectoryRef exerciseDirectoryRef metaDirectoryRef solutionDirectoryRef testClass  exerciseName  solutionFileMap |
-	definitions := package snapshot definitions
-		reject: #isOrganizationDefinition.
-	exerciseDefs := definitions select: #isExerciseDefinition.
-	solutionDefs := definitions select: #isSolutionDefinition.
-
-	"The following directory structure is expected by Exercism infrastructure. 
-	 Canonical reference is output of their utlitity command `configlet generate` "
-	exerciseName := ExercismExercise exerciseNameFrom: package.
-	exampleDirectoryRef := filePathString asFileReference.
-	exerciseDirectoryRef := exampleDirectoryRef / exerciseName.
-	metaDirectoryRef := exerciseDirectoryRef / '.meta'.
-	solutionDirectoryRef := metaDirectoryRef / 'solution'.
-	
-	exerciseDirectoryRef ensureCreateDirectory.
-	exerciseDirectoryRef deleteAll.
-	
-	exerciseFileMap := ExTonelWriter new mappedSnapshot: (MCSnapshot fromDefinitions: exerciseDefs).
-	exerciseFileMap
-		keysAndValuesDo: [ :file :stream | 
-			(exerciseDirectoryRef / file) ensureCreateFile
-				writeStreamDo: [ :fileStream | fileStream nextPutAll: stream contents ] ].
-			
-	solutionFileMap := ExTonelWriter new mappedSnapshot: (MCSnapshot fromDefinitions: solutionDefs).
-	solutionFileMap
-		keysAndValuesDo: [ :file :stream | 
-			(solutionDirectoryRef / file) ensureCreateFile
-				writeStreamDo: [ :fileStream | fileStream nextPutAll: stream contents ] ].
-			
-	testClass := exerciseDefs first actualClass instanceSide.
-	self generateReadmeHintFor: testClass exercise to: metaDirectoryRef.
-	
-	testClass isCustom
-		ifTrue:
-			[ self generateCustomDataFor: testClass exercise to: metaDirectoryRef ]
-]
-
 { #category : #generation }
-ExercismGenerator >> generateTo: filePathReference [
-	| basePathReference |
+ExercismGenerator >> generateTo: exerciseRootDirectoryReference [
+	| repoFileReference |
 	
-	ExercismExercise allExercises select: [:ex | ex isActive ] thenDo: [:ex | 
-			self generateSourceFilesFor: ex exercisePackage to: filePathReference ].
+	ExercismExercise allExercises 
+		select: [:exercise | exercise isActive ] 
+		thenDo: [:exercise | self generateExercise: exercise to: exerciseRootDirectoryReference ].
 		
-	basePathReference := filePathReference parent.
-	ExercismConfigGenerator generateTo: basePathReference.
+	repoFileReference := exerciseRootDirectoryReference parent.
+	ExercismConfigGenerator generateTo: repoFileReference.
 
 ]
