@@ -34,7 +34,6 @@ ExercismExerciseGenerator class >> defaultSourcePath [
 		builder createRepository.
 	] on: IceDuplicatedRepository 
 	  do: [ :error | "don nothing" ].
-	self halt.
 	^ builder locationToUse exists 
 		ifTrue: [ (builder locationToUse / 'exercises') fullName ]
 ]
