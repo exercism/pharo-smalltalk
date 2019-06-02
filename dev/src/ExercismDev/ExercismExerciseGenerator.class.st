@@ -13,7 +13,7 @@ Class {
 		'testCounter'
 	],
 	#classVars : [
-		'DefaultPath'
+		'LastPath'
 	],
 	#category : #'ExercismDev-TestGenerator'
 }
@@ -24,14 +24,19 @@ ExercismExerciseGenerator class >> convertLegacyTagsToPackages [
 		do: [ :t | t promoteAsExercismRPackage ]
 ]
 
-{ #category : #examples }
-ExercismExerciseGenerator class >> defaultPath [
-	^ DefaultPath ifNil: [ self defaultPath: FileLocator home pathString]
-]
-
-{ #category : #examples }
-ExercismExerciseGenerator class >> defaultPath: pathString [
-	^ DefaultPath := pathString
+{ #category : #'as yet unclassified' }
+ExercismExerciseGenerator class >> defaultSourcePath [
+	|builder|
+	[	builder := IceRepositoryCreator new 
+			url: 'git@github.com:exercism/problem-specifications.git';
+			commitishName: 'master';
+			yourself.
+		builder createRepository.
+	] on: IceDuplicatedRepository 
+	  do: [ :error | "don nothing" ].
+	self halt.
+	^ builder locationToUse exists 
+		ifTrue: [ (builder locationToUse / 'exercises') fullName ]
 ]
 
 { #category : #examples }
@@ -40,12 +45,31 @@ ExercismExerciseGenerator class >> generate [
 	the exercism/pharo project. e.g. self generate"
 
 	<example>
-	| path |
-	path := UIManager default
-		chooseDirectory: 'Select the /exercises location in a full Exercism/problem-specifications git project'
-		path: self defaultPath.
+	| sourcePath defaultSourcePath |
+	
+	
+	defaultSourcePath := self defaultSourcePath.
+	sourcePath := defaultSourcePath ifNotNil: [ 
+		(self confirm: 'Generate from default source location?' , String cr, defaultSourcePath)
+			ifTrue:  [ defaultSourcePath ]
+	].
+	sourcePath ifNil: [ 	
+		UIManager default
+			chooseDirectory: 'Select source "problem-specifications/exercises" folder to read from'
+			path: self lastPath.
+		].
 		
-	path ifNotNil: [ self new generateFrom: (self defaultPath: path) ]
+	sourcePath ifNotNil: [ self new generateFrom: (self lastPath: sourcePath) asFileReference ]
+]
+
+{ #category : #examples }
+ExercismExerciseGenerator class >> lastPath [
+	^ LastPath ifNil: [ LastPath := FileLocator home pathString]
+]
+
+{ #category : #examples }
+ExercismExerciseGenerator class >> lastPath: pathString [
+	^ LastPath := pathString
 ]
 
 { #category : #examples }

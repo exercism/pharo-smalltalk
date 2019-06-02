@@ -13,20 +13,19 @@ Class {
 	#name : #ExercismGenerator,
 	#superclass : #Object,
 	#classVars : [
-		'DefaultPath',
+		'LastPath',
 		'UseConfigletGenerate'
 	],
 	#category : #'ExercismDev-Generator'
 }
 
-{ #category : #helper }
-ExercismGenerator class >> defaultPath [
-	^ DefaultPath ifNil: [ self defaultPath: FileLocator home pathString]
-]
+{ #category : #'as yet unclassified' }
+ExercismGenerator class >> defaultGenerationPath [
+	|exercismRepo|
+	exercismRepo := LGitRepository allInstances detect: [ :repo |
+		repo workingDirectory pathSegments last = 'pharo-smalltalk'].
+	^ exercismRepo ifNotNil: [(exercismRepo workingDirectory / 'exercises') pathString ]
 
-{ #category : #helper }
-ExercismGenerator class >> defaultPath: pathString [
-	^ DefaultPath := pathString
 ]
 
 { #category : #generation }
@@ -35,12 +34,30 @@ ExercismGenerator class >> generate [
 	the exercism/pharo project. e.g. self generate"
 
 	<example>
-	| path |
-	path := UIManager default
-		chooseDirectory: 'Select the /exercises location in a fresh Exercism/Pharo git project'
-		path: self defaultPath.
+	| generationPath defaultGenerationPath |
+	defaultGenerationPath := self defaultGenerationPath.
+	generationPath := defaultGenerationPath ifNotNil: [ 
+		(self confirm: 'Generate to default location?' , String cr, defaultGenerationPath)
+			ifTrue:  [ defaultGenerationPath ]
+	].
+	
+	generationPath ifNil: [ generationPath := 
+		UIManager default
+			chooseDirectory: 'Select the "pharo-smalltalk/exercises" folder to generate into'
+			path: self lastPath.
+		].
 		
-	path ifNotNil: [ self new generateTo: (self defaultPath: path) ]
+	generationPath ifNotNil: [ self new generateTo: (self lastPath: generationPath) asFileReference ]
+]
+
+{ #category : #helper }
+ExercismGenerator class >> lastPath [
+	^ LastPath ifNil: [ self defaultPath: FileLocator home pathString]
+]
+
+{ #category : #helper }
+ExercismGenerator class >> lastPath: pathString [
+	^ LastPath := pathString
 ]
 
 { #category : #helper }
