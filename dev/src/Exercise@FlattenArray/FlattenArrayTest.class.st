@@ -13,7 +13,7 @@ output: [1,2,3,4,5]
 
 ## Hint
 
-Without using the built-in flattening method, you can derive your own, but you will need to differentiate between what is a collection and what is not. Alternatively, if you decide to use the built-in flattening methods, you will need to create a new Stream type to override incorrect behaviour.
+Pharo's extensive class library makes the simplest solution `aCollection flattened select: #isNotNil` too trivial to gain much value.  A better challenge is to derive your own from reviewing how the existing is implemented.  You might discard `nil` before putting items into a standard `WriteStream`, or possibly subclass `WriteStream` to discard `nil` items when they are put into the stream, and use that in your solution instead.
 "
 Class {
 	#name : #FlattenArrayTest,
