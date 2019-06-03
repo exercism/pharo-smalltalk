@@ -81,7 +81,11 @@ Is converted to ""123,456,789""
 
 ## Hint
 
-TBD
+The following text could be parsed from this comment and used to recognize characters:
+'    _  _     _  _  _  _  _  _ '
+'  | _| _||_||_ |_   ||_||_|| |'
+'  ||_  _|  | _||_|  ||_| _||_|'
+'                              '
 
 "
 Class {
@@ -90,8 +94,24 @@ Class {
 	#instVars : [
 		'ocrNumbersCalculator'
 	],
-	#category : #'ExercismWIP-OcrNumbers'
+	#category : #'Exercise@OcrNumbers'
 }
+
+{ #category : #config }
+OcrNumbersTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+	
+	
+	^(self createExerciseAfter: MatrixTest)
+		isCore: false;
+		difficulty: 6;
+		topics: #('matrices'
+        'parsing'
+        'pattern_recognition');
+		yourself
+	
+				
+]
 
 { #category : #config }
 OcrNumbersTest class >> uuid [
@@ -108,7 +128,7 @@ OcrNumbersTest class >> version [
 { #category : #running }
 OcrNumbersTest >> setUp [
 	super setUp.
-	ocrNumbersCalculator := OcrNumbers new
+	ocrNumbersCalculator := OcrNumbers from: self class comment
 ]
 
 { #category : #tests }
@@ -241,7 +261,12 @@ OcrNumbersTest >> test15_Recognizes9 [
 OcrNumbersTest >> test16_RecognizesStringOfDecimalNumbers [
 	| result |
 
-	result := ocrNumbersCalculator convertRows: #('    _  _     _  _  _  _  _  _ ' '  | _| _||_||_ |_   ||_||_|| |' '  ||_  _|  | _||_|  ||_| _||_|' '                              ' ) .
+	result := ocrNumbersCalculator convertRows: #(
+	'    _  _     _  _  _  _  _  _ ' 
+	'  | _| _||_||_ |_   ||_||_|| |' 
+	'  ||_  _|  | _||_|  ||_| _||_|' 
+	'                              ' ) .
+	
 	self assert: result equals: '1234567890'
 ]
 
@@ -249,6 +274,19 @@ OcrNumbersTest >> test16_RecognizesStringOfDecimalNumbers [
 OcrNumbersTest >> test17_NumbersSeparatedByEmptyLinesAreRecognizedLinesAreJoinedByCommas [
 	| result |
 
-	result := ocrNumbersCalculator convertRows: #('    _  _ ' '  | _| _|' '  ||_  _|' '         ' '    _  _ ' '|_||_ |_ ' '  | _||_|' '         ' ' _  _  _ ' '  ||_||_|' '  ||_| _|' '         ' ) .
+	result := ocrNumbersCalculator convertRows: #(
+	'    _  _ ' 
+	'  | _| _|' 
+	'  ||_  _|' 
+	'         ' 
+	'    _  _ ' 
+	'|_||_ |_ ' 
+	'  | _||_|' 
+	'         ' 
+	' _  _  _ ' 
+	'  ||_||_|' 
+	'  ||_| _|' 
+	'         ' ) .
+	
 	self assert: result equals: '123,456,789'
 ]
