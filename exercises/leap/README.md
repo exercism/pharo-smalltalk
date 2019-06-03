@@ -26,7 +26,7 @@ phenomenon, go watch [this youtube video][video].
 
 ## Hint
 
-The tests for this exercise (and future exercises), are prefix numbered 'test0X_'. This is not a normal convention in Pharo, however to ease the study of the language it is useful to present tests in a useful and deterministic order.For this exercise, study the 'arithmetic' method category for class Number, as well as how boolean operators are also defined as messages. Notice how "and:" and "or:" are implented in the classes True and False. You can use the context menu item "senders of..." to view how other parts of Pharo use these operators.
+The tests for this exercise (and future exercises), are prefix numbered like 'test00_'. This is not a normal convention in Pharo, however to ease the study of the language it is useful to present tests in a deterministic order.For this exercise, study the 'arithmetic' method category for class Number, as well as how boolean operators are also defined as messages. Notice how "and:" and "or:" are implented in the classes True and False. You can use the context menu item "senders of..." to view how other parts of Pharo use these operators.You may also find something useful trying... `World > Tools > Finder > Examples > 20 . 4 . true`<br> which is asking Pharo which operations between the first and second elements result in the third.<br> [View demo][demo][demo]: https://github.com/exercism/pharo-smalltalk/raw/master/docs/images/Hint-Finder-Leap.gif
 
 
 ## Downloading
