@@ -10,10 +10,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'numberGenerated',
-		'testCounter'
-	],
-	#classVars : [
-		'LastPath'
+		'testCounter',
+		'problems'
 	],
 	#category : #'ExercismDev-TestGenerator'
 }
@@ -24,51 +22,21 @@ ExercismExerciseGenerator class >> convertLegacyTagsToPackages [
 		do: [ :t | t promoteAsExercismRPackage ]
 ]
 
-{ #category : #'as yet unclassified' }
-ExercismExerciseGenerator class >> defaultSourcePath [
-	|builder|
-	[	builder := IceRepositoryCreator new 
-			url: 'git@github.com:exercism/problem-specifications.git';
-			commitishName: 'master';
-			yourself.
-		builder createRepository.
-	] on: IceDuplicatedRepository 
-	  do: [ :error | "don nothing" ].
-	^ builder locationToUse exists 
-		ifTrue: [ (builder locationToUse / 'exercises') fullName ]
-]
-
 { #category : #examples }
 ExercismExerciseGenerator class >> generate [
 	"This is the entry point for generating exercism compatible source files that can be checked into
 	the exercism/pharo project. e.g. self generate"
 
 	<example>
-	| sourcePath defaultSourcePath |
-	
-	
-	defaultSourcePath := self defaultSourcePath.
-	sourcePath := defaultSourcePath ifNotNil: [ 
-		(self confirm: 'Generate from default source location?' , String cr, defaultSourcePath)
-			ifTrue:  [ defaultSourcePath ]
-	].
-	sourcePath ifNil: [ 	
-		UIManager default
-			chooseDirectory: 'Select source "problem-specifications/exercises" folder to read from'
-			path: self lastPath.
-		].
 		
-	sourcePath ifNotNil: [ self new generateFrom: (self lastPath: sourcePath) asFileReference ]
+	self new generateFrom: ExercismProblemSpecification all "or allNeedingGeneration ?? ask user ??"
 ]
 
 { #category : #examples }
-ExercismExerciseGenerator class >> lastPath [
-	^ LastPath ifNil: [ LastPath := FileLocator home pathString]
-]
+ExercismExerciseGenerator class >> problemSpecificationsFrom: filePathReference [
+	^ filePathReference entries
+		collect: [ :entry | ExercismProblemSpecification newFromFileRef: entry reference ].
 
-{ #category : #examples }
-ExercismExerciseGenerator class >> lastPath: pathString [
-	^ LastPath := pathString
 ]
 
 { #category : #examples }
@@ -196,10 +164,10 @@ ExercismExerciseGenerator >> generateCodeShouldRaiseOn: output variable: variabl
 ]
 
 { #category : #generation }
-ExercismExerciseGenerator >> generateExerciseFrom: aFileSystemReference [
-	| testName testDescription testSpecification testJson testClass testRoot testVariable testMetaData versionString |
+ExercismExerciseGenerator >> generateExerciseFrom: spec [
+	| testMetaData testClass |
 	
-
+"	ExercismProblemSpecification newFromFileRef: aFileSystemReference.
 	testRoot := '' join: ((aFileSystemReference basename splitOn: $-) collect: [ :w | w capitalized ]).
 	testName := testRoot, 'Test'.
 	testVariable := (testRoot, 'Calculator') asValidSelector asString.
@@ -216,19 +184,23 @@ ExercismExerciseGenerator >> generateExerciseFrom: aFileSystemReference [
 		
 	testJson := STONJSON fromString: testSpecification.
 	versionString := testJson at: 'version'.
-	
-	testMetaData := (WriteStream on: '') nextPutAll: testMetaData;
-		nextPutAll: ('exercise: "{1}"' format: {testRoot}); cr;
-		nextPutAll: ('version: "{1}"' format: {versionString}); cr; contents.
-
-	testClass := self generateTestClass: testName tag: testRoot variable: testVariable.						
+"
+	Transcript crShow: 'Generating ', spec classNameForTest.	
+	spec hasCanonicalData ifFalse: [ ^self ].
+	testClass := self generateTestClassUsing: spec.					
 	"self generateTestVariableAccessors: testVariable in: testClass."
-	self generateSetupOn: testClass using: testVariable assigning: testRoot.
-	self generateTestMethodsOn: testClass calling: testVariable using: testJson prefix: ''.
-	self generateMetaDataFor: testClass description: testDescription version: versionString metaData: testMetaData.
+	self generateSetupOn: testClass using: spec.
+	self halt. "Work in progress. Step through next method to validate."
+	self generateTestMethodsOn: testClass using: spec.
+
+	testMetaData := ''. "spec metaDataString".
+	testMetaData := (WriteStream on: '') nextPutAll: testMetaData;
+		nextPutAll: ('exercise: "{1}"' format: {spec mixedCaseName}); cr;
+		nextPutAll: ('version: "{1}"' format: {spec version}); cr; contents.	
+	self generateMetaDataFor: testClass description: spec description version: spec version metaData: testMetaData.
 	
 	self numberGenerated: self numberGenerated + 1.
-	self log: 'successfully created' for: testName
+	self log: 'successfully created' for: spec classNameForTest
 	
 	
 		
@@ -237,16 +209,14 @@ ExercismExerciseGenerator >> generateExerciseFrom: aFileSystemReference [
 ]
 
 { #category : #generation }
-ExercismExerciseGenerator >> generateFrom: filePathReference [
+ExercismExerciseGenerator >> generateFrom: problemSpecifications [
 	(RPackageOrganizer default
 		includesPackageNamed: self defaultPackageName)
 			ifFalse: [ RPackageOrganizer default createPackageNamed: self defaultPackageName ].
 		
-	self crLog: 'Generating new TestCases from specification: ', filePathReference printString.
-			
 	self numberGenerated: 0.
-	filePathReference entries
-		do: [ :entry | self generateExerciseFrom: entry reference ].
+	(problemSpecifications select: #hasCanonicalData)
+		do: [ :spec | self generateExerciseFrom: spec ].
 		
 	self 
 		crLog: ('Generation complete. Created {1} Tests!'
@@ -289,65 +259,70 @@ ExercismExerciseGenerator >> generateMetaDataFor: testClass description: testDes
 ]
 
 { #category : #generation }
-ExercismExerciseGenerator >> generateSetupOn: testClass using: testVariable assigning: testRoot [
-	| output src |
+ExercismExerciseGenerator >> generateSetupOn: testClass using: spec [
+	| methodSource |
 	
-	output := (WriteStream on: '').
-	output nextPutAll: 'setUp'; cr.
-	output tab; nextPutAll: 'super setUp.'; cr. 
-	output tab; nextPutAll: testVariable, ' := '; nextPutAll: testRoot, ' new'.
+	methodSource := (WriteStream on: '').
+	methodSource  
+		nextPutAll: 'setUp'; cr;
+		tab; nextPutAll: 'super setUp.'; cr;
+		tab; nextPutAll: spec testVariable, ' := '; nextPutAll: spec classNameForSolution, ' new'.
 	
-	src := output contents.
-	self compile: src for: testClass selector: #setUp protocol: 'running'
+	self 
+		compile: methodSource contents 
+		for: testClass 
+		selector: #setUp 
+		protocol: 'running'
 		
 ]
 
 { #category : #generation }
-ExercismExerciseGenerator >> generateTestClass: testName tag: tagName variable: testVariable [
+ExercismExerciseGenerator >> generateTestClassUsing: spec [
 	
 	self resetTestCounter.
 	
 	^ExercismTest
-		subclass: testName asSymbol
-		instanceVariableNames: testVariable
+		subclass: spec classNameForTest asSymbol
+		instanceVariableNames: spec testVariable
 		classVariableNames: ''
 		poolDictionaries: ''
-		package: 'ExercismWIP-', tagName
+		package: 'ExercismWIP-', spec mixedCaseName
 	
 ]
 
 { #category : #generation }
-ExercismExerciseGenerator >> generateTestMethodsOn: testClass calling: testVariable using: testJson prefix: aPrefixString [
-	| instance methodName parameters testResult testPrefix methodNameSegment |
+ExercismExerciseGenerator >> generateTestMethodsOn: testClass calling: testVariable using: spec prefix: aPrefixString [
+	"Processes... https://github.com/exercism/problem-specifications/blob/master/canonical-schema.json"
+	| groups instance methodName parameters testResult testPrefix methodNameSegment |
 	
-	(testJson at: 'cases')
-		do: [ :case | 
-			methodNameSegment := (((testJson at: 'cases') size > 1 ) or: [ aPrefixString notEmpty ])
-				ifTrue: [ (case at: 'description') asCamelCase asValidKeyword capitalized ]
-				ifFalse: [ '' ].
-			methodName :=  aPrefixString 
-				ifEmpty: [ methodNameSegment withoutPrefix: 'And' ] 
-				ifNotEmpty: [ aPrefixString, methodNameSegment ].
-				
-			(case includesKey: 'cases')
-				ifTrue: [ self
-						generateTestMethodsOn: testClass
-						calling: testVariable
-						using: case
-						prefix: methodName ]
-				ifFalse: [ 
-					instance := case at: 'property'.
-					parameters := case at: 'input'.
-					testResult := case at: 'expected'.
-					
-					testPrefix := 'test{1}_' format: {self nextTestCounter asTwoCharacterString}.
-					self
-						generateTestNamed: (testPrefix, methodName) asSymbol 
-						in: testClass
-						variable: testVariable
-						selector: instance
-						parameters: parameters
-						expecting: testResult ] ]
+	groups := (spec tests collect: [ :test | test groupCount ]) max.
+	spec tests 
+		do: [ :test |
+				testPrefix := 'test{1}_' format: {self nextTestCounter asTwoCharacterString}.
+				self
+					generateTestNamed: (testPrefix, test methodNameSegment) asSymbol 
+					in: testClass
+					variable: spec testVariable
+					selector: test property
+					parameters: test input
+					expecting: test expected ]
+]
+
+{ #category : #generation }
+ExercismExerciseGenerator >> generateTestMethodsOn: testClass using: spec [ 
+	"Processes... https://github.com/exercism/problem-specifications/blob/master/canonical-schema.json"
+	| testPrefix |
+	
+	spec tests 
+		do: [ :test |
+				testPrefix := 'test{1}_' format: {self nextTestCounter asTwoCharacterString}.
+				self
+					generateTestNamed: (testPrefix, test methodNameSegment) asSymbol 
+					in: testClass
+					variable: spec testVariable
+					selector: test property
+					parameters: test input
+					expecting: test expected ]
 ]
 
 { #category : #generation }
