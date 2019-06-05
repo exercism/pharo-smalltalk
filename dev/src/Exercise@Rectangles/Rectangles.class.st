@@ -11,24 +11,29 @@ Class {
 	#category : #'Exercise@Rectangles'
 }
 
-{ #category : #exercism }
-Rectangles >> possibleRectangleRegionsIn: matrix [
-	"Answer all possible Regions in the matrix, where there could be a rectangle"
-	
-	| corners |
-	
-	corners := matrix
-		withIndicesInject: OrderedCollection new into: [ :result :value :r :c | 
+{ #category : #helper }
+Rectangles >> getAllRectangleCornersIn: matrix [
+	^ matrix
+		withIndicesInject: OrderedCollection new
+		into: [ :result :value :r :c | 
 			value = $+
 				ifTrue: [ result add: r @ c ].
-			result ].
+			result ]
+]
+
+{ #category : #helper }
+Rectangles >> possibleRectangleRegionsIn: matrix [
+	"Answer all possible Regions in the matrix, where there could be a rectangle"
+
+	| corners |
+	corners := self getAllRectangleCornersIn: matrix.
 
 	^ corners
 		inject: Set new
 		into: [ :result :corner | 
 			| lowerCorners |
-			lowerCorners := corners
-				reject: [ :item | item = corner | (item x < corner x) | (item y < corner y) ].
+			
+			lowerCorners := self potentialLowerCornersFor: corner given: corners.
 
 			result
 				addAll:
@@ -36,6 +41,14 @@ Rectangles >> possibleRectangleRegionsIn: matrix [
 						collect: [ :lc | corner region: lc ]
 						thenSelect: [ :region | region isValid ]);
 				yourself ]
+]
+
+{ #category : #helper }
+Rectangles >> potentialLowerCornersFor: topLeftCorner given: corners [
+	^ corners
+		reject: [ :corner | 
+			corner = topLeftCorner | (corner x < topLeftCorner x)
+				| (corner y < topLeftCorner y) ]
 ]
 
 { #category : #exercism }
