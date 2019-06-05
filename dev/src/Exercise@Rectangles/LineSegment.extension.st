@@ -1,11 +1,17 @@
 Extension { #name : #LineSegment }
 
 { #category : #'*Exercise@Rectangles' }
-LineSegment >> isHorizontal [
+LineSegment >> isRow [
+	"Answer true if the segment is on the same row"
+	
 	^self start x = self end x
 ]
 
 { #category : #'*Exercise@Rectangles' }
 LineSegment >> points [
-	^self isHorizontal ifTrue: [ (self start y to: self end y) collect: [ :y | (self start x)@y ] ] ifFalse: [ (self start x to: self end x) collect: [ :x | x@(self start y )]]
+	"Answer the points either along the same row, or the same column"
+	
+	^ self isRow
+		ifTrue: [ (self start y to: self end y) collect: [ :y | self start x @ y ] ]
+		ifFalse: [ (self start x to: self end x) collect: [ :x | x @ self start y ] ]
 ]

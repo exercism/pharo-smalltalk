@@ -28,16 +28,13 @@ Region >> bottomRight [
 ]
 
 { #category : #accessing }
-Region >> bottomRight: anObject [
-	bottomRight := anObject
+Region >> bottomRight: aPoint [
+	bottomRight := aPoint
 ]
 
 { #category : #accessing }
 Region >> definesRectangleIn: aMatrix [
-	self sides do: [ :side | 
-		(aMatrix isLineAt: side) ifFalse: [^false]].
-	
-	^true
+	^ self sides allSatisfy: [ :side | aMatrix isLineAt: side ]
 ]
 
 { #category : #accessing }
@@ -53,7 +50,7 @@ Region >> isValid [
 	^self width > 0 and: [ self height > 0 ]
 ]
 
-{ #category : #accessing }
+{ #category : #printing }
 Region >> printOn: aStream [ 
 	"Refer to the comment in Object|printOn:."
 
@@ -64,21 +61,26 @@ Region >> printOn: aStream [
 
 { #category : #accessing }
 Region >> sides [
+	| regionWidth regionHeight |
+	
 	self isValid
 		ifFalse: [ ^ {} ].
+		
+	regionWidth := (self width) @ 0.
+	regionHeight := 0 @ (self height).
 
 	^ {
+	(LineSegment 
+		from: self topLeft 
+		to: self topLeft + regionWidth).
 	(LineSegment
-		from: self topLeft
-		to: self topLeft + (self width @ 0)).
-	(LineSegment
-		from: self bottomRight - (self width @ 0)
+		from: self bottomRight - regionWidth
 		to: self bottomRight).
 	(LineSegment 
 		from: self topLeft 
-		to: self topLeft + (0 @ self height)).
+		to: self topLeft + regionHeight).
 	(LineSegment
-		from: self bottomRight - (0 @ self height)
+		from: self bottomRight - regionHeight
 		to: self bottomRight)}
 ]
 
@@ -88,8 +90,8 @@ Region >> topLeft [
 ]
 
 { #category : #accessing }
-Region >> topLeft: anObject [
-	topLeft := anObject
+Region >> topLeft: aPoint [
+	topLeft := aPoint
 ]
 
 { #category : #accessing }

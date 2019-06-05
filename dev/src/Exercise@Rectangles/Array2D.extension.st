@@ -14,7 +14,7 @@ Array2D >> isLineAt: aLineSegment [
 	^ (lineChars
 		reject: [ :char | 
 			char = 
-				(aLineSegment isHorizontal
+				(aLineSegment isRow
 						ifTrue: [ $- ]
 						ifFalse: [ $| ]) ]) ifEmpty: [ true ] ifNotEmpty: [ false ]
 ]

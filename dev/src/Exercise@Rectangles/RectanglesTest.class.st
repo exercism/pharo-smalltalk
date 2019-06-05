@@ -91,6 +91,13 @@ RectanglesTest class >> exercise [
 				
 ]
 
+{ #category : #generator }
+RectanglesTest class >> generator [
+	"Answer code generator aliases/hints"
+	
+	^{'@rectangleStrings' -> #rectanglesFromStrings}
+]
+
 { #category : #config }
 RectanglesTest class >> uuid [
 	"Answer a unique id for this exercise"
@@ -113,7 +120,7 @@ RectanglesTest >> setUp [
 RectanglesTest >> test01_NoRows [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #() .
+	result := rectanglesCalculator rectanglesFromStrings: #() .
 	self assert: result equals: 0
 ]
 
@@ -121,7 +128,7 @@ RectanglesTest >> test01_NoRows [
 RectanglesTest >> test02_NoColumns [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #('' ) .
+	result := rectanglesCalculator rectanglesFromStrings: #('' ) .
 	self assert: result equals: 0
 ]
 
@@ -129,7 +136,7 @@ RectanglesTest >> test02_NoColumns [
 RectanglesTest >> test03_NoRectangles [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #(' ' ) .
+	result := rectanglesCalculator rectanglesFromStrings: #(' ' ) .
 	self assert: result equals: 0
 ]
 
@@ -137,7 +144,7 @@ RectanglesTest >> test03_NoRectangles [
 RectanglesTest >> test04_OneRectangle [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #(
+	result := rectanglesCalculator rectanglesFromStrings: #(
 	'+-+' 
 	'| |' 
 	'+-+' ) .
@@ -149,7 +156,7 @@ RectanglesTest >> test04_OneRectangle [
 RectanglesTest >> test05_TwoRectanglesWithoutSharedParts [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #(
+	result := rectanglesCalculator rectanglesFromStrings: #(
 	'  +-+' 
 	'  | |' 
 	'+-+-+' 
@@ -163,7 +170,7 @@ RectanglesTest >> test05_TwoRectanglesWithoutSharedParts [
 RectanglesTest >> test06_FiveRectanglesWithSharedParts [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #(
+	result := rectanglesCalculator rectanglesFromStrings: #(
 	'  +-+' 
 	'  | |' 
 	'+-+-+' 
@@ -176,7 +183,7 @@ RectanglesTest >> test06_FiveRectanglesWithSharedParts [
 RectanglesTest >> test07_RectangleOfHeight1IsCounted [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #(
+	result := rectanglesCalculator rectanglesFromStrings: #(
 	'+--+' 
 	'+--+' ) .
 	
@@ -187,7 +194,7 @@ RectanglesTest >> test07_RectangleOfHeight1IsCounted [
 RectanglesTest >> test08_RectangleOfWidth1IsCounted [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #(
+	result := rectanglesCalculator rectanglesFromStrings: #(
 	'++' 
 	'||' 
 	'++' ) .
@@ -199,7 +206,7 @@ RectanglesTest >> test08_RectangleOfWidth1IsCounted [
 RectanglesTest >> test09_1x1SquareIsCounted [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #(
+	result := rectanglesCalculator rectanglesFromStrings: #(
 	'++' 
 	'++' ) .
 	
@@ -210,7 +217,7 @@ RectanglesTest >> test09_1x1SquareIsCounted [
 RectanglesTest >> test10_OnlyCompleteRectanglesAreCounted [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #(
+	result := rectanglesCalculator rectanglesFromStrings: #(
 	'  +-+' 
 	'    |' 
 	'+-+-+' 
@@ -224,7 +231,7 @@ RectanglesTest >> test10_OnlyCompleteRectanglesAreCounted [
 RectanglesTest >> test11_RectanglesCanBeOfDifferentSizes [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #(
+	result := rectanglesCalculator rectanglesFromStrings: #(
 	'+------+----+' 
 	'|      |    |' 
 	'+---+--+    |' 
@@ -237,7 +244,7 @@ RectanglesTest >> test11_RectanglesCanBeOfDifferentSizes [
 RectanglesTest >> test12_CornerIsRequiredForARectangleToBeComplete [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #('+------+----+' '|      |    |' '+------+    |' '|   |       |' '+---+-------+' ) .
+	result := rectanglesCalculator rectanglesFromStrings: #('+------+----+' '|      |    |' '+------+    |' '|   |       |' '+---+-------+' ) .
 	self assert: result equals: 2
 ]
 
@@ -245,7 +252,7 @@ RectanglesTest >> test12_CornerIsRequiredForARectangleToBeComplete [
 RectanglesTest >> test13_LargeInputWithManyRectangles [
 	| result |
 
-	result := rectanglesCalculator rectanglesStrings: #(
+	result := rectanglesCalculator rectanglesFromStrings: #(
 	'+---+--+----+' 
 	'|   +--+----+' 
 	'+---+--+    |' 

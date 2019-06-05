@@ -17,11 +17,11 @@ Rectangles >> possibleRectangleRegionsIn: matrix [
 	
 	| corners |
 	
-	corners := (matrix
-		indicesCollect: [ :r :c | 
-			(matrix at: r at: c) = $+
-				ifTrue: [ r @ c ]
-				ifFalse: [ nil ] ]) asArray reject: [ :p | p isNil ].
+	corners := matrix
+		withIndicesInject: OrderedCollection new into: [ :result :value :r :c | 
+			value = $+
+				ifTrue: [ result add: r @ c ].
+			result ].
 
 	^ corners
 		inject: Set new
@@ -39,7 +39,9 @@ Rectangles >> possibleRectangleRegionsIn: matrix [
 ]
 
 { #category : #exercism }
-Rectangles >> rectanglesStrings: aCollection [
+Rectangles >> rectanglesFromStrings: aCollection [
+	"Answer the number of rectangles recognized in aCollection of Strings"
+	
 	| matrix |
 	
 	aCollection ifEmpty: [ ^ 0 ].
