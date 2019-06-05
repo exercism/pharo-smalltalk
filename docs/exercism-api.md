@@ -20,9 +20,9 @@ The value `<token>` is the users CLI authentication token available at `https://
 Content-Type: application/json
 ```
 
-`GET api.exercism.io/v1/solutions/latest?exercise_id=<name>&track_id<language> HTTP/1.1`
+`GET api.exercism.io/v1/solutions/latest?exercise_id=<slug>&track_id<language> HTTP/1.1`
 
-In the URL above `<name>` is the name of the exercise e.g. `hello-world` and `<language>` is the language track e.g. `pharo-smalltalk`.
+In the URL above `<slug>` is the name of the exercise e.g. `hello-world` and `<language>` is the language track e.g. `pharo-smalltalk`.
 
 ### Response
 
