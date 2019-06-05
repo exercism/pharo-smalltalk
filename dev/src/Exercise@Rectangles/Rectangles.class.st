@@ -1,8 +1,7 @@
 "
 Mentor notes:
 
-- this solution identifies potential rectangles, by searching for + corners in a matrix, and then checking if those rectangles actually have lines joining the corners
-- this is slightly brute force (although invalid rectangles are discounted before the final line checking)
+- this solution identifies potential rectangles, by searching for + corners in a matrix, deriving valid rectangle permuations from them, and then checking if those derived rectangles actually have lines joining the corners
 - this solution had to use a new Region object, as Rectangles optimise their coordinates
 "
 Class {
