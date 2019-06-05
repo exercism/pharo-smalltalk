@@ -2,7 +2,7 @@ Extension { #name : #LineSegment }
 
 { #category : #'*Exercise@Rectangles' }
 LineSegment >> isRow [
-	"Answer true if the segment is on the same row"
+	"Answer true if the segment is on the same row (the internal point x@y is storing row@col)"
 	
 	^self start x = self end x
 ]
