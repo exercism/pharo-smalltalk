@@ -29,6 +29,11 @@ ExercismLabeledTest >> description: aString [
 ]
 
 { #category : #'as yet unclassified' }
+ExercismLabeledTest >> exercise [
+	^ exercise
+]
+
+{ #category : #'as yet unclassified' }
 ExercismLabeledTest >> exercise: aString [
 	exercise := aString
 ]
@@ -79,8 +84,7 @@ ExercismLabeledTest >> methodNameSegment [
 	methodNameSegment := groupPath isEmpty
 		ifFalse: [ groupPath last key asCamelCase asValidKeyword ]
 		ifTrue: [ '' ].
-		
-	^ methodNameSegment , description asCamelCase asValidKeyword 
+	^ (methodNameSegment , description asCamelCase asValidKeyword) withoutPrefix: 'and'
 ]
 
 { #category : #'as yet unclassified' }

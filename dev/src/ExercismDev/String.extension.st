@@ -20,6 +20,6 @@ String >> asValidKeyword [
 	validName := validName select: [ :c | c isAlphaNumeric or: [ c == $_ ] ].
 	
 	^(validName first isDigit 
-		ifTrue: [ (self isAllDigits ifTrue: ['at' ] ifFalse: ['and']) , validName ]
+		ifTrue: [ (self isAllDigits ifTrue: ['At' ] ifFalse: ['and']) , validName ]
 		ifFalse: [ validName ]) asSymbol
 ]
