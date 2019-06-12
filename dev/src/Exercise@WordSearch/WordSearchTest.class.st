@@ -38,7 +38,7 @@ Class {
 	#instVars : [
 		'wordSearchCalculator'
 	],
-	#category : #'ExercismWIP-WordSearch'
+	#category : #'Exercise@WordSearch'
 }
 
 { #category : #config }
@@ -70,9 +70,34 @@ WordSearchTest >> test01_ShouldAcceptAnInitialGameGridAndATargetSearchWord [
 { #category : #tests }
 WordSearchTest >> test02_ShouldLocateOneWordWrittenLeftToRight [
 	| result |
-
-	result := wordSearchCalculator searchWordsToSearchFor: #('clojure' ) grid: #('clojurermt' ) .
-	self assert: result equals: ((Dictionary new) add: ('clojure'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->7); add: ('row'->1); yourself)); yourself)); yourself)
+	result := wordSearchCalculator
+		searchWordsToSearchFor: #('clojure')
+		grid: #('clojurermt').
+		
+	self
+		assert: result
+		equals:
+			(Dictionary new
+				add:
+					'clojure'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 1;
+												add: 'row' -> 1;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 7;
+												add: 'row' -> 1;
+												yourself);
+								yourself);
+				yourself)
 ]
 
 { #category : #tests }
@@ -182,25 +207,415 @@ WordSearchTest >> test15_ShouldLocateWordsWrittenBottomToTop [
 { #category : #tests }
 WordSearchTest >> test16_ShouldLocateWordsWrittenTopLeftToBottomRight [
 	| result |
-
-	result := wordSearchCalculator searchWordsToSearchFor: #('clojure' 'elixir' 'ecmascript' 'rust' 'java' ) grid: #('jefblpepre' 'camdcimgtc' 'oivokprjsm' 'pbwasqroua' 'rixilelhrs' 'wolcqlirpc' 'screeaumgr' 'alxhpburyi' 'jalaycalmp' 'clojurermt' ) .
-	self assert: result equals: ((Dictionary new) add: ('ecmascript'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->10); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->10); add: ('row'->10); yourself)); yourself)); add: ('elixir'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->6); add: ('row'->5); yourself)); add: ('end'->((Dictionary new) add: ('column'->1); add: ('row'->5); yourself)); yourself)); add: ('java'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->4); add: ('row'->4); yourself)); yourself)); add: ('clojure'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->10); yourself)); add: ('end'->((Dictionary new) add: ('column'->7); add: ('row'->10); yourself)); yourself)); add: ('rust'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->9); add: ('row'->5); yourself)); add: ('end'->((Dictionary new) add: ('column'->9); add: ('row'->2); yourself)); yourself)); yourself)
+	result := wordSearchCalculator
+		searchWordsToSearchFor: #('clojure' 'elixir' 'ecmascript' 'rust' 'java')
+		grid:
+			#(
+			'jefblpepre' 
+			'camdcimgtc' 
+			'oivokprjsm' 
+			'pbwasqroua' 
+			'rixilelhrs' 
+			'wolcqlirpc' 
+			'screeaumgr' 
+			'alxhpburyi' 
+			'jalaycalmp' 
+			'clojurermt').
+	self
+		assert: result
+		equals:
+			(Dictionary new
+				add:
+					'ecmascript'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 10;
+												add: 'row' -> 1;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 10;
+												add: 'row' -> 10;
+												yourself);
+								yourself);
+				add:
+					'elixir'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 6;
+												add: 'row' -> 5;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 1;
+												add: 'row' -> 5;
+												yourself);
+								yourself);
+				add:
+					'java'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 1;
+												add: 'row' -> 1;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 4;
+												add: 'row' -> 4;
+												yourself);
+								yourself);
+				add:
+					'clojure'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 1;
+												add: 'row' -> 10;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 7;
+												add: 'row' -> 10;
+												yourself);
+								yourself);
+				add:
+					'rust'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 9;
+												add: 'row' -> 5;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 9;
+												add: 'row' -> 2;
+												yourself);
+								yourself);
+				yourself)
 ]
 
 { #category : #tests }
 WordSearchTest >> test17_ShouldLocateWordsWrittenBottomRightToTopLeft [
 	| result |
-
-	result := wordSearchCalculator searchWordsToSearchFor: #('clojure' 'elixir' 'ecmascript' 'rust' 'java' 'lua' ) grid: #('jefblpepre' 'camdcimgtc' 'oivokprjsm' 'pbwasqroua' 'rixilelhrs' 'wolcqlirpc' 'screeaumgr' 'alxhpburyi' 'jalaycalmp' 'clojurermt' ) .
-	self assert: result equals: ((Dictionary new) add: ('ecmascript'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->10); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->10); add: ('row'->10); yourself)); yourself)); add: ('elixir'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->6); add: ('row'->5); yourself)); add: ('end'->((Dictionary new) add: ('column'->1); add: ('row'->5); yourself)); yourself)); add: ('java'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->4); add: ('row'->4); yourself)); yourself)); add: ('lua'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->8); add: ('row'->9); yourself)); add: ('end'->((Dictionary new) add: ('column'->6); add: ('row'->7); yourself)); yourself)); add: ('clojure'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->10); yourself)); add: ('end'->((Dictionary new) add: ('column'->7); add: ('row'->10); yourself)); yourself)); add: ('rust'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->9); add: ('row'->5); yourself)); add: ('end'->((Dictionary new) add: ('column'->9); add: ('row'->2); yourself)); yourself)); yourself)
+	result := wordSearchCalculator
+		searchWordsToSearchFor: #('clojure' 'elixir' 'ecmascript' 'rust' 'java' 'lua')
+		grid:
+			#(
+			'jefblpepre' 
+			'camdcimgtc' 
+			'oivokprjsm' 
+			'pbwasqroua' 
+			'rixilelhrs' 
+			'wolcqlirpc' 
+			'screeaumgr' 
+			'alxhpburyi' 
+			'jalaycalmp' 
+			'clojurermt').
+	self
+		assert: result
+		equals:
+			(Dictionary new
+				add:
+					'ecmascript'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 10;
+												add: 'row' -> 1;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 10;
+												add: 'row' -> 10;
+												yourself);
+								yourself);
+				add:
+					'elixir'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 6;
+												add: 'row' -> 5;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 1;
+												add: 'row' -> 5;
+												yourself);
+								yourself);
+				add:
+					'java'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 1;
+												add: 'row' -> 1;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 4;
+												add: 'row' -> 4;
+												yourself);
+								yourself);
+				add:
+					'lua'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 8;
+												add: 'row' -> 9;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 6;
+												add: 'row' -> 7;
+												yourself);
+								yourself);
+				add:
+					'clojure'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 1;
+												add: 'row' -> 10;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 7;
+												add: 'row' -> 10;
+												yourself);
+								yourself);
+				add:
+					'rust'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 9;
+												add: 'row' -> 5;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 9;
+												add: 'row' -> 2;
+												yourself);
+								yourself);
+				yourself)
 ]
 
 { #category : #tests }
 WordSearchTest >> test18_ShouldLocateWordsWrittenBottomLeftToTopRight [
 	| result |
-
-	result := wordSearchCalculator searchWordsToSearchFor: #('clojure' 'elixir' 'ecmascript' 'rust' 'java' 'lua' 'lisp' ) grid: #('jefblpepre' 'camdcimgtc' 'oivokprjsm' 'pbwasqroua' 'rixilelhrs' 'wolcqlirpc' 'screeaumgr' 'alxhpburyi' 'jalaycalmp' 'clojurermt' ) .
-	self assert: result equals: ((Dictionary new) add: ('ecmascript'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->10); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->10); add: ('row'->10); yourself)); yourself)); add: ('elixir'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->6); add: ('row'->5); yourself)); add: ('end'->((Dictionary new) add: ('column'->1); add: ('row'->5); yourself)); yourself)); add: ('java'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->4); add: ('row'->4); yourself)); yourself)); add: ('lua'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->8); add: ('row'->9); yourself)); add: ('end'->((Dictionary new) add: ('column'->6); add: ('row'->7); yourself)); yourself)); add: ('clojure'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->10); yourself)); add: ('end'->((Dictionary new) add: ('column'->7); add: ('row'->10); yourself)); yourself)); add: ('lisp'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->3); add: ('row'->6); yourself)); add: ('end'->((Dictionary new) add: ('column'->6); add: ('row'->3); yourself)); yourself)); add: ('rust'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->9); add: ('row'->5); yourself)); add: ('end'->((Dictionary new) add: ('column'->9); add: ('row'->2); yourself)); yourself)); yourself)
+	result := wordSearchCalculator
+		searchWordsToSearchFor: #('clojure' 'elixir' 'ecmascript' 'rust' 'java' 'lua' 'lisp')
+		grid:
+			#(
+			'jefblpepre' 
+			'camdcimgtc' 
+			'oivokprjsm' 
+			'pbwasqroua' 
+			'rixilelhrs' 
+			'wolcqlirpc' 
+			'screeaumgr' 
+			'alxhpburyi' 
+			'jalaycalmp' 
+			'clojurermt').
+	self
+		assert: result
+		equals:
+			(Dictionary new
+				add:
+					'ecmascript'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 10;
+												add: 'row' -> 1;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 10;
+												add: 'row' -> 10;
+												yourself);
+								yourself);
+				add:
+					'elixir'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 6;
+												add: 'row' -> 5;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 1;
+												add: 'row' -> 5;
+												yourself);
+								yourself);
+				add:
+					'java'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 1;
+												add: 'row' -> 1;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 4;
+												add: 'row' -> 4;
+												yourself);
+								yourself);
+				add:
+					'lua'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 8;
+												add: 'row' -> 9;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 6;
+												add: 'row' -> 7;
+												yourself);
+								yourself);
+				add:
+					'clojure'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 1;
+												add: 'row' -> 10;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 7;
+												add: 'row' -> 10;
+												yourself);
+								yourself);
+				add:
+					'lisp'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 3;
+												add: 'row' -> 6;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 6;
+												add: 'row' -> 3;
+												yourself);
+								yourself);
+				add:
+					'rust'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 9;
+												add: 'row' -> 5;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 9;
+												add: 'row' -> 2;
+												yourself);
+								yourself);
+				yourself)
 ]
 
 { #category : #tests }
@@ -214,7 +629,177 @@ WordSearchTest >> test19_ShouldLocateWordsWrittenTopRightToBottomLeft [
 { #category : #tests }
 WordSearchTest >> test20_ShouldFailToLocateAWordThatIsNotInThePuzzle [
 	| result |
-
-	result := wordSearchCalculator searchWordsToSearchFor: #('clojure' 'elixir' 'ecmascript' 'rust' 'java' 'lua' 'lisp' 'ruby' 'haskell' ) grid: #('jefblpepre' 'camdcimgtc' 'oivokprjsm' 'pbwasqroua' 'rixilelhrs' 'wolcqlirpc' 'screeaumgr' 'alxhpburyi' 'jalaycalmp' 'clojurermt' ) .
-	self assert: result equals: ((Dictionary new) add: ('ecmascript'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->10); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->10); add: ('row'->10); yourself)); yourself)); add: ('haskell'->nil); add: ('elixir'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->6); add: ('row'->5); yourself)); add: ('end'->((Dictionary new) add: ('column'->1); add: ('row'->5); yourself)); yourself)); add: ('java'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->4); add: ('row'->4); yourself)); yourself)); add: ('lua'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->8); add: ('row'->9); yourself)); add: ('end'->((Dictionary new) add: ('column'->6); add: ('row'->7); yourself)); yourself)); add: ('ruby'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->8); add: ('row'->6); yourself)); add: ('end'->((Dictionary new) add: ('column'->5); add: ('row'->9); yourself)); yourself)); add: ('clojure'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->10); yourself)); add: ('end'->((Dictionary new) add: ('column'->7); add: ('row'->10); yourself)); yourself)); add: ('lisp'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->3); add: ('row'->6); yourself)); add: ('end'->((Dictionary new) add: ('column'->6); add: ('row'->3); yourself)); yourself)); add: ('rust'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->9); add: ('row'->5); yourself)); add: ('end'->((Dictionary new) add: ('column'->9); add: ('row'->2); yourself)); yourself)); yourself)
+	result := wordSearchCalculator
+		searchWordsToSearchFor:
+			#('clojure' 'elixir' 'ecmascript' 'rust' 'java' 'lua' 'lisp' 'ruby' 'haskell')
+		grid:
+			#(
+			'jefblpepre' 
+			'camdcimgtc' 
+			'oivokprjsm' 
+			'pbwasqroua' 
+			'rixilelhrs' 
+			'wolcqlirpc' 
+			'screeaumgr' 
+			'alxhpburyi' 
+			'jalaycalmp' 
+			'clojurermt').
+	self
+		assert: result
+		equals:
+			(Dictionary new
+				add:
+					'ecmascript'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 10;
+												add: 'row' -> 1;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 10;
+												add: 'row' -> 10;
+												yourself);
+								yourself);
+				add: 'haskell' -> nil;
+				add:
+					'elixir'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 6;
+												add: 'row' -> 5;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 1;
+												add: 'row' -> 5;
+												yourself);
+								yourself);
+				add:
+					'java'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 1;
+												add: 'row' -> 1;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 4;
+												add: 'row' -> 4;
+												yourself);
+								yourself);
+				add:
+					'lua'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 8;
+												add: 'row' -> 9;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 6;
+												add: 'row' -> 7;
+												yourself);
+								yourself);
+				add:
+					'ruby'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 8;
+												add: 'row' -> 6;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 5;
+												add: 'row' -> 9;
+												yourself);
+								yourself);
+				add:
+					'clojure'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 1;
+												add: 'row' -> 10;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 7;
+												add: 'row' -> 10;
+												yourself);
+								yourself);
+				add:
+					'lisp'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 3;
+												add: 'row' -> 6;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 6;
+												add: 'row' -> 3;
+												yourself);
+								yourself);
+				add:
+					'rust'
+						->
+							(Dictionary new
+								add:
+									'start'
+										->
+											(Dictionary new
+												add: 'column' -> 9;
+												add: 'row' -> 5;
+												yourself);
+								add:
+									'end'
+										->
+											(Dictionary new
+												add: 'column' -> 9;
+												add: 'row' -> 2;
+												yourself);
+								yourself);
+				yourself)
 ]
