@@ -38,7 +38,7 @@ ExercismExercise class >> bonusExercises [
 { #category : #'instance creation' }
 ExercismExercise class >> coreExercises [
 	^(self allExercises select: [:e | e isCore and: [e isActive]])
-		asSortedCollection: [ :a :b | a isFollowedBy: b  ]
+		asSortedCollection: [ :a :b | a isFirst or: [a isFollowedBy: b ]]
 ]
 
 { #category : #'instance creation' }
