@@ -22,7 +22,7 @@ Concerning strings, there are some obvious little details like double quotes for
 There is also the notion of a symbol which is a string that is unique memory-wide; i.e. when it is constructed (typically at compile-time), a memory search is made to determine if another one like it exists; and only the original is used. The rationale is not just memory saving but significant speed-up when comparing symbols.
 
 ```smalltalk
-"this is a comment"
+""this is a comment""
 'this is a string'
 #'this is a symbol'
 #thisIsASymbolToo
