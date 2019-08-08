@@ -86,7 +86,7 @@ TwelveDaysTest class >> version [
 { #category : #running }
 TwelveDaysTest >> setUp [
 	super setUp.
-	twelveDaysCalculator := TwelveDays new
+	twelveDaysCalculator := TwelveDays2 new
 ]
 
 { #category : #tests }
