@@ -1,5 +1,27 @@
 "
-Exercism menu items that should only appear on a package tag 
+# ClyExercismExerciseCommand
+
+I am the Abstract super class of all Exercism exercise menu commands.
+Menu items subclassing me should only appear on exercise package tags
+in the browser.
+
+## GUI Menu 
+
+Subclasses of me are grouped into a browser menu under the name 
+""Exercism"" when activating a menu on a package or tag. This submenu
+is created by the class methods `#packageContextMenuActivation` and
+`#tagContextMenuActivation`.
+
+## Error reporting
+
+Subclasess may use `#reportError:for:` to report errors. 
+
+In one error case the exercise may be missing metadata and will need 
+to be upgraded in the users Exercism profile and re-fetched.
+
+In another error case the exercise may not be found. The likely 
+problem is that the exercise name is misspelled or does not exist in
+the Pharo-Smalltalk language track. 
 "
 Class {
 	#name : #ClyExercismExerciseCommand,

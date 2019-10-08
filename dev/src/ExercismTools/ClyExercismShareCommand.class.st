@@ -1,3 +1,28 @@
+"
+# ClyExercismShareCommand
+
+I am a browser menu item command. I can be used to share the code of 
+an exercise solution by creating an anonymous web link to `dpaste.com`.
+
+## Enabling Sharing
+
+Sharing will not be possible unless the class method 
+`#hasComfirmedSharing:` is used to set the class variable of the same 
+name to `true`.
+
+## Command Execution
+
+In my `#execute` method I initiate and handle the result of the 
+sharing operation. I send a message to `ExercismManager default` to
+start the sharing.
+
+I may report an `ExercismError` signaled my `ExercismManager` using
+`ClyExercismExerciseCommand>>#reportError:for:`. I may use the same
+message to report an error if the exercise name can't be found.
+
+On a successful operation I will copy the dpase.com URL to the
+clipboard and open the webbrowser on the URL.
+"
 Class {
 	#name : #ClyExercismShareCommand,
 	#superclass : #ClyExercismExerciseCommand,
