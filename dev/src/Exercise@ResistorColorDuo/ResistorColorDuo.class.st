@@ -19,6 +19,12 @@ ResistorColorDuo class >> resistorColorsTable [
 ResistorColorDuo >> valueWithColors: coloursCollection [
 	"Answer the value of the resister with colour bands in @coloursCollection"
 	
-	^coloursCollection inject: 0 into: [ :result :colour |
-		result * 10 + ((self class resistorColorsTable indexOf: colour) - 1) ]
+	^(coloursCollection first: 2)
+		inject: 0
+		into: [ :result :colour |
+			| idx |
+			idx := self class resistorColorsTable 
+				indexOf: colour 
+				ifAbsent: [ self error: 'Invalid color ', colour ].
+			result * 10 + (idx - 1) ]
 ]
