@@ -15,7 +15,7 @@ ResistorColorDuo class >> resistorColorsTable [
 	^ #('black' 'brown' 'red' 'orange' 'yellow' 'green' 'blue' 'violet' 'grey' 'white')
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #exercism }
 ResistorColorDuo >> colorValue: colour [
 	"Find the value of the given colour band, or error if not found."
 	
