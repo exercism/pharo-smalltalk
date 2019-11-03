@@ -157,6 +157,48 @@ ExercismGenerator >> generateReadmeHintFor: anExercismExercise to: destinationDi
 			stream nextPutAll: hint ]
 ]
 
+{ #category : #helper }
+ExercismGenerator >> generateSourceFilesFor: packageOrTag to: filePathString [
+	"Generate the Tonel source files for a package (normally a tag). Answer the exercise directory reference"
+
+	| exampleDirectoryRef exerciseDirectoryRef metaDirectoryRef  solutionDirectoryRef testClass testClassFilename exerciseName testClasses |
+	
+	"Note: could create the writer on a memory stream to then pick what should be stored on disk
+	e.g.
+		mem := FileSystem memory root.
+		writer := ExTonelWriter on: mem."
+
+	exerciseName := ExercismExercise exerciseNameFrom: packageOrTag.
+	exampleDirectoryRef := filePathString asFileReference.
+	exerciseDirectoryRef := exampleDirectoryRef / exerciseName.
+	metaDirectoryRef :=  exerciseDirectoryRef / '.meta'.
+	solutionDirectoryRef := metaDirectoryRef / 'solution'.
+	
+	exerciseDirectoryRef ensureCreateDirectory.
+	exerciseDirectoryRef deleteAll.
+	
+	(ExTonelWriter on: exampleDirectoryRef)
+		sourceDirectory: (solutionDirectoryRef relativeTo: exampleDirectoryRef) pathString;
+		writeSnapshot: (self createTagSnapshotFor: packageOrTag).
+
+	"Remove the package file as its not needed for Exercism"
+	(solutionDirectoryRef / 'package.st') delete.
+	
+	"Move the test file down to the exerciseDirectory"
+	testClasses := packageOrTag classes select: [ :cls | cls superclass = ExercismTest ].	
+	testClasses do: [ :tc |
+		testClassFilename := tc name, '.class.st'.
+		(solutionDirectoryRef / testClassFilename) moveTo: exerciseDirectoryRef / testClassFilename ].
+	
+	testClass := testClasses detect: [ :tc | tc class includesSelector: #exercise  ].
+	self generateReadmeHintFor: testClass exercise to: metaDirectoryRef.
+	
+	testClass isCustom ifTrue: [ self generateCustomDataFor: testClass exercise to: metaDirectoryRef  ].
+	
+	^exerciseDirectoryRef 
+
+]
+
 { #category : #generation }
 ExercismGenerator >> generateTo: exerciseRootDirectoryReference [
 	| repoFileReference |

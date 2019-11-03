@@ -13,8 +13,7 @@ output: [1,2,3,4,5]
 
 ## Hint
 
-TBD
-
+Pharo's extensive class library makes the simplest solution `aCollection flattened select: #isNotNil` too trivial to gain much value.  A better challenge is to derive your own from reviewing how the existing is implemented.  You might discard `nil` before putting items into a standard `WriteStream`, or possibly subclass `WriteStream` to discard `nil` items when they are put into the stream, and use that in your solution instead.
 "
 Class {
 	#name : #FlattenArrayTest,
@@ -22,8 +21,19 @@ Class {
 	#instVars : [
 		'flattenArrayCalculator'
 	],
-	#category : #'ExercismWIP-FlattenArray'
+	#category : #'Exercise@FlattenArray'
 }
+
+{ #category : #config }
+FlattenArrayTest class >> exercise [
+	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
+
+	^ (self createExerciseAfter: ReverseStringTest)
+		isCore: false;
+		difficulty: 2;
+		topics: #('lists' 'iteration' 'recursion' 'transforming');
+		yourself
+]
 
 { #category : #config }
 FlattenArrayTest class >> uuid [
