@@ -1,5 +1,25 @@
 "
-Abstract class to provide menu facilties for Exercism that should only appear in the context of the Exercism package (and not other browser packages)
+# ClyExercismCommand
+
+I provide menu facilities for Exercism that should only appear in the 
+context of an Exercism package (and not in other browser packages).
+
+I am an abstract class.
+
+## Design
+
+I follow the Command Pattern of Object Oriented Design. I do one task 
+on recieving the `#execute` message, which must be implemented by 
+subclasses. All other methods should be about setting up the state
+requred for the `#execute` method to carry out its task.
+
+The `#execute` method is written further up the inheritance hierarchy
+at `CmdCommand>>#execute`.
+
+## Instance Variables
+
+- browser: ClyPackageContextOfFullBrowser, the context of of a browser instance containing packages.
+- selectedItem: RPackage, the selected package in the browser context.
 "
 Class {
 	#name : #ClyExercismCommand,
@@ -39,10 +59,10 @@ ClyExercismCommand >> browser: anObject [
 	browser := anObject
 ]
 
-{ #category : #accessing }
+{ #category : #execution }
 ClyExercismCommand >> prepareFullExecutionInContext: aToolContext [
 	super prepareFullExecutionInContext: aToolContext.
-	
+
 	self selectedItem: (self selectedItemIn: aToolContext).
 	self browser: aToolContext tool
 ]

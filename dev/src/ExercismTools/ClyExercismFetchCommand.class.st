@@ -1,5 +1,29 @@
 "
-Menu command to fetch a new exercise
+# ClyExercismFetchCommand
+
+I am a browser menu item command that initiates a fetch operation to 
+get a specific exercise from Exercism.io.
+
+## Command Execution
+
+I implement the `#execute` method. On receiving this message I start 
+the fetch operation to get an exercise, and report the success or error
+of the operation via the UI.
+
+I send a message to `ExercismManager default` to fetch the exercise.
+On successful retrieval of an exercise I will open a browser window on
+that exercises test case.
+
+I may signal an `ExDomainError` if I could not retrieve an exercise from
+the `ExercismManager` submission.
+
+If the `ExercismManager` signals an `ExDomainError` I will report the
+error with `ClyExercismExerciseCommand>>#reportError:for:`.
+
+## World Menu
+
+On my class side is `#worldMenuCommandOn:`. This method adds a ""Fetch
+new exercise..."" command to the World menu under the ""Exercism"" section.
 "
 Class {
 	#name : #ClyExercismFetchCommand,

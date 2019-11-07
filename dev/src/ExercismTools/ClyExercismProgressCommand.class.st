@@ -1,5 +1,18 @@
 "
-Menu command to view progress on the exercism website
+# ClyExercisProgressCommand
+
+I am a browser menu item command that initiates an operation to view
+the users progress of an exercise on the Exercism website.
+
+## Command Execution
+
+In my `#execute` method I send a message to `ExercismManager default`
+to view the selected exercise in the browser on the Exercism website.
+
+## World Menu
+
+On my class side `#worldMenuCommandOn:` creates an entry labeled ""View
+Track Progress"" for me in the World menu under the ""Exercism"" section.
 "
 Class {
 	#name : #ClyExercismProgressCommand,

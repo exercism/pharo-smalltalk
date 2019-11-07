@@ -1,5 +1,18 @@
 "
-Menu command to submit a new exercise
+# ClyExercismSubmitCommand
+
+I am a browser menu item command. I initiate submitting the selected
+exercise solution to the Exercism website.
+
+## Command Execution
+
+On recieving the message `#execute` I initiate the submit operation by
+sending the message `#submitToExercism:` to `ExercismManager default`.
+This will submit my selected exercise.
+
+If an `ExercismError` is signaled I will report the error with
+`#reportError:for:`. 
+
 "
 Class {
 	#name : #ClyExercismSubmitCommand,
