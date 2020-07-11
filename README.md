@@ -119,8 +119,8 @@ If you plan to make significant or breaking changes, please open an issue so we 
 When an exercise has been reviewed and is ready to put on the site you need to follow some extra steps.
 
 1. Clone a copy of the repository into a staging location (a directory without any special characters due to [issue 154](https://github.com/exercism/configlet/issues/154))
-1. Right click on the exercism Package and choose "Generate exercise meta data", this will generate exercise meta data in your seperate staging location
-1. Commit the generated changes into the exercise branch so they will appear with the new exercise
+2. Select the "Exercism" menu from the top menu bar, or the World menu and click on "Regenerate meta data", this will generate exercise meta data in your seperate staging location
+3. Commit the generated changes into the exercise branch so they will appear with the new exercise
 
 
 ### Contributing a New Exercise
