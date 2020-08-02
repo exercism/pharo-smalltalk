@@ -3,3 +3,7 @@ A test file.
 This is just to trigger a github action by commiting something to the branch.
 
 This file will be deleted along with the branch.
+
+--------------------------
+
+Another change for another commit.
