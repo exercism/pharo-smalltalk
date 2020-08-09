@@ -10,12 +10,9 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: '' # This should default to the branch and reference that triggered the workflow.
-      
-      - name: Build directories
-        run: mkdir pharo
-      
+
       - name: Download Pharo image and virtual machine
-        run: echo $(ls -l); curl -L get.pharo.org/80+vm | bash
+        run: curl -L get.pharo.org/80+vm | bash
       
       - name: Check the pharo image and vm works
         run: "./pharo Pharo.image perform Transcrpt show: 'Hello world!'"
