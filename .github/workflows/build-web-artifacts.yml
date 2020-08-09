@@ -12,7 +12,7 @@ jobs:
           ref: '' # This should default to the branch and reference that triggered the workflow.
       
       - name: Build directories
-        run: mkdir pharo
+        run: mkdir pharo; ls -l
         working-directory: pharo
       
       - name: Download Pharo image and virtual machine
