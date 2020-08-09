@@ -15,4 +15,4 @@ jobs:
         run: curl -L get.pharo.org/80+vm | bash
       
       - name: Check the pharo image and vm works
-        run: "./pharo Pharo.image perform Transcrpt show: 'Hello world!'"
+        run: "./pharo Pharo.image perform Transcript show: 'Hello world!'"
