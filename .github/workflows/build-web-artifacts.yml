@@ -13,9 +13,10 @@ jobs:
 
       - name: Download Pharo image and virtual machine
         uses: hpi-swa/setup-smalltalkCI@1.1.0
+        id: smalltalkci
         with:
           smalltalk-version: Pharo64-8.0
-      - run: smalltalkci
+      - run: smalltalkci -s ${{ steps.smalltalkci.outputs.smalltalk-version }}
         shell: bash
         timeout-minutes: 15
                 
