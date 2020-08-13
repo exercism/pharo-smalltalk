@@ -15,6 +15,9 @@ jobs:
         uses: hpi-swa/setup-smalltalkCI@1.1.0
         with:
           smalltalk-version: Pharo64-8.0
-        
+      - run: smalltalkci
+        shell: bash
+        timeout-minutes: 15
+                
       - name: Check the pharo image and vm works
         run: "./pharo Pharo.image perform Transcript show: 'Hello world!'"
