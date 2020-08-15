@@ -1,0 +1,25 @@
+SmalltalkCISpec {
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'Exercism',
+      #directory : 'dev/src',
+      #load : [ 'dev' ],
+
+      #platforms : [ #pharo ]
+    }
+  ],
+
+  #testing : {
+    #include : {
+      #packages : [ 'Exercism' ]
+    },
+    #exclude : {
+      #classes : [ #AllExercismTests, #ExercismTest, #ExercismHttpClientTest ],
+      #packages : [ 'ExercismWIP', 'ExercismTools', 'ExercismDev', 'ExercismSystemTests']
+    }
+  },
+  
+  #postTesting: [
+    'scripts/postTesting.st'
+  ],
+}
