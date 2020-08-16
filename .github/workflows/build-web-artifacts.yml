@@ -17,7 +17,7 @@ jobs:
         with:
           smalltalk-version: Pharo64-8.0
         timeout-minutes: 15
-        if: ${{ falure() }}
+        if: ${{ failure() }}
 
       - name: Check the pharo image and vm works
         run: "./pharo Pharo.image perform Transcript show: 'Hello world!'"
