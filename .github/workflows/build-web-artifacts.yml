@@ -16,9 +16,12 @@ jobs:
         id: smalltalkci
         with:
           smalltalk-version: Pharo64-8.0
+        
+      - name: Run tests
+        run: smalltalkci
+        shell: bash
         timeout-minutes: 15
 
-
-      - name: Check the pharo image and vm works
-        if: ${{ failure() }}
+      - name: Hello world
+        if: ${{ success() }}
         run: "./pharo Pharo.image perform Transcript show: 'Hello world!'"
