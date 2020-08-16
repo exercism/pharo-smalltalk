@@ -11,14 +11,14 @@ jobs:
         with:
           ref: '' # This should default to the branch and reference that triggered the workflow.
 
-      - name: Download Pharo image and virtual machine
-        uses: hpi-swa/setup-smalltalkCI@1.1.0
+      - name: Download smalltalkCI
         id: smalltalkci
+        uses: hpi-swa/setup-smalltalkCI@1.1.0
         with:
           smalltalk-version: Pharo64-8.0
-        
-      - name: Run tests
-        run: smalltalkci
+
+      - name: Download Pharo and run tests
+        run: smalltalkci -s ${{ steps.smalltalkci.outputs.smalltalk-version }}
         shell: bash
         timeout-minutes: 15
 
