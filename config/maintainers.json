@@ -2,6 +2,16 @@
   "docs_url": "https://github.com/exercism/docs/blob/master/maintaining-a-track/maintainer-configuration.md",
   "maintainers": [
     {
+    "github_username": "RoelofWobben",
+    "alumnus": false,
+    "show_on_website": true,
+    "name": "Roelof Wobben",
+    "link_text": null,
+    "link_url": null,
+    "avatar_url": null,
+    "bio": "A person who likes smalltalk very much and hopes more people enjoys the elegance of the language."
+    },
+    {
     "github_username": "samWson",
     "alumnus": false,
     "show_on_website": true,
