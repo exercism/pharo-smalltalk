@@ -24,7 +24,8 @@ BaselineOfExercism >> baseline: spec [
 	
 	spec
 		for: #common
-		do: [ self setUpDependencies: spec.
+		do: [ self setExercismLogo.
+			self setUpDependencies: spec.
 			self setUpExercisesFor: spec.
 			spec
 				package: 'ExercismPharo70'; "Pharo override/patch methods"
@@ -63,6 +64,21 @@ BaselineOfExercism >> baseline: spec [
 { #category : #baselines }
 BaselineOfExercism >> projectClass [
 	^ MetacelloCypressBaselineProject
+]
+
+{ #category : #baselines }
+BaselineOfExercism >> setExercismLogo [
+	| exercismLogo |
+	exercismLogo := (AlphaImageMorph
+		withForm:
+		(ZnEasy
+		getPng:
+			'https://user-images.githubusercontent.com/38899847/48952150-634e9b80-eefe-11e8-890e-7a233d56df65.png'))
+		layout: #scaledAspect;
+		extent: 100 @ 100;
+		position: 10 @ 135;
+		lock.
+	World addMorph: exercismLogo
 ]
 
 { #category : #baselines }
