@@ -1,7 +1,7 @@
 Class {
 	#name : #Sieve2Test,
 	#superclass : #SieveTest,
-	#category : #'Exercise@Sieve'
+	#category : #'Exercise@Sieve-Solution2'
 }
 
 { #category : #running }
