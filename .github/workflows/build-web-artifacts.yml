@@ -23,4 +23,4 @@ jobs:
 
       - name: Hello world
         if: ${{ success() }}
-        run: "./pharo-ide/pharo Pharo.image perform Transcript show: 'Hello world!'"
+        run: "./pharo-ide/pharo pharo-ide/Pharo.image perform Transcript show: 'Hello world!'"
