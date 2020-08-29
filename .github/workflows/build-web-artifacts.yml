@@ -6,22 +6,21 @@ jobs:
     name: Build web artifacts
     runs-on: ubuntu-latest
     steps:
+      - name: Build directories
+        shell: bash
+        run: mkdir repository; mkdir pharo-ide
+        
       - name: Checkout exercism/pharo
         uses: actions/checkout@v2
         with:
+          path: repository
           ref: '' # This should default to the branch and reference that triggered the workflow.
 
-      - name: Download smalltalkCI
-        id: smalltalkci
-        uses: hpi-swa/setup-smalltalkCI@1.1.0
-        with:
-          smalltalk-version: Pharo64-8.0
-
-      - name: Download Pharo and run tests
-        run: smalltalkci -s ${{ steps.smalltalkci.outputs.smalltalk-version }}
+      - name: Download Pharo image and virtual machine
         shell: bash
+        run: cd pharo-ide; curl -L get.pharo.org/80+vm | bash
         timeout-minutes: 15
 
       - name: Hello world
         if: ${{ success() }}
-        run: "./pharo Pharo.image perform Transcript show: 'Hello world!'"
+        run: "./pharo-ide/pharo Pharo.image perform Transcript show: 'Hello world!'"
