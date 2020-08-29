@@ -18,7 +18,7 @@ jobs:
 
       - name: Fetch configlet tool
         shell: bash
-        run: "./repository/bin/fetch-configlet"
+        run: cd repository; ./bin/fetch-configlet
         timeout-minutes: 10
         
       - name: Download Pharo image and virtual machine
