@@ -8,13 +8,15 @@ to simulate calls to external processes. Generated exercises are written to an i
 
 - instance: An instance of `ExercismGenerator`.
 - memoryFileReference: An in memory filesystem that exercises will be written to.
+- lineEnding: An OS specific line ending character i.e. carrage-return and/or line-feed depeding on the OS.
 "
 Class {
 	#name : #ExercismGeneratorTest,
 	#superclass : #TestCase,
 	#instVars : [
 		'instance',
-		'memoryFileReference'
+		'memoryFileReference',
+		'lineEnding'
 	],
 	#category : #'ExercismTests-UnitTests'
 }
@@ -22,12 +24,13 @@ Class {
 { #category : #asserting }
 ExercismGeneratorTest >> assertExerciseTests [
 
-	| file lineEnding |
-	lineEnding := OSPlatform current lineEnding.
+	| file |
 	file := memoryFileReference / 'two-fer' / 'TwoFerTest.class.st'.
-	
+
 	self assert: file exists.
-	self assert: (file contents) equals: (self expectedTwoFerTestContents withLineEndings: lineEnding)
+	self 
+		assert: (file contents withLineEndings: lineEnding) 
+		equals: (self expectedTwoFerTestContents withLineEndings: lineEnding)
 ]
 
 { #category : #asserting }
@@ -37,7 +40,9 @@ ExercismGeneratorTest >> assertHints [
 	file := memoryFileReference / 'two-fer' / '.meta' / 'hints.md'.
 	
 	self assert: file exists.
-	self assert: file contents equals: self expectedHintsContents
+	self 
+		assert: (file contents withLineEndings: lineEnding) 
+		equals: (self expectedHintsContents withLineEndings: lineEnding)
 ]
 
 { #category : #asserting }
@@ -47,7 +52,9 @@ ExercismGeneratorTest >> assertSolution [
 	file := memoryFileReference / 'two-fer' / '.meta' / 'solution' / 'TwoFer.class.st'.
 	
 	self assert: file exists.
-	self assert: file contents equals: self expectedTwoFerSolutionContents
+	self 
+		assert: (file contents withLineEndings: lineEnding) 
+		equals: (self expectedTwoFerSolutionContents withLineEndings: lineEnding)
 ]
 
 { #category : #private }
@@ -191,6 +198,7 @@ ExercismGeneratorTest >> setUp [
 	| writer |
 	super setUp.
 	
+	lineEnding := OSPlatform current lineEnding.
 	memoryFileReference := FileSystem memory root / 'exercises'.
 	ExercismGenerator defaultPath: memoryFileReference.
 	writer := ExTonelWriter on: memoryFileReference.
