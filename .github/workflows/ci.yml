@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Fetch configlet
+        uses: exercism/github-actions/configlet-ci@master
+
+      - name: Configlet Linter
+        run: configlet lint --track-id pharo .
+    
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Fetch smalltalkCI
+        uses: hpi-swa/setup-smalltalkCI@a271ee530f18ecf947856f3f163c4687101ec6b6
+        id: smalltalkci
+        with: 
+          smalltalk-version: 'Pharo64-8.0'
+      - run: smalltalkci -s ${{ steps.smalltalkci.outputs.smalltalk-version }}
+        shell: bash
+        timeout-minutes: 15
+        
+  tree:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Fetch configlet
+        uses: exercism/github-actions/configlet-ci@master
+
+      - name: Configlet Tree
+        run: configlet tree --with-difficulty .
