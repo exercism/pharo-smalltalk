@@ -11,7 +11,7 @@ seperate directory suitable for the Exercism command line tool.
 
 I need two other key objects to do my job: an `ExTonelWriter` and a `PipeableOSProcess`. `ExTonelWriter` does the
 actual job of writing Tonel format files to disk. `PipeableOSProcess` is needed to make a external command line
-call to the configlet tool.
+call to the configlet tool. The configlet tool will need to be installed on the host operating system.
 
 To grab the exercises that need to be written I use `ExercismExercise`.
 
@@ -19,17 +19,28 @@ To grab the exercises that need to be written I use `ExercismExercise`.
 
 When you have created a new exercise(s) that you are happy with, you need to run a generation.
 
-You can either run the `ExercismGenerator class>>#generate` method and be prompted for a file location or evaluate 
-the following (where the path is one that points to where you have checked out the entire pharo project using either 
+You can run the `ExercismGenerator class>>#generate` method and be prompted for a file location 
+(where the path is one that points to where you have checked out the entire pharo project using either 
 the command line or a git tool):
 
 ```
-ExercismGenerator generateTo: (FileLocator home / 'Dev/Exercism/pharo-git') pathString
+ExercismGenerator generate
+```
+
+In any other context I will need to have `exercisesPath` and `exTonelWriter` instance variables initialized
+before `#generate` is sent to me.
+
+```
+ExercismGenerator new
+	exercisesPath: (FileSystem memory root / 'exercises');
+	exTonelWriter: (ExTonelWriter on: path);
+	generate
 ```
 
 ## Instance Variables
 
 - exercismExercise: A class handle for easily getting all the implemented exercises. Defaults to `ExercismExercise`.
+- exercisesPath: The file path exercises are written to. Defaults to the class variable `DefaultPath`.
 - exTonelWriter: `ExTonelWriter`; Responsible for writing objects as Tonel format source text files to the give file path.
 - osProcess: A class handle of an operating system process, for sending external commands.
 
@@ -43,7 +54,8 @@ Class {
 	#instVars : [
 		'exTonelWriter',
 		'osProcess',
-		'exercismExercise'
+		'exercismExercise',
+		'exercisesPath'
 	],
 	#classVars : [
 		'DefaultPath'
@@ -72,7 +84,12 @@ ExercismGenerator class >> generate [
 		chooseDirectory: 'Select the /exercises location in a fresh Exercism/Pharo git project'
 		path: self defaultPath.
 		
-	path ifNotNil: [ self new generateTo: (self defaultPath: path) ]
+	path ifNotNil: [
+		self new 
+			exercisesPath: path;
+			exTonelWriter: (ExTonelWriter on: path);
+			generate
+			]
 ]
 
 { #category : #helper }
@@ -89,20 +106,15 @@ ExercismGenerator >> createTagSnapshotFor: packageOrTag [
 ]
 
 { #category : #accessing }
-ExercismGenerator >> exTonelWriter [
-
-	^ exTonelWriter 
-		ifNotNil: [ exTonelWriter  ] 
-		ifNil: [ 
-			exTonelWriter := ExTonelWriter.
-			exTonelWriter  
-			 ] 
-]
-
-{ #category : #accessing }
 ExercismGenerator >> exTonelWriter: anExTonelWriter [ 
 
 	exTonelWriter := anExTonelWriter
+]
+
+{ #category : #accessing }
+ExercismGenerator >> exercisesPath: aFileReference [
+ 
+	exercisesPath := aFileReference
 ]
 
 { #category : #accessing }
@@ -127,9 +139,9 @@ ExercismGenerator >> generate [
 	| cmd result basePathReference |
 
 	self exercismExercise allExercises select: [:ex | ex isActive ] thenDo: [:ex |
-			self generateSourceFilesFor: ex exercisePackage to: self class defaultPath ].
+			self generateSourceFilesFor: ex exercisePackage to: exercisesPath ].
 		
-	basePathReference := self class defaultPath parent.
+	basePathReference := exercisesPath parent.
 	ExercismConfigGenerator generateTo: basePathReference.
 	
 	cmd := 'configlet generate ', (basePathReference pathString surroundedBySingleQuotes).		
@@ -200,7 +212,7 @@ ExercismGenerator >> generateSourceFilesFor: packageOrTag to: filePathString [
 	exerciseDirectoryRef ensureCreateDirectory.
 	exerciseDirectoryRef deleteAll.
 
-	self exTonelWriter
+	exTonelWriter
 		sourceDirectory: (solutionDirectoryRef relativeTo: exampleDirectoryRef) pathString;
 		writeSnapshot: (self createTagSnapshotFor: packageOrTag).
 
@@ -220,24 +232,6 @@ ExercismGenerator >> generateSourceFilesFor: packageOrTag to: filePathString [
 	
 	^exerciseDirectoryRef 
 
-]
-
-{ #category : #generation }
-ExercismGenerator >> generateTo: filePathReference [
-	| cmd result basePathReference |
-	
-	ExercismExercise allExercises select: [:ex | ex isActive ] thenDo: [:ex |
-			self generateSourceFilesFor: ex exercisePackage to: filePathReference ].
-		
-	basePathReference := filePathReference parent.
-	ExercismConfigGenerator generateTo: basePathReference.
-	
-	cmd := 'configlet generate ', (basePathReference pathString surroundedBySingleQuotes).		
-	result := PipeableOSProcess waitForCommand: cmd.
-	
-	result succeeded
-		ifFalse: [ 
-			self error: 'failure running "configlet generate" - ' , result outputAndError printString ]
 ]
 
 { #category : #accessing }
