@@ -1,5 +1,5 @@
 "
-# ExercismGeneratorTest
+# ExercismV3GeneratorTest
 
 To avoid side effects during testing I make use of `FailedTestOSProcess` and `SuccessfulTestOSProcess`
 to simulate calls to external processes. Generated exercises are written to an in memory file system.
@@ -11,7 +11,7 @@ to simulate calls to external processes. Generated exercises are written to an i
 - lineEnding: An OS specific line ending character i.e. carrage-return and/or line-feed depeding on the OS.
 "
 Class {
-	#name : #ExercismGeneratorTest,
+	#name : #ExercismV3GeneratorTest,
 	#superclass : #TestCase,
 	#instVars : [
 		'instance',
@@ -22,7 +22,7 @@ Class {
 }
 
 { #category : #asserting }
-ExercismGeneratorTest >> assertExerciseTests [
+ExercismV3GeneratorTest >> assertExerciseTests [
 
 	| file |
 	file := memoryFileReference / 'two-fer' / 'TwoFerTest.class.st'.
@@ -34,7 +34,7 @@ ExercismGeneratorTest >> assertExerciseTests [
 ]
 
 { #category : #asserting }
-ExercismGeneratorTest >> assertHints [
+ExercismV3GeneratorTest >> assertHints [
 	
 	| file |
 	file := memoryFileReference / 'two-fer' / '.meta' / 'hints.md'.
@@ -46,7 +46,7 @@ ExercismGeneratorTest >> assertHints [
 ]
 
 { #category : #asserting }
-ExercismGeneratorTest >> assertSolution [
+ExercismV3GeneratorTest >> assertSolution [
 
 	| file |
 	file := memoryFileReference / 'two-fer' / '.meta' / 'solution' / 'TwoFer.class.st'.
@@ -58,7 +58,7 @@ ExercismGeneratorTest >> assertSolution [
 ]
 
 { #category : #private }
-ExercismGeneratorTest >> expectedHintsContents [
+ExercismV3GeneratorTest >> expectedHintsContents [
 
 	^ 'In Pharo, classes are objects that can have instance and class methods, however unlike HelloWorld the tests for TwoFer have been written to call instance methods. Typically class methods are used for constructing new objects (like a contructor in other languages).
 
@@ -68,7 +68,7 @@ There is also a third type of method, binary, which takes only 1 parameter and u
 ]
 
 { #category : #private }
-ExercismGeneratorTest >> expectedTwoFerSolutionContents [
+ExercismV3GeneratorTest >> expectedTwoFerSolutionContents [
 
 	^ '"
 This is a sample solution for Exercism students.
@@ -96,7 +96,7 @@ TwoFer >> who: aString [
 ]
 
 { #category : #private }
-ExercismGeneratorTest >> expectedTwoFerTestContents [
+ExercismV3GeneratorTest >> expectedTwoFerTestContents [
 
 	^ '"
 # Two Fer
@@ -193,7 +193,7 @@ TwoFerTest >> testNoNameGiven [
 ]
 
 { #category : #running }
-ExercismGeneratorTest >> setUp [
+ExercismV3GeneratorTest >> setUp [
 	
 	| writer |
 	super setUp.
@@ -202,7 +202,7 @@ ExercismGeneratorTest >> setUp [
 	memoryFileReference := FileSystem memory root / 'exercises'.
 	writer := ExTonelWriter on: memoryFileReference.
 	
-	instance := ExercismGenerator new
+	instance := ExercismV3Generator new
 		exercisesPath: memoryFileReference; 
 		exTonelWriter: writer;
 		exercismExercise: MockExercismExercise;
@@ -211,7 +211,7 @@ ExercismGeneratorTest >> setUp [
 ]
 
 { #category : #tests }
-ExercismGeneratorTest >> testFailedGenerateSignalsException [
+ExercismV3GeneratorTest >> testFailedGenerateSignalsException [
 
 	instance osProcess: FailedTestOSProcess new.
 	
@@ -222,7 +222,7 @@ ExercismGeneratorTest >> testFailedGenerateSignalsException [
 ]
 
 { #category : #tests }
-ExercismGeneratorTest >> testGenerate [
+ExercismV3GeneratorTest >> testGenerate [
 
 	instance osProcess: SuccessfulTestOSProcess new.
 	
@@ -234,7 +234,7 @@ ExercismGeneratorTest >> testGenerate [
 ]
 
 { #category : #tests }
-ExercismGeneratorTest >> testGeneratorKebabCase [
+ExercismV3GeneratorTest >> testGeneratorKebabCase [
 	
 	self assert: 'HelloWorld' asKebabCase equals: 'hello-world'.
 	self assert: 'Hello' asKebabCase equals: 'hello'.
@@ -244,7 +244,7 @@ ExercismGeneratorTest >> testGeneratorKebabCase [
 ]
 
 { #category : #tests }
-ExercismGeneratorTest >> testSuccessfulGenerateDoesNotSignalException [
+ExercismV3GeneratorTest >> testSuccessfulGenerateDoesNotSignalException [
 
 	instance osProcess: SuccessfulTestOSProcess new.
 	
