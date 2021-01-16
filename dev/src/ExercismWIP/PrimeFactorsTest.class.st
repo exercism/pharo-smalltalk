@@ -41,7 +41,7 @@ Class {
 	#instVars : [
 		'primeFactorsCalculator'
 	],
-	#category : #'ExercismWIP-PrimeFactors'
+	#category : #'ExercismWIP-ElonsToys'
 }
 
 { #category : #config }

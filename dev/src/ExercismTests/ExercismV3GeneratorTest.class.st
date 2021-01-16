@@ -1,17 +1,5 @@
-"
-# ExercismGeneratorTest
-
-To avoid side effects during testing I make use of `FailedTestOSProcess` and `SuccessfulTestOSProcess`
-to simulate calls to external processes. Generated exercises are written to an in memory file system.
-
-## Instance Variables
-
-- instance: An instance of `ExercismGenerator`.
-- memoryFileReference: An in memory filesystem that exercises will be written to.
-- lineEnding: An OS specific line ending character i.e. carrage-return and/or line-feed depeding on the OS.
-"
 Class {
-	#name : #ExercismGeneratorTest,
+	#name : #ExercismV3GeneratorTest,
 	#superclass : #TestCase,
 	#instVars : [
 		'instance',
@@ -22,43 +10,85 @@ Class {
 }
 
 { #category : #asserting }
-ExercismGeneratorTest >> assertExerciseTests [
+ExercismV3GeneratorTest >> assertDocumentation [
 
-	| file |
-	file := memoryFileReference / 'two-fer' / 'TwoFerTest.class.st'.
-
-	self assert: file exists.
+	| introduction instructions hints after source |
+	introduction := memoryFileReference / 'exercises' / 'concept' / 'elons-toys' / '.docs' / 'introduction.md'.
+	instructions := memoryFileReference / 'exercises' / 'concept' / 'elons-toys' / '.docs' / 'instructions.md'.
+	hints := memoryFileReference / 'exercises' / 'concept' / 'elons-toys' / '.docs' / 'hints.md'.
+	after := memoryFileReference / 'exercises' / 'concept' / 'elons-toys' / '.docs' / 'after.md'.
+	source := memoryFileReference / 'exercises' / 'concept' / 'elons-toys' / '.docs' / 'source.md'.
+	
+	self assert: introduction exists.
 	self 
-		assert: (file contents withLineEndings: lineEnding) 
-		equals: (self expectedTwoFerTestContents withLineEndings: lineEnding)
+		assert: (introduction contents withLineEndings: lineEnding) 
+		equals: (self expectedIntroductionContents withLineEndings: lineEnding).
+		
+	self assert: instructions exists.
+	self 
+		assert: (instructions contents withLineEndings: lineEnding) 
+		equals: (self expectedInstructionsContents withLineEndings: lineEnding).
+		
+	self assert: hints exists.
+	self 
+		assert: (hints contents withLineEndings: lineEnding) 
+		equals: (self expectedHintsContents withLineEndings: lineEnding).
+		
+	self assert: after exists.
+	self 
+		assert: (after contents withLineEndings: lineEnding) 
+		equals: (self expectedAfterContents withLineEndings: lineEnding).
+		
+	self assert: source exists.
+	self 
+		assert: (source contents withLineEndings: lineEnding) 
+		equals: (self expectedSourceContents withLineEndings: lineEnding).
 ]
 
 { #category : #asserting }
-ExercismGeneratorTest >> assertHints [
-	
-	| file |
-	file := memoryFileReference / 'two-fer' / '.meta' / 'hints.md'.
-	
-	self assert: file exists.
+ExercismV3GeneratorTest >> assertExercise [
+
+	| implementationStub test |
+	implementationStub := memoryFileReference / 'exercises' / 'concept' / 'elons-toys' / 'RemoteControlCar.class.st'.
+	test := memoryFileReference / 'exercises' / 'concept' / 'elons-toys' / 'RemoteControlCarTest.class.st'.
+
+	self assert: implementationStub exists.
 	self 
-		assert: (file contents withLineEndings: lineEnding) 
-		equals: (self expectedHintsContents withLineEndings: lineEnding)
+		assert: (implementationStub contents withLineEndings: lineEnding) 
+		equals: (self expectedImplementationStubContents withLineEndings: lineEnding).
+		
+	self assert: test exists.
+	self
+		assert: (test contents withLineEndings: lineEnding)
+		equals: (self expectedTestContents withLineEndings: lineEnding)
 ]
 
 { #category : #asserting }
-ExercismGeneratorTest >> assertSolution [
-
-	| file |
-	file := memoryFileReference / 'two-fer' / '.meta' / 'solution' / 'TwoFer.class.st'.
+ExercismV3GeneratorTest >> assertMetaDirectory [
 	
-	self assert: file exists.
+	| design config example |
+	design := memoryFileReference / 'exercises' / 'concept' / 'elons-toys' / '.meta' / 'design.md'.
+	config := memoryFileReference / 'exercises' / 'concept' / 'elons-toys' / '.meta' / 'config.json'.
+	example := memoryFileReference / 'exercises' / 'concept' / 'elons-toys' / '.meta' / 'RemoteControlCar.class.st'.
+	
+	self assert: design exists.
 	self 
-		assert: (file contents withLineEndings: lineEnding) 
-		equals: (self expectedTwoFerSolutionContents withLineEndings: lineEnding)
+		assert: (design contents withLineEndings: lineEnding) 
+		equals: (self expectedHintsContents withLineEndings: lineEnding).
+	
+	self assert: config exists.
+	self
+		assert: (config contents withLineEndings: lineEnding)
+		equals: (self expectedConfigContents withLineEndings: lineEnding).
+		
+	self assert: example exists.
+	self
+		assert: (example contents withLineEndings: lineEnding)
+		equals: (self expectedExampleContetns withLineEndings: lineEnding)
 ]
 
 { #category : #private }
-ExercismGeneratorTest >> expectedHintsContents [
+ExercismV3GeneratorTest >> expectedHintsContents [
 
 	^ 'In Pharo, classes are objects that can have instance and class methods, however unlike HelloWorld the tests for TwoFer have been written to call instance methods. Typically class methods are used for constructing new objects (like a contructor in other languages).
 
@@ -68,7 +98,7 @@ There is also a third type of method, binary, which takes only 1 parameter and u
 ]
 
 { #category : #private }
-ExercismGeneratorTest >> expectedTwoFerSolutionContents [
+ExercismV3GeneratorTest >> expectedImplementationStubContents [
 
 	^ '"
 This is a sample solution for Exercism students.
@@ -96,7 +126,7 @@ TwoFer >> who: aString [
 ]
 
 { #category : #private }
-ExercismGeneratorTest >> expectedTwoFerTestContents [
+ExercismV3GeneratorTest >> expectedTestContents [
 
 	^ '"
 # Two Fer
@@ -193,7 +223,7 @@ TwoFerTest >> testNoNameGiven [
 ]
 
 { #category : #running }
-ExercismGeneratorTest >> setUp [
+ExercismV3GeneratorTest >> setUp [
 	
 	| writer |
 	super setUp.
@@ -202,16 +232,16 @@ ExercismGeneratorTest >> setUp [
 	memoryFileReference := FileSystem memory root / 'exercises'.
 	writer := ExTonelWriter on: memoryFileReference.
 	
-	instance := ExercismGenerator new
+	instance := ExercismV3Generator new
 		exercisesPath: memoryFileReference; 
 		exTonelWriter: writer;
-		exercismExercise: MockExercismExercise;
+		exercismExercise: MockExercismV3Exercise;
 		yourself.
 		
 ]
 
 { #category : #tests }
-ExercismGeneratorTest >> testFailedGenerateSignalsException [
+ExercismV3GeneratorTest >> testFailedGenerateSignalsException [
 
 	instance osProcess: FailedTestOSProcess new.
 	
@@ -222,19 +252,20 @@ ExercismGeneratorTest >> testFailedGenerateSignalsException [
 ]
 
 { #category : #tests }
-ExercismGeneratorTest >> testGenerate [
+ExercismV3GeneratorTest >> testGenerate [
 
 	instance osProcess: SuccessfulTestOSProcess new.
 	
 	instance generate.
 	
-	self assertExerciseTests.
-	self assertHints.
-	self assertSolution
+	self 
+		assertExercise;
+		assertMetaDirectory;
+		assertDocumentation
 ]
 
 { #category : #tests }
-ExercismGeneratorTest >> testGeneratorKebabCase [
+ExercismV3GeneratorTest >> testGeneratorKebabCase [
 	
 	self assert: 'HelloWorld' asKebabCase equals: 'hello-world'.
 	self assert: 'Hello' asKebabCase equals: 'hello'.
@@ -244,7 +275,7 @@ ExercismGeneratorTest >> testGeneratorKebabCase [
 ]
 
 { #category : #tests }
-ExercismGeneratorTest >> testSuccessfulGenerateDoesNotSignalException [
+ExercismV3GeneratorTest >> testSuccessfulGenerateDoesNotSignalException [
 
 	instance osProcess: SuccessfulTestOSProcess new.
 	

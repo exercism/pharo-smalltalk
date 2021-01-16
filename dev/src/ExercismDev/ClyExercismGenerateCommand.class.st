@@ -42,5 +42,5 @@ ClyExercismGenerateCommand >> description [
 
 { #category : #execution }
 ClyExercismGenerateCommand >> execute [
-	ExercismGenerator generate
+	ExercismV2Generator generate
 ]
