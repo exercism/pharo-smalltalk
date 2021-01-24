@@ -51,6 +51,8 @@ BaselineOfExercism >> baseline: spec [
 						'ExercismTools' ),  
 						self class exercisePackageNames ];
 			
+				package: 'ExercismV3';
+				
 				group: 'default'
 					with: #('ExercismTools' 'Exercise@Welcome');
 					
@@ -58,7 +60,10 @@ BaselineOfExercism >> baseline: spec [
 					with: #('ExercismDev' );
 				
 				group: 'dev'
-					with: #('ExercismDev' 'ExercismWIP' 'ExercismSystemTests')]
+					with: #('ExercismDev' 'ExercismWIP' 'ExercismSystemTests');
+				
+				group: 'v3'
+					with: #('ExercismV3')]
 ]
 
 { #category : #baselines }
