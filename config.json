@@ -2,6 +2,12 @@
   "track_id": "pharo-smalltalk",
   "language": "Pharo",
   "active": true,
+  "status": {
+    "concept_exercises": false,
+    "test_runner": false,
+    "representer": false,
+    "analyzer": false
+  },
   "blurb": "Pharo is a fun and immersive Smalltalk programming experience. Featuring a clean object-oriented language and a powerful user extendable environment, it focuses on simplicity and immediate feedback (think IDE and OS rolled into one). Its elegance and productivity give it wide reach into banking, education, web development and even robotics.",
   "version": 3,
   "solution_pattern": "\\.meta/solution/\\w+\\.class\\.st",
