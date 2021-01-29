@@ -18,6 +18,7 @@
   "solution_pattern": "\\.meta/solution/\\w+\\.class\\.st",
   "test_pattern": "\\w+Test\\.class\\.st",
   "exercises": {
+    "concept": [],
     "practice": [
       {
         "slug": "hello-world",
