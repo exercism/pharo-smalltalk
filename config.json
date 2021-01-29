@@ -1,6 +1,7 @@
 {
   "track_id": "pharo-smalltalk",
   "language": "Pharo",
+  "slug": "pharo-smalltalk",
   "active": true,
   "status": {
     "concept_exercises": false,
