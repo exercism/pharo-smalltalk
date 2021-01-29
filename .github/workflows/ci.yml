@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Fetch configlet
-        uses: exercism/github-actions/configlet-ci@master
+        uses: exercism/github-actions/configlet-ci@main
 
       - name: Configlet Linter
         run: configlet lint --track-id pharo .
@@ -40,7 +40,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Fetch configlet
-        uses: exercism/github-actions/configlet-ci@master
+        uses: exercism/github-actions/configlet-ci@main
 
       - name: Configlet Tree
         run: configlet tree --with-difficulty .
