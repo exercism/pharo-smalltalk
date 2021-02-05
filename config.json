@@ -24,6 +24,7 @@
         "slug": "hello-world",
         "name": "Hello World",
         "uuid": "a1812b5e-2788-4ea6-b948-bfe54edeb0da",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 1,
         "topics": [
@@ -35,6 +36,7 @@
         "slug": "two-fer",
         "name": "Two Fer",
         "uuid": "9806fcc0-8505-4012-bd64-3f7468014df5",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 1,
         "topics": [
@@ -47,6 +49,7 @@
         "slug": "leap",
         "name": "Leap",
         "uuid": "82b07f5c-119c-4250-8c07-a0a7e1a95458",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 1,
         "topics": [
@@ -59,6 +62,7 @@
         "slug": "reverse-string",
         "name": "Reverse String",
         "uuid": "bab40685-2f87-4d4f-8886-0a4d21a0d90d",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 1,
         "topics": [
@@ -70,6 +74,7 @@
         "slug": "isogram",
         "name": "Isogram",
         "uuid": "9e0074be-4a3f-0d00-bb4e-73e5071d6982",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 2,
         "topics": [
@@ -81,6 +86,7 @@
         "slug": "grains",
         "name": "Grains",
         "uuid": "93dde1bb-8040-0d00-812a-052301deb008",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 2,
         "topics": [
@@ -92,6 +98,7 @@
         "slug": "allergies",
         "name": "Allergies",
         "uuid": "49ae8e78-a641-0d00-ba20-5f9f04641ab1",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 3,
         "topics": [
@@ -103,6 +110,7 @@
         "slug": "matrix",
         "name": "Matrix",
         "uuid": "bea80017-9d41-0d00-900d-a13308866539",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 4,
         "topics": [
@@ -114,6 +122,7 @@
         "slug": "grade-school",
         "name": "Grade School",
         "uuid": "8198e8bb-8040-0d00-812f-dfab01deb008",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 4,
         "topics": [
@@ -127,6 +136,7 @@
         "slug": "forth",
         "name": "Forth",
         "uuid": "98e35398-a743-0d00-aeac-1c4207045670",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 6,
         "topics": [
@@ -138,6 +148,7 @@
         "slug": "resistor-color-duo",
         "name": "Resistor Color Duo",
         "uuid": "c698dfbb-8040-0d00-8127-69c701deb008",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 1,
         "topics": [
@@ -150,6 +161,7 @@
         "slug": "space-age",
         "name": "Space Age",
         "uuid": "7bec34be-4a3f-0d00-bb23-9404071d6982",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 1,
         "topics": [
@@ -161,6 +173,7 @@
         "slug": "armstrong-numbers",
         "name": "Armstrong Numbers",
         "uuid": "15f1a716-9d41-0d00-8fc9-66a908866539",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 2,
         "topics": [
@@ -172,6 +185,7 @@
         "slug": "twelve-days",
         "name": "Twelve Days",
         "uuid": "7047d916-9d41-0d00-8ff2-3a9808866539",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 2,
         "topics": [
@@ -184,6 +198,7 @@
         "slug": "clock",
         "name": "Clock",
         "uuid": "f8080717-9d41-0d00-9011-755a08866539",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 2,
         "topics": [
@@ -196,6 +211,7 @@
         "slug": "darts",
         "name": "Darts",
         "uuid": "98fc253b-e642-0d00-8e1a-5ef3059054ed",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 2,
         "topics": [
@@ -207,6 +223,7 @@
         "slug": "raindrops",
         "name": "Raindrops",
         "uuid": "c0bcb6c5-3f3f-0d00-995d-a4720043fb1f",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 2,
         "topics": [
@@ -219,6 +236,7 @@
         "slug": "isbn-verifier",
         "name": "Isbn Verifier",
         "uuid": "d166a016-9d41-0d00-8fc3-1ee008866539",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 3,
         "topics": [
@@ -231,6 +249,7 @@
         "slug": "sum-of-multiples",
         "name": "Sum Of Multiples",
         "uuid": "34b0900f-de21-4fef-b24b-f125b608e65e",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 3,
         "topics": [
@@ -243,6 +262,7 @@
         "slug": "matching-brackets",
         "name": "Matching Brackets",
         "uuid": "d126be16-9d41-0d00-8fdc-2ff208866539",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 4,
         "topics": [
@@ -255,6 +275,7 @@
         "slug": "acronym",
         "name": "Acronym",
         "uuid": "dc7b1fff-f0be-460d-b146-ee84c2acc10b",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 2,
         "topics": [
@@ -267,6 +288,7 @@
         "slug": "etl",
         "name": "Etl",
         "uuid": "d6303b3f-0f41-0d00-a5e1-db510c056502",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 2,
         "topics": [
@@ -279,6 +301,7 @@
         "slug": "flatten-array",
         "name": "Flatten Array",
         "uuid": "aa15f716-9d41-0d00-9006-3c7208866539",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 2,
         "topics": [
@@ -292,6 +315,7 @@
         "slug": "hamming",
         "name": "Hamming",
         "uuid": "69f615da-2b3f-0d00-a2ed-aca409f0590c",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 2,
         "topics": [
@@ -305,6 +329,7 @@
         "slug": "high-scores",
         "name": "High Scores",
         "uuid": "5f1a9f16-9d41-0d00-8fc2-6a7408866539",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 2,
         "topics": [
@@ -317,6 +342,7 @@
         "slug": "diamond",
         "name": "Diamond",
         "uuid": "c0b69b16-9d41-0d00-8fbf-acfc08866539",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 3,
         "topics": [
@@ -330,6 +356,7 @@
         "slug": "proverb",
         "name": "Proverb",
         "uuid": "b4e3babb-8040-0d00-80fa-71e001deb008",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 3,
         "topics": [
@@ -341,6 +368,7 @@
         "slug": "roman-numerals",
         "name": "Roman Numerals",
         "uuid": "973e4910-7940-0d00-bbad-09db01dff3c9",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 3,
         "topics": [
@@ -353,6 +381,7 @@
         "slug": "pangram",
         "name": "Pangram",
         "uuid": "6be398be-4a3f-0d00-bb67-0d71071d6982",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 2,
         "topics": [
@@ -364,6 +393,7 @@
         "slug": "secret-handshake",
         "name": "Secret Handshake",
         "uuid": "2020ac16-9d41-0d00-8fcd-fe0908866539",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 2,
         "topics": [
@@ -375,6 +405,7 @@
         "slug": "anagram",
         "name": "Anagram",
         "uuid": "cc8b42be-4a3f-0d00-bb2c-6d04071d6982",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 3,
         "topics": [
@@ -386,6 +417,7 @@
         "slug": "binary",
         "name": "Binary",
         "uuid": "a90be8bb-8040-0d00-812e-0c1701deb008",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 3,
         "topics": [
@@ -398,6 +430,7 @@
         "slug": "collatz-conjecture",
         "name": "Collatz Conjecture",
         "uuid": "0dc70bf9-e642-0d00-8e2f-4d97059054ed",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 2,
         "topics": [
@@ -410,6 +443,7 @@
         "slug": "atbash-cipher",
         "name": "Atbash Cipher",
         "uuid": "c728b116-9d41-0d00-8fd2-aa8a08866539",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 3,
         "topics": [
@@ -423,6 +457,7 @@
         "slug": "sieve",
         "name": "Sieve",
         "uuid": "ffe8dcbb-8040-0d00-8124-bf5801deb008",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 3,
         "topics": [
@@ -435,6 +470,7 @@
         "slug": "luhn",
         "name": "Luhn",
         "uuid": "6298e416-9d41-0d00-8ffa-c83508866539",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 4,
         "topics": [
@@ -447,6 +483,7 @@
         "slug": "word-count",
         "name": "Word Count",
         "uuid": "a5de8cbe-4a3f-0d00-bb5e-8947071d6982",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 3,
         "topics": [
@@ -459,6 +496,7 @@
         "slug": "minesweeper",
         "name": "Minesweeper",
         "uuid": "1318c616-9d41-0d00-8fe3-676108866539",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 5,
         "topics": [
@@ -471,6 +509,7 @@
         "slug": "robot-simulator",
         "name": "Robot Simulator",
         "uuid": "5438fabb-8040-0d00-8145-63f301deb008",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 4,
         "topics": [
@@ -483,6 +522,7 @@
         "slug": "bowling",
         "name": "Bowling",
         "uuid": "494d55f9-d941-0d00-a5c2-334307d29f14",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 5,
         "topics": [
@@ -495,6 +535,7 @@
         "slug": "tournament",
         "name": "Tournament",
         "uuid": "1109cabb-8040-0d00-810e-7c1b01deb008",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 5,
         "topics": [
@@ -510,6 +551,7 @@
         "slug": "die",
         "name": "Die",
         "uuid": "dbea4db3-5044-0d00-ab77-b35a0c226d01",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 1,
         "topics": [
