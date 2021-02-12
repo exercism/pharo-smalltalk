@@ -1,4 +1,4 @@
-## Pharo Development
+# Pharo Development
 
 This folder contains Exercism tools and template exercises that should be [loaded](../docs/INSTALLATION.md) into a Pharo development image using [Iceberg](https://github.com/pharo-vcs/iceberg).
 

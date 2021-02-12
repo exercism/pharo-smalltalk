@@ -1,3 +1,5 @@
+# Installation
+
 ## Installation
 
 The simplest way to install [Pharo](http://pharo.org) is to use a [zero conf](http://pharo.org/download#//*[@id="main"]/div/h2[3]) download from a terminal command line.

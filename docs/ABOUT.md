@@ -1,3 +1,5 @@
+# About
+
 Welcome to [Pharo](http://www.pharo.org), an environment and language that embraces creativity, exploration and fun.
 
 It features a world that is:
