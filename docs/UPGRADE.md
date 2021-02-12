@@ -2,7 +2,7 @@
 
 From time to time we may need you to update something.
 
-### Pharo Image
+## Pharo Image
 
 If you need to update the libraries in your Pharo Exercism image, then it's best to ensure you have submitted any in-progress exercises, saved your image, and then backed up the Pharo.image and Pharo.changes files. Once you have a safe backup, evaluate (select, and press meta-g) all of the following code in a Playground:
 
@@ -38,7 +38,7 @@ Once you have loaded a specific version, you may also need to "re-fetch" any exi
 
 In rare situations (and if you continue to have problems), you might need to get a fresh Pharo.image file (the easiest way is to re-install Pharo in a fresh directory by following the regular installation instructions at the top of this page).
 
-### Pharo Exercises
+## Pharo Exercises
 
 Sometimes you may also find that an exercise has been updated to add new tests or to reflect new insights, after you have already solved it.
 

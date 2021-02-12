@@ -2,7 +2,7 @@
 
 As Smalltalk is widely used, there is rich choice of reading material.
 
-### Starting Out
+## Starting Out
 * [Pharo Main Site](http://pharo.org/documentation):
 has a wealth of articles and help
 * [Pharo Syntax Cheatsheet](http://files.pharo.org/media/pharoCheatSheet.pdf): 
@@ -17,7 +17,7 @@ active online Pharo discussions forum (use the invite link at the top of the [Co
 * [Pharo Mooc](http://mooc.pharo.org/):
 provides a series of full programming courses and videos
 
-### More Advanced
+## More Advanced
 * [Deep Into Pharo](http://books.pharo.org/deep-into-pharo/):
 takes you through more advanced topics like graphics and parsing
 * [Pharo with style](https://github.com/SquareBracketAssociates/Booklet-PharoWithStyle):
