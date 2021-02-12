@@ -1,1 +1,3 @@
+# Instructions append
+
 Build up this exercise piece by piece, and don't be afraid to split out any useful concepts into a new class. Previous exercises should give the foundation for a neat solution.It might also be helpfulnto review chapters on Object Oriented thinking, for example [Inside Smalltalk - Chapter 1](http://sdmeta.gforge.inria.fr/FreeBooks/InsideST/InsideSmalltalk.pdf) or [Smalltalk by Example - Chapter 9](http://sdmeta.gforge.inria.fr/FreeBooks/ByExample/11%20-%20Chapter%209%20-%20Object-Oriente.pdf)

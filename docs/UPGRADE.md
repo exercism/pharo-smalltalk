@@ -1,4 +1,4 @@
-## Upgrading
+# Upgrading
 
 From time to time we may need you to update something.
 

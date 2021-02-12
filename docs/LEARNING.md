@@ -1,4 +1,4 @@
-## Recommended reading
+# Recommended reading
 
 As Smalltalk is widely used, there is rich choice of reading material.
 

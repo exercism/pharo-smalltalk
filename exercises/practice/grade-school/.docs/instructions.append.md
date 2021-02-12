@@ -1,1 +1,3 @@
+# Instructions append
+
 It isn't strictly necessary to model students as a seperate object, you can use a convenient internal data strcture as the requirements are quite simple (and as long as it doesn't leak out into the results).Note: this exercise has been slightly modified from the problem-specification, as it makes more sense to seperate adding students and querying them in seperate methods (vs. having one method doing both, which feels less Pharo/Smalltalk like).

@@ -1,3 +1,5 @@
+# Instructions append
+
 While there is are `#reversed` and `#reverseDo:` methods for Strings, can you figure out how to do this yourself using lower level character iteration and streams? 
 
 To help you browse code, Pharo has a neat code finder tool. Press Shift-Enter to activate it.

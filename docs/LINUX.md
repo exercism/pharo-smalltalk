@@ -1,4 +1,4 @@
-## Linux Hackers Installation (for advanced Linux use only)
+# Linux Hackers Installation (for advanced Linux use only)
 
 We are still working out the best instructions here, but we know (and appreciate) that many Linux developers are very discerning when it comes to what they install and where things should go.
 
