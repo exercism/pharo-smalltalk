@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: Fetch smalltalkCI
-        uses: hpi-swa/setup-smalltalkCI@a271ee530f18ecf947856f3f163c4687101ec6b6
+        uses: hpi-swa/setup-smalltalkCI@571597519b1729533d24fe292f1ebfc9dfdc9a0e
         id: smalltalkci
         with: 
           smalltalk-version: 'Pharo64-8.0'
