@@ -17,6 +17,20 @@
   },
   "solution_pattern": "\\.meta/solution/\\w+\\.class\\.st",
   "test_pattern": "\\w+Test\\.class\\.st",
+  "files": {
+    "solution": [
+      "%{pascal_slug}.class.st"
+    ],
+    "test": [
+      "%{pascal_slug}Test.class.st"
+    ],
+    "example": [
+      ".meta/solution/%{pascal_slug}.class.st"
+    ],
+    "exemplar": [
+      ".meta/solution/%{pascal_slug}.class.st"
+    ]
+  },
   "exercises": {
     "concept": [],
     "practice": [
