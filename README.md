@@ -5,7 +5,7 @@
 This repository is for the development of [Exercism](http://exercism.io) exercises running in the [Pharo Smalltalk](http://pharo.org) programming environment.
 
 
-If you are new to Pharo or Exercism, consider using [Exercism to learn Pharo](https://exercism.io/tracks/pharo-smalltalk), so you can help contribute in the future. 
+If you are new to Pharo or Exercism, consider using [Exercism to learn Pharo](https://exercism.io/tracks/pharo-smalltalk), so you can help contribute in the future.
 
 If you already know Pharo, but would just like to help out with testing, please sign up for the track as above, review the [setup documentation](https://exercism.io/tracks/pharo-smalltalk/installation), and also visit the Discord channel (as described in [resources](./docs/RESOURCES.md)).
 
@@ -18,13 +18,13 @@ If you sign up as a [Pharo Mentor](https://exercism.io/mentor/registrations/new)
 Simply evalaluate the following in a fresh Pharo image:
 
 ```smalltalk
-Metacello new 
- baseline: 'Exercism'; 
- repository: 'github://exercism/pharo-smalltalk/releases/latest';
+Metacello new
+ baseline: 'Exercism';
+ repository: 'github://exercism/pharo-smalltalk:main/releases/latest';
  load: 'mentor'
 ```
 
-You will then find a "View Mentee Solution..." entry in the Exercism menu, which allows you to safely download a mentee code submission into your image so you can browse code and references. 
+You will then find a "View Mentee Solution..." entry in the Exercism menu, which allows you to safely download a mentee code submission into your image so you can browse code and references.
 
 To use this browser, you need to paste the download link at the bottom of a submission into the menu prompt, and it will download and show the solution.
 
@@ -32,7 +32,7 @@ When looking at a solution, there is also a context menu to leave comments on me
 
 ## Development Setup
 
-It is expected that you are already [familiar](./docs/RESOURCES.md) with development in Pharo and its use of [Iceberg Git](https://github.com/pharo-vcs/iceberg). 
+It is expected that you are already [familiar](./docs/RESOURCES.md) with development in Pharo and its use of [Iceberg Git](https://github.com/pharo-vcs/iceberg).
 
 To begin, you need to ensure that you have a complete exercism development environment and have installed:
 1. the [exercism command line interface](https://exercism.io/cli-walkthrough) and configured it to point to somewhere sensible for development (e.g. `exercism configure -w ~/development/exercism`)
@@ -43,11 +43,11 @@ To begin, you need to ensure that you have a complete exercism development envir
 Next setup a Pharo environment for creating the actual coding examples. You need to load a development exercism baseline:
 
 1. Use [PharoLauncher](https://github.com/pharo-project/pharo-launcher) to create a fresh 7.0 (stable) development image, and launch it (you can also use [zerconf](https://get.pharo.org/) if you are familiar with it)
-1. Fork `https://exercism/pharo-smalltalk` on github  
+1. Fork `https://exercism/pharo-smalltalk` on github
 1. Clone `https://<your id>/pharo-smalltalk` as a GitHub project and specify `<your id>` as the owner name, `pharo-smalltalk` as the project name
 1. Install the Metacello baseline `dev` (not the default) in Iceberg using the Metacello context menu. (e.g. right click on the "pharo-smalltalk" project you just cloned, and select the second option in the Metacello menu, and type `dev`)
 
-If you have any TIMEOUT problems refer to the [user installation instructions](./docs/INSTALLATION.md), 
+If you have any TIMEOUT problems refer to the [user installation instructions](./docs/INSTALLATION.md),
 
 ## Contributing
 
@@ -59,20 +59,20 @@ We welcome pull requests of all kinds. No contribution is too small, particularl
 
 ### Completing an Exercise
 
-While there many ways to help, by far the easiest and most useful contribution is to complete a solution for any of the currently "open" exercise. 
+While there many ways to help, by far the easiest and most useful contribution is to complete a solution for any of the currently "open" exercise.
 
   * Ensure your image is caught up to the exercism/pharo-smalltalk master (and push any changes back to your fork)
-  
+
   * The exercises are all TestCases that been automatically generated from the aforementioned problem-specifications repository. You will find them as subclasses of ExercismTest in the ExercismWIP package.
-  
+
   * Once you have selected an Exercise you want to work on, create an Issue in Github specifying "Convert Exercise <name>". This will let others know you are working on one, and will also form a basis for your later pull request
 
   * Each WIP exercise already has the problem description in its class comment, and you run its tests and TDD a solution (in the debugger if you run the first test by itself).
 
   * You may need to adjust the test if it's not idiomatic Smalltalk (our generator is pretty basic - however this said, some corrections might be appropriate as PR's back to the upstream [problem-specification](https://github.com/exercism/problem-specifications) text)
-  
-  * Update the exercise meta data on the class side of the exercise by overriding the #exercise method and filling in a difficulty, topics etc. You should also fill in some Hint text in the Test comment tab (at the bottom - by replacing the text TBD) 
-  
+
+  * Update the exercise meta data on the class side of the exercise by overriding the #exercise method and filling in a difficulty, topics etc. You should also fill in some Hint text in the Test comment tab (at the bottom - by replacing the text TBD)
+
   * Update the package of the chosen example to `Exercise@<ExerciseName>` (i.e. move it out of the WIP package)
   * Create a new branch in Iceberg with the name of the exercise you chose (you can use the Iceberg tool for this, and enter your issue number from above)
   * Before submitting your pull request, Run all the tests for the Pharo exercises and ensure they all pass
@@ -83,7 +83,7 @@ While there many ways to help, by far the easiest and most useful contribution i
 ### Conventions
 
 - We use [SUnit](https://en.wikipedia.org/wiki/SUnit) (the original xUnit libary) and no additional 3rd-party-frameworks for exercises.
-- For consistency, we use the test parameter order: `self assert: actual equals: expected` 
+- For consistency, we use the test parameter order: `self assert: actual equals: expected`
 
 
 ### Testing
@@ -100,8 +100,8 @@ To test an exercise run it from the built-in test runner by clicking on the test
 AllExercismTests suite run. "all exercises"
 ```
 
-To test in a non-development image, you should follow the [user installation steps](./docs/INSTALLATION.md). If you 
-are using that image to test subsequent development baselines - you may need to delete the following development directories to ensure you get the latest code: 
+To test in a non-development image, you should follow the [user installation steps](./docs/INSTALLATION.md). If you
+are using that image to test subsequent development baselines - you may need to delete the following development directories to ensure you get the latest code:
 `./pharo/pharo-local/iceberg, ./pharo/pharo-local/package-cache`
 
 ### Coding Style
