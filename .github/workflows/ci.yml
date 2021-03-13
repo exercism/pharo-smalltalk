@@ -33,14 +33,4 @@ jobs:
         shell: bash
         timeout-minutes: 15
         
-  tree:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Fetch configlet
-        uses: exercism/github-actions/configlet-ci@main
-
-      - name: Configlet Tree
-        run: configlet tree --with-difficulty .
+        
