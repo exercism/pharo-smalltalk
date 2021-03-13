@@ -16,7 +16,7 @@ jobs:
         uses: exercism/github-actions/configlet-ci@main
 
       - name: Configlet Linter
-        run: configlet lint --track-id pharo .
+        run: configlet lint .
     
   test:
     name: Test
