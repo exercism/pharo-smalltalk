@@ -32,4 +32,3 @@ jobs:
       - run: smalltalkci -s ${{ steps.smalltalkci.outputs.smalltalk-version }}
         shell: bash
         timeout-minutes: 15
-        
