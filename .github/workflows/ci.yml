@@ -6,18 +6,6 @@ on:
   pull_request:
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Fetch configlet
-        uses: exercism/github-actions/configlet-ci@main
-
-      - name: Configlet Linter
-        run: configlet lint
-    
   test:
     name: Test
     runs-on: ubuntu-latest
