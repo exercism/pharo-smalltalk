@@ -2,22 +2,10 @@ name: CI
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Fetch configlet
-        uses: exercism/github-actions/configlet-ci@main
-
-      - name: Configlet Linter
-        run: configlet lint --track-id pharo .
-    
   test:
     name: Test
     runs-on: ubuntu-latest
@@ -32,15 +20,3 @@ jobs:
       - run: smalltalkci -s ${{ steps.smalltalkci.outputs.smalltalk-version }}
         shell: bash
         timeout-minutes: 15
-        
-  tree:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Fetch configlet
-        uses: exercism/github-actions/configlet-ci@main
-
-      - name: Configlet Tree
-        run: configlet tree --with-difficulty .
