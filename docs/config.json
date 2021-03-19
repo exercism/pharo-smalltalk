@@ -1,0 +1,32 @@
+{
+  "docs": [
+    {
+      "uuid": "49d67a12-491b-4611-b8ad-63bc327d7f8b",
+      "slug": "installation",
+      "path": "docs/INSTALLATION.md",
+      "title": "Installing Pharo locally",
+      "blurb": "Learn how to install Pharo locally to solve Exercism's exercises on your own machine"
+    },
+    {
+      "uuid": "83df2daf-bef8-4fb9-b800-4458e39d3834",
+      "slug": "learning",
+      "path": "docs/LEARNING.md",
+      "title": "How to learn Pharo",
+      "blurb": "An overview of how to get started from scratch with Pharo"
+    },
+    {
+      "uuid": "db83cfc2-a5d7-45ac-9b48-45f33e9c3ac3",
+      "slug": "tests",
+      "path": "docs/TESTS.md",
+      "title": "Testing on the Pharo track",
+      "blurb": "Learn how to test your Pharo exercises on Exercism"
+    },
+    {
+      "uuid": "9336a0cd-1e55-442d-9a52-20308ef9fafd",
+      "slug": "resources",
+      "path": "docs/RESOURCES.md",
+      "title": "Useful Pharo resources",
+      "blurb": "A collection of useful resources to help you master Pharo"
+    }
+  ]
+}
