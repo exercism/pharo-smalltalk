@@ -1,6 +1,6 @@
 ## Installation
 
-The simplest way to install [Pharo](http://pharo.org) is to use a [zero conf](http://pharo.org/download#//*[@id="main"]/div/h2[3]) download from a terminal command line. 
+The simplest way to install [Pharo](http://pharo.org) is to use a [zero conf](http://pharo.org/download#//*[@id="main"]/div/h2[3]) download from a terminal command line.
 <br/>_Note: If you are trying to upgrade an existing installation see the [upgrade instructions](https://github.com/exercism/pharo-smalltalk/blob/master/docs/UPGRADE.md)._
 
 Windows users who do not have a UNIX style shell installed should skip to the [Windows Installation](#windows-installation-skip-for-osxlinux) instructions (below).<br/>
@@ -19,9 +19,9 @@ and launch Pharo with the exercism tools by pasting the following "load script":
 ```smalltalk
 ./pharo-ui Pharo.image eval "
 Iceberg remoteTypeSelector: #httpsUrl.
-Metacello new 
- baseline: 'Exercism'; 
- repository: 'github://exercism/pharo-smalltalk/releases/latest';
+Metacello new
+ baseline: 'Exercism';
+ repository: 'github://exercism/pharo-smalltalk:main/releases/latest';
  load.
 #ExercismManager asClass welcome.
 "
@@ -33,7 +33,7 @@ If you have any TIMEOUT problems when loading the tools, you should exit Pharo a
 
 And then repeat the ```./pharo-ui ...``` example above.
 
-If you continue to have problems please visit the Pharo Discord channel described on the [Pharo Community](http://pharo.org/community) page. 
+If you continue to have problems please visit the Pharo Discord channel described on the [Pharo Community](http://pharo.org/community) page.
 
 If everything is working properly, you should see loading progress bars flicker across the screen, and then a System Browser window will appear.
 
@@ -51,27 +51,27 @@ We are still working out the best command line tool prerequisites for windows, h
 1. Run the downloaded .msi file to install the Pharo Launcher.
 
 2. Run Pharo launcher and on the left of the window is a list of various Pharo image templates that can be downloaded. For Exercism
-exercises, Pharo 7.0 32-bit (stable) is recommended (64bit is currently in beta and has reported issues). It can be found under the Official Distributions heading in the Templates 
+exercises, Pharo 7.0 32-bit (stable) is recommended (64bit is currently in beta and has reported issues). It can be found under the Official Distributions heading in the Templates
 tree. Click to highlight an image template, then click the create image icon at the top middle (an orange cog shape), and give
-it a name. 
+it a name.
 3. Once the template is downloaded it will appear on the right in the Existing Images table. Click on it, and then click the launch button at the top right (a green _play_ arrow).
 
 4. Once the Pharo image has started, open a Playground by choosing the _Tools_ menu, and selecting _Playground_, or use
-`ctrl + o + w`. 
+`ctrl + o + w`.
 
 Finally, copy and paste the following snippet into the playground:
 
 ```smalltalk
 Iceberg remoteTypeSelector: #httpsUrl.
-Metacello new 
- baseline: 'Exercism'; 
- repository: 'github://exercism/pharo-smalltalk/releases/latest';
+Metacello new
+ baseline: 'Exercism';
+ repository: 'github://exercism/pharo-smalltalk:main/releases/latest';
  load.
- 
+
 #ExercismManager asClass welcome.
 ```
 
-Then evaluate the pasted code by highlighting all of it, right clicking then selecting _Do it_ from the menu (or use `ctrl + d`). 
+Then evaluate the pasted code by highlighting all of it, right clicking then selecting _Do it_ from the menu (or use `ctrl + d`).
 
 If everything is working properly, you should see loading progress bars flicker across the screen, and then a System Browser window will appear.
 
@@ -110,7 +110,7 @@ When all your tests are passing, you can submit your solution using the same con
 Finally use the `Exercism | View Track Progress` menu to visit the exercism website and see what other exercises have been unlocked for you, as well as post questions about your submission for mentors to read.
 
 <br/>
-  
+
 **Did you know:** *When you launch Pharo, you are actually restoring an execution image snapshot - similar to a VMWare Operating System image. This
 is a powerful concept that allows you to suspend work mid operation, possibly even when debugging
 something. When you next relaunch Pharo, you can then continue stepping through code in the restored debugger, or possibly continue a refactoring step.*
@@ -121,8 +121,8 @@ If you ever need to reset your CLI token due to a security issue, you should vis
 and use the reset token button. When you have done this, you need to clear your old token in Pharo Exercism by evaluating the following code in a Playground:
 
 ```smalltalk
-ExercismHttpClient 
-    reset; 
+ExercismHttpClient
+    reset;
     promptForToken.
 ```
 
