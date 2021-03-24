@@ -1,6 +1,11 @@
 {
   "blurb": "Implement an evaluator for a very simple subset of Forth",
-  "authors": [],
+  "authors": [
+    "macta"
+  ],
+  "contributors": [
+    "bencoman"
+  ],
   "files": {
     "solution": [],
     "test": [],

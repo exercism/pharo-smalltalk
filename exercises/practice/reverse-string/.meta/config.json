@@ -1,6 +1,13 @@
 {
   "blurb": "Reverse a string",
-  "authors": [],
+  "authors": [
+    "macta"
+  ],
+  "contributors": [
+    "bencoman",
+    "chicoary",
+    "samWson"
+  ],
   "files": {
     "solution": [],
     "test": [],
