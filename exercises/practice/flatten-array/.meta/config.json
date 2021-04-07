@@ -2,9 +2,15 @@
   "blurb": "Take a nested list and return a single list with all values except nil/null",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "FlattenArray.class.st"
+    ],
+    "test": [
+      "FlattenArrayTest.class.st"
+    ],
+    "example": [
+      ".meta/solution/FlattenArray.class.st"
+    ]
   },
   "source": "Interview Question",
   "source_url": "https://reference.wolfram.com/language/ref/Flatten.html"
