@@ -2,8 +2,14 @@
   "blurb": "A small DSL for dice rolling",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "Die.class.st"
+    ],
+    "test": [
+      "DieTest.class.st"
+    ],
+    "example": [
+      ".meta/solution/Die.class.st"
+    ]
   }
 }
