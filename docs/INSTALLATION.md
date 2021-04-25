@@ -21,8 +21,8 @@ and launch Pharo with the exercism tools by pasting the following "load script":
 ```smalltalk
 ./pharo-ui Pharo.image eval "
 Iceberg remoteTypeSelector: #httpsUrl.
-Metacello new 
- baseline: 'Exercism'; 
+Metacello new
+ baseline: 'Exercism';
  repository: 'github://exercism/pharo-smalltalk:main/releases/latest';
  load.
 #ExercismManager asClass welcome.
@@ -65,11 +65,10 @@ Finally, copy and paste the following snippet into the playground:
 
 ```smalltalk
 Iceberg remoteTypeSelector: #httpsUrl.
-Metacello new 
- baseline: 'Exercism'; 
+Metacello new
+ baseline: 'Exercism';
  repository: 'github://exercism/pharo-smalltalk:main/releases/latest';
  load.
- 
 #ExercismManager asClass welcome.
 ```
 
