@@ -57,11 +57,17 @@ Please read how to [get involved in an Exercism track](https://github.com/exerci
 
 We welcome pull requests of all kinds. No contribution is too small, particularly those that provide fixes and improvements to existing exercises. Note that this track's exercises must conform to the [Exercism-wide standards](https://github.com/exercism/docs/tree/master/language-tracks/exercises), but if you're unsure about how to make a change, then open a GitHub issue, and we'll discuss it.
 
+### Main and Master Branches
+
+The `main` branch is the primary development branch. All new branches are created from it. This branch used to be called `master`. With Exercism V3 due to go live soon the current Exercism V2 website is not getting updated with changes to its content sourced from the markdown files in this repository. There are installation instructions that still rely on `master` being present and this has caused errors for new users. See pull request [#474](https://github.com/exercism/pharo-smalltalk/pull/474) for details. The installation instructions in this repository are correct but the instructions on the [website](https://exercism.io/tracks/pharo/installation) are not.
+
+We can't update the website instructions for now. To work around this issue we have a `master` branch that is identical to `main`. While Exercism V2 is still in use any changes to `main` should be in `master`, keeping both identical. This work around should not be needed once Exercism V3 is live.
+
 ### Completing an Exercise
 
 While there many ways to help, by far the easiest and most useful contribution is to complete a solution for any of the currently "open" exercise.
 
-  * Ensure your image is caught up to the exercism/pharo-smalltalk master (and push any changes back to your fork)
+  * Ensure your image is caught up to the exercism/pharo-smalltalk main (and push any changes back to your fork)
 
   * The exercises are all TestCases that been automatically generated from the aforementioned problem-specifications repository. You will find them as subclasses of ExercismTest in the ExercismWIP package.
 
