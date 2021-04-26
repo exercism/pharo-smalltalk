@@ -69,7 +69,6 @@ Metacello new
  baseline: 'Exercism';
  repository: 'github://exercism/pharo-smalltalk:main/releases/latest';
  load.
-
 #ExercismManager asClass welcome.
 ```
 
@@ -130,4 +129,4 @@ ExercismHttpClient
 
 ## How to Upgrade Pharo Exercism
 
-From time to time we may need you to update the libraries in your Pharo Exercism image. Please follow [these instructions](https://github.com/exercism/pharo-smalltalk/blob/master/docs/UPGRADE.md)
+From time to time we may need you to update the libraries in your Pharo Exercism image. Please follow [these instructions](https://github.com/exercism/pharo-smalltalk/blob/main/docs/UPGRADE.md)
