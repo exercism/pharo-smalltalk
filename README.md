@@ -67,7 +67,7 @@ We can't update the website instructions for now. To work around this issue we h
 
 While there many ways to help, by far the easiest and most useful contribution is to complete a solution for any of the currently "open" exercise.
 
-  * Ensure your image is caught up to the exercism/pharo-smalltalk `main` (and push any changes back to your fork)
+  * Ensure your image is caught up to the exercism/pharo-smalltalk main (and push any changes back to your fork)
 
   * The exercises are all TestCases that been automatically generated from the aforementioned problem-specifications repository. You will find them as subclasses of ExercismTest in the ExercismWIP package.
 
