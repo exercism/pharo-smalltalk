@@ -24,7 +24,7 @@ jobs:
         run: echo 'The time was ${{ steps.hello.outputs.time }}.'
       
       - name: Checkout exercism/pharo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.3.4
         with:
           ref: '' # This should default to the branch and reference that triggered the workflow.
       - run: git show
