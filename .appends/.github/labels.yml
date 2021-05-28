@@ -1,0 +1,136 @@
+- name: "API"
+  description: "Concerns use of the Exercism REST API"
+  color: "5319e7"
+
+- name: "CI"
+  description: "Continuous Integration builds"
+  color: "0e8a16"
+
+- name: "CLI integration"
+  description: "Concerns integration of Pharo with the Exercism CLI"
+  color: "0052cc"
+
+- name: "Epic"
+  description: "This is a big issue that is made up of many smaller issues"
+  color: "cdccff"
+
+- name: "GUI"
+  description: "Concerns the graphical user interface"
+  color: "fbca04"
+
+- name: "Linux"
+  description: "The kernel powering most free operating systems"
+  color: "78eda3"
+
+- name: "MacOS"
+  description: "Apples flagship operating system"
+  color: "b60205"
+
+- name: "Windows 10"
+  description: "Microsoft's flagship operating system"
+  color: "9090db"
+
+- name: "bug"
+  description: "Something isn't working"
+  color: "d73a4a"
+
+- name: "cleanup"
+  description: "Cleanup"
+  color: "e0857b"
+
+- name: "dependencies"
+  description: "Pull requests that update a dependency file"
+  color: "0366d6"
+
+- name: "discussion"
+  description: "This issue needs active discussion before action can take place"
+  color: "006b75"
+
+- name: "documentation"
+  description: "Concerning documentation of the repo"
+  color: "d93f0b"
+
+- name: "duplicate"
+  description: "This issue or pull request already exists"
+  color: "cfd3d7"
+
+- name: "enhancement"
+  description: "New feature or request"
+  color: "a2eeef"
+
+- name: "exercise"
+  description: "This issue concerns an exercise"
+  color: "1d76db"
+
+- name: "good first issue"
+  description: "Good for newcomers"
+  color: "7057ff"
+
+- name: "help wanted"
+  description: "Extra attention is needed"
+  color: "008672"
+
+- name: "hold"
+  description: ""
+  color: "bbbbbb"
+
+- name: "in progress"
+  description: "Someone is working on this"
+  color: "fef2c0"
+
+- name: "information-only"
+  description: ""
+  color: "cfd3d7"
+
+- name: "invalid"
+  description: "This doesn't seem right"
+  color: "e4e669"
+
+- name: "low priority"
+  description: "This issue is of low importance or impact"
+  color: "bfdadc"
+
+- name: "new exercise implementation"
+  description: ""
+  color: "7be09b"
+
+- name: "nice to have"
+  description: "Something we might consider in the future"
+  color: "5319e7"
+
+- name: "question"
+  description: "Further information is requested"
+  color: "d876e3"
+
+- name: "review"
+  description: "code review required"
+  color: "c5def5"
+
+- name: "source generation"
+  description: "Concerning generation of exercise source code and READMEs"
+  color: "006b75"
+
+- name: "upstream"
+  description: ""
+  color: "1adb74"
+
+- name: "usability testing"
+  description: "manual testing of features"
+  color: "f9d0c4"
+
+- name: "user experience"
+  description: "From the perspective of a user"
+  color: "fbca04"
+
+- name: "v3"
+  description: "Exercism version 3"
+  color: "9C359D"
+
+- name: "v3-migration 🤖"
+  description: "Preparing for Exercism v3"
+  color: "E99695"
+
+- name: "wontfix"
+  description: "This will not be worked on"
+  color: "ffffff"
+
