@@ -1,6 +1,11 @@
 {
   "blurb": "The classical introductory exercise. Just say \"Hello, World!\"",
-  "authors": [],
+  "authors": [
+    "macta"
+  ],
+  "contributors": [
+    "bencoman"
+  ],
   "files": {
     "solution": [
       "HelloWorld.class.st"

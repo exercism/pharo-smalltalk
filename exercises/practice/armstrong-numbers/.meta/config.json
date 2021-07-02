@@ -1,6 +1,12 @@
 {
   "blurb": "Determine if a number is an Armstrong number",
-  "authors": [],
+  "authors": [
+    "carlotxra"
+  ],
+  "contributors": [
+    "bencoman",
+    "macta"
+  ],
   "files": {
     "solution": [
       "ArmstrongNumbers.class.st"

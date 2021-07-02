@@ -1,6 +1,11 @@
 {
   "blurb": "Tally the results of a small football competition.",
-  "authors": [],
+  "authors": [
+    "macta"
+  ],
+  "contributors": [
+    "bencoman"
+  ],
   "files": {
     "solution": [
       "Tournament.class.st"

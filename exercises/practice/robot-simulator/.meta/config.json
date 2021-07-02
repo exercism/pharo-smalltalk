@@ -1,6 +1,11 @@
 {
   "blurb": "Write a robot simulator.",
-  "authors": [],
+  "authors": [
+    "macta"
+  ],
+  "contributors": [
+    "bencoman"
+  ],
   "files": {
     "solution": [
       "RobotSimulator.class.st"

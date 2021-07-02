@@ -1,6 +1,12 @@
 {
   "blurb": "A small DSL for dice rolling",
-  "authors": [],
+  "authors": [
+    "macta"
+  ],
+  "contributors": [
+    "bencoman",
+    "samWson"
+  ],
   "files": {
     "solution": [
       "Die.class.st"
