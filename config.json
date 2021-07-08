@@ -16,8 +16,6 @@
     "indent_size": 4,
     "highlightjs_language": "smalltalk"
   },
-  "solution_pattern": "\\.meta/solution/\\w+\\.class\\.st",
-  "test_pattern": "\\w+Test\\.class\\.st",
   "files": {
     "solution": [
       "%{pascal_slug}.class.st"
