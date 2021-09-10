@@ -115,13 +115,14 @@ ExercismSubmission >> isValid [
 ]
 
 { #category : #retrieving }
-ExercismSubmission >> populateFileContentsWith: aBlockClosure [ 
-	
-	| baseUrl |
-	baseUrl := self baseUrl.
-	
-	self sourceFilenames do: [ :filename |
-		self contentData at: filename put: (aBlockClosure value: baseUrl, filename) ]
+ExercismSubmission >> populateFileContentsWith: aBlockClosure [
+	self sourceFilenames
+		do: [ :filename | 
+			| fileContent |
+			fileContent := aBlockClosure value:
+				self baseUrl , filename.
+			fileContent
+				ifNotNil: [ self contentData at: filename put: fileContent ] ]
 ]
 
 { #category : #accessing }
@@ -137,11 +138,9 @@ ExercismSubmission >> sourceFilenames [
 
 { #category : #retrieving }
 ExercismSubmission >> sourceFilenamesWithContentsDo: aBlockClosure [
-	self sourceFilenames
-		do: [ :filename | 
-			| source |
-			source := self contentData at: filename ifAbsent: [''].
-			aBlockClosure value: filename value: source ]
+	self contentData
+		keysAndValuesDo:
+			[ :filename :contents | aBlockClosure value: filename value: contents ]
 ]
 
 { #category : #storing }
