@@ -89,6 +89,30 @@ ExercismSubmissionTest >> testPopulateFileContentsWith [
 ]
 
 { #category : #tests }
+ExercismSubmissionTest >> testPopulateFileContentsWithSkipsEmptyContent [
+	"Test populating content"
+	| actualNames baseUrl exercismSubmission rootName sourceNames |
+
+	actualNames := #('empty.st' 'readme.md').
+	sourceNames := actualNames first: 2.
+	baseUrl := 'http://data.io/res'.
+
+	exercismSubmission := ExercismSubmission
+		data: (self class	sampleDataFor: 'test-ex' filenames: actualNames baseUrl: baseUrl).
+
+	exercismSubmission
+		populateFileContentsWith: [ :filename | 
+			filename should beginWith: baseUrl.
+			rootName := filename allButFirst: baseUrl exPathString size.
+			sourceNames should include: rootName.
+			rootName , ' contents'.
+			nil].
+		
+	self
+		assert: exercismSubmission contentData size equals: 0.
+]
+
+{ #category : #tests }
 ExercismSubmissionTest >> testSourceFilenames [
 	| exercismSubmission actualNames |
 		
@@ -105,18 +129,13 @@ ExercismSubmissionTest >> testSourceFilenames [
 
 { #category : #tests }
 ExercismSubmissionTest >> testSourceFilenamesWithContentsDo [
-	| exercismSubmission actualNames expectedNames resultingNames |
-		
-	actualNames := #('a.st' 'readme.md' 'b.st').
-	expectedNames := actualNames copyWithout: 'readme.md'.
+	| exercismSubmission resultingNames |
+	
+	exercismSubmission := ExercismSubmission new contentData: ({ 'filename1' -> 'contents' . 'filename2' -> 'contents' } asDictionary).
 	resultingNames := OrderedCollection new.
+	exercismSubmission sourceFilenamesWithContentsDo: [ :name :contents | resultingNames add: name , contents ].
 	
-	exercismSubmission := ExercismSubmission
-		data: (self class sampleDataFor: 'test-ex' filenames: actualNames baseUrl: '/baseUrl').
-	
-	exercismSubmission sourceFilenamesWithContentsDo: [ :name :contents | resultingNames add: name ].
-	
-	self assertCollection: resultingNames asArray equals: expectedNames.
+	self assertCollection: resultingNames asArray equals: #('filename1contents' 'filename2contents').
 	
 	
 		
