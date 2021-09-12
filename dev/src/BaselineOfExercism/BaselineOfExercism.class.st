@@ -28,33 +28,19 @@ BaselineOfExercism >> baseline: spec [
 			self setUpDependencies: spec.
 			self setUpExercisesFor: spec.
 			spec
-				package: 'ExercismPharo70'; "Pharo override/patch methods"
-				package: 'ExercismTools' 
-					with: [ spec requires: #('ExercismPharo70') ];
-				
 				package: 'ExercismMocking' 
 					with: [ spec requires: #('Mocketry') ];
 				package: 'ExercismTests'
-					with: [ spec requires: #('ExercismTools' 'ExercismMocking'), 
+					with: [ spec requires: #('ExercismMocking'), 
 						self class exerciseTestPackageNames ];
 					
 				package: 'ExercismSystemTests'
 					with: [ spec requires: #('ExercismTests') ];
 				
-				package: 'ExercismWIP'
-					with: [ spec requires: #('ExercismTools') ];
-					
-				package: 'ExercismDev'
-					with: [ spec requires: #(
-						'OSProcess' "For shelling out to configlet"
-						'Ring2' "For mentoring support of shadow browsing"
-						'ExercismTools' ),  
-						self class exercisePackageNames ];
-			
 				package: 'ExercismV3';
 				
 				group: 'default'
-					with: #('ExercismTools' 'Exercise@Welcome');
+					with: #('Exercise@Welcome');
 					
 				group: 'mentor'
 					with: #('ExercismDev' );
