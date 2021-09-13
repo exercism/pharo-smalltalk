@@ -28,9 +28,7 @@ BaselineOfExercism >> baseline: spec [
 			self setUpDependencies: spec.
 			self setUpExercisesFor: spec.
 			spec
-				package: 'ExercismPharo70'; "Pharo override/patch methods"
-				package: 'ExercismTools' 
-					with: [ spec requires: #('ExercismPharo70') ];
+				package: 'ExercismTools';
 				
 				package: 'ExercismMocking' 
 					with: [ spec requires: #('Mocketry') ];
@@ -45,10 +43,7 @@ BaselineOfExercism >> baseline: spec [
 					with: [ spec requires: #('ExercismTools') ];
 					
 				package: 'ExercismDev'
-					with: [ spec requires: #(
-						'OSProcess' "For shelling out to configlet"
-						'Ring2' "For mentoring support of shadow browsing"
-						'ExercismTools' ),  
+					with: [ spec requires: #('ExercismTools' ),  
 						self class exercisePackageNames ];
 			
 				package: 'ExercismV3';
@@ -63,7 +58,20 @@ BaselineOfExercism >> baseline: spec [
 					with: #('ExercismDev' 'ExercismWIP' 'ExercismSystemTests');
 				
 				group: 'v3'
-					with: #('ExercismV3')]
+					with: #('ExercismV3')].
+		spec
+			for: #'pharo7.x'
+			do: [ 
+				package: 'ExercismPharo70'; "Pharo override/patch methods"
+				package: 'ExercismTools' 
+					with: [ spec requires: #('ExercismPharo70');
+				package: 'ExercismDev'
+					with: [ spec requires: #(
+						'OSProcess' "For shelling out to configlet"
+						'Ring2' "For mentoring support of shadow browsing"
+						'ExercismTools' ),  
+						self class exercisePackageNames ]
+			]
 ]
 
 { #category : #baselines }
