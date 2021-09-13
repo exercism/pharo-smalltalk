@@ -92,9 +92,3 @@ BaselineOfExercism >> setUpDependencies: spec [
     	with: [ spec repository: 'github://pavel-krivanek/Ring2'; loads: #(calypso)].
 ]
 
-{ #category : #baselines }
-BaselineOfExercism >> setUpExercisesFor: spec [
-	self class exercisePackageNames, self class exerciseTestPackageNames 
-		do:
-			[ :name | spec package: name with: [ spec requires: #('ExercismTools') ] ]
-]
