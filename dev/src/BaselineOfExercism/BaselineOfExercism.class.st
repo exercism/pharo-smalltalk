@@ -64,7 +64,7 @@ BaselineOfExercism >> baseline: spec [
 			do: [ 
 				package: 'ExercismPharo70'; "Pharo override/patch methods"
 				package: 'ExercismTools' 
-					with: [ spec requires: #('ExercismPharo70');
+				with: [ spec requires: #('ExercismPharo70')];
 				package: 'ExercismDev'
 					with: [ spec requires: #(
 						'OSProcess' "For shelling out to configlet"
