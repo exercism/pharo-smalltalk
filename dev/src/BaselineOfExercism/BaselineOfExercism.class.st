@@ -62,10 +62,11 @@ BaselineOfExercism >> baseline: spec [
 		spec
 			for: #'pharo7.x'
 			do: [ 
-				package: 'ExercismPharo70'; "Pharo override/patch methods"
-				package: 'ExercismTools' 
-				with: [ spec requires: #('ExercismPharo70')];
-				package: 'ExercismDev'
+				spec 
+					package: 'ExercismPharo70'; "Pharo override/patch methods"
+					package: 'ExercismTools' 
+					with: [ spec requires: #('ExercismPharo70')];
+					package: 'ExercismDev'
 					with: [ spec requires: #(
 						'OSProcess' "For shelling out to configlet"
 						'Ring2' "For mentoring support of shadow browsing"
