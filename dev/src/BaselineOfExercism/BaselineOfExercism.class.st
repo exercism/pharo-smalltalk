@@ -99,11 +99,11 @@ BaselineOfExercism >> setExercismLogo [
 BaselineOfExercism >> setUpDependencies: spec [
 
 	spec 
-		baseline: 'OSSubprocess';
+		baseline: 'OSSubprocess'
  		with: [spec repository: 'github://pharo-contributions/OSSubprocess:master/repository'].
 	
 	spec 
-		baseline: 'OSWinSubprocess';
+		baseline: 'OSWinSubprocess'
  		with: [spec repository: 'github://pharo-contributions/OSWinSubprocess:master/repository'].
 					
 	spec
