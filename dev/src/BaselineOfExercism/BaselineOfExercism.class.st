@@ -100,11 +100,11 @@ BaselineOfExercism >> setUpDependencies: spec [
 
 	spec 
 		baseline: 'OSSubprocess';
- 		repository: 'github://pharo-contributions/OSSubprocess:master/repository'.
+ 		with: [spec repository: 'github://pharo-contributions/OSSubprocess:master/repository'].
 	
 	spec 
 		baseline: 'OSWinSubprocess';
- 		repository: 'github://pharo-contributions/OSWinSubprocess:master/repository'.
+ 		with: [spec repository: 'github://pharo-contributions/OSWinSubprocess:master/repository'].
 					
 	spec
     	baseline: 'Mocketry'
