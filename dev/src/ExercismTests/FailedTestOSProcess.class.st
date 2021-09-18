@@ -1,35 +1,27 @@
 "
-# FailedTestOSProcess
-
 I represent an external process for use in testing. To avoid hard to test behaviour
 and side effects in classes that use me some of my superclasses methods have been 
 overriden.
 
 ## Overridden Methods
 
-### `#waitForCommand:`
+### `#runAndWait`
 
 Normally I would execute an external command here. Instead I make no external
 process calls or side effects and return `self`.
 
-### `#succeeded`
+### `#isSuccess`
 
 Answers `false`. I always assume my external command has failed.
 "
 Class {
 	#name : #FailedTestOSProcess,
-	#superclass : #PipeableOSProcess,
-	#category : #'ExercismTests-UnitTests'
+	#superclass : #MockTestOSProcess,
+	#category : #'ExercismTests-Mock'
 }
 
 { #category : #testing }
-FailedTestOSProcess >> succeeded [ 
+FailedTestOSProcess >> isSuccess [
 
 	^ false
-]
-
-{ #category : #'external command processing' }
-FailedTestOSProcess >> waitForCommand: aCommandString [ 
-	
-	^ self
 ]

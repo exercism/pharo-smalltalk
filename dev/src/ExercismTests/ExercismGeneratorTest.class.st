@@ -213,8 +213,7 @@ ExercismGeneratorTest >> setUp [
 { #category : #tests }
 ExercismGeneratorTest >> testFailedGenerateSignalsException [
 
-	instance osProcess: FailedTestOSProcess new.
-	
+	instance osSubProcess: FailedTestOSProcess.
 	self 
 		should: [ instance generate ]
 		raise: Error
@@ -224,7 +223,7 @@ ExercismGeneratorTest >> testFailedGenerateSignalsException [
 { #category : #tests }
 ExercismGeneratorTest >> testGenerate [
 
-	instance osProcess: SuccessfulTestOSProcess new.
+	instance osSubProcess: SuccessfulTestOSProcess.
 	
 	instance generate.
 	
@@ -246,7 +245,7 @@ ExercismGeneratorTest >> testGeneratorKebabCase [
 { #category : #tests }
 ExercismGeneratorTest >> testSuccessfulGenerateDoesNotSignalException [
 
-	instance osProcess: SuccessfulTestOSProcess new.
+	instance osSubProcess: SuccessfulTestOSProcess.
 	
 	self 
 		shouldnt: [ instance generate ]

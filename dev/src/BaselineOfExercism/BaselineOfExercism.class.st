@@ -43,7 +43,9 @@ BaselineOfExercism >> baseline: spec [
 					with: [ spec requires: #('ExercismTools') ];
 					
 				package: 'ExercismDev'
-					with: [ spec requires: #('ExercismTools' ),  
+					with: [ spec requires: #('ExercismTools'
+							'OSSubprocess' 'OSWinSubprocess' "For shelling out to configlet"						
+						 ),  
 						self class exercisePackageNames ];
 			
 				package: 'ExercismV3';
@@ -68,11 +70,9 @@ BaselineOfExercism >> baseline: spec [
 					with: [ spec requires: #('ExercismPharo70')];
 					package: 'ExercismDev'
 					with: [ spec requires: #(
-						'OSProcess' "For shelling out to configlet"
 						'Ring2' "For mentoring support of shadow browsing"
-						'ExercismTools' ),  
-						self class exercisePackageNames ]
-			]
+						)]
+			].
 ]
 
 { #category : #baselines }
@@ -99,13 +99,13 @@ BaselineOfExercism >> setExercismLogo [
 BaselineOfExercism >> setUpDependencies: spec [
 
 	spec 
-		configuration: 'OSProcess' 
-			with: [
-				spec
-					className: #ConfigurationOfOSProcess;
-					versionString: #'stable';
-					repository: 'http://www.squeaksource.com/OSProcess' ].
-				
+		baseline: 'OSSubprocess';
+ 		repository: 'github://pharo-contributions/OSSubprocess:master/repository'.
+	
+	spec 
+		baseline: 'OSWinSubprocess';
+ 		repository: 'github://pharo-contributions/OSWinSubprocess:master/repository'.
+					
 	spec
     	baseline: 'Mocketry'
     	with: [ spec repository: 'github://pharo-exercism/Mocketry:v4.0.x' ].
