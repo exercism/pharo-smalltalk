@@ -197,5 +197,5 @@ ExercismManager >> submitToExercism: packageOrTag [
 
 { #category : #exercism }
 ExercismManager >> viewOnExercism: packageOrTag [
-	WebBrowser openOn: 'https://exercism.io/my/tracks/pharo'
+	WebBrowser openOn: 'https://exercism.org/tracks/pharo'
 ]
