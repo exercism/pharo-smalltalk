@@ -22,6 +22,45 @@ Class {
 }
 
 { #category : #asserting }
+ExercismGeneratorTest >> activeExercisesWithPackageDo: aBlock [
+
+
+	instance exercismExercise allExercises
+		select: [ :ex | ex isActive ]
+		thenDo: [ :ex | 
+			aBlock value: ex exercisePackage.
+	]
+]
+
+{ #category : #asserting }
+ExercismGeneratorTest >> assertAllActiveExerciseClassesWithSolutionsExists [
+
+self	activeExercisesWithPackageDo: [:exPackage | 
+			|exerciseName exerciseFile|
+			exerciseName := ExercismExercise exerciseNameFrom: exPackage.
+			exerciseFile := memoryFileReference / exerciseName / '.meta' / 'solution' / ((exerciseName = 'matrix' ifTrue: [exerciseName, '-reader'] ifFalse: [exerciseName]) kebabAsCamelCase, '.class.st' ).
+			self assert: exerciseFile exists.
+			self assert: exerciseFile contents isNotEmpty.			
+	]
+]
+
+{ #category : #asserting }
+ExercismGeneratorTest >> assertAllActiveExerciseTestClassesExists [
+
+self	activeExercisesWithPackageDo: [:exPackage | 
+			| exerciseName |
+			exerciseName := ExercismExercise exerciseNameFrom: exPackage.
+			exPackage classes select: [ :cls | cls superclass = ExercismTest ]	
+			thenDo: [ :tc |
+				| testFile |  
+				testFile := memoryFileReference / exerciseName / (tc name, '.class.st').
+				self assert: testFile exists.
+				self assert: testFile contents isNotEmpty.	
+			]
+		]
+]
+
+{ #category : #asserting }
 ExercismGeneratorTest >> assertExerciseTests [
 
 	| file |
@@ -210,6 +249,13 @@ ExercismGeneratorTest >> setUp [
 		
 ]
 
+{ #category : #running }
+ExercismGeneratorTest >> tearDown [ 
+
+	instance := nil.
+	super tearDown
+]
+
 { #category : #tests }
 ExercismGeneratorTest >> testFailedGenerateSignalsException [
 
@@ -230,6 +276,19 @@ ExercismGeneratorTest >> testGenerate [
 	self assertExerciseTests.
 	self assertHints.
 	self assertSolution
+]
+
+{ #category : #tests }
+ExercismGeneratorTest >> testGenerateSourceFilesForActiveExercises [
+
+	instance osSubProcess: SuccessfulTestOSProcess.
+	
+	"test for all active exercises not just Two-fer mock"
+	instance exercismExercise: ExercismExercise.
+	
+	instance generateSourceFilesForActiveExercises.
+	self assertAllActiveExerciseClassesWithSolutionsExists.
+	self assertAllActiveExerciseTestClassesExists.
 ]
 
 { #category : #tests }
