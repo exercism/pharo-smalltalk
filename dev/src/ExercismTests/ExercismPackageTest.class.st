@@ -12,6 +12,11 @@ ExercismPackageTest >> testExerciseNameOnRPackage [
 
 { #category : #tests }
 ExercismPackageTest >> testExerciseNameOnRPackageTag [
+
 	"Test legacy exerciseNames on RPackageTags"
-	self assert: self class package classTags anyOne exerciseName equals: 'UnitTests'.
+
+	self
+		assertCollection:
+		(self class package classTags collect: #exerciseName)
+		includesAny: #( 'UnitTests' #Mock )
 ]
