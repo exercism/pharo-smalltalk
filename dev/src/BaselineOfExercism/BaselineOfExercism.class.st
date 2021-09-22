@@ -28,9 +28,7 @@ BaselineOfExercism >> baseline: spec [
 			self setUpDependencies: spec.
 			self setUpExercisesFor: spec.
 			spec
-				package: 'ExercismPharo70'; "Pharo override/patch methods"
-				package: 'ExercismTools' 
-					with: [ spec requires: #('ExercismPharo70') ];
+				package: 'ExercismTools';
 				
 				package: 'ExercismMocking' 
 					with: [ spec requires: #('Mocketry') ];
@@ -45,10 +43,9 @@ BaselineOfExercism >> baseline: spec [
 					with: [ spec requires: #('ExercismTools') ];
 					
 				package: 'ExercismDev'
-					with: [ spec requires: #(
-						'OSProcess' "For shelling out to configlet"
-						'Ring2' "For mentoring support of shadow browsing"
-						'ExercismTools' ),  
+					with: [ spec requires: #('ExercismTools'
+							'OSSubprocess' 'OSWinSubprocess' "For shelling out to configlet"						
+						 ),  
 						self class exercisePackageNames ];
 			
 				package: 'ExercismV3';
@@ -63,7 +60,19 @@ BaselineOfExercism >> baseline: spec [
 					with: #('ExercismDev' 'ExercismWIP' 'ExercismSystemTests');
 				
 				group: 'v3'
-					with: #('ExercismV3')]
+					with: #('ExercismV3')].
+		spec
+			for: #'pharo7.x'
+			do: [ 
+				spec 
+					package: 'ExercismPharo70'; "Pharo override/patch methods"
+					package: 'ExercismTools' 
+					with: [ spec requires: #('ExercismPharo70')];
+					package: 'ExercismDev'
+					with: [ spec requires: #(
+						'Ring2' "For mentoring support of shadow browsing"
+						)]
+			].
 ]
 
 { #category : #baselines }
@@ -90,13 +99,13 @@ BaselineOfExercism >> setExercismLogo [
 BaselineOfExercism >> setUpDependencies: spec [
 
 	spec 
-		configuration: 'OSProcess' 
-			with: [
-				spec
-					className: #ConfigurationOfOSProcess;
-					versionString: #'stable';
-					repository: 'http://www.squeaksource.com/OSProcess' ].
-				
+		baseline: 'OSSubprocess'
+ 		with: [spec repository: 'github://pharo-contributions/OSSubprocess:master/repository'].
+	
+	spec 
+		baseline: 'OSWinSubprocess'
+ 		with: [spec repository: 'github://pharo-contributions/OSWinSubprocess:master/repository'].
+					
 	spec
     	baseline: 'Mocketry'
     	with: [ spec repository: 'github://pharo-exercism/Mocketry:v4.0.x' ].

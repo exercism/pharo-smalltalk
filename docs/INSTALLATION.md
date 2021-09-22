@@ -50,19 +50,23 @@ You can now start Pharo with Exercism already loaded, by simply typing:
 
 We are still working out the best command line tool prerequisites for windows, however you can also install Pharo graphically using the [Windows Pharo Launcher](https://files.pharo.org/pharo-launcher/windows) (a handy tool for managing multiple Pharo images). This launcher is also [available](http://pharo.org/download) for OSX and Linux if you are GUI inclined.
 
-1. Run the downloaded .msi file to install the Pharo Launcher.
+1. Run the downloaded .msi file to install the Pharo Launcher.  
+2. Run Pharo launcher.  
+3. On the top-left corner click "New". 
+4. In window select "Official distributions" from template categories.  
+5. For Exercism exercises, choose from list of Pharo image templates: "Pharo 9.0 64-bit (stable)" as recommended. 
+6. Click to highlight an image template, give it a name, then click the create image button at the bottom (an orange cog shape).  
+![obrazek](https://user-images.githubusercontent.com/45875448/134194300-4c3be6ec-13a7-44c7-b759-c3aa0c25a20f.png)
+7. Once the template is downloaded it will appear on the right in the Existing Images table. Click on it, and then click the launch button at the top (a green _play_ arrow).  
+![obrazek](https://user-images.githubusercontent.com/45875448/134194728-abd6e719-b301-4e42-85de-71d50da1be98.png)
 
-2. Run Pharo launcher and on the left of the window is a list of various Pharo image templates that can be downloaded. For Exercism
-exercises, Pharo 7.0 32-bit (stable) is recommended (64bit is currently in beta and has reported issues). It can be found under the Official Distributions heading in the Templates
-tree. Click to highlight an image template, then click the create image icon at the top middle (an orange cog shape), and give
-it a name.
-3. Once the template is downloaded it will appear on the right in the Existing Images table. Click on it, and then click the launch button at the top right (a green _play_ arrow).
 
-4. Once the Pharo image has started, open a Playground by choosing the _Tools_ menu, and selecting _Playground_, or use
-`ctrl + o + w`.
+8. Once the Pharo image has started, open a Playground by choosing the _Browse_ menu, and selecting _Playground_, or use
+`ctrl + o + w`.  
+![obrazek](https://user-images.githubusercontent.com/45875448/134195126-e2101771-1228-4d61-a165-f9e4c4ca8eeb.png)
 
-Finally, copy and paste the following snippet into the playground:
 
+9. Finally, copy and paste the following snippet into the playground:
 ```smalltalk
 Iceberg remoteTypeSelector: #httpsUrl.
 Metacello new
@@ -74,7 +78,7 @@ Metacello new
 
 Then evaluate the pasted code by highlighting all of it, right clicking then selecting _Do it_ from the menu (or use `ctrl + d`).
 
-If everything is working properly, you should see loading progress bars flicker across the screen, and then a System Browser window will appear.
+**If everything is working properly**, you should see loading progress bars flicker across the screen, and then a System Browser window will appear.
 
 
 ## Getting Started (ALL)

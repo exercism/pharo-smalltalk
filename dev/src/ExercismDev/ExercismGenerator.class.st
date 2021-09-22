@@ -53,9 +53,9 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'exTonelWriter',
-		'osProcess',
 		'exercismExercise',
-		'exercisesPath'
+		'exercisesPath',
+		'osSubProcess'
 	],
 	#classVars : [
 		'DefaultPath'
@@ -92,6 +92,20 @@ ExercismGenerator class >> generate [
 			]
 ]
 
+{ #category : #'accessing - platform' }
+ExercismGenerator class >> subProcessClass [
+
+	OSPlatform current isWindows ifTrue: [ 
+		^ self class environment at: #OSWSWinProcess ].
+	^ self class environment at: #OSSUnixSubprocess 
+]
+
+{ #category : #accessing }
+ExercismGenerator >> basePathReference [
+
+	^ self exercisesPath parent
+]
+
 { #category : #helper }
 ExercismGenerator >> createTagSnapshotFor: packageOrTag [
 	| parentSnapshot |
@@ -109,6 +123,12 @@ ExercismGenerator >> createTagSnapshotFor: packageOrTag [
 ExercismGenerator >> exTonelWriter: anExTonelWriter [ 
 
 	exTonelWriter := anExTonelWriter
+]
+
+{ #category : #accessing }
+ExercismGenerator >> exercisesPath [
+
+	^ exercisesPath
 ]
 
 { #category : #accessing }
@@ -136,20 +156,15 @@ ExercismGenerator >> exercismExercise: anExerciseClass [
 
 { #category : #generation }
 ExercismGenerator >> generate [
-	| cmd result basePathReference |
 
-	self exercismExercise allExercises select: [:ex | ex isActive ] thenDo: [:ex |
-			self generateSourceFilesFor: ex exercisePackage to: exercisesPath ].
-		
-	basePathReference := exercisesPath parent.
-	ExercismConfigGenerator generateTo: basePathReference.
+	"generate source files for active exercises"
+	self generateSourceFilesForActiveExercises.
 	
-	cmd := 'configlet generate ', (basePathReference pathString surroundedBySingleQuotes).		
-	result := self osProcess waitForCommand: cmd.
+	"generate configuration config.json file"
+	ExercismConfigGenerator generateTo: self basePathReference.
 	
-	result succeeded
-		ifFalse: [ 
-			self error: 'failure running "configlet generate" - ' , result outputAndError printString ]
+	"run configlet generation"
+	self runConfigletCommand.
 ]
 
 { #category : #helper }
@@ -187,7 +202,7 @@ ExercismGenerator >> generateReadmeHintFor: anExercismExercise to: destinationDi
 			| hint |
 			(hint := anExercismExercise hintText) = 'TBD'
 				ifTrue: [ 
-					self halt: 'Forgot to update Exercise hint for: ', anExercismExercise name ].
+					self error: 'Forgot to update Exercise hint for: ', anExercismExercise name ].
 				
 			stream nextPutAll: hint ]
 ]
@@ -234,19 +249,42 @@ ExercismGenerator >> generateSourceFilesFor: packageOrTag to: filePathString [
 
 ]
 
-{ #category : #accessing }
-ExercismGenerator >> osProcess [
+{ #category : #generation }
+ExercismGenerator >> generateSourceFilesForActiveExercises [
 
-	^ osProcess 
-		ifNotNil: [ osProcess ] 
-		ifNil: [ 
-			osProcess := PipeableOSProcess.
-			osProcess  
-			 ] 
+	self exercismExercise allExercises
+		select: [ :ex | ex isActive ]
+		thenDo: [ :ex | 
+			self
+				generateSourceFilesFor: ex exercisePackage
+				to: self exercisesPath ]
 ]
 
 { #category : #accessing }
-ExercismGenerator >> osProcess: anOsProcess [ 
+ExercismGenerator >> osSubProcess [
 
-	osProcess := anOsProcess
+	^ osSubProcess 
+		ifNotNil: [ osSubProcess ] 
+		ifNil: [ 
+		  osSubProcess := self class subProcessClass.
+		  osSubProcess ]
+]
+
+{ #category : #accessing }
+ExercismGenerator >> osSubProcess: anOsSubProcess [ 
+
+	osSubProcess := anOsSubProcess
+]
+
+{ #category : #generation }
+ExercismGenerator >> runConfigletCommand [
+	|result |		
+	result := self osSubProcess new
+		command: 'configlet generate';
+		arguments: (Array with: self basePathReference pathString surroundedBySingleQuotes);
+		redirectStdout;
+		runAndWait.
+	
+	result isSuccess ifFalse: [ 
+			self error: 'failure running "configlet generate" - ' , result lastError printString ]
 ]
