@@ -18,23 +18,15 @@ ExercismHttpClientTest >> setUp [
 
 { #category : #tests }
 ExercismHttpClientTest >> testGenericGet [
-	"Basic test on https retrieve against Google"
+	| client response |
+	client := ExercismHttpClient newHost: 'duckduckgo.co.uk'.
 
-	| client downloadResult |
-	
-	client := ExercismHttpClient newHost: 'google.co.uk'.
-		
-	downloadResult := client getResource: '/search' with: {'q'->'pharo'}.
-	
-	self assert: downloadResult notNil description: 'Got a result'.
+	response := client getResource: '/' with: { ('q' -> 'pharo') }.
+
+	self assert: response notNil description: 'unsuccessful request to duckduckgo.co.uk'.
 	self
-		deny: (downloadResult includesSubstring: '"error"')
-		description: 'Got an error'.
-	self
-		assert:
-			(downloadResult
-				includesSubstring: '"http://schema.org/SearchResultsPage"')
-		description: 'Got a search solution'
+		assert: (response includesSubstring: 'pharo.org')
+		description: 'could not find ''pharo.org'' in the response from duckduckgo.co.uk'
 ]
 
 { #category : #tests }
