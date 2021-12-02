@@ -1,6 +1,29 @@
 Extension { #name : #TestResult }
 
 { #category : #'*ExercismTools' }
+TestResult >> exercismEnvironmentInfoOn: aStream [
+
+	aStream 
+	 	nextPutAll: 'Used OS/Platform: ';
+		nextPutAll: Smalltalk os platformName; space;
+		nextPutAll: Smalltalk os version; space;
+		nextPutAll: Smalltalk os subtype;
+		crlf;
+		nextPutAll: 'Image version: ';
+		nextPutAll: SystemVersion current version; space;
+		nextPutAll: 'build: ';
+		nextPutAll: SystemVersion current build asString.
+		Smalltalk vm is32bit 
+			ifTrue: [ aStream nextPutAll: ' (32 Bit)' ]
+			ifFalse: [ aStream nextPutAll: ' (64 Bit)' ].
+	aStream 
+		crlf;
+		nextPutAll: 'VM version: ';
+		nextPutAll: Smalltalk vm interpreterSourceVersion
+		 
+]
+
+{ #category : #'*ExercismTools' }
 TestResult >> exercismSummary [
 	^String streamContents: [ :s | s 
 		nextPutAll: 'Tested on: ';
@@ -15,5 +38,8 @@ TestResult >> exercismSummary [
 		nextPutAll: self unexpectedFailureCount printString;
 		nextPutAll: ' failures, ';
 		nextPutAll: self unexpectedErrorCount printString;
-		nextPutAll:' errors ' ]
+		nextPutAll:' errors.';
+		crlf.
+		self exercismEnvironmentInfoOn: s.
+	]
 ]
