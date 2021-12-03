@@ -12,10 +12,10 @@ TestResult >> exercismEnvironmentInfoOn: aStream [
 		nextPutAll: 'Image version: ';
 		nextPutAll: SystemVersion current version; space;
 		nextPutAll: 'build: ';
-		nextPutAll: SystemVersion current build asString.
-		Smalltalk vm is32bit 
-			ifTrue: [ aStream nextPutAll: ' (32 Bit)' ]
-			ifFalse: [ aStream nextPutAll: ' (64 Bit)' ].
+		nextPutAll: SystemVersion current build asString;
+		nextPutAll: (Smalltalk vm is32bit 
+			ifTrue: [ ' (32 Bit)' ]
+			ifFalse: [ ' (64 Bit)' ]).
 	aStream 
 		crlf;
 		nextPutAll: 'VM version: ';
