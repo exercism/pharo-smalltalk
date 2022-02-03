@@ -268,7 +268,7 @@ ExercismHttpClient >> solutionPathFor: aString [
 			s
 				nextPutAll: self class solutionPath exPathString;
 				nextPutAll:
-					(aString first = Path delimeter
+					(aString first = Path delimiter
 						ifTrue: [ aString allButFirst ]
 						ifFalse: [ aString ]) ]
 ]
