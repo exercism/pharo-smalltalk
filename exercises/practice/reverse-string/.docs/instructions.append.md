@@ -1,6 +1,6 @@
 # Instructions append
 
-While there is are `#reversed` and `#reverseDo:` methods for Strings, can you figure out how to do this yourself using lower level character iteration and streams? 
+While there are `#reversed` and `#reverseDo:` methods for Strings, can you figure out how to do this yourself using lower level character iteration and streams? 
 
 To help you browse code, Pharo has a neat code finder tool. Press Shift-Enter to activate it.
 
@@ -22,10 +22,10 @@ There is also the notion of a symbol which is a string that is unique memory-wid
 There are also very few commas in Smalltalk programs because they play no syntactic role.
 That’s why array literals, for example, are comma-free; e.g.
 `#(1 2 3 4 5)`
-However, comma is an operator in its own right and you will notice it when concatenating two strings; e.g.
+However, the comma is an operator in its own right and you will notice it when concatenating two strings; e.g.
 `'string1', 'string2'`
 
-Finally, it's worth knowing that Strings and Characters are distinct classes. String are a collection of Characters. This can catch you off guard when iterating over strings as you can end up giving characters to a method that expects strings. Consider...
+Finally, it's worth knowing that Strings and Characters are distinct classes. A String is a collection of Characters. This can catch you off guard when iterating over strings as you can end up giving characters to a method that expects strings. Consider...
 ```smalltalk
 (('hello' at: 2) = $e) inspect.
 (('hello' at: 2) = 'e') inspect.
