@@ -32,5 +32,5 @@ Allergies >> allergyListForScore: scoringInteger [
 Allergies >> bitIndexFor: aString [
 	^ self class allergyList
 		indexOf: aString
-		ifAbsent: [ ^ DomainError signal: 'invalid food item, ' , aString ]
+		ifAbsent: [ ^ Error signal: 'invalid food item, ' , aString ]
 ]
