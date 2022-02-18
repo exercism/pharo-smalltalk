@@ -105,3 +105,28 @@ ResistorColorDuoTest >> test04_OrangeAndOrange [
 	result := resistorColorDuoCalculator valueWithColors: #('orange' 'orange' ) .
 	self assert: result equals: 33
 ]
+
+{ #category : #tests }
+ResistorColorDuoTest >> test05_IgnoreExtraColors [
+	| result |
+
+	result := resistorColorDuoCalculator valueWithColors: #('green' 'brown' 'orange' ) .
+	self assert: result equals: 51
+]
+
+{ #category : #extra }
+ResistorColorDuoTest >> testDetectInvalidColors [
+	"first color"
+	self
+		should: [resistorColorDuoCalculator valueWithColors: #('unknown' 'black' )]
+		raise: Error
+		whoseDescriptionIncludes: 'Invalid color'
+		description: 'Should get an error with an unknown color'.
+		
+	"second color"
+	self
+		should: [resistorColorDuoCalculator valueWithColors: #('black' 'unknown' )]
+		raise: Error
+		whoseDescriptionIncludes: 'Invalid color'
+		description: 'Should get an error with an unknown color'
+]

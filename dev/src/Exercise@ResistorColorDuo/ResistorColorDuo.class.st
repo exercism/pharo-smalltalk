@@ -16,9 +16,19 @@ ResistorColorDuo class >> resistorColorsTable [
 ]
 
 { #category : #exercism }
+ResistorColorDuo >> colorValue: colour [
+	"Find the value of the given colour band, or error if not found."
+	
+	^ -1 + (self class resistorColorsTable 
+		indexOf: colour 
+		ifAbsent: [ self error: 'Invalid color ', colour ])
+]
+
+{ #category : #exercism }
 ResistorColorDuo >> valueWithColors: coloursCollection [
 	"Answer the value of the resister with colour bands in @coloursCollection"
 	
-	^coloursCollection inject: 0 into: [ :result :colour |
-		result * 10 + ((self class resistorColorsTable indexOf: colour) - 1) ]
+	^(coloursCollection first: 2)
+		inject: 0
+		into: [ :result :colour | result * 10 + (self colorValue: colour) ]
 ]
