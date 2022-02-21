@@ -18,10 +18,13 @@ ResistorColorDuo class >> resistorColorsTable [
 { #category : #exercism }
 ResistorColorDuo >> colorValue: colour [
 	"Find the value of the given colour band, or error if not found."
-	
-	^ -1 + (self class resistorColorsTable 
+	|colourIndex|
+	colourIndex := self class resistorColorsTable 
 		indexOf: colour 
-		ifAbsent: [ self error: 'Invalid color ', colour ])
+		ifAbsent: [ self error: 'Invalid color ', colour ].
+		
+	"Smalltalk collections starts with index 1, therefore decrementing"
+	^ colourIndex - 1
 ]
 
 { #category : #exercism }
