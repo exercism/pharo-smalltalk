@@ -13,10 +13,10 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: Fetch smalltalkCI
-        uses: hpi-swa/setup-smalltalkCI@387e0a52e8cc6990f886fe825fd5bec8a6af9584
+        uses: hpi-swa/setup-smalltalkCI@v1
         id: smalltalkci
         with: 
-          smalltalk-version: 'Pharo64-8.0'
+          smalltalk-version: 'Pharo64-9.0'
       - run: smalltalkci -s ${{ steps.smalltalkci.outputs.smalltalk-version }}
         shell: bash
         timeout-minutes: 15
