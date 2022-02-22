@@ -21,6 +21,6 @@ Any class >> verify [
 	"Verify all current mocks and ensure their expectations have been met. This eases the burdon on having to make a series of 'should receive' calls, however some may still be needed (in addition) for more complicated assertions."
 	
 	| mocks |
-	mocks := MockCurrentBehaviour value registeredObjects.
+	mocks := MockCurrentBehaviour value interactionHistory involvedObjects.
 	mocks do: [ :mock | mock should verify ]
 ]
