@@ -73,6 +73,9 @@ BaselineOfExercism >> baseline: spec [
 						'Ring2' "For mentoring support of shadow browsing"
 						)]
 			].
+		spec
+			for: #'pharo9.x'
+			do: [spec package: 'ExercismPharo90']
 ]
 
 { #category : #baselines }
