@@ -159,13 +159,13 @@ ExercismExerciseTest >> testSolutionSources [
 	sources := TestmanyTest exercise solutionSources.
 	
 	classes := {Testmany. TestOtherClass. TestOtherClassTest }.
-	classNames := (classes collect: [ :c | ClassDescription exTonelClassFilenameFor: c name ]) copyWithFirst: 'TestResults.txt'.
+	classNames := (classes collect: [ :c | ClassDescription exTonelClassFilenameFor: c name ]) copyWith: 'TestResults.txt'.
 	
 	self assertCollection: sources keys asSet equals: classNames asSet.
 	
-	(sources at: classNames first) should includeSubstring: 'Tested on:'.
-	(sources at: classNames second) should includeSubstring: '#name : #', classes first name.
-	(sources at: classNames last) should includeSubstring: '#name : #', classes last name.
+	(sources at: classNames last) should includeSubstring: 'Tested on:'.
+	(sources at: classNames first) should includeSubstring: '#name : #', classes first name.
+	(sources at: classNames allButLast last) should includeSubstring: '#name : #', classes last name.
 ]
 
 { #category : #tests }
@@ -174,9 +174,10 @@ ExercismExerciseTest >> testSolutionSourcesWithExtension [
 	
 	sources := TestExExtensionTest exercise solutionSources.
 	
-	classNames := {'TestResults.txt'. 
-	ClassDescription exTonelClassFilenameFor: #TestExtension. 
-	ClassDescription exTonelExtensionFilenameFor: #String  }. 
+	classNames := {
+        ClassDescription exTonelClassFilenameFor: #TestExtension. 
+        ClassDescription exTonelExtensionFilenameFor: #String.
+        'TestResults.txt' }. 
 	
 	self assertCollection: sources keys asSet equals: classNames asSet.
 ]

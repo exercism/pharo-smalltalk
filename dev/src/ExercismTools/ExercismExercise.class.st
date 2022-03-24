@@ -346,9 +346,9 @@ ExercismExercise >> solutionSources [
 	
 	"Build result in the order we want files displayed by Exercism web interface"
 	resultDictionary := OrderedDictionary new.
-	resultDictionary at: 'TestResults.txt' put: testResult exercismSummary.
 	solutionFileNames do: [ :filename | 
 		resultDictionary at: filename put: ( packageFileMap at: filename) contents ].
+	resultDictionary at: 'TestResults.txt' put: testResult exercismSummary.
 	^ resultDictionary
 
 ]
