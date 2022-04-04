@@ -55,7 +55,8 @@ HighScoresTest >> setUp [
 HighScoresTest >> test01_ListOfScores [
 	| result |
 
-	result := highScoresCalculator scores: #(30 50 20 70 ) .
+	highScoresCalculator addScores: #(30 50 20 70 ).
+	result := highScoresCalculator scores.
 	self assert: result equals: #(30 50 20 70 )
 ]
 
@@ -63,7 +64,8 @@ HighScoresTest >> test01_ListOfScores [
 HighScoresTest >> test02_LatestScore [
 	| result |
 
-	result := highScoresCalculator latestScore: #(100 0 90 30 ) .
+	highScoresCalculator addScores: #(100 0 90 30 ).
+	result := highScoresCalculator latestScore.
 	self assert: result equals: 30
 ]
 
@@ -71,7 +73,8 @@ HighScoresTest >> test02_LatestScore [
 HighScoresTest >> test03_PersonalBest [
 	| result |
 
-	result := highScoresCalculator personalBestScores: #(40 100 70 ) .
+	highScoresCalculator addScores: #(40 100 70 ).
+	result := highScoresCalculator personalBestScores.
 	self assert: result equals: 100
 ]
 
@@ -79,7 +82,8 @@ HighScoresTest >> test03_PersonalBest [
 HighScoresTest >> test04_Top3ScoresPersonalTopThreeFromAListOfScores [
 	| result |
 
-	result := highScoresCalculator personalTopThreeScores: #(10 30 90 30 100 20 10 0 30 40 40 70 70 ) .
+	highScoresCalculator addScores: #(10 30 90 30 100 20 10 0 30 40 40 70 70 ) .
+	result := highScoresCalculator personalTopThreeScores.
 	self assert: result equals: #(100 90 70 )
 ]
 
@@ -87,7 +91,8 @@ HighScoresTest >> test04_Top3ScoresPersonalTopThreeFromAListOfScores [
 HighScoresTest >> test05_Top3ScoresPersonalTopHighestToLowest [
 	| result |
 
-	result := highScoresCalculator personalTopThreeScores: #(20 10 30 ) .
+	highScoresCalculator addScores: #(20 10 30 ).
+	result := highScoresCalculator personalTopThreeScores.
 	self assert: result equals: #(30 20 10 )
 ]
 
@@ -95,7 +100,8 @@ HighScoresTest >> test05_Top3ScoresPersonalTopHighestToLowest [
 HighScoresTest >> test06_Top3ScoresPersonalTopWhenThereIsATie [
 	| result |
 
-	result := highScoresCalculator personalTopThreeScores: #(40 20 40 30 ) .
+	highScoresCalculator addScores: #(40 20 40 30 ).
+	result := highScoresCalculator personalTopThreeScores.
 	self assert: result equals: #(40 40 30 )
 ]
 
@@ -103,7 +109,8 @@ HighScoresTest >> test06_Top3ScoresPersonalTopWhenThereIsATie [
 HighScoresTest >> test07_Top3ScoresPersonalTopWhenThereAreLessThan3 [
 	| result |
 
-	result := highScoresCalculator personalTopThreeScores: #(30 70 ) .
+	highScoresCalculator addScores: #(30 70 ).
+	result := highScoresCalculator personalTopThreeScores.
 	self assert: result equals: #(70 30 )
 ]
 
@@ -111,6 +118,51 @@ HighScoresTest >> test07_Top3ScoresPersonalTopWhenThereAreLessThan3 [
 HighScoresTest >> test08_Top3ScoresPersonalTopWhenThereIsOnlyOne [
 	| result |
 
-	result := highScoresCalculator personalTopThreeScores: #(40 ) .
+	highScoresCalculator addScores: #(40 ).
+	result := highScoresCalculator personalTopThreeScores.
 	self assert: result equals: #(40 )
+]
+
+{ #category : #extra }
+HighScoresTest >> testLoadMultipleBatchesOfScores [
+
+	highScoresCalculator addScores: #(20 50 40).
+	highScoresCalculator addScores: #(30 10).
+	self assert: highScoresCalculator latestScore equals: 10.
+	self assert: highScoresCalculator personalBestScores equals: 50.
+	self assert: highScoresCalculator personalTopThreeScores equals: #(50 40 30)
+]
+
+{ #category : #extra }
+HighScoresTest >> testPersonalBestWithTies [ 
+
+	| result |
+	highScoresCalculator addScores: #(40 100 70 60 100).
+	result := highScoresCalculator personalBestScores.
+	self assert: result equals: 100
+]
+
+{ #category : #extra }
+HighScoresTest >> testPersonalTopThreeDoesNotSortStoredScores [
+	"Ensure that the process of returning the top three
+	 does not alter the order that the scores are stored in."
+
+	| topThree |
+	highScoresCalculator addScores: #(1 2 3 4).
+	topThree := highScoresCalculator personalTopThreeScores.
+	self assert: topThree equals: #(4 3 2).
+	self assert: highScoresCalculator latestScore equals: 4
+]
+
+{ #category : #extra }
+HighScoresTest >> testScoresAreImmutable [
+	"Ensure that the collection of scores returned is a copy"
+
+	| scores |
+	highScoresCalculator addScores: #(1 2 3 4).
+	scores := highScoresCalculator scores.
+	scores atLast: 1 put: 5.
+	
+	"fetch the scores again and verify the first one"
+	self assert: highScoresCalculator latestScore equals: 4
 ]
