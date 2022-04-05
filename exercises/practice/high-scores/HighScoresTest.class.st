@@ -145,7 +145,7 @@ HighScoresTest >> testPersonalBestWithTies [
 { #category : #extra }
 HighScoresTest >> testPersonalTopThreeDoesNotSortStoredScores [
 	"Ensure that the process of returning the top three
-	 does not alter the order that the scores are stored in."
+ does not alter the order of the stored scores."
 
 	| topThree |
 	highScoresCalculator addScores: #(1 2 3 4).
@@ -164,5 +164,5 @@ HighScoresTest >> testScoresAreImmutable [
 	scores atLast: 1 put: 5.
 	
 	"fetch the scores again and verify the first one"
-	self assert: highScoresCalculator latestScore equals: 4
+	self assert: highScoresCalculator personalBestScores equals: 4
 ]
