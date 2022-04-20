@@ -15,7 +15,7 @@ If you are familiar with Pharo, but not quite sure about developing exercises, w
 
 If you sign up as a [Pharo Mentor](https://exercism.io/mentor/registrations/new) by choosing Pharo in the mentor list, you then need to [update your bio](https://github.com/exercism/website-copy/blob/master/mentors/README.md#mentors) and load up a special (dev-light) image.
 
-Simply evalaluate the following in a fresh Pharo image:
+Simply evalaluate the following in a fresh Pharo image (e.g. created from [Pharo Launcher](https://pharo.org/download) - choose latest stable release from Official distributions):
 
 ```smalltalk
 Metacello new
@@ -42,7 +42,7 @@ To begin, you need to ensure that you have a complete exercism development envir
 
 Next setup a Pharo environment for creating the actual coding examples. You need to load a development exercism baseline:
 
-1. Use [PharoLauncher](https://github.com/pharo-project/pharo-launcher) to create a fresh 7.0 (stable) development image, and launch it (you can also use [zerconf](https://get.pharo.org/) if you are familiar with it)
+1. Use [PharoLauncher](https://pharo.org/download) to create a fresh 10.0 (stable) development image from `Official distributions` category, and launch it (you can also use [zerconf](https://get.pharo.org/) if you are familiar with it)
 1. Fork `https://exercism/pharo-smalltalk` on github
 1. Clone `https://<your id>/pharo-smalltalk` as a GitHub project and specify `<your id>` as the owner name, `pharo-smalltalk` as the project name
 1. Install the Metacello baseline `dev` (not the default) in Iceberg using the Metacello context menu. (e.g. right click on the "pharo-smalltalk" project you just cloned, and select the second option in the Metacello menu, and type `dev`)

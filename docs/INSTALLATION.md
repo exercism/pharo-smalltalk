@@ -3,10 +3,10 @@
 ## Installation
 
 The simplest way to install [Pharo](http://pharo.org) is to use a [zero conf](http://pharo.org/download#//*[@id="main"]/div/h2[3]) download from a terminal command line.
-<br/>_Note: If you are trying to upgrade an existing installation see the [upgrade instructions](https://github.com/exercism/pharo-smalltalk/blob/master/docs/UPGRADE.md)._
+<br/>_Note: If you are trying to upgrade an existing installation see the [upgrade instructions](https://github.com/exercism/pharo-smalltalk/blob/main/docs/UPGRADE.md)._
 
 Windows users who do not have a UNIX style shell installed should skip to the [Windows Installation](#windows-installation-skip-for-osxlinux) instructions (below).<br/>
-More advanced Linux users may want to refer to the [Linux Hackers Installation](https://github.com/exercism/pharo-smalltalk/blob/master/docs/LINUX.md).
+More advanced Linux users may want to refer to the [Linux Hackers Installation](https://github.com/exercism/pharo-smalltalk/blob/main/docs/LINUX.md).
 
 ### Linux/OSX Installation
 
@@ -54,16 +54,16 @@ We are still working out the best command line tool prerequisites for windows, h
 2. Run Pharo launcher.  
 3. On the top-left corner click "New". 
 4. In window select "Official distributions" from template categories.  
-5. For Exercism exercises, choose from list of Pharo image templates: "Pharo 9.0 64-bit (stable)" as recommended. 
+5. For Exercism exercises, choose from list of Pharo image templates latest stable release (currently "Pharo 10.0 64-bit (stable)" as recommended). 
 6. Click to highlight an image template, give it a name, then click the create image button at the bottom (an orange cog shape).  
-![obrazek](https://user-images.githubusercontent.com/45875448/134194300-4c3be6ec-13a7-44c7-b759-c3aa0c25a20f.png)
+![Create image from launcher](https://github.com/exercism/pharo-smalltalk/raw/main/docs/images/Create-image-from-launcher.png)
 7. Once the template is downloaded it will appear on the right in the Existing Images table. Click on it, and then click the launch button at the top (a green _play_ arrow).  
-![obrazek](https://user-images.githubusercontent.com/45875448/134194728-abd6e719-b301-4e42-85de-71d50da1be98.png)
+![Launch image](https://github.com/exercism/pharo-smalltalk/raw/main/docs/images/Launch-image.png)
 
 
 8. Once the Pharo image has started, open a Playground by choosing the _Browse_ menu, and selecting _Playground_, or use
 `ctrl + o + w`.  
-![obrazek](https://user-images.githubusercontent.com/45875448/134195126-e2101771-1228-4d61-a165-f9e4c4ca8eeb.png)
+![Open playground](https://github.com/exercism/pharo-smalltalk/raw/main/docs/images/Open-Playground.png)
 
 
 9. Finally, copy and paste the following snippet into the playground:
@@ -86,7 +86,7 @@ Then evaluate the pasted code by highlighting all of it, right clicking then sel
 When you launch Pharo, you will see a Welcome project, in a [System Browser](https://medium.com/@richardeng/pharo-quick-start-5bab70944ce2#3099) (_tip:_ if you ever lose this window you can open a new one from the Tools|System Browser menu).
 
 
-![Pharo Welcome Screen](https://github.com/exercism/pharo-smalltalk/raw/master/docs/images/PharoWelcomeScreen.png)
+![Pharo Welcome Screen](https://github.com/exercism/pharo-smalltalk/raw/main/docs/images/PharoWelcomeScreen.png)
 
 The top, left hand panel of the System browser shows packages in your environment, and you will notice the install script has already configured
 a package called `Exercism`, which contains a sub-project tag called `Welcome`. The second panel shows classes, which also has a class called `Welcome`. Underneath the classes panel there are 4 radio buttons, "Flat" (shows the classes in the package), "Hier." (shows a class hierarchy), "Inst. side" (shows instance methods), "Class side" (shows class methods/constructors).
@@ -110,7 +110,7 @@ you to begin [coding with tests](tests.md).
 
 When all your tests are passing, you can submit your solution using the same context menu for your exercise package (right click on the package tag and select `Exercism | Submit Exercise...`)
 
-![Exercism Submit Menu](https://github.com/exercism/pharo-smalltalk/raw/master/docs/images/SubmitExercise.png)
+![Exercism Submit Menu](https://github.com/exercism/pharo-smalltalk/raw/main/docs/images/SubmitExercise.png)
 
 Finally use the `Exercism | View Track Progress` menu to visit the exercism website and see what other exercises have been unlocked for you, as well as post questions about your submission for mentors to read.
 
