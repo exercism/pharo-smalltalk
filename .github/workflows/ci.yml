@@ -1,22 +1,24 @@
-name: CI
+name: Pharo track CI
 
 on:
   push:
     branches: [main]
   pull_request:
 
+
 jobs:
-  test:
-    name: Test
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        smalltalk: [ Pharo64-10, Pharo64-9.0, Pharo64-8.0 ]
+    name: ${{ matrix.smalltalk }}
     steps:
       - uses: actions/checkout@v3
-      
-      - name: Fetch smalltalkCI
-        uses: hpi-swa/setup-smalltalkCI@a89a05efc1acb01977b6acf27bd1fa506cacaacb
-        id: smalltalkci
-        with: 
-          smalltalk-image: 'Pharo64-9.0'
-      - run: smalltalkci -s ${{ steps.smalltalkci.outputs.smalltalk-image }}
+      - uses: hpi-swa/setup-smalltalkCI@a89a05efc1acb01977b6acf27bd1fa506cacaacb
+        with:
+          smalltalk-image: ${{ matrix.smalltalk }}
+      - run: smalltalkci -s ${{ matrix.smalltalk }}
         shell: bash
         timeout-minutes: 15
