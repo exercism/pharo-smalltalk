@@ -1,6 +1,10 @@
 # Exercism Pharo Track
 
-![build status](https://travis-ci.org/exercism/pharo-smalltalk.svg?branch=master)
+[![Build & Unit tests](https://github.com/exercism/pharo-smalltalk/actions/workflows/ci.yml/badge.svg)](https://github.com/exercism/pharo-smalltalk/actions/workflows/ci.yml)
+[![GitHub release](https://img.shields.io/github/release/exercism/pharo-smalltalk.svg)](https://github.com/exercism/pharo-smalltalk/releases/latest)
+[![Pharo 10](https://img.shields.io/badge/Pharo-10-informational)](https://get.pharo.org)
+[![Pharo 9.0](https://img.shields.io/badge/Pharo-9.0-informational)](https://get.pharo.org/64)
+[![Pharo 8.0](https://img.shields.io/badge/Pharo-8.0-informational)](https://get.pharo.org/archive/80)
 
 This repository is for the development of [Exercism](http://exercism.io) exercises running in the [Pharo Smalltalk](http://pharo.org) programming environment.
 
