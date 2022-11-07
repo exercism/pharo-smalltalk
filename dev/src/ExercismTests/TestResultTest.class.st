@@ -1,6 +1,10 @@
-Extension { #name : #TestResultTest }
+Class {
+	#name : #TestResultTest,
+	#superclass : #TestCase,
+	#category : #'ExercismTests-UnitTests'
+}
 
-{ #category : #'*ExercismTests' }
+{ #category : #tests }
 TestResultTest >> testExercismEnvironmentInfoOn [
 
 	|output|
@@ -18,7 +22,7 @@ TestResultTest >> testExercismEnvironmentInfoOn [
 	self assert: (output includesSubstring: Smalltalk vm interpreterSourceVersion).
 ]
 
-{ #category : #'*ExercismTests' }
+{ #category : #tests }
 TestResultTest >> testExercismSummary [
 
 	| exercise testResult resultSummary |
