@@ -5,31 +5,6 @@ Class {
 }
 
 { #category : #tests }
-ExercismDownloadCommandTest >> prepareMockPackageWithDependentClasses [
-
-|aClass bClass cClass|
-
-aClass := Object subclass: #AMock
-	instanceVariableNames: ''
-	classVariableNames: ''
-	package: 'Exercise@DependencyMock'.
-
-bClass := Object subclass: #BMock
-	instanceVariableNames: ''
-	classVariableNames: ''
-	package: 'Exercise@DependencyMock'.
-
-cClass := Object subclass: #CMock
-	instanceVariableNames: ''
-	classVariableNames: ''
-	package: 'Exercise@DependencyMock'.	
-
-aClass compile: 'mockMethod ^ BMock mockMethod'.
-bClass compile: 'mockMethod ^ CMock mockMethod'.
-cClass compile: 'mockMethod ^ ''Call from class: '', self class name'
-]
-
-{ #category : #tests }
 ExercismDownloadCommandTest >> testExecuteDownloading [
 
 	| cmd exercise solutionData mockHttpClient mockParser mockClass baseUrl sourceCode |

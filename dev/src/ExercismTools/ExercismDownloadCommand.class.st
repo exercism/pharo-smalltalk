@@ -39,11 +39,10 @@ ExercismDownloadCommand >> execute [
 
 { #category : #internal }
 ExercismDownloadCommand >> installExerciseFor: submission [
+	
+	"submission will put sources to memory directory and load definitions using Tonel reader"
+	submission loadDefinitionsFromDirectory.
 
-	submission
-		sourceFilenamesWithContentsDo:
-			[ :filename :contents | (self parser documentFrom: contents) do: [ :def | def load ] ].
-		
 	SystemAnnouncer uniqueInstance
 		announce: (RPackageRegistered to: submission exercise exercisePackage).
 	

@@ -85,6 +85,12 @@ ExercismSubmission >> exerciseId [
 	^(self exercismData at: 'exercise') at: 'id'
 ]
 
+{ #category : #internal }
+ExercismSubmission >> exercisePackageName [
+
+	^ ExercismManager exercisePrefix, '@', self exerciseClassName 
+]
+
 { #category : #accessing }
 ExercismSubmission >> exercismData [
 	^ exercismData
@@ -112,6 +118,36 @@ ExercismSubmission >> isValid [
 	"Answer true if the submission resulted in a valid exercise"
 	
 	^(self exercismData includesKey: 'error') not and: [ self exercise notNil ]
+]
+
+{ #category : #internal }
+ExercismSubmission >> latestExercisePackageSourceDir [
+
+	"return memory file reference with retreived latest exercise souuces - needed for tonel reader"
+	|memFileRef packageDir|
+	memFileRef := FileSystem memory root.
+	packageDir := (memFileRef / self exercisePackageName) ensureCreateDirectory.
+	self sourceFilenamesWithContentsDo: [:fileName :sourceString |
+		"do write files here"
+		|sourceFile|
+		sourceFile := packageDir / fileName.
+		sourceFile writeStreamDo: [:aStream | aStream nextPutAll: sourceString ]
+	].
+	^ memFileRef 
+]
+
+{ #category : #internal }
+ExercismSubmission >> loadDefinitionsFromDirectory [
+
+	| reader aSnapshot|
+	
+	"reader will load definitions from directory containing package directory and .st files with classes"
+	reader := TonelReader on: self latestExercisePackageSourceDir fileName: self exercisePackageName.
+	reader loadDefinitions.
+	
+	"installing snapshot will resolve dependencies between classes in same package"
+	aSnapshot := MCSnapshot fromDefinitions: reader definitions.
+	aSnapshot install
 ]
 
 { #category : #retrieving }

@@ -7,6 +7,106 @@ Class {
 	#category : #'ExercismTests-UnitTests'
 }
 
+{ #category : #private }
+ExercismSubmissionTest class >> mockSnapshotSTON [
+^	'MCSnapshot {
+	#definitions : OrderedCollection [
+		MCOrganizationDefinition {
+			#categories : [
+				#''Exercise@DependencyMock''
+			]
+		},
+		MCMethodDefinition {
+			#classIsMeta : false,
+			#source : ''mockMethod ^ BMock mockMethod'',
+			#category : #''as yet unclassified'',
+			#selector : #mockMethod,
+			#className : #AMock
+		},
+		MCMethodDefinition {
+			#classIsMeta : false,
+			#source : ''mockMethod ^ CMock mockMethod'',
+			#category : #''as yet unclassified'',
+			#selector : #mockMethod,
+			#className : #BMock
+		},
+		MCMethodDefinition {
+			#classIsMeta : false,
+			#source : ''mockMethod ^ \''Call from class: \'', self class name'',
+			#category : #''as yet unclassified'',
+			#selector : #mockMethod,
+			#className : #CMock
+		},
+		MCClassDefinition {
+			#name : #AMock,
+			#superclassName : #BMock,
+			#variables : OrderedCollection [ ],
+			#category : #''Exercise@DependencyMock'',
+			#type : #normal,
+			#comment : '''',
+			#commentStamp : '''',
+			#traitComposition : ''{}'',
+			#classTraitComposition : ''{}''
+		},
+		MCClassDefinition {
+			#name : #CMock,
+			#superclassName : #Object,
+			#variables : OrderedCollection [ ],
+			#category : #''Exercise@DependencyMock'',
+			#type : #normal,
+			#comment : '''',
+			#commentStamp : '''',
+			#traitComposition : ''{}'',
+			#classTraitComposition : ''{}''
+		},
+		MCClassDefinition {
+			#name : #BMock,
+			#superclassName : #CMock,
+			#variables : OrderedCollection [ ],
+			#category : #''Exercise@DependencyMock'',
+			#type : #normal,
+			#comment : '''',
+			#commentStamp : '''',
+			#traitComposition : ''{}'',
+			#classTraitComposition : ''{}''
+		}
+	],
+	#classDefinitionCache : {
+		#AMock : @8,
+		#CMock : @10,
+		#BMock : @12
+	}
+}'
+]
+
+{ #category : #tests }
+ExercismSubmissionTest class >> prepareMockPackageWithDependentClasses [
+" this is used for generating STON representation of MCSnapshot (see class side method), we don't need to create classes during test"
+|aClass bClass cClass aPackage|
+
+	cClass := Object subclass: #CMock
+		instanceVariableNames: ''
+		classVariableNames: ''
+		package: 'Exercise@DependencyMock'.
+		
+	bClass := (self class environment at: #CMock) subclass: #BMock
+		instanceVariableNames: ''
+		classVariableNames: ''
+		package: 'Exercise@DependencyMock'.
+
+	aClass := (self class environment at: #BMock) subclass: #AMock
+		instanceVariableNames: ''
+		classVariableNames: ''
+		package: 'Exercise@DependencyMock'.
+
+	aClass compile: 'mockMethod ^ BMock mockMethod'.
+	bClass compile: 'mockMethod ^ CMock mockMethod'.
+	cClass compile: 'mockMethod ^ ''Call from class: '', self class name'.
+
+	aPackage := RPackageOrganizer default packageNamed: 'Exercise@DependencyMock'.
+	^ TonelWriter new toSTON: aPackage snapshot.
+]
+
 { #category : #'test-data' }
 ExercismSubmissionTest class >> sampleDataFor: testName [
 	^self sampleDataFor: testName filenames: {'test1.st'. 'test.md'. 'test2.st'} baseUrl: '/files'
@@ -25,7 +125,38 @@ ExercismSubmissionTest class >> sampleDataFor: testName filenames: filenameList 
 			
 ]
 
-{ #category : #test }
+{ #category : #tests }
+ExercismSubmissionTest >> mockClassesSnapshot [
+
+	^ STON fromString: self class mockSnapshotSTON
+]
+
+{ #category : #tests }
+ExercismSubmissionTest >> prepareMockContentData [
+	"prepareContentData in expected dictionary format"
+
+	|memoryFileRef contentData|
+	memoryFileRef := FileSystem memory root.
+	(TonelWriter on: memoryFileRef) writeSnapshot: self mockClassesSnapshot.
+	
+	"Remove the package file as its not needed for Exercism"
+	(memoryFileRef / 'Exercise@DependencyMock' / 'package.st') delete.
+	contentData := memoryFileRef allFiles collect: [:sourceFile |
+		sourceFile basename -> sourceFile contents
+	 ].
+
+	^ contentData asDictionary
+]
+
+{ #category : #running }
+ExercismSubmissionTest >> tearDown [ 
+	|aPackage|
+	aPackage := RPackageOrganizer default packageNamed: 'Exercise@DependencyMock' ifAbsent: [nil].
+	aPackage ifNotNil: [ aPackage removeFromSystem].
+	super tearDown
+]
+
+{ #category : #tests }
 ExercismSubmissionTest >> testErrorMessage [
 
 	| exercismSubmission |
@@ -36,7 +167,7 @@ ExercismSubmissionTest >> testErrorMessage [
 	
 ]
 
-{ #category : #test }
+{ #category : #tests }
 ExercismSubmissionTest >> testExerciseClassName [
 
 	| exercismSubmission |
@@ -44,6 +175,16 @@ ExercismSubmissionTest >> testExerciseClassName [
 		data: (self class sampleDataFor: 'test-exercise').
 		
 	self assert: exercismSubmission exerciseClassName equals: 'TestExercise'.
+]
+
+{ #category : #tests }
+ExercismSubmissionTest >> testExercisePackageName [
+
+	| exercismSubmission |
+	exercismSubmission := ExercismSubmission
+		data: (self class sampleDataFor: 'hello-world').
+		
+	self assert: exercismSubmission exercisePackageName equals: 'Exercise@HelloWorld'.
 ]
 
 { #category : #tests }
@@ -59,6 +200,48 @@ ExercismSubmissionTest >> testFilenames [
 	
 	
 		
+]
+
+{ #category : #tests }
+ExercismSubmissionTest >> testLatestExercisePackageSourceDir [
+	
+	| exercismSubmission fileRef firstFile sndFile|
+	exercismSubmission := ExercismSubmission
+		data: (self class sampleDataFor: 'exercism-mock').
+	exercismSubmission contentData: ({ 'filename1' -> 'contents' . 'filename2' -> 'contents2' } asDictionary).
+	fileRef := exercismSubmission latestExercisePackageSourceDir.
+	
+	"test if Memory file reference is created with hiearchy: Package dir -> sourceFiles"
+	self assert: fileRef isDirectory.
+	self deny: (fileRef directoriesMatching: exercismSubmission exercisePackageName) isEmpty.
+	firstFile := fileRef allFiles first.
+	self assert: firstFile basename equals: 'filename1'.
+	self assert: firstFile contents equals: 'contents'.
+	sndFile := fileRef allFiles second.
+	self assert: sndFile basename equals: 'filename2'.
+	self assert: sndFile contents equals: 'contents2'.
+]
+
+{ #category : #tests }
+ExercismSubmissionTest >> testLoadingDependentClasses [
+	| exercismSubmission loadedPackage|
+	exercismSubmission := ExercismSubmission
+		data: (self class sampleDataFor: 'dependency-mock').
+		
+	"prepare dependent classes from mock snapshot"
+	exercismSubmission contentData: self prepareMockContentData.
+
+	"this will effectively load dependent classes"
+	exercismSubmission loadDefinitionsFromDirectory.
+	loadedPackage := RPackageOrganizer default packageNamed: #'Exercise@DependencyMock' ifAbsent: [nil].
+	self deny: loadedPackage isNil.
+	self assert: (loadedPackage includesClassNamed: #AMock).
+	self assert: (loadedPackage includesClassNamed: #BMock).
+	self assert: (loadedPackage includesClassNamed: #CMock).
+	
+	"test hiearchy dependencies"
+	self assert:	((self class environment at: #BMock) inheritsFrom: (self class environment at: #CMock)).
+		self assert:	((self class environment at: #AMock) inheritsFrom: (self class environment at: #BMock)).
 ]
 
 { #category : #tests }
