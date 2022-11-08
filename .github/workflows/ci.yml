@@ -16,7 +16,7 @@ jobs:
     name: ${{ matrix.smalltalk }}
     steps:
       - uses: actions/checkout@v3
-      - uses: hpi-swa/setup-smalltalkCI@decbf59d73f43aad9292c80c8f1e25ed908d8a68
+      - uses: hpi-swa/setup-smalltalkCI@e5cc24e537e43947b3d458a255ca28b9e914c1a2
         with:
           smalltalk-image: ${{ matrix.smalltalk }}
       - run: smalltalkci -s ${{ matrix.smalltalk }}
