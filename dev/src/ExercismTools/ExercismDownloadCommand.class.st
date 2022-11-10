@@ -30,7 +30,7 @@ ExercismDownloadCommand >> execute [
 
 			submission := self fetchLatestSubmission.
 
-			self fetchExerciseFilesFor: submission.
+			submission fetchExerciseFilesUsing: self httpClient.
 			self installExerciseFor: submission.
 			submission storeSolutionId.
 
@@ -40,8 +40,8 @@ ExercismDownloadCommand >> execute [
 { #category : #internal }
 ExercismDownloadCommand >> installExerciseFor: submission [
 	
-	"submission will put sources to memory directory and load definitions using Tonel reader"
-	submission loadDefinitionsFromDirectory.
+	"submission will put sources to memory directory and load definitions from snapshot"
+	submission installDefinitionsFromSnapshot.
 
 	SystemAnnouncer uniqueInstance
 		announce: (RPackageRegistered to: submission exercise exercisePackage).

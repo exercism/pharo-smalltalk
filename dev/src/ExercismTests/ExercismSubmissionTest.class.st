@@ -232,7 +232,7 @@ ExercismSubmissionTest >> testLoadingDependentClasses [
 	exercismSubmission contentData: self prepareMockContentData.
 
 	"this will effectively load dependent classes"
-	exercismSubmission loadDefinitionsFromDirectory.
+	exercismSubmission installDefinitionsFromSnapshot.
 	loadedPackage := RPackageOrganizer default packageNamed: #'Exercise@DependencyMock' ifAbsent: [nil].
 	self deny: loadedPackage isNil.
 	self assert: (loadedPackage includesClassNamed: #AMock).

@@ -18,7 +18,6 @@ ExercismDownloadCommandTest >> testExecuteDownloading [
 	[  
 	cmd := (ExercismDownloadCommand
 				from: mockHttpClient track: 'pharo' exercise: 'test-exercise')
-					parser: mockParser;
 					yourself.
 	
 	exercise := cmd execute.
@@ -43,7 +42,7 @@ ExercismDownloadCommandTest >> testExecuteDownloading [
 	(mockHttpClient expect getResource: Any)  
 		specifying: [ :resName :count | 
 			resName should equal: (baseUrl,'/test{1}.st' format: count asString).
-			'Some source', count printString ].
+			''].
 		
 	mockClass := Class asMock.
 	

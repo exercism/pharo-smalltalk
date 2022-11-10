@@ -41,9 +41,8 @@ ExercismReviewCommand >> execute [
 	^self executeCheckingToken: [ | submission snapshot |
 
 		submission := self fetchLatestSubmission.
-
-		self fetchExerciseFilesFor: submission.
-		snapshot := self createSnapshotFor: submission.
+		submission fetchExerciseFilesUsing: self httpClient.
+		snapshot := submission createSnapshotFromDefinitions.
 	
 		ExercismReview for: submission with: snapshot.
 	]

@@ -6,7 +6,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'exercismData',
-		'contentData'
+		'contentData',
+		'tonelReader'
 	],
 	#category : #'ExercismTools-Core'
 }
@@ -52,6 +53,24 @@ ExercismSubmission >> contentData: anObject [
 { #category : #accessing }
 ExercismSubmission >> contentsFor: aString ifAbsent: anObject [ 
 	^self contentData at: aString
+]
+
+{ #category : #internal }
+ExercismSubmission >> createSnapshotFromDefinitions [
+
+	"return MC snapshot from definitions that can be loaded or submitted"
+	^ MCSnapshot fromDefinitions: self definitionsToLoadFromDirectory
+
+]
+
+{ #category : #internal }
+ExercismSubmission >> definitionsToLoadFromDirectory [
+	
+	"reader will return definitions to be loaded from directory containing package directory and .st files with classes"
+	self tonelReader packageDirectory: self exercisePackageName.
+	self tonelReader loadDefinitions.
+	^ self tonelReader definitions.
+
 ]
 
 { #category : #accessing }
@@ -101,6 +120,13 @@ ExercismSubmission >> exercismData: anObject [
 	exercismData := anObject
 ]
 
+{ #category : #internal }
+ExercismSubmission >> fetchExerciseFilesUsing: aHttpClient [
+
+	"Default http client can be bypassed by parameter"
+	self populateFileContentsWith: [ :filename | aHttpClient getResource: filename ]
+]
+
 { #category : #accessing }
 ExercismSubmission >> filenames [
 	^self exercismData at: 'files'
@@ -111,6 +137,14 @@ ExercismSubmission >> initialize [
 
 	super initialize.
 	self contentData: Dictionary new.
+]
+
+{ #category : #internal }
+ExercismSubmission >> installDefinitionsFromSnapshot [
+
+	"tonel reader will load definitions from directory containing package directory and .st files with classes, creates MC snapshot and install package with exercise to default package organizer"
+	
+	self createSnapshotFromDefinitions install
 ]
 
 { #category : #storing }
@@ -136,20 +170,6 @@ ExercismSubmission >> latestExercisePackageSourceDir [
 	^ memFileRef 
 ]
 
-{ #category : #internal }
-ExercismSubmission >> loadDefinitionsFromDirectory [
-
-	| reader aSnapshot|
-	
-	"reader will load definitions from directory containing package directory and .st files with classes"
-	reader := TonelReader on: self latestExercisePackageSourceDir fileName: self exercisePackageName.
-	reader loadDefinitions.
-	
-	"installing snapshot will resolve dependencies between classes in same package"
-	aSnapshot := MCSnapshot fromDefinitions: reader definitions.
-	aSnapshot install
-]
-
 { #category : #retrieving }
 ExercismSubmission >> populateFileContentsWith: aBlockClosure [
 	self sourceFilenames
@@ -159,6 +179,13 @@ ExercismSubmission >> populateFileContentsWith: aBlockClosure [
 				self baseUrl , filename.
 			fileContent
 				ifNotNil: [ self contentData at: filename put: fileContent ] ]
+]
+
+{ #category : #internal }
+ExercismSubmission >> setTonelReader [ 
+	
+	tonelReader := TonelReader on: self latestExercisePackageSourceDir fileName: self exercisePackageName.
+	^ tonelReader 
 ]
 
 { #category : #accessing }
@@ -182,6 +209,18 @@ ExercismSubmission >> sourceFilenamesWithContentsDo: aBlockClosure [
 { #category : #storing }
 ExercismSubmission >> storeSolutionId [
 	self exercise ifNotNil: [:exercise | exercise storeSolutionId: self solutionId]
+]
+
+{ #category : #accessing }
+ExercismSubmission >> tonelReader [ 
+	
+	^ tonelReader ifNil: [self setTonelReader]
+]
+
+{ #category : #accessing }
+ExercismSubmission >> tonelReader: aReader [
+	
+	tonelReader := aReader
 ]
 
 { #category : #accessing }
