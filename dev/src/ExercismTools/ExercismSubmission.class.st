@@ -6,8 +6,7 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'exercismData',
-		'contentData',
-		'tonelReader'
+		'contentData'
 	],
 	#category : #'ExercismTools-Core'
 }
@@ -67,9 +66,10 @@ ExercismSubmission >> createSnapshotFromDefinitions [
 ExercismSubmission >> definitionsToLoadFromDirectory [
 	
 	"reader will return definitions to be loaded from directory containing package directory and .st files with classes"
-	self tonelReader packageDirectory: self exercisePackageName.
-	self tonelReader loadDefinitions.
-	^ self tonelReader definitions.
+	| tonelReader | 
+	tonelReader := TonelReader on: self latestExercisePackageSourceDir fileName: self exercisePackageName.
+	tonelReader loadDefinitions.
+	^ tonelReader definitions.
 
 ]
 
@@ -118,13 +118,6 @@ ExercismSubmission >> exercismData [
 { #category : #accessing }
 ExercismSubmission >> exercismData: anObject [
 	exercismData := anObject
-]
-
-{ #category : #internal }
-ExercismSubmission >> fetchExerciseFilesUsing: aHttpClient [
-
-	"Default http client can be bypassed by parameter"
-	self populateFileContentsWith: [ :filename | aHttpClient getResource: filename ]
 ]
 
 { #category : #accessing }
@@ -181,13 +174,6 @@ ExercismSubmission >> populateFileContentsWith: aBlockClosure [
 				ifNotNil: [ self contentData at: filename put: fileContent ] ]
 ]
 
-{ #category : #internal }
-ExercismSubmission >> setTonelReader [ 
-	
-	tonelReader := TonelReader on: self latestExercisePackageSourceDir fileName: self exercisePackageName.
-	^ tonelReader 
-]
-
 { #category : #accessing }
 ExercismSubmission >> solutionId [
 	^self exercismData at: 'id'
@@ -209,18 +195,6 @@ ExercismSubmission >> sourceFilenamesWithContentsDo: aBlockClosure [
 { #category : #storing }
 ExercismSubmission >> storeSolutionId [
 	self exercise ifNotNil: [:exercise | exercise storeSolutionId: self solutionId]
-]
-
-{ #category : #accessing }
-ExercismSubmission >> tonelReader [ 
-	
-	^ tonelReader ifNil: [self setTonelReader]
-]
-
-{ #category : #accessing }
-ExercismSubmission >> tonelReader: aReader [
-	
-	tonelReader := aReader
 ]
 
 { #category : #accessing }

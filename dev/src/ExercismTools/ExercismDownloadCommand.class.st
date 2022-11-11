@@ -27,10 +27,9 @@ ExercismDownloadCommand class >> track: trackId exercise: exerciseId [
 ExercismDownloadCommand >> execute [
 	^ self
 		executeCheckingToken: [ | submission |
-
+			
 			submission := self fetchLatestSubmission.
-
-			submission fetchExerciseFilesUsing: self httpClient.
+			self fetchExerciseFilesFor: submission. 
 			self installExerciseFor: submission.
 			submission storeSolutionId.
 

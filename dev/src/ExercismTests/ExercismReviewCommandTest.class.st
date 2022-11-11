@@ -1,11 +1,11 @@
 Class {
-	#name : #ExercismDownloadCommandTest,
+	#name : #ExercismReviewCommandTest,
 	#superclass : #TestCase,
 	#category : #'ExercismTests-UnitTests'
 }
 
 { #category : #running }
-ExercismDownloadCommandTest >> tearDown [
+ExercismReviewCommandTest >> tearDown [
 	"all known mock mutations should be recovered"
 	ExercismExercise recoverFromGHMutation.
 	TonelReader recoverFromGHMutation.
@@ -13,22 +13,24 @@ ExercismDownloadCommandTest >> tearDown [
 ]
 
 { #category : #tests }
-ExercismDownloadCommandTest >> testExecuteDownloading [
+ExercismReviewCommandTest >> testExecuteReview [
 
-	| cmd exercise solutionData mockHttpClient mockReader baseUrl sourceCode |
+	| cmd aReview solutionData mockHttpClient mockReader baseUrl |
 	Any strictMocks: false.
 
 	[ 
-		cmd := (ExercismDownloadCommand
+		cmd := ExercismReviewCommand
 		        from: mockHttpClient
-		        track: 'pharo'
-		        exercise: 'test-exercise') yourself.
+		        reviewId: '12345'.
 
-		exercise := cmd execute.
+		aReview := cmd execute.
 
-		self assert: exercise notNil description: 'Get a result'.
-		self assert: (exercise contentsFor: 'test1.st' ifAbsent: '') equals: 'Some source1'.
-		self assert: (exercise contentsFor: 'test2.st' ifAbsent: '') equals: 'Some source2'.
+		self assert: aReview notNil description: 'Get a result'.
+
+		self assert: (aReview submission contentsFor: 'test1.st' ifAbsent: '') equals: 'Some source1'.
+		self assert: (aReview submission contentsFor: 'test2.st' ifAbsent: '') equals: 'Some source2'.
+		
+		self assert: aReview codeSnapshot definitions isEmpty description: 'Review should contain empty code snapshot'.
 	] 
 	runWithMockSetup: [ 
 		mockHttpClient := ExercismHttpClient asMock.
@@ -42,8 +44,8 @@ ExercismDownloadCommandTest >> testExecuteDownloading [
 
 		mockHttpClient expect verifyToken atLeastOnce.
 		(mockHttpClient expect
-			 getLatestExercise: 'test-exercise'
-			 for: 'pharo') willReturn: solutionData asJSON.
+			 getSpecifiedExercise: '12345'
+		) willReturn: solutionData asJSON.
 
 		(mockHttpClient expect getResource: Any) specifying: [ :resName :count | 
 			resName should equal:
