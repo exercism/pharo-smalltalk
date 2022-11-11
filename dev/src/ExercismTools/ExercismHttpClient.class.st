@@ -49,7 +49,7 @@ ExercismHttpClient class >> newHost: hostName [
 { #category : #caching }
 ExercismHttpClient class >> promptForToken [
 	| url linkText requestText initialAnswer title newToken  |
-	url := 'https://exercism.io/my/settings'.
+	url := 'https://exercism.org/settings/api_cli'.
 	
 	linkText := url asText
 		addAttribute: (TextAction new actOnClickBlock: [WebBrowser openOn: url]);
