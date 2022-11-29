@@ -54,6 +54,25 @@ ExercismSubmission >> contentsFor: aString ifAbsent: anObject [
 	^self contentData at: aString
 ]
 
+{ #category : #internal }
+ExercismSubmission >> createSnapshotFromDefinitions [
+
+	"return MC snapshot from definitions that can be loaded or submitted"
+	^ MCSnapshot fromDefinitions: self definitionsToLoadFromDirectory
+
+]
+
+{ #category : #internal }
+ExercismSubmission >> definitionsToLoadFromDirectory [
+	
+	"reader will return definitions to be loaded from directory containing package directory and .st files with classes"
+	| tonelReader | 
+	tonelReader := TonelReader on: self latestExercisePackageSourceDir fileName: self exercisePackageName.
+	tonelReader loadDefinitions.
+	^ tonelReader definitions.
+
+]
+
 { #category : #accessing }
 ExercismSubmission >> errorMessage [ 
 
@@ -85,6 +104,12 @@ ExercismSubmission >> exerciseId [
 	^(self exercismData at: 'exercise') at: 'id'
 ]
 
+{ #category : #internal }
+ExercismSubmission >> exercisePackageName [
+
+	^ ExercismManager exercisePrefix, '@', self exerciseClassName 
+]
+
 { #category : #accessing }
 ExercismSubmission >> exercismData [
 	^ exercismData
@@ -107,11 +132,35 @@ ExercismSubmission >> initialize [
 	self contentData: Dictionary new.
 ]
 
+{ #category : #internal }
+ExercismSubmission >> installDefinitionsFromSnapshot [
+
+	"tonel reader will load definitions from directory containing package directory and .st files with classes, creates MC snapshot and install package with exercise to default package organizer"
+	
+	self createSnapshotFromDefinitions install
+]
+
 { #category : #storing }
 ExercismSubmission >> isValid [
 	"Answer true if the submission resulted in a valid exercise"
 	
 	^(self exercismData includesKey: 'error') not and: [ self exercise notNil ]
+]
+
+{ #category : #internal }
+ExercismSubmission >> latestExercisePackageSourceDir [
+
+	"return memory file reference with retreived latest exercise souuces - needed for tonel reader"
+	|memFileRef packageDir|
+	memFileRef := FileSystem memory root.
+	packageDir := (memFileRef / self exercisePackageName) ensureCreateDirectory.
+	self sourceFilenamesWithContentsDo: [:fileName :sourceString |
+		"do write files here"
+		|sourceFile|
+		sourceFile := packageDir / fileName.
+		sourceFile writeStreamDo: [:aStream | aStream nextPutAll: sourceString ]
+	].
+	^ memFileRef 
 ]
 
 { #category : #retrieving }

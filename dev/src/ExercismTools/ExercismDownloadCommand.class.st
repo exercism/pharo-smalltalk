@@ -27,10 +27,9 @@ ExercismDownloadCommand class >> track: trackId exercise: exerciseId [
 ExercismDownloadCommand >> execute [
 	^ self
 		executeCheckingToken: [ | submission |
-
+			
 			submission := self fetchLatestSubmission.
-
-			self fetchExerciseFilesFor: submission.
+			self fetchExerciseFilesFor: submission. 
 			self installExerciseFor: submission.
 			submission storeSolutionId.
 
@@ -39,11 +38,10 @@ ExercismDownloadCommand >> execute [
 
 { #category : #internal }
 ExercismDownloadCommand >> installExerciseFor: submission [
+	
+	"submission will put sources to memory directory and load definitions from snapshot"
+	submission installDefinitionsFromSnapshot.
 
-	submission
-		sourceFilenamesWithContentsDo:
-			[ :filename :contents | (self parser documentFrom: contents) do: [ :def | def load ] ].
-		
 	SystemAnnouncer uniqueInstance
 		announce: (RPackageRegistered to: submission exercise exercisePackage).
 	

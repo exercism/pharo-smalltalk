@@ -27,22 +27,6 @@ ExercismFetchCommand >> fetchLatestSubmission [
 	^ExercismSubmission data: response
 ]
 
-{ #category : #accessing }
-ExercismFetchCommand >> initialize [
-	super initialize.
-	self parser: TonelParser new.
-]
-
-{ #category : #accessing }
-ExercismFetchCommand >> parser [
-	^ parser
-]
-
-{ #category : #accessing }
-ExercismFetchCommand >> parser: aTonelParser [
-	parser := aTonelParser
-]
-
 { #category : #internal }
 ExercismFetchCommand >> retrieveLatestData [
 	^self subclassResponsibility 
