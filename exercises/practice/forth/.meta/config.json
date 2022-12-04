@@ -1,5 +1,4 @@
 {
-  "blurb": "Implement an evaluator for a very simple subset of Forth",
   "authors": [
     "macta"
   ],
@@ -16,5 +15,6 @@
     "example": [
       ".meta/solution/Forth.class.st"
     ]
-  }
+  },
+  "blurb": "Implement an evaluator for a very simple subset of Forth"
 }

@@ -1,5 +1,4 @@
 {
-  "blurb": "Tally the results of a small football competition.",
   "authors": [
     "macta"
   ],
@@ -16,5 +15,6 @@
     "example": [
       ".meta/solution/Tournament.class.st"
     ]
-  }
+  },
+  "blurb": "Tally the results of a small football competition."
 }
