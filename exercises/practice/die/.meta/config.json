@@ -1,5 +1,4 @@
 {
-  "blurb": "A small DSL for dice rolling",
   "authors": [
     "macta"
   ],
@@ -17,5 +16,6 @@
     "example": [
       ".meta/solution/Die.class.st"
     ]
-  }
+  },
+  "blurb": "A small DSL for dice rolling"
 }

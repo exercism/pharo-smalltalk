@@ -1,5 +1,4 @@
 {
-  "blurb": "Make sure the brackets and braces all match.",
   "authors": [
     "macta"
   ],
@@ -17,5 +16,6 @@
       ".meta/solution/MatchingBrackets.class.st"
     ]
   },
+  "blurb": "Make sure the brackets and braces all match.",
   "source": "Ginna Baker"
 }
