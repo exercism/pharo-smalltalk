@@ -87,7 +87,7 @@ There is an example of a user defined exercise in the project, see: `DieTest`. B
 
 Note that:
 - Each exercise must stand on its own. Do not reference files outside the exercise directory. They will not be included when the user fetches the exercise.
-- Exercises must conform to the [Exercism-wide standards](https://github.com/exercism/docs/tree/master/language-tracks/exercises).
+- Exercises must conform to the [Exercism-wide standards](https://exercism.org/docs/building/tracks/practice-exercises).
 - Exercises should only use the Pharo core libraries.
 - Each exercise should be:
   - stored in a top level project named `Exercism@<ExerciseName>`
