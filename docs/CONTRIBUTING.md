@@ -7,7 +7,7 @@ Please read how to [get involved in an Exercism track](https://github.com/exerci
 
 We welcome pull requests of all kinds. No contribution is too small, particularly those that provide fixes and improvements to existing exercises. Note that this track's exercises must conform to the [Exercism-wide standards](https://github.com/exercism/docs/tree/master/language-tracks/exercises), but if you're unsure about how to make a change, then open a GitHub issue, and we'll discuss it.
 
->:information_source: __Note__: Exercism organization has decided to [pause Exercism wider community contributions](https://exercism.org/blog/freeing-our-maintainers). Pharo track is opted-out from this policy, since our community is rather small (In other words: any Pharo track contributor can still create issues and submit PRs). 
+>__Note__: Exercism organization has decided to [pause Exercism wider community contributions](https://exercism.org/blog/freeing-our-maintainers). Pharo track is opted-out from this policy, since our community is rather small (In other words: any Pharo track contributor can still create issues and submit PRs). 
 
 ## Knowledge prerequisites
 
@@ -24,7 +24,7 @@ You need to have a Pharo development environment (running Pharo image - IDE) for
 1. Use [PharoLauncher](https://pharo.org/download) to create a fresh 10.0 (stable) development image from `Official distributions` category, and launch it (you can also use [zerconf](https://get.pharo.org/) if you are familiar with it).
 2. Launch your image to test everything runs ok.
 
-> __Note:__ If you have any TIMEOUT problems refer to the [user installation instructions](./docs/INSTALLATION.md).
+> __Note__: If you have any TIMEOUT problems refer to the [user installation instructions](./docs/INSTALLATION.md).
 
 ### __Setup of git repositories__
 1. If you haven't done previously, fork `https://exercism/pharo-smalltalk` on Github.
@@ -49,7 +49,7 @@ __Optional repositories__
 
 ### __Note about used repository branches__
 
-The `main` branch is the primary development branch to which is everything merged. If you wark on some chnage, create feature branch originated from main and commit your changes there. Once completed, issue PR on github to meger to `main` of base rerpository (exercism/pharo-smalltalk). This branch used to be called `master` - __now deprecated__. 
+The `main` branch is the primary development branch to which is everything merged. If you work on some change in code, create feature branch originated from main and commit your changes there. Once completed, issue PR on github to meger to `main` of base rerpository (exercism/pharo-smalltalk). This branch used to be called `master` - __now deprecated__. 
 
 ### __Setup of Exercism CLI tools__
 These tools are needed to interact with Exercism project: 
@@ -75,6 +75,7 @@ Steps to complete exercise:
 __From problem repository__
 - If you want to start completely new Practise exercise (step 1a.), you can use problem specification repository and generate test class for given exercise by running: 
 `ExercismExerciseGenerator generateFrom: <path-to-problem-specifications/exercises>` - this will generate test classes for all exercises in problem specifications repository in `ExerciseWIP` package.  
+  > __Note__: You can use menu item in Pharo image for achieving same (World menu -> Exercism -> Generate test cases).
 - More specifically, you can generate test class for specific exercise by: `ExercismExerciseGenerator generateExerciseFrom: <path-to-problem-specifications/exercises/slug-name>`.
 
 Result of previous statement will be new `<SlugNameTest>` (a subclass of ExercismTest) test class with generated test methods in `ExerciseWIP` package.
@@ -159,7 +160,7 @@ Pull requests should be focused on a single exercise, issue, or conceptually coh
 
 * Now get your solution reviewed by pushing your branch to your fork and then creating a PR on exercism/pharo-Smalltalk. It is important to [enable maintainer edits](https://help.github.com/en/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork), so we can collaborate with you in your branch
   * follow your PR and answer any ensuing questions
-  * finally submit any adjustments and a maintainer will run the generator to create the Exercism assets (via configlet) and commit the final solution so it appears on the site
+  * finally submit any adjustments and a maintainer will merge your Pull request to appear final solution on the site.
 
 --- 
 ## Additional information for maintainers
