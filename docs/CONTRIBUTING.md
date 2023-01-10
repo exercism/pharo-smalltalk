@@ -49,7 +49,7 @@ __Optional repositories__
 
 ### __Note about used repository branches__
 
-The `main` branch is the primary development branch to which is everything merged. If you work on some change in code, create feature branch originated from main and commit your changes there. Once completed, issue PR on github to meger to `main` of base rerpository (exercism/pharo-smalltalk). This branch used to be called `master` - __now deprecated__. 
+The `main` branch is the primary development branch to which is everything merged. If you work on some change in code, create feature branch originated from main and commit your changes there. Once completed, issue PR on github to be merged to `main` of base rerpository (Exercism/pharo-smalltalk). This branch used to be called `master` - __now deprecated__. 
 
 ### __Setup of Exercism CLI tools__
 These tools are needed to interact with Exercism project: 
