@@ -574,7 +574,38 @@
     ]
   },
   "concepts": [],
-  "key_features": [],
+  "key_features": [
+      {
+        "icon": "easy",
+        "title": "Pure object oriented",
+        "content": "In Pharo, everything is an object. There are just objects interacting with messages."
+      },
+      {
+        "icon": "productive",
+        "title": "Live environment",
+        "content": "It provides immediate feedback during runtime. You can run and change your program on the fly."
+      },
+      {
+        "icon": "small",
+        "title": "Simple language",
+        "content": "Language full syntax fits to one postcard, it has only 6 reserved words. It is easy to learn."
+      },
+      {
+        "icon": "dynamically-typed",
+        "title": "Dynamically typed",
+        "content": "Pharo has dynamic type-checking in runtime - an object checks its operation at time of execution."
+      },
+      {
+        "icon": "general-purpose",
+        "title": "Universal use",
+        "content": "Pharo can be used for web, desktop (cross-platform), AI, visualizations, math, IoT devices."
+      },
+      {
+        "icon": "cross-platform",
+        "title": "Multi-platform",
+        "content": "Pharo uses fast virtual machine that runs on Windows, macOS and Linux including the ARM processors."
+      }
+  ],
   "tags": [
     "paradigm/object_oriented",
     "typing/dynamic",
@@ -582,6 +613,12 @@
     "platform/windows",
     "platform/mac",
     "platform/linux",
-    "runtime/language_specific"
+    "runtime/language_specific",
+    "used_for/artificial_intelligence",
+    "used_for/scientific_calculations",
+    "used_for/frontends",
+    "used_for/backends",
+    "used_for/cross_platform_development",
+    "used_for/web_development"
   ]
 }
