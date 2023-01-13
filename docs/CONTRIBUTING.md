@@ -146,8 +146,10 @@ Step 2a: __Generate source code__ files for solution and test class by running e
 
 Or:
 
-- `ExercismGenerator generateSourceFilesFor: <Exercise@SlugName> to: <path-to-exercise-repo/exercises>` to produce soruce files just for specific exercise.
-  > Note that you'd need to run `configlet generate` and update `config.json` manually (see `ExercismGenerator>>generate` for details).
+- `ExercismGenerator generateSourceFilesFor: <Exercise@SlugName> to: <path-to-exercise-repo/exercises>` to produce source files just for specific exercise.
+  > Note that you'd need to run manually:
+  - update `config.json` manually (see `ExercismGenerator>>generate` for details)
+  - `configlet sync --docs --filepaths --metadata -uy -e <slug-name>` tu update all metadata for specific exercise. See details: [Using sync when adding a new exercise](https://github.com/exercism/configlet#using-sync-when-adding-a-new-exercise-to-a-track)
 
 Step 2b: Update Pharo-smalltalk project baseline by adding exercise name in list of `BaselineOfExercism>>exercisePackageNames` method. This will ensure your exercise to be loaded, when project is loaded including new exercise by Metacello command.  
 
