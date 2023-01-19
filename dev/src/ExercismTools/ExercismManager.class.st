@@ -67,6 +67,12 @@ ExercismManager class >> trackId [
 	^'pharo-smalltalk'
 ]
 
+{ #category : #config }
+ExercismManager class >> trackVersionString [
+
+	^ 'v2'
+]
+
 { #category : #exercism }
 ExercismManager class >> upgrade [
 	"upgrade an environment (called from ugrade instructions)"
@@ -193,6 +199,18 @@ ExercismManager >> submitToExercism: packageOrTag [
 				
 	^(ExercismSubmitCommand exercise: packageOrTag) execute.
 	
+]
+
+{ #category : #exercism }
+ExercismManager >> testExercise: slugName from: inputDirectory result: outputDirectory [
+
+	"this is Exercism test runner implementation - it will load exercise code and run tests, resulting in json file in output directory"
+	|exercise testResult|
+	exercise := ExercismExercise find: slugName ifAbsent: [ ExDomainError signal: ('Could not find exercise: {1}.' format: { slugName }) ].
+	testResult := [exercise testCase suite run] on: Error do: [ExDomainError signal: ('Error occured during testing exercise: {1}.' format: { slugName})].
+	
+
+"(self compiledMethodAt: selector) sourceCode"
 ]
 
 { #category : #exercism }

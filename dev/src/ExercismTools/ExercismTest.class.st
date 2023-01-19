@@ -98,6 +98,87 @@ ExercismTest >> assert: aNumber closeEnoughTo: aNumber2 by: decimalPlaces [
 		equals: (aNumber2 asFloat round: decimalPlaces)
 ]
 
+{ #category : #export }
+ExercismTest >> exercismTestResultInfo [
+
+	|testResultDict|
+	testResultDict := OrderedDictionary new.
+	testResultDict 
+		add: 'name' -> self humanReadableName;
+		add: 'status' -> self statusString.
+	self resultMessage ifNotEmpty: 
+	[:aString | 
+			testResultDict add:  'message' -> aString.
+			testResultDict add: 'output' -> self resultDebugInfo.
+	].
+	testResultDict add: 'test_code' -> self sourceCodeString.
+	^ testResultDict 
+]
+
+{ #category : #export }
+ExercismTest >> humanReadableName [
+
+	| readName |
+	readName := (self selector includes: $_)
+		            ifTrue: [ self selector copyAfterLast: $_ ]
+		            ifFalse: [ self selector withoutPrefix: 'test' ].
+	^ readName asSentenceCase trim capitalized
+]
+
+{ #category : #export }
+ExercismTest >> resultDebugInfo [
+
+	| writeStream |
+	writeStream := WriteStream on: ''.
+	[ self runCase ]
+		on: Error , TestFailure , TestTookTooMuchTime
+		do: [ :anException | 
+			| aContext |
+			aContext := anException signalerContext.
+			[ 
+			aContext isNil or: [ 
+				aContext receiver == self and: [ 
+					aContext methodSelector == #runCase ] ] ] whileFalse: [ 
+				[ 
+				writeStream
+					nextPutAll: aContext printString;
+					lf ] onErrorDo: [ 
+					writeStream
+						nextPutAll:
+							('Error during printing of stacktrace: {1}>>{2}.' format: { 
+										 self class name.
+										 self selector });
+						lf ].
+				aContext := aContext sender ]].
+		^ writeStream contents withUnixLineEndings
+]
+
+{ #category : #export }
+ExercismTest >> resultMessage [
+	|errorMessage|
+	errorMessage := ''.
+	[self runCase] on: 
+			Error, 
+			TestFailure, 
+			TestTookTooMuchTime  
+		do: [:ex |errorMessage := ex messageText].
+	^ errorMessage 
+]
+
+{ #category : #export }
+ExercismTest >> sourceCodeString [
+	"using LF lineending since it will be bumped to json format"
+	^ (self class compiledMethodAt: self selector) sourceCode withUnixLineEndings
+]
+
+{ #category : #export }
+ExercismTest >> statusString [ 
+
+	(self class methodPassed: self selector) ifTrue: [^ 'pass'].
+	(self class methodFailed: self selector) ifTrue: [^ 'fail'].
+	(self class methodRaisedError: self selector) ifTrue: [^ 'error'].
+]
+
 { #category : #verify }
 ExercismTest >> verifySolution: aClass avoidsSelector: aSelector [
 	| badSelector |

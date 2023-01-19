@@ -43,3 +43,48 @@ TestResult >> exercismSummary [
 		self exercismEnvironmentInfoOn: s.
 	]
 ]
+
+{ #category : #'*ExercismTools' }
+TestResult >> exercismTestResults [
+	
+	^ self tests collect: #exercismTestResultInfo
+]
+
+{ #category : #'*ExercismTools' }
+TestResult >> exercismTestRunnerData [
+	|testResults testRunnerDict|
+	testResults := self exercismTestResults.
+	testRunnerDict := {  
+		'version' -> ExercismManager trackVersionString.
+		'status' -> self overallStatus.
+		'message' -> (self overallMessageFrom: testResults).
+		
+	} asOrderedDictionary.
+	testResults ifNotEmpty: [ testRunnerDict add: ('tests' -> testResults ) ].
+	^ testRunnerDict 
+]
+
+{ #category : #'*ExercismTools' }
+TestResult >> exercismTestRunnerResultOn: aStream [
+
+	aStream 
+	 	nextPutAll: 'TOTO'
+]
+
+{ #category : #'*ExercismTools' }
+TestResult >> overallMessageFrom: testResultsColl [
+	|msg|
+	testResultsColl do: [:testCaseDict | msg := testCaseDict at: 'message' ifAbsent: [''].
+		msg ifNotEmpty: [:aString| ^ aString ] ].
+	^ msg
+
+	
+]
+
+{ #category : #'*ExercismTools' }
+TestResult >> overallStatus [
+
+	self errors ifNotEmpty: [ ^ 'error' ].
+	self failures ifNotEmpty: [ ^ 'fail' ].
+	^ 'pass'
+]

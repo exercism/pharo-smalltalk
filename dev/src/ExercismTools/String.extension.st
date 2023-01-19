@@ -22,6 +22,18 @@ String >> asKebabCase [
 ]
 
 { #category : #'*ExercismTools' }
+String >> asSentenceCase [
+	"Converts string of selector name to human readable sentence."
+
+	^ self class
+		streamContents: [ :aStream |
+			self do: [ :char |
+					char isUppercase
+						ifTrue: [ aStream nextPut: Character space ].
+					aStream nextPut: char asLowercase ] ]
+]
+
+{ #category : #'*ExercismTools' }
 String >> encodeDoublingDoubleQuotesOn: s [
 	"Print inside string quotes, doubling inbedded quotes."
 
