@@ -26,6 +26,30 @@ ExercismTestRunner >> findExercise: slugName [
 ]
 
 { #category : #private }
+ExercismTestRunner >> importSourceFilesfrom: importDirectory [
+	| definitions |
+	self validateDirectory: importDirectory.
+	definitions := self loadSourceDefinitionsFrom: importDirectory.
+	self validateDefinitions: definitions.
+	[ 
+		(MCSnapshot fromDefinitions: definitions) install 
+	]
+	on: Error
+	do: 
+	[ :ex | 
+		ExDomainError signal: ('Error occured during loading sources from: {1}: {2}.' 		format: {importDirectory pathString. ex messageText }) 
+	]
+]
+
+{ #category : #private }
+ExercismTestRunner >> loadSourceDefinitionsFrom: inputDirectory [
+	|tonelReader|
+	tonelReader := TonelReader on: inputDirectory fileName: ''.
+	tonelReader loadDefinitions.
+	^ tonelReader definitions
+]
+
+{ #category : #private }
 ExercismTestRunner >> runTestsFor: testClass [
 
 	^ [testClass suite run] on: Error do: [ExDomainError signal: ('Error occured during running tests on test class: {1}.' format: { testClass name})].
@@ -37,16 +61,40 @@ ExercismTestRunner >> runTestsOnExercise: slugName importSourcefrom: inputDirect
 	"this is Exercism test runner implementation - it will load exercise code and run tests, resulting in json file in output directory"
 	|exercise testResult outputFile outputJson|
 
-	exercise := self findExercise: slugName.
-	testResult := self runTestsFor: exercise testCase.
-	testResult dispatchResultsIntoHistory.
+	[	
+		exercise := self findExercise: slugName.
+		self importSourceFilesfrom: inputDirectory.
+		testResult := self runTestsFor: exercise testCase.
+		testResult dispatchResultsIntoHistory.
+		outputJson := STONJSONWriter streamContentsOf: testResult exercismTestRunnerData.
+	] on: ExDomainError 
+	do: [:domainError| outputJson := self setErrorToJson: domainError messageText ].
 	
 	outputFile := outputDirectory / 'results.json'.
-		
-	outputJson := STONJSONWriter streamContentsOf: testResult exercismTestRunnerData.
-	
 	outputFile 
 		ensureDelete; 
 		writeStreamDo: [ :stream |
 		 	stream nextPutAll: outputJson  ]
+]
+
+{ #category : #'api actions' }
+ExercismTestRunner >> setErrorToJson: domainErrorMsg [ 
+	
+	|jsonDict|
+	jsonDict := TestResult new exercismTestRunnerData.
+	jsonDict at: 'status' put: 'error'.
+	jsonDict at: 'message' put: domainErrorMsg.
+	^ jsonDict 
+]
+
+{ #category : #private }
+ExercismTestRunner >> validateDefinitions: definitionsColl [
+
+	(definitionsColl anySatisfy: [:aDef | aDef isClassDefinition or: [ aDef isMethodDefinition ] ]) ifFalse: [ ExDomainError signal: 'No valid source files to be loaded.']
+]
+
+{ #category : #private }
+ExercismTestRunner >> validateDirectory: importDirectory [
+
+	importDirectory isDirectory ifFalse: [ ExDomainError signal: ('Directory does not exist: {1}.' format: { importDirectory pathString  }) ]
 ]
