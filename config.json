@@ -588,7 +588,7 @@
       {
         "icon": "small",
         "title": "Simple language",
-        "content": "Language full syntax fits to one postcard, it has only 6 reserved words. It is easy to learn."
+        "content": "Language full syntax fits on a postcard, it has only 6 reserved words. It is easy to learn."
       },
       {
         "icon": "dynamically-typed",
@@ -598,7 +598,7 @@
       {
         "icon": "general-purpose",
         "title": "Universal use",
-        "content": "Pharo can be used for web, desktop (cross-platform), AI, visualizations, math, IoT devices."
+        "content": "Pharo can be used for web, desktop, AI, visualizations, math, IoT devices."
       },
       {
         "icon": "cross-platform",
