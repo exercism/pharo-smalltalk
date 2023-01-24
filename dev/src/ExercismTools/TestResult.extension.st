@@ -73,12 +73,14 @@ TestResult >> exercismTestRunnerResultOn: aStream [
 
 { #category : #'*ExercismTools' }
 TestResult >> overallMessageFrom: testResultsColl [
-	|msg|
-	testResultsColl do: [:testCaseDict | msg := testCaseDict at: 'message' ifAbsent: [''].
-		msg ifNotEmpty: [:aString| ^ aString ] ].
-	^ msg
 
-	
+	testResultsColl do: [ :testCaseDict | 
+		((testCaseDict at: 'status') = 'error') ifTrue: [ 
+			^ testCaseDict at: 'message' ] ].
+	testResultsColl do: [ :testCaseDict | 
+		((testCaseDict at: 'status') = 'fail') ifTrue: [ 
+			^ testCaseDict at: 'message' ] ].
+	^ String streamContents: [:aStream | self printAllPassedOn: aStream  ]
 ]
 
 { #category : #'*ExercismTools' }
@@ -87,4 +89,14 @@ TestResult >> overallStatus [
 	self errors ifNotEmpty: [ ^ 'error' ].
 	self failures ifNotEmpty: [ ^ 'fail' ].
 	^ 'pass'
+]
+
+{ #category : #'*ExercismTools' }
+TestResult >> printAllPassedOn: aStream [
+	self runCount isZero ifTrue: [ ^ aStream nextPutAll: 'No tests ran.' ].
+	aStream
+		print: self runCount;
+		nextPutAll: ' ran, ';
+		print: self expectedPassCount;
+		nextPutAll: ' passed.'
 ]

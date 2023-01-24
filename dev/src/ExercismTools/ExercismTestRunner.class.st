@@ -44,7 +44,7 @@ ExercismTestRunner >> importSourceFilesfrom: importDirectory [
 { #category : #private }
 ExercismTestRunner >> loadSourceDefinitionsFrom: inputDirectory [
 	|tonelReader|
-	tonelReader := TonelReader on: inputDirectory fileName: ''.
+	tonelReader := TonelReader fromExerciseDirectory: inputDirectory.
 	tonelReader loadDefinitions.
 	^ tonelReader definitions
 ]
@@ -84,7 +84,7 @@ ExercismTestRunner >> setErrorToJson: domainErrorMsg [
 	jsonDict := TestResult new exercismTestRunnerData.
 	jsonDict at: 'status' put: 'error'.
 	jsonDict at: 'message' put: domainErrorMsg.
-	^ jsonDict 
+	^ STONJSONWriter streamContentsOf: jsonDict
 ]
 
 { #category : #private }
