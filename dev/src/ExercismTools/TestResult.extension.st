@@ -65,13 +65,6 @@ TestResult >> exercismTestRunnerData [
 ]
 
 { #category : #'*ExercismTools' }
-TestResult >> exercismTestRunnerResultOn: aStream [
-
-	aStream 
-	 	nextPutAll: 'TOTO'
-]
-
-{ #category : #'*ExercismTools' }
 TestResult >> overallMessageFrom: testResultsColl [
 
 	testResultsColl do: [ :testCaseDict | 
