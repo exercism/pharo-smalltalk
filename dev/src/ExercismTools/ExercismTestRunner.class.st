@@ -19,6 +19,13 @@ Class {
 	#category : #'ExercismTools-Core'
 }
 
+{ #category : #'instance creation' }
+ExercismTestRunner class >> default [
+	"answer a defulat test runner"
+	
+	^ self new
+]
+
 { #category : #private }
 ExercismTestRunner >> findExercise: slugName [
 
