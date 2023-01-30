@@ -142,7 +142,9 @@ ExercismTest >> resultDebugInfo [
 				[ 
 				writeStream
 					nextPutAll: aContext printString;
-					lf ] onErrorDo: [ 
+					lf 
+				] 
+				on: Error do: [ 
 					writeStream
 						nextPutAll:
 							('Error during printing of stacktrace: {1}>>{2}.' format: { 
