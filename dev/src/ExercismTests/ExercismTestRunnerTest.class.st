@@ -64,30 +64,30 @@ ExercismTestRunnerTest class >> mockSnapshotRunnerTestCaseSTON [
 		},
 		MCMethodDefinition {
 			#classIsMeta : true,
-			#source : ''exercise\r\t^ (self createExerciseAfter: WelcomeTest)\r\t\tisCore: true;\r\t\tdifficulty: 1;\r\t\ttopics: #(\''introduction\'');\r\t\tyourself'',
+			#source : ''exercise\r\t^ (self createExerciseAfter: HelloWorldTest)\r\t\tisCore: true;\r\t\tdifficulty: 1;\r\t\ttopics: #(\''introduction\'');\r\t\tyourself'',
 			#category : #''as yet unclassified'',
 			#selector : #exercise,
 			#className : #MockRunnerTest
 		},
 		MCMethodDefinition {
 			#classIsMeta : false,
-			#source : ''mockTestA \r\tself assert: MockRunner new mockMethodA'',
+			#source : ''testMockMethodA \r\tself assert: MockRunner new mockMethodA'',
 			#category : #''as yet unclassified'',
-			#selector : #mockTestA,
+			#selector : #testMockMethodA,
 			#className : #MockRunnerTest
 		},
 		MCMethodDefinition {
 			#classIsMeta : false,
-			#source : ''mockTestB\r\tself assert: MockRunner new mockMethodB'',
+			#source : ''testMockMethodB\r\tself assert: MockRunner new mockMethodB'',
 			#category : #''as yet unclassified'',
-			#selector : #mockTestB,
+			#selector : #testMockMethodB,
 			#className : #MockRunnerTest
 		},
 		MCMethodDefinition {
 			#classIsMeta : false,
-			#source : ''mockTestC \r\tself assert: MockRunner new mockMethodC'',
+			#source : ''testMockMethodC \r\tself assert: MockRunner new mockMethodC'',
 			#category : #''as yet unclassified'',
-			#selector : #mockTestC,
+			#selector : #testMockMethodC,
 			#className : #MockRunnerTest
 		},
 		MCClassDefinition {
@@ -117,14 +117,14 @@ ExercismTestRunnerTest class >> prepareMockTestCaseForTestRunner [
 		package: 'Exercise@MockRunner'.
 
 
-	aClass compile: 'mockTestA 
+	aClass compile: 'testMockMethodA 
 	self assert: MockRunner new mockMethodA'.
-	aClass compile: 'mockTestB
+	aClass compile: 'testMockMethodB
 	self assert: MockRunner new mockMethodB'.
-	aClass compile: 'mockTestC 
+	aClass compile: 'testMockMethodC 
 	self assert: MockRunner new mockMethodC'.
 	aClass class compile: 'exercise
-	^ (self createExerciseAfter: WelcomeTest)
+	^ (self createExerciseAfter: HelloWorldTest)
 		isCore: true;
 		difficulty: 1;
 		topics: #(''introduction'');
@@ -202,6 +202,45 @@ ExercismTestRunnerTest >> testFindExercise [
 ]
 
 { #category : #tests }
+ExercismTestRunnerTest >> testImportSourceFilesfrom [
+
+	| memRef |
+	memRef := FileSystem memory root.
+	self
+		should: [ ExercismTestRunner default importSourceFilesfrom: memRef ]
+		raise: ExDomainError
+		description:
+		'Directory with no source code definitions should raise domain error.'.
+
+	self prepareMockSolutionFileIn: memRef.
+	ExercismTestRunner default importSourceFilesfrom: memRef.
+	"package with solution should exists"
+	self assert: (RPackageOrganizer default
+			 packageNamed: 'Exercise@MockRunner'
+			 ifAbsent: [ nil ]) isNotNil.
+	"MockRunner>>mockMethodA returns true"
+	self assert: (self class environment at: #MockRunner) new mockMethodA.
+	
+	"MockRunner>>mockMethodB returns false"
+	self deny: (self class environment at: #MockRunner) new mockMethodB.
+
+	self should: [ (self class environment at: #MockRunner) new mockMethodC] raise: Error description: 'MockRunner>>mockMethodC should raise error.'.
+]
+
+{ #category : #tests }
+ExercismTestRunnerTest >> testLoadSourceDefinitionsFrom [
+
+	|memRef definitions|
+	memRef := FileSystem memory root.
+	self prepareMockSolutionFileIn: memRef.
+	self assert: memRef entries isNotEmpty.
+	definitions := ExercismTestRunner default loadSourceDefinitionsFrom: memRef.
+	self assert: definitions isNotEmpty. 
+	ExercismTestRunner default validateDefinitions: definitions.
+	
+]
+
+{ #category : #tests }
 ExercismTestRunnerTest >> testPrepareMockSolution [
 	|memRef|
 	memRef := FileSystem memory root.
@@ -215,6 +254,28 @@ ExercismTestRunnerTest >> testRunTestsFor [
 	self should: [ExercismTestRunner default runTestsFor: Object] raise: ExDomainError description: 'Error occurs when trying to test non existing test case'.
 	
 	self assert: (ExercismTestRunner default runTestsFor: HelloWorldTest) hasPassed.
+]
+
+{ #category : #running }
+ExercismTestRunnerTest >> testRunTestsOnExerciseImportSourcefromResult [
+
+	|memRef inputDir outputDir outputFile|
+	
+	memRef := FileSystem memory root.
+	inputDir := (memRef / 'input') ensureCreateDirectory.
+	outputDir := (memRef / 'output') ensureCreateDirectory.
+	"preparing mock test case"
+	self prepareMockTestCase.
+	self prepareMockSolutionFileIn: inputDir.
+	
+	ExercismTestRunner default runTestsOnExercise: 'mock-runner' importSourceFrom: inputDir result: outputDir.
+	
+	outputFile := outputDir / 'results.json'. 
+	self assert: outputFile isFile.
+	self assert: (outputFile contents includesSubstring: '"status" : "error"').
+	self assert: (outputFile contents includesSubstring: '"message" : "My domain mock error."').
+	self assert: (outputFile contents includesSubstring: '"status" : "pass"').
+	self assert: (outputFile contents includesSubstring: '"status" : "fail"').
 ]
 
 { #category : #tests }

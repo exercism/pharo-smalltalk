@@ -63,7 +63,7 @@ ExercismTestRunner >> runTestsFor: testClass [
 ]
 
 { #category : #'api actions' }
-ExercismTestRunner >> runTestsOnExercise: slugName importSourcefrom: inputDirectory result: outputDirectory [
+ExercismTestRunner >> runTestsOnExercise: slugName importSourceFrom: inputDirectory result: outputDirectory [
 
 	"this is Exercism test runner implementation - it will load exercise code and run tests, resulting in json file in output directory"
 	|exercise testResult outputFile outputJson|
