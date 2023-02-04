@@ -295,3 +295,24 @@ ExercismTestRunnerTest >> testValidateDefinitions [
 	reader loadDefinitions.
 	self should: [ExercismTestRunner default validateDefinitions: reader definitions] raise: ExDomainError description: 'Empty source code definitions are not valid for loading exercise'.
 ]
+
+{ #category : #tests }
+ExercismTestRunnerTest >> testValidateDirectory [
+
+	|runner|
+	runner := ExercismTestRunner default.
+	"this should pass"
+	runner validateDirectory: FileSystem memory root.
+	
+	self should: [runner validateDirectory: 'non-existing-dir' asFileReference ] raise: ExDomainError description: 'Invalid path to directory should raise domain error'.
+]
+
+{ #category : #tests }
+ExercismTestRunnerTest >> testWriteJsonTo [
+	|jsonData memRef|
+	memRef := FileSystem memory root.
+	jsonData := 'some json contents'.
+	ExercismTestRunner default writeJson: jsonData to: memRef.
+	
+	self assert: (memRef / 'results.json') asFileReference contents equals: jsonData.
+]

@@ -91,7 +91,7 @@ ClapExercismTestRunner >> outputDir [
 ClapExercismTestRunner >> printInpuCmdLineArguments [
 
 	self outStream 
-		nextPutAll: ('Loading sources for exercise: ''{1}'' from input directory: ''{2}'', result to output: ''{3}/results.json''.' format: {self slugName. self inputDir. self outputDir.});
+		nextPutAll: ('Loading sources for exercise: ''{1}'' from input directory: ''{2}'', result to output directory: ''{3}''.' format: {self slugName. self inputDir. self outputDir.});
 		nextPutAll: 	OSPlatform current lineEnding 
 ]
 
