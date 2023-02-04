@@ -22,15 +22,15 @@ ClapExercismTestRunner class >> testRunnerCommand [
 		add: ((ClapPositional id: #slug)
 			description: 'Slug name of given exercise (e.g. "hello-world").';
 			meaning: [ :pos | pos word asSymbol ];
-			implicitMeaning: [ :arg :app | self error: 'Missing slug name argument.' ]);
+			implicitMeaning: [ :arg :app | ExDomainError signal: 'Missing slug name argument.' ]);
 		add: ((ClapPositional id: #input)
 			description: 'Input directory, where solution with source code is located.';
 			meaning: [ :pos | pos word asSymbol ];
-			implicitMeaning: [ :arg :app | self error: 'Missing input directory argument.' ]);
+			implicitMeaning: [ :arg :app | ExDomainError signal: 'Missing input directory argument.' ]);
 		add: ((ClapPositional id: #output)
 			description: 'Output directory, where results.json is located.';
 			meaning: [ :pos | pos word asSymbol ];
-			implicitMeaning: [ :arg :app | self error: 'Missing output directory parameter.' ]);
+			implicitMeaning: [ :arg :app | ExDomainError signal: 'Missing output directory parameter.' ]);
 		meaning: [ :args |
 			args at: #helpFlag ifPresent: [ :help |
 				help value; exitSuccess ].
@@ -47,12 +47,32 @@ ClapExercismTestRunner >> errStream [
 ]
 
 { #category : #execution }
-ClapExercismTestRunner >> execute [ 
+ClapExercismTestRunner >> execute [
 
-	self outStream nextPutAll: 'Executed.'; lf
+	[ 
+		|testResult|
+		"print CLI args"
+		self printInpuCmdLineArguments.
+
+		"executing test runner with CLI arguments"
+		testResult := ExercismTestRunner  default 
+			runTestsOnExercise: self slugName 
+			importSourceFrom: self inputDir asFileReference 
+			result: self outputDir asFileReference.
+		"print result"
+		self outStream nextPutAll: testResult asString;
+		nextPutAll: OSPlatform current lineEnding.
+	]	on: Error
+		do: 
+		[ :exception | 
+			self errStream	
+				nextPutAll: ('Error: {1}' format: {  exception messageText}); 
+				nextPutAll: OSPlatform current lineEnding.
+			^ Smalltalk exitFailure
+		]
 ]
 
-{ #category : #execution }
+{ #category : #accessing }
 ClapExercismTestRunner >> inputDir [
 	^ (arguments at: #input) value: self
 ]
@@ -62,12 +82,20 @@ ClapExercismTestRunner >> outStream [
 	^ outStream ifNil: [ outStream := VTermOutputDriver on: arguments context stdout ]
 ]
 
-{ #category : #execution }
+{ #category : #accessing }
 ClapExercismTestRunner >> outputDir [
 	^ (arguments at: #output) value: self
 ]
 
-{ #category : #execution }
+{ #category : #private }
+ClapExercismTestRunner >> printInpuCmdLineArguments [
+
+	self outStream 
+		nextPutAll: ('Loading sources for exercise: ''{1}'' from input directory: ''{2}'', result to output: ''{3}/results.json''.' format: {self slugName. self inputDir. self outputDir.});
+		nextPutAll: 	OSPlatform current lineEnding 
+]
+
+{ #category : #accessing }
 ClapExercismTestRunner >> slugName [
 ^ (arguments at: #slug) value: self
 ]

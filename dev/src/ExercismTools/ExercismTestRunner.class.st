@@ -66,7 +66,7 @@ ExercismTestRunner >> runTestsFor: testClass [
 ExercismTestRunner >> runTestsOnExercise: slugName importSourceFrom: inputDirectory result: outputDirectory [
 
 	"this is Exercism test runner implementation - it will load exercise code and run tests, resulting in json file in output directory"
-	|exercise testResult outputFile outputJson|
+	|exercise testResult outputJson|
 
 	[	
 		exercise := self findExercise: slugName.
@@ -75,13 +75,14 @@ ExercismTestRunner >> runTestsOnExercise: slugName importSourceFrom: inputDirect
 		testResult dispatchResultsIntoHistory.
 		outputJson := STONJSONWriter streamContentsOf: testResult exercismTestRunnerData.
 	] on: ExDomainError 
-	do: [:domainError| outputJson := self setErrorToJson: domainError messageText ].
-	
-	outputFile := outputDirectory / 'results.json'.
-	outputFile 
-		ensureDelete; 
-		writeStreamDo: [ :stream |
-		 	stream nextPutAll: outputJson  ]
+	do: 
+	[	:domainError| 
+		outputJson := self setErrorToJson: domainError messageText. 
+		self writeJson: outputJson to: outputDirectory. 
+		domainError pass
+	].
+	self writeJson: outputJson  to: outputDirectory.
+	^ testResult 
 ]
 
 { #category : #'api actions' }
@@ -104,4 +105,15 @@ ExercismTestRunner >> validateDefinitions: definitionsColl [
 ExercismTestRunner >> validateDirectory: importDirectory [
 
 	importDirectory isDirectory ifFalse: [ ExDomainError signal: ('Directory does not exist: {1}.' format: { importDirectory pathString  }) ]
+]
+
+{ #category : #private }
+ExercismTestRunner >> writeJson: jsonData to: anOutputDirectory [
+	
+	|outputFile|
+	outputFile := anOutputDirectory / 'results.json'.
+	outputFile 
+		ensureDelete; 
+		writeStreamDo: [ :stream |
+		 	stream nextPutAll: jsonData  ]
 ]
