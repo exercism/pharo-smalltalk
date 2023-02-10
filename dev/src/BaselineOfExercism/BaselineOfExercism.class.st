@@ -70,7 +70,7 @@ BaselineOfExercism >> baseline: spec [
 					with: #('ExercismTestRunner');
 
 				group: 'testRunnerTests'
-					with: #('ExercismTestRunnerTests');
+					with: #('ExercismTestRunnerTests' 'ExercismTests');
 				
 				group: 'v3'
 					with: #('ExercismV3')].
