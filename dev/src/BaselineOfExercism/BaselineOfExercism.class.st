@@ -53,7 +53,7 @@ BaselineOfExercism >> baseline: spec [
 						self class exercisePackageNames ];
 				
 				package: 'ExercismTestRunnerTests'
-					with: [ spec requires: #('ExercismTestRunner' )];	
+					with: [ spec requires: #('ExercismTestRunner' 'ExercismTests')];	
 				
 				package: 'ExercismV3';
 				
