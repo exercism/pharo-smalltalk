@@ -16,7 +16,7 @@ See api actions method: ExercismTestRunner>>testExercise:importSourcefrom:result
 Class {
 	#name : #ExercismTestRunner,
 	#superclass : #Object,
-	#category : #'ExercismTools-Core'
+	#category : #ExercismTestRunner
 }
 
 { #category : #'instance creation' }
@@ -36,15 +36,15 @@ ExercismTestRunner >> findExercise: slugName [
 ExercismTestRunner >> importSourceFilesfrom: importDirectory [
 	| definitions |
 	self validateDirectory: importDirectory.
-	definitions := self loadSourceDefinitionsFrom: importDirectory.
-	self validateDefinitions: definitions.
-	[ 
+	[
+		definitions := self loadSourceDefinitionsFrom: importDirectory.
+		self validateDefinitions: definitions. 
 		(MCSnapshot fromDefinitions: definitions) install 
 	]
 	on: Error
 	do: 
 	[ :ex | 
-		ExDomainError signal: ('Error occured during loading sources from: {1}: {2}.' 		format: {importDirectory pathString. ex messageText }) 
+		ExDomainError signal: ('Invalid source code - {1}' 		format: { ex messageText }) 
 	]
 ]
 

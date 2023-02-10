@@ -47,7 +47,14 @@ BaselineOfExercism >> baseline: spec [
 							'OSSubprocess' 'OSWinSubprocess' "For shelling out to configlet"						
 						 ),  
 						self class exercisePackageNames ];
-			
+				
+				package: 'ExercismTestRunner'
+					with: [ spec requires: #('ExercismTools'),  
+						self class exercisePackageNames ];
+				
+				package: 'ExercismTestRunnerTests'
+					with: [ spec requires: #('ExercismTestRunner' )];	
+				
 				package: 'ExercismV3';
 				
 				group: 'default'
@@ -58,6 +65,12 @@ BaselineOfExercism >> baseline: spec [
 				
 				group: 'dev'
 					with: #('ExercismDev' 'ExercismWIP' 'ExercismSystemTests');
+				
+				group: 'testRunner'
+					with: #('ExercismTestRunner');
+
+				group: 'testRunnerTests'
+					with: #('ExercismTestRunnerTests');
 				
 				group: 'v3'
 					with: #('ExercismV3')].

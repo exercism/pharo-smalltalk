@@ -10,7 +10,7 @@ Class {
 		'outStream',
 		'errStream'
 	],
-	#category : #'ExercismTools-Core'
+	#category : #ExercismTestRunner
 }
 
 { #category : #'command line' }

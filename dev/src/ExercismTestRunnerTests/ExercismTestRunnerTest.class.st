@@ -4,7 +4,7 @@ An ExercismTestRunnerTest is a test class for testing the behavior of ExercismTe
 Class {
 	#name : #ExercismTestRunnerTest,
 	#superclass : #TestCase,
-	#category : #'ExercismTests-UnitTests'
+	#category : #ExercismTestRunnerTests
 }
 
 { #category : #'test-data' }
