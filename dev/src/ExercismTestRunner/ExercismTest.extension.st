@@ -9,9 +9,8 @@ ExercismTest >> exercismTestResultInfo [
 		add: 'name' -> self humanReadableName;
 		add: 'status' -> self statusString.
 	self resultMessage ifNotEmpty: 
-	[:aString | 
-			testResultDict add:  'message' -> aString.
-			testResultDict add: 'output' -> self resultDebugInfo.
+	[	:aString | 	
+		testResultDict add:  'message' -> aString
 	].
 	testResultDict add: 'test_code' -> self sourceCodeString.
 	^ testResultDict 
@@ -59,14 +58,20 @@ ExercismTest >> resultDebugInfo [
 
 { #category : #'*ExercismTestRunner' }
 ExercismTest >> resultMessage [
-	|errorMessage|
-	errorMessage := ''.
+	|errMessageStream|
+	errMessageStream := WriteStream on: ''.
 	[self runCase] on: 
 			Error, 
 			TestFailure, 
 			TestTookTooMuchTime  
-		do: [:ex |errorMessage := ex messageText].
-	^ errorMessage 
+		do: [:ex |
+			errMessageStream nextPutAll: ex messageText.
+			errMessageStream lf.
+			errMessageStream nextPutAll: '---Stack-trace---'.
+			errMessageStream lf.
+			errMessageStream nextPutAll: self resultDebugInfo
+		].
+	^ errMessageStream contents
 ]
 
 { #category : #'*ExercismTestRunner' }
