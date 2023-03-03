@@ -20,8 +20,8 @@ ExercismManager class >> default [
 { #category : #exercism }
 ExercismManager class >> disableStudentCritics [
 
-	RBUtilityMethodsRule enabled: false.
-	ReTestClassNotInPackageWithTestEndingName enabled: false
+	ReUtilityMethodsRule enabled: false.
+	ReTestClassNotInPackageWithTestEndingNameRule enabled: false
 	
 ]
 
@@ -65,6 +65,12 @@ ExercismManager class >> solutionData [
 { #category : #config }
 ExercismManager class >> trackId [
 	^'pharo-smalltalk'
+]
+
+{ #category : #config }
+ExercismManager class >> trackVersionString [
+
+	^ 2 asString
 ]
 
 { #category : #exercism }
