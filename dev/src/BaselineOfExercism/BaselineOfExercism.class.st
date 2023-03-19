@@ -87,6 +87,9 @@ BaselineOfExercism >> baseline: spec [
 						)]
 			].
 		spec
+			for: #'pharo8.x'
+			do: [spec package: 'ExercismPharo80'].
+		spec
 			for: #'pharo9.x'
 			do: [spec package: 'ExercismPharo90']
 ]
