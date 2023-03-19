@@ -21,7 +21,6 @@ BaselineOfExercism class >> exerciseTestPackageNames [
 { #category : #baselines }
 BaselineOfExercism >> baseline: spec [
 	<baseline>
-	
 	spec
 		for: #common
 		do: [ self setExercismLogo.
@@ -29,69 +28,51 @@ BaselineOfExercism >> baseline: spec [
 			self setUpExercisesFor: spec.
 			spec
 				package: 'ExercismTools';
-				
-				package: 'ExercismMocking' 
-					with: [ spec requires: #('Mocketry') ];
+				package: 'ExercismMocking' with: [ spec requires: #('Mocketry') ];
 				package: 'ExercismTests'
-					with: [ spec requires: #('ExercismTools' 'ExercismMocking'), 
-						self class exerciseTestPackageNames ];
-					
+					with: [ spec
+						requires:
+							#('ExercismTools' 'ExercismMocking')
+								, self class exerciseTestPackageNames ];
 				package: 'ExercismSystemTests'
 					with: [ spec requires: #('ExercismTests') ];
-				
 				package: 'ExercismWIP'
 					with: [ spec requires: #('ExercismTools') ];
-					
 				package: 'ExercismDev'
-					with: [ spec requires: #('ExercismTools'
-							'OSSubprocess' 'OSWinSubprocess' "For shelling out to configlet"						
-						 ),  
-						self class exercisePackageNames ];
-				
+					with: [ spec
+						requires:
+							#('ExercismTools' 'OSSubprocess' 'OSWinSubprocess')
+								, self class exercisePackageNames	"For shelling out to configlet" ];
 				package: 'ExercismTestRunner'
-					with: [ spec requires: #('ExercismTools'),  
-						self class exercisePackageNames ];
-				
+					with:
+						[ spec requires: #('ExercismTools') , self class exercisePackageNames ];
 				package: 'ExercismTestRunnerTests'
-					with: [ spec requires: #('ExercismTestRunner' 'ExercismTests') ];	
-				
+					with: [ spec requires: #('ExercismTestRunner' 'ExercismTests') ];
 				package: 'ExercismV3';
-				
-				group: 'default'
-					with: #('ExercismTools' 'Exercise@Welcome');
-					
-				group: 'mentor'
-					with: #('ExercismDev' );
-				
+				group: 'default' with: #('ExercismTools' 'Exercise@Welcome');
+				group: 'mentor' with: #('ExercismDev');
 				group: 'dev'
 					with: #('ExercismDev' 'ExercismWIP' 'ExercismSystemTests');
-				
-				group: 'testRunner'
-					with: #('ExercismTestRunner');
-
-				group: 'testRunnerTests'
-					with: #('ExercismTestRunnerTests');
-				
-				group: 'v3'
-					with: #('ExercismV3')].
-		spec
-			for: #'pharo7.x'
-			do: [ 
-				spec 
-					package: 'ExercismPharo70'; "Pharo override/patch methods"
-					package: 'ExercismTools' 
-					with: [ spec requires: #('ExercismPharo70')];
-					package: 'ExercismDev'
-					with: [ spec requires: #(
-						'Ring2' "For mentoring support of shadow browsing"
-						)]
-			].
-		spec
-			for: #'pharo8.x'
-			do: [spec package: 'ExercismPharo80'].
-		spec
-			for: #'pharo9.x'
-			do: [spec package: 'ExercismPharo90']
+				group: 'testRunner' with: #('ExercismTestRunner');
+				group: 'testRunnerTests' with: #('ExercismTestRunnerTests');
+				group: 'v3' with: #('ExercismV3') ].
+	spec
+		for: #'pharo7.x'
+		do: [ spec
+				package: 'ExercismPharo70';
+				"Pharo override/patch methods"
+					package: 'ExercismTools'
+					with: [ spec requires: #('ExercismPharo70') ];
+				package: 'ExercismDev'
+					with:
+						[ spec requires: #('Ring2')	"For mentoring support of shadow browsing" ] ].
+	spec
+		for: #'pharo8.x'
+		do: [ spec
+				package: 'ExercismPharo80';
+				package: 'ExercismTools'
+					with: [ spec requires: #('ExercismPharo80') ] ].
+	spec for: #'pharo9.x' do: [ spec package: 'ExercismPharo90' ]
 ]
 
 { #category : #baselines }
