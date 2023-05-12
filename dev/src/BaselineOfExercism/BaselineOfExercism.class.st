@@ -56,22 +56,7 @@ BaselineOfExercism >> baseline: spec [
 				group: 'testRunner' with: #('ExercismTestRunner');
 				group: 'testRunnerTests' with: #('ExercismTestRunnerTests');
 				group: 'v3' with: #('ExercismV3') ].
-	spec
-		for: #'pharo7.x'
-		do: [ spec
-				package: 'ExercismPharo70';
-				"Pharo override/patch methods"
-					package: 'ExercismTools'
-					with: [ spec requires: #('ExercismPharo70') ];
-				package: 'ExercismDev'
-					with:
-						[ spec requires: #('Ring2')	"For mentoring support of shadow browsing" ] ].
-	spec
-		for: #'pharo8.x'
-		do: [ spec
-				package: 'ExercismPharo80';
-				package: 'ExercismTools'
-					with: [ spec requires: #('ExercismPharo80') ] ].
+
 	spec for: #'pharo9.x' do: [ spec package: 'ExercismPharo90' ]
 ]
 
