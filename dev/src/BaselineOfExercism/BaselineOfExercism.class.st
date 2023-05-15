@@ -58,7 +58,7 @@ BaselineOfExercism >> baseline: spec [
 				group: 'v3' with: #('ExercismV3')
 			].
 			spec for: #'pharo9.x' do: [ 
-				spec package: 'NewTools-Debugger' with: [ spec includes: #('ExercismPharo90') ].
+				spec package: 'ExercismTools' with: [ spec includes: #('ExercismPharo90') ].
 				spec package: 'ExercismPharo90' ].
 			spec for: #'pharo11.x' do: [
 				"ExercismTools must be loaded prior compatibilty package, to overwrite original class definition of ExTonelWriter"
