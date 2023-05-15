@@ -55,14 +55,14 @@ BaselineOfExercism >> baseline: spec [
 					with: #('ExercismDev' 'ExercismWIP' 'ExercismSystemTests');
 				group: 'testRunner' with: #('ExercismTestRunner');
 				group: 'testRunnerTests' with: #('ExercismTestRunnerTests');
-				group: 'v3' with: #('ExercismV3') ].
+				group: 'v3' with: #('ExercismV3').
 
-	spec for: #'pharo9.x' do: [ spec package: 'ExercismPharo90' ].
-	spec for: #'pharo11.x' do: [
-		"ExercismTools must be loaded prior compatibilty package, to overwrite original class definition of ExTonelWriter"
-		spec package: 'ExercismPharo110' with: [ spec requires: 'ExercismTools' ]
-	]
-
+			spec for: #'pharo9.x' do: [ spec package: 'ExercismPharo90' ].
+			spec for: #'pharo11.x' do: [
+				"ExercismTools must be loaded prior compatibilty package, to overwrite original class definition of ExTonelWriter"
+				spec package: 'ExercismPharo110' with: [ spec requires: 'ExercismTools' ]
+			]
+		]
 ]
 
 { #category : #baselines }
