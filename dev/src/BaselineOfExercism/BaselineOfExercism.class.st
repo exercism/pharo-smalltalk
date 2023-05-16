@@ -55,24 +55,17 @@ BaselineOfExercism >> baseline: spec [
 					with: #('ExercismDev' 'ExercismWIP' 'ExercismSystemTests');
 				group: 'testRunner' with: #('ExercismTestRunner');
 				group: 'testRunnerTests' with: #('ExercismTestRunnerTests');
-				group: 'v3' with: #('ExercismV3') ].
-	spec
-		for: #'pharo7.x'
-		do: [ spec
-				package: 'ExercismPharo70';
-				"Pharo override/patch methods"
-					package: 'ExercismTools'
-					with: [ spec requires: #('ExercismPharo70') ];
-				package: 'ExercismDev'
-					with:
-						[ spec requires: #('Ring2')	"For mentoring support of shadow browsing" ] ].
-	spec
-		for: #'pharo8.x'
-		do: [ spec
-				package: 'ExercismPharo80';
-				package: 'ExercismTools'
-					with: [ spec requires: #('ExercismPharo80') ] ].
-	spec for: #'pharo9.x' do: [ spec package: 'ExercismPharo90' ]
+				group: 'v3' with: #('ExercismV3')
+			].
+			spec for: #'pharo9.x' do: [ 
+				spec package: 'ExercismTools' with: [ spec includes: #('ExercismPharo90') ].
+				spec package: 'ExercismPharo90' ].
+			spec for: #'pharo11.x' do: [
+				"ExercismTools must be loaded prior compatibilty package, to overwrite original class definition of ExTonelWriter"
+				spec package: 'ExercismTools' with: [ spec includes: #('ExercismPharo110') ].
+				spec package: 'ExercismPharo110' with: [ spec requires: 'ExercismTools' ]
+			]
+		
 ]
 
 { #category : #baselines }
