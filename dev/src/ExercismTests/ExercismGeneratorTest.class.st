@@ -38,7 +38,7 @@ ExercismGeneratorTest >> assertAllActiveExerciseClassesWithSolutionsExists [
 self	activeExercisesWithPackageDo: [:exPackage | 
 			|exerciseName exerciseFile|
 			exerciseName := ExercismExercise exerciseNameFrom: exPackage.
-			exerciseFile := memoryFileReference / exerciseName / '.meta' / 'solution' / ((exerciseName = 'matrix' ifTrue: [exerciseName, '-reader'] ifFalse: [exerciseName]) kebabAsCamelCase, '.class.st' ).
+			exerciseFile := memoryFileReference / exerciseName / '.meta' / 'solution' / (exerciseName kebabAsCamelCase, '.class.st' ).
 			self assert: exerciseFile exists.
 			self assert: exerciseFile contents isNotEmpty.			
 	]
