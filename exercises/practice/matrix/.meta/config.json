@@ -4,13 +4,13 @@
   ],
   "files": {
     "solution": [
-      "MatrixReader.class.st"
+      "Matrix.class.st"
     ],
     "test": [
       "MatrixTest.class.st"
     ],
     "example": [
-      ".meta/solution/MatrixReader.class.st"
+      ".meta/solution/Matrix.class.st"
     ]
   },
   "blurb": "Given a string representing a matrix of numbers, return the rows and columns of that matrix.",

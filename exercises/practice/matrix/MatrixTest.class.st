@@ -71,7 +71,7 @@ MatrixTest class >> exercise [
 MatrixTest class >> generator [
 	"Potential generator hints"
 
-	^ {('@Matrix' -> '#MatrixReader').
+	^ {('@Matrix' -> '#Matrix').
 	('@columnString:index:' -> '#input:atColumn:').
 	('@rowString:index:' -> '#input:atRow:')}
 ]
@@ -91,7 +91,7 @@ MatrixTest class >> version [
 { #category : #running }
 MatrixTest >> setUp [
 	super setUp.
-	matrixCalculator := MatrixReader new
+	matrixCalculator := Matrix new
 ]
 
 { #category : #tests }
