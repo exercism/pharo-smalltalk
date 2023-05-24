@@ -68,15 +68,6 @@ MatrixTest class >> exercise [
 ]
 
 { #category : #config }
-MatrixTest class >> generator [
-	"Potential generator hints"
-
-	^ {('@Matrix' -> '#Matrix').
-	('@columnString:index:' -> '#input:atColumn:').
-	('@rowString:index:' -> '#input:atRow:')}
-]
-
-{ #category : #config }
 MatrixTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'bea80017-9d41-0d00-900d-a13308866539'
