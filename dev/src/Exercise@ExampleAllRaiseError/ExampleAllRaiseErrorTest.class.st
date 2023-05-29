@@ -1,7 +1,7 @@
 Class {
 	#name : #ExampleAllRaiseErrorTest,
 	#superclass : #ExercismTest,
-	#category : #ExercismTestRunnerTests
+	#category : #'Exercise@ExampleAllRaiseError'
 }
 
 { #category : #private }

@@ -303,6 +303,13 @@ ExercismExercise >> printOn: aStream [
 	aStream nextPut: $)
 ]
 
+{ #category : #removing }
+ExercismExercise >> removeSolutionClasses [
+	"Solution classes with implemented solution to be removed - utilized by TestRunner before importing student solution"
+	
+	^self solutionClasses do: [:solutionClass | solutionClass  removeFromSystem]
+]
+
 { #category : #accessing }
 ExercismExercise >> snapshot [
 	"Answer the MCSnapshot for the exercise"

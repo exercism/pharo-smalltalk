@@ -1,7 +1,7 @@
 Class {
 	#name : #ExampleEmptySolutionFileTest,
 	#superclass : #ExercismTest,
-	#category : #ExercismTestRunnerTests
+	#category : #'Exercise@ExampleEmptySolutionFile'
 }
 
 { #category : #private }

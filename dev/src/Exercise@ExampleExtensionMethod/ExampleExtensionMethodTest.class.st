@@ -1,7 +1,7 @@
 Class {
 	#name : #ExampleExtensionMethodTest,
 	#superclass : #ExercismTest,
-	#category : #ExercismTestRunnerTests
+	#category : #'Exercise@ExampleExtensionMethod'
 }
 
 { #category : #private }
