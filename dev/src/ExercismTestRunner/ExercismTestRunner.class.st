@@ -41,7 +41,7 @@ ExercismTestRunner >> importSourceFilesfrom: importDirectory [
 		self validateDefinitions: definitions. 
 		(MCSnapshot fromDefinitions: definitions) install 
 	]
-	on: Error
+	on: Error, Warning
 	do: 
 	[ :ex | 
 		ExDomainError signal: ('Invalid source code - {1}' 		format: { ex messageText }) 
