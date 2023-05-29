@@ -10,7 +10,7 @@ ExampleErrorFailPassTest class >> exampleSolutionSourceCode [
 	^ 'Class {
 	#name : #ExampleErrorFailPass,
 	#superclass : #Object,
-	#category : #ExercismTestRunnerTests
+	#category : #Exercise@ExampleErrorFailPass
 }
 
 { #category : #''as yet unclassified'' }
@@ -36,7 +36,7 @@ ExampleErrorFailPassTest class >> exampleTestCasesSourceCode [
 	^ 'Class {
 #name : #ExampleErrorFailPassTest,
 #superclass : #ExercismTest,
-#category : #ExercismTestRunnerTests
+#category : #Exercise@ExampleErrorFailPass
 }
 
 { #category : #''as yet unclassified'' }

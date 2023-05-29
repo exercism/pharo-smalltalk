@@ -9,7 +9,7 @@ ExampleExtensionMethodTest class >> exampleSolutionSourceCode [
 
 	^ 'Extension { #name : #String }
 
-{ #category : #''*ExercismTestRunnerTests'' }
+{ #category : #''*Exercise@ExampleExtensionMethod'' }
 String >> somethingReturned [
 
 	^ ''something returned''
@@ -23,7 +23,7 @@ ExampleExtensionMethodTest class >> exampleTestCasesSourceCode [
 	^ 'Class {
 #name : #ExampleExtensionMethodTest,
 #superclass : #ExercismTest,
-#category : #ExercismTestRunnerTests
+#category : #Exercise@ExampleExtensionMethod
 }
 
 { #category : #''as yet unclassified'' }
