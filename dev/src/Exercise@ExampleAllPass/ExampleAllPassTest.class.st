@@ -10,7 +10,7 @@ ExampleAllPassTest class >> exampleSolutionSourceCode [
 	^ 'Class {
 	#name : #ExampleAllPass,
 	#superclass : #Object,
-	#category : #ExercismTestRunnerTests
+	#category : #Exercise@ExampleAllPass
 }
 
 { #category : #''as yet unclassified'' }
@@ -36,7 +36,7 @@ ExampleAllPassTest class >> exampleTestCasesSourceCode [
 	^ 'Class {
 #name : #ExampleAllPassTest,
 #superclass : #ExercismTest,
-#category : #ExercismTestRunnerTests
+#category : #Exercise@ExampleAllPass
 }
 
 { #category : #''as yet unclassified'' }

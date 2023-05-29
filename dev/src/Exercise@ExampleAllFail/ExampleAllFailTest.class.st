@@ -10,7 +10,7 @@ ExampleAllFailTest class >> exampleSolutionSourceCode [
 	^ 'Class {
 	#name : #ExampleAllFail,
 	#superclass : #Object,
-	#category : #ExercismTestRunnerTests
+	#category : #Exercise@ExampleAllFail
 }
 
 { #category : #''as yet unclassified'' }
@@ -36,7 +36,7 @@ ExampleAllFailTest class >> exampleTestCasesSourceCode [
 	^ 'Class {
 	#name : #ExampleAllFailTest,
 	#superclass : #ExercismTest,
-	#category : #ExercismTestRunnerTests
+	#category : #Exercise@ExampleAllFail
 }
 
 { #category : #''as yet unclassified'' }
