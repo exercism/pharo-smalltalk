@@ -10,7 +10,7 @@ ExampleEmptySolutionClassTest class >> exampleSolutionSourceCode [
 	^ 'Class {
 	#name : #ExampleEmptySolutionClass,
 	#superclass : #Object,
-	#category : #Exercise@ExampleEmptySolutionClass
+	#category : #''Exercise@ExampleEmptySolutionClass''
 }
 '
 ]
@@ -21,7 +21,7 @@ ExampleEmptySolutionClassTest class >> exampleTestCasesSourceCode [
 	^ 'Class {
 #name : #ExampleEmptySolutionClassTest,
 #superclass : #ExercismTest,
-#category : #Exercise@ExampleEmptySolutionClass
+#category : #''Exercise@ExampleEmptySolutionClass''
 }
 
 { #category : #''as yet unclassified'' }

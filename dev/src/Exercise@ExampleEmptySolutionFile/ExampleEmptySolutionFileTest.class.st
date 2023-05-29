@@ -16,7 +16,7 @@ ExampleEmptySolutionFileTest class >> exampleTestCasesSourceCode [
 	^ 'Class {
 #name : #ExampleEmptySolutionFileTest,
 #superclass : #ExercismTest,
-#category : #Exercise@ExampleEmptySolutionFile
+#category : #''Exercise@ExampleEmptySolutionFile''
 }
 
 { #category : #''as yet unclassified'' }

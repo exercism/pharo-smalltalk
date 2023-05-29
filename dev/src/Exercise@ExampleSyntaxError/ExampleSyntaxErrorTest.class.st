@@ -10,7 +10,7 @@ ExampleSyntaxErrorTest class >> exampleSolutionSourceCode [
 	^ 'Class {
 	#name : #ExampleSyntaxError, ==> Syntax error here <==
 	#superclass : #Object,
-	#category : #Exercise@ExampleSyntaxError
+	#category : #''Exercise@ExampleSyntaxError''
 }
 
 { #category : #''as yet unclassified'' }
@@ -36,7 +36,7 @@ ExampleSyntaxErrorTest class >> exampleTestCasesSourceCode [
 	^ 'Class {
 #name : #ExampleSyntaxErrorTest,
 #superclass : #ExercismTest,
-#category : #Exercise@ExampleSyntaxError
+#category : #''Exercise@ExampleSyntaxError''
 }
 
 { #category : #''as yet unclassified'' }
