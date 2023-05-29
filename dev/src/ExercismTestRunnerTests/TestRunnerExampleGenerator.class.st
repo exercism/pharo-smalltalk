@@ -10,8 +10,8 @@ Class {
 { #category : #private }
 TestRunnerExampleGenerator class >> definedExampleClasses [
 
-	^ self package definedClasses 
-	select: [:aClass | aClass isTestCase and: [aClass name beginsWith: 'Example']] 
+	^ ExercismTest allSubclasses
+		select: [ :aClass | (aClass class includesSelector: #exercise) and: [aClass name beginsWith: 'Example']] 
 ]
 
 { #category : #private }
