@@ -23,7 +23,7 @@ ExampleExtensionMethodTest class >> exampleTestCasesSourceCode [
 	^ 'Class {
 #name : #ExampleExtensionMethodTest,
 #superclass : #ExercismTest,
-#category : #Exercise@ExampleExtensionMethod
+#category : #''Exercise@ExampleExtensionMethod''
 }
 
 { #category : #''as yet unclassified'' }

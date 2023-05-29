@@ -10,7 +10,7 @@ ExampleAllRaiseErrorTest class >> exampleSolutionSourceCode [
 	^ 'Class {
 	#name : #ExampleAllRaiseError,
 	#superclass : #Object,
-	#category : #Exercise@ExampleAllRaiseError
+	#category : #''Exercise@ExampleAllRaiseError''
 }
 
 { #category : #''as yet unclassified'' }
@@ -36,7 +36,7 @@ ExampleAllRaiseErrorTest class >> exampleTestCasesSourceCode [
 	^ 'Class {
 #name : #ExampleAllRaiseErrorTest,
 #superclass : #ExercismTest,
-#category : #Exercise@ExampleAllRaiseError
+#category : #''Exercise@ExampleAllRaiseError''
 }
 
 { #category : #''as yet unclassified'' }

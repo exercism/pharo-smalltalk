@@ -10,7 +10,7 @@ ExampleTypoInMethodNameTest class >> exampleSolutionSourceCode [
 	^ 'Class {
 	#name : #ExampleTypoInMethodName,
 	#superclass : #Object,
-	#category : #Exercise@ExampleTypoInMethodName
+	#category : #''Exercise@ExampleTypoInMethodName''
 }
 
 { #category : #''as yet unclassified'' }
@@ -27,7 +27,7 @@ ExampleTypoInMethodNameTest class >> exampleTestCasesSourceCode [
 	^ 'Class {
 #name : #ExampleTypoInMethodNameTest,
 #superclass : #ExercismTest,
-#category : #Exercise@ExampleTypoInMethodName
+#category : #''Exercise@ExampleTypoInMethodName''
 }
 
 { #category : #''as yet unclassified'' }
