@@ -5,6 +5,13 @@ Class {
 }
 
 { #category : #baselines }
+BaselineOfExercism class >> exerciseGoldenTestPackageNames [
+	"Answer the list of exercise package names used for golden tests executed by Exercism's test runner"
+
+	^ #('Exercise@ExampleAllFail' 'Exercise@ExampleAllPass' 'Exercise@ExampleAllRaiseError' 'Exercise@ExampleEmptySolutionClass' 'Exercise@ExampleEmptySolutionFile' 'Exercise@ExampleErrorFailPass' 'Exercise@ExampleExtensionMethod' 'Exercise@ExampleSyntaxError')
+]
+
+{ #category : #baselines }
 BaselineOfExercism class >> exercisePackageNames [
 	"Answer the list of exercise package names (as we don't yet have proper projects)"
 
@@ -26,6 +33,7 @@ BaselineOfExercism >> baseline: spec [
 		do: [ self setExercismLogo.
 			self setUpDependencies: spec.
 			self setUpExercisesFor: spec.
+			self setUpGoldenTestsFor: spec.
 			spec
 				package: 'ExercismTools';
 				package: 'ExercismMocking' with: [ spec requires: #('Mocketry') ];
@@ -54,7 +62,7 @@ BaselineOfExercism >> baseline: spec [
 				group: 'dev'
 					with: #('ExercismDev' 'ExercismWIP' 'ExercismSystemTests');
 				group: 'testRunner' with: #('ExercismTestRunner');
-				group: 'testRunnerTests' with: #('ExercismTestRunnerTests' 'Exercise@ExampleAllFail' 'Exercise@ExampleAllPass' 'Exercise@ExampleAllRaiseError' 'Exercise@ExampleEmptySolutionClass' 'Exercise@ExampleEmptySolutionFile' 'Exercise@ExampleErrorFailPass' 'Exercise@ExampleExtensionMethod' 'Exercise@ExampleSyntaxError');
+				group: 'testRunnerTests' with: #('ExercismTestRunnerTests'), self class exerciseGoldenTestPackageNames;
 				group: 'v3' with: #('ExercismV3')
 			].
 			spec for: #'pharo9.x' do: [ 
@@ -111,6 +119,14 @@ BaselineOfExercism >> setUpDependencies: spec [
 { #category : #baselines }
 BaselineOfExercism >> setUpExercisesFor: spec [
 	self class exercisePackageNames, self class exerciseTestPackageNames 
+		do:
+			[ :name | spec package: name with: [ spec requires: #('ExercismTools') ] ]
+]
+
+{ #category : #baselines }
+BaselineOfExercism >> setUpGoldenTestsFor: spec [
+	
+	self class exerciseGoldenTestPackageNames 
 		do:
 			[ :name | spec package: name with: [ spec requires: #('ExercismTools') ] ]
 ]
