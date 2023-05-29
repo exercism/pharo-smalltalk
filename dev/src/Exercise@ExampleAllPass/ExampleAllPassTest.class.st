@@ -1,7 +1,7 @@
 Class {
 	#name : #ExampleAllPassTest,
 	#superclass : #ExercismTest,
-	#category : #ExercismTestRunnerTests
+	#category : #'Exercise@ExampleAllPass'
 }
 
 { #category : #private }

@@ -1,63 +1,63 @@
 Class {
-	#name : #ExampleAllFailTest,
+	#name : #ExampleErrorFailPassTest,
 	#superclass : #ExercismTest,
-	#category : #ExercismTestRunnerTests
+	#category : #'Exercise@ExampleErrorFailPass'
 }
 
 { #category : #private }
-ExampleAllFailTest class >> exampleSolutionSourceCode [ 
+ExampleErrorFailPassTest class >> exampleSolutionSourceCode [ 
 
 	^ 'Class {
-	#name : #ExampleAllFail,
+	#name : #ExampleErrorFailPass,
 	#superclass : #Object,
 	#category : #ExercismTestRunnerTests
 }
 
 { #category : #''as yet unclassified'' }
-ExampleAllFail >> exerciseMethodA [
-	^ ''not $A''
+ExampleErrorFailPass >> exerciseMethodA [
+	^ self error: ''Error occured in method A''
 ]
 
 { #category : #''as yet unclassified'' }
-ExampleAllFail >> exerciseMethodB [
+ExampleErrorFailPass >> exerciseMethodB [
 	^ ''not $B''
 ]
 
 { #category : #''as yet unclassified'' }
-ExampleAllFail >> exerciseMethodC [
-	^ ''not $C''
+ExampleErrorFailPass >> exerciseMethodC [
+	^ $C
 ]
 '
 ]
 
 { #category : #private }
-ExampleAllFailTest class >> exampleTestCasesSourceCode [ 
+ExampleErrorFailPassTest class >> exampleTestCasesSourceCode [
 	
 	^ 'Class {
-	#name : #ExampleAllFailTest,
-	#superclass : #ExercismTest,
-	#category : #ExercismTestRunnerTests
+#name : #ExampleErrorFailPassTest,
+#superclass : #ExercismTest,
+#category : #ExercismTestRunnerTests
 }
 
 { #category : #''as yet unclassified'' }
-ExampleAllFailTest >> testExerciseMethodA [
-	self assert: ExampleAllFail new exerciseMethodA equals: $A
+ExampleErrorFailPassTest >> testExerciseMethodA [
+	self assert: ExampleErrorFailPass new exerciseMethodA equals: $A
 ]
 
 { #category : #''as yet unclassified'' }
-ExampleAllFailTest >> testExerciseMethodB [
-	self assert: ExampleAllFail new exerciseMethodB equals: $B
+ExampleErrorFailPassTest >> testExerciseMethodB [
+	self assert: ExampleErrorFailPass new exerciseMethodB equals: $B
 ]
 
 { #category : #''as yet unclassified'' }
-ExampleAllFailTest >> testExerciseMethodC [
-	self assert: ExampleAllFail new exerciseMethodC equals: $C
+ExampleErrorFailPassTest >> testExerciseMethodC [
+	self assert: ExampleErrorFailPass new exerciseMethodC equals: $C
 ]
 '
 ]
 
 { #category : #config }
-ExampleAllFailTest class >> exercise [
+ExampleErrorFailPassTest class >> exercise [
 	^ (self createExerciseAfter: HelloWorldTest)
 		isCore: true;
 		difficulty: 1;
@@ -66,7 +66,7 @@ ExampleAllFailTest class >> exercise [
 ]
 
 { #category : #config }
-ExampleAllFailTest class >> prepareExampleSolutionSourceCode [
+ExampleErrorFailPassTest class >> prepareExampleSolutionSourceCode [
 
 " this is used for generating STON representation of MCSnapshot, that can be used to generate solution of example (golden test)"
 | solutionClass|
@@ -77,11 +77,11 @@ ExampleAllFailTest class >> prepareExampleSolutionSourceCode [
 	package: self package name asString.
 
 	solutionClass compile: ('exerciseMethodA
-	^ ''not $A''').
+	^ self error: ''Error occured in method A''').
 	solutionClass compile: ('exerciseMethodB
 	^ ''not $B''').	
 	solutionClass compile: ('exerciseMethodC
-	^ ''not $C''').
+	^ $C').
 
 	^ TonelWriter sourceCodeOf: solutionClass.
 ]

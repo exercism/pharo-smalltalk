@@ -1,7 +1,7 @@
 Class {
 	#name : #ExampleSyntaxErrorTest,
 	#superclass : #ExercismTest,
-	#category : #ExercismTestRunnerTests
+	#category : #'Exercise@ExampleSyntaxError'
 }
 
 { #category : #private }

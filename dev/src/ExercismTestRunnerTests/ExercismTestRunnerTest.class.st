@@ -167,6 +167,13 @@ ExercismTestRunnerTest >> mockRunnerTestCaseSnapshot [
 ]
 
 { #category : #private }
+ExercismTestRunnerTest >> prepareMockSolution [
+
+	self mockRunnerSolutionSnapshot install.
+	
+]
+
+{ #category : #private }
 ExercismTestRunnerTest >> prepareMockSolutionFileIn: sourceDirectoryRef [
 
 	(TonelWriter on: sourceDirectoryRef) writeSnapshot: self mockRunnerSolutionSnapshot.
@@ -246,6 +253,20 @@ ExercismTestRunnerTest >> testPrepareMockSolution [
 	memRef := FileSystem memory root.
 	self prepareMockSolutionFileIn: memRef.
 	self assert: memRef entries isNotEmpty.
+]
+
+{ #category : #running }
+ExercismTestRunnerTest >> testRemoveSolutionClasses [
+
+	|exercise|
+
+	"preparing mock test case"
+	self prepareMockTestCase.
+	self prepareMockSolution.
+	exercise := ExercismTestRunner default findExercise: 'mock-runner'.	
+	self assert: exercise solutionClasses size equals: 1.
+	exercise removeSolutionClasses.
+	self assert: exercise solutionClasses isEmpty.
 ]
 
 { #category : #tests }

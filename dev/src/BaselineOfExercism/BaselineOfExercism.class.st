@@ -54,7 +54,7 @@ BaselineOfExercism >> baseline: spec [
 				group: 'dev'
 					with: #('ExercismDev' 'ExercismWIP' 'ExercismSystemTests');
 				group: 'testRunner' with: #('ExercismTestRunner');
-				group: 'testRunnerTests' with: #('ExercismTestRunnerTests');
+				group: 'testRunnerTests' with: #('ExercismTestRunnerTests' 'Exercise@ExampleAllFail' 'Exercise@ExampleAllPass' 'Exercise@ExampleAllRaiseError' 'Exercise@ExampleEmptySolutionClass' 'Exercise@ExampleEmptySolutionFile' 'Exercise@ExampleErrorFailPass' 'Exercise@ExampleExtensionMethod' 'Exercise@ExampleSyntaxError');
 				group: 'v3' with: #('ExercismV3')
 			].
 			spec for: #'pharo9.x' do: [ 
