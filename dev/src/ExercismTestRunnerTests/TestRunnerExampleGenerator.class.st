@@ -53,7 +53,7 @@ TestRunnerExampleGenerator class >> writeFile: aFileReference with: aContent [
 	aFileReference 
 		ensureDelete; 
 		writeStreamDo: [ :stream |
-		 	stream nextPutAll: aContent 
+		 	stream nextPutAll: (aContent withLineEndings: OSPlatform current lineEnding)
 	 ]
 ]
 
