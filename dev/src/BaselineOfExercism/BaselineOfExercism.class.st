@@ -1,3 +1,6 @@
+"
+Project baseline to load entire Exercism Pharo track, including all its dependencies
+"
 Class {
 	#name : #BaselineOfExercism,
 	#superclass : #BaselineOf,
@@ -8,7 +11,7 @@ Class {
 BaselineOfExercism class >> exerciseGoldenTestPackageNames [
 	"Answer the list of exercise package names used for golden tests executed by Exercism's test runner"
 
-	^ #('Exercise@ExampleAllFail' 'Exercise@ExampleAllPass' 'Exercise@ExampleAllRaiseError' 'Exercise@ExampleEmptySolutionClass' 'Exercise@ExampleEmptySolutionFile' 'Exercise@ExampleErrorFailPass' 'Exercise@ExampleExtensionMethod' 'Exercise@ExampleSyntaxError')
+	^ #('Exercise@ExampleAllFail' 'Exercise@ExampleAllPass' 'Exercise@ExampleAllRaiseError' 'Exercise@ExampleEmptySolutionClass' 'Exercise@ExampleEmptySolutionFile' 'Exercise@ExampleErrorFailPass' 'Exercise@ExampleExtensionMethod' 'Exercise@ExampleSyntaxError' 'Exercise@ExampleTypoInMethodName')
 ]
 
 { #category : #baselines }
