@@ -294,7 +294,7 @@ ExercismTestRunnerTest >> testRunTestsOnExerciseImportSourcefromResult [
 	outputFile := outputDir / 'results.json'. 
 	self assert: outputFile isFile.
 	self assert: (outputFile contents includesSubstring: '"status" : "error"').
-	self assert: (outputFile contents includesSubstring: '"message" : "My domain mock error."').
+	self assert: (outputFile contents includesSubstring: '"message" : "My domain mock error.').
 	self assert: (outputFile contents includesSubstring: '"status" : "pass"').
 	self assert: (outputFile contents includesSubstring: '"status" : "fail"').
 ]
