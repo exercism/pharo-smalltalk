@@ -83,7 +83,8 @@ ExercismTestRunner >> runTestsOnExercise: slugName importSourceFrom: inputDirect
 	[	:domainError| 
 		outputJson := self setErrorToJson: domainError messageText. 
 		self writeJson: outputJson to: outputDirectory. 
-		domainError pass
+		"just return domain error text, instead of passing exception. Process will end with success, and domain error is written to resulting json"
+		^ domainError messageText
 	].
 	self writeJson: outputJson  to: outputDirectory.
 	^ testResult 
