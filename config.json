@@ -31,7 +31,7 @@
     ]
   },
   "test_runner": {
-    "average_run_time": 1.0
+    "average_run_time": 1
   },
   "exercises": {
     "concept": [],
