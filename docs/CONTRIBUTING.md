@@ -76,7 +76,7 @@ __From problem repository__
 - If you want to start completely new Practise exercise (step 1a.), you can use problem specification repository and generate test class for given exercise by running: 
 `ExercismExerciseGenerator generateFrom: <path-to-problem-specifications/exercises>` - this will generate test classes for all exercises in problem specifications repository in `ExerciseWIP` package.  
   > __Note__: You can use menu item in Pharo image for achieving same (World menu -> Exercism -> Generate test cases).
-- More specifically, you can generate test class for specific exercise by: `ExercismExerciseGenerator generateExerciseFrom: <path-to-problem-specifications/exercises/slug-name>`.
+- More specifically, you can generate test class for specific exercise by: `ExercismExerciseGenerator generateExerciseFrom: '<path-to-problem-specifications/exercises/slug-name>' asFileReference`.
 
 Result of previous statement will be new `<SlugNameTest>` (a subclass of ExercismTest) test class with generated test methods in `ExerciseWIP` package.
 
