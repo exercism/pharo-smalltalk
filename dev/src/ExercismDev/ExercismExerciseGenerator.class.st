@@ -357,6 +357,14 @@ ExercismExerciseGenerator >> generateTestVariableAccessors: testVariable in: aCl
 	
 ]
 
+{ #category : #initialization }
+ExercismExerciseGenerator >> initialize [ 
+	
+	super initialize.
+	"reset number of generated test classes"
+	self numberGenerated: 0.
+]
+
 { #category : #generation }
 ExercismExerciseGenerator >> isErrorAssertion: testResults [
 	testResults isDictionary ifFalse: [ ^false ].
