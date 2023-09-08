@@ -71,7 +71,7 @@ CircularBufferTest class >> exercise [
 { #category : #config }
 CircularBufferTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'7efca757-25c1-0d00-a40a-f2f902f6ac0d'
+	^'158d4bc4-1002-4612-bdaf-5aa711a4f9a4'
 ]
 
 { #category : #config }
