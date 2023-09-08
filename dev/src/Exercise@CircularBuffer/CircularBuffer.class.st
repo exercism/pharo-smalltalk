@@ -57,11 +57,8 @@ CircularBuffer >> initialize [
 { #category : #operations }
 CircularBuffer >> overwrite: aValue [
 
-	^ self bufferFull
-		  ifTrue: [
-			  self buffer removeFirst.
-			  self buffer addLast: aValue ]
-		  ifFalse: [ self write: aValue ]
+	self bufferFull ifTrue: [ self buffer removeFirst ].
+	^ self write: aValue
 ]
 
 { #category : #'error signalling' }
