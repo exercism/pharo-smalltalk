@@ -73,25 +73,14 @@ ExercismExerciseGenerator class >> writeLegacyPackageBaselineNames [
 
 { #category : #internal }
 ExercismExerciseGenerator >> compile: src for: aClass selector: aSelector protocol: aName [
-	| cm aContext |
 	
-	"aClass compile: src classified: (Protocol name: 'setup') notifying: self."
-	
-	aContext := CompilationContext new 
-		interactive: false; 
-		"forSyntaxHighlighting: true;"
-		"logged: false;"
-		yourself.
-	
-	cm := OpalCompiler new 
-					compilationContext: aContext;
-					options: #( + #optionEmbeddSources );				
-					class: aClass;
-					compile: src.
-			
+	"compiles method even with undeclared globals (solution class)"
+	aClass compile: src.
+
+	"categorize compiled method to proper protocol"
 	aClass 
 		addAndClassifySelector: aSelector
-		withMethod: cm
+		withMethod: (aClass compiledMethodAt: aSelector)
 		inProtocol: aName
 ]
 
@@ -187,12 +176,12 @@ ExercismExerciseGenerator >> generateExerciseFrom: aFileSystemReference [
 	(Smalltalk hasClassNamed: testName) ifTrue: [ ^self log: 'already exists (skipping)' for: testName ].
 	
 	testDescription := (aFileSystemReference / 'description.md') contents.
-	testMetaData := (aFileSystemReference / 'metadata.yml') contents.
+	testMetaData := (aFileSystemReference / 'metadata.toml') contents.
 	testSpecification := [ (aFileSystemReference / 'canonical-data.json') contents] 
 		on: FileDoesNotExistException do: [ ^self log:'has no specification (skipping)' for: testName ].
 		
 	testJson := STONJSON fromString: testSpecification.
-	versionString := testJson at: 'version'.
+	versionString := testJson at: 'version' ifAbsent: ['Not specified'].
 	
 	testMetaData := (WriteStream on: '') nextPutAll: testMetaData;
 		nextPutAll: ('exercise: "{1}"' format: {testRoot}); cr;
@@ -368,6 +357,14 @@ ExercismExerciseGenerator >> generateTestVariableAccessors: testVariable in: aCl
 	
 ]
 
+{ #category : #initialization }
+ExercismExerciseGenerator >> initialize [ 
+	
+	super initialize.
+	"reset number of generated test classes"
+	self numberGenerated: 0.
+]
+
 { #category : #generation }
 ExercismExerciseGenerator >> isErrorAssertion: testResults [
 	testResults isDictionary ifFalse: [ ^false ].
@@ -385,7 +382,7 @@ ExercismExerciseGenerator >> keywordFor: key withPrefix: aSelectorPrefix [
 { #category : #internal }
 ExercismExerciseGenerator >> log: stringMsg for: testNameString [
 
-	self crLog: testNameString, ' ', stringMsg
+	self traceCr: testNameString, ' ', stringMsg
 ]
 
 { #category : #accessing }
