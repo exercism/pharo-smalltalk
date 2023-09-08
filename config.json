@@ -573,6 +573,21 @@
         "topics": [
           "math"
         ]
+      },
+      {
+        "slug" : "circular-buffer",
+        "uuid" : "7efca757-25c1-0d00-a40a-f2f902f6ac0d",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty" : 5,
+        "topics" : [
+          "arrays",
+          "conditionals",
+          "data_structures",
+          "exception_handling",
+          "lists",
+          "list-methods"
+        ]
       }
     ]
   },
