@@ -137,10 +137,13 @@ ExercismTestMethodGenerator >> generateTests [
 
 	self caseContainsOtherCases
 		ifTrue: [
+			|aPrefix|
+			"materialize prefix first, before caseJson is changed in ongoing generation"
+			aPrefix := self methodName.
 			(self testCaseJson at: 'cases') do: [ :aCaseJson |
 				self class uniqueInstance
 					testCaseJson: aCaseJson;
-					testPrefix: self methodName;
+					testPrefix: aPrefix;
 					generateTests ] ]
 		ifFalse: [ self generateTest ]
 ]
@@ -238,7 +241,7 @@ ExercismTestMethodGenerator >> testNameWithCounterPrefix [
 
 	| counterPrefix |
 	counterPrefix := 'test{1}_' format: { self nextTestCounter asTwoCharacterString }.
-	^ (testPrefix , self methodName) asSymbol
+	^ (counterPrefix , self methodName) asSymbol
 ]
 
 { #category : #accessing }
