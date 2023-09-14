@@ -1,0 +1,17 @@
+{
+  "authors": ["Bajger"],
+  "files": {
+    "solution": [ 
+      "BinarySearchTree.class.st"
+    ],
+    "test": [ 
+      "BinarySearchTreeTest.class.st"
+    ],
+    "example": [
+      ".meta/solution/BinarySearchTree.class.st"
+    ]
+  },
+  "blurb": "Insert and search for numbers in a binary tree.",
+  "source": "Josh Cheek",
+  "source_url": "https://twitter.com/josh_cheek"
+}
