@@ -589,6 +589,22 @@
           "lists",
           "list-methods"
         ]
+      },
+      {
+        "slug": "binary-search-tree",
+        "name": "Binary Search Tree",
+        "uuid": "4f8a2a30-3bb5-4ed6-9304-5fd7211dd77d",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty" : 6,
+        "topics" : [
+          "algorithms",
+          "conditionals",
+          "data_structures",
+          "recursion",
+          "lists",
+          "list-methods"
+        ]
       }
     ]
   },
