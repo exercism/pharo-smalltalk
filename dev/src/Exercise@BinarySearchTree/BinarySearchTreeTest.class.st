@@ -164,7 +164,7 @@ BinarySearchTreeTest >> test05_CanCreateComplexTree [
 	self assert: result right data equals: '6'.
 	self assert: result right right data equals: '7'.
 	self assert: result right right right isNil.
-	self assert: result right right right isNil.
+	self assert: result right right left isNil.
 	self assert: result right left data equals: '5'.
 	self assert: result right left right isNil.
 	self assert: result right left left isNil.
