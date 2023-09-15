@@ -70,8 +70,7 @@ Take a look at [Diffie-Hellman on Wikipedia][dh] for one of the first implementa
 
 ## Hint
 
-TBD
-
+Try using arithmetic operations like modulo to wrap indexes, when exceeded. Character, String classes are your friends too. 
 "
 Class {
 	#name : #SimpleCipherTest,
