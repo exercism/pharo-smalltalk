@@ -605,6 +605,22 @@
           "lists",
           "list-methods"
         ]
+      },
+      {
+        "slug": "simple-cipher",
+        "name": "Simple Cipher",
+        "uuid": "83b2fe48-3b61-4c08-b711-51fe5b654638",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty" : 5,
+        "topics" : [
+          "strings",
+          "string-methods",
+          "loops",
+          "numbers",
+          "lists",
+          "randomness"
+        ]
       }
     ]
   },
