@@ -1,0 +1,19 @@
+{
+  "authors": [
+    "Bajger"
+  ],
+  "files": {
+    "solution": [
+      "SimpleCipher.class.st"
+    ],
+    "test": [
+      "SimpleCipherTest.class.st"
+    ],
+    "example": [
+      ".meta/solution/SimpleCipher.class.st"
+    ]
+  },
+  "blurb": "Implement a simple shift cipher like Caesar and a more secure substitution cipher.",
+  "source": "Substitution Cipher at Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Substitution_cipher"
+}
