@@ -1,5 +1,7 @@
 {
-  "authors": [],
+  "authors": [
+    "Bajger"
+  ],
   "files": {
     "solution": [
       "SimpleCipher.class.st"
