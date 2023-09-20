@@ -22,7 +22,7 @@ TestResult >> exercismTestRunnerData [
 { #category : #'*ExercismTestRunner' }
 TestResult >> overallStatus [
 
-	self errors ifNotEmpty: [ ^ 'error' ].
-	self failures ifNotEmpty: [ ^ 'fail' ].
-	^ 'pass'
+	(self errors isEmpty and: [ self failures isEmpty ]) 
+	ifTrue: [	^ 'pass' ].
+	^ 'fail'
 ]
