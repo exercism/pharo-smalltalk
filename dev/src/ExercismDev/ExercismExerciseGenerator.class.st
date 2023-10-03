@@ -10,7 +10,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'numberGenerated',
-		'testCounter'
+		'exerciseDirReference',
+		'testJson'
 	],
 	#classVars : [
 		'DefaultPath'
@@ -84,119 +85,80 @@ ExercismExerciseGenerator >> compile: src for: aClass selector: aSelector protoc
 		inProtocol: aName
 ]
 
-{ #category : #accessing }
+{ #category : #internal }
 ExercismExerciseGenerator >> defaultPackageName [
 	^ 'ExercismWIP'
 ]
 
 { #category : #generation }
-ExercismExerciseGenerator >> generateCodeAssertEqualsOn: output variable: variableName prefix: aSelectorPrefix parameters: testParameters result: testResults [
+ExercismExerciseGenerator >> ensureCreateExerciseWIPPackage [
+	
+	"WIP package with exercises"
+	(RPackageOrganizer default
+		includesPackageNamed: self defaultPackageName)
+			ifFalse: [ RPackageOrganizer default createPackageNamed: self defaultPackageName ]
+]
 
-	output tab; nextPutAll: 'result := '.
-	
-	self
-		generateCodeModelCallOn: output
-		variable: variableName
-		prefix: aSelectorPrefix
-		parameters: testParameters.
-	
-	output 
-		nextPut: $.; 
-		crlf;
-		tab;
-		nextPutAll: 'self assert: result equals: ' , testResults storeString
+{ #category : #accessing }
+ExercismExerciseGenerator >> exerciseDirReference [
+
+	^ exerciseDirReference
+]
+
+{ #category : #accessing }
+ExercismExerciseGenerator >> exerciseDirReference: anObject [
+
+	exerciseDirReference := anObject
+]
+
+{ #category : #internal }
+ExercismExerciseGenerator >> exerciseIsDeprecated [
+
+	^ self exerciseDirReference fileNames includes: '.deprecated'
+]
+
+{ #category : #internal }
+ExercismExerciseGenerator >> exerciseTestAlreadyExists [
+
+	^ Smalltalk hasClassNamed: self testClassName 
 ]
 
 { #category : #generation }
-ExercismExerciseGenerator >> generateCodeModelCallOn: output variable: variableName prefix: aSelectorPrefix parameters: testParameters [
-
-	output
-		nextPutAll: variableName;
-		space;
-		nextPutAll: aSelectorPrefix.
-		
-	testParameters keys
-		doWithIndex: [ :key :index | 
-			output
-				nextPutAll:
-					(index = 1
-						ifTrue: [ self keywordFor: key withPrefix: aSelectorPrefix ]
-						ifFalse: [ key asValidKeyword ]).
-			output
-				nextPut: $:;
-				space.
-			output
-				nextPutAll: (testParameters at: key) storeString;
-				space ]
-]
-
-{ #category : #generation }
-ExercismExerciseGenerator >> generateCodeShouldRaiseOn: output variable: variableName prefix: aSelectorPrefix parameters: testParameters result: testResults [
-
-	| errorMessage |
-	output
-		tab;
-		nextPutAll: 'self';
-		crlf; tab; tab;
-		nextPutAll: 'should: [ result := '.
-			
-	self
-		generateCodeModelCallOn: output
-		variable: variableName
-		prefix: aSelectorPrefix
-		parameters: testParameters.
-		
-	errorMessage := (testResults at: 'error') printString.
+ExercismExerciseGenerator >> generateExerciseCommentFor: testClass [
+	| comment  |
 	
-	output
-		nextPutAll: ']';
-		crlf; tab; tab;
-		nextPutAll: 'raise: Error';
-		crlf; tab; tab;
-		nextPutAll: ('whoseDescriptionIncludes: {1}' format: { errorMessage });
-		cr; tab; tab;
-		nextPutAll: 'description: ''Should get an error with the correct description'''.
-		
-	
+	comment := String streamContents: [:outStream |
+		outStream 
+			<< '# ' << self testNameCamelCased; cr; cr;
+			<< self testDescription; cr;
+			<< '## Hint'; cr; cr;
+			<< 'TBD'; cr
+	].
+	"write comment to test class"
+	testClass comment: comment.
 	
 ]
 
 { #category : #generation }
 ExercismExerciseGenerator >> generateExerciseFrom: aFileSystemReference [
-	| testName testDescription testSpecification testJson testClass testRoot testVariable testMetaData versionString |
+	| testClass |
 	
+	"this is needed, from exercise directory all artefacts will be obtained"
+	self exerciseDirReference: aFileSystemReference.
+	
+	self exerciseIsDeprecated 
+		ifTrue: [ ^self log: 'is deprecated (skipping)' for: self testClassName  ].
 
-	testRoot := '' join: ((aFileSystemReference basename splitOn: $-) collect: [ :w | w capitalized ]).
-	testName := testRoot, 'Test'.
-	testVariable := (testRoot, 'Calculator') asValidSelector asString.
-	
-	(aFileSystemReference fileNames includes: '.deprecated')
-		ifTrue: [ ^self log: 'is deprecated (skipping)' for: testName ].
+	self exerciseTestAlreadyExists ifTrue: [ ^self log: 'already exists (skipping)' for: self testClassName ].
 
-	(Smalltalk hasClassNamed: testName) ifTrue: [ ^self log: 'already exists (skipping)' for: testName ].
-	
-	testDescription := (aFileSystemReference / 'description.md') contents.
-	testMetaData := (aFileSystemReference / 'metadata.toml') contents.
-	testSpecification := [ (aFileSystemReference / 'canonical-data.json') contents] 
-		on: FileDoesNotExistException do: [ ^self log:'has no specification (skipping)' for: testName ].
-		
-	testJson := STONJSON fromString: testSpecification.
-	versionString := testJson at: 'version' ifAbsent: ['Not specified'].
-	
-	testMetaData := (WriteStream on: '') nextPutAll: testMetaData;
-		nextPutAll: ('exercise: "{1}"' format: {testRoot}); cr;
-		nextPutAll: ('version: "{1}"' format: {versionString}); cr; contents.
-
-	testClass := self generateTestClass: testName tag: testRoot variable: testVariable.						
-	"self generateTestVariableAccessors: testVariable in: testClass."
-	self generateSetupOn: testClass using: testVariable assigning: testRoot.
-	self generateTestMethodsOn: testClass calling: testVariable using: testJson prefix: ''.
-	self generateMetaDataFor: testClass description: testDescription version: versionString metaData: testMetaData.
+	testClass := self generateTestClass.					
+	self generateSetupFor: testClass.
+	self generateTestMethodsFor: testClass.
+	self generateMetaDataFor: testClass.
 	
 	self numberGenerated: self numberGenerated + 1.
-	self log: 'successfully created' for: testName
-	
-	
+	self log: 'successfully created' for: self testClassName
+
 		
 		
 		
@@ -204,157 +166,109 @@ ExercismExerciseGenerator >> generateExerciseFrom: aFileSystemReference [
 
 { #category : #generation }
 ExercismExerciseGenerator >> generateFrom: filePathReference [
-	(RPackageOrganizer default
-		includesPackageNamed: self defaultPackageName)
-			ifFalse: [ RPackageOrganizer default createPackageNamed: self defaultPackageName ].
-		
-	self crLog: 'Generating new TestCases from specification: ', filePathReference printString.
+	
+	"create WIP package for exercises, if missing"
+	self ensureCreateExerciseWIPPackage.
+	
+	self traceCr: 'Generating new TestCases from specification: ', filePathReference printString.
 			
 	self numberGenerated: 0.
 	filePathReference entries
 		do: [ :entry | self generateExerciseFrom: entry reference ].
 		
 	self 
-		crLog: ('Generation complete. Created {1} Tests!'
+		traceCr: ('Generation complete. Created {1} Tests!'
 			format: {self numberGenerated})
 ]
 
 { #category : #generation }
-ExercismExerciseGenerator >> generateMetaDataFor: testClass description: testDescription version: versionString metaData: testMetaData [
-	| comment uuid src exerciseInfo |
+ExercismExerciseGenerator >> generateMetaDataFor: testClass [
 	
-	"testClass package classTagForClass: testRoot"
-	exerciseInfo := ExercismExercise for: testClass.
+	"write commment with exercise info to class"
+	self generateExerciseCommentFor: testClass.
 	
-	comment := (WriteStream on: '') 
-		nextPutAll: '# ', exerciseInfo wordifiedName; cr; cr;
-		nextPutAll: testDescription; cr;
-		nextPutAll: '## Hint'; cr; cr;
-		nextPutAll: 'TBD'; cr;
-		contents.
+	"compile method with uuid"
+	self generateUUIDMethodFor: testClass.
 	
-	testClass comment: comment.
-	
-	uuid := UUIDGenerator next.
-	src := (WriteStream on: '') nextPutAll: 'uuid'; cr; tab; 
-		nextPutAll: '"Answer a unique id for this exercise"'; cr; tab;
-		nextPutAll: ('^''{1}''' format: {uuid printString}); 
-		contents.
-	
-	self compile: src for: testClass class selector: #uuid protocol: 'config'.
-	
-	src := (WriteStream on: '') nextPutAll: 'version'; cr; tab; 
-		nextPutAll: ('"Generated from specification: {1}"' format: {Date today}); cr; tab;
-		nextPutAll: ('^''{1}''' format: {versionString}); 
-		contents.
-	
-	self compile: src for: testClass class selector: #version protocol: 'config'
-		
-		
-		
+	"complie method with version"
+	self generateVersionMethodFor: testClass
 ]
 
 { #category : #generation }
-ExercismExerciseGenerator >> generateSetupOn: testClass using: testVariable assigning: testRoot [
-	| output src |
+ExercismExerciseGenerator >> generateSetupFor: testClass [
+	|  src |
 	
-	output := (WriteStream on: '').
-	output nextPutAll: 'setUp'; cr.
-	output tab; nextPutAll: 'super setUp.'; cr. 
-	output tab; nextPutAll: testVariable, ' := '; nextPutAll: testRoot, ' new'.
-	
-	src := output contents.
+	src := String streamContents: [:outStream |
+		outStream 
+			<< 'setUp'; cr;
+			tab; << 'super setUp.'; cr; 
+			tab; << self testVariableName; << ' := '; << self testNameCamelCased; << ' new'.
+	].
+
 	self compile: src for: testClass selector: #setUp protocol: 'running'
 		
 ]
 
 { #category : #generation }
-ExercismExerciseGenerator >> generateTestClass: testName tag: tagName variable: testVariable [
-	
-	self resetTestCounter.
+ExercismExerciseGenerator >> generateTestClass [
 	
 	^ExercismTest
-		subclass: testName asSymbol
-		instanceVariableNames: testVariable
+		subclass: self testClassName asSymbol
+		instanceVariableNames: self testVariableName
 		classVariableNames: ''
 		poolDictionaries: ''
-		package: 'ExercismWIP-', tagName
+		package: 'ExercismWIP-', (self testNameCamelCased)
 	
 ]
 
 { #category : #generation }
-ExercismExerciseGenerator >> generateTestMethodsOn: testClass calling: testVariable using: testJson prefix: aPrefixString [
-	| instance methodName parameters testResult testPrefix methodNameSegment |
+ExercismExerciseGenerator >> generateTestMethodsFor: testClass [
+	| testMethodGenerator |
 	
-	(testJson at: 'cases')
-		do: [ :case | 
-			methodNameSegment := (((testJson at: 'cases') size > 1 ) or: [ aPrefixString notEmpty ])
-				ifTrue: [ (case at: 'description') asCamelCase asValidKeyword capitalized ]
-				ifFalse: [ '' ].
-			methodName :=  aPrefixString 
-				ifEmpty: [ methodNameSegment withoutPrefix: 'And' ] 
-				ifNotEmpty: [ aPrefixString, methodNameSegment ].
-				
-			(case includesKey: 'cases')
-				ifTrue: [ self
-						generateTestMethodsOn: testClass
-						calling: testVariable
-						using: case
-						prefix: methodName ]
-				ifFalse: [ 
-					instance := case at: 'property'.
-					parameters := case at: 'input'.
-					testResult := case at: 'expected'.
-					
-					testPrefix := 'test{1}_' format: {self nextTestCounter asTwoCharacterString}.
-					self
-						generateTestNamed: (testPrefix, methodName) asSymbol 
-						in: testClass
-						variable: testVariable
-						selector: instance
-						parameters: parameters
-						expecting: testResult ] ]
+	testMethodGenerator := ExercismTestMethodGenerator uniqueInstance.
+	
+	"reset counter of test methods"
+	testMethodGenerator resetTestCounter.
+	
+	"generate tests from json specification"
+	(self testJson at: 'cases')
+	do: [ :testCaseJson | 
+		testMethodGenerator 
+			testClass: testClass;
+			testCaseJson: testCaseJson;
+			testVariable: self testVariableName;
+			testPrefix: '';
+			generateTests.
+	]
 ]
 
 { #category : #generation }
-ExercismExerciseGenerator >> generateTestNamed: testName in: aClass variable: variableName selector: aSelectorPrefix parameters: testParameters expecting: testResults [ 
-	| output src |
-
-	output := (WriteStream on: '').
-	output << testName; crlf.
-	testCounter = 1 ifTrue: [ output tab << '"Tip: Remember to review the class [Comment] tab"' ; crlf].
-	output tab << '| result |'; crlf; crlf.
+ExercismExerciseGenerator >> generateUUIDMethodFor: testClass [
+	| source |
 	
-	(self isErrorAssertion: testResults) 
-		ifTrue: [ self 
-			generateCodeShouldRaiseOn: output
-			variable: variableName
-			prefix: aSelectorPrefix
-			parameters: testParameters
-			result: testResults ] 
-		ifFalse: [ self 
-			generateCodeAssertEqualsOn: output
-			variable: variableName
-			prefix: aSelectorPrefix
-			parameters: testParameters
-			result: testResults ].
+	source := String streamContents: [:outStream |
+		outStream 
+			<< 'uuid'; cr; tab; 
+			<< '"Answer a unique id for this exercise"'; cr; tab;
+			<< ('^''{1}''' format: {self nextUUID printString}) 
+	].
 	
-	src := output contents.
-	
-	self compile: src for: aClass selector: testName protocol: 'tests'
-
+	self compile: source for: testClass class selector: #uuid protocol: 'config'
 ]
 
 { #category : #generation }
-ExercismExerciseGenerator >> generateTestVariableAccessors: testVariable in: aClass [
-	| aRefactoring |
+ExercismExerciseGenerator >> generateVersionMethodFor: testClass [
+	| source |
 	
-	aRefactoring := RBCreateAccessorsForVariableRefactoring
-		variable: testVariable 
-		class: aClass
-		classVariable: false.
-	aRefactoring execute.
+	source := String streamContents: [:outStream  |
+		outStream 
+			<< 'version'; cr; tab; 
+			<< ('"Generated from specification: {1}"' format: {Date today}); cr; tab;
+			<< ('^''{1}''' format: {self versionString})
+	].
 	
+	self compile: source for: testClass class selector: #version protocol: 'config'
+		
 ]
 
 { #category : #initialization }
@@ -365,30 +279,17 @@ ExercismExerciseGenerator >> initialize [
 	self numberGenerated: 0.
 ]
 
-{ #category : #generation }
-ExercismExerciseGenerator >> isErrorAssertion: testResults [
-	testResults isDictionary ifFalse: [ ^false ].
-	
-	^testResults size = 1 and: [ testResults includesKey: 'error' ]
-]
-
-{ #category : #generation }
-ExercismExerciseGenerator >> keywordFor: key withPrefix: aSelectorPrefix [
-	^(aSelectorPrefix asLowercase endsWith: key asLowercase)
-		ifTrue: [ '' ]
-		ifFalse: [ key capitalized ]
-]
-
 { #category : #internal }
 ExercismExerciseGenerator >> log: stringMsg for: testNameString [
 
 	self traceCr: testNameString, ' ', stringMsg
 ]
 
-{ #category : #accessing }
-ExercismExerciseGenerator >> nextTestCounter [
+{ #category : #generation }
+ExercismExerciseGenerator >> nextUUID [
+	"TODO - we need version 4 UUID"
+	^ UUIDGenerator next
 
-	^testCounter := testCounter + 1
 ]
 
 { #category : #accessing }
@@ -401,10 +302,43 @@ ExercismExerciseGenerator >> numberGenerated: anObject [
 	numberGenerated := anObject
 ]
 
-{ #category : #accessing }
-ExercismExerciseGenerator >> resetTestCounter [
+{ #category : #internal }
+ExercismExerciseGenerator >> testClassName [
 
-	testCounter := 0
+	^ self testNameCamelCased, 'Test'
+
+	
+]
+
+{ #category : #internal }
+ExercismExerciseGenerator >> testDescription [ 
+ 
+	^ (self exerciseDirReference / 'description.md') contents
+	
+]
+
+{ #category : #internal }
+ExercismExerciseGenerator >> testJson [
+
+	^ testJson ifNil: [
+		  | testSpecification |
+		  testSpecification := (self exerciseDirReference
+		                        / 'canonical-data.json') contents.
+		  testJson := STONJSON fromString: testSpecification ]
+]
+
+{ #category : #internal }
+ExercismExerciseGenerator >> testNameCamelCased [
+
+	"E.g. FlattenArray"
+	^ self exerciseDirReference basename kebabAsCamelCase 
+	
+]
+
+{ #category : #internal }
+ExercismExerciseGenerator >> testVariableName [
+
+	^ (self testNameCamelCased, 'Calculator') asValidSelector asString
 ]
 
 { #category : #internal }
@@ -444,4 +378,10 @@ ExercismExerciseGenerator >> updateTests [
 						for: c
 						selector: cm selector
 						protocol: 'running' ] ]
+]
+
+{ #category : #internal }
+ExercismExerciseGenerator >> versionString [
+
+	^ self testJson at: 'version' ifAbsent: ['Not specified']
 ]
