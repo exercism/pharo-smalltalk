@@ -76,42 +76,80 @@ ResistorColorDuoTest >> setUp [
 
 { #category : #tests }
 ResistorColorDuoTest >> test01_BrownAndBlack [
+	"Tip: Remember to review the class [Comment] tab"
+	<exeTestName: 'Brown and black'>
+	<exeTestUUID: 'ce11995a-5b93-4950-a5e9-93423693b2fc'>
+
 	| result |
 
-	result := resistorColorDuoCalculator valueWithColors: #('brown' 'black' ) .
+	result := resistorColorDuoCalculator valueWithColors: #('brown' 'black') .
 	self assert: result equals: 10
 ]
 
 { #category : #tests }
 ResistorColorDuoTest >> test02_BlueAndGrey [
+	<exeTestName: 'Blue and grey'>
+	<exeTestUUID: '7bf82f7a-af23-48ba-a97d-38d59406a920'>
+
 	| result |
 
-	result := resistorColorDuoCalculator valueWithColors: #('blue' 'grey' ) .
+	result := resistorColorDuoCalculator valueWithColors: #('blue' 'grey') .
 	self assert: result equals: 68
 ]
 
 { #category : #tests }
 ResistorColorDuoTest >> test03_YellowAndViolet [
+	<exeTestName: 'Yellow and violet'>
+	<exeTestUUID: 'f1886361-fdfd-4693-acf8-46726fe24e0c'>
+
 	| result |
 
-	result := resistorColorDuoCalculator valueWithColors: #('yellow' 'violet' ) .
+	result := resistorColorDuoCalculator valueWithColors: #('yellow' 'violet') .
 	self assert: result equals: 47
 ]
 
 { #category : #tests }
-ResistorColorDuoTest >> test04_OrangeAndOrange [
+ResistorColorDuoTest >> test04_WhiteAndRed [
+	<exeTestName: 'White and red'>
+	<exeTestUUID: 'b7a6cbd2-ae3c-470a-93eb-56670b305640'>
+
 	| result |
 
-	result := resistorColorDuoCalculator valueWithColors: #('orange' 'orange' ) .
+	result := resistorColorDuoCalculator valueWithColors: #('white' 'red') .
+	self assert: result equals: 92
+]
+
+{ #category : #tests }
+ResistorColorDuoTest >> test05_OrangeAndOrange [
+	<exeTestName: 'Orange and orange'>
+	<exeTestUUID: '77a8293d-2a83-4016-b1af-991acc12b9fe'>
+
+	| result |
+
+	result := resistorColorDuoCalculator valueWithColors: #('orange' 'orange') .
 	self assert: result equals: 33
 ]
 
 { #category : #tests }
-ResistorColorDuoTest >> test05_IgnoreExtraColors [
+ResistorColorDuoTest >> test06_IgnoreAdditionalColors [
+	<exeTestName: 'Ignore additional colors'>
+	<exeTestUUID: '0c4fb44f-db7c-4d03-afa8-054350f156a8'>
+
 	| result |
 
-	result := resistorColorDuoCalculator valueWithColors: #('green' 'brown' 'orange' ) .
+	result := resistorColorDuoCalculator valueWithColors: #('green' 'brown' 'orange') .
 	self assert: result equals: 51
+]
+
+{ #category : #tests }
+ResistorColorDuoTest >> test07_BlackAndBrownOnedigit [
+	<exeTestName: 'Black and brown, one-digit'>
+	<exeTestUUID: '4a8ceec5-0ab4-4904-88a4-daf953a5e818'>
+
+	| result |
+
+	result := resistorColorDuoCalculator valueWithColors: #('black' 'brown') .
+	self assert: result equals: 1
 ]
 
 { #category : #extra }
