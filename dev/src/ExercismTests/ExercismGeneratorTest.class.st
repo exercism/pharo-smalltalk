@@ -239,11 +239,11 @@ ExercismGeneratorTest >> setUp [
 	
 	lineEnding := OSPlatform current lineEnding.
 	memoryFileReference := FileSystem memory root / 'exercises'.
-	writer := ExTonelWriter on: memoryFileReference.
+	writer := ExercismCodeExporter on: memoryFileReference.
 	
 	instance := ExercismGenerator new
 		exercisesPath: memoryFileReference; 
-		exTonelWriter: writer;
+		codeExporter: writer;
 		exercismExercise: MockExercismExercise;
 		yourself.
 		

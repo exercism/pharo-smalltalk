@@ -335,7 +335,7 @@ ExercismExercise >> solutionSources [
 	
 	| packageFileMap testResult resultDictionary solutionClassNames solutionFileNames |
 	
-	packageFileMap := ExTonelWriter new mappedSnapshot: self snapshot.
+	packageFileMap := ExercismCodeExporter new mappedSnapshot: self snapshot.
 	
 	"Exclude non-solution classes, i.e. filter out tests"
 	solutionClassNames := self solutionClasses collect: [ :c | c name ].
