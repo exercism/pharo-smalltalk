@@ -71,7 +71,7 @@ BaselineOfExercism >> baseline: spec [
 			spec for: #'pharo12.x' do: [
 				"ExercismTools methods will be overwritten by compatibility package for Pharo 12"
 				spec package: 'ExercismTools' with: [ spec includes: #('ExercismPharo120') ].
-				spec package: 'ExercismPharo120' 
+				spec package: 'ExercismPharo120' with: [ spec requires: #('ExercismTools') ]
 			]
 ]
 
