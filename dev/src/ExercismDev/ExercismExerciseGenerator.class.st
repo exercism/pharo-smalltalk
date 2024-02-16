@@ -212,16 +212,12 @@ ExercismExerciseGenerator >> generateSetupFor: testClass [
 { #category : #generation }
 ExercismExerciseGenerator >> generateTestClass [
 
-	^ ExercismTest classInstaller make: [ :builder |
-		  builder
-			  superclass: ExercismTest;
-			  name: self testClassName asSymbol;
-			  slots: self testVariableName asSlotCollection;
-			  sharedVariablesFromString: '';
-			  sharedPools: '';
-			  tag: self testNameCamelCased;
-			  package: 'ExercismWIP';
-			  environment: ExercismTest environment ]
+	^ ExercismTest << self testClassName asSymbol
+		slots: {self testVariableName asSymbol};
+		sharedVariables: {};
+		tag: self testNameCamelCased;
+		package: 'ExercismWIP';
+		install
 ]
 
 { #category : #generation }
