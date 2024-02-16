@@ -2,9 +2,9 @@
 
 [![Build & Unit tests](https://github.com/exercism/pharo-smalltalk/actions/workflows/ci.yml/badge.svg)](https://github.com/exercism/pharo-smalltalk/actions/workflows/ci.yml)
 [![GitHub release](https://img.shields.io/github/release/exercism/pharo-smalltalk.svg)](https://github.com/exercism/pharo-smalltalk/releases/latest)
+[![Pharo 12](https://img.shields.io/badge/Pharo-12-informational)](https://get.pharo.org/120+vm)
 [![Pharo 11](https://img.shields.io/badge/Pharo-11-informational)](https://get.pharo.org)
-[![Pharo 10](https://img.shields.io/badge/Pharo-10-informational)](https://get.pharo.org/100+vm)
-[![Pharo 9.0](https://img.shields.io/badge/Pharo-9.0-informational)](https://get.pharo.org/90+vm)
+
 
 
 This repository is for the development of [Exercism](http://exercism.io) exercises running in the [Pharo Smalltalk](http://pharo.org) programming environment.

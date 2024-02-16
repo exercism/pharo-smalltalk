@@ -163,9 +163,9 @@ ExercismExerciseTest >> testSolutionSources [
 	
 	self assertCollection: sources keys asSet equals: classNames asSet.
 	
-	(sources at: classNames last) should includeSubstring: 'Tested on:'.
-	(sources at: classNames first) should includeSubstring: '#name : #', classes first name.
-	(sources at: classNames allButLast last) should includeSubstring: '#name : #', classes last name.
+	(sources at: classNames last) includesSubstring: 'Tested on:'.
+	(sources at: classNames first) includesSubstring: '#name : #', classes first name.
+	(sources at: classNames allButLast last) includesSubstring: '#name : #', classes last name.
 ]
 
 { #category : #tests }

@@ -68,15 +68,11 @@ BaselineOfExercism >> baseline: spec [
 				group: 'testRunnerTests' with: #('ExercismTestRunnerTests'), self class exerciseGoldenTestPackageNames;
 				group: 'v3' with: #('ExercismV3')
 			].
-			spec for: #'pharo9.x' do: [ 
-				spec package: 'ExercismTools' with: [ spec includes: #('ExercismPharo90') ].
-				spec package: 'ExercismPharo90' ].
-			spec for: #'pharo11.x' do: [
-				"ExercismTools must be loaded prior compatibilty package, to overwrite original class definition of ExTonelWriter"
-				spec package: 'ExercismTools' with: [ spec includes: #('ExercismPharo110') ].
-				spec package: 'ExercismPharo110' with: [ spec requires: 'ExercismTools' ]
+			spec for: #'pharo12.x' do: [
+				"ExercismTools methods will be overwritten by compatibility package for Pharo 12"
+				spec package: 'ExercismTests' with: [ spec includes: #('ExercismPharo120') ].
+				spec package: 'ExercismPharo120' with: [ spec requires: #('ExercismTests') ]
 			]
-		
 ]
 
 { #category : #baselines }
@@ -112,7 +108,7 @@ BaselineOfExercism >> setUpDependencies: spec [
 					
 	spec
     	baseline: 'Mocketry'
-    	with: [ spec repository: 'github://dionisiydk/Mocketry:v6.0.x' ].
+    	with: [ spec repository: 'github://dionisiydk/Mocketry:v7.0.x' ].
 	
 	spec
     	baseline: 'Ring2'

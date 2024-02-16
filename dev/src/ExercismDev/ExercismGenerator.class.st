@@ -52,7 +52,7 @@ Class {
 	#name : #ExercismGenerator,
 	#superclass : #Object,
 	#instVars : [
-		'exTonelWriter',
+		'codeExporter',
 		'exercismExercise',
 		'exercisesPath',
 		'osSubProcess'
@@ -87,7 +87,7 @@ ExercismGenerator class >> generate [
 	path ifNotNil: [
 		self new 
 			exercisesPath: path;
-			exTonelWriter: (ExTonelWriter on: path);
+			codeExporter: (ExercismCodeExporter on: path);
 			generate
 			]
 ]
@@ -106,6 +106,12 @@ ExercismGenerator >> basePathReference [
 	^ self exercisesPath parent
 ]
 
+{ #category : #accessing }
+ExercismGenerator >> codeExporter: anObject [
+
+	codeExporter := anObject
+]
+
 { #category : #helper }
 ExercismGenerator >> createTagSnapshotFor: packageOrTag [
 	| parentSnapshot |
@@ -117,12 +123,6 @@ ExercismGenerator >> createTagSnapshotFor: packageOrTag [
 			(parentSnapshot definitions
 				select:
 					[ :mc | mc className isNil or: [ mc actualClass category endsWith: packageOrTag name ] ])
-]
-
-{ #category : #accessing }
-ExercismGenerator >> exTonelWriter: anExTonelWriter [ 
-
-	exTonelWriter := anExTonelWriter
 ]
 
 { #category : #accessing }
@@ -227,13 +227,19 @@ ExercismGenerator >> generateSourceFilesFor: packageOrTag to: filePathString [
 	exerciseDirectoryRef ensureCreateDirectory.
 	exerciseDirectoryRef deleteAll.
 
-	exTonelWriter
-		sourceDirectory: (solutionDirectoryRef relativeTo: exampleDirectoryRef) pathString;
+	codeExporter 
+		directoryReference: solutionDirectoryRef;
 		writeSnapshot: (self createTagSnapshotFor: packageOrTag).
-
+	
+	"move files to root solution directory and remove unnecessary package dir"
+	((solutionDirectoryRef / packageOrTag name) allChildrenMatching: '*.st') do: [:aFile |
+		aFile moveTo: solutionDirectoryRef 
+	].
+	(solutionDirectoryRef / packageOrTag name) delete.
+	
 	"Remove the package file as its not needed for Exercism"
 	(solutionDirectoryRef / 'package.st') delete.
-	
+
 	"Move the test file down to the exerciseDirectory"
 	testClasses := packageOrTag classes select: [ :cls | cls superclass = ExercismTest ].	
 	testClasses do: [ :tc |
