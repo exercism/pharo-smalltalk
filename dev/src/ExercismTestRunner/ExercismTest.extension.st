@@ -39,7 +39,7 @@ ExercismTest >> resultDebugInfo [
 			[ 
 			aContext isNil or: [ 
 				aContext receiver == self and: [ 
-					aContext methodSelector == #runCase ] ] ] whileFalse: [ 
+					aContext selector == #runCase ] ] ] whileFalse: [ 
 				[ 
 				writeStream
 					nextPutAll: aContext printString;
