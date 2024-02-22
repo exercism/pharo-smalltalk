@@ -68,6 +68,11 @@ BaselineOfExercism >> baseline: spec [
 				group: 'testRunnerTests' with: #('ExercismTestRunnerTests'), self class exerciseGoldenTestPackageNames;
 				group: 'v3' with: #('ExercismV3')
 			].
+			spec for: #'pharo11.x' do: [
+				"ExercismTools methods will add methods from compatibility package for Pharo 11"
+				spec package: 'ExercismTests' with: [ spec includes: #('ExercismPharo110') ].
+				spec package: 'ExercismPharo110'
+			].
 			spec for: #'pharo12.x' do: [
 				"ExercismTools methods will be overwritten by compatibility package for Pharo 12"
 				spec package: 'ExercismTests' with: [ spec includes: #('ExercismPharo120') ].

@@ -1,6 +1,6 @@
 Extension { #name : #Class }
 
-{ #category : #'*ExercismTools' }
+{ #category : #'*ExercismPharo110' }
 Class >> removeFromSystem: logged [
 	"Forget the receiver from the Smalltalk global dictionary. Any existing  instances will refer to an obsolete version of the receiver.
 	Keep the class name and category for triggering the system change message. If we wait to long, then we get obsolete information which is not what we want.
