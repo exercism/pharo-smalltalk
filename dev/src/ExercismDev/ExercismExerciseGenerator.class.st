@@ -11,7 +11,8 @@ Class {
 	#instVars : [
 		'numberGenerated',
 		'exerciseDirReference',
-		'testJson'
+		'testJson',
+		'regenerateExisting'
 	],
 	#classVars : [
 		'DefaultPath'
@@ -73,6 +74,12 @@ ExercismExerciseGenerator class >> writeLegacyPackageBaselineNames [
 ]
 
 { #category : #internal }
+ExercismExerciseGenerator >> canOverwriteExisting [
+
+	^ self regenerateExisting or: [self exerciseTestAlreadyExists not]
+]
+
+{ #category : #internal }
 ExercismExerciseGenerator >> compile: src for: aClass selector: aSelector protocol: aName [
 	
 	"compiles method even with undeclared globals (solution class)"
@@ -123,6 +130,12 @@ ExercismExerciseGenerator >> exerciseTestAlreadyExists [
 	^ Smalltalk hasClassNamed: self testClassName 
 ]
 
+{ #category : #internal }
+ExercismExerciseGenerator >> exerciseVariableName [
+
+	^ self testNameCamelCased asValidSelector asString
+]
+
 { #category : #generation }
 ExercismExerciseGenerator >> generateExerciseCommentFor: testClass [
 	| comment  |
@@ -149,7 +162,9 @@ ExercismExerciseGenerator >> generateExerciseFrom: aFileSystemReference [
 	self exerciseIsDeprecated 
 		ifTrue: [ ^self log: 'is deprecated (skipping)' for: self testClassName  ].
 
-	self exerciseTestAlreadyExists ifTrue: [ ^self log: 'already exists (skipping)' for: self testClassName ].
+	
+	self canOverwriteExisting 
+	 ifFalse: [ ^self log: 'exercise test class already exists (skipping).' for: self testClassName ].
 
 	testClass := self generateTestClass.					
 	self generateSetupFor: testClass.
@@ -187,6 +202,9 @@ ExercismExerciseGenerator >> generateMetaDataFor: testClass [
 	"write commment with exercise info to class"
 	self generateExerciseCommentFor: testClass.
 	
+	"Create UUID and version, only if creating new exercise (not regenerating existing)"
+	self regenerateExisting ifFalse: [ ^ self ].
+	
 	"compile method with uuid"
 	self generateUUIDMethodFor: testClass.
 	
@@ -202,7 +220,7 @@ ExercismExerciseGenerator >> generateSetupFor: testClass [
 		outStream 
 			<< 'setUp'; cr;
 			tab; << 'super setUp.'; cr; 
-			tab; << self testVariableName; << ' := '; << self testNameCamelCased; << ' new'.
+			tab; << self exerciseVariableName; << ' := '; << self testNameCamelCased; << ' new'.
 	].
 
 	self compile: src for: testClass selector: #setUp protocol: 'running'
@@ -213,10 +231,10 @@ ExercismExerciseGenerator >> generateSetupFor: testClass [
 ExercismExerciseGenerator >> generateTestClass [
 
 	^ ExercismTest << self testClassName asSymbol
-		slots: {self testVariableName asSymbol};
+		slots: {self exerciseVariableName asSymbol};
 		sharedVariables: {};
 		tag: self testNameCamelCased;
-		package: 'ExercismWIP';
+		package: self packageNameForTestClass;
 		install
 ]
 
@@ -235,7 +253,7 @@ ExercismExerciseGenerator >> generateTestMethodsFor: testClass [
 		testMethodGenerator 
 			testClass: testClass;
 			testCaseJson: testCaseJson;
-			testVariable: self testVariableName;
+			testVariable: self exerciseVariableName;
 			testPrefix: '';
 			generateTests.
 	]
@@ -302,6 +320,55 @@ ExercismExerciseGenerator >> numberGenerated: anObject [
 ]
 
 { #category : #internal }
+ExercismExerciseGenerator >> packageNameForTestClass [
+	
+	"if regenerating existing class, use exercise package like 'Exercise@SlugName', otherwise just WIP package"
+	self regenerateExisting ifTrue: [	
+			^ 'Exercise@{1}' format: {self testNameCamelCased}
+	].
+	^ self defaultPackageName 
+]
+
+{ #category : #generation }
+ExercismExerciseGenerator >> regenerateExerciseFrom: aFileSystemReference [
+
+	self regenerateExisting: true.
+	self generateExerciseFrom: aFileSystemReference
+]
+
+{ #category : #accessing }
+ExercismExerciseGenerator >> regenerateExisting [
+
+	^ regenerateExisting
+]
+
+{ #category : #accessing }
+ExercismExerciseGenerator >> regenerateExisting: aBool [	
+
+	regenerateExisting := aBool
+]
+
+{ #category : #generation }
+ExercismExerciseGenerator >> regenerateExistingExercisesFrom: filePathReference [
+	
+	"this will regenerate already existing exercises from problem specifications"
+	self traceCr: 'Regenerating existing TestCases from specification: ', filePathReference printString.
+			
+	self numberGenerated: 0.
+	ExercismExercise allExercises do: [:existingExercise | 
+		filePathReference entries
+		do: [ :entry | 
+			entry name = existingExercise name ifTrue: [ 
+				self regenerateExerciseFrom: entry reference	
+			]
+		]
+	]. 
+	self 
+		traceCr: ('Existing exercises sucessfully regenerated with: {1} Tests!'
+		format: {self numberGenerated})
+]
+
+{ #category : #internal }
 ExercismExerciseGenerator >> testClassName [
 
 	^ self testNameCamelCased, 'Test'
@@ -332,12 +399,6 @@ ExercismExerciseGenerator >> testNameCamelCased [
 	"E.g. FlattenArray"
 	^ self exerciseDirReference basename kebabAsCamelCase 
 	
-]
-
-{ #category : #internal }
-ExercismExerciseGenerator >> testVariableName [
-
-	^ (self testNameCamelCased, 'Calculator') asValidSelector asString
 ]
 
 { #category : #internal }
