@@ -203,7 +203,7 @@ ExercismExerciseGenerator >> generateMetaDataFor: testClass [
 	self generateExerciseCommentFor: testClass.
 	
 	"Create UUID and version, only if creating new exercise (not regenerating existing)"
-	self regenerateExisting ifFalse: [ ^ self ].
+	self regenerateExisting ifTrue: [ ^ self ].
 	
 	"compile method with uuid"
 	self generateUUIDMethodFor: testClass.
@@ -294,6 +294,9 @@ ExercismExerciseGenerator >> initialize [
 	super initialize.
 	"reset number of generated test classes"
 	self numberGenerated: 0.
+	
+	"by default don not regenerate existing exercises, new exercise generation is default"
+	self regenerateExisting: false.
 ]
 
 { #category : #internal }
