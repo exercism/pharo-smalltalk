@@ -15,7 +15,7 @@ jobs:
         smalltalk: [Pharo64-12,  Pharo64-11]
     name: ${{ matrix.smalltalk }}
     steps:
-      - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b
+      - uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b
       - uses: hpi-swa/setup-smalltalkCI@8f8eaa9239e82639e31d0495f3f51b14ac622ad0
         with:
           smalltalk-image: ${{ matrix.smalltalk }}
