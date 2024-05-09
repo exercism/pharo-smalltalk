@@ -21,7 +21,7 @@ To begin, you need to ensure that you have a complete Exercism development envir
 ### __Pharo image and IDE__
 You need to have a Pharo development environment (running Pharo image - IDE) for creating the actual coding examples. 
 
-1. Use [PharoLauncher](https://pharo.org/download) to create a fresh 10.0 (stable) development image from `Official distributions` category, and launch it (you can also use [zerconf](https://get.pharo.org/) if you are familiar with it).
+1. Use [PharoLauncher](https://pharo.org/download) to create a fresh stable development image from `Official distributions` category (as of 05/24 stable image is: Pharo 12.0 - 64bit (stable)), and launch it (you can also use [zerconf](https://get.pharo.org/) if you are familiar with it).
 2. Launch your image to test everything runs ok.
 
 > __Note__: If you have any TIMEOUT problems refer to the [user installation instructions](./docs/INSTALLATION.md).
@@ -72,13 +72,21 @@ Steps to complete exercise:
 ![Workflow to complete Practise exercise](/docs/images/overview-exercism-pharo-contribution.svg)
 
 ### __1. Create new Practise exercise__
-__From problem repository__
+*TLDR: All details/API description related to exercise generation can be found in class comment of `ExercismExerciseGenerator` class.*  
+
+__New exercises from problem repository__
 - If you want to start completely new Practise exercise (step 1a.), you can use problem specification repository and generate test class for given exercise by running: 
 `ExercismExerciseGenerator generateFrom: <path-to-problem-specifications/exercises>` - this will generate test classes for all exercises in problem specifications repository in `ExerciseWIP` package.  
   > __Note__: You can use menu item in Pharo image for achieving same (World menu -> Exercism -> Generate test cases).
 - More specifically, you can generate test class for specific exercise by: `ExercismExerciseGenerator generateExerciseFrom: '<path-to-problem-specifications/exercises/slug-name>' asFileReference`.
 
 Result of previous statement will be new `<SlugNameTest>` (a subclass of ExercismTest) test class with generated test methods in `ExerciseWIP` package.
+
+__Regenerate existing exercise from problem repository__
+
+If you want to regenerate test methods of existing exercise (defined already in solution package - e.g. `Exercise@TwoFer`), you can use following code. Note that other methods will not be touched (e.g. uuid, version, etc.) 
+
+ `ExercismExerciseGenerator new regenerateExerciseFrom: 'path-to-problem-specifications/exercises/exercise-slug' asFileReference`
 
 __From scratch__  
 If you have an interesting idea, refer to the documentation about adding new exercises.
@@ -96,13 +104,15 @@ Note that:
 - Do not commit any configuration files or directories inside the exercise (this may be reviewed for future exercises, let us know if it becomes a problem).
 - Be sure to generate a new UUID for the exercise using `UUIDGenerator next`, and place that value in the `uuid` method for the test.
 
+> __Note__: Current Pharo UUID generator is unfortunatelly not compliant with RFC 4122 - version 4. Therefore UUID generated from configlet should be used by evaluating: `/bin/configlet uuid`
+
 ### __2. Work on existing exercise__
 
 While there many ways to help, by far the easiest and most useful contribution is to complete a solution for any of the currently "open" exercise.
 
   * Ensure your image is caught up to the exercism/pharo-smalltalk main (and push any changes back to your fork)
 
-  * The exercises are all TestCases that been automatically generated from the aforementioned problem-specifications repository. You will find them as subclasses of ExercismTest in the ExercismWIP package.
+  * The exercises are all TestCases that been automatically generated from the aforementioned problem-specifications repository. You will find them as subclasses of ExercismTest in the ExercismWIP package. Note that regenerated ExercismTest might be already in given exercise package, if solution was already in place. ExercismWIP package is used for the new or work-in-progress exercises that weren't deployed yet alongside with solution class.
 
   * Once you have selected an Exercise you want to work on, create an Issue in Github specifying "Convert Exercise <name>". This will let others know you are working on one, and will also form a basis for your later pull request.
 
