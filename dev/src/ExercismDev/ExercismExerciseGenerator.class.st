@@ -1,9 +1,21 @@
 "
-I am the source code generator for creating exercism compatible source files that can be checked into the exercism/pharo project for students to download.
+I am the source code generator for creating test class with test cases that are generated out of problem specifications. Generated tests are then used for exercism compatible source files that can be checked into the exercism/pharo project for students to download.
 
 You need to have checked out the exercism problem-specifications to point the generator to, to get the test case definitions.
 
-To try: self generate
+## Generate new exercises
+To prompt user with choosing directory with problem specifications and generate: 
+`ExercismExerciseGenerator generate`
+
+To generate individual exercise from problem specification:
+`ExercismExerciseGenerator new generateExerciseFrom: 'path-to-problem-specifications/exercises/exercise-slug' asFileReference`
+
+## Regenerating existing exercises
+Use only when need to update tests from problem specifications, existing class will be used in existing exercise package, only test methods will be overwritten (UUID and other methods will remain same).
+`ExercismExerciseGenerator new regenerateExistingExercisesFrom: 'path-to-problem-specifications/exercises' asFileReference`
+
+When working just on specific exercise - its update:
+`ExercismExerciseGenerator new regenerateExerciseFrom: 'path-to-problem-specifications/exercises/exercise-slug' asFileReference`
 "
 Class {
 	#name : #ExercismExerciseGenerator,
