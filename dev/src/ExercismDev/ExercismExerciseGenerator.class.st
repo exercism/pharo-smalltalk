@@ -59,7 +59,7 @@ ExercismExerciseGenerator class >> generate [
 		chooseDirectory: 'Select the /exercises location in a full Exercism/problem-specifications git project'
 		path: self defaultPath.
 		
-	path ifNotNil: [ self new generateFrom: (self defaultPath: path) ]
+	path ifNotNil: [ self new generateFrom: path ]
 ]
 
 { #category : #examples }
@@ -130,6 +130,14 @@ ExercismExerciseGenerator >> exerciseDirReference: anObject [
 	exerciseDirReference := anObject
 ]
 
+{ #category : #generation }
+ExercismExerciseGenerator >> exerciseDirectoriesDo: exerciseGenerateBlock [
+	
+	self class defaultPath entries 
+		select: #isDirectory 
+		thenDo: [:dirEntry | exerciseGenerateBlock value: dirEntry ]
+]
+
 { #category : #internal }
 ExercismExerciseGenerator >> exerciseIsDeprecated [
 
@@ -171,6 +179,8 @@ ExercismExerciseGenerator >> generateExerciseFrom: aFileSystemReference [
 	"this is needed, from exercise directory all artefacts will be obtained"
 	self exerciseDirReference: aFileSystemReference.
 	
+	self hasValidTestDecriptions ifFalse: [^ self log: 'does not contain any test descriptions (skipping).' for: aFileSystemReference basename ].
+	
 	self exerciseIsDeprecated 
 		ifTrue: [ ^self log: 'is deprecated (skipping)' for: self testClassName  ].
 
@@ -184,24 +194,24 @@ ExercismExerciseGenerator >> generateExerciseFrom: aFileSystemReference [
 	self generateMetaDataFor: testClass.
 	
 	self numberGenerated: self numberGenerated + 1.
-	self log: 'successfully created' for: self testClassName
+	self log: 'successfully created.' for: self testClassName
 
-		
-		
-		
 ]
 
 { #category : #generation }
 ExercismExerciseGenerator >> generateFrom: filePathReference [
 	
+	"set default path from parameter"
+	self class defaultPath: filePathReference.
+
 	"create WIP package for exercises, if missing"
 	self ensureCreateExerciseWIPPackage.
 	
 	self traceCr: 'Generating new TestCases from specification: ', filePathReference printString.
 			
 	self numberGenerated: 0.
-	filePathReference entries
-		do: [ :entry | self generateExerciseFrom: entry reference ].
+	
+	self exerciseDirectoriesDo: [:dirEntry | self generateExerciseFrom: dirEntry reference ].
 		
 	self 
 		traceCr: ('Generation complete. Created {1} Tests!'
@@ -298,6 +308,14 @@ ExercismExerciseGenerator >> generateVersionMethodFor: testClass [
 	
 	self compile: source for: testClass class selector: #version protocol: 'config'
 		
+]
+
+{ #category : #generation }
+ExercismExerciseGenerator >> hasValidTestDecriptions [
+
+	"answer true, if directory with problem description contains valid test description - must contain file canonical-data.json"
+	
+	^ self exerciseDirReference fileNames includes: 'canonical-data.json'
 ]
 
 { #category : #initialization }
