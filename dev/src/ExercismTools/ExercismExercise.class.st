@@ -91,6 +91,13 @@ ExercismExercise >> asJsonData [
 ]
 
 { #category : #accessing }
+ExercismExercise >> definedSolutionClasses [
+	"Answer only the classes that are defined by exercise package itself (no system classes with extension methods)"
+	
+	^ self exercisePackageContainer definedClasses reject: [ :c | c isKindOf: ExercismTest class ]
+]
+
+{ #category : #accessing }
 ExercismExercise >> descriptionText [
 	"Answer the String, that is the hint text for exerciems (this is the text afer the markdown heading ## Hint"
 
@@ -304,10 +311,16 @@ ExercismExercise >> printOn: aStream [
 ]
 
 { #category : #removing }
-ExercismExercise >> removeSolutionClasses [
-	"Solution classes with implemented solution to be removed - utilized by TestRunner before importing student solution"
+ExercismExercise >> removeDefinedSolutionClassesAndExtensionMethods [
+	"Defined Solution classes with implemented solution to be removed - utilized by TestRunner before importing student solution. DO NOT ERASE SYSTEM CLASSES. Only extension methods of them."
 	
-	^self solutionClasses do: [:solutionClass | solutionClass  removeFromSystem]
+	|exercisePackage|
+	exercisePackage := self exercisePackageContainer.
+	self definedSolutionClasses do: [:aClass | exercisePackage removeClassNamed: aClass name].	
+	
+	"remove extension methods as well"
+	exercisePackage removeMethods: exercisePackage extensionMethods.
+	
 ]
 
 { #category : #accessing }
@@ -319,9 +332,9 @@ ExercismExercise >> snapshot [
 
 { #category : #accessing }
 ExercismExercise >> solutionClasses [
-	"Answer the classes that are submitted to Exercism"
+	"Answer the classes that are submitted to Exercism (defined classes as well system classes with extension methods)"
 	
-	^self exercisePackageContainer classes reject: [ :c | c isKindOf: ExercismTest class ]
+	^ self exercisePackageContainer classes reject: [ :c | c isKindOf: ExercismTest class ]
 ]
 
 { #category : #accessing }
