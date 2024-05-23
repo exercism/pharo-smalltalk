@@ -71,8 +71,8 @@ ExercismTestRunner >> runTestsOnExercise: slugName importSourceFrom: inputDirect
 	[	
 		exercise := self findExercise: slugName.
 		
-		"remove all example solutions - solution classes prior student solution import"
-		exercise removeSolutionClasses.
+		"remove all example solutions - solution classes, ext. methods prior student solution import"
+		exercise removeDefinedSolutionClassesAndExtensionMethods.
 		
 		self importSourceFilesfrom: inputDirectory.
 		testResult := self runTestsFor: exercise testCase.
