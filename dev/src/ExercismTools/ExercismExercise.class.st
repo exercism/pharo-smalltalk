@@ -314,12 +314,17 @@ ExercismExercise >> printOn: aStream [
 ExercismExercise >> removeDefinedSolutionClassesAndExtensionMethods [
 	"Defined Solution classes with implemented solution to be removed - utilized by TestRunner before importing student solution. DO NOT ERASE SYSTEM CLASSES. Only extension methods of them."
 	
-	|exercisePackage|
+	|exercisePackage methodsToRemove|
 	exercisePackage := self exercisePackageContainer.
-	self definedSolutionClasses do: [:aClass | exercisePackage removeClassNamed: aClass name].	
+	self definedSolutionClasses do: [:aClass | 
+		exercisePackage removeClassNamed: aClass name. 
+		aClass removeFromSystem
+	].	
 	
 	"remove extension methods as well"
-	exercisePackage removeMethods: exercisePackage extensionMethods.
+	methodsToRemove := exercisePackage extensionMethods.
+	exercisePackage removeMethods: methodsToRemove.
+	methodsToRemove do: #removeFromSystem
 	
 ]
 
