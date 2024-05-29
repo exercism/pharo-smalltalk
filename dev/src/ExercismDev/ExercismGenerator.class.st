@@ -55,7 +55,8 @@ Class {
 		'codeExporter',
 		'exercismExercise',
 		'exercisesPath',
-		'osSubProcess'
+		'osSubProcess',
+		'updateConfig'
 	],
 	#classVars : [
 		'DefaultPath'
@@ -125,6 +126,13 @@ ExercismGenerator >> createTagSnapshotFor: packageOrTag [
 					[ :mc | mc className isNil or: [ mc actualClass category endsWith: packageOrTag name ] ])
 ]
 
+{ #category : #helper }
+ExercismGenerator >> exerciseDirReferenceFrom: exerciseName [
+	"returns dir reference to exercise dir - e.g. /exercises/two-fer/"
+	
+	^ self exercisesPath asFileReference / exerciseName
+]
+
 { #category : #accessing }
 ExercismGenerator >> exercisesPath [
 
@@ -192,6 +200,31 @@ ExercismGenerator >> generateCustomDataFor: anExercismExercise to: destinationDi
 					lf ]]
 ]
 
+{ #category : #generation }
+ExercismGenerator >> generateForExercise: slugName [
+
+	| exerciseToGenerate |
+	exerciseToGenerate := self exercismExercise	
+		find: slugName
+		ifAbsent: [ self error: ('Exercise {1} not found.' format: { slugName }) ].
+
+	"generate source files for given exercise"
+	self generateSourceFilesFor: exerciseToGenerate exercisePackage.
+
+	"generate configuration config.json file"
+	ExercismConfigGenerator generateTo: self basePathReference.
+
+	"run configlet generation"
+	self runConfigletCommand
+]
+
+{ #category : #helper }
+ExercismGenerator >> generateReadmeHintAndCustomDataOf: testClass to: metaDirectoryRef [
+	
+	self generateReadmeHintFor: testClass exercise to: metaDirectoryRef.
+	testClass isCustom ifTrue: [ self generateCustomDataFor: testClass exercise to: metaDirectoryRef ]
+]
+
 { #category : #helper }
 ExercismGenerator >> generateReadmeHintFor: anExercismExercise to: destinationDirectory [
 	"Generate markdown hints, that exercism configlet will pickup for readme.md files
@@ -208,51 +241,35 @@ ExercismGenerator >> generateReadmeHintFor: anExercismExercise to: destinationDi
 ]
 
 { #category : #helper }
-ExercismGenerator >> generateSourceFilesFor: packageOrTag to: filePathString [
+ExercismGenerator >> generateSourceFilesFor: packageOrTag [
 	"Generate the Tonel source files for a package (normally a tag). Answer the exercise directory reference"
 
-	| exampleDirectoryRef exerciseDirectoryRef metaDirectoryRef  solutionDirectoryRef testClass testClassFilename exerciseName testClasses |
-	
-	"Note: could create the writer on a memory stream to then pick what should be stored on disk
-	e.g.
-		mem := FileSystem memory root.
-		writer := ExTonelWriter on: mem."
+	| exerciseDirectoryRef metaDirectoryRef  solutionDirectoryRef testClass exerciseName testClasses |
 
 	exerciseName := ExercismExercise exerciseNameFrom: packageOrTag.
-	exampleDirectoryRef := filePathString asFileReference.
-	exerciseDirectoryRef := exampleDirectoryRef / exerciseName.
+	exerciseDirectoryRef := self exerciseDirReferenceFrom: exerciseName.
 	metaDirectoryRef :=  exerciseDirectoryRef / '.meta'.
 	solutionDirectoryRef := metaDirectoryRef / 'solution'.
 	
-	exerciseDirectoryRef ensureCreateDirectory.
-	exerciseDirectoryRef deleteAll.
+	self prepareExerciseDirectory: exerciseDirectoryRef.
 
 	codeExporter 
 		directoryReference: solutionDirectoryRef;
 		writeSnapshot: (self createTagSnapshotFor: packageOrTag).
 	
 	"move files to root solution directory and remove unnecessary package dir"
-	((solutionDirectoryRef / packageOrTag name) allChildrenMatching: '*.st') do: [:aFile |
-		aFile moveTo: solutionDirectoryRef 
-	].
-	(solutionDirectoryRef / packageOrTag name) delete.
-	
-	"Remove the package file as its not needed for Exercism"
-	(solutionDirectoryRef / 'package.st') delete.
+	self moveSolutionFilesOfPackage: packageOrTag to: solutionDirectoryRef. 
 
 	"Move the test file down to the exerciseDirectory"
-	testClasses := packageOrTag classes select: [ :cls | cls superclass = ExercismTest ].	
-	testClasses do: [ :tc |
-		testClassFilename := tc name, '.class.st'.
-		(solutionDirectoryRef / testClassFilename) moveTo: exerciseDirectoryRef / testClassFilename ].
+	testClasses := self testClassesOfPackage: packageOrTag.	
+	self moveTestClasses: testClasses from: solutionDirectoryRef to: exerciseDirectoryRef.
 	
-	testClass := testClasses detect: [ :tc | tc class includesSelector: #exercise  ].
-	self generateReadmeHintFor: testClass exercise to: metaDirectoryRef.
+	"Generate readme hint and custom metadata"
+	testClass := testClasses detect: [ :tc | tc class includesSelector: #exercise ].
+	self generateReadmeHintAndCustomDataOf: testClass to: metaDirectoryRef.
 	
-	testClass isCustom ifTrue: [ self generateCustomDataFor: testClass exercise to: metaDirectoryRef  ].
+	^exerciseDirectoryRef
 	
-	^exerciseDirectoryRef 
-
 ]
 
 { #category : #generation }
@@ -261,9 +278,31 @@ ExercismGenerator >> generateSourceFilesForActiveExercises [
 	self exercismExercise allExercises
 		select: [ :ex | ex isActive ]
 		thenDo: [ :ex | 
-			self
-				generateSourceFilesFor: ex exercisePackage
-				to: self exercisesPath ]
+			self generateSourceFilesFor: ex exercisePackage
+		]
+]
+
+{ #category : #helper }
+ExercismGenerator >> moveSolutionFilesOfPackage: packageOrTag to: solutionDirectoryRef [
+
+	"move files to root solution directory and remove unnecessary package dir"
+	((solutionDirectoryRef / packageOrTag name) allChildrenMatching: '*.st') do: [:aFile |
+		aFile moveTo: solutionDirectoryRef 
+	].
+	(solutionDirectoryRef / packageOrTag name) delete.
+	
+	"Remove the package file as its not needed for Exercism"
+	(solutionDirectoryRef / 'package.st') delete
+]
+
+{ #category : #helper }
+ExercismGenerator >> moveTestClasses: aClasses from: solutionDirectoryRef to: exerciseDirectoryRef [ 
+
+	aClasses do: [ :tc |
+		|testClassFilename|
+		testClassFilename := '{1}.class.st' format: {tc name}.
+		(solutionDirectoryRef / testClassFilename) moveTo: exerciseDirectoryRef / testClassFilename
+	]
 ]
 
 { #category : #accessing }
@@ -282,6 +321,13 @@ ExercismGenerator >> osSubProcess: anOsSubProcess [
 	osSubProcess := anOsSubProcess
 ]
 
+{ #category : #helper }
+ExercismGenerator >> prepareExerciseDirectory: exerciseDirReference [
+	
+	exerciseDirReference ensureCreateDirectory.
+	exerciseDirReference deleteAll.
+]
+
 { #category : #generation }
 ExercismGenerator >> runConfigletCommand [
 	|result |		
@@ -293,4 +339,22 @@ ExercismGenerator >> runConfigletCommand [
 	
 	result isSuccess ifFalse: [ 
 			self error: 'failure running "configlet generate" - ' , result lastError printString ]
+]
+
+{ #category : #helper }
+ExercismGenerator >> testClassesOfPackage: packageOrTag [
+
+	^ packageOrTag classes select: [ :cls | cls superclass = ExercismTest ]
+]
+
+{ #category : #accessing }
+ExercismGenerator >> updateConfig [
+
+	^ updateConfig
+]
+
+{ #category : #accessing }
+ExercismGenerator >> updateConfig: aBool [
+
+	updateConfig := aBool
 ]
