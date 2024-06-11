@@ -66,12 +66,23 @@ Class {
 
 { #category : #helper }
 ExercismGenerator class >> defaultPath [
-	^ DefaultPath ifNil: [ self defaultPath: FileLocator home pathString]
+	
+	^ DefaultPath ifNil: [ 
+		self defaultPath: (self exercismRepositoryPath ifNil: [FileLocator home pathString])
+	]
 ]
 
 { #category : #helper }
 ExercismGenerator class >> defaultPath: pathString [
 	^ DefaultPath := pathString
+]
+
+{ #category : #helper }
+ExercismGenerator class >> exercismRepositoryPath [
+	
+	|repository|
+	repository := (IceRepository repositoryNamed: 'pharo-smalltalk') ifNil: [ self traceCr: 'Could not determine location of local Pharo Exercism repository.'. ^ nil ].
+	^ repository location pathString
 ]
 
 { #category : #generation }
@@ -105,6 +116,15 @@ ExercismGenerator class >> subProcessClass [
 ExercismGenerator >> basePathReference [
 
 	^ self exercisesPath parent
+]
+
+{ #category : #helper }
+ExercismGenerator >> checkOrUpdateConfiglet [
+
+	(self class exercismRepositoryPath asFileReference / 'bin' / 'configlet') asFileReference isFile
+		ifTrue: [ ^ self ].
+	self traceCr: 'Could not find configlet. Fetching configlet...'.
+	self fetchConfiglet
 ]
 
 { #category : #accessing }
@@ -160,6 +180,22 @@ ExercismGenerator >> exercismExercise [
 ExercismGenerator >> exercismExercise: anExerciseClass [
 
 	exercismExercise := anExerciseClass 
+]
+
+{ #category : #helper }
+ExercismGenerator >> fetchConfiglet [
+	
+	|result |		
+	result := self osSubProcess new
+		workingDirectory: self class exercismRepositoryPath;
+		command: 'bin/fetch-configlet';
+		arguments: #();
+		redirectStdout;
+		runAndWait.
+	
+	result isSuccess ifFalse: [ 
+			self error: 'Cannot fetch configlet - ' , result lastError printString ].
+	self traceCr: 'Configlet fetching - done!'
 ]
 
 { #category : #generation }
@@ -246,7 +282,7 @@ ExercismGenerator >> generateSourceFilesFor: packageOrTag [
 
 	| exerciseDirectoryRef metaDirectoryRef  solutionDirectoryRef testClass exerciseName testClasses |
 
-	exerciseName := ExercismExercise exerciseNameFrom: packageOrTag.
+	exerciseName := self exercismExercise exerciseNameFrom: packageOrTag.
 	exerciseDirectoryRef := self exerciseDirReferenceFrom: exerciseName.
 	metaDirectoryRef :=  exerciseDirectoryRef / '.meta'.
 	solutionDirectoryRef := metaDirectoryRef / 'solution'.

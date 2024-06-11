@@ -169,6 +169,35 @@ ExercismGeneratorTest >> tearDown [
 ]
 
 { #category : #tests }
+ExercismGeneratorTest >> testCheckOrUpdateConfiglet [
+	|memFileSystem|
+	instance osSubProcess: FailedTestOSProcess.
+	
+	"memory file system should be used instead of system for testing purposes"
+	memFileSystem := instance exercisesPath fileSystem.
+	DiskStore 
+	currentFileSystem: memFileSystem 
+	during: [
+	"when configlet not present - should proceed to fetching and should fail"  
+	self should: [instance checkOrUpdateConfiglet] 
+			raise: Error 
+			whoseDescriptionIncludes: 'Cannot fetch configlet' 
+			description: 'Fetching of configlet should success.'.
+  ].
+
+	DiskStore 
+	currentFileSystem: memFileSystem 
+	during: [
+	(instance class exercismRepositoryPath asFileReference / 'bin' / 'configlet') ensureCreateFile.  
+	"when configlet is present (fake file above) - it should not proceed to fetching"
+	self shouldnt: [instance checkOrUpdateConfiglet]
+			raise: Error 
+			whoseDescriptionIncludes: 'Cannot fetch configlet' 
+			description: 'Checking of configlet should pass and not proceed to fetching.'.
+	]
+]
+
+{ #category : #tests }
 ExercismGeneratorTest >> testFailedGenerateSignalsException [
 
 	instance osSubProcess: FailedTestOSProcess.
@@ -179,11 +208,42 @@ ExercismGeneratorTest >> testFailedGenerateSignalsException [
 ]
 
 { #category : #tests }
+ExercismGeneratorTest >> testFetchConfiglet [
+
+	instance osSubProcess: SuccessfulTestOSProcess.
+	
+	self shouldnt: [instance fetchConfiglet] 
+			raise: Error 
+			whoseDescriptionIncludes: 'Cannot fetch configlet' 
+			description: 'Fetching of configlet should success.'.
+	
+	instance osSubProcess: FailedTestOSProcess.
+	
+	self should: [instance fetchConfiglet]
+			raise: Error 
+			whoseDescriptionIncludes: 'Cannot fetch configlet' 
+			description: 'Fetching of configlet should fail.'.
+
+]
+
+{ #category : #tests }
 ExercismGeneratorTest >> testGenerate [
 
 	instance osSubProcess: SuccessfulTestOSProcess.
 	
 	instance generate.
+	
+	self assertExerciseTests.
+	self assertHints.
+	self assertSolution
+]
+
+{ #category : #tests }
+ExercismGeneratorTest >> testGenerateForExercise [
+
+	instance osSubProcess: SuccessfulTestOSProcess.
+	
+	instance generateForExercise: 'two-fer'.
 	
 	self assertExerciseTests.
 	self assertHints.
