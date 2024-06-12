@@ -182,7 +182,7 @@ ExercismGeneratorTest >> testCheckOrUpdateConfiglet [
 	self should: [instance checkOrUpdateConfiglet] 
 			raise: Error 
 			whoseDescriptionIncludes: 'Cannot fetch configlet' 
-			description: 'Fetching of configlet should success.'.
+			description: 'Checking should proceed to fetching of configlet and should fail as exepected result of FailedTestOSProcess.'.
   ].
 
 	DiskStore 
