@@ -121,7 +121,7 @@ ExercismGenerator >> basePathReference [
 { #category : #helper }
 ExercismGenerator >> checkOrUpdateConfiglet [
 
-	(self class exercismRepositoryPath asFileReference / 'bin' / 'configlet') asFileReference isFile
+	(self configletRootReference / 'bin' / 'configlet') asFileReference isFile
 		ifTrue: [ ^ self ].
 	self traceCr: 'Could not find configlet. Fetching configlet...'.
 	self fetchConfiglet
@@ -131,6 +131,16 @@ ExercismGenerator >> checkOrUpdateConfiglet [
 ExercismGenerator >> codeExporter: anObject [
 
 	codeExporter := anObject
+]
+
+{ #category : #accessing }
+ExercismGenerator >> configletRootReference [
+	
+	|configletPath|
+	"use default root of from git repository. If not present, use parent of exercises dir."
+	configletPath := self class exercismRepositoryPath.
+	configletPath ifNil: [ ^ self basePathReference ].
+	^ configletPath asFileReference
 ]
 
 { #category : #helper }
@@ -187,7 +197,7 @@ ExercismGenerator >> fetchConfiglet [
 	
 	|result |		
 	result := self osSubProcess new
-		workingDirectory: self class exercismRepositoryPath;
+		workingDirectory: self configletRootReference fullName;
 		command: 'bin/fetch-configlet';
 		arguments: #();
 		redirectStdout;
