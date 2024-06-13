@@ -121,7 +121,7 @@ ExercismGenerator >> basePathReference [
 { #category : #helper }
 ExercismGenerator >> checkOrUpdateConfiglet [
 
-	(self configletRootReference / 'bin' / 'configlet') asFileReference isFile
+	(self configletRootReference / 'configlet') isFile
 		ifTrue: [ ^ self ].
 	self traceCr: 'Could not find configlet. Fetching configlet...'.
 	self fetchConfiglet
@@ -137,10 +137,10 @@ ExercismGenerator >> codeExporter: anObject [
 ExercismGenerator >> configletRootReference [
 	
 	|configletPath|
-	"use default root of from git repository. If not present, use parent of exercises dir."
+	"use default bin directory where configlet is locatated (out from git repository). If not present, use parent of exercises dir."
 	configletPath := self class exercismRepositoryPath.
-	configletPath ifNil: [ ^ self basePathReference ].
-	^ configletPath asFileReference
+	configletPath ifNil: [ ^ self basePathReference / 'bin' ].
+	^ configletPath asFileReference / 'bin'
 ]
 
 { #category : #helper }
@@ -198,7 +198,7 @@ ExercismGenerator >> fetchConfiglet [
 	|result |		
 	result := self osSubProcess new
 		workingDirectory: self configletRootReference fullName;
-		command: 'bin/fetch-configlet';
+		command: 'fetch-configlet';
 		arguments: #();
 		redirectStdout;
 		runAndWait.
@@ -210,7 +210,8 @@ ExercismGenerator >> fetchConfiglet [
 
 { #category : #generation }
 ExercismGenerator >> generate [
-
+	"this will regenerate all active exercises"
+	
 	"generate source files for active exercises"
 	self generateSourceFilesForActiveExercises.
 	
@@ -218,7 +219,7 @@ ExercismGenerator >> generate [
 	ExercismConfigGenerator generateTo: self basePathReference.
 	
 	"run configlet generation"
-	self runConfigletCommand.
+	self runConfigletCommandsForActiveExercices.
 ]
 
 { #category : #helper }
@@ -260,8 +261,9 @@ ExercismGenerator >> generateForExercise: slugName [
 	"generate configuration config.json file"
 	ExercismConfigGenerator generateTo: self basePathReference.
 
-	"run configlet generation"
-	self runConfigletCommand
+	"run configlet commands for given exercise"
+	self runTestSpecificationsUpdateForExercise: slugName.
+	self runDocsAndMetadataUpdateForExercise: slugName.
 ]
 
 { #category : #helper }
@@ -375,16 +377,44 @@ ExercismGenerator >> prepareExerciseDirectory: exerciseDirReference [
 ]
 
 { #category : #generation }
-ExercismGenerator >> runConfigletCommand [
-	|result |		
+ExercismGenerator >> runConfigletCommandsForActiveExercices [
+	
+		self exercismExercise allExercises
+		select: [ :ex | ex isActive ]
+		thenDo: [ :ex |
+			self runTestSpecificationsUpdateForExercise: ex name.
+			self runDocsAndMetadataUpdateForExercise: ex name.
+		]
+]
+
+{ #category : #generation }
+ExercismGenerator >> runDocsAndMetadataUpdateForExercise: slugName [
+	| result |	
+		
 	result := self osSubProcess new
-		command: 'configlet generate';
-		arguments: (Array with: self basePathReference pathString surroundedBySingleQuotes);
+		command: 'configlet';
+		workingDirectory: self configletRootReference fullName;
+		arguments: {'sync'. '--docs'. '--filepaths'. '--metadata'. '-uy'. '-e'. slugName.} asArray;
 		redirectStdout;
 		runAndWait.
 	
 	result isSuccess ifFalse: [ 
-			self error: 'failure running "configlet generate" - ' , result lastError printString ]
+			self error: ('Failed running "configlet sync --docs --filepaths --metadata -uy -e {1}" with result: {2}' format: { slugName. result lastError printString.})]
+]
+
+{ #category : #generation }
+ExercismGenerator >> runTestSpecificationsUpdateForExercise: slugName [
+	| result |	
+		
+	result := self osSubProcess new
+		command: 'configlet';
+		workingDirectory: self configletRootReference fullName;
+		arguments: {'sync'. '-u'. '--tests'. 'include'. '-e'. slugName.} asArray;
+		redirectStdout;
+		runAndWait.
+	
+	result isSuccess ifFalse: [ 
+			self error: ('Failed running "configlet sync -u --tests include -e {1}" with result: {2}' format: { slugName. result lastError printString.})]
 ]
 
 { #category : #helper }

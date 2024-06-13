@@ -188,7 +188,7 @@ ExercismGeneratorTest >> testCheckOrUpdateConfiglet [
 	DiskStore 
 	currentFileSystem: memFileSystem 
 	during: [
-	(instance configletRootReference / 'bin' / 'configlet') ensureCreateFile.  
+	(instance configletRootReference / 'configlet') ensureCreateFile.  
 	"when configlet is present (fake file above) - it should not proceed to fetching"
 	self shouldnt: [instance checkOrUpdateConfiglet]
 			raise: Error 
