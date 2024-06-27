@@ -2,13 +2,13 @@
 
 The following are useful starting points for getting more detailed information about Pharo and its community:
 
-* [Pharo Main Site](http://pharo.org/documentation)
-* [Pharo Syntax Cheatsheet](http://files.pharo.org/media/pharoCheatSheet.pdf)
+* [Pharo Main Site](https://pharo.org/documentation)
+* [Pharo Syntax Cheatsheet](https://files.pharo.org/media/pharoCheatSheet.pdf)
 
 ### Community
 
-* [Pharo Community Resources](http://pharo.org/community) (including Discord chat link)
-* [Contribute to Pharo](http://pharo.org/contribute)
+* [Pharo Community Resources](https://pharo.org/community) (including Discord chat link)
+* [Contribute to Pharo](https://pharo.org/contribute)
 
 ### Environment
 
@@ -23,5 +23,5 @@ The following are useful starting points for getting more detailed information a
 * [Smalltalk with style](http://sdmeta.gforge.inria.fr/FreeBooks/WithStyle/SmalltalkWithStyle.pdf)
 * [Smalltalk ANSI Standard](http://wiki.squeak.org/squeak/uploads/172/standard_v1_9-indexed.pdf)
 * [Smalltalk Grammar](https://gist.github.com/sin3141592/602700)
-* [Deep Into Pharo](http://books.pharo.org/deep-into-pharo/)
+* [Deep Into Pharo](https://books.pharo.org/deep-into-pharo/)
 * [Call Stack Management](https://files.pharo.org/books-pdfs/booklet-CallStack/2018-01-23-CallStack.pdf)

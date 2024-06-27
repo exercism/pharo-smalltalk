@@ -190,4 +190,4 @@ If you plan to make significant or breaking changes, please open an issue so we 
 
 Thanks to the Pharo team for all their dedication in building a modern open source Smalltalk.
 
-![Pharo](http://pharo.org/web/files/pharo.png)
+![Pharo](https://pharo.org/web/files/pharo.png)
