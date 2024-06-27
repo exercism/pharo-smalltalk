@@ -3,9 +3,10 @@
 As Smalltalk is widely used, there is rich choice of reading material.
 
 ## Starting Out
+
 * [Pharo Main Site](http://pharo.org/documentation):
 has a wealth of articles and help
-* [Pharo Syntax Cheatsheet](http://files.pharo.org/media/pharoCheatSheet.pdf): 
+* [Pharo Syntax Cheatsheet](http://files.pharo.org/media/pharoCheatSheet.pdf):
 it fits on a postcard
 * [I Can Read C but not Smalltalk](http://www.eli.sdsu.edu/courses/spring01/cs635/readingSmalltalk.pdf): several easy steps to understanding Smalltalk
 * [Pharo By Example (9.0)](https://books.pharo.org/pharo-by-example9/):
@@ -18,6 +19,7 @@ active online Pharo discussions forum (use the invite link at the top of the [Co
 provides a series of full programming courses and videos
 
 ## More Advanced
+
 * [Deep Into Pharo](http://books.pharo.org/deep-into-pharo/):
 takes you through more advanced topics like graphics and parsing
 * [Pharo with style](https://github.com/SquareBracketAssociates/Booklet-PharoWithStyle):
