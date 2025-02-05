@@ -10,10 +10,8 @@ Class {
 		'testCase',
 		'difficulty',
 		'topics',
-		'isAutoApproved',
-		'isCore',
-		'unlockedBy',
-		'isDeprecated'
+		'practices',
+		'prerequisites'
 	],
 	#category : #'ExercismTools-Meta'
 }
@@ -37,8 +35,8 @@ ExercismExercise class >> bonusExercises [
 
 { #category : #'instance creation' }
 ExercismExercise class >> coreExercises [
-	^(self allExercises select: [:e | e isCore and: [e isActive]])
-		asSortedCollection: [ :a :b | a isFirst or: [a isFollowedBy: b ]]
+	
+	^ self allExercises select: #isActive
 ]
 
 { #category : #'instance creation' }
@@ -85,7 +83,6 @@ ExercismExercise >> asJsonData [
 		'uuid' -> self uuid.
 		'core' -> self isCore.
 		'auto_approve' -> self isAutoApproved.
-		'unlocked_by' -> self unlockReference.
 		'difficulty' -> self difficulty.
 		'topics' -> self topics } asOrderedDictionary 
 ]
@@ -141,35 +138,6 @@ ExercismExercise >> exercisePackageContainer [
 	^ (pkg := self exercisePackage) = ExercismManager legacyExercismPackage
 		ifTrue: [ pkg classTagForClass: self testCase ]
 		ifFalse: [ pkg ]
-]
-
-{ #category : #navigating }
-ExercismExercise >> followedBy [
-"testcase : ^self unlockedBy ifNil: ['' ] ifNotNil: [ :parent | parent followedBy ]"
-	^ self class coreExercises detect: [ :ex | ex isUnlockedBy: self ] ifNone: [  nil ]
-]
-
-{ #category : #'gt-inspector' }
-ExercismExercise >> gtInspectorDetailsIn: composite [
-	<gtInspectorPresentationOrder: 30>
-	^ composite table
-		title: 'Exercism';
-		display: [ 
-					{'exercise' -> self name.
-					'core' -> true.
-					'difficulty' -> self difficulty.
-					'unlocks' -> self unlockedExercises.
-					'topics' -> self topics.
-					'tests' -> self testCase.
-					'solution' -> self exerciseClass.
-					'uuid' -> self uuid.
-					'followed by' -> self followedBy.
-					'hint' -> self hintText.
-					 } ];
-		column: 'Property' evaluated: #key;
-		column: 'Value' evaluated: [:v | 
-			v key = 'unlocks' ifTrue: [v value asCommaString ] ifFalse: [ v value ]];
-		send: #value
 ]
 
 { #category : #comparing }
@@ -257,29 +225,6 @@ ExercismExercise >> isDeprecated: anObject [
 { #category : #accessing }
 ExercismExercise >> isEmpty [
 	^self solutionClasses isEmpty
-]
-
-{ #category : #comparing }
-ExercismExercise >> isFirst [
-	^ self unlockedBy isNil
-]
-
-{ #category : #comparing }
-ExercismExercise >> isFollowedBy: anExercismExercise [
-
-	self isFirst ifTrue: [ ^ self ~= anExercismExercise ].
-	anExercismExercise isFirst ifTrue: [ ^ false ].
-		
-	^ (anExercismExercise isUnlockedBy: self)
-		ifTrue: [ true ]
-		ifFalse: [ self isFollowedBy: anExercismExercise unlockedBy ]
-]
-
-{ #category : #comparing }
-ExercismExercise >> isUnlockedBy: anExercise [
-	^ self unlockedBy
-		ifNil: [ false ]
-		ifNotNil: [ :exercise | exercise = anExercise ]
 ]
 
 { #category : #accessing }
@@ -391,27 +336,8 @@ ExercismExercise >> trackId [
 ]
 
 { #category : #accessing }
-ExercismExercise >> unlockReference [
-	"Answer the String unlock reference for a non-core exercise, otherwise nil"
-
-	^ self isCore
-		ifTrue: [ nil ]
-		ifFalse: [ self unlockedBy ifNotNil: [:parent | parent name ]]
-]
-
-{ #category : #accessing }
 ExercismExercise >> unlockedBy [
 	^ unlockedBy 
-]
-
-{ #category : #accessing }
-ExercismExercise >> unlockedBy: anExercismExercise [
-	unlockedBy := anExercismExercise
-]
-
-{ #category : #accessing }
-ExercismExercise >> unlockedExercises [
-	^self class bonusExercises select: [ :e | e isUnlockedBy: self ]
 ]
 
 { #category : #accessing }

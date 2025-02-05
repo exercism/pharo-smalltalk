@@ -80,13 +80,6 @@ ExercismExerciseTest >> testFind [
 ]
 
 { #category : #tests }
-ExercismExerciseTest >> testFollowedBy [
-
-	self assert: [(HelloWorldTest exercise) isFollowedBy: TwoFerTest exercise].
-	self deny: [(HammingTest exercise) isFollowedBy: HelloWorldTest exercise].
-]
-
-{ #category : #tests }
 ExercismExerciseTest >> testHintText [
 	
 	self assert: (HelloWorldTest exercise hintText beginsWith: 'If you are')
@@ -107,23 +100,6 @@ ExercismExerciseTest >> testIsEmpty [
 	self deny: TestmanyTest exercise isEmpty description: 'Not empty with many solucionts'.
 	self assert: TestEmptyTest exercise isEmpty description: 'Should be empty' 
 	
-]
-
-{ #category : #tests }
-ExercismExerciseTest >> testIsFollowedBy [
-	
-	self assert: (HelloWorldTest exercise isFollowedBy: LeapTest exercise) description: 'Leap should follow HelloWorld'.
-	
-	self deny: (HelloWorldTest exercise isFollowedBy: HelloWorldTest exercise) description: 'HelloWorld should not follow itself (root)'.
-	self deny: (LeapTest exercise isFollowedBy: LeapTest exercise) description: 'Leap should not follow itself (non-root)'.
-	self deny: (LeapTest exercise isFollowedBy: HelloWorldTest exercise) description: 'HelloWorld should not follow Leap'.
-]
-
-{ #category : #tests }
-ExercismExerciseTest >> testIsUnlockedBy [
-
-	self assert: (TwoFerTest exercise isUnlockedBy: HelloWorldTest  exercise).
-	self deny: [ TwoFerTest exercise isUnlockedBy: LeapTest exercise ]
 ]
 
 { #category : #tests }
@@ -191,24 +167,6 @@ ExercismExerciseTest >> testStoreSolutionId [
 	TestmanyTest exercise storeSolutionId: 'sId789'. 
 	self assert: TestmanyTest exercise solutionId equals: 'sId789'.
 	 	
-]
-
-{ #category : #tests }
-ExercismExerciseTest >> testUnlockReference [
-	
-	self assert: HelloWorldTest exercise unlockReference equals: nil.
-	self assert: LeapTest exercise unlockReference equals: nil.
-	self assert: SpaceAgeTest exercise unlockReference equals: TwoFerTest exercise name.
-	
-	
-]
-
-{ #category : #tests }
-ExercismExerciseTest >> testUnlockedExercises [
-	
-	self assertCollection: HelloWorldTest exercise unlockedExercises asArray equals: {} .
-	self assertCollection: TwoFerTest exercise unlockedExercises asArray 
-				includesAll: {ResistorColorDuoTest exercise. SpaceAgeTest exercise}.
 ]
 
 { #category : #tests }
