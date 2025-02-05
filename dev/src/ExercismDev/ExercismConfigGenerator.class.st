@@ -64,3 +64,32 @@ ExercismConfigGenerator >> generateConfigFrom: aFileSystemReference [
 		 	stream nextPutAll: contents ]
 	
 ]
+
+{ #category : #generation }
+ExercismConfigGenerator >> updateConfigFrom: aFileSystemReference for: slugName [
+	"self generate"
+	
+	| configFile jsonDict exerciseOutJson |
+	
+	configFile := aFileSystemReference / 'config.json'.
+	configFile isFile ifFalse: [ ^ self error: ('Could not determine config file for Pharo track (file is missing): {1}.' format: { configFile fullName }) ].
+	
+	jsonDict := STON fromString: configFile contents.
+	exerciseOutJson := (ExercismExercise find: slugName ifAbsent: [ self error: ('Could not find exercise: {1}' format: {slugName})]) asJsonData.
+	self updateConfigExercise: slugName inNode: ((jsonDict  at: 'exercises') at: 'practice').
+	
+	"config := OrderedCollection withAll: ExercismManager trackConfigHeader.
+	
+	coreExercises := ExercismExercise coreExercises collect: [:e | e asJsonData ].
+	bonusExercises := ExercismExercise bonusExercises collect: [:e | e asJsonData ].
+	
+	config add: 'exercises' -> (coreExercises, bonusExercises).
+	
+	contents := STONJSONWriter streamContentsOf: config asOrderedDictionary.
+	
+	configFile 
+		ensureDelete; 
+		writeStreamDo: [ :stream |
+		 	stream nextPutAll: contents ]
+	"
+]
