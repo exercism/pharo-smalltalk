@@ -46,7 +46,6 @@ MinesweeperTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
 	^(self createExerciseAfter: AllergiesTest)
-		isCore: false;
 		difficulty: 5;
 		topics: #('parsing' 'iteration' 'transforming');
 		yourself

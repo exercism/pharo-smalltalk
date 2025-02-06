@@ -16,22 +16,6 @@ ExercismExerciseTest >> testAsJsonData [
 ]
 
 { #category : #tests }
-ExercismExerciseTest >> testBonusExercises [
-	
-	self assert: ExercismExercise bonusExercises notEmpty 
-	
-	
-]
-
-{ #category : #tests }
-ExercismExerciseTest >> testCoreExercises [
-	
-	self assert: ExercismExercise coreExercises notEmpty 	
-	
-	
-]
-
-{ #category : #tests }
 ExercismExerciseTest >> testDescriptionText [
 	
 	self assert: (HelloWorldTest exercise descriptionText endsWith: 'real exercise')
@@ -107,6 +91,22 @@ ExercismExerciseTest >> testName [
 	
 	self assert: TestExerciseTest exercise name equals: 'test-exercise'.
 	self assert: TestmanyTest exercise name equals: 'testmany'
+]
+
+{ #category : #tests }
+ExercismExerciseTest >> testPractiseExercisesNotEmpty [
+	
+	self assert: ExercismExercise practiseExercises notEmpty
+]
+
+{ #category : #tests }
+ExercismExerciseTest >> testPractiseExercisesSorted [
+	|exercises |
+	exercises := ExercismExercise practiseExercises.
+	
+	"test if practise exercises are ordered by difficulty and then by name (within same difficulty"
+	self assert: exercises first difficulty < exercises last difficulty.
+	self assert: exercises first name < exercises second name.
 ]
 
 { #category : #tests }

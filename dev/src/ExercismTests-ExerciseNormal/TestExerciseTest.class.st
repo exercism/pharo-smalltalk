@@ -10,7 +10,6 @@ Class {
 { #category : #config }
 TestExerciseTest class >> exercise [
 	^(ExercismExercise for: self)
-		isCore: false;
 		difficulty: 1;
 		topics: #('testing');
 		yourself

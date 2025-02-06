@@ -43,7 +43,6 @@ ResistorColorDuoTest class >> exercise [
 	
 	
 	^(self createExerciseAfter: TwoFerTest)
-		isCore: false;
 		difficulty: 1;
 		topics: #('arrays' 'strings' 'math');
 		yourself

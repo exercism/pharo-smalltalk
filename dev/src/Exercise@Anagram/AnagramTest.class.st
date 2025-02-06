@@ -26,7 +26,6 @@ AnagramTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
 	^(self createExerciseAfter: IsogramTest)
-		isCore: false;
 		difficulty: 3;
 		topics: #('strings' 'filtering');
 		yourself

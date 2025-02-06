@@ -28,7 +28,6 @@ Class {
 { #category : #config }
 ArmstrongNumbersTest class >> exercise [
 	^ (self createExerciseAfter: TwoFerTest)
-		isCore: false;
 		difficulty: 2;
 		topics: #('math' 'integers');
 		yourself

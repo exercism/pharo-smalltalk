@@ -85,7 +85,6 @@ LuhnTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
 	^(self createExerciseAfter: GrainsTest)
-		isCore: false;
 		difficulty: 4;
 		topics: #('strings' 'math' 'algorithms');
 		yourself

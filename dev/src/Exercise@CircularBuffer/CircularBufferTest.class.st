@@ -60,9 +60,7 @@ Class {
 { #category : #config }
 CircularBufferTest class >> exercise [
 
-	^(ExercismExercise for: self) 
-		isCore: false;
-		isAutoApproved: true;
+	^(ExercismExercise for: self)
 		difficulty: 5;
 		topics: #('arrays' 'conditionals' 'data_structures' 'exception_handling' 'lists' 'list-methods');
 		yourself

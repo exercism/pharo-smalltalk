@@ -33,7 +33,6 @@ IsogramTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
 	^(self createExerciseAfter: ReverseStringTest)
-		isCore: true;
 		difficulty: 2;
 		topics: #('strings' 'iteration');
 		yourself

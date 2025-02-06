@@ -52,7 +52,6 @@ AllergiesTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 
 	^(self createExerciseAfter: GrainsTest)
-		isCore: true;
 		difficulty: 3;
 		topics: #('bitwise_operations' 'filtering');
 		yourself

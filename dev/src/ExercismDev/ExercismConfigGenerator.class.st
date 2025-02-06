@@ -46,15 +46,19 @@ ExercismConfigGenerator class >> generateTo: aFilePathReference [
 ExercismConfigGenerator >> generateConfigFrom: aFileSystemReference [
 	"self generate"
 	
-	| configFile config coreExercises contents bonusExercises |
+	| configFile config contents conceptExercises practiseExercises |
 	
 	configFile := aFileSystemReference / 'config.json'.
 	config := OrderedCollection withAll: ExercismManager trackConfigHeader.
 	
-	coreExercises := ExercismExercise coreExercises collect: [:e | e asJsonData ].
-	bonusExercises := ExercismExercise bonusExercises collect: [:e | e asJsonData ].
+	practiseExercises := ExercismExercise practiseExercises  collect: #asJsonData.
+	conceptExercises := ExercismExercise conceptExercises collect: #asJsonData.
 	
-	config add: 'exercises' -> (coreExercises, bonusExercises).
+	config add: 'exercises' -> (
+		OrderedCollection 
+			with: 'concept' -> conceptExercises
+			with: 'practise' -> practiseExercises
+	).
 	
 	contents := STONJSONWriter streamContentsOf: config asOrderedDictionary.
 	

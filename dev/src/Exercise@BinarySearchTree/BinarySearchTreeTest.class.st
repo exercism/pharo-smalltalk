@@ -67,8 +67,6 @@ Class {
 BinarySearchTreeTest class >> exercise [
 	
 	^(ExercismExercise for: self) 
-		isCore: false;
-		isAutoApproved: true;
 		difficulty: 6;
 		topics: #('algorithms' 'conditionals' 'data_structures' 'recursion');
 		yourself

@@ -31,7 +31,6 @@ SumOfMultiplesTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
 	^(self createExerciseAfter: LeapTest)
-		isCore: false;
 		difficulty: 3;
 		topics: #('iteration' 'filtering' 'math');
 		yourself

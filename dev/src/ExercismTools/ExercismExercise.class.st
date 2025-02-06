@@ -24,19 +24,10 @@ ExercismExercise class >> allExercises [
 ]
 
 { #category : #'instance creation' }
-ExercismExercise class >> bonusExercises [
-	"self bonusExercises"
-
-	^ (self allExercises
-		reject:
-			[ :exercise | exercise isCore or: [ exercise isActive not ] ])
-		asSortedCollection: [ :a :b | a name < b name ]
-]
-
-{ #category : #'instance creation' }
-ExercismExercise class >> coreExercises [
+ExercismExercise class >> conceptExercises [
 	
-	^ self allExercises select: #isActive
+	"empty for now - nothing defined yet"
+	^ {}
 ]
 
 { #category : #'instance creation' }
@@ -64,6 +55,17 @@ ExercismExercise class >> for: anExercismTestCase [
 		yourself
 ]
 
+{ #category : #'instance creation' }
+ExercismExercise class >> practiseExercises [
+	
+	^ (self allExercises select: #isActive)
+	  asSortedCollection: [ :a :b |  
+		a difficulty = b difficulty 
+			ifTrue: [a name <= b name]
+			ifFalse: [a difficulty < b difficulty ]
+		]
+]
+
 { #category : #comparing }
 ExercismExercise >> = anObject [
 	"Answer whether the receiver and anObject represent the same object."
@@ -81,8 +83,6 @@ ExercismExercise >> asJsonData [
 	
 	^{ 'slug' -> self name.
 		'uuid' -> self uuid.
-		'core' -> self isCore.
-		'auto_approve' -> self isAutoApproved.
 		'difficulty' -> self difficulty.
 		'topics' -> self topics } asOrderedDictionary 
 ]
@@ -175,11 +175,7 @@ ExercismExercise >> id [
 { #category : #initialization }
 ExercismExercise >> initialize [
 	super initialize.
-	self
-		isCore: false;
-		isDeprecated: false;
-		isAutoApproved: false;
-		topics: #()
+	self topics: #()
 ]
 
 { #category : #accessing }
@@ -188,38 +184,8 @@ ExercismExercise >> isActive [
 ]
 
 { #category : #accessing }
-ExercismExercise >> isAutoApproved [
-	^ isAutoApproved
-]
-
-{ #category : #accessing }
-ExercismExercise >> isAutoApproved: anObject [
-	isAutoApproved := anObject
-]
-
-{ #category : #accessing }
-ExercismExercise >> isCore [
-	^ isCore
-]
-
-{ #category : #accessing }
-ExercismExercise >> isCore: aBoolean [
-	isCore := aBoolean
-]
-
-{ #category : #accessing }
 ExercismExercise >> isDefined [
 	^self exerciseClass notNil
-]
-
-{ #category : #accessing }
-ExercismExercise >> isDeprecated [
-	^ isDeprecated
-]
-
-{ #category : #accessing }
-ExercismExercise >> isDeprecated: anObject [
-	isDeprecated := anObject
 ]
 
 { #category : #accessing }
@@ -238,11 +204,10 @@ ExercismExercise >> printOn: aStream [
 	aStream
 		nextPutAll: 'Exercise(';
 		nextPutAll: self name.
-	self isCore
-		ifTrue: [ aStream nextPut: $* ].
+
 	self isDefined
 		ifTrue: [ aStream
-				space;
+				nextPutAll: ', D: ';
 				print: self difficulty ]
 		ifFalse: [ aStream nextPut: $? ].
 	aStream nextPut: $)

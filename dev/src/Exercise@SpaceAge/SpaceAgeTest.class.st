@@ -42,7 +42,6 @@ SpaceAgeTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 
 	^(self createExerciseAfter: TwoFerTest)
-		isCore: false;
 		difficulty: 1;
 		topics: #('dictionaries' 'math');
 		yourself
