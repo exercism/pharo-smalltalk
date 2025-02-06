@@ -301,11 +301,6 @@ ExercismExercise >> trackId [
 ]
 
 { #category : #accessing }
-ExercismExercise >> unlockedBy [
-	^ unlockedBy 
-]
-
-{ #category : #accessing }
 ExercismExercise >> uuid [
 	^self testCase uuid
 ]
