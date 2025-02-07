@@ -29,6 +29,15 @@ ExercismExerciseTest >> testAsJsonData [
 ]
 
 { #category : #tests }
+ExercismExerciseTest >> testDefinedSolutionClasses [
+	
+	self assertCollection: TestExerciseTest exercise definedSolutionClasses equals: {TestExercise} asSet.
+	self assertCollection: TestmanyTest exercise definedSolutionClasses equals: {Testmany. TestOtherClass. TestOtherClassTest} asSet.
+	self assertCollection: TestEmptyTest exercise definedSolutionClasses equals: {} asSet.
+	self assertCollection: TestExExtensionTest exercise definedSolutionClasses  equals: { TestExtension  } asSet.
+]
+
+{ #category : #tests }
 ExercismExerciseTest >> testDescriptionText [
 	
 	self assert: (HelloWorldTest exercise descriptionText endsWith: 'real exercise')

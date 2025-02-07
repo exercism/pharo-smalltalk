@@ -167,6 +167,21 @@ ExercismTestRunnerTest >> mockRunnerTestCaseSnapshot [
 ]
 
 { #category : #private }
+ExercismTestRunnerTest >> prepareMockExtensionMethods [
+
+	| package |
+	Array compile: 'mockMethodArray 
+	^ true'.
+	Integer compile: 'mockMethodInteger
+	^ false'.
+	
+	package := RPackageOrganizer default packageNamed: 'Exercise@MockRunner' 
+		ifAbsent: [RPackageOrganizer default createPackageNamed: 'Exercise@MockRunner'].
+	package addMethod: Array>>#mockMethodArray.
+	package addMethod: Integer>>#mockMethodInteger.
+]
+
+{ #category : #private }
 ExercismTestRunnerTest >> prepareMockSolution [
 
 	self mockRunnerSolutionSnapshot install.
@@ -196,7 +211,15 @@ ExercismTestRunnerTest >> prepareMockTestCase [
 ExercismTestRunnerTest >> tearDown [ 
 	|aPackage|
 	aPackage := RPackageOrganizer default packageNamed: 'Exercise@MockRunner' ifAbsent: [nil].
-	aPackage ifNotNil: [ aPackage removeFromSystem].
+	aPackage ifNotNil: [ 
+		aPackage removeFromSystem.
+		
+		"remove ext. methods as well"
+		Array compiledMethodAt: #mockMethodArray
+				ifPresent: [ :method | method removeFromSystem].
+		Integer compiledMethodAt: #mockMethodInteger
+				ifPresent: [ :method | method removeFromSystem].
+		].
 	super tearDown
 ]
 
@@ -256,17 +279,19 @@ ExercismTestRunnerTest >> testPrepareMockSolution [
 ]
 
 { #category : #running }
-ExercismTestRunnerTest >> testRemoveSolutionClasses [
+ExercismTestRunnerTest >> testRemoveDefinedSolutionClassesAndExtensionMethods [
 
-	|exercise|
-
+	| exercise |
 	"preparing mock test case"
 	self prepareMockTestCase.
 	self prepareMockSolution.
-	exercise := ExercismTestRunner default findExercise: 'mock-runner'.	
-	self assert: exercise solutionClasses size equals: 1.
-	exercise removeSolutionClasses.
+	self prepareMockExtensionMethods.
+	exercise := ExercismTestRunner default findExercise: 'mock-runner'.
+	self assertCollection: exercise solutionClasses equals: {(self class environment at: #MockRunner). Integer. Array.} asSet.
+	self assert: exercise definedSolutionClasses equals: {self class environment at: #MockRunner} asSet.
+	exercise removeDefinedSolutionClassesAndExtensionMethods.
 	self assert: exercise solutionClasses isEmpty.
+	self assert: exercise definedSolutionClasses isEmpty.
 ]
 
 { #category : #tests }

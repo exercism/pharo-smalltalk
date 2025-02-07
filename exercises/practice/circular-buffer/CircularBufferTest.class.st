@@ -45,7 +45,7 @@ Because there is space available, if the client again uses overwrite to store C 
     [C][D][7][8][9][A][B]
 
 ## Hint
-For error cases during operations, see Error class hiearchy (class side) to find out how to signal exception with given message.
+For error cases during operations, see Error class hierarchy (class side) to find out how to signal exception with given message.
 
 "
 Class {
@@ -90,7 +90,7 @@ CircularBufferTest >> setUp [
 CircularBufferTest >> test01_ReadingEmptyBufferShouldFail [
 	"Tip: Remember to review the class [Comment] tab"
 
-	<exeTestName: 'eading empty buffer should fail'>
+	<exeTestName: 'reading empty buffer should fail'>
 	<exeTestUUID: '28268ed4-4ff3-45f3-820e-895b44d53dfa'>
 	circularBufferCalculator capacity: 1.
 	self should: [circularBufferCalculator read] raise: Error.

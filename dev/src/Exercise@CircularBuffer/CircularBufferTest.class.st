@@ -45,7 +45,7 @@ Because there is space available, if the client again uses overwrite to store C 
     [C][D][7][8][9][A][B]
 
 ## Hint
-For error cases during operations, see Error class hiearchy (class side) to find out how to signal exception with given message.
+For error cases during operations, see Error class hierarchy (class side) to find out how to signal exception with given message.
 
 "
 Class {
@@ -88,7 +88,7 @@ CircularBufferTest >> setUp [
 CircularBufferTest >> test01_ReadingEmptyBufferShouldFail [
 	"Tip: Remember to review the class [Comment] tab"
 
-	<exeTestName: 'eading empty buffer should fail'>
+	<exeTestName: 'reading empty buffer should fail'>
 	<exeTestUUID: '28268ed4-4ff3-45f3-820e-895b44d53dfa'>
 	circularBufferCalculator capacity: 1.
 	self should: [circularBufferCalculator read] raise: Error.
@@ -142,7 +142,7 @@ CircularBufferTest >> test05_FullBufferCantBeWrittenTo [
 
 	<exeTestName: 'full buffer can''t be written to'>
 	<exeTestUUID: '2af22046-3e44-4235-bfe6-05ba60439d38'>
-	
+
 	circularBufferCalculator capacity: 1.
 	circularBufferCalculator write: 1.
 	self should: [ circularBufferCalculator write: 2 ] raise: Error
@@ -209,7 +209,7 @@ CircularBufferTest >> test09_ClearFreesUpCapacityForAnotherWrite [
 	| result |
 	circularBufferCalculator capacity: 1.
 	circularBufferCalculator write: 1.
-	
+
 	circularBufferCalculator clear.
 
 	circularBufferCalculator write: 2.
