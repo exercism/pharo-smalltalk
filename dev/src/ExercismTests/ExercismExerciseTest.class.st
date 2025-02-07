@@ -9,9 +9,22 @@ Class {
 
 { #category : #tests }
 ExercismExerciseTest >> testAsJsonData [
+	|testExerciseDict jsonString |
 	
-	TestExerciseTest exercise asJsonData should beKindOf: Collection.
-	TestExerciseTest exercise asJsonData asJSON should includeSubstring: '"slug" : "test-exercise"'.
+	testExerciseDict := TestExerciseTest exercise asJsonData.
+	
+	"test if can be converted to JSON string"
+	jsonString := testExerciseDict asJSON.
+	
+	jsonString should includeSubstring: '"slug" : "test-exercise"'.
+	jsonString should includeSubstring: '"name" : "Test Exercise"'.
+	jsonString should includeSubstring: '"uuid"'.
+	
+	"test collections - if practices and prerequisites are included as part of exercice"
+	self assert: ((testExerciseDict at: 'practices') includesAll: #('if-statements' 'numbers' 'operator-precedence')).
+	self assert: ((testExerciseDict at: 'prerequisites') includesAll: #('if-statements' 'numbers')).   
+	
+	jsonString should includeSubstring: '"difficulty" : 1'.
 	LeapTest exercise asJsonData asJSON should includeSubstring: '"slug" : "leap"'
 ]
 

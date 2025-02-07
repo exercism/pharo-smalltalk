@@ -11,6 +11,8 @@ Class {
 TestExerciseTest class >> exercise [
 	^(ExercismExercise for: self)
 		difficulty: 1;
+		practices: #('if-statements' 'numbers' 'operator-precedence');
+		prerequisites: #('if-statements' 'numbers');
 		topics: #('testing');
 		yourself
 ]

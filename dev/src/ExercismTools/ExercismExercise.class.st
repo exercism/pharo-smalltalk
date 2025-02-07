@@ -79,10 +79,13 @@ ExercismExercise >> = anObject [
 
 { #category : #converting }
 ExercismExercise >> asJsonData [
-	"Answer a collection of attributes"
+	"Answer a collection of attributes - v3 version"
 	
 	^{ 'slug' -> self name.
+	   'name' -> self name kebabAsCamelCase normalizeCamelCase.
 		'uuid' -> self uuid.
+		'practices' -> self practices.
+		'prerequisites' -> self prerequisites.
 		'difficulty' -> self difficulty.
 		'topics' -> self topics } asOrderedDictionary 
 ]
@@ -175,7 +178,9 @@ ExercismExercise >> id [
 { #category : #initialization }
 ExercismExercise >> initialize [
 	super initialize.
-	self topics: #()
+	self topics: OrderedCollection new.
+	self practices: OrderedCollection new.
+	self prerequisites:  OrderedCollection new.
 ]
 
 { #category : #accessing }
@@ -196,6 +201,30 @@ ExercismExercise >> isEmpty [
 { #category : #accessing }
 ExercismExercise >> name [ 
 	^self exerciseClassName asKebabCase 
+]
+
+{ #category : #accessing }
+ExercismExercise >> practices [
+
+	^ practices
+]
+
+{ #category : #accessing }
+ExercismExercise >> practices: anObject [
+
+	practices := anObject
+]
+
+{ #category : #accessing }
+ExercismExercise >> prerequisites [
+
+	^ prerequisites
+]
+
+{ #category : #accessing }
+ExercismExercise >> prerequisites: anObject [
+
+	prerequisites := anObject
 ]
 
 { #category : #printing }
