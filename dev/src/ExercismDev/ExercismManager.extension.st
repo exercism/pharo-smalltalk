@@ -95,7 +95,7 @@ ExercismManager class >> trackConfigHeader [
 		'version' -> 3.
 		'online_editor' -> self editorAttributes.
 		'files' -> self filesAttributes.
-		'average_run_time' -> 1.
+		'test_runner' -> (OrderedDictionary with: 'average_run_time' -> 1).
 		}
 ]
 

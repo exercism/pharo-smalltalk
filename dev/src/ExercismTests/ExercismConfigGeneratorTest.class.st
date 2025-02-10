@@ -47,7 +47,7 @@ ExercismConfigGeneratorTest >> testGenerateConfigHeader [
 	self assert: (((jsonDict at: 'files') at: 'test') first includesSubstring: 'Test.class.st').
 	self assert: (((jsonDict at: 'files') at: 'example') first includesSubstring: '.class.st').
 	self assert: (((jsonDict at: 'files') at: 'exemplar') first includesSubstring: '.class.st').
-	self assert: (jsonDict at: 'average_run_time') equals: 1.
+	self assert: ((jsonDict at: 'test_runner') at: 'average_run_time') equals: 1.
 ]
 
 { #category : #tests }
