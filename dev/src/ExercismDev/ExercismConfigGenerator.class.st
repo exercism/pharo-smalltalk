@@ -12,7 +12,8 @@ Class {
 
 { #category : #accessing }
 ExercismConfigGenerator class >> defaultPath [
-	^ DefaultPath ifNil: [ self defaultPath: FileLocator home pathString]
+
+	^ DefaultPath ifNil: [ self defaultPath: ExercismGenerator defaultPath]
 ]
 
 { #category : #accessing }

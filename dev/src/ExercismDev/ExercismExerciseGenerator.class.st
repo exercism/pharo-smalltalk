@@ -40,7 +40,8 @@ ExercismExerciseGenerator class >> convertLegacyTagsToPackages [
 
 { #category : #examples }
 ExercismExerciseGenerator class >> defaultPath [
-	^ DefaultPath ifNil: [ self defaultPath: FileLocator home pathString]
+
+	^ DefaultPath ifNil: [ self defaultPath: ExercismGenerator defaultPath]
 ]
 
 { #category : #examples }
