@@ -36,7 +36,7 @@ ExercismManager >> browseAsRingModel: result [
 { #category : #'*ExercismDev' }
 ExercismManager >> dependencyGraph [
 	
-	^ ExercismExercise practiseExercises
+	^ ExercismExercise practiceExercises
 	
 	
 ]

@@ -56,7 +56,7 @@ ExercismExercise class >> for: anExercismTestCase [
 ]
 
 { #category : #'instance creation' }
-ExercismExercise class >> practiseExercises [
+ExercismExercise class >> practiceExercises [
 	
 	^ (self allExercises select: #isActive)
 	  asSortedCollection: [ :a :b |  

@@ -118,13 +118,13 @@ ExercismExerciseTest >> testName [
 { #category : #tests }
 ExercismExerciseTest >> testPractiseExercisesNotEmpty [
 	
-	self assert: ExercismExercise practiseExercises notEmpty
+	self assert: ExercismExercise practiceExercises notEmpty
 ]
 
 { #category : #tests }
 ExercismExerciseTest >> testPractiseExercisesSorted [
 	|exercises |
-	exercises := ExercismExercise practiseExercises.
+	exercises := ExercismExercise practiceExercises.
 	
 	"test if practise exercises are ordered by difficulty and then by name (within same difficulty"
 	self assert: exercises first difficulty < exercises last difficulty.

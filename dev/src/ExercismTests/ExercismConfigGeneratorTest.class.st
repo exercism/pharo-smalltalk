@@ -53,21 +53,21 @@ ExercismConfigGeneratorTest >> testGenerateConfigHeader [
 { #category : #tests }
 ExercismConfigGeneratorTest >> testGenerateConfigPractiseExercises [
 	
-	|dirReference jsonDict practiseExercises|
+	|dirReference jsonDict practiceExercises|
 	dirReference := (FileSystem memory root / 'testConfig') ensureCreateDirectory.
 	ExercismConfigGenerator generateTo: dirReference.
 	jsonDict := STON fromString: (dirReference / 'config.json') contents.
 	
-	practiseExercises := ((jsonDict at: 'exercises') at: 'practise').
+	practiceExercises := ((jsonDict at: 'exercises') at: 'practice').
 	
 	"includes all practise exercises that are specified in Exercise packages"
-	self assert: ((practiseExercises collect: [:each |each at: #slug]) includesAll: (ExercismExercise practiseExercises collect: #name)).
+	self assert: ((practiceExercises collect: [:each |each at: #slug]) includesAll: (ExercismExercise practiceExercises collect: #name)).
 
 	"ordered by difficulty"
-	self assert: ((practiseExercises first at: #difficulty) < (practiseExercises last at: #difficulty)).
+	self assert: ((practiceExercises first at: #difficulty) < (practiceExercises last at: #difficulty)).
 	
 	"then by name"
-	self assert: ((practiseExercises first at: #slug) < (practiseExercises second at: #slug)).
+	self assert: ((practiceExercises first at: #slug) < (practiceExercises second at: #slug)).
 ]
 
 { #category : #tests }

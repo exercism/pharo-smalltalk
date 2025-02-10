@@ -51,13 +51,13 @@ ExercismConfigGenerator >> generateConfigFrom: aFileSystemReference [
 	configFile := aFileSystemReference / 'config.json'.
 	config := OrderedCollection withAll: ExercismManager trackConfigHeader.
 	
-	practiseExercises := ExercismExercise practiseExercises  collect: #asJsonData.
+	practiseExercises := ExercismExercise practiceExercises  collect: #asJsonData.
 	conceptExercises := ExercismExercise conceptExercises collect: #asJsonData.
 	
 	config add: 'exercises' -> (
 		OrderedDictionary  
 			with: 'concept' -> conceptExercises
-			with: 'practise' -> practiseExercises
+			with: 'practice' -> practiseExercises
 	).
 	config add: 'tags' -> ExercismManager trackConfigTags.
 	
