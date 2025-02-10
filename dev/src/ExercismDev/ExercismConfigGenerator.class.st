@@ -43,23 +43,35 @@ ExercismConfigGenerator class >> generateTo: aFilePathReference [
 	self new generateConfigFrom: aFilePathReference 
 ]
 
-{ #category : #generation }
-ExercismConfigGenerator >> generateConfigFrom: aFileSystemReference [
-	"self generate"
+{ #category : #private }
+ExercismConfigGenerator >> addExerciseEntryToConfig: configAttributes [	
 	
-	| configFile config contents conceptExercises practiseExercises |
-	
-	configFile := aFileSystemReference / 'config.json'.
-	config := OrderedCollection withAll: ExercismManager trackConfigHeader.
-	
+	|practiseExercises conceptExercises|
 	practiseExercises := ExercismExercise practiceExercises  collect: #asJsonData.
 	conceptExercises := ExercismExercise conceptExercises collect: #asJsonData.
 	
-	config add: 'exercises' -> (
+	configAttributes add: 'exercises' -> (
 		OrderedDictionary  
 			with: 'concept' -> conceptExercises
 			with: 'practice' -> practiseExercises
 	).
+]
+
+{ #category : #generation }
+ExercismConfigGenerator >> generateConfigFrom: aFileSystemReference [
+	"self generate"
+	
+	| configFile config contents |
+	
+	configFile := aFileSystemReference / 'config.json'.
+	
+	"header configuration attributes"
+	config := OrderedCollection withAll: ExercismManager trackConfigHeader.
+	
+	"exercices"
+	self addExerciseEntryToConfig: config.
+	
+	"tags"
 	config add: 'tags' -> ExercismManager trackConfigTags.
 	
 	contents := STONJSONWriter streamContentsOf: config asOrderedDictionary.
