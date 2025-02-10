@@ -55,10 +55,11 @@ ExercismConfigGenerator >> generateConfigFrom: aFileSystemReference [
 	conceptExercises := ExercismExercise conceptExercises collect: #asJsonData.
 	
 	config add: 'exercises' -> (
-		OrderedCollection 
+		OrderedDictionary  
 			with: 'concept' -> conceptExercises
 			with: 'practise' -> practiseExercises
 	).
+	config add: 'tags' -> ExercismManager trackConfigTags.
 	
 	contents := STONJSONWriter streamContentsOf: config asOrderedDictionary.
 	

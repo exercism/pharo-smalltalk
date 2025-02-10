@@ -26,8 +26,27 @@ ExercismManager class >> disableStudentCritics [
 ]
 
 { #category : #config }
+ExercismManager class >> editorAttributes [
+
+	^ {'indent_style' -> 'space'.
+    	'indent_size' -> 4.
+    	'highlightjs_language' -> 'smalltalk'.
+	} asOrderedDictionary
+]
+
+{ #category : #config }
 ExercismManager class >> exercisePrefix [
 	^ 'Exercise'
+]
+
+{ #category : #config }
+ExercismManager class >> filesAttributes [
+
+	^ {'solution' -> #('%{pascal_slug}.class.st').
+		'test' -> #('%{pascal_slug}Test.class.st').
+		'example' -> #('.meta/solution/%{pascal_slug}.class.st').
+		'exemplar' -> {'.meta/solution/%{pascal_slug}.class.st'}.	
+	} asOrderedDictionary
 ]
 
 { #category : #exercism }
@@ -60,6 +79,16 @@ ExercismManager class >> legacyPackagePrefix [
 { #category : #cache }
 ExercismManager class >> solutionData [
 	^ SolutionData ifNil: [ SolutionData := Dictionary new ]
+]
+
+{ #category : #config }
+ExercismManager class >> statusAttributes [
+
+	^ {'concept_exercises' -> false.
+		'test_runner' -> true.
+		'representer' -> false.
+		'analyzer' -> false.	
+	} asOrderedDictionary
 ]
 
 { #category : #config }

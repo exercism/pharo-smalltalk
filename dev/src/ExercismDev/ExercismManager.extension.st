@@ -86,12 +86,36 @@ ExercismManager class >> trackActive [
 
 { #category : #'*ExercismDev' }
 ExercismManager class >> trackConfigHeader [
-	^ {('track_id' -> self trackId).
-		('language' -> 'Pharo').
-		('active' -> self trackActive).
-		('blurb' -> self trackDescription).
-		('solution_pattern' -> '\.meta/solution/\w+\.class\.st').
-		('test_pattern' -> '\w+Test\.class\.st')}
+	^ {'track_id' -> self trackId.
+		'language' -> 'Pharo'.
+		'slug' -> self trackId.
+		'active' -> self trackActive.
+		'status' -> self statusAttributes.
+		'blurb' -> self trackDescription.
+		'version' -> 3.
+		'online_editor' -> self editorAttributes.
+		'files' -> self filesAttributes.
+		'average_run_time' -> 1.
+		}
+]
+
+{ #category : #'*ExercismDev' }
+ExercismManager class >> trackConfigTags [
+	^ {
+    'paradigm/object_oriented'.
+    'typing/dynamic'.
+    'typing/strong'.
+    'platform/windows'.
+    'platform/mac'.
+    'platform/linux'.
+    'runtime/language_specific'.
+    'used_for/artificial_intelligence'.
+    'used_for/scientific_calculations'.
+    'used_for/frontends'.
+    'used_for/backends'.
+    'used_for/cross_platform_development'.
+    'used_for/web_development'
+	}
 ]
 
 { #category : #'*ExercismDev' }
