@@ -71,6 +71,11 @@ ExercismConfigGenerator >> generateConfigFrom: aFileSystemReference [
 	"exercices"
 	self addExerciseEntryToConfig: config.
 	
+	"concepts  - empty for now"
+	config add: 'concepts' -> ExercismManager concepts.
+	
+	"key features"
+	config add: 'key_features' -> ExercismManager trackConfigKeyFeatures.
 	"tags"
 	config add: 'tags' -> ExercismManager trackConfigTags.
 	

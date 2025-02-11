@@ -51,6 +51,22 @@ ExercismConfigGeneratorTest >> testGenerateConfigHeader [
 ]
 
 { #category : #tests }
+ExercismConfigGeneratorTest >> testGenerateConfigKeyFeatures [
+	
+	|dirReference cfgFile jsonDict|
+	dirReference := (FileSystem memory root / 'testConfig') ensureCreateDirectory.
+	ExercismConfigGenerator generateTo: dirReference.
+	cfgFile := dirReference / 'config.json'.
+	jsonDict := STON fromString: cfgFile contents.
+	
+
+	self assert: ((jsonDict at: 'key_features') allSatisfy:  [:keyFeature | 
+		(keyFeature keys includesAll: #('icon' 'title' 'content')) and: [ keyFeature values allSatisfy: #notEmpty]
+	 ]
+	)
+]
+
+{ #category : #tests }
 ExercismConfigGeneratorTest >> testGenerateConfigPractiseExercises [
 	
 	|dirReference jsonDict practiceExercises|
