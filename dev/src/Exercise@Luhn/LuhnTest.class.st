@@ -93,7 +93,7 @@ LuhnTest class >> exercise [
 { #category : #config }
 LuhnTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'6298e416-9d41-0d00-8ffa-c83508866539'
+	^'5470f2c4-f186-42df-8d0e-27aea57c1b80'
 ]
 
 { #category : #config }

@@ -45,7 +45,7 @@ ClockTest class >> generator [
 { #category : #config }
 ClockTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'f8080717-9d41-0d00-9011-755a08866539'
+	^'1d22e220-b745-47de-b67d-441153800707'
 ]
 
 { #category : #config }

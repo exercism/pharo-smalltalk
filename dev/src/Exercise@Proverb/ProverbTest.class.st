@@ -45,7 +45,7 @@ ProverbTest class >> exercise [
 { #category : #config }
 ProverbTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'b4e3babb-8040-0d00-80fa-71e001deb008'
+	^'d2fb44f3-76a2-44a7-85b1-eff15a1e16b3'
 ]
 
 { #category : #config }

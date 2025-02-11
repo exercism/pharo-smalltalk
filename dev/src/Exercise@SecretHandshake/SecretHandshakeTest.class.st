@@ -54,7 +54,7 @@ SecretHandshakeTest class >> exercise [
 { #category : #config }
 SecretHandshakeTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'2020ac16-9d41-0d00-8fcd-fe0908866539'
+	^'e412a6ef-940b-4d4f-bdf9-9a3ada680a98'
 ]
 
 { #category : #config }

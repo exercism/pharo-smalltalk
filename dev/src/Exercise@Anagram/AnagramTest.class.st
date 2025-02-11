@@ -36,7 +36,7 @@ AnagramTest class >> exercise [
 { #category : #config }
 AnagramTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'cc8b42be-4a3f-0d00-bb2c-6d04071d6982'
+	^'a1edd1c3-bd5c-49cd-bebf-2ef9e1afb23d'
 ]
 
 { #category : #config }

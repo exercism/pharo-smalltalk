@@ -42,7 +42,7 @@ IsogramTest class >> exercise [
 { #category : #config }
 IsogramTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'9e0074be-4a3f-0d00-bb4e-73e5071d6982'
+	^'fd5ea482-85e9-4b43-b40d-e04ce590c6e8'
 ]
 
 { #category : #config }

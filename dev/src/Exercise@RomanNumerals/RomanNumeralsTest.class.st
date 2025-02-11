@@ -70,7 +70,7 @@ RomanNumeralsTest class >> exercise [
 { #category : #config }
 RomanNumeralsTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'973e4910-7940-0d00-bbad-09db01dff3c9'
+	^'5cd0c4b3-34e7-4927-8e54-fcd7fdee9075'
 ]
 
 { #category : #config }

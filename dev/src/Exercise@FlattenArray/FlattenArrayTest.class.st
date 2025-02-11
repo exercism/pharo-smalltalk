@@ -37,7 +37,7 @@ FlattenArrayTest class >> exercise [
 { #category : #config }
 FlattenArrayTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'aa15f716-9d41-0d00-9006-3c7208866539'
+	^'35411bfe-bd39-4d74-aaa3-a2e21d2c70a5'
 ]
 
 { #category : #config }

@@ -67,7 +67,7 @@ RobotSimulatorTest class >> generator [
 { #category : #config }
 RobotSimulatorTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'5438fabb-8040-0d00-8145-63f301deb008'
+	^'cfb7f615-459b-455c-8528-b79e3eb6091b'
 ]
 
 { #category : #config }

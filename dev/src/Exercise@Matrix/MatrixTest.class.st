@@ -69,7 +69,7 @@ MatrixTest class >> exercise [
 { #category : #config }
 MatrixTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'bea80017-9d41-0d00-900d-a13308866539'
+	^'dd6b683c-bc5b-4427-b1d6-839250407f9e'
 ]
 
 { #category : #config }

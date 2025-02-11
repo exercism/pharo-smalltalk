@@ -40,7 +40,7 @@ WordCountTest class >> exercise [
 { #category : #config }
 WordCountTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'a5de8cbe-4a3f-0d00-bb5e-8947071d6982'
+	^'17380479-b9a2-47be-a3cf-1da100f7ed98'
 ]
 
 { #category : #config }

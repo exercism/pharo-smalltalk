@@ -44,7 +44,7 @@ DartsTest class >> exercise [
 { #category : #config }
 DartsTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'98fc253b-e642-0d00-8e1a-5ef3059054ed'
+	^'a0df4a77-8720-4e1a-ac52-8060f1425a2b'
 ]
 
 { #category : #config }

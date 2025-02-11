@@ -69,7 +69,7 @@ BinaryTest class >> generator [
 { #category : #config }
 BinaryTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'a90be8bb-8040-0d00-812e-0c1701deb008'
+	^'c54688bb-2237-49b1-986f-8e9fc3873ef1'
 ]
 
 { #category : #config }

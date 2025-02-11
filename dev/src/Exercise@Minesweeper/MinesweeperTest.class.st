@@ -55,7 +55,7 @@ MinesweeperTest class >> exercise [
 { #category : #config }
 MinesweeperTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'1318c616-9d41-0d00-8fe3-676108866539'
+	^'ffb37913-f169-44a4-b446-95bf81ceebb2'
 ]
 
 { #category : #config }

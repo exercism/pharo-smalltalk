@@ -41,7 +41,7 @@ MatchingBracketsTest class >> generator [
 { #category : #config }
 MatchingBracketsTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'d126be16-9d41-0d00-8fdc-2ff208866539'
+	^'25dfa3ac-8b09-4123-b12b-d130b34af332'
 ]
 
 { #category : #config }

@@ -46,7 +46,7 @@ RaindropsTest class >> exercise [
 { #category : #config }
 RaindropsTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'c0bcb6c5-3f3f-0d00-995d-a4720043fb1f'
+	^'16489c6b-00bf-4d4a-bbb3-7c9fa5902e30'
 ]
 
 { #category : #config }

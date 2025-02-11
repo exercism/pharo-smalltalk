@@ -42,7 +42,7 @@ DieTest class >> uuid [
 	"Answer a fixed String, the unique UUID for this exercise so the Exercism platform can identify it.
 	The id should be like: 'b5812b5e-2788-4ea6-b948-bfe54edeb0da' "
 	
-	^'dbea4db3-5044-0d00-ab77-b35a0c226d01'
+	^'80102654-e4e5-47dc-88d9-34c95a901d4c'
 ]
 
 { #category : #config }

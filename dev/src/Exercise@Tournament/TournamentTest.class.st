@@ -95,7 +95,7 @@ TournamentTest class >> exercise [
 { #category : #config }
 TournamentTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'1109cabb-8040-0d00-810e-7c1b01deb008'
+	^'e2eae9a7-8a43-4a58-8b0d-9acf805f852a'
 ]
 
 { #category : #config }
