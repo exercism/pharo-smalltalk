@@ -4,6 +4,30 @@ Class {
 	#category : #'ExercismTests-UnitTests'
 }
 
+{ #category : #'set up' }
+ExercismConfigGeneratorTest >> modifyHelloWorldDataAtJsonNode: exercisesJsonNode [
+
+	|helloWorldJson| 
+	helloWorldJson := exercisesJsonNode detect: [:exDict | (exDict at: 'slug') = 'hello-world'] ifNone: [ self error: 'Hello world exercise not found in tested config.json' ].
+	helloWorldJson at: 'difficulty' put: 10.
+	helloWorldJson at: 'name' put: 'Hello World 2'.
+]
+
+{ #category : #'set up' }
+ExercismConfigGeneratorTest >> rewriteAlteredConfigJson: jsonDict atFile: cfgFile [
+
+	|outPutJsonString|
+	"rewrite config.json file with updated exercise entry"
+	outPutJsonString := STONJSONWriter streamContentsOf: jsonDict.
+	
+	cfgFile  
+		ensureDelete; 
+		writeStreamDo: [ :stream |
+		 	stream nextPutAll: outPutJsonString ]
+	
+	
+]
+
 { #category : #tests }
 ExercismConfigGeneratorTest >> testGenerateConfigFrom [
 	
@@ -114,4 +138,72 @@ ExercismConfigGeneratorTest >> testGenerateConfigTags [
 	}
 	)
 	
+]
+
+{ #category : #tests }
+ExercismConfigGeneratorTest >> testUpdateConfigFromFor [
+
+	|dirReference cfgFile jsonDict hwExericeJson|
+	dirReference := (FileSystem memory root / 'testConfig') ensureCreateDirectory.
+	ExercismConfigGenerator generateTo: dirReference.
+	cfgFile := (dirReference / 'config.json').
+	
+	jsonDict := STON fromString: cfgFile contents.
+	
+	"modify generated config.json (in memory filesystem) and put some altered exercise data for hello-world exercise"
+	self modifyHelloWorldDataAtJsonNode: ((jsonDict at: 'exercises') at: 'practice').
+	self rewriteAlteredConfigJson: jsonDict atFile: cfgFile.
+	
+	ExercismConfigGenerator new updateConfigFrom: dirReference for: 'hello-world'.
+	cfgFile := (dirReference / 'config.json').
+	jsonDict := STON fromString: cfgFile contents.
+	
+	"check if altered exercise data are updated"
+	hwExericeJson := ((jsonDict at: 'exercises') at: 'practice') detect: [:e | (e at: 'slug') = 'hello-world'] ifNone: [ self error: 'Exercise json node with slug "hello-world" not found.' ]. 
+	self assert: (hwExericeJson at: 'difficulty') equals: 1.
+	self assert: (hwExericeJson at: 'name') equals: 'Hello World'.
+	
+]
+
+{ #category : #tests }
+ExercismConfigGeneratorTest >> testUpdateConfigFromForExerciseDoNotExist [
+
+	|dirReference cfgFile |
+	dirReference := (FileSystem memory root / 'testConfig') ensureCreateDirectory.
+	ExercismConfigGenerator generateTo: dirReference.
+	cfgFile := (dirReference / 'config.json').
+	
+	"non existent exercise should raise error"
+	self
+		should: [ ExercismConfigGenerator new updateConfigFrom: dirReference for: 'random-slug343' ] 
+		raise: NotFound
+		withExceptionDo: [ :ex |
+			self assert: ex messageText equals: 'Could not find exercise: random-slug343' ].
+]
+
+{ #category : #tests }
+ExercismConfigGeneratorTest >> testUpdateConfigFromForNewExercise [
+
+	|dirReference cfgFile jsonDict alteredCollection|
+	dirReference := (FileSystem memory root / 'testConfig') ensureCreateDirectory.
+	ExercismConfigGenerator generateTo: dirReference.
+	cfgFile := (dirReference / 'config.json').
+	
+	jsonDict := STON fromString: cfgFile contents.
+	
+	"remove hello-world exercice from generated config.json (in memory filesystem)"
+ 	alteredCollection := ((jsonDict at: 'exercises') at: 'practice') asOrderedCollection removeAllSuchThat: [:exDict | (exDict at: 'slug') = 'hello-world'].
+	(jsonDict at: 'exercises') at: 'practice' put: alteredCollection asArray.
+	self rewriteAlteredConfigJson: jsonDict atFile: cfgFile.
+	jsonDict := STON fromString: cfgFile contents.
+	
+	"hello-world should not be there - previously removed"
+	self deny: (((jsonDict at: 'exercises') at: 'practice') anySatisfy:  [:exEntry | (exEntry at: 'slug') = 'hello-world' ]).
+	
+	ExercismConfigGenerator new updateConfigFrom: dirReference for: 'hello-world'.
+	cfgFile := (dirReference / 'config.json').
+	jsonDict := STON fromString: cfgFile contents.
+	
+	"hello-world should be there after update"
+	self assert: (((jsonDict at: 'exercises') at: 'practice') anySatisfy:  [:exEntry | (exEntry at: 'slug') = 'hello-world' ]).
 ]

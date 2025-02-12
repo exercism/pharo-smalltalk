@@ -118,7 +118,7 @@ ExercismConfigGenerator >> updateConfigFrom: aFileSystemReference for: slugName 
 	
 	jsonDict := STON fromString: configFile contents.
 	exercisesJsonNode := (jsonDict  at: 'exercises') at: 'practice'.
-	exerciseOutJson := (ExercismExercise find: slugName ifAbsent: [ self error: ('Could not find exercise: {1}' format: {slugName})]) asJsonData.
+	exerciseOutJson := (ExercismExercise find: slugName ifAbsent: [ NotFound signal: ('Could not find exercise: {1}' format: {slugName})]) asJsonData.
 	
 	[ idxOfExercise := self findIndexOfExercise: slugName inExerciseJsonNode: exercisesJsonNode ] 
 	on: NotFound 
