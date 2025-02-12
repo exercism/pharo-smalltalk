@@ -145,17 +145,15 @@ ExercismGeneratorTest >> expectedTwoFerTestContentsSubstrings [
 
 { #category : #running }
 ExercismGeneratorTest >> setUp [
-	
-	| writer |
+
 	super setUp.
 	
 	lineEnding := OSPlatform current lineEnding.
 	memoryFileReference := FileSystem memory root / 'exercises'.
-	writer := ExercismCodeExporter on: memoryFileReference.
+
 	
 	instance := ExercismGenerator new
-		exercisesPath: memoryFileReference; 
-		codeExporter: writer;
+		exercisesDirReference: memoryFileReference; 
 		exercismExercise: MockExercismExercise;
 		yourself.
 		
@@ -174,7 +172,7 @@ ExercismGeneratorTest >> testCheckOrUpdateConfiglet [
 	instance osSubProcess: FailedTestOSProcess.
 	
 	"memory file system should be used instead of system for testing purposes"
-	memFileSystem := instance exercisesPath fileSystem.
+	memFileSystem := instance exercisesDirReference fileSystem.
 	DiskStore 
 	currentFileSystem: memFileSystem 
 	during: [

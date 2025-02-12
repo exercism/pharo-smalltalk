@@ -1,7 +1,7 @@
 "
 # ExercismGenerator
 
-I am responsible for generating kebab-cased Exercism V2 directories, each containing a seperate exercise for users.
+I am responsible for generating kebab-cased Exercism V3 directories, each containing a seperate exercise for users (right now only practice).
 
 Exercism requires plain text files that can be served to the website as exercises and then downloaded for a student 
 to work on. We have to do it this way as Exercism conventions differ from Tonel, and so we need to output them to a 
@@ -9,15 +9,16 @@ seperate directory suitable for the Exercism command line tool.
 
 ## Collaborators
 
-I need two other key objects to do my job: an `ExTonelWriter` and a `PipeableOSProcess`. `ExTonelWriter` does the
-actual job of writing Tonel format files to disk. `PipeableOSProcess` is needed to make a external command line
-call to the configlet tool. The configlet tool will need to be installed on the host operating system.
+I need two other key objects to do my job: an `ExercismCodeExporter` and a `OSSUnixSubprocess` (or `OSWinSubprocess` depending on Platform being used). `ExercismCodeExporter` does the
+actual job of writing Tonel format files to disk. `OSSUnix/WinSubprocess` is needed to make a external command line
+call to the configlet tool. The configlet tool will be fetched automatically on the host operating system, if not present.
 
 To grab the exercises that need to be written I use `ExercismExercise`.
 
 ## Usage
 
-When you have created a new exercise(s) that you are happy with, you need to run a generation.
+### Generating sources to output directories for all exercises 
+When you have created a new exercises that you are happy with, you need to run a generation.
 
 You can run the `ExercismGenerator class>>#generate` method and be prompted for a file location 
 (where the path is one that points to where you have checked out the entire pharo project using either 
@@ -27,22 +28,35 @@ the command line or a git tool):
 ExercismGenerator generate
 ```
 
-In any other context I will need to have `exercisesPath` and `exTonelWriter` instance variables initialized
-before `#generate` is sent to me.
+In any other context (e.g. for testing purposes) I will need to have `exercisesDirReference` variable initialized
+before `#generate` is sent to me. Following example will generate output sources to directory of memory filesystem.
 
 ```
 ExercismGenerator new
-	exercisesPath: (FileSystem memory root / 'exercises');
-	exTonelWriter: (ExTonelWriter on: path);
+	exercisesDirReference: (FileSystem memory root / 'exercises');
 	generate
+```
+
+### Generating sources to output directory for given exercise (update of exercise)
+When you've created just specific exercise or exercise that needs just update, you can run:
+
+#### For using default directory - repository-root/exercises/practice path
+`ExercismGenerator new generateForExercise: 'slug-name'`
+
+#### When needed to export to specific exercise directory
+```
+ExercismGenerator new 
+	exercisesDirReference: 'path-to-exercises/practice' asFileReference;
+	generateForExercise: 'slug-name'
+
 ```
 
 ## Instance Variables
 
 - exercismExercise: A class handle for easily getting all the implemented exercises. Defaults to `ExercismExercise`.
-- exercisesPath: The file path exercises are written to. Defaults to the class variable `DefaultPath`.
-- exTonelWriter: `ExTonelWriter`; Responsible for writing objects as Tonel format source text files to the give file path.
-- osProcess: A class handle of an operating system process, for sending external commands.
+- exerciseDirReference: The directory reference where exercises are written to. Defaults from the class variable `DefaultPath`.
+- codeExporter: `ExercismCodeExporter`; Responsible for writing objects as Tonel format source text files to the give file path.
+- osSubProcess: A class handle of an operating system process, for sending external commands.
 
 ## Class Variables
 
@@ -54,9 +68,9 @@ Class {
 	#instVars : [
 		'codeExporter',
 		'exercismExercise',
-		'exercisesPath',
 		'osSubProcess',
-		'updateConfig'
+		'updateConfig',
+		'exercisesDirReference'
 	],
 	#classVars : [
 		'DefaultPath'
@@ -68,7 +82,7 @@ Class {
 ExercismGenerator class >> defaultPath [
 	
 	^ DefaultPath ifNil: [ 
-		self defaultPath: (self exercismRepositoryPath ifNil: [FileLocator home pathString])
+		self defaultPath: ((self exercismRepositoryPath, '/exercises/practice') ifNil: [FileLocator home pathString])
 	]
 ]
 
@@ -91,17 +105,16 @@ ExercismGenerator class >> generate [
 	the exercism/pharo project. e.g. self generate"
 
 	<example>
-	| path |
-	path := UIManager default
-		chooseDirectory: 'Select the /exercises location in a fresh Exercism/Pharo git project'
+	| dirReference |
+	dirReference := UIManager default
+		chooseDirectory: 'Select the /exercises/practise location in a fresh Exercism/Pharo git project'
 		path: self defaultPath.
 		
-	path ifNotNil: [
+	dirReference ifNotNil: [
 		self new 
-			exercisesPath: path;
-			codeExporter: (ExercismCodeExporter on: path);
+			exercisesDirReference: dirReference;
 			generate
-			]
+	]
 ]
 
 { #category : #'accessing - platform' }
@@ -115,7 +128,7 @@ ExercismGenerator class >> subProcessClass [
 { #category : #accessing }
 ExercismGenerator >> basePathReference [
 
-	^ self exercisesPath parent
+	^ self class exercismRepositoryPath asFileReference 
 ]
 
 { #category : #helper }
@@ -160,19 +173,22 @@ ExercismGenerator >> createTagSnapshotFor: packageOrTag [
 ExercismGenerator >> exerciseDirReferenceFrom: exerciseName [
 	"returns dir reference to exercise dir - e.g. /exercises/two-fer/"
 	
-	^ self exercisesPath asFileReference / exerciseName
+	^ self exercisesDirReference asFileReference / exerciseName
 ]
 
 { #category : #accessing }
-ExercismGenerator >> exercisesPath [
+ExercismGenerator >> exercisesDirReference [
 
-	^ exercisesPath
+	^ exercisesDirReference
 ]
 
 { #category : #accessing }
-ExercismGenerator >> exercisesPath: aFileReference [
+ExercismGenerator >> exercisesDirReference: aFileReference [
  
-	exercisesPath := aFileReference
+	exercisesDirReference := aFileReference.
+
+	"whenever new directory for exercices export is changed, setup code exporter as well"
+	self setupCodeExporterFromDirReference.
 ]
 
 { #category : #accessing }
@@ -258,8 +274,10 @@ ExercismGenerator >> generateForExercise: slugName [
 	"generate source files for given exercise"
 	self generateSourceFilesFor: exerciseToGenerate exercisePackage.
 
-	"generate configuration config.json file"
-	ExercismConfigGenerator generateTo: self basePathReference.
+	"update configuration config.json file with exercise"
+	ExercismConfigGenerator new
+		updateConfigFrom: self basePathReference
+		for: slugName.
 
 	"run configlet commands for given exercise"
 	self runTestSpecificationsUpdateForExercise: slugName.
@@ -328,6 +346,14 @@ ExercismGenerator >> generateSourceFilesForActiveExercises [
 		thenDo: [ :ex | 
 			self generateSourceFilesFor: ex exercisePackage
 		]
+]
+
+{ #category : #initialize }
+ExercismGenerator >> initialize [ 
+	
+	super initialize.
+	self exercisesDirReference: self class defaultPath asFileReference.
+
 ]
 
 { #category : #helper }
@@ -415,6 +441,13 @@ ExercismGenerator >> runTestSpecificationsUpdateForExercise: slugName [
 	
 	result isSuccess ifFalse: [ 
 			self error: ('Failed running "configlet sync -u --tests include -e {1}" with result: {2}' format: { slugName. result lastError printString.})]
+]
+
+{ #category : #initialize }
+ExercismGenerator >> setupCodeExporterFromDirReference [
+
+	"this will set code exporter when directory for exercise export is changed"
+	self codeExporter: (ExercismCodeExporter on: self exercisesDirReference)
 ]
 
 { #category : #helper }
