@@ -7,7 +7,6 @@ Class {
 { #category : #config }
 TestExExtensionTest class >> exercise [
 	^(ExercismExercise for: self)
-		isCore: false;
 		difficulty: 2;
 		topics: #('testing');
 		yourself

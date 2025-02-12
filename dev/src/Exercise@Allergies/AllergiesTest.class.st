@@ -52,7 +52,6 @@ AllergiesTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 
 	^(self createExerciseAfter: GrainsTest)
-		isCore: true;
 		difficulty: 3;
 		topics: #('bitwise_operations' 'filtering');
 		yourself
@@ -69,7 +68,7 @@ AllergiesTest class >> generator [
 { #category : #config }
 AllergiesTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'49ae8e78-a641-0d00-ba20-5f9f04641ab1'
+	^'a8c7d3df-5cd2-4342-a1d3-00821245add6'
 ]
 
 { #category : #config }

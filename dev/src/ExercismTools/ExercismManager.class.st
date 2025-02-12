@@ -10,6 +10,13 @@ Class {
 	#category : #'ExercismTools-Core'
 }
 
+{ #category : #exercism }
+ExercismManager class >> concepts [
+
+	"no concepts defined so far"
+	^ #()
+]
+
 { #category : #'instance creation' }
 ExercismManager class >> default [
 	"answer a defulat manager"

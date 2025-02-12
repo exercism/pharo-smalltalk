@@ -46,7 +46,6 @@ CollatzConjectureTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 
 	^ (self createExerciseAfter: GrainsTest)
-		isCore: false;
 		difficulty: 2;
 		topics:
 			#('recursion' 'control_flow' 'math');
@@ -63,7 +62,7 @@ CollatzConjectureTest class >> generator [
 { #category : #config }
 CollatzConjectureTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'0dc70bf9-e642-0d00-8e2f-4d97059054ed'
+	^'eb02a87f-c2d9-4f5f-9089-f0942da0ac10'
 ]
 
 { #category : #config }

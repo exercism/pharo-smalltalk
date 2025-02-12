@@ -85,8 +85,6 @@ Class {
 SimpleCipherTest class >> exercise [
 
 	^(ExercismExercise for: self) 
-		isCore: false;
-		isAutoApproved: true;
 		difficulty: 4;
 		topics: #('strings' 'string-methods' 'loops' 'numbers' 'lists' 'randomness');
 		yourself

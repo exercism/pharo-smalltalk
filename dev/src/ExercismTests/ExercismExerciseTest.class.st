@@ -9,26 +9,23 @@ Class {
 
 { #category : #tests }
 ExercismExerciseTest >> testAsJsonData [
+	|testExerciseDict jsonString |
 	
-	TestExerciseTest exercise asJsonData should beKindOf: Collection.
-	TestExerciseTest exercise asJsonData asJSON should includeSubstring: '"slug" : "test-exercise"'.
+	testExerciseDict := TestExerciseTest exercise asJsonData.
+	
+	"test if can be converted to JSON string"
+	jsonString := testExerciseDict asJSON.
+	
+	jsonString should includeSubstring: '"slug" : "test-exercise"'.
+	jsonString should includeSubstring: '"name" : "Test Exercise"'.
+	jsonString should includeSubstring: '"uuid"'.
+	
+	"test collections - if practices and prerequisites are included as part of exercice"
+	self assert: ((testExerciseDict at: 'practices') includesAll: #('if-statements' 'numbers' 'operator-precedence')).
+	self assert: ((testExerciseDict at: 'prerequisites') includesAll: #('if-statements' 'numbers')).   
+	
+	jsonString should includeSubstring: '"difficulty" : 1'.
 	LeapTest exercise asJsonData asJSON should includeSubstring: '"slug" : "leap"'
-]
-
-{ #category : #tests }
-ExercismExerciseTest >> testBonusExercises [
-	
-	self assert: ExercismExercise bonusExercises notEmpty 
-	
-	
-]
-
-{ #category : #tests }
-ExercismExerciseTest >> testCoreExercises [
-	
-	self assert: ExercismExercise coreExercises notEmpty 	
-	
-	
 ]
 
 { #category : #tests }
@@ -89,13 +86,6 @@ ExercismExerciseTest >> testFind [
 ]
 
 { #category : #tests }
-ExercismExerciseTest >> testFollowedBy [
-
-	self assert: [(HelloWorldTest exercise) isFollowedBy: TwoFerTest exercise].
-	self deny: [(HammingTest exercise) isFollowedBy: HelloWorldTest exercise].
-]
-
-{ #category : #tests }
 ExercismExerciseTest >> testHintText [
 	
 	self assert: (HelloWorldTest exercise hintText beginsWith: 'If you are')
@@ -119,27 +109,26 @@ ExercismExerciseTest >> testIsEmpty [
 ]
 
 { #category : #tests }
-ExercismExerciseTest >> testIsFollowedBy [
-	
-	self assert: (HelloWorldTest exercise isFollowedBy: LeapTest exercise) description: 'Leap should follow HelloWorld'.
-	
-	self deny: (HelloWorldTest exercise isFollowedBy: HelloWorldTest exercise) description: 'HelloWorld should not follow itself (root)'.
-	self deny: (LeapTest exercise isFollowedBy: LeapTest exercise) description: 'Leap should not follow itself (non-root)'.
-	self deny: (LeapTest exercise isFollowedBy: HelloWorldTest exercise) description: 'HelloWorld should not follow Leap'.
-]
-
-{ #category : #tests }
-ExercismExerciseTest >> testIsUnlockedBy [
-
-	self assert: (TwoFerTest exercise isUnlockedBy: HelloWorldTest  exercise).
-	self deny: [ TwoFerTest exercise isUnlockedBy: LeapTest exercise ]
-]
-
-{ #category : #tests }
 ExercismExerciseTest >> testName [
 	
 	self assert: TestExerciseTest exercise name equals: 'test-exercise'.
 	self assert: TestmanyTest exercise name equals: 'testmany'
+]
+
+{ #category : #tests }
+ExercismExerciseTest >> testPractiseExercisesNotEmpty [
+	
+	self assert: ExercismExercise practiceExercises notEmpty
+]
+
+{ #category : #tests }
+ExercismExerciseTest >> testPractiseExercisesSorted [
+	|exercises |
+	exercises := ExercismExercise practiceExercises.
+	
+	"test if practise exercises are ordered by difficulty and then by name (within same difficulty"
+	self assert: exercises first difficulty < exercises last difficulty.
+	self assert: exercises first name < exercises second name.
 ]
 
 { #category : #tests }
@@ -200,24 +189,6 @@ ExercismExerciseTest >> testStoreSolutionId [
 	TestmanyTest exercise storeSolutionId: 'sId789'. 
 	self assert: TestmanyTest exercise solutionId equals: 'sId789'.
 	 	
-]
-
-{ #category : #tests }
-ExercismExerciseTest >> testUnlockReference [
-	
-	self assert: HelloWorldTest exercise unlockReference equals: nil.
-	self assert: LeapTest exercise unlockReference equals: nil.
-	self assert: SpaceAgeTest exercise unlockReference equals: TwoFerTest exercise name.
-	
-	
-]
-
-{ #category : #tests }
-ExercismExerciseTest >> testUnlockedExercises [
-	
-	self assertCollection: HelloWorldTest exercise unlockedExercises asArray equals: {} .
-	self assertCollection: TwoFerTest exercise unlockedExercises asArray 
-				includesAll: {ResistorColorDuoTest exercise. SpaceAgeTest exercise}.
 ]
 
 { #category : #tests }

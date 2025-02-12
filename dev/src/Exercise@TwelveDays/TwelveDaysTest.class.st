@@ -63,7 +63,6 @@ TwelveDaysTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
 	^(self createExerciseAfter: TwoFerTest)
-		isCore: false;
 		difficulty: 2;
 		topics: #('strings' 'iteration' 'text_formatting');
 		yourself
@@ -74,7 +73,7 @@ TwelveDaysTest class >> exercise [
 { #category : #config }
 TwelveDaysTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'7047d916-9d41-0d00-8ff2-3a9808866539'
+	^'a23b1ec3-9ce9-4b38-9449-386f106698dc'
 ]
 
 { #category : #config }
