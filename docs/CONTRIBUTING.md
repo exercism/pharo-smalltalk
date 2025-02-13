@@ -158,29 +158,45 @@ are using that image to test subsequent development baselines - you may need to 
 
 ### __3. Publishing A Completed Exercise__
 
-Now when you're done with solution and commits to you local feature branch, you should complete these steps:
-Step 2a: __Generate source code__ files for solution and test class by running either:
+Now when you're done with solution and commits to you local feature branch, you should complete these steps:  
+#### Generate exercise source code
+This refers to Step 2a: __Generate source code__ files for solution and test class(es).
+
+__Generate output sources for all exercices__ 
 - `ExercismGenerator generate` -> this will generate all souce files of all exercises. It will run `generate` command of configlet and also re-generates `config.json` that lists all valid exercises. (Or in World menu choose: "Exercism" -> "Regenerate meta data")
 
-Or:
+#### Generate output sources for specific exercise
+- For using default directory (`repository-root/exercises/practice`)
+```
+ExercismGenerator new generateForExercise: 'slug-name'
+```
 
-- `ExercismGenerator generateSourceFilesFor: <Exercise@SlugName> to: <path-to-exercise-repo/exercises>` to produce source files just for specific exercise.
-  > Note that you'd need to run manually:
-  - update `config.json` manually (see `ExercismGenerator>>generate` for details)
-  - `configlet sync --docs --filepaths --metadata -uy -e <slug-name>` tu update all metadata for specific exercise. See details: [Using sync when adding a new exercise](https://github.com/exercism/configlet#using-sync-when-adding-a-new-exercise-to-a-track)
+When needed to export to specific exercise directory:
+```
+ExercismGenerator new 
+	exercisesDirReference: 'path-to-exercises/practice' asFileReference;
+	generateForExercise: 'slug-name'
+```
 
+> __Notes__: 
+  - ExercismGenerator will update main config.json automatically (create new if not present).
+  - will sync all docs, metadata, filepaths for specified exercise(s) by using configlet command. See details: [Using sync when adding a new exercise](https://github.com/exercism/configlet#using-sync-when-adding-a-new-exercise-to-a-track)
+
+####  Update Pharo-smalltalk project baseline
 Step 2b: Update Pharo-smalltalk project baseline by adding exercise name in list of `BaselineOfExercism>>exercisePackageNames` method. This will ensure your exercise to be loaded, when project is loaded including new exercise by Metacello command.
-
+  
+#### Submitting a Pull Request
 Step 3: Before creating PR, you should check if Exercism artefacts are correct by running CLI command:
-`bin/configlet lint`. If everyrting is ok. PR can be created.
+`bin/configlet lint` (CI automation will run linting anyway, when PR is submitted).  
+If everyrting is ok. PR can be created:
+- push your branch to your fork and then create a pull request on `exercism/pharo-Smalltalk` 
 
-__Submitting a Pull Request__
-Pull requests should be focused on a single exercise, issue, or conceptually cohesive change. Refer to Exercism's [pull request guidelines](https://github.com/exercism/docs/tree/main/building/github#guides) for more detail.
+> __Final details__: 
 
-
-* Now get your solution reviewed by pushing your branch to your fork and then creating a PR on exercism/pharo-Smalltalk. It is important to [enable maintainer edits](https://help.github.com/en/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork), so we can collaborate with you in your branch
-  * follow your PR and answer any ensuing questions
-  * finally submit any adjustments and a maintainer will merge your Pull request to appear final solution on the site.
+- It is important to [enable maintainer edits](https://help.github.com/en/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork), so we can collaborate with you in your branch.
+-  Pull requests should be focused on a single exercise, issue, or conceptually cohesive change. Refer to Exercism's [pull request guidelines](https://github.com/exercism/docs/tree/main/building/github#guides) for more detail.
+- Follow your PR and answer any ensuing questions.
+- Finally submit any adjustments and a maintainer will merge your Pull request to appear final solution on the site.
 
 ---
 ## Additional information for maintainers
