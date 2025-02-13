@@ -43,7 +43,6 @@ ResistorColorDuoTest class >> exercise [
 	
 	
 	^(self createExerciseAfter: TwoFerTest)
-		isCore: false;
 		difficulty: 1;
 		topics: #('arrays' 'strings' 'math');
 		yourself
@@ -59,7 +58,7 @@ ResistorColorDuoTest class >> generator [
 { #category : #config }
 ResistorColorDuoTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'c698dfbb-8040-0d00-8127-69c701deb008'
+	^'4c6e4b89-cea1-45ee-aa7e-c67c30cd1ec6'
 ]
 
 { #category : #config }

@@ -48,7 +48,6 @@ GrainsTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
 	^(self createExerciseAfter: IsogramTest)
-		isCore: true;
 		difficulty: 2;
 		topics: #('math' 'recursion');
 		yourself
@@ -58,7 +57,7 @@ GrainsTest class >> exercise [
 { #category : #config }
 GrainsTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'93dde1bb-8040-0d00-812a-052301deb008'
+	^'9ea4cbd4-89ae-452c-aba4-e9c7b69be297'
 ]
 
 { #category : #config }

@@ -24,7 +24,7 @@ To begin, you need to ensure that you have a complete Exercism development envir
 
 You need to have a Pharo development environment (running Pharo image - IDE) for creating the actual coding examples.
 
-1. Use [PharoLauncher](https://pharo.org/download) to create a fresh 10.0 (stable) development image from `Official distributions` category, and launch it (you can also use [zerconf](https://get.pharo.org/) if you are familiar with it).
+1. Use [PharoLauncher](https://pharo.org/download) to create a fresh stable development image from `Official distributions` category (as of 05/24 stable image is: Pharo 12.0 - 64bit (stable)), and launch it (you can also use [zerconf](https://get.pharo.org/) if you are familiar with it).
 2. Launch your image to test everything runs ok.
 
 > __Note__: If you have any TIMEOUT problems refer to the [user installation instructions](./docs/INSTALLATION.md).
@@ -79,16 +79,23 @@ Steps to complete exercise:
 ![Workflow to complete Practise exercise](/docs/images/overview-exercism-pharo-contribution.svg)
 
 ### __1. Create new Practise exercise__
+*TLDR: All details/API description related to exercise generation can be found in class comment of `ExercismExerciseGenerator` class.*  
 
-__From problem repository__
-- If you want to start completely new Practise exercise (step 1a.), you can use problem specification repository and generate test class for given exercise by running:
-`ExercismExerciseGenerator generateFrom: <path-to-problem-specifications/exercises>` - this will generate test classes for all exercises in problem specifications repository in `ExerciseWIP` package.
+__New exercises from problem repository__
+- If you want to start completely new Practise exercise (step 1a.), you can use problem specification repository and generate test class for given exercise by running: 
+`ExercismExerciseGenerator generateFrom: <path-to-problem-specifications/exercises>` - this will generate test classes for all exercises in problem specifications repository in `ExerciseWIP` package.  
+
   > __Note__: You can use menu item in Pharo image for achieving same (World menu -> Exercism -> Generate test cases).
 - More specifically, you can generate test class for specific exercise by: `ExercismExerciseGenerator generateExerciseFrom: '<path-to-problem-specifications/exercises/slug-name>' asFileReference`.
 
 Result of previous statement will be new `<SlugNameTest>` (a subclass of ExercismTest) test class with generated test methods in `ExerciseWIP` package.
 
-__From scratch__
+__Regenerate existing exercise from problem repository__
+If you want to regenerate test methods of existing exercise (defined already in solution package - e.g. `Exercise@TwoFer`), you can use following code. Note that other methods will not be touched (e.g. uuid, version, etc.) 
+
+ `ExercismExerciseGenerator new regenerateExerciseFrom: 'path-to-problem-specifications/exercises/exercise-slug' asFileReference`
+
+__From scratch__  
 If you have an interesting idea, refer to the documentation about adding new exercises.
 
 There is an example of a user defined exercise in the project, see: `DieTest`. By overriding the method customData, the generator will create the relevant files for you.
@@ -104,13 +111,15 @@ Note that:
 - Do not commit any configuration files or directories inside the exercise (this may be reviewed for future exercises, let us know if it becomes a problem).
 - Be sure to generate a new UUID for the exercise using `UUIDGenerator next`, and place that value in the `uuid` method for the test.
 
+> __Note__: Current Pharo UUID generator is unfortunatelly not compliant with RFC 4122 - version 4. Therefore UUID generated from configlet should be used by evaluating: `/bin/configlet uuid`
+
 ### __2. Work on existing exercise__
 
 While there many ways to help, by far the easiest and most useful contribution is to complete a solution for any of the currently "open" exercise.
 
   * Ensure your image is caught up to the exercism/pharo-smalltalk main (and push any changes back to your fork)
 
-  * The exercises are all TestCases that been automatically generated from the aforementioned problem-specifications repository. You will find them as subclasses of ExercismTest in the ExercismWIP package.
+  * The exercises are all TestCases that been automatically generated from the aforementioned problem-specifications repository. You will find them as subclasses of ExercismTest in the ExercismWIP package. Note that regenerated ExercismTest might be already in given exercise package, if solution was already in place. ExercismWIP package is used for the new or work-in-progress exercises that weren't deployed yet alongside with solution class.
 
   * Once you have selected an Exercise you want to work on, create an Issue in Github specifying "Convert Exercise <name>". This will let others know you are working on one, and will also form a basis for your later pull request.
 
@@ -149,29 +158,45 @@ are using that image to test subsequent development baselines - you may need to 
 
 ### __3. Publishing A Completed Exercise__
 
-Now when you're done with solution and commits to you local feature branch, you should complete these steps:
-Step 2a: __Generate source code__ files for solution and test class by running either:
+Now when you're done with solution and commits to you local feature branch, you should complete these steps:  
+#### Generate exercise source code
+This refers to Step 2a: __Generate source code__ files for solution and test class(es).
+
+__Generate output sources for all exercices__ 
 - `ExercismGenerator generate` -> this will generate all souce files of all exercises. It will run `generate` command of configlet and also re-generates `config.json` that lists all valid exercises. (Or in World menu choose: "Exercism" -> "Regenerate meta data")
 
-Or:
+#### Generate output sources for specific exercise
+- For using default directory (`repository-root/exercises/practice`)
+```
+ExercismGenerator new generateForExercise: 'slug-name'
+```
 
-- `ExercismGenerator generateSourceFilesFor: <Exercise@SlugName> to: <path-to-exercise-repo/exercises>` to produce source files just for specific exercise.
-  > Note that you'd need to run manually:
-  - update `config.json` manually (see `ExercismGenerator>>generate` for details)
-  - `configlet sync --docs --filepaths --metadata -uy -e <slug-name>` tu update all metadata for specific exercise. See details: [Using sync when adding a new exercise](https://github.com/exercism/configlet#using-sync-when-adding-a-new-exercise-to-a-track)
+When needed to export to specific exercise directory:
+```
+ExercismGenerator new 
+	exercisesDirReference: 'path-to-exercises/practice' asFileReference;
+	generateForExercise: 'slug-name'
+```
 
+> __Notes__: 
+  - ExercismGenerator will update main config.json automatically (create new if not present).
+  - will sync all docs, metadata, filepaths for specified exercise(s) by using configlet command. See details: [Using sync when adding a new exercise](https://github.com/exercism/configlet#using-sync-when-adding-a-new-exercise-to-a-track)
+
+####  Update Pharo-smalltalk project baseline
 Step 2b: Update Pharo-smalltalk project baseline by adding exercise name in list of `BaselineOfExercism>>exercisePackageNames` method. This will ensure your exercise to be loaded, when project is loaded including new exercise by Metacello command.
-
+  
+#### Submitting a Pull Request
 Step 3: Before creating PR, you should check if Exercism artefacts are correct by running CLI command:
-`bin/configlet lint`. If everyrting is ok. PR can be created.
+`bin/configlet lint` (CI automation will run linting anyway, when PR is submitted).  
+If everyrting is ok. PR can be created:
+- push your branch to your fork and then create a pull request on `exercism/pharo-Smalltalk` 
 
-__Submitting a Pull Request__
-Pull requests should be focused on a single exercise, issue, or conceptually cohesive change. Refer to Exercism's [pull request guidelines](https://github.com/exercism/docs/tree/main/building/github#guides) for more detail.
+> __Final details__: 
 
-
-* Now get your solution reviewed by pushing your branch to your fork and then creating a PR on exercism/pharo-Smalltalk. It is important to [enable maintainer edits](https://help.github.com/en/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork), so we can collaborate with you in your branch
-  * follow your PR and answer any ensuing questions
-  * finally submit any adjustments and a maintainer will merge your Pull request to appear final solution on the site.
+- It is important to [enable maintainer edits](https://help.github.com/en/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork), so we can collaborate with you in your branch.
+-  Pull requests should be focused on a single exercise, issue, or conceptually cohesive change. Refer to Exercism's [pull request guidelines](https://github.com/exercism/docs/tree/main/building/github#guides) for more detail.
+- Follow your PR and answer any ensuing questions.
+- Finally submit any adjustments and a maintainer will merge your Pull request to appear final solution on the site.
 
 ---
 ## Additional information for maintainers

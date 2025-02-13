@@ -61,8 +61,6 @@ Class {
 CircularBufferTest class >> exercise [
 
 	^(ExercismExercise for: self)
-		isCore: false;
-		isAutoApproved: true;
 		difficulty: 5;
 		topics: #('arrays' 'conditionals' 'data_structures' 'exception_handling' 'lists' 'list-methods');
 		yourself

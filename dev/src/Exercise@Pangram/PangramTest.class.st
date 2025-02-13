@@ -28,7 +28,6 @@ PangramTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
 	^(self createExerciseAfter: IsogramTest)
-		isCore: false;
 		difficulty: 2;
 		topics: #('strings' 'filtering');
 		yourself
@@ -38,7 +37,7 @@ PangramTest class >> exercise [
 { #category : #config }
 PangramTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'6be398be-4a3f-0d00-bb67-0d71071d6982'
+	^'948c77bf-da89-4357-93a3-ec5a496ff70a'
 ]
 
 { #category : #config }

@@ -41,7 +41,6 @@ Class {
 { #category : #config }
 HammingTest class >> exercise [
 	^(self createExerciseAfter: ReverseStringTest)
-		isCore: false;
 		difficulty: 2;
 		topics: #('equality' 'loops' 'strings' 'exception_handling');
 		yourself
@@ -50,7 +49,7 @@ HammingTest class >> exercise [
 { #category : #config }
 HammingTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'69f615da-2b3f-0d00-a2ed-aca409f0590c'
+	^'8d936c18-7e4e-4d1d-8858-6508b7998f0d'
 ]
 
 { #category : #config }

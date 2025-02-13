@@ -10,8 +10,9 @@ Class {
 { #category : #config }
 TestExerciseTest class >> exercise [
 	^(ExercismExercise for: self)
-		isCore: false;
 		difficulty: 1;
+		practices: #('if-statements' 'numbers' 'operator-precedence');
+		prerequisites: #('if-statements' 'numbers');
 		topics: #('testing');
 		yourself
 ]

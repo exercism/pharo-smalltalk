@@ -40,8 +40,6 @@ HelloWorldTest class >> exercise [
 	HelloWorld is a special case as it's the first exercise"
 	
 	^(ExercismExercise for: self) 
-		isCore: true;
-		isAutoApproved: true;
 		difficulty: 1;
 		topics: #('introduction' 'strings');
 		yourself

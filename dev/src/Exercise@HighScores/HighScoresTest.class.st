@@ -25,7 +25,6 @@ HighScoresTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
 	^(self createExerciseAfter: ReverseStringTest)
-		isCore: false;
 		difficulty: 2;
 		topics: #('lists' 'sorting' 'filtering');
 		yourself
@@ -36,7 +35,7 @@ HighScoresTest class >> exercise [
 { #category : #config }
 HighScoresTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'5f1a9f16-9d41-0d00-8fc2-6a7408866539'
+	^'74992db6-e8f3-44c3-8798-02c6338a2bc5'
 ]
 
 { #category : #config }

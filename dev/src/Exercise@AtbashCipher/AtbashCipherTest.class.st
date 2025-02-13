@@ -48,7 +48,6 @@ AtbashCipherTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 
 	^ (self createExerciseAfter: GrainsTest)
-		isCore: false;
 		difficulty: 3;
 		topics: #('algorithms' 'strings' 'transforming' 'cryptography');
 		yourself
@@ -57,7 +56,7 @@ AtbashCipherTest class >> exercise [
 { #category : #config }
 AtbashCipherTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'c728b116-9d41-0d00-8fd2-aa8a08866539'
+	^'ac82cad2-5a80-4f0f-90d3-29e4cf12c916'
 ]
 
 { #category : #config }

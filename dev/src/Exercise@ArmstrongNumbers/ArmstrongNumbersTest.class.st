@@ -28,7 +28,6 @@ Class {
 { #category : #config }
 ArmstrongNumbersTest class >> exercise [
 	^ (self createExerciseAfter: TwoFerTest)
-		isCore: false;
 		difficulty: 2;
 		topics: #('math' 'integers');
 		yourself
@@ -37,7 +36,7 @@ ArmstrongNumbersTest class >> exercise [
 { #category : #config }
 ArmstrongNumbersTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'15f1a716-9d41-0d00-8fc9-66a908866539'
+	^'04c308a8-9794-4b15-9a73-775fca80ce9d'
 ]
 
 { #category : #config }

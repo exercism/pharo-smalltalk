@@ -45,7 +45,6 @@ ForthTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 
 	^ (self createExerciseAfter: GradeSchoolTest)
-		isCore: true;
 		difficulty: 6;
 		topics: #('parsing' 'stacks');
 		yourself
@@ -54,7 +53,7 @@ ForthTest class >> exercise [
 { #category : #config }
 ForthTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'98e35398-a743-0d00-aeac-1c4207045670'
+	^'1f200fc5-e4de-47c3-8d10-3d6180725e65'
 ]
 
 { #category : #config }
