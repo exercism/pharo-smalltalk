@@ -82,7 +82,11 @@ Class {
 ExercismGenerator class >> defaultPath [
 	
 	^ DefaultPath ifNil: [ 
-		self defaultPath: ((self exercismRepositoryPath, '/exercises/practice') ifNil: [FileLocator home pathString])
+		self defaultPath: (
+			self exercismRepositoryPath 
+				ifNil: [FileLocator home pathString]
+				ifNotNil: [self exercismRepositoryPath, '/exercises/practice']
+		)
 	]
 ]
 
@@ -127,8 +131,16 @@ ExercismGenerator class >> subProcessClass [
 
 { #category : #accessing }
 ExercismGenerator >> basePathReference [
-
-	^ self class exercismRepositoryPath asFileReference 
+	
+	"root directory of Pharo track where config.json is located, 
+	 if cannot determine repository path, use parent of actually selected directory for export"
+	| basePath |
+	
+	basePath := self class exercismRepositoryPath.
+	basePath ifNil:[
+		basePath := self exercisesDirReference parent
+	].
+	^ basePath asFileReference
 ]
 
 { #category : #helper }
