@@ -287,9 +287,7 @@ ExercismGenerator >> generateForExercise: slugName [
 	self generateSourceFilesFor: exerciseToGenerate exercisePackage.
 
 	"update configuration config.json file with exercise"
-	ExercismConfigGenerator new
-		updateConfigFrom: self basePathReference
-		for: slugName.
+	self updateOrCreateConfigJsonFor: slugName.
 
 	"run configlet commands for given exercise"
 	self runTestSpecificationsUpdateForExercise: slugName.
@@ -478,4 +476,18 @@ ExercismGenerator >> updateConfig [
 ExercismGenerator >> updateConfig: aBool [
 
 	updateConfig := aBool
+]
+
+{ #category : #helper }
+ExercismGenerator >> updateOrCreateConfigJsonFor: slugName [
+
+	"create new config file, if config.json completely missing"
+	(self basePathReference filesMatching: 'config.json') ifEmpty: [
+		 ^ ExercismConfigGenerator generateTo: self basePathReference
+	].
+
+	"otherwise update configuration config.json file with exercise"
+	ExercismConfigGenerator new
+		updateConfigFrom: self basePathReference
+		for: slugName
 ]
