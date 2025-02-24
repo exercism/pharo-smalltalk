@@ -2,12 +2,13 @@
 This is pretty straight forward if the soluton uses c = sqrt of a^2 + b^2
 "
 Class {
-	#name : #Darts,
-	#superclass : #Object,
-	#category : #'Exercise@Darts'
+	#name : 'Darts',
+	#superclass : 'Object',
+	#category : 'Exercise@Darts',
+	#package : 'Exercise@Darts'
 }
 
-{ #category : #scoring }
+{ #category : 'scoring' }
 Darts >> scoreX: anInteger y: anotherInteger [ 
 	| length |
 	
