@@ -35,7 +35,7 @@ The scoreboard image was created by [habere-et-dispertire][habere-et-dispertire]
 
 ## Hint
 
-The Pythagorean theorum will help.
+The Pythagorean theorem will help.
 
 "
 Class {
