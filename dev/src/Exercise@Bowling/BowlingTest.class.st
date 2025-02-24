@@ -80,7 +80,6 @@ BowlingTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
 	^(self createExerciseAfter: GradeSchoolTest )
-		isCore: false;
 		difficulty: 5;
 		topics: #('conditionals' 'object_oriented_programming' 'algorithms');
 		yourself
@@ -98,7 +97,7 @@ BowlingTest class >> generator [
 { #category : #config }
 BowlingTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'494d55f9-d941-0d00-a5c2-334307d29f14'
+	^'7af9188a-8e6c-4bb1-902e-cb335173f60e'
 ]
 
 { #category : #config }

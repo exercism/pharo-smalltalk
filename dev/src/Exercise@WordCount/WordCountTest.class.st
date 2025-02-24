@@ -31,7 +31,6 @@ WordCountTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
 	^(self createExerciseAfter: AllergiesTest)
-		isCore: false;
 		difficulty: 3;
 		topics: #('strings' 'iteration' 'pattern_recognition');
 		yourself
@@ -41,7 +40,7 @@ WordCountTest class >> exercise [
 { #category : #config }
 WordCountTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'a5de8cbe-4a3f-0d00-bb5e-8947071d6982'
+	^'17380479-b9a2-47be-a3cf-1da100f7ed98'
 ]
 
 { #category : #config }

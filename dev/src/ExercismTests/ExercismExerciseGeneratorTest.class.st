@@ -107,6 +107,16 @@ ExercismExerciseGeneratorTest >> testAsValidKeywordOnString [
 ]
 
 { #category : #tests }
+ExercismExerciseGeneratorTest >> testExerciseVariableName [
+	|generator|
+	"set directory reference with canonical description with tests of given exercise"
+	generator := ExercismExerciseGenerator new exerciseDirReference: 
+		self createMockExerciseDirectory.
+	
+	self assert: generator exerciseVariableName equals: 'mockExercise'.
+]
+
+{ #category : #tests }
 ExercismExerciseGeneratorTest >> testGenerateExerciseFrom [
 	|aPackage aClass testSelectors classSelectors|
 	"run generator"
@@ -142,4 +152,34 @@ ExercismExerciseGeneratorTest >> testGenerateExerciseFrom [
 	
 
 	
+]
+
+{ #category : #tests }
+ExercismExerciseGeneratorTest >> testHasValidTestDecriptions [
+	|generator|
+	"set directory reference with canonical description with tests of given exercise"
+	generator := ExercismExerciseGenerator new exerciseDirReference: 
+		self createMockExerciseDirectory.
+	
+	self assert: generator hasValidTestDecriptions.
+	
+	"now remove test descriptions"
+	(generator exerciseDirReference / 'canonical-data.json') ensureDelete.
+	self deny: generator hasValidTestDecriptions.
+]
+
+{ #category : #tests }
+ExercismExerciseGeneratorTest >> testPackageNameForTestClass [
+	|generator|
+	"set directory reference with canonical description with tests of given exercise"
+	generator := ExercismExerciseGenerator new exerciseDirReference: 
+		self createMockExerciseDirectory.
+	
+	"for new exercises, package should be set to work-in-progress"
+	generator regenerateExisting: false.
+	self assert: generator packageNameForTestClass  equals: 'ExercismWIP'.
+	
+	"for existing exercises with solution already, it should be exercise package"
+	generator regenerateExisting: true.
+	self assert: generator packageNameForTestClass  equals: 'Exercise@MockExercise'.
 ]

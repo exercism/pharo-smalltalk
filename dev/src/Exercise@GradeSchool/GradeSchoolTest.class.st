@@ -57,7 +57,6 @@ GradeSchoolTest class >> exercise [
 	
 	
 	^(self createExerciseAfter: MatrixTest)
-		isCore: true;
 		difficulty: 4;
 		topics: #('sorting' 'filtering' 'lists' 'object_oriented_programming');
 		yourself
@@ -75,7 +74,7 @@ GradeSchoolTest class >> generator [
 { #category : #config }
 GradeSchoolTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'8198e8bb-8040-0d00-812f-dfab01deb008'
+	^'eb7d9c26-5188-4271-9d21-952903a5cf19'
 ]
 
 { #category : #config }

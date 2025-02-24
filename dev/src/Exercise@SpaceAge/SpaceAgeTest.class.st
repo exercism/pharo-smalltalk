@@ -42,7 +42,6 @@ SpaceAgeTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 
 	^(self createExerciseAfter: TwoFerTest)
-		isCore: false;
 		difficulty: 1;
 		topics: #('dictionaries' 'math');
 		yourself
@@ -59,7 +58,7 @@ SpaceAgeTest class >> generator [
 { #category : #config }
 SpaceAgeTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'7bec34be-4a3f-0d00-bb23-9404071d6982'
+	^'fc8ea53c-72b3-432f-a399-ac9977d0100d'
 ]
 
 { #category : #config }

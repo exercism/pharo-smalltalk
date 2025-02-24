@@ -63,7 +63,6 @@ ReverseStringTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
 	^(self createExerciseAfter: LeapTest)
-		isCore: true;
 		difficulty: 1;
 		topics: #('strings' 'iteration');
 		yourself

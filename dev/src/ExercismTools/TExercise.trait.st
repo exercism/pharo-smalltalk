@@ -45,12 +45,7 @@ Trait {
 TExercise classSide >> createExerciseAfter: anotherTestCase [
 	"Helper method to create an exercise meta data object"
 	
-	^ (ExercismExercise for: self)
-		unlockedBy: 
-			((anotherTestCase notNil and: [ anotherTestCase isObsolete not ])
-				ifTrue: [ [ anotherTestCase exercise ] on: SubclassResponsibility do: [ nil ] ]
-				ifFalse: [ nil ]);
-		yourself 
+	^ ExercismExercise for: self 
 ]
 
 { #category : #config }

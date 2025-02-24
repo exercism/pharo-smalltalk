@@ -36,9 +36,28 @@ ExercismManager >> browseAsRingModel: result [
 { #category : #'*ExercismDev' }
 ExercismManager >> dependencyGraph [
 	
-	^ExercismExercise coreExercises
+	^ ExercismExercise practiceExercises
 	
 	
+]
+
+{ #category : #'*ExercismDev' }
+ExercismManager class >> editorAttributes [
+
+	^ {'indent_style' -> 'space'.
+    	'indent_size' -> 4.
+    	'highlightjs_language' -> 'smalltalk'.
+	} asOrderedDictionary
+]
+
+{ #category : #'*ExercismDev' }
+ExercismManager class >> filesAttributes [
+
+	^ {'solution' -> #('%{pascal_slug}.class.st').
+		'test' -> #('%{pascal_slug}Test.class.st').
+		'example' -> #('.meta/solution/%{pascal_slug}.class.st').
+		'exemplar' -> {'.meta/solution/%{pascal_slug}.class.st'}.	
+	} asOrderedDictionary
 ]
 
 { #category : #'*ExercismDev' }
@@ -80,18 +99,88 @@ ExercismManager >> shareExercisePasteEE: package [
 ]
 
 { #category : #'*ExercismDev' }
+ExercismManager class >> statusAttributes [
+
+	^ {'concept_exercises' -> false.
+		'test_runner' -> true.
+		'representer' -> false.
+		'analyzer' -> false.	
+	} asOrderedDictionary
+]
+
+{ #category : #'*ExercismDev' }
 ExercismManager class >> trackActive [
 	^true
 ]
 
 { #category : #'*ExercismDev' }
 ExercismManager class >> trackConfigHeader [
-	^ {('track_id' -> self trackId).
-		('language' -> 'Pharo').
-		('active' -> self trackActive).
-		('blurb' -> self trackDescription).
-		('solution_pattern' -> '\.meta/solution/\w+\.class\.st').
-		('test_pattern' -> '\w+Test\.class\.st')}
+	^ {'track_id' -> self trackId.
+		'language' -> 'Pharo'.
+		'slug' -> self trackId.
+		'active' -> self trackActive.
+		'status' -> self statusAttributes.
+		'blurb' -> self trackDescription.
+		'version' -> 3.
+		'online_editor' -> self editorAttributes.
+		'files' -> self filesAttributes.
+		'test_runner' -> (OrderedDictionary with: 'average_run_time' -> 1).
+		}
+]
+
+{ #category : #'*ExercismDev' }
+ExercismManager class >> trackConfigKeyFeatures [
+	^ {
+      {
+        'icon' -> 'easy'.
+        'title' -> 'Pure object oriented'.
+        'content' -> 'In Pharo, everything is an object. There are just objects interacting with messages.'
+      } asOrderedDictionary.
+      {
+        'icon' -> 'productive'.
+        'title' -> 'Live environment'.
+        'content' -> 'It provides immediate feedback during runtime. You can run and change your program on the fly.'
+      } asOrderedDictionary.
+      {
+        'icon' -> 'small'.
+        'title' -> 'Simple language'.
+        'content' -> 'Language full syntax fits on a postcard, it has only 6 reserved words. It is easy to learn.'.
+      } asOrderedDictionary.
+      {
+        'icon' -> 'dynamically-typed'.
+        'title' -> 'Dynamically typed'.
+        'content' -> 'Pharo has dynamic type-checking in runtime - an object checks its operation at time of execution.'.
+      } asOrderedDictionary.
+      {
+        'icon' -> 'general-purpose'.
+        'title' -> 'Universal use'.
+        'content' -> 'Pharo can be used for web, desktop, AI, visualizations, math, IoT devices.'.
+      } asOrderedDictionary.
+      {
+        'icon' -> 'cross-platform'.
+        'title' -> 'Multi-platform'.
+        'content' -> 'Pharo uses fast virtual machine that runs on Windows, macOS and Linux including the ARM processors.'.
+      } asOrderedDictionary.
+	}
+]
+
+{ #category : #'*ExercismDev' }
+ExercismManager class >> trackConfigTags [
+	^ {
+    'paradigm/object_oriented'.
+    'typing/dynamic'.
+    'typing/strong'.
+    'platform/windows'.
+    'platform/mac'.
+    'platform/linux'.
+    'runtime/language_specific'.
+    'used_for/artificial_intelligence'.
+    'used_for/scientific_calculations'.
+    'used_for/frontends'.
+    'used_for/backends'.
+    'used_for/cross_platform_development'.
+    'used_for/web_development'
+	}
 ]
 
 { #category : #'*ExercismDev' }

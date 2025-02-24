@@ -49,7 +49,6 @@ SieveTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 
 	^(self createExerciseAfter: GrainsTest)
-		isCore: false;
 		difficulty: 3;
 		topics: #('math' 'lists' 'loops');
 		yourself
@@ -60,7 +59,7 @@ SieveTest class >> exercise [
 { #category : #config }
 SieveTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'ffe8dcbb-8040-0d00-8124-bf5801deb008'
+	^'174cbf44-08b4-446f-82a1-1dbfa17401a7'
 ]
 
 { #category : #config }

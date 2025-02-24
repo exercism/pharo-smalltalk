@@ -50,7 +50,6 @@ BinaryTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
 	^(self createExerciseAfter: IsogramTest )
-		isCore: false;
 		difficulty: 3;
 		topics: #('strings' 'iteration' 'math');
 		yourself
@@ -70,7 +69,7 @@ BinaryTest class >> generator [
 { #category : #config }
 BinaryTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'a90be8bb-8040-0d00-812e-0c1701deb008'
+	^'c54688bb-2237-49b1-986f-8e9fc3873ef1'
 ]
 
 { #category : #config }

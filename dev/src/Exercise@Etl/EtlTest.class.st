@@ -66,7 +66,6 @@ EtlTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
 	^(self createExerciseAfter: ReverseStringTest)
-		isCore: false;
 		difficulty: 2;
 		topics: #('maps' 'iteration' 'transforming');
 		yourself
@@ -76,7 +75,7 @@ EtlTest class >> exercise [
 { #category : #config }
 EtlTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'d6303b3f-0f41-0d00-a5e1-db510c056502'
+	^'5bf981a0-0647-4867-9026-b25021b48a23'
 ]
 
 { #category : #config }

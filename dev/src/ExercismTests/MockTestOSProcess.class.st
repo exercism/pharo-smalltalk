@@ -39,3 +39,8 @@ MockTestOSProcess >> runAndWait [
 	"do nothing"
 	^ self 
 ]
+
+{ #category : #mocking }
+MockTestOSProcess >> workingDirectory: pathString [
+	"do nothing"
+]

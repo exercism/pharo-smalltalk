@@ -10,10 +10,8 @@ Class {
 		'testCase',
 		'difficulty',
 		'topics',
-		'isAutoApproved',
-		'isCore',
-		'unlockedBy',
-		'isDeprecated'
+		'practices',
+		'prerequisites'
 	],
 	#category : #'ExercismTools-Meta'
 }
@@ -26,19 +24,10 @@ ExercismExercise class >> allExercises [
 ]
 
 { #category : #'instance creation' }
-ExercismExercise class >> bonusExercises [
-	"self bonusExercises"
-
-	^ (self allExercises
-		reject:
-			[ :exercise | exercise isCore or: [ exercise isActive not ] ])
-		asSortedCollection: [ :a :b | a name < b name ]
-]
-
-{ #category : #'instance creation' }
-ExercismExercise class >> coreExercises [
-	^(self allExercises select: [:e | e isCore and: [e isActive]])
-		asSortedCollection: [ :a :b | a isFirst or: [a isFollowedBy: b ]]
+ExercismExercise class >> conceptExercises [
+	
+	"empty for now - nothing defined yet"
+	^ {}
 ]
 
 { #category : #'instance creation' }
@@ -66,6 +55,17 @@ ExercismExercise class >> for: anExercismTestCase [
 		yourself
 ]
 
+{ #category : #'instance creation' }
+ExercismExercise class >> practiceExercises [
+	
+	^ (self allExercises select: #isActive)
+	  asSortedCollection: [ :a :b |  
+		a difficulty = b difficulty 
+			ifTrue: [a name <= b name]
+			ifFalse: [a difficulty < b difficulty ]
+		]
+]
+
 { #category : #comparing }
 ExercismExercise >> = anObject [
 	"Answer whether the receiver and anObject represent the same object."
@@ -79,13 +79,13 @@ ExercismExercise >> = anObject [
 
 { #category : #converting }
 ExercismExercise >> asJsonData [
-	"Answer a collection of attributes"
+	"Answer a collection of attributes - v3 version"
 	
 	^{ 'slug' -> self name.
+	   'name' -> self name kebabAsCamelCase normalizeCamelCase.
 		'uuid' -> self uuid.
-		'core' -> self isCore.
-		'auto_approve' -> self isAutoApproved.
-		'unlocked_by' -> self unlockReference.
+		'practices' -> self practices.
+		'prerequisites' -> self prerequisites.
 		'difficulty' -> self difficulty.
 		'topics' -> self topics } asOrderedDictionary 
 ]
@@ -150,35 +150,6 @@ ExercismExercise >> exercisePackageContainer [
 		ifFalse: [ pkg ]
 ]
 
-{ #category : #navigating }
-ExercismExercise >> followedBy [
-"testcase : ^self unlockedBy ifNil: ['' ] ifNotNil: [ :parent | parent followedBy ]"
-	^ self class coreExercises detect: [ :ex | ex isUnlockedBy: self ] ifNone: [  nil ]
-]
-
-{ #category : #'gt-inspector' }
-ExercismExercise >> gtInspectorDetailsIn: composite [
-	<gtInspectorPresentationOrder: 30>
-	^ composite table
-		title: 'Exercism';
-		display: [ 
-					{'exercise' -> self name.
-					'core' -> true.
-					'difficulty' -> self difficulty.
-					'unlocks' -> self unlockedExercises.
-					'topics' -> self topics.
-					'tests' -> self testCase.
-					'solution' -> self exerciseClass.
-					'uuid' -> self uuid.
-					'followed by' -> self followedBy.
-					'hint' -> self hintText.
-					 } ];
-		column: 'Property' evaluated: #key;
-		column: 'Value' evaluated: [:v | 
-			v key = 'unlocks' ifTrue: [v value asCommaString ] ifFalse: [ v value ]];
-		send: #value
-]
-
 { #category : #comparing }
 ExercismExercise >> hash [
 	"Answer an integer value that is related to the identity of the receiver."
@@ -214,11 +185,9 @@ ExercismExercise >> id [
 { #category : #initialization }
 ExercismExercise >> initialize [
 	super initialize.
-	self
-		isCore: false;
-		isDeprecated: false;
-		isAutoApproved: false;
-		topics: #()
+	self topics: OrderedCollection new.
+	self practices: OrderedCollection new.
+	self prerequisites:  OrderedCollection new.
 ]
 
 { #category : #accessing }
@@ -227,38 +196,8 @@ ExercismExercise >> isActive [
 ]
 
 { #category : #accessing }
-ExercismExercise >> isAutoApproved [
-	^ isAutoApproved
-]
-
-{ #category : #accessing }
-ExercismExercise >> isAutoApproved: anObject [
-	isAutoApproved := anObject
-]
-
-{ #category : #accessing }
-ExercismExercise >> isCore [
-	^ isCore
-]
-
-{ #category : #accessing }
-ExercismExercise >> isCore: aBoolean [
-	isCore := aBoolean
-]
-
-{ #category : #accessing }
 ExercismExercise >> isDefined [
 	^self exerciseClass notNil
-]
-
-{ #category : #accessing }
-ExercismExercise >> isDeprecated [
-	^ isDeprecated
-]
-
-{ #category : #accessing }
-ExercismExercise >> isDeprecated: anObject [
-	isDeprecated := anObject
 ]
 
 { #category : #accessing }
@@ -266,32 +205,33 @@ ExercismExercise >> isEmpty [
 	^self solutionClasses isEmpty
 ]
 
-{ #category : #comparing }
-ExercismExercise >> isFirst [
-	^ self unlockedBy isNil
-]
-
-{ #category : #comparing }
-ExercismExercise >> isFollowedBy: anExercismExercise [
-
-	self isFirst ifTrue: [ ^ self ~= anExercismExercise ].
-	anExercismExercise isFirst ifTrue: [ ^ false ].
-		
-	^ (anExercismExercise isUnlockedBy: self)
-		ifTrue: [ true ]
-		ifFalse: [ self isFollowedBy: anExercismExercise unlockedBy ]
-]
-
-{ #category : #comparing }
-ExercismExercise >> isUnlockedBy: anExercise [
-	^ self unlockedBy
-		ifNil: [ false ]
-		ifNotNil: [ :exercise | exercise = anExercise ]
-]
-
 { #category : #accessing }
 ExercismExercise >> name [ 
 	^self exerciseClassName asKebabCase 
+]
+
+{ #category : #accessing }
+ExercismExercise >> practices [
+
+	^ practices
+]
+
+{ #category : #accessing }
+ExercismExercise >> practices: anObject [
+
+	practices := anObject
+]
+
+{ #category : #accessing }
+ExercismExercise >> prerequisites [
+
+	^ prerequisites
+]
+
+{ #category : #accessing }
+ExercismExercise >> prerequisites: anObject [
+
+	prerequisites := anObject
 ]
 
 { #category : #printing }
@@ -300,11 +240,10 @@ ExercismExercise >> printOn: aStream [
 	aStream
 		nextPutAll: 'Exercise(';
 		nextPutAll: self name.
-	self isCore
-		ifTrue: [ aStream nextPut: $* ].
+
 	self isDefined
 		ifTrue: [ aStream
-				space;
+				nextPutAll: ', D: ';
 				print: self difficulty ]
 		ifFalse: [ aStream nextPut: $? ].
 	aStream nextPut: $)
@@ -406,30 +345,6 @@ ExercismExercise >> topics: aStringArray [
 { #category : #accessing }
 ExercismExercise >> trackId [
 	^ExercismManager trackId
-]
-
-{ #category : #accessing }
-ExercismExercise >> unlockReference [
-	"Answer the String unlock reference for a non-core exercise, otherwise nil"
-
-	^ self isCore
-		ifTrue: [ nil ]
-		ifFalse: [ self unlockedBy ifNotNil: [:parent | parent name ]]
-]
-
-{ #category : #accessing }
-ExercismExercise >> unlockedBy [
-	^ unlockedBy 
-]
-
-{ #category : #accessing }
-ExercismExercise >> unlockedBy: anExercismExercise [
-	unlockedBy := anExercismExercise
-]
-
-{ #category : #accessing }
-ExercismExercise >> unlockedExercises [
-	^self class bonusExercises select: [ :e | e isUnlockedBy: self ]
 ]
 
 { #category : #accessing }

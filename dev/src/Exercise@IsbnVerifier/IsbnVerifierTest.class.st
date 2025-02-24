@@ -61,7 +61,6 @@ IsbnVerifierTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
 	^(self createExerciseAfter: LeapTest)
-		isCore: false;
 		difficulty: 3;
 		topics: #('characters' 'collections' 'validation');
 		yourself
@@ -70,7 +69,7 @@ IsbnVerifierTest class >> exercise [
 { #category : #config }
 IsbnVerifierTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'d166a016-9d41-0d00-8fc3-1ee008866539'
+	^'9cb67bca-f8db-4bf6-b61e-d43318c821d7'
 ]
 
 { #category : #config }

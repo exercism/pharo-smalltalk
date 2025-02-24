@@ -72,7 +72,6 @@ DiamondTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
 	^(self createExerciseAfter: ReverseStringTest )
-		isCore: false;
 		difficulty: 3;
 		topics: #('strings' 'algorithms' 'lists' 'text_formatting');
 		yourself
@@ -82,7 +81,7 @@ DiamondTest class >> exercise [
 { #category : #config }
 DiamondTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'c0b69b16-9d41-0d00-8fbf-acfc08866539'
+	^'7615f055-684e-4d04-99b3-25366dbd882a'
 ]
 
 { #category : #config }
