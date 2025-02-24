@@ -2,19 +2,21 @@
 Menu command for generating exercism artefacts
 "
 Class {
-	#name : #ClyExercismGenerateCommand,
-	#superclass : #ClyExercismDevCommand,
-	#category : #'ExercismDev-Menus'
+	#name : 'ClyExercismGenerateCommand',
+	#superclass : 'ClyExercismDevCommand',
+	#category : 'ExercismDev-Menus',
+	#package : 'ExercismDev',
+	#tag : 'Menus'
 }
 
-{ #category : #'world menu' }
+{ #category : 'world menu' }
 ClyExercismGenerateCommand class >> contextMenuOrder [
 	<classAnnotationDependency>
 	
 		^20
 ]
 
-{ #category : #'world menu' }
+{ #category : 'world menu' }
 ClyExercismGenerateCommand class >> worldMenuCommandOn: aBuilder [
 	<worldMenu>
 	
@@ -30,17 +32,17 @@ ClyExercismGenerateCommand class >> worldMenuCommandOn: aBuilder [
 		withSeparatorAfter
 ]
 
-{ #category : #menus }
+{ #category : 'menus' }
 ClyExercismGenerateCommand >> defaultMenuItemName [
 	^'Regenerate meta data'
 ]
 
-{ #category : #menus }
+{ #category : 'menus' }
 ClyExercismGenerateCommand >> description [
 	^'Walk the exercises and generate the Exercism templates into an existing git repository'
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ClyExercismGenerateCommand >> execute [
 	ExercismGenerator generate
 ]

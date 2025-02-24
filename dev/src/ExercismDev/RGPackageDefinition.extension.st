@@ -1,6 +1,6 @@
-Extension { #name : #RGPackageDefinition }
+Extension { #name : 'RGPackageDefinition' }
 
-{ #category : #'*ExercismDev' }
+{ #category : '*ExercismDev' }
 RGPackageDefinition >> summaryOn: aWriteStream [ 
 	| text |
 	

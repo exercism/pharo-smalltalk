@@ -1,6 +1,6 @@
-Extension { #name : #MCSnapshot }
+Extension { #name : 'MCSnapshot' }
 
-{ #category : #'*ExercismDev' }
+{ #category : '*ExercismDev' }
 MCSnapshot >> asExRingDefinitionIn: anRGEnvironment [
 	| pkgName sysPkg rgPkg |
 	
@@ -25,13 +25,13 @@ MCSnapshot >> asExRingDefinitionIn: anRGEnvironment [
 	
 ]
 
-{ #category : #'*ExercismDev' }
+{ #category : '*ExercismDev' }
 MCSnapshot >> asExRingEnvironment [
 	^self asExRingDefinitionIn: RGEnvironment new.
 	
 ]
 
-{ #category : #'*ExercismDev' }
+{ #category : '*ExercismDev' }
 MCSnapshot >> exEnsureRingDefinitionIn: anRGEnvironment package: anRGPackageDefinition [
 
 	anRGEnvironment announcer

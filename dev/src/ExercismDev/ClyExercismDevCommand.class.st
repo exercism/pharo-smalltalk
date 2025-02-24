@@ -2,25 +2,27 @@
 Top level package enu commands that should only be seen for developers
 "
 Class {
-	#name : #ClyExercismDevCommand,
-	#superclass : #ClyExercismCommand,
-	#category : #'ExercismDev-Menus'
+	#name : 'ClyExercismDevCommand',
+	#superclass : 'ClyExercismCommand',
+	#category : 'ExercismDev-Menus',
+	#package : 'ExercismDev',
+	#tag : 'Menus'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 ClyExercismDevCommand class >> contextMenuOrder [
 	<classAnnotationDependency>
 	
 		^100
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 ClyExercismDevCommand class >> isAbstract [
 	
 	^self == ClyExercismDevCommand
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 ClyExercismDevCommand class >> packageContextMenuActivation [
 	<classAnnotation>
 	

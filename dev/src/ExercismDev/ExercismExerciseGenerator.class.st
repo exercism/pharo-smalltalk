@@ -18,8 +18,8 @@ When working just on specific exercise - its update:
 `ExercismExerciseGenerator new regenerateExerciseFrom: 'path-to-problem-specifications/exercises/exercise-slug' asFileReference`
 "
 Class {
-	#name : #ExercismExerciseGenerator,
-	#superclass : #Object,
+	#name : 'ExercismExerciseGenerator',
+	#superclass : 'Object',
 	#instVars : [
 		'numberGenerated',
 		'exerciseDirReference',
@@ -29,27 +29,29 @@ Class {
 	#classVars : [
 		'DefaultPath'
 	],
-	#category : #'ExercismDev-TestGenerator'
+	#category : 'ExercismDev-TestGenerator',
+	#package : 'ExercismDev',
+	#tag : 'TestGenerator'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 ExercismExerciseGenerator class >> convertLegacyTagsToPackages [
 	ExercismManager legacyExercismPackage classTags
 		do: [ :t | t promoteAsExercismRPackage ]
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 ExercismExerciseGenerator class >> defaultPath [
 
 	^ DefaultPath ifNil: [ self defaultPath: ExercismGenerator defaultPath]
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 ExercismExerciseGenerator class >> defaultPath: pathString [
 	^ DefaultPath := pathString
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 ExercismExerciseGenerator class >> generate [
 	"This is the entry point for generating exercism compatible source files that can be checked into
 	the exercism/pharo project. e.g. self generate"
@@ -63,7 +65,7 @@ ExercismExerciseGenerator class >> generate [
 	path ifNotNil: [ self new generateFrom: path ]
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 ExercismExerciseGenerator class >> worldMenuCommandOn: aBuilder [
 	<worldMenu>
 	
@@ -76,7 +78,7 @@ ExercismExerciseGenerator class >> worldMenuCommandOn: aBuilder [
 		"withSeparatorBefore"
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 ExercismExerciseGenerator class >> writeLegacyPackageBaselineNames [
 	(ExercismManager legacyExercismPackage classTags collect: [ :t | t name ])
 		asSortedCollection
@@ -86,13 +88,13 @@ ExercismExerciseGenerator class >> writeLegacyPackageBaselineNames [
 				show: '''Exercise@' , n , '''' ]
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismExerciseGenerator >> canOverwriteExisting [
 
 	^ self regenerateExisting or: [self exerciseTestAlreadyExists not]
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismExerciseGenerator >> compile: src for: aClass selector: aSelector protocol: aName [
 	
 	"compiles method even with undeclared globals (solution class)"
@@ -105,12 +107,12 @@ ExercismExerciseGenerator >> compile: src for: aClass selector: aSelector protoc
 		inProtocol: aName
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismExerciseGenerator >> defaultPackageName [
 	^ 'ExercismWIP'
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
 ExercismExerciseGenerator >> ensureCreateExerciseWIPPackage [
 	
 	"WIP package with exercises"
@@ -119,19 +121,19 @@ ExercismExerciseGenerator >> ensureCreateExerciseWIPPackage [
 			ifFalse: [ RPackageOrganizer default createPackageNamed: self defaultPackageName ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExerciseGenerator >> exerciseDirReference [
 
 	^ exerciseDirReference
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExerciseGenerator >> exerciseDirReference: anObject [
 
 	exerciseDirReference := anObject
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
 ExercismExerciseGenerator >> exerciseDirectoriesDo: exerciseGenerateBlock [
 	
 	self class defaultPath entries 
@@ -139,25 +141,25 @@ ExercismExerciseGenerator >> exerciseDirectoriesDo: exerciseGenerateBlock [
 		thenDo: [:dirEntry | exerciseGenerateBlock value: dirEntry ]
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismExerciseGenerator >> exerciseIsDeprecated [
 
 	^ self exerciseDirReference fileNames includes: '.deprecated'
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismExerciseGenerator >> exerciseTestAlreadyExists [
 
 	^ Smalltalk hasClassNamed: self testClassName 
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismExerciseGenerator >> exerciseVariableName [
 
 	^ self testNameCamelCased asValidSelector asString
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
 ExercismExerciseGenerator >> generateExerciseCommentFor: testClass [
 	| comment  |
 	
@@ -173,7 +175,7 @@ ExercismExerciseGenerator >> generateExerciseCommentFor: testClass [
 	
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
 ExercismExerciseGenerator >> generateExerciseFrom: aFileSystemReference [
 	| testClass |
 	
@@ -199,7 +201,7 @@ ExercismExerciseGenerator >> generateExerciseFrom: aFileSystemReference [
 
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
 ExercismExerciseGenerator >> generateFrom: filePathReference [
 	
 	"set default path from parameter"
@@ -219,7 +221,7 @@ ExercismExerciseGenerator >> generateFrom: filePathReference [
 			format: {self numberGenerated})
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
 ExercismExerciseGenerator >> generateMetaDataFor: testClass [
 	
 	"write commment with exercise info to class"
@@ -235,7 +237,7 @@ ExercismExerciseGenerator >> generateMetaDataFor: testClass [
 	self generateVersionMethodFor: testClass
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
 ExercismExerciseGenerator >> generateSetupFor: testClass [
 	|  src |
 	
@@ -250,7 +252,7 @@ ExercismExerciseGenerator >> generateSetupFor: testClass [
 		
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
 ExercismExerciseGenerator >> generateTestClass [
 
 	^ ExercismTest << self testClassName asSymbol
@@ -261,7 +263,7 @@ ExercismExerciseGenerator >> generateTestClass [
 		install
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
 ExercismExerciseGenerator >> generateTestMethodsFor: testClass [
 	| testMethodGenerator |
 	
@@ -282,7 +284,7 @@ ExercismExerciseGenerator >> generateTestMethodsFor: testClass [
 	]
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
 ExercismExerciseGenerator >> generateUUIDMethodFor: testClass [
 	| source |
 	
@@ -296,7 +298,7 @@ ExercismExerciseGenerator >> generateUUIDMethodFor: testClass [
 	self compile: source for: testClass class selector: #uuid protocol: 'config'
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
 ExercismExerciseGenerator >> generateVersionMethodFor: testClass [
 	| source |
 	
@@ -311,7 +313,7 @@ ExercismExerciseGenerator >> generateVersionMethodFor: testClass [
 		
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
 ExercismExerciseGenerator >> hasValidTestDecriptions [
 
 	"answer true, if directory with problem description contains valid test description - must contain file canonical-data.json"
@@ -319,7 +321,7 @@ ExercismExerciseGenerator >> hasValidTestDecriptions [
 	^ self exerciseDirReference fileNames includes: 'canonical-data.json'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 ExercismExerciseGenerator >> initialize [ 
 	
 	super initialize.
@@ -330,30 +332,30 @@ ExercismExerciseGenerator >> initialize [
 	self regenerateExisting: false.
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismExerciseGenerator >> log: stringMsg for: testNameString [
 
 	self traceCr: testNameString, ' ', stringMsg
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
 ExercismExerciseGenerator >> nextUUID [
 	"TODO - we need version 4 UUID"
-	^ UUIDGenerator next
-
+	
+	^ UUID new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExerciseGenerator >> numberGenerated [
 	^ numberGenerated
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExerciseGenerator >> numberGenerated: anObject [
 	numberGenerated := anObject
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismExerciseGenerator >> packageNameForTestClass [
 	
 	"if regenerating existing class, use exercise package like 'Exercise@SlugName', otherwise just WIP package"
@@ -363,26 +365,26 @@ ExercismExerciseGenerator >> packageNameForTestClass [
 	^ self defaultPackageName 
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
 ExercismExerciseGenerator >> regenerateExerciseFrom: aFileSystemReference [
 
 	self regenerateExisting: true.
 	self generateExerciseFrom: aFileSystemReference
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExerciseGenerator >> regenerateExisting [
 
 	^ regenerateExisting
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExerciseGenerator >> regenerateExisting: aBool [	
 
 	regenerateExisting := aBool
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
 ExercismExerciseGenerator >> regenerateExistingExercisesFrom: filePathReference [
 	
 	"this will regenerate already existing exercises from problem specifications"
@@ -402,7 +404,7 @@ ExercismExerciseGenerator >> regenerateExistingExercisesFrom: filePathReference 
 		format: {self numberGenerated})
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismExerciseGenerator >> testClassName [
 
 	^ self testNameCamelCased, 'Test'
@@ -410,14 +412,14 @@ ExercismExerciseGenerator >> testClassName [
 	
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismExerciseGenerator >> testDescription [ 
  
 	^ (self exerciseDirReference / 'description.md') contents
 	
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismExerciseGenerator >> testJson [
 
 	^ testJson ifNil: [
@@ -427,7 +429,7 @@ ExercismExerciseGenerator >> testJson [
 		  testJson := STONJSON fromString: testSpecification ]
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismExerciseGenerator >> testNameCamelCased [
 
 	"E.g. FlattenArray"
@@ -435,7 +437,7 @@ ExercismExerciseGenerator >> testNameCamelCased [
 	
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismExerciseGenerator >> updateCategorisation [
 	"utility script to fix categorisations"
 	| cm |
@@ -445,7 +447,7 @@ ExercismExerciseGenerator >> updateCategorisation [
 			cm ifNotNil: [ cm protocol: 'config']]
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismExerciseGenerator >> updateTests [
 	"utility script to fix previously generated test methods"
 	
@@ -474,7 +476,7 @@ ExercismExerciseGenerator >> updateTests [
 						protocol: 'running' ] ]
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismExerciseGenerator >> versionString [
 
 	^ self testJson at: 'version' ifAbsent: ['Not specified']

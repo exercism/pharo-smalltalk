@@ -13,28 +13,30 @@ This is needed when working on specific exercise, for which not entire content n
 `ExercismConfigGenerator new updateConfigFrom: 'path-to-pharo-track' asFileReference for: 'slug-name'`
 "
 Class {
-	#name : #ExercismConfigGenerator,
-	#superclass : #Object,
+	#name : 'ExercismConfigGenerator',
+	#superclass : 'Object',
 	#classVars : [
 		'DefaultPath'
 	],
-	#category : #'ExercismDev-Generator'
+	#category : 'ExercismDev-Generator',
+	#package : 'ExercismDev',
+	#tag : 'Generator'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismConfigGenerator class >> defaultPath [
 
 	^ DefaultPath ifNil: [ self defaultPath: ExercismGenerator defaultPath]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismConfigGenerator class >> defaultPath: anObject [
 	"self defaultPath: nil"
 
 	^DefaultPath := anObject
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 ExercismConfigGenerator class >> generate [
 	"This is the entry point for generating exercism compatible source files that can be checked into
 	the exercism/pharo project. e.g. self generate"
@@ -48,13 +50,13 @@ ExercismConfigGenerator class >> generate [
 	path ifNotNil: [ self generateTo: (self defaultPath: path) ]
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 ExercismConfigGenerator class >> generateTo: aFilePathReference [
 
 	self new generateConfigFrom: aFilePathReference 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismConfigGenerator >> addExerciseEntryToConfig: configAttributes [	
 	
 	|practiseExercises conceptExercises|
@@ -68,7 +70,7 @@ ExercismConfigGenerator >> addExerciseEntryToConfig: configAttributes [
 	).
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
 ExercismConfigGenerator >> findIndexOfExercise: slugName inExerciseJsonNode: exerciseCollectionJsonNode [
 
 	^ exerciseCollectionJsonNode 
@@ -76,7 +78,7 @@ ExercismConfigGenerator >> findIndexOfExercise: slugName inExerciseJsonNode: exe
 		ifNone: [ NotFound signal: ('Could not find exercise in config.json at exercises -> practice: {1}' format: {slugName})]
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
 ExercismConfigGenerator >> generateConfigFrom: aFileSystemReference [
 	"self generate"
 	
@@ -107,7 +109,7 @@ ExercismConfigGenerator >> generateConfigFrom: aFileSystemReference [
 	
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
 ExercismConfigGenerator >> updateConfigFrom: aFileSystemReference for: slugName [
 	
 	"updates config.json for given exercise, if not present in config.json then regenerate entire config.json file"

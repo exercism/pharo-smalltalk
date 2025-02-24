@@ -1,6 +1,6 @@
-Extension { #name : #Collection }
+Extension { #name : 'Collection' }
 
-{ #category : #'*ExercismDev' }
+{ #category : '*ExercismDev' }
 Collection >> asJSON [
 	"Answer the receiver as a JSON string for Exercism, useful for tesing"
 

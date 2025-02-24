@@ -1,6 +1,6 @@
-Extension { #name : #RGEnvironment }
+Extension { #name : 'RGEnvironment' }
 
-{ #category : #'*ExercismDev' }
+{ #category : '*ExercismDev' }
 RGEnvironment >> createBrowserWithTitle: aString [
 	"Copied from #browse, but doesn't open the browser so you can customise it before opening
 	(and avoid a filter string race condition)"

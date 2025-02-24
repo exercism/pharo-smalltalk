@@ -1,6 +1,6 @@
-Extension { #name : #RGObject }
+Extension { #name : 'RGObject' }
 
-{ #category : #'*ExercismDev' }
+{ #category : '*ExercismDev' }
 RGObject >> summaryOn: aWriteStream [ 
 	| text |
 	text := self propertyNamed: #exercism ifAbsent: [ ^self ].
