@@ -1,1 +1,1 @@
-The Pythagorean theorum will help.
+The Pythagorean theorem will help.
