@@ -35,7 +35,7 @@ The scoreboard image was created by [habere-et-dispertire][habere-et-dispertire]
 
 ## Hint
 
-TBD
+The Pythagorean theorum will help.
 
 "
 Class {
@@ -44,9 +44,8 @@ Class {
 	#instVars : [
 		'darts'
 	],
-	#category : 'Exercise@Darts-Darts',
-	#package : 'Exercise@Darts',
-	#tag : 'Darts'
+	#category : 'Exercise@Darts',
+	#package : 'Exercise@Darts'
 }
 
 { #category : 'config' }
