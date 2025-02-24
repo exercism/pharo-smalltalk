@@ -258,7 +258,6 @@ ExercismExerciseGenerator >> generateTestClass [
 	^ ExercismTest << self testClassName asSymbol
 		slots: {self exerciseVariableName asSymbol};
 		sharedVariables: {};
-		tag: self testNameCamelCased;
 		package: self packageNameForTestClass;
 		install
 ]
