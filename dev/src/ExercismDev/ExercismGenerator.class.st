@@ -228,13 +228,12 @@ ExercismGenerator >> fetchConfiglet [
 	|result |		
 	result := self osSubProcess new
 		workingDirectory: self configletRootReference fullName;
-		command: 'fetch-configlet';
+		command: './fetch-configlet';
 		arguments: #();
 		redirectStdout;
 		runAndWait.
 	
-	result isSuccess ifFalse: [ 
-			self error: 'Cannot fetch configlet - ' , result lastError printString ].
+	self printAndHandleProcessResult: result.
 	self traceCr: 'Configlet fetching - done!'
 ]
 
@@ -415,6 +414,25 @@ ExercismGenerator >> prepareExerciseDirectory: exerciseDirReference [
 ]
 
 { #category : 'generation' }
+ExercismGenerator >> printAndHandleProcessResult: processResult [
+
+[
+	self traceCr: processResult.
+	self traceCr: ('Command arguments: {1}' format: { processResult argVArguments asString. }).
+	processResult isSuccess
+		ifTrue: [
+			self traceCr: 'Command exited correctly with output: '
+				, processResult stdoutStream upToEndOfFile ]
+		ifFalse: [
+			| errString |
+			errString := 'Command resulted with error: {1}.' format:
+				             { processResult stderrStream upToEndOfFile }.
+			self traceCr: errString.
+			self error: errString ] 
+] ensure: [ processResult closeAndCleanStreams ]
+]
+
+{ #category : 'generation' }
 ExercismGenerator >> runConfigletCommandsForActiveExercices [
 	
 		self exercismExercise allExercises
@@ -430,14 +448,13 @@ ExercismGenerator >> runDocsAndMetadataUpdateForExercise: slugName [
 	| result |	
 		
 	result := self osSubProcess new
-		command: 'configlet';
-		workingDirectory: self configletRootReference fullName;
+		command: './bin/configlet';
+		workingDirectory: self basePathReference fullName;
 		arguments: {'sync'. '--docs'. '--filepaths'. '--metadata'. '-uy'. '-e'. slugName.} asArray;
 		redirectStdout;
 		runAndWait.
 	
-	result isSuccess ifFalse: [ 
-			self error: ('Failed running "configlet sync --docs --filepaths --metadata -uy -e {1}" with result: {2}' format: { slugName. result lastError printString.})]
+	self printAndHandleProcessResult: result.
 ]
 
 { #category : 'generation' }
@@ -445,14 +462,13 @@ ExercismGenerator >> runTestSpecificationsUpdateForExercise: slugName [
 	| result |	
 		
 	result := self osSubProcess new
-		command: 'configlet';
-		workingDirectory: self configletRootReference fullName;
+		command: './bin/configlet';
+		workingDirectory: self basePathReference fullName;
 		arguments: {'sync'. '-u'. '--tests'. 'include'. '-e'. slugName.} asArray;
 		redirectStdout;
 		runAndWait.
 	
-	result isSuccess ifFalse: [ 
-			self error: ('Failed running "configlet sync -u --tests include -e {1}" with result: {2}' format: { slugName. result lastError printString.})]
+	self printAndHandleProcessResult: result.
 ]
 
 { #category : 'initialize' }
