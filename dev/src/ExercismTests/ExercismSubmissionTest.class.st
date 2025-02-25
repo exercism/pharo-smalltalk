@@ -2,12 +2,14 @@
 An ExercismSubmissionTest is a test class for testing the behavior of ExercismSubmission
 "
 Class {
-	#name : #ExercismSubmissionTest,
-	#superclass : #TestCase,
-	#category : #'ExercismTests-UnitTests'
+	#name : 'ExercismSubmissionTest',
+	#superclass : 'TestCase',
+	#category : 'ExercismTests-UnitTests',
+	#package : 'ExercismTests',
+	#tag : 'UnitTests'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismSubmissionTest class >> mockSnapshotSTON [
 ^	'MCSnapshot {
 	#definitions : OrderedCollection [
@@ -79,7 +81,7 @@ ExercismSubmissionTest class >> mockSnapshotSTON [
 }'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismSubmissionTest class >> prepareMockPackageWithDependentClasses [
 " this is used for generating STON representation of MCSnapshot (see class side method), we don't need to create classes during test"
 |aClass bClass cClass aPackage|
@@ -107,13 +109,13 @@ ExercismSubmissionTest class >> prepareMockPackageWithDependentClasses [
 	^ TonelWriter new toSTON: aPackage snapshot.
 ]
 
-{ #category : #'test-data' }
+{ #category : 'test-data' }
 ExercismSubmissionTest class >> sampleDataFor: testName [
 	^self sampleDataFor: testName filenames: {'test1.st'. 'test.md'. 'test2.st'} baseUrl: '/files'
 			
 ]
 
-{ #category : #'test-data' }
+{ #category : 'test-data' }
 ExercismSubmissionTest class >> sampleDataFor: testName filenames: filenameList baseUrl: baseUrl [
 
 	^{ 
@@ -125,13 +127,13 @@ ExercismSubmissionTest class >> sampleDataFor: testName filenames: filenameList 
 			
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismSubmissionTest >> mockClassesSnapshot [
 
 	^ STON fromString: self class mockSnapshotSTON
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismSubmissionTest >> prepareMockContentData [
 	"prepareContentData in expected dictionary format"
 
@@ -148,7 +150,7 @@ ExercismSubmissionTest >> prepareMockContentData [
 	^ contentData asDictionary
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 ExercismSubmissionTest >> tearDown [ 
 	|aPackage|
 	aPackage := RPackageOrganizer default packageNamed: 'Exercise@DependencyMock' ifAbsent: [nil].
@@ -156,7 +158,7 @@ ExercismSubmissionTest >> tearDown [
 	super tearDown
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismSubmissionTest >> testErrorMessage [
 
 	| exercismSubmission |
@@ -167,7 +169,7 @@ ExercismSubmissionTest >> testErrorMessage [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismSubmissionTest >> testExerciseClassName [
 
 	| exercismSubmission |
@@ -177,7 +179,7 @@ ExercismSubmissionTest >> testExerciseClassName [
 	self assert: exercismSubmission exerciseClassName equals: 'TestExercise'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismSubmissionTest >> testExercisePackageName [
 
 	| exercismSubmission |
@@ -187,7 +189,7 @@ ExercismSubmissionTest >> testExercisePackageName [
 	self assert: exercismSubmission exercisePackageName equals: 'Exercise@HelloWorld'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismSubmissionTest >> testFilenames [
 	| exercismSubmission actualNames |
 		
@@ -202,7 +204,7 @@ ExercismSubmissionTest >> testFilenames [
 		
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismSubmissionTest >> testLatestExercisePackageSourceDir [
 	
 	| exercismSubmission fileRef firstFile sndFile|
@@ -222,7 +224,7 @@ ExercismSubmissionTest >> testLatestExercisePackageSourceDir [
 	self assert: sndFile contents equals: 'contents2'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismSubmissionTest >> testLoadingDependentClasses [
 	| exercismSubmission loadedPackage|
 	exercismSubmission := ExercismSubmission
@@ -244,7 +246,7 @@ ExercismSubmissionTest >> testLoadingDependentClasses [
 		self assert:	((self class environment at: #AMock) inheritsFrom: (self class environment at: #BMock)).
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismSubmissionTest >> testPopulateFileContentsWith [
 	"Test populating content"
 	| actualNames baseUrl exercismSubmission rootName sourceNames |
@@ -271,7 +273,7 @@ ExercismSubmissionTest >> testPopulateFileContentsWith [
 		equals: 'b.st contents'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismSubmissionTest >> testPopulateFileContentsWithSkipsEmptyContent [
 	"Test populating content"
 	| actualNames baseUrl exercismSubmission rootName sourceNames |
@@ -295,7 +297,7 @@ ExercismSubmissionTest >> testPopulateFileContentsWithSkipsEmptyContent [
 		assert: exercismSubmission contentData size equals: 0.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismSubmissionTest >> testSourceFilenames [
 	| exercismSubmission actualNames |
 		
@@ -310,7 +312,7 @@ ExercismSubmissionTest >> testSourceFilenames [
 		
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismSubmissionTest >> testSourceFilenamesWithContentsDo [
 	| exercismSubmission resultingNames |
 	
@@ -324,7 +326,7 @@ ExercismSubmissionTest >> testSourceFilenamesWithContentsDo [
 		
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismSubmissionTest >> testStoreSolutionId [
 	| exercismSubmission |
 	

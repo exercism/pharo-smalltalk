@@ -1,21 +1,23 @@
 Class {
-	#name : #ClyExercismReviewCommand,
-	#superclass : #ClyExercismCommand,
-	#category : #'ExercismDev-Menus'
+	#name : 'ClyExercismReviewCommand',
+	#superclass : 'ClyExercismCommand',
+	#category : 'ExercismDev-Menus',
+	#package : 'ExercismDev',
+	#tag : 'Menus'
 }
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyExercismReviewCommand class >> contextMenuOrder [
 		^10
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 ClyExercismReviewCommand class >> isAbstract [
 	
 	^self == ClyExercismReviewCommand
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 ClyExercismReviewCommand class >> isExercismTagIn: aToolContext [
 
 	^ aToolContext selectedClassItems
@@ -24,22 +26,22 @@ ClyExercismReviewCommand class >> isExercismTagIn: aToolContext [
 		ifNone: [ false ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismReviewCommand >> defaultMenuIconName [
 	^#recentMessages
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismReviewCommand >> defaultMenuItemName [
 	^'Add Review...'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismReviewCommand >> description [ 
 	^'Enter a review comment for the selected item'
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ClyExercismReviewCommand >> execute [
 	| text element result |
 	
@@ -51,7 +53,7 @@ ClyExercismReviewCommand >> execute [
 		accept: [ :newText | element propertyNamed: #exercism put: newText ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismReviewCommand >> selectedItemIn: aToolContext [
 	^self subclassResponsibility 
 ]

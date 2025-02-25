@@ -2,12 +2,14 @@
 An ExercismExerciseGeneratorTest is a test class for testing the behavior of ExercismExerciseGenerator
 "
 Class {
-	#name : #ExercismExerciseGeneratorTest,
-	#superclass : #TestCase,
-	#category : #'ExercismTests-UnitTests'
+	#name : 'ExercismExerciseGeneratorTest',
+	#superclass : 'TestCase',
+	#category : 'ExercismTests-UnitTests',
+	#package : 'ExercismTests',
+	#tag : 'UnitTests'
 }
 
-{ #category : #setup }
+{ #category : 'setup' }
 ExercismExerciseGeneratorTest >> canonicalTestSampleJson [
 ^ 
 '{
@@ -58,7 +60,7 @@ ExercismExerciseGeneratorTest >> canonicalTestSampleJson [
 '
 ]
 
-{ #category : #setup }
+{ #category : 'setup' }
 ExercismExerciseGeneratorTest >> createMockExerciseDirectory [
 	|memFileRef exerciseDir |
 	memFileRef := FileSystem memory root.
@@ -80,13 +82,13 @@ ExercismExerciseGeneratorTest >> createMockExerciseDirectory [
 	^ exerciseDir  
 ]
 
-{ #category : #setup }
+{ #category : 'setup' }
 ExercismExerciseGeneratorTest >> mockClassName [
 
 	^ ('mock-exercise' kebabAsCamelCase, 'Test') asSymbol
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 ExercismExerciseGeneratorTest >> tearDown [
 	"remove mock class if exists"
  	(self class environment hasClassNamed: self mockClassName) ifTrue: [ 
@@ -95,7 +97,7 @@ ExercismExerciseGeneratorTest >> tearDown [
 	super tearDown
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseGeneratorTest >> testAsValidKeywordOnString [
 
 	self assert: '1Direction' asValidKeyword equals: 'and1Direction'.
@@ -106,7 +108,7 @@ ExercismExerciseGeneratorTest >> testAsValidKeywordOnString [
 	self assert: 'is <= 5' asValidKeyword equals: 'isLessThanOrEqualTo5'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseGeneratorTest >> testExerciseVariableName [
 	|generator|
 	"set directory reference with canonical description with tests of given exercise"
@@ -116,7 +118,7 @@ ExercismExerciseGeneratorTest >> testExerciseVariableName [
 	self assert: generator exerciseVariableName equals: 'mockExercise'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseGeneratorTest >> testGenerateExerciseFrom [
 	|aPackage aClass testSelectors classSelectors|
 	"run generator"
@@ -154,7 +156,7 @@ ExercismExerciseGeneratorTest >> testGenerateExerciseFrom [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseGeneratorTest >> testHasValidTestDecriptions [
 	|generator|
 	"set directory reference with canonical description with tests of given exercise"
@@ -168,7 +170,7 @@ ExercismExerciseGeneratorTest >> testHasValidTestDecriptions [
 	self deny: generator hasValidTestDecriptions.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseGeneratorTest >> testPackageNameForTestClass [
 	|generator|
 	"set directory reference with canonical description with tests of given exercise"
@@ -182,4 +184,17 @@ ExercismExerciseGeneratorTest >> testPackageNameForTestClass [
 	"for existing exercises with solution already, it should be exercise package"
 	generator regenerateExisting: true.
 	self assert: generator packageNameForTestClass  equals: 'Exercise@MockExercise'.
+]
+
+{ #category : 'tests' }
+ExercismExerciseGeneratorTest >> testSetupHintFromExistingTestClass [
+
+	|generator|
+	generator := ExercismExerciseGenerator new exerciseDirReference: 'two-fer' asFileReference.
+	generator setupHintFromExistingTestClass.
+	self deny: generator existingHint equals: 'TBD'.
+	
+	generator exerciseDirReference: 'mock-exercise' asFileReference.
+	generator setupHintFromExistingTestClass.
+	self assert: generator existingHint equals: 'TBD'.
 ]

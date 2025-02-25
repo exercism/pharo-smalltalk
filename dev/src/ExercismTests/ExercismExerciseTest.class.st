@@ -2,12 +2,14 @@
 An ExercismExerciseTest is a test class for testing the behavior of ExercismExercise
 "
 Class {
-	#name : #ExercismExerciseTest,
-	#superclass : #TestCase,
-	#category : #'ExercismTests-UnitTests'
+	#name : 'ExercismExerciseTest',
+	#superclass : 'TestCase',
+	#category : 'ExercismTests-UnitTests',
+	#package : 'ExercismTests',
+	#tag : 'UnitTests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseTest >> testAsJsonData [
 	|testExerciseDict jsonString |
 	
@@ -28,7 +30,7 @@ ExercismExerciseTest >> testAsJsonData [
 	LeapTest exercise asJsonData asJSON should includeSubstring: '"slug" : "leap"'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseTest >> testDefinedSolutionClasses [
 	
 	self assertCollection: TestExerciseTest exercise definedSolutionClasses equals: {TestExercise} asSet.
@@ -37,13 +39,13 @@ ExercismExerciseTest >> testDefinedSolutionClasses [
 	self assertCollection: TestExExtensionTest exercise definedSolutionClasses  equals: { TestExtension  } asSet.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseTest >> testDescriptionText [
 	
 	self assert: (HelloWorldTest exercise descriptionText endsWith: 'real exercise')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseTest >> testExerciseClass [
 	
 	self assert: TestExerciseTest exercise exerciseClass equals: TestExercise.	
@@ -52,7 +54,7 @@ ExercismExerciseTest >> testExerciseClass [
 	
 ]
 
-{ #category : #test }
+{ #category : 'test' }
 ExercismExerciseTest >> testExerciseClassName [
 
 	self assert: TestExerciseTest exercise exerciseClassName equals: TestExercise name.	
@@ -60,7 +62,7 @@ ExercismExerciseTest >> testExerciseClassName [
 	self assert: TestEmptyTest exercise exerciseClassName equals: 'TestEmpty'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseTest >> testExercisePackage [
 	
 	self assert: TestExerciseTest exercise exercisePackage equals: TestExerciseTest package.	
@@ -69,7 +71,7 @@ ExercismExerciseTest >> testExercisePackage [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseTest >> testExercisePackageTag [
 	
 	self assert: TestExerciseTest exercise exercisePackageContainer class equals: RPackage.
@@ -77,7 +79,7 @@ ExercismExerciseTest >> testExercisePackageTag [
 	self assert: TestmanyTest exercise exercisePackageContainer equals: TestmanyTest package.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseTest >> testFind [
 
 	self assert: (ExercismExercise find: 'hello-world' ifAbsent: [nil]) equals: HelloWorldTest exercise.
@@ -85,13 +87,13 @@ ExercismExerciseTest >> testFind [
 	self assert: (ExercismExercise find: 'missing-exercise' ifAbsent: [ :name | 'missing param' ]) equals: 'missing param' 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseTest >> testHintText [
 	
 	self assert: (HelloWorldTest exercise hintText beginsWith: 'If you are')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseTest >> testIsDefined [
 	
 	self assert: TestExerciseTest exercise isDefined description: 'Should be defined'.
@@ -99,7 +101,7 @@ ExercismExerciseTest >> testIsDefined [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseTest >> testIsEmpty [
 	
 	self deny: TestExerciseTest exercise isEmpty description: 'Not empty with 1 solution'.
@@ -108,20 +110,20 @@ ExercismExerciseTest >> testIsEmpty [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseTest >> testName [
 	
 	self assert: TestExerciseTest exercise name equals: 'test-exercise'.
 	self assert: TestmanyTest exercise name equals: 'testmany'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseTest >> testPractiseExercisesNotEmpty [
 	
 	self assert: ExercismExercise practiceExercises notEmpty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseTest >> testPractiseExercisesSorted [
 	|exercises |
 	exercises := ExercismExercise practiceExercises.
@@ -131,7 +133,7 @@ ExercismExerciseTest >> testPractiseExercisesSorted [
 	self assert: exercises first name < exercises second name.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseTest >> testSolutionClasses [
 	
 	self assertCollection: TestExerciseTest exercise solutionClasses equals: {TestExercise} asSet.
@@ -140,7 +142,7 @@ ExercismExerciseTest >> testSolutionClasses [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseTest >> testSolutionId [
 	
 	TestExerciseTest solutionId: 'sId123'.
@@ -150,7 +152,7 @@ ExercismExerciseTest >> testSolutionId [
 	self assert: TestExerciseTest exercise solutionId equals: 'sId123'. 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseTest >> testSolutionSources [
 	| sources classes classNames |
 	
@@ -166,7 +168,7 @@ ExercismExerciseTest >> testSolutionSources [
 	(sources at: classNames allButLast last) includesSubstring: '#name : #', classes last name.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseTest >> testSolutionSourcesWithExtension [
 	| sources classNames |
 	
@@ -180,7 +182,7 @@ ExercismExerciseTest >> testSolutionSourcesWithExtension [
 	self assertCollection: sources keys asSet equals: classNames asSet.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseTest >> testStoreSolutionId [
 	
 	TestExerciseTest exercise storeSolutionId: 'sId123'. 
@@ -191,7 +193,7 @@ ExercismExerciseTest >> testStoreSolutionId [
 	 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismExerciseTest >> testWordifiedName [
 	
 	self assert: HelloWorldTest exercise wordifiedName equals: 'Hello World'.

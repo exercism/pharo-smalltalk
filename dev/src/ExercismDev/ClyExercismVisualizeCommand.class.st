@@ -2,19 +2,21 @@
 Menu command for (currently) crudely visualizing exercises
 "
 Class {
-	#name : #ClyExercismVisualizeCommand,
-	#superclass : #ClyExercismDevCommand,
-	#category : #'ExercismDev-Menus'
+	#name : 'ClyExercismVisualizeCommand',
+	#superclass : 'ClyExercismDevCommand',
+	#category : 'ExercismDev-Menus',
+	#package : 'ExercismDev',
+	#tag : 'Menus'
 }
 
-{ #category : #'world menu' }
+{ #category : 'world menu' }
 ClyExercismVisualizeCommand class >> contextMenuOrder [
 	<classAnnotationDependency>
 	
 		^15
 ]
 
-{ #category : #'world menu' }
+{ #category : 'world menu' }
 ClyExercismVisualizeCommand class >> worldMenuCommandOn: aBuilder [
 	<worldMenu>
 	
@@ -30,17 +32,17 @@ ClyExercismVisualizeCommand class >> worldMenuCommandOn: aBuilder [
 		"withSeparatorAfter "
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 ClyExercismVisualizeCommand >> defaultMenuItemName [
 	^'Visualize exercises...'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 ClyExercismVisualizeCommand >> description [
 	^'Walk the exercises and visualize their dependencies'
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ClyExercismVisualizeCommand >> execute [
 	ExercismManager default dependencyGraph inspect
 ]

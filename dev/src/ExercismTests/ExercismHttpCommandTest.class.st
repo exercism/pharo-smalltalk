@@ -2,12 +2,14 @@
 An ExercismHttpCommandTest is a test class for testing the behavior of ExercismHttpCommand
 "
 Class {
-	#name : #ExercismHttpCommandTest,
-	#superclass : #TestCase,
-	#category : #'ExercismTests-UnitTests'
+	#name : 'ExercismHttpCommandTest',
+	#superclass : 'TestCase',
+	#category : 'ExercismTests-UnitTests',
+	#package : 'ExercismTests',
+	#tag : 'UnitTests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismHttpCommandTest >> testExecuteCheckingToken [
 	| mockClient cmd result |
 	mockClient := ExercismHttpClient asStrictMock.
@@ -21,7 +23,7 @@ ExercismHttpCommandTest >> testExecuteCheckingToken [
 	result should equal: #resultOk.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismHttpCommandTest >> testExecuteCheckingTokenOnFailurePrompts [
 	| mockClient cmd result |
 	mockClient := ExercismHttpClient asStrictMock.
@@ -38,7 +40,7 @@ ExercismHttpCommandTest >> testExecuteCheckingTokenOnFailurePrompts [
 	result should equal: #resultOk.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismHttpCommandTest >> testExecuteCheckingTokenOnFailurePromptsAndAborts [
 	| mockClient cmd result |
 	mockClient := ExercismHttpClient asStrictMock.

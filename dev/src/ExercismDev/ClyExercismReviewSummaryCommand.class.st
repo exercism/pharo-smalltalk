@@ -1,17 +1,19 @@
 Class {
-	#name : #ClyExercismReviewSummaryCommand,
-	#superclass : #ClyExercismCommand,
-	#category : #'ExercismDev-Menus'
+	#name : 'ClyExercismReviewSummaryCommand',
+	#superclass : 'ClyExercismCommand',
+	#category : 'ExercismDev-Menus',
+	#package : 'ExercismDev',
+	#tag : 'Menus'
 }
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyExercismReviewSummaryCommand class >> cmdShortcutActivation [
 	<classAnnotation>
 	
 	^CmdShortcutActivation by: $w meta, $s meta for: ClyClassContextOfFullBrowser 
 ]
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyExercismReviewSummaryCommand class >> contextMenuActivation [
 	<classAnnotation>
 	
@@ -21,12 +23,12 @@ ClyExercismReviewSummaryCommand class >> contextMenuActivation [
 		for: RPackage asCalypsoItemContext
 ]
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyExercismReviewSummaryCommand class >> contextMenuOrder [
 		^5
 ]
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyExercismReviewSummaryCommand class >> isExercismTagIn: aToolContext [
 
 	^ aToolContext selectedClassItems
@@ -35,29 +37,29 @@ ClyExercismReviewSummaryCommand class >> isExercismTagIn: aToolContext [
 		ifNone: [ false ]
 ]
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyExercismReviewSummaryCommand class >> rcmdShortcutActivation [
 	<classAnnotation>
 	
 	^CmdShortcutActivation by: $e meta, $s meta for: ClyClassContextOfFullBrowser 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismReviewSummaryCommand >> defaultMenuIconName [
 	^#book
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismReviewSummaryCommand >> defaultMenuItemName [
 	^'View Review Summary...'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismReviewSummaryCommand >> description [ 
 	^'Output a review summary that can be pasted into Exercism'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismReviewSummaryCommand >> execute [
 	| element result |
 
@@ -72,7 +74,7 @@ ClyExercismReviewSummaryCommand >> execute [
 	result inspect
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismReviewSummaryCommand >> selectedItemIn: aToolContext [
 	^ aToolContext selectedClassItems first actualObject  
 ]

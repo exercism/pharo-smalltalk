@@ -1,6 +1,6 @@
-Extension { #name : #DiskStore }
+Extension { #name : 'DiskStore' }
 
-{ #category : #'*ExercismTests' }
+{ #category : '*ExercismTests' }
 DiskStore class >> currentFileSystem: fileSystem during: aBlock [
 	| backupFileSystem |
 	backupFileSystem := self currentFileSystem.

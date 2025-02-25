@@ -2,8 +2,8 @@
 I hold information pertinent to do a student solution review
 "
 Class {
-	#name : #ExercismReview,
-	#superclass : #Object,
+	#name : 'ExercismReview',
+	#superclass : 'Object',
 	#instVars : [
 		'codeSnapshot',
 		'submission'
@@ -11,10 +11,12 @@ Class {
 	#classVars : [
 		'DefaultPath'
 	],
-	#category : #'ExercismDev-Core'
+	#category : 'ExercismDev-Core',
+	#package : 'ExercismDev',
+	#tag : 'Core'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 ExercismReview class >> for: anExercismSubmission with: anMCSnapshot [
 	^self new
 		submission: anExercismSubmission;
@@ -22,32 +24,32 @@ ExercismReview class >> for: anExercismSubmission with: anMCSnapshot [
 		yourself 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismReview >> codeSnapshot [
 	^ codeSnapshot
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismReview >> codeSnapshot: anObject [
 	codeSnapshot := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismReview >> referenceSnapshot [
 	^ self submission exercise snapshot
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismReview >> reviewName [
 	^self submission user, ' : ', self submission exerciseId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismReview >> submission [
 	^ submission
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismReview >> submission: anObject [
 	submission := anObject
 ]

@@ -2,27 +2,29 @@
 A command for retrieving infomation for a review
 "
 Class {
-	#name : #ExercismReviewCommand,
-	#superclass : #ExercismFetchCommand,
+	#name : 'ExercismReviewCommand',
+	#superclass : 'ExercismFetchCommand',
 	#instVars : [
 		'reviewId'
 	],
-	#category : #'ExercismDev-Core'
+	#category : 'ExercismDev-Core',
+	#package : 'ExercismDev',
+	#tag : 'Core'
 }
 
-{ #category : #command }
+{ #category : 'command' }
 ExercismReviewCommand class >> from: aClient reviewId: reviewId [
 	^(self client: aClient)
 		reviewId: reviewId;
 		yourself
 ]
 
-{ #category : #command }
+{ #category : 'command' }
 ExercismReviewCommand class >> reviewId: reviewId [
 	^self from: ExercismHttpClient new reviewId: reviewId
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismReviewCommand >> createSnapshotFor: submission [
 	| snapshot |
 	
@@ -35,7 +37,7 @@ ExercismReviewCommand >> createSnapshotFor: submission [
 	
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ExercismReviewCommand >> execute [
 	
 	^self executeCheckingToken: [ | submission snapshot |
@@ -48,7 +50,7 @@ ExercismReviewCommand >> execute [
 	]
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismReviewCommand >> retrieveLatestData [
 	| responseString |
 		
@@ -56,12 +58,12 @@ ExercismReviewCommand >> retrieveLatestData [
 	^ STON fromString: responseString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismReviewCommand >> reviewId [
 	^ reviewId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismReviewCommand >> reviewId: anObject [
 	reviewId := anObject
 ]

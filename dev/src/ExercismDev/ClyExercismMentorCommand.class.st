@@ -2,19 +2,21 @@
 Menu command for launching a mentor review browser
 "
 Class {
-	#name : #ClyExercismMentorCommand,
-	#superclass : #ClyExercismDevCommand,
-	#category : #'ExercismDev-Menus'
+	#name : 'ClyExercismMentorCommand',
+	#superclass : 'ClyExercismDevCommand',
+	#category : 'ExercismDev-Menus',
+	#package : 'ExercismDev',
+	#tag : 'Menus'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 ClyExercismMentorCommand class >> contextMenuOrder [
 	<classAnnotationDependency>
 	
 		^10
 ]
 
-{ #category : #'world menu' }
+{ #category : 'world menu' }
 ClyExercismMentorCommand class >> worldMenuCommandOn: aBuilder [
 	<worldMenu>
 	
@@ -30,22 +32,22 @@ ClyExercismMentorCommand class >> worldMenuCommandOn: aBuilder [
 		"withSeparatorAfter "
 ]
 
-{ #category : #menus }
+{ #category : 'menus' }
 ClyExercismMentorCommand >> defaultMenuIconName [
 	^#recentMessages
 ]
 
-{ #category : #menus }
+{ #category : 'menus' }
 ClyExercismMentorCommand >> defaultMenuItemName [
 	^'View Mentee Solution...'
 ]
 
-{ #category : #menus }
+{ #category : 'menus' }
 ClyExercismMentorCommand >> description [
 	^'View a mentee solution in a shadow browser'
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ClyExercismMentorCommand >> execute [
 	ExercismManager default viewMenteeSolution
 ]

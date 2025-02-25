@@ -1,10 +1,12 @@
 Class {
-	#name : #ExercismSubmitCommandTest,
-	#superclass : #TestCase,
-	#category : #'ExercismTests-UnitTests'
+	#name : 'ExercismSubmitCommandTest',
+	#superclass : 'TestCase',
+	#category : 'ExercismTests-UnitTests',
+	#package : 'ExercismTests',
+	#tag : 'UnitTests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismSubmitCommandTest >> testSubmitHelloWorldPackageWithMock [
 	| submitCmd mockHttpClient mockExercise |
 	
