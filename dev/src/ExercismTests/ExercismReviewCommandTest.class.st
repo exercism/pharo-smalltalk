@@ -1,10 +1,12 @@
 Class {
-	#name : #ExercismReviewCommandTest,
-	#superclass : #TestCase,
-	#category : #'ExercismTests-UnitTests'
+	#name : 'ExercismReviewCommandTest',
+	#superclass : 'TestCase',
+	#category : 'ExercismTests-UnitTests',
+	#package : 'ExercismTests',
+	#tag : 'UnitTests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 ExercismReviewCommandTest >> tearDown [
 	"all known mock mutations should be recovered"
 	ExercismExercise recoverFromGHMutation.
@@ -12,7 +14,7 @@ ExercismReviewCommandTest >> tearDown [
 	super tearDown
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismReviewCommandTest >> testExecuteReview [
 
 	| cmd aReview solutionData mockHttpClient mockReader baseUrl |

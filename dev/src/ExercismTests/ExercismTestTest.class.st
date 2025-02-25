@@ -1,10 +1,12 @@
 Class {
-	#name : #ExercismTestTest,
-	#superclass : #TestCase,
-	#category : #'ExercismTests-UnitTests'
+	#name : 'ExercismTestTest',
+	#superclass : 'TestCase',
+	#category : 'ExercismTests-UnitTests',
+	#package : 'ExercismTests',
+	#tag : 'UnitTests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismTestTest >> testVerifySelectorUsageDetection [
 	self assert: true equals: true. "a selector to detect".
 	

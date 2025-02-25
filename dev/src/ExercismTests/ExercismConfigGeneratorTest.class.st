@@ -1,10 +1,12 @@
 Class {
-	#name : #ExercismConfigGeneratorTest,
-	#superclass : #TestCase,
-	#category : #'ExercismTests-UnitTests'
+	#name : 'ExercismConfigGeneratorTest',
+	#superclass : 'TestCase',
+	#category : 'ExercismTests-UnitTests',
+	#package : 'ExercismTests',
+	#tag : 'UnitTests'
 }
 
-{ #category : #'set up' }
+{ #category : 'set up' }
 ExercismConfigGeneratorTest >> modifyHelloWorldDataAtJsonNode: exercisesJsonNode [
 
 	|helloWorldJson| 
@@ -13,7 +15,7 @@ ExercismConfigGeneratorTest >> modifyHelloWorldDataAtJsonNode: exercisesJsonNode
 	helloWorldJson at: 'name' put: 'Hello World 2'.
 ]
 
-{ #category : #'set up' }
+{ #category : 'set up' }
 ExercismConfigGeneratorTest >> rewriteAlteredConfigJson: jsonDict atFile: cfgFile [
 
 	|outPutJsonString|
@@ -28,7 +30,7 @@ ExercismConfigGeneratorTest >> rewriteAlteredConfigJson: jsonDict atFile: cfgFil
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismConfigGeneratorTest >> testGenerateConfigFrom [
 	
 	|dirReference cfgFile jsonDict|
@@ -45,7 +47,7 @@ ExercismConfigGeneratorTest >> testGenerateConfigFrom [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismConfigGeneratorTest >> testGenerateConfigHeader [
 	
 	|dirReference cfgFile jsonDict|
@@ -74,7 +76,7 @@ ExercismConfigGeneratorTest >> testGenerateConfigHeader [
 	self assert: ((jsonDict at: 'test_runner') at: 'average_run_time') equals: 1.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismConfigGeneratorTest >> testGenerateConfigKeyFeatures [
 	
 	|dirReference cfgFile jsonDict|
@@ -90,7 +92,7 @@ ExercismConfigGeneratorTest >> testGenerateConfigKeyFeatures [
 	)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismConfigGeneratorTest >> testGenerateConfigPractiseExercises [
 	
 	|dirReference jsonDict practiceExercises|
@@ -110,7 +112,7 @@ ExercismConfigGeneratorTest >> testGenerateConfigPractiseExercises [
 	self assert: ((practiceExercises first at: #slug) < (practiceExercises second at: #slug)).
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismConfigGeneratorTest >> testGenerateConfigTags [
 	
 	|dirReference cfgFile jsonDict|
@@ -140,7 +142,7 @@ ExercismConfigGeneratorTest >> testGenerateConfigTags [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismConfigGeneratorTest >> testUpdateConfigFromFor [
 
 	|dirReference cfgFile jsonDict hwExericeJson|
@@ -165,7 +167,7 @@ ExercismConfigGeneratorTest >> testUpdateConfigFromFor [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismConfigGeneratorTest >> testUpdateConfigFromForExerciseDoNotExist [
 
 	|dirReference cfgFile |
@@ -181,7 +183,7 @@ ExercismConfigGeneratorTest >> testUpdateConfigFromForExerciseDoNotExist [
 			self assert: ex messageText equals: 'Could not find exercise: random-slug343' ].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismConfigGeneratorTest >> testUpdateConfigFromForNewExercise [
 
 	|dirReference cfgFile jsonDict alteredCollection|

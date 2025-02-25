@@ -23,6 +23,7 @@ Class {
 	#instVars : [
 		'numberGenerated',
 		'exerciseDirReference',
+		'existingHint',
 		'testJson',
 		'regenerateExisting'
 	],
@@ -159,6 +160,18 @@ ExercismExerciseGenerator >> exerciseVariableName [
 	^ self testNameCamelCased asValidSelector asString
 ]
 
+{ #category : 'accessing' }
+ExercismExerciseGenerator >> existingHint [
+
+	^ existingHint ifNil: [ 'TBD' ] ifNotNil: [ existingHint ]
+]
+
+{ #category : 'accessing' }
+ExercismExerciseGenerator >> existingHint: aString [
+
+	existingHint := aString
+]
+
 { #category : 'generation' }
 ExercismExerciseGenerator >> generateExerciseCommentFor: testClass [
 	| comment  |
@@ -168,7 +181,7 @@ ExercismExerciseGenerator >> generateExerciseCommentFor: testClass [
 			<< '# ' << self testNameCamelCased; cr; cr;
 			<< self testDescription; cr;
 			<< '## Hint'; cr; cr;
-			<< 'TBD'; cr
+			<< self existingHint; cr
 	].
 	"write comment to test class"
 	testClass comment: comment.
@@ -190,7 +203,10 @@ ExercismExerciseGenerator >> generateExerciseFrom: aFileSystemReference [
 	
 	self canOverwriteExisting 
 	 ifFalse: [ ^self log: 'exercise test class already exists (skipping).' for: self testClassName ].
-
+	
+	"before generating test class, read existing hint, in case of re-generation"
+	self setupHintFromExistingTestClass.
+	
 	testClass := self generateTestClass.					
 	self generateSetupFor: testClass.
 	self generateTestMethodsFor: testClass.
@@ -401,6 +417,20 @@ ExercismExerciseGenerator >> regenerateExistingExercisesFrom: filePathReference 
 	self 
 		traceCr: ('Existing exercises sucessfully regenerated with: {1} Tests!'
 		format: {self numberGenerated})
+]
+
+{ #category : 'generation' }
+ExercismExerciseGenerator >> setupHintFromExistingTestClass [
+	
+	|existingClass|
+	
+	"reset existing hint"
+	self existingHint: nil.
+	
+	"do not setup anything, if class do not exist"
+	existingClass := self class environment at: self testClassName asSymbol ifAbsent: [^ self].
+	
+	existingClass exercise hintText ifNotEmpty: [:aText | self existingHint: aText ]
 ]
 
 { #category : 'internal' }

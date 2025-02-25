@@ -11,17 +11,19 @@ to simulate calls to external processes. Generated exercises are written to an i
 - lineEnding: An OS specific line ending character i.e. carrage-return and/or line-feed depeding on the OS.
 "
 Class {
-	#name : #ExercismGeneratorTest,
-	#superclass : #TestCase,
+	#name : 'ExercismGeneratorTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'instance',
 		'memoryFileReference',
 		'lineEnding'
 	],
-	#category : #'ExercismTests-UnitTests'
+	#category : 'ExercismTests-UnitTests',
+	#package : 'ExercismTests',
+	#tag : 'UnitTests'
 }
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 ExercismGeneratorTest >> activeExercisesWithPackageDo: aBlock [
 
 
@@ -32,7 +34,7 @@ ExercismGeneratorTest >> activeExercisesWithPackageDo: aBlock [
 	]
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 ExercismGeneratorTest >> assertAllActiveExerciseClassesWithSolutionsExists [
 
 self	activeExercisesWithPackageDo: [:exPackage | 
@@ -44,7 +46,7 @@ self	activeExercisesWithPackageDo: [:exPackage |
 	]
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 ExercismGeneratorTest >> assertAllActiveExerciseTestClassesExists [
 
 self	activeExercisesWithPackageDo: [:exPackage | 
@@ -60,7 +62,7 @@ self	activeExercisesWithPackageDo: [:exPackage |
 		]
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 ExercismGeneratorTest >> assertExerciseTests [
 
 	| file exerciseSourceCode|
@@ -79,7 +81,7 @@ ExercismGeneratorTest >> assertExerciseTests [
 		description: 'Parsing of souce code of Exercism test should not raise parsing exception and definition can be loaded.'.
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 ExercismGeneratorTest >> assertHints [
 	
 	| file |
@@ -91,7 +93,7 @@ ExercismGeneratorTest >> assertHints [
 		equals: (self expectedHintsContents withLineEndings: lineEnding)
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 ExercismGeneratorTest >> assertSolution [
 
 	| file exerciseSourceCode|
@@ -110,7 +112,7 @@ ExercismGeneratorTest >> assertSolution [
 		description: 'Parsing of souce code of Exercism solution should not raise parsing exception and definition can be loaded.'.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismGeneratorTest >> expectedHintsContents [
 
 	^ 'In Pharo, classes are objects that can have instance and class methods, however unlike HelloWorld the tests for TwoFer have been written to call instance methods. Typically class methods are used for constructing new objects (like a contructor in other languages).
@@ -120,7 +122,7 @@ While referring to methods, its useful to know that a method which has no parame
 There is also a third type of method, binary, which takes only 1 parameter and uses a symbol(s) for a name (typically a mathematical one like: +, -, & etc).'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismGeneratorTest >> expectedTwoFerSolutionContentsSubstrings [
 
 	^ Array 
@@ -133,7 +135,7 @@ ExercismGeneratorTest >> expectedTwoFerSolutionContentsSubstrings [
 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismGeneratorTest >> expectedTwoFerTestContentsSubstrings [
 
 	^ Array 
@@ -143,7 +145,7 @@ ExercismGeneratorTest >> expectedTwoFerTestContentsSubstrings [
 		with: 'ExercismTest'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 ExercismGeneratorTest >> setUp [
 
 	super setUp.
@@ -159,14 +161,14 @@ ExercismGeneratorTest >> setUp [
 		
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 ExercismGeneratorTest >> tearDown [ 
 
 	instance := nil.
 	super tearDown
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismGeneratorTest >> testCheckOrUpdateConfiglet [
 	|memFileSystem|
 	instance osSubProcess: FailedTestOSProcess.
@@ -195,7 +197,7 @@ ExercismGeneratorTest >> testCheckOrUpdateConfiglet [
 	]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismGeneratorTest >> testFailedGenerateSignalsException [
 
 	instance osSubProcess: FailedTestOSProcess.
@@ -205,7 +207,7 @@ ExercismGeneratorTest >> testFailedGenerateSignalsException [
 		description: 'Did not signal an error after succesful generation'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismGeneratorTest >> testFetchConfiglet [
 
 	instance osSubProcess: SuccessfulTestOSProcess.
@@ -224,7 +226,7 @@ ExercismGeneratorTest >> testFetchConfiglet [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismGeneratorTest >> testGenerate [
 
 	instance osSubProcess: SuccessfulTestOSProcess.
@@ -236,7 +238,7 @@ ExercismGeneratorTest >> testGenerate [
 	self assertSolution
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismGeneratorTest >> testGenerateForExercise [
 
 	instance osSubProcess: SuccessfulTestOSProcess.
@@ -248,7 +250,7 @@ ExercismGeneratorTest >> testGenerateForExercise [
 	self assertSolution
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismGeneratorTest >> testGenerateSourceFilesForActiveExercises [
 
 	instance osSubProcess: SuccessfulTestOSProcess.
@@ -261,7 +263,7 @@ ExercismGeneratorTest >> testGenerateSourceFilesForActiveExercises [
 	self assertAllActiveExerciseTestClassesExists.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismGeneratorTest >> testGeneratorKebabCase [
 	
 	self assert: 'HelloWorld' asKebabCase equals: 'hello-world'.
@@ -271,7 +273,7 @@ ExercismGeneratorTest >> testGeneratorKebabCase [
 	self assert: '' asKebabCase equals: ''
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismGeneratorTest >> testSuccessfulGenerateDoesNotSignalException [
 
 	instance osSubProcess: SuccessfulTestOSProcess.

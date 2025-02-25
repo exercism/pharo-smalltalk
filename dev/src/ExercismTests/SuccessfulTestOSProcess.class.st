@@ -16,12 +16,14 @@ Answers `true`. I always assume my external command has succeeded.
 
 "
 Class {
-	#name : #SuccessfulTestOSProcess,
-	#superclass : #MockTestOSProcess,
-	#category : #'ExercismTests-Mock'
+	#name : 'SuccessfulTestOSProcess',
+	#superclass : 'MockTestOSProcess',
+	#category : 'ExercismTests-Mock',
+	#package : 'ExercismTests',
+	#tag : 'Mock'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 SuccessfulTestOSProcess >> isSuccess [
 
 	^ true

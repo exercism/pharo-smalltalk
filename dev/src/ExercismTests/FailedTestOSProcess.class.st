@@ -15,12 +15,14 @@ process calls or side effects and return `self`.
 Answers `false`. I always assume my external command has failed.
 "
 Class {
-	#name : #FailedTestOSProcess,
-	#superclass : #MockTestOSProcess,
-	#category : #'ExercismTests-Mock'
+	#name : 'FailedTestOSProcess',
+	#superclass : 'MockTestOSProcess',
+	#category : 'ExercismTests-Mock',
+	#package : 'ExercismTests',
+	#tag : 'Mock'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 FailedTestOSProcess >> isSuccess [
 
 	^ false
