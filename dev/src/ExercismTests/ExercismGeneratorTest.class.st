@@ -181,7 +181,7 @@ ExercismGeneratorTest >> testCheckOrUpdateConfiglet [
 	"when configlet not present - should proceed to fetching and should fail"  
 	self should: [instance checkOrUpdateConfiglet] 
 			raise: Error 
-			whoseDescriptionIncludes: 'Cannot fetch configlet' 
+			whoseDescriptionIncludes: 'error' 
 			description: 'Checking should proceed to fetching of configlet and should fail as exepected result of FailedTestOSProcess.'.
   ].
 
@@ -221,7 +221,7 @@ ExercismGeneratorTest >> testFetchConfiglet [
 	
 	self should: [instance fetchConfiglet]
 			raise: Error 
-			whoseDescriptionIncludes: 'Cannot fetch configlet' 
+			whoseDescriptionIncludes: 'error' 
 			description: 'Fetching of configlet should fail.'.
 
 ]

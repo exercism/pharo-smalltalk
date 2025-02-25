@@ -10,8 +10,20 @@ Class {
 }
 
 { #category : 'mocking' }
+MockTestOSProcess >> argVArguments [
+
+	^ #()
+]
+
+{ #category : 'mocking' }
 MockTestOSProcess >> arguments: argList [
 "do nothing"
+]
+
+{ #category : 'testing' }
+MockTestOSProcess >> closeAndCleanStreams [
+	
+	"do nothing in mock"
 ]
 
 { #category : 'mocking' }
@@ -40,6 +52,24 @@ MockTestOSProcess >> redirectStdout [
 MockTestOSProcess >> runAndWait [ 
 	"do nothing"
 	^ self 
+]
+
+{ #category : 'mocking' }
+MockTestOSProcess >> stderrStream [
+	
+	^ self
+]
+
+{ #category : 'mocking' }
+MockTestOSProcess >> stdoutStream [
+	
+	^ self
+]
+
+{ #category : 'mocking' }
+MockTestOSProcess >> upToEndOfFile [
+
+	^ 'Ouput generated.'
 ]
 
 { #category : 'mocking' }
