@@ -1,6 +1,6 @@
-Extension { #name : #String }
+Extension { #name : 'String' }
 
-{ #category : #'*ExercismDev' }
+{ #category : '*ExercismDev' }
 String >> asValidKeyword [
 	"Answer the receiver as a Symbol, which is a valid method keyword or unary message name"
 

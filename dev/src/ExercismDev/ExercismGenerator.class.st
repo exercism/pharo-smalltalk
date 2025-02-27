@@ -63,8 +63,8 @@ ExercismGenerator new
 - DefaultPath: The default file path that Tonel files will be written to.
 "
 Class {
-	#name : #ExercismGenerator,
-	#superclass : #Object,
+	#name : 'ExercismGenerator',
+	#superclass : 'Object',
 	#instVars : [
 		'codeExporter',
 		'exercismExercise',
@@ -75,10 +75,12 @@ Class {
 	#classVars : [
 		'DefaultPath'
 	],
-	#category : #'ExercismDev-Generator'
+	#category : 'ExercismDev-Generator',
+	#package : 'ExercismDev',
+	#tag : 'Generator'
 }
 
-{ #category : #helper }
+{ #category : 'helper' }
 ExercismGenerator class >> defaultPath [
 	
 	^ DefaultPath ifNil: [ 
@@ -90,12 +92,12 @@ ExercismGenerator class >> defaultPath [
 	]
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 ExercismGenerator class >> defaultPath: pathString [
 	^ DefaultPath := pathString
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 ExercismGenerator class >> exercismRepositoryPath [
 	
 	|repository|
@@ -103,7 +105,7 @@ ExercismGenerator class >> exercismRepositoryPath [
 	^ repository location pathString
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
 ExercismGenerator class >> generate [
 	"This is the entry point for generating exercism compatible source files that can be checked into
 	the exercism/pharo project. e.g. self generate"
@@ -121,7 +123,7 @@ ExercismGenerator class >> generate [
 	]
 ]
 
-{ #category : #'accessing - platform' }
+{ #category : 'accessing - platform' }
 ExercismGenerator class >> subProcessClass [
 
 	OSPlatform current isWindows ifTrue: [ 
@@ -129,7 +131,7 @@ ExercismGenerator class >> subProcessClass [
 	^ self class environment at: #OSSUnixSubprocess 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismGenerator >> basePathReference [
 	
 	"root directory of Pharo track where config.json is located, 
@@ -143,7 +145,7 @@ ExercismGenerator >> basePathReference [
 	^ basePath asFileReference
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 ExercismGenerator >> checkOrUpdateConfiglet [
 
 	(self configletRootReference / 'configlet') isFile
@@ -152,13 +154,13 @@ ExercismGenerator >> checkOrUpdateConfiglet [
 	self fetchConfiglet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismGenerator >> codeExporter: anObject [
 
 	codeExporter := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismGenerator >> configletRootReference [
 	
 	|configletPath|
@@ -168,7 +170,7 @@ ExercismGenerator >> configletRootReference [
 	^ configletPath asFileReference / 'bin'
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 ExercismGenerator >> createTagSnapshotFor: packageOrTag [
 	| parentSnapshot |
 	
@@ -181,20 +183,20 @@ ExercismGenerator >> createTagSnapshotFor: packageOrTag [
 					[ :mc | mc className isNil or: [ mc actualClass category endsWith: packageOrTag name ] ])
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 ExercismGenerator >> exerciseDirReferenceFrom: exerciseName [
 	"returns dir reference to exercise dir - e.g. /exercises/two-fer/"
 	
 	^ self exercisesDirReference asFileReference / exerciseName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismGenerator >> exercisesDirReference [
 
 	^ exercisesDirReference
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismGenerator >> exercisesDirReference: aFileReference [
  
 	exercisesDirReference := aFileReference.
@@ -203,7 +205,7 @@ ExercismGenerator >> exercisesDirReference: aFileReference [
 	self setupCodeExporterFromDirReference.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismGenerator >> exercismExercise [
 
 	^ exercismExercise 
@@ -214,29 +216,28 @@ ExercismGenerator >> exercismExercise [
 			]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismGenerator >> exercismExercise: anExerciseClass [
 
 	exercismExercise := anExerciseClass 
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 ExercismGenerator >> fetchConfiglet [
 	
 	|result |		
 	result := self osSubProcess new
 		workingDirectory: self configletRootReference fullName;
-		command: 'fetch-configlet';
+		command: './fetch-configlet';
 		arguments: #();
 		redirectStdout;
 		runAndWait.
 	
-	result isSuccess ifFalse: [ 
-			self error: 'Cannot fetch configlet - ' , result lastError printString ].
+	self printAndHandleProcessResult: result.
 	self traceCr: 'Configlet fetching - done!'
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
 ExercismGenerator >> generate [
 	"this will regenerate all active exercises"
 	
@@ -250,7 +251,7 @@ ExercismGenerator >> generate [
 	self runConfigletCommandsForActiveExercices.
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 ExercismGenerator >> generateCustomDataFor: anExercismExercise to: destinationDirectory [
 	"Generate markdown hints, that exercism configlet will pickup for readme.md files
 	see: https://github.com/exercism/docs/blob/master/language-tracks/exercises/anatomy/readmes.md#generating-a-readme"
@@ -275,7 +276,38 @@ ExercismGenerator >> generateCustomDataFor: anExercismExercise to: destinationDi
 					lf ]]
 ]
 
-{ #category : #generation }
+{ #category : 'helper' }
+ExercismGenerator >> generateEmptyTemplateSolutionFileFor: packageOrTag to: exerciseDirectoryRef [
+
+	"Generate empty solution file in Tonel format, that is commented and serves for user as template"
+	| exerciseClassName exercise|
+	exercise := self exercismExercise find: (self exercismExercise exerciseNameFrom: packageOrTag) ifAbsent: [].
+	exerciseClassName := exercise exerciseClassName.
+	(exerciseDirectoryRef / exerciseClassName, 'class.st') ensureCreateFile
+		writeStreamDo: [ :stream | 	
+			stream 
+				<< '"';cr;
+				<< 'In online editor: Put your solution Pharo source code here using Tonel v3 format.'; cr;
+				<< 'Note: Desired source code output format is used automatically, when submitting solution from Pharo.'; cr;
+				<< 'For example: '; cr; cr;
+			<< 'Class {'; cr;
+			<< '#name : '''; << exerciseClassName; << ''','; cr;
+			<< '#superclass : ''Object'','; cr;
+			<< '#instVars : [ ],'; cr;
+ 			<< '#classVars : [ ],'; cr;
+			<< '#category : '''; << packageOrTag name; << ''','; cr;  
+			<< '#package : '''; << packageOrTag name; << ''''; cr;
+			<< '}'; cr; cr;
+			<< 'put your methods here...'; cr;
+			<< '{ #category : ''api'' }'; cr;
+			<< exerciseClassName; << ' class >> methodUsedInTest ['; cr;
+			<< '    your method source code...'; cr;
+			<< ']'; cr;
+			<< '"'; cr.
+	]
+]
+
+{ #category : 'generation' }
 ExercismGenerator >> generateForExercise: slugName [
 
 	| exerciseToGenerate |
@@ -294,14 +326,14 @@ ExercismGenerator >> generateForExercise: slugName [
 	self runDocsAndMetadataUpdateForExercise: slugName.
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 ExercismGenerator >> generateReadmeHintAndCustomDataOf: testClass to: metaDirectoryRef [
 	
 	self generateReadmeHintFor: testClass exercise to: metaDirectoryRef.
 	testClass isCustom ifTrue: [ self generateCustomDataFor: testClass exercise to: metaDirectoryRef ]
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 ExercismGenerator >> generateReadmeHintFor: anExercismExercise to: destinationDirectory [
 	"Generate markdown hints, that exercism configlet will pickup for readme.md files
 	see: https://github.com/exercism/docs/blob/master/language-tracks/exercises/anatomy/readmes.md#generating-a-readme"
@@ -316,7 +348,7 @@ ExercismGenerator >> generateReadmeHintFor: anExercismExercise to: destinationDi
 			stream nextPutAll: hint ]
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 ExercismGenerator >> generateSourceFilesFor: packageOrTag [
 	"Generate the Tonel source files for a package (normally a tag). Answer the exercise directory reference"
 
@@ -336,6 +368,9 @@ ExercismGenerator >> generateSourceFilesFor: packageOrTag [
 	"move files to root solution directory and remove unnecessary package dir"
 	self moveSolutionFilesOfPackage: packageOrTag to: solutionDirectoryRef. 
 
+	"create empty solution file for solving exercise from scratch"
+	self generateEmptyTemplateSolutionFileFor: packageOrTag to: exerciseDirectoryRef. 
+	
 	"Move the test file down to the exerciseDirectory"
 	testClasses := self testClassesOfPackage: packageOrTag.	
 	self moveTestClasses: testClasses from: solutionDirectoryRef to: exerciseDirectoryRef.
@@ -348,7 +383,7 @@ ExercismGenerator >> generateSourceFilesFor: packageOrTag [
 	
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
 ExercismGenerator >> generateSourceFilesForActiveExercises [
 
 	self exercismExercise allExercises
@@ -358,7 +393,7 @@ ExercismGenerator >> generateSourceFilesForActiveExercises [
 		]
 ]
 
-{ #category : #initialize }
+{ #category : 'initialize' }
 ExercismGenerator >> initialize [ 
 	
 	super initialize.
@@ -366,7 +401,7 @@ ExercismGenerator >> initialize [
 
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 ExercismGenerator >> moveSolutionFilesOfPackage: packageOrTag to: solutionDirectoryRef [
 
 	"move files to root solution directory and remove unnecessary package dir"
@@ -379,7 +414,7 @@ ExercismGenerator >> moveSolutionFilesOfPackage: packageOrTag to: solutionDirect
 	(solutionDirectoryRef / 'package.st') delete
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 ExercismGenerator >> moveTestClasses: aClasses from: solutionDirectoryRef to: exerciseDirectoryRef [ 
 
 	aClasses do: [ :tc |
@@ -389,7 +424,7 @@ ExercismGenerator >> moveTestClasses: aClasses from: solutionDirectoryRef to: ex
 	]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismGenerator >> osSubProcess [
 
 	^ osSubProcess 
@@ -399,20 +434,39 @@ ExercismGenerator >> osSubProcess [
 		  osSubProcess ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismGenerator >> osSubProcess: anOsSubProcess [ 
 
 	osSubProcess := anOsSubProcess
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 ExercismGenerator >> prepareExerciseDirectory: exerciseDirReference [
 	
 	exerciseDirReference ensureCreateDirectory.
 	exerciseDirReference deleteAll.
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
+ExercismGenerator >> printAndHandleProcessResult: processResult [
+
+[
+	self traceCr: processResult.
+	self traceCr: ('Command arguments: {1}' format: { processResult argVArguments asString. }).
+	processResult isSuccess
+		ifTrue: [
+			self traceCr: 'Command exited correctly with output: '
+				, processResult stdoutStream upToEndOfFile ]
+		ifFalse: [
+			| errString |
+			errString := 'Command resulted with error: {1}.' format:
+				             { processResult stderrStream upToEndOfFile }.
+			self traceCr: errString.
+			self error: errString ] 
+] ensure: [ processResult closeAndCleanStreams ]
+]
+
+{ #category : 'generation' }
 ExercismGenerator >> runConfigletCommandsForActiveExercices [
 	
 		self exercismExercise allExercises
@@ -423,62 +477,60 @@ ExercismGenerator >> runConfigletCommandsForActiveExercices [
 		]
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
 ExercismGenerator >> runDocsAndMetadataUpdateForExercise: slugName [
 	| result |	
 		
 	result := self osSubProcess new
-		command: 'configlet';
-		workingDirectory: self configletRootReference fullName;
+		command: './bin/configlet';
+		workingDirectory: self basePathReference fullName;
 		arguments: {'sync'. '--docs'. '--filepaths'. '--metadata'. '-uy'. '-e'. slugName.} asArray;
 		redirectStdout;
 		runAndWait.
 	
-	result isSuccess ifFalse: [ 
-			self error: ('Failed running "configlet sync --docs --filepaths --metadata -uy -e {1}" with result: {2}' format: { slugName. result lastError printString.})]
+	self printAndHandleProcessResult: result.
 ]
 
-{ #category : #generation }
+{ #category : 'generation' }
 ExercismGenerator >> runTestSpecificationsUpdateForExercise: slugName [
 	| result |	
 		
 	result := self osSubProcess new
-		command: 'configlet';
-		workingDirectory: self configletRootReference fullName;
+		command: './bin/configlet';
+		workingDirectory: self basePathReference fullName;
 		arguments: {'sync'. '-u'. '--tests'. 'include'. '-e'. slugName.} asArray;
 		redirectStdout;
 		runAndWait.
 	
-	result isSuccess ifFalse: [ 
-			self error: ('Failed running "configlet sync -u --tests include -e {1}" with result: {2}' format: { slugName. result lastError printString.})]
+	self printAndHandleProcessResult: result.
 ]
 
-{ #category : #initialize }
+{ #category : 'initialize' }
 ExercismGenerator >> setupCodeExporterFromDirReference [
 
 	"this will set code exporter when directory for exercise export is changed"
 	self codeExporter: (ExercismCodeExporter on: self exercisesDirReference)
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 ExercismGenerator >> testClassesOfPackage: packageOrTag [
 
 	^ packageOrTag classes select: [ :cls | cls superclass = ExercismTest ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismGenerator >> updateConfig [
 
 	^ updateConfig
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismGenerator >> updateConfig: aBool [
 
 	updateConfig := aBool
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 ExercismGenerator >> updateOrCreateConfigJsonFor: slugName [
 
 	"create new config file, if config.json completely missing"

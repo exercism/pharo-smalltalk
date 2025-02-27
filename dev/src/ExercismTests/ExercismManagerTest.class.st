@@ -2,12 +2,14 @@
 An ExercismManagerTest is a test class for testing the behavior of ExercismManager
 "
 Class {
-	#name : #ExercismManagerTest,
-	#superclass : #TestCase,
-	#category : #'ExercismTests-UnitTests'
+	#name : 'ExercismManagerTest',
+	#superclass : 'TestCase',
+	#category : 'ExercismTests-UnitTests',
+	#package : 'ExercismTests',
+	#tag : 'UnitTests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismManagerTest >> testParseExerciseProposal [
 	"Ensure we can parse the proposed exercism download command, and extract the exercise id"
 

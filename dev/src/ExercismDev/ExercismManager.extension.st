@@ -1,6 +1,6 @@
-Extension { #name : #ExercismManager }
+Extension { #name : 'ExercismManager' }
 
-{ #category : #'*ExercismDev' }
+{ #category : '*ExercismDev' }
 ExercismManager >> browseAsDifference: result [
 	| referenceSnapshot |
 	referenceSnapshot := result referenceSnapshot.
@@ -8,13 +8,13 @@ ExercismManager >> browseAsDifference: result [
 		browse
 ]
 
-{ #category : #'*ExercismDev' }
+{ #category : '*ExercismDev' }
 ExercismManager >> browseAsMCSnaphot: result [
 	(MCSnapshotBrowser forSnapshot: result codeSnapshot)
 		showLabelled: ('Exercism Solution ({1})' format: {result reviewName})
 ]
 
-{ #category : #'*ExercismDev' }
+{ #category : '*ExercismDev' }
 ExercismManager >> browseAsRingModel: result [
 	| browser pkgs rgEnv |
 	rgEnv := result codeSnapshot asExRingEnvironment.
@@ -33,7 +33,7 @@ ExercismManager >> browseAsRingModel: result [
 		open
 ]
 
-{ #category : #'*ExercismDev' }
+{ #category : '*ExercismDev' }
 ExercismManager >> dependencyGraph [
 	
 	^ ExercismExercise practiceExercises
@@ -41,7 +41,7 @@ ExercismManager >> dependencyGraph [
 	
 ]
 
-{ #category : #'*ExercismDev' }
+{ #category : '*ExercismDev' }
 ExercismManager class >> editorAttributes [
 
 	^ {'indent_style' -> 'space'.
@@ -50,7 +50,7 @@ ExercismManager class >> editorAttributes [
 	} asOrderedDictionary
 ]
 
-{ #category : #'*ExercismDev' }
+{ #category : '*ExercismDev' }
 ExercismManager class >> filesAttributes [
 
 	^ {'solution' -> #('%{pascal_slug}.class.st').
@@ -60,7 +60,7 @@ ExercismManager class >> filesAttributes [
 	} asOrderedDictionary
 ]
 
-{ #category : #'*ExercismDev' }
+{ #category : '*ExercismDev' }
 ExercismManager >> shareExercisePasteEE: package [
 	| source i result |
 	package = self class legacyExercismPackage
@@ -98,7 +98,7 @@ ExercismManager >> shareExercisePasteEE: package [
 	^ (STONJSON fromString: result) at: 'link'
 ]
 
-{ #category : #'*ExercismDev' }
+{ #category : '*ExercismDev' }
 ExercismManager class >> statusAttributes [
 
 	^ {'concept_exercises' -> false.
@@ -108,12 +108,12 @@ ExercismManager class >> statusAttributes [
 	} asOrderedDictionary
 ]
 
-{ #category : #'*ExercismDev' }
+{ #category : '*ExercismDev' }
 ExercismManager class >> trackActive [
 	^true
 ]
 
-{ #category : #'*ExercismDev' }
+{ #category : '*ExercismDev' }
 ExercismManager class >> trackConfigHeader [
 	^ {'track_id' -> self trackId.
 		'language' -> 'Pharo'.
@@ -128,7 +128,7 @@ ExercismManager class >> trackConfigHeader [
 		}
 ]
 
-{ #category : #'*ExercismDev' }
+{ #category : '*ExercismDev' }
 ExercismManager class >> trackConfigKeyFeatures [
 	^ {
       {
@@ -164,7 +164,7 @@ ExercismManager class >> trackConfigKeyFeatures [
 	}
 ]
 
-{ #category : #'*ExercismDev' }
+{ #category : '*ExercismDev' }
 ExercismManager class >> trackConfigTags [
 	^ {
     'paradigm/object_oriented'.
@@ -183,12 +183,12 @@ ExercismManager class >> trackConfigTags [
 	}
 ]
 
-{ #category : #'*ExercismDev' }
+{ #category : '*ExercismDev' }
 ExercismManager class >> trackDescription [
 	^ 'Pharo is a fun and immersive Smalltalk programming experience. Featuring a clean object-oriented language and a powerful user extendable environment, it focuses on simplicity and immediate feedback (think IDE and OS rolled into one). Its elegance and productivity give it wide reach into banking, education, web development and even robotics.'
 ]
 
-{ #category : #'*ExercismDev' }
+{ #category : '*ExercismDev' }
 ExercismManager >> viewMenteeSolution [
 	| reviewId result rgEnv pkgs browser |
 

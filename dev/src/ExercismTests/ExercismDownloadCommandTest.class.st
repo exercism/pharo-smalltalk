@@ -1,10 +1,12 @@
 Class {
-	#name : #ExercismDownloadCommandTest,
-	#superclass : #TestCase,
-	#category : #'ExercismTests-UnitTests'
+	#name : 'ExercismDownloadCommandTest',
+	#superclass : 'TestCase',
+	#category : 'ExercismTests-UnitTests',
+	#package : 'ExercismTests',
+	#tag : 'UnitTests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 ExercismDownloadCommandTest >> tearDown [
 	"all known mock mutations should be recovered"
 	ExercismExercise recoverFromGHMutation.
@@ -12,7 +14,7 @@ ExercismDownloadCommandTest >> tearDown [
 	super tearDown
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismDownloadCommandTest >> testExecuteDownloading [
 
 	| cmd exercise solutionData mockHttpClient mockReader baseUrl sourceCode |

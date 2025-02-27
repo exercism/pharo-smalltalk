@@ -2,12 +2,14 @@
 I indicate if an exercism review element (an RGObject) has a comment
 "
 Class {
-	#name : #ClyExercismReviewTableDecorator,
-	#superclass : #ClyTableDecorator,
-	#category : #'ExercismDev-Review'
+	#name : 'ClyExercismReviewTableDecorator',
+	#superclass : 'ClyTableDecorator',
+	#category : 'ExercismDev-Review',
+	#package : 'ExercismDev',
+	#tag : 'Review'
 }
 
-{ #category : #decoration }
+{ #category : 'decoration' }
 ClyExercismReviewTableDecorator class >> decorateMainTableCell: anItemCellMorph of: aDataSourceItem [
 
 	super decorateMainTableCell: anItemCellMorph of: aDataSourceItem.
@@ -20,13 +22,13 @@ ClyExercismReviewTableDecorator class >> decorateMainTableCell: anItemCellMorph 
 					ifNotEmpty: [ anItemCellMorph addExtraIcon: #announcement ] ]
 ]
 
-{ #category : #decoration }
+{ #category : 'decoration' }
 ClyExercismReviewTableDecorator class >> decorateTableCell: anItemCellMorph of: aDataSourceItem [
 
 	
 ]
 
-{ #category : #decoration }
+{ #category : 'decoration' }
 ClyExercismReviewTableDecorator class >> decorationStrategy [
 	<classAnnotation>
 	

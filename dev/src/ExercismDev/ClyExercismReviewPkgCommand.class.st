@@ -1,17 +1,19 @@
 Class {
-	#name : #ClyExercismReviewPkgCommand,
-	#superclass : #ClyExercismReviewCommand,
-	#category : #'ExercismDev-Menus'
+	#name : 'ClyExercismReviewPkgCommand',
+	#superclass : 'ClyExercismReviewCommand',
+	#category : 'ExercismDev-Menus',
+	#package : 'ExercismDev',
+	#tag : 'Menus'
 }
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyExercismReviewPkgCommand class >> cmdShortcutActivation [
 	<classAnnotation>
 	
 	^CmdShortcutActivation by: $e meta, $r meta for: ClyClassContextOfFullBrowser 
 ]
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyExercismReviewPkgCommand class >> contextMenuActivation [
 	<classAnnotation>
 	
@@ -21,7 +23,7 @@ ClyExercismReviewPkgCommand class >> contextMenuActivation [
 		for: RPackage asCalypsoItemContext
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismReviewPkgCommand >> selectedItemIn: aToolContext [
 	^ aToolContext lastSelectedClassGroup
 ]

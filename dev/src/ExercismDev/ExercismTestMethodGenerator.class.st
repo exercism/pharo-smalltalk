@@ -15,8 +15,8 @@ ExercismTestMethodGenerator uniqueInstance
 			generateTests.
 "
 Class {
-	#name : #ExercismTestMethodGenerator,
-	#superclass : #Object,
+	#name : 'ExercismTestMethodGenerator',
+	#superclass : 'Object',
 	#instVars : [
 		'testCounter',
 		'testCaseJson',
@@ -27,22 +27,24 @@ Class {
 	#classInstVars : [
 		'uniqueInstance'
 	],
-	#category : #'ExercismDev-TestGenerator'
+	#category : 'ExercismDev-TestGenerator',
+	#package : 'ExercismDev',
+	#tag : 'TestGenerator'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismTestMethodGenerator class >> uniqueInstance [
 	
 	^ uniqueInstance ifNil: [ uniqueInstance := self new ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismTestMethodGenerator >> caseContainsOtherCases [
 
 	^ self testCaseJson includesKey: 'cases'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismTestMethodGenerator >> generateCodeAssertEqualsOn: outStream [
 
 	outStream
@@ -59,7 +61,7 @@ ExercismTestMethodGenerator >> generateCodeAssertEqualsOn: outStream [
 		nextPutAll: self testResults storeString
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismTestMethodGenerator >> generateCodeModelCallOn: outStream [
 
 	outStream
@@ -79,7 +81,7 @@ ExercismTestMethodGenerator >> generateCodeModelCallOn: outStream [
 			space ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismTestMethodGenerator >> generateCodeShouldRaiseOn: outStream [
 
 	| errorMessage |
@@ -104,7 +106,7 @@ ExercismTestMethodGenerator >> generateCodeShouldRaiseOn: outStream [
 	
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismTestMethodGenerator >> generateDescriptionAndUUIDPragmasOn: outStream [
 
 		outStream 
@@ -113,7 +115,7 @@ ExercismTestMethodGenerator >> generateDescriptionAndUUIDPragmasOn: outStream [
 			cr
 ]
 
-{ #category : #'API - actions' }
+{ #category : 'API - actions' }
 ExercismTestMethodGenerator >> generateTest [
 
 	|  sourceCode testNameSelector|
@@ -132,7 +134,7 @@ ExercismTestMethodGenerator >> generateTest [
 	ExercismExerciseGenerator new compile: sourceCode for: self testClass selector: testNameSelector protocol: 'tests'
 ]
 
-{ #category : #'API - actions' }
+{ #category : 'API - actions' }
 ExercismTestMethodGenerator >> generateTests [
 
 	self caseContainsOtherCases
@@ -148,13 +150,13 @@ ExercismTestMethodGenerator >> generateTests [
 		ifFalse: [ self generateTest ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismTestMethodGenerator >> generateTipCommentForFirstCaseOn: outStream [
 		
 	testCounter = 1 ifTrue: [ outStream tab << '"Tip: Remember to review the class [Comment] tab"' ; cr].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismTestMethodGenerator >> isErrorAssertion [
 
 	| testResults |
@@ -164,7 +166,7 @@ ExercismTestMethodGenerator >> isErrorAssertion [
 	^ testResults size = 1 and: [ testResults includesKey: 'error' ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismTestMethodGenerator >> keywordFor: key [
 	
 	^(self testSelector asLowercase endsWith: key asLowercase)
@@ -172,7 +174,7 @@ ExercismTestMethodGenerator >> keywordFor: key [
 		ifFalse: [ key capitalized ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismTestMethodGenerator >> methodName [
 
 	| methodNameSegment |
@@ -182,61 +184,61 @@ ExercismTestMethodGenerator >> methodName [
 		  ifNotEmpty: [ self testPrefix , methodNameSegment ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismTestMethodGenerator >> nextTestCounter [
 
 	^ testCounter := testCounter + 1
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 ExercismTestMethodGenerator >> resetTestCounter [ 
 
 	self testCounter: 0.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismTestMethodGenerator >> testCaseJson [
 
 	^ testCaseJson
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismTestMethodGenerator >> testCaseJson: anObject [
 
 	testCaseJson := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismTestMethodGenerator >> testClass [
 
 	^ testClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismTestMethodGenerator >> testClass: anObject [
 
 	testClass := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismTestMethodGenerator >> testCounter [
 
 	^ testCounter
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismTestMethodGenerator >> testCounter: anObject [
 
 	testCounter := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismTestMethodGenerator >> testInputParameters [
 
 	^ self testCaseJson at: 'input'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismTestMethodGenerator >> testNameWithCounterPrefix [
 
 	| counterPrefix |
@@ -244,37 +246,37 @@ ExercismTestMethodGenerator >> testNameWithCounterPrefix [
 	^ (counterPrefix , self methodName) asSymbol
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismTestMethodGenerator >> testPrefix [
 
 	^ testPrefix
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismTestMethodGenerator >> testPrefix: anObject [
 
 	testPrefix := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismTestMethodGenerator >> testResults [
 
 	^ self testCaseJson at: 'expected'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismTestMethodGenerator >> testSelector [
 			
 	^ self testCaseJson at: 'property'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismTestMethodGenerator >> testVariable [
 
 	^ testVariable
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismTestMethodGenerator >> testVariable: anObject [
 
 	testVariable := anObject
