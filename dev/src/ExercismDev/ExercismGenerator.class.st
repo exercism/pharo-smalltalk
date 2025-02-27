@@ -276,6 +276,37 @@ ExercismGenerator >> generateCustomDataFor: anExercismExercise to: destinationDi
 					lf ]]
 ]
 
+{ #category : 'helper' }
+ExercismGenerator >> generateEmptyTemplateSolutionFileFor: packageOrTag to: exerciseDirectoryRef [
+
+	"Generate empty solution file in Tonel format, that is commented and serves for user as template"
+	| exerciseClassName exercise|
+	exercise := self exercismExercise find: (self exercismExercise exerciseNameFrom: packageOrTag) ifAbsent: [].
+	exerciseClassName := exercise exerciseClassName.
+	(exerciseDirectoryRef / exerciseClassName, 'class.st') ensureCreateFile
+		writeStreamDo: [ :stream | 	
+			stream 
+				<< '"';cr;
+				<< 'In online editor: Put your solution Pharo source code here using Tonel v3 format.'; cr;
+				<< 'Note: Desired source code output format is used automatically, when submitting solution from Pharo.'; cr;
+				<< 'For example: '; cr; cr;
+			<< 'Class {'; cr;
+			<< '#name : '''; << exerciseClassName; << ''','; cr;
+			<< '#superclass : ''Object'','; cr;
+			<< '#instVars : [ ],'; cr;
+ 			<< '#classVars : [ ],'; cr;
+			<< '#category : '''; << packageOrTag name; << ''','; cr;  
+			<< '#package : '''; << packageOrTag name; << ''''; cr;
+			<< '}'; cr; cr;
+			<< 'put your methods here...'; cr;
+			<< '{ #category : ''api'' }'; cr;
+			<< exerciseClassName; << ' class >> methodUsedInTest ['; cr;
+			<< '    your method source code...'; cr;
+			<< ']'; cr;
+			<< '"'; cr.
+	]
+]
+
 { #category : 'generation' }
 ExercismGenerator >> generateForExercise: slugName [
 
@@ -337,6 +368,9 @@ ExercismGenerator >> generateSourceFilesFor: packageOrTag [
 	"move files to root solution directory and remove unnecessary package dir"
 	self moveSolutionFilesOfPackage: packageOrTag to: solutionDirectoryRef. 
 
+	"create empty solution file for solving exercise from scratch"
+	self generateEmptyTemplateSolutionFileFor: packageOrTag to: exerciseDirectoryRef. 
+	
 	"Move the test file down to the exerciseDirectory"
 	testClasses := self testClassesOfPackage: packageOrTag.	
 	self moveTestClasses: testClasses from: solutionDirectoryRef to: exerciseDirectoryRef.

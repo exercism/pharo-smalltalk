@@ -239,6 +239,21 @@ ExercismGeneratorTest >> testGenerate [
 ]
 
 { #category : 'tests' }
+ExercismGeneratorTest >> testGenerateEmptyTemplateSolutionFileForTo [
+
+	|exercise resultFile|
+	exercise := instance exercismExercise	
+		find: 'two-fer'
+		ifAbsent: [].
+	instance generateEmptyTemplateSolutionFileFor: exercise exercisePackage to: instance exercisesDirReference.
+	
+	resultFile := (instance exercisesDirReference / 'TwoFer.class.st').
+	self assert: resultFile isFile.
+	"there is a prescription to create class"
+	self assert: (resultFile contents includesSubstring: 'Class'). 
+]
+
+{ #category : 'tests' }
 ExercismGeneratorTest >> testGenerateForExercise [
 
 	instance osSubProcess: SuccessfulTestOSProcess.
