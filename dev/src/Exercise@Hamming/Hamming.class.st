@@ -2,12 +2,13 @@
 It's useful to extract the error message into a seperate method for readability
 "
 Class {
-	#name : #Hamming,
-	#superclass : #Object,
-	#category : #'Exercise@Hamming'
+	#name : 'Hamming',
+	#superclass : 'Object',
+	#category : 'Exercise@Hamming',
+	#package : 'Exercise@Hamming'
 }
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 Hamming >> distanceStrand1: aString1 strand2: aString2 [
 
 	aString1 size = aString2 size
@@ -20,7 +21,7 @@ Hamming >> distanceStrand1: aString1 strand2: aString2 [
 					ifFalse: [ 1 ] ]
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 Hamming >> errorMsgFor: aString1 and: aString2 [
 
 	aString1 notEmpty & aString2 notEmpty

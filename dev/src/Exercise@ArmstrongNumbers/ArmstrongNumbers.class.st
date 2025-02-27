@@ -4,12 +4,13 @@ If you spot the following useful methods in Integer, this solution is quite triv
 - #decimalDigitAt: 
 "
 Class {
-	#name : #ArmstrongNumbers,
-	#superclass : #Object,
-	#category : #'Exercise@ArmstrongNumbers'
+	#name : 'ArmstrongNumbers',
+	#superclass : 'Object',
+	#category : 'Exercise@ArmstrongNumbers',
+	#package : 'Exercise@ArmstrongNumbers'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 ArmstrongNumbers >> isArmstrongNumber: anInteger [
 	| armstrongValue decimalDigitLength |
 	decimalDigitLength := anInteger decimalDigitLength.

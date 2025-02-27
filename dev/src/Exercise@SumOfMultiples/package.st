@@ -1,1 +1,1 @@
-Package { #name : #'Exercise@SumOfMultiples' }
+Package { #name : 'Exercise@SumOfMultiples' }

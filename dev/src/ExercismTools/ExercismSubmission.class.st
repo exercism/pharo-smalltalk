@@ -2,21 +2,23 @@
 I am a wrapper over the exercism json submission data. Crucially I have a solutionId that is needed when submitting exercises that have been downloaded.
 "
 Class {
-	#name : #ExercismSubmission,
-	#superclass : #Object,
+	#name : 'ExercismSubmission',
+	#superclass : 'Object',
 	#instVars : [
 		'exercismData',
 		'contentData'
 	],
-	#category : #'ExercismTools-Core'
+	#category : 'ExercismTools-Core',
+	#package : 'ExercismTools',
+	#tag : 'Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismSubmission class >> baseUrlKey [
 	^ 'file_download_base_url'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismSubmission class >> data: exercismDataDictionary [
 	^ self new
 		exercismData:
@@ -26,7 +28,7 @@ ExercismSubmission class >> data: exercismDataDictionary [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismSubmission class >> error: aString [
 	^self new 
 		exercismData: { 'exercise' ->> {'id' -> '' }} asDictionary;
@@ -34,27 +36,27 @@ ExercismSubmission class >> error: aString [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismSubmission >> baseUrl [ 
 	^(self exercismData at: self class baseUrlKey) exPathString.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismSubmission >> contentData [
 	^ contentData
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismSubmission >> contentData: anObject [
 	contentData := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismSubmission >> contentsFor: aString ifAbsent: anObject [ 
 	^self contentData at: aString
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismSubmission >> createSnapshotFromDefinitions [
 
 	"return MC snapshot from definitions that can be loaded or submitted"
@@ -62,7 +64,7 @@ ExercismSubmission >> createSnapshotFromDefinitions [
 
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismSubmission >> definitionsToLoadFromDirectory [
 	
 	"reader will return definitions to be loaded from directory containing package directory and .st files with classes"
@@ -73,66 +75,66 @@ ExercismSubmission >> definitionsToLoadFromDirectory [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismSubmission >> errorMessage [ 
 
 	^self exercismData at: 'error' ifAbsent: [ '' ]
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismSubmission >> errorMessage: aString [ 
 
 	self exercismData at: 'error' put: aString
 
 ]
 
-{ #category : #storing }
+{ #category : 'storing' }
 ExercismSubmission >> exercise [
 	"Answer the ExercismExercise associated with this submission"
 	
 	^ExercismExercise find: self exerciseId ifAbsent: [nil]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismSubmission >> exerciseClassName [ 
 	^self exerciseId kebabAsCamelCase 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismSubmission >> exerciseId [
 	^(self exercismData at: 'exercise') at: 'id'
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismSubmission >> exercisePackageName [
 
 	^ ExercismManager exercisePrefix, '@', self exerciseClassName 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismSubmission >> exercismData [
 	^ exercismData
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismSubmission >> exercismData: anObject [
 	exercismData := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismSubmission >> filenames [
 	^self exercismData at: 'files'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismSubmission >> initialize [ 
 
 	super initialize.
 	self contentData: Dictionary new.
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismSubmission >> installDefinitionsFromSnapshot [
 
 	"tonel reader will load definitions from directory containing package directory and .st files with classes, creates MC snapshot and install package with exercise to default package organizer"
@@ -140,14 +142,14 @@ ExercismSubmission >> installDefinitionsFromSnapshot [
 	self createSnapshotFromDefinitions install
 ]
 
-{ #category : #storing }
+{ #category : 'storing' }
 ExercismSubmission >> isValid [
 	"Answer true if the submission resulted in a valid exercise"
 	
 	^(self exercismData includesKey: 'error') not and: [ self exercise notNil ]
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismSubmission >> latestExercisePackageSourceDir [
 
 	"return memory file reference with retreived latest exercise souuces - needed for tonel reader"
@@ -163,7 +165,7 @@ ExercismSubmission >> latestExercisePackageSourceDir [
 	^ memFileRef 
 ]
 
-{ #category : #retrieving }
+{ #category : 'retrieving' }
 ExercismSubmission >> populateFileContentsWith: aBlockClosure [
 	self sourceFilenames
 		do: [ :filename | 
@@ -174,30 +176,30 @@ ExercismSubmission >> populateFileContentsWith: aBlockClosure [
 				ifNotNil: [ self contentData at: filename put: fileContent ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismSubmission >> solutionId [
 	^self exercismData at: 'id'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismSubmission >> sourceFilenames [
 	
 	^self filenames select: [:filename | filename endsWith: '.st' ]
 ]
 
-{ #category : #retrieving }
+{ #category : 'retrieving' }
 ExercismSubmission >> sourceFilenamesWithContentsDo: aBlockClosure [
 	self contentData
 		keysAndValuesDo:
 			[ :filename :contents | aBlockClosure value: filename value: contents ]
 ]
 
-{ #category : #storing }
+{ #category : 'storing' }
 ExercismSubmission >> storeSolutionId [
 	self exercise ifNotNil: [:exercise | exercise storeSolutionId: self solutionId]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismSubmission >> user [
 	^(self exercismData at: 'user') at: 'handle'
 ]

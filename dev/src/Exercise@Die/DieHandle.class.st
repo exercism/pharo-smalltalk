@@ -11,15 +11,16 @@ Means that I should roll 5 dices.
 
 "
 Class {
-	#name : #DieHandle,
-	#superclass : #Object,
+	#name : 'DieHandle',
+	#superclass : 'Object',
 	#instVars : [
 		'dice'
 	],
-	#category : #'Exercise@Die'
+	#category : 'Exercise@Die',
+	#package : 'Exercise@Die'
 }
 
-{ #category : #adding }
+{ #category : 'adding' }
 DieHandle >> + aDieHandle [
 	"Returns a new handle that represents the addition of the receiver and the argument."
 	| handle |
@@ -29,31 +30,31 @@ DieHandle >> + aDieHandle [
 	^ handle
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 DieHandle >> addDie: aDie [
 
 	dice add: aDie
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DieHandle >> dice [ 
 
 	^ dice
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DieHandle >> diceNumber [ 
 
 	^ dice size
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DieHandle >> initialize [
 	super initialize.
 	dice := OrderedCollection new
 ]
 
-{ #category : #rolling }
+{ #category : 'rolling' }
 DieHandle >> roll [
 
 	| res |

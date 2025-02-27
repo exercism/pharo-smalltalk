@@ -2,15 +2,17 @@
 I am a command for submitting an exercise. 
 "
 Class {
-	#name : #ExercismSubmitCommand,
-	#superclass : #ExercismHttpCommand,
+	#name : 'ExercismSubmitCommand',
+	#superclass : 'ExercismHttpCommand',
 	#instVars : [
 		'exercise'
 	],
-	#category : #'ExercismTools-Core'
+	#category : 'ExercismTools-Core',
+	#package : 'ExercismTools',
+	#tag : 'Core'
 }
 
-{ #category : #command }
+{ #category : 'command' }
 ExercismSubmitCommand class >> exercise: anExercismExercise [
 	"Submit an exercism package"
 
@@ -18,7 +20,7 @@ ExercismSubmitCommand class >> exercise: anExercismExercise [
 		
 ]
 
-{ #category : #command }
+{ #category : 'command' }
 ExercismSubmitCommand class >> from: anHttpClient exercise: exercise [
 	"Submit an exercism package"
 
@@ -30,7 +32,7 @@ ExercismSubmitCommand class >> from: anHttpClient exercise: exercise [
 		yourself
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ExercismSubmitCommand >> execute [
 	^ [ self
 		executeCheckingToken: [ self httpClient
@@ -47,12 +49,12 @@ ExercismSubmitCommand >> execute [
 			error retry ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismSubmitCommand >> exercise [
 	^ exercise
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismSubmitCommand >> exercise: anExercismExercise [
 	exercise := anExercismExercise
 ]

@@ -36,15 +36,16 @@ To make your solution readable, try using the refactoring tools to extract any m
 
 "
 Class {
-	#name : #SieveTest,
-	#superclass : #ExercismTest,
+	#name : 'SieveTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'sieveCalculator'
 	],
-	#category : #'Exercise@Sieve'
+	#category : 'Exercise@Sieve',
+	#package : 'Exercise@Sieve'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 SieveTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 
@@ -56,25 +57,25 @@ SieveTest class >> exercise [
 				
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 SieveTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'174cbf44-08b4-446f-82a1-1dbfa17401a7'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 SieveTest class >> version [
 	"Generated from specification: 15 March 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 SieveTest >> setUp [
 	super setUp.
 	sieveCalculator := Sieve new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SieveTest >> test01_NoPrimesUnderTwo [
 	| result |
 
@@ -82,7 +83,7 @@ SieveTest >> test01_NoPrimesUnderTwo [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SieveTest >> test02_FindFirstPrime [
 	| result |
 
@@ -90,7 +91,7 @@ SieveTest >> test02_FindFirstPrime [
 	self assert: result equals: #(2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SieveTest >> test03_FindPrimesUpTo10 [
 	| result |
 
@@ -98,7 +99,7 @@ SieveTest >> test03_FindPrimesUpTo10 [
 	self assert: result equals: #(2 3 5 7 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SieveTest >> test04_LimitIsPrime [
 	| result |
 
@@ -106,7 +107,7 @@ SieveTest >> test04_LimitIsPrime [
 	self assert: result equals: #(2 3 5 7 11 13 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SieveTest >> test05_FindPrimesUpTo1000 [
 	| result |
 

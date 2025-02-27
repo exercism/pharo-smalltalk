@@ -1,6 +1,6 @@
-Extension { #name : #ZnMimePart }
+Extension { #name : 'ZnMimePart' }
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 ZnMimePart class >> exercismFieldName: fieldName fileName: fileName entity: entity [
 	"Copied from ZnMimePart class >> fieldName:fileName:entity:
 	 with space added after 'form-data;' as required by Exercism server, 

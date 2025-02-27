@@ -38,33 +38,35 @@ TBD
 
 "
 Class {
-	#name : #AllYourBaseTest,
-	#superclass : #ExercismTest,
+	#name : 'AllYourBaseTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'allYourBaseCalculator'
 	],
-	#category : #'ExercismWIP-AllYourBase'
+	#category : 'ExercismWIP-AllYourBase',
+	#package : 'ExercismWIP',
+	#tag : 'AllYourBase'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 AllYourBaseTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'d5e9cc2e-b043-0d00-9280-13b302a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 AllYourBaseTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'2.3.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 AllYourBaseTest >> setUp [
 	super setUp.
 	allYourBaseCalculator := AllYourBase new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllYourBaseTest >> test01_SingleBitOneToDecimal [
 	| result |
 
@@ -72,7 +74,7 @@ AllYourBaseTest >> test01_SingleBitOneToDecimal [
 	self assert: result equals: #(1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllYourBaseTest >> test02_BinaryToSingleDecimal [
 	| result |
 
@@ -80,7 +82,7 @@ AllYourBaseTest >> test02_BinaryToSingleDecimal [
 	self assert: result equals: #(5 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllYourBaseTest >> test03_SingleDecimalToBinary [
 	| result |
 
@@ -88,7 +90,7 @@ AllYourBaseTest >> test03_SingleDecimalToBinary [
 	self assert: result equals: #(1 0 1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllYourBaseTest >> test04_BinaryToMultipleDecimal [
 	| result |
 
@@ -96,7 +98,7 @@ AllYourBaseTest >> test04_BinaryToMultipleDecimal [
 	self assert: result equals: #(4 2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllYourBaseTest >> test05_DecimalToBinary [
 	| result |
 
@@ -104,7 +106,7 @@ AllYourBaseTest >> test05_DecimalToBinary [
 	self assert: result equals: #(1 0 1 0 1 0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllYourBaseTest >> test06_TrinaryToHexadecimal [
 	| result |
 
@@ -112,7 +114,7 @@ AllYourBaseTest >> test06_TrinaryToHexadecimal [
 	self assert: result equals: #(2 10 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllYourBaseTest >> test07_HexadecimalToTrinary [
 	| result |
 
@@ -120,7 +122,7 @@ AllYourBaseTest >> test07_HexadecimalToTrinary [
 	self assert: result equals: #(1 1 2 0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllYourBaseTest >> test08_15bitInteger [
 	| result |
 
@@ -128,7 +130,7 @@ AllYourBaseTest >> test08_15bitInteger [
 	self assert: result equals: #(6 10 45 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllYourBaseTest >> test09_EmptyList [
 	| result |
 
@@ -136,7 +138,7 @@ AllYourBaseTest >> test09_EmptyList [
 	self assert: result equals: #(0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllYourBaseTest >> test10_SingleZero [
 	| result |
 
@@ -144,7 +146,7 @@ AllYourBaseTest >> test10_SingleZero [
 	self assert: result equals: #(0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllYourBaseTest >> test11_MultipleZeros [
 	| result |
 
@@ -152,7 +154,7 @@ AllYourBaseTest >> test11_MultipleZeros [
 	self assert: result equals: #(0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllYourBaseTest >> test12_LeadingZeros [
 	| result |
 
@@ -160,7 +162,7 @@ AllYourBaseTest >> test12_LeadingZeros [
 	self assert: result equals: #(4 2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllYourBaseTest >> test13_InputBaseIsOne [
 	| result |
 
@@ -171,7 +173,7 @@ AllYourBaseTest >> test13_InputBaseIsOne [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllYourBaseTest >> test14_InputBaseIsZero [
 	| result |
 
@@ -182,7 +184,7 @@ AllYourBaseTest >> test14_InputBaseIsZero [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllYourBaseTest >> test15_InputBaseIsNegative [
 	| result |
 
@@ -193,7 +195,7 @@ AllYourBaseTest >> test15_InputBaseIsNegative [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllYourBaseTest >> test16_NegativeDigit [
 	| result |
 
@@ -204,7 +206,7 @@ AllYourBaseTest >> test16_NegativeDigit [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllYourBaseTest >> test17_InvalidPositiveDigit [
 	| result |
 
@@ -215,7 +217,7 @@ AllYourBaseTest >> test17_InvalidPositiveDigit [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllYourBaseTest >> test18_OutputBaseIsOne [
 	| result |
 
@@ -226,7 +228,7 @@ AllYourBaseTest >> test18_OutputBaseIsOne [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllYourBaseTest >> test19_OutputBaseIsZero [
 	| result |
 
@@ -237,7 +239,7 @@ AllYourBaseTest >> test19_OutputBaseIsZero [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllYourBaseTest >> test20_OutputBaseIsNegative [
 	| result |
 
@@ -248,7 +250,7 @@ AllYourBaseTest >> test20_OutputBaseIsNegative [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllYourBaseTest >> test21_BothBasesAreNegative [
 	| result |
 

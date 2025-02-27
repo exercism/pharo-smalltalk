@@ -35,33 +35,35 @@ TBD
 
 "
 Class {
-	#name : #RationalNumbersTest,
-	#superclass : #ExercismTest,
+	#name : 'RationalNumbersTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'rationalNumbersCalculator'
 	],
-	#category : #'ExercismWIP-RationalNumbers'
+	#category : 'ExercismWIP-RationalNumbers',
+	#package : 'ExercismWIP',
+	#tag : 'RationalNumbers'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 RationalNumbersTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'a5e3db16-9d41-0d00-8ff3-f02b08866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 RationalNumbersTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 RationalNumbersTest >> setUp [
 	super setUp.
 	rationalNumbersCalculator := RationalNumbers new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test01_ArithmeticAdditionAddTwoPositiveRationalNumbers [
 	| result |
 
@@ -69,7 +71,7 @@ RationalNumbersTest >> test01_ArithmeticAdditionAddTwoPositiveRationalNumbers [
 	self assert: result equals: #(7 6 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test02_ArithmeticAdditionAddAPositiveRationalNumberAndANegativeRationalNumber [
 	| result |
 
@@ -77,7 +79,7 @@ RationalNumbersTest >> test02_ArithmeticAdditionAddAPositiveRationalNumberAndANe
 	self assert: result equals: #( -1 6 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test03_ArithmeticAdditionAddTwoNegativeRationalNumbers [
 	| result |
 
@@ -85,7 +87,7 @@ RationalNumbersTest >> test03_ArithmeticAdditionAddTwoNegativeRationalNumbers [
 	self assert: result equals: #( -7 6 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test04_ArithmeticAdditionAddARationalNumberToItsAdditiveInverse [
 	| result |
 
@@ -93,7 +95,7 @@ RationalNumbersTest >> test04_ArithmeticAdditionAddARationalNumberToItsAdditiveI
 	self assert: result equals: #(0 1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test05_ArithmeticSubtractionSubtractTwoPositiveRationalNumbers [
 	| result |
 
@@ -101,7 +103,7 @@ RationalNumbersTest >> test05_ArithmeticSubtractionSubtractTwoPositiveRationalNu
 	self assert: result equals: #( -1 6 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test06_ArithmeticSubtractionSubtractAPositiveRationalNumberAndANegativeRationalNumber [
 	| result |
 
@@ -109,7 +111,7 @@ RationalNumbersTest >> test06_ArithmeticSubtractionSubtractAPositiveRationalNumb
 	self assert: result equals: #(7 6 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test07_ArithmeticSubtractionSubtractTwoNegativeRationalNumbers [
 	| result |
 
@@ -117,7 +119,7 @@ RationalNumbersTest >> test07_ArithmeticSubtractionSubtractTwoNegativeRationalNu
 	self assert: result equals: #(1 6 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test08_ArithmeticSubtractionSubtractARationalNumberFromItself [
 	| result |
 
@@ -125,7 +127,7 @@ RationalNumbersTest >> test08_ArithmeticSubtractionSubtractARationalNumberFromIt
 	self assert: result equals: #(0 1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test09_ArithmeticMultiplicationMultiplyTwoPositiveRationalNumbers [
 	| result |
 
@@ -133,7 +135,7 @@ RationalNumbersTest >> test09_ArithmeticMultiplicationMultiplyTwoPositiveRationa
 	self assert: result equals: #(1 3 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test10_ArithmeticMultiplicationMultiplyANegativeRationalNumberByAPositiveRationalNumber [
 	| result |
 
@@ -141,7 +143,7 @@ RationalNumbersTest >> test10_ArithmeticMultiplicationMultiplyANegativeRationalN
 	self assert: result equals: #( -1 3 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test11_ArithmeticMultiplicationMultiplyTwoNegativeRationalNumbers [
 	| result |
 
@@ -149,7 +151,7 @@ RationalNumbersTest >> test11_ArithmeticMultiplicationMultiplyTwoNegativeRationa
 	self assert: result equals: #(1 3 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test12_ArithmeticMultiplicationMultiplyARationalNumberByItsReciprocal [
 	| result |
 
@@ -157,7 +159,7 @@ RationalNumbersTest >> test12_ArithmeticMultiplicationMultiplyARationalNumberByI
 	self assert: result equals: #(1 1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test13_ArithmeticMultiplicationMultiplyARationalNumberBy1 [
 	| result |
 
@@ -165,7 +167,7 @@ RationalNumbersTest >> test13_ArithmeticMultiplicationMultiplyARationalNumberBy1
 	self assert: result equals: #(1 2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test14_ArithmeticMultiplicationMultiplyARationalNumberBy0 [
 	| result |
 
@@ -173,7 +175,7 @@ RationalNumbersTest >> test14_ArithmeticMultiplicationMultiplyARationalNumberBy0
 	self assert: result equals: #(0 1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test15_ArithmeticDivisionDivideTwoPositiveRationalNumbers [
 	| result |
 
@@ -181,7 +183,7 @@ RationalNumbersTest >> test15_ArithmeticDivisionDivideTwoPositiveRationalNumbers
 	self assert: result equals: #(3 4 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test16_ArithmeticDivisionDivideAPositiveRationalNumberByANegativeRationalNumber [
 	| result |
 
@@ -189,7 +191,7 @@ RationalNumbersTest >> test16_ArithmeticDivisionDivideAPositiveRationalNumberByA
 	self assert: result equals: #( -3 4 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test17_ArithmeticDivisionDivideTwoNegativeRationalNumbers [
 	| result |
 
@@ -197,7 +199,7 @@ RationalNumbersTest >> test17_ArithmeticDivisionDivideTwoNegativeRationalNumbers
 	self assert: result equals: #(3 4 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test18_ArithmeticDivisionDivideARationalNumberBy1 [
 	| result |
 
@@ -205,7 +207,7 @@ RationalNumbersTest >> test18_ArithmeticDivisionDivideARationalNumberBy1 [
 	self assert: result equals: #(1 2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test19_AbsoluteValueAbsoluteValueOfAPositiveRationalNumber [
 	| result |
 
@@ -213,7 +215,7 @@ RationalNumbersTest >> test19_AbsoluteValueAbsoluteValueOfAPositiveRationalNumbe
 	self assert: result equals: #(1 2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test20_AbsoluteValueAbsoluteValueOfAPositiveRationalNumberWithNegativeNumeratorAndDenominator [
 	| result |
 
@@ -221,7 +223,7 @@ RationalNumbersTest >> test20_AbsoluteValueAbsoluteValueOfAPositiveRationalNumbe
 	self assert: result equals: #(1 2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test21_AbsoluteValueAbsoluteValueOfANegativeRationalNumber [
 	| result |
 
@@ -229,7 +231,7 @@ RationalNumbersTest >> test21_AbsoluteValueAbsoluteValueOfANegativeRationalNumbe
 	self assert: result equals: #(1 2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test22_AbsoluteValueAbsoluteValueOfANegativeRationalNumberWithNegativeDenominator [
 	| result |
 
@@ -237,7 +239,7 @@ RationalNumbersTest >> test22_AbsoluteValueAbsoluteValueOfANegativeRationalNumbe
 	self assert: result equals: #(1 2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test23_AbsoluteValueAbsoluteValueOfZero [
 	| result |
 
@@ -245,7 +247,7 @@ RationalNumbersTest >> test23_AbsoluteValueAbsoluteValueOfZero [
 	self assert: result equals: #(0 1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test24_ExponentiationOfARationalNumberRaiseAPositiveRationalNumberToAPositiveIntegerPower [
 	| result |
 
@@ -253,7 +255,7 @@ RationalNumbersTest >> test24_ExponentiationOfARationalNumberRaiseAPositiveRatio
 	self assert: result equals: #(1 8 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test25_ExponentiationOfARationalNumberRaiseANegativeRationalNumberToAPositiveIntegerPower [
 	| result |
 
@@ -261,7 +263,7 @@ RationalNumbersTest >> test25_ExponentiationOfARationalNumberRaiseANegativeRatio
 	self assert: result equals: #( -1 8 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test26_ExponentiationOfARationalNumberRaiseZeroToAnIntegerPower [
 	| result |
 
@@ -269,7 +271,7 @@ RationalNumbersTest >> test26_ExponentiationOfARationalNumberRaiseZeroToAnIntege
 	self assert: result equals: #(0 1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test27_ExponentiationOfARationalNumberRaiseOneToAnIntegerPower [
 	| result |
 
@@ -277,7 +279,7 @@ RationalNumbersTest >> test27_ExponentiationOfARationalNumberRaiseOneToAnInteger
 	self assert: result equals: #(1 1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test28_ExponentiationOfARationalNumberRaiseAPositiveRationalNumberToThePowerOfZero [
 	| result |
 
@@ -285,7 +287,7 @@ RationalNumbersTest >> test28_ExponentiationOfARationalNumberRaiseAPositiveRatio
 	self assert: result equals: #(1 1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test29_ExponentiationOfARationalNumberRaiseANegativeRationalNumberToThePowerOfZero [
 	| result |
 
@@ -293,7 +295,7 @@ RationalNumbersTest >> test29_ExponentiationOfARationalNumberRaiseANegativeRatio
 	self assert: result equals: #(1 1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test30_ExponentiationOfARealNumberToARationalNumberRaiseARealNumberToAPositiveRationalNumber [
 	| result |
 
@@ -301,7 +303,7 @@ RationalNumbersTest >> test30_ExponentiationOfARealNumberToARationalNumberRaiseA
 	self assert: result equals: 16.0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test31_ExponentiationOfARealNumberToARationalNumberRaiseARealNumberToANegativeRationalNumber [
 	| result |
 
@@ -309,7 +311,7 @@ RationalNumbersTest >> test31_ExponentiationOfARealNumberToARationalNumberRaiseA
 	self assert: result equals: 0.3333333333333333
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test32_ExponentiationOfARealNumberToARationalNumberRaiseARealNumberToAZeroRationalNumber [
 	| result |
 
@@ -317,7 +319,7 @@ RationalNumbersTest >> test32_ExponentiationOfARealNumberToARationalNumberRaiseA
 	self assert: result equals: 1.0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test33_ReductionToLowestTermsReduceAPositiveRationalNumberToLowestTerms [
 	| result |
 
@@ -325,7 +327,7 @@ RationalNumbersTest >> test33_ReductionToLowestTermsReduceAPositiveRationalNumbe
 	self assert: result equals: #(1 2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test34_ReductionToLowestTermsReduceANegativeRationalNumberToLowestTerms [
 	| result |
 
@@ -333,7 +335,7 @@ RationalNumbersTest >> test34_ReductionToLowestTermsReduceANegativeRationalNumbe
 	self assert: result equals: #( -2 3 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test35_ReductionToLowestTermsReduceARationalNumberWithANegativeDenominatorToLowestTerms [
 	| result |
 
@@ -341,7 +343,7 @@ RationalNumbersTest >> test35_ReductionToLowestTermsReduceARationalNumberWithANe
 	self assert: result equals: #( -1 3 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test36_ReductionToLowestTermsReduceZeroToLowestTerms [
 	| result |
 
@@ -349,7 +351,7 @@ RationalNumbersTest >> test36_ReductionToLowestTermsReduceZeroToLowestTerms [
 	self assert: result equals: #(0 1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test37_ReductionToLowestTermsReduceAnIntegerToLowestTerms [
 	| result |
 
@@ -357,7 +359,7 @@ RationalNumbersTest >> test37_ReductionToLowestTermsReduceAnIntegerToLowestTerms
 	self assert: result equals: #( -2 1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RationalNumbersTest >> test38_ReductionToLowestTermsReduceOneToLowestTerms [
 	| result |
 

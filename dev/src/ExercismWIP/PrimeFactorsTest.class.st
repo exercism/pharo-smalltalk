@@ -36,33 +36,35 @@ TBD
 
 "
 Class {
-	#name : #PrimeFactorsTest,
-	#superclass : #ExercismTest,
+	#name : 'PrimeFactorsTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'primeFactorsCalculator'
 	],
-	#category : #'ExercismWIP-PrimeFactors'
+	#category : 'ExercismWIP-PrimeFactors',
+	#package : 'ExercismWIP',
+	#tag : 'PrimeFactors'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 PrimeFactorsTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'fe7dcb2e-b043-0d00-927e-370e02a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 PrimeFactorsTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PrimeFactorsTest >> setUp [
 	super setUp.
 	primeFactorsCalculator := PrimeFactors new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PrimeFactorsTest >> test01_NoFactors [
 	| result |
 
@@ -70,7 +72,7 @@ PrimeFactorsTest >> test01_NoFactors [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PrimeFactorsTest >> test02_PrimeNumber [
 	| result |
 
@@ -78,7 +80,7 @@ PrimeFactorsTest >> test02_PrimeNumber [
 	self assert: result equals: #(2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PrimeFactorsTest >> test03_SquareOfAPrime [
 	| result |
 
@@ -86,7 +88,7 @@ PrimeFactorsTest >> test03_SquareOfAPrime [
 	self assert: result equals: #(3 3 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PrimeFactorsTest >> test04_CubeOfAPrime [
 	| result |
 
@@ -94,7 +96,7 @@ PrimeFactorsTest >> test04_CubeOfAPrime [
 	self assert: result equals: #(2 2 2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PrimeFactorsTest >> test05_ProductOfPrimesAndNonprimes [
 	| result |
 
@@ -102,7 +104,7 @@ PrimeFactorsTest >> test05_ProductOfPrimesAndNonprimes [
 	self assert: result equals: #(2 2 3 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PrimeFactorsTest >> test06_ProductOfPrimes [
 	| result |
 
@@ -110,7 +112,7 @@ PrimeFactorsTest >> test06_ProductOfPrimes [
 	self assert: result equals: #(5 17 23 461 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PrimeFactorsTest >> test07_FactorsIncludeALargePrime [
 	| result |
 

@@ -19,33 +19,35 @@ TBD
 
 "
 Class {
-	#name : #NucleotideCountTest,
-	#superclass : #ExercismTest,
+	#name : 'NucleotideCountTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'nucleotideCountCalculator'
 	],
-	#category : #'ExercismWIP-NucleotideCount'
+	#category : 'ExercismWIP-NucleotideCount',
+	#package : 'ExercismWIP',
+	#tag : 'NucleotideCount'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 NucleotideCountTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'4a33ae2e-b043-0d00-9256-8c7102a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 NucleotideCountTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'1.3.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 NucleotideCountTest >> setUp [
 	super setUp.
 	nucleotideCountCalculator := NucleotideCount new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 NucleotideCountTest >> test01_EmptyStrand [
 	| result |
 
@@ -53,7 +55,7 @@ NucleotideCountTest >> test01_EmptyStrand [
 	self assert: result equals: ((Dictionary new) add: ('G'->0); add: ('T'->0); add: ('A'->0); add: ('C'->0); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 NucleotideCountTest >> test02_CanCountOneNucleotideInSinglecharacterInput [
 	| result |
 
@@ -61,7 +63,7 @@ NucleotideCountTest >> test02_CanCountOneNucleotideInSinglecharacterInput [
 	self assert: result equals: ((Dictionary new) add: ('G'->1); add: ('T'->0); add: ('A'->0); add: ('C'->0); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 NucleotideCountTest >> test03_StrandWithRepeatedNucleotide [
 	| result |
 
@@ -69,7 +71,7 @@ NucleotideCountTest >> test03_StrandWithRepeatedNucleotide [
 	self assert: result equals: ((Dictionary new) add: ('G'->7); add: ('T'->0); add: ('A'->0); add: ('C'->0); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 NucleotideCountTest >> test04_StrandWithMultipleNucleotides [
 	| result |
 
@@ -77,7 +79,7 @@ NucleotideCountTest >> test04_StrandWithMultipleNucleotides [
 	self assert: result equals: ((Dictionary new) add: ('G'->17); add: ('T'->21); add: ('A'->20); add: ('C'->12); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 NucleotideCountTest >> test05_StrandWithInvalidNucleotides [
 	| result |
 

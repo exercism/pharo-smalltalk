@@ -22,33 +22,35 @@ TBD
 
 "
 Class {
-	#name : #BobTest,
-	#superclass : #ExercismTest,
+	#name : 'BobTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'bobCalculator'
 	],
-	#category : #'ExercismWIP-Bob'
+	#category : 'ExercismWIP-Bob',
+	#package : 'ExercismWIP',
+	#tag : 'Bob'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 BobTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'9d62b716-9d41-0d00-8fd6-83f208866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 BobTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.4.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 BobTest >> setUp [
 	super setUp.
 	bobCalculator := Bob new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test01_StatingSomething [
 	| result |
 
@@ -56,7 +58,7 @@ BobTest >> test01_StatingSomething [
 	self assert: result equals: 'Whatever.'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test02_Shouting [
 	| result |
 
@@ -64,7 +66,7 @@ BobTest >> test02_Shouting [
 	self assert: result equals: 'Whoa, chill out!'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test03_ShoutingGibberish [
 	| result |
 
@@ -72,7 +74,7 @@ BobTest >> test03_ShoutingGibberish [
 	self assert: result equals: 'Whoa, chill out!'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test04_AskingAQuestion [
 	| result |
 
@@ -80,7 +82,7 @@ BobTest >> test04_AskingAQuestion [
 	self assert: result equals: 'Sure.'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test05_AskingANumericQuestion [
 	| result |
 
@@ -88,7 +90,7 @@ BobTest >> test05_AskingANumericQuestion [
 	self assert: result equals: 'Sure.'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test06_AskingGibberish [
 	| result |
 
@@ -96,7 +98,7 @@ BobTest >> test06_AskingGibberish [
 	self assert: result equals: 'Sure.'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test07_TalkingForcefully [
 	| result |
 
@@ -104,7 +106,7 @@ BobTest >> test07_TalkingForcefully [
 	self assert: result equals: 'Whatever.'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test08_UsingAcronymsInRegularSpeech [
 	| result |
 
@@ -112,7 +114,7 @@ BobTest >> test08_UsingAcronymsInRegularSpeech [
 	self assert: result equals: 'Whatever.'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test09_ForcefulQuestion [
 	| result |
 
@@ -120,7 +122,7 @@ BobTest >> test09_ForcefulQuestion [
 	self assert: result equals: 'Calm down, I know what I''m doing!'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test10_ShoutingNumbers [
 	| result |
 
@@ -128,7 +130,7 @@ BobTest >> test10_ShoutingNumbers [
 	self assert: result equals: 'Whoa, chill out!'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test11_NoLetters [
 	| result |
 
@@ -136,7 +138,7 @@ BobTest >> test11_NoLetters [
 	self assert: result equals: 'Whatever.'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test12_QuestionWithNoLetters [
 	| result |
 
@@ -144,7 +146,7 @@ BobTest >> test12_QuestionWithNoLetters [
 	self assert: result equals: 'Sure.'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test13_ShoutingWithSpecialCharacters [
 	| result |
 
@@ -152,7 +154,7 @@ BobTest >> test13_ShoutingWithSpecialCharacters [
 	self assert: result equals: 'Whoa, chill out!'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test14_ShoutingWithNoExclamationMark [
 	| result |
 
@@ -160,7 +162,7 @@ BobTest >> test14_ShoutingWithNoExclamationMark [
 	self assert: result equals: 'Whoa, chill out!'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test15_StatementContainingQuestionMark [
 	| result |
 
@@ -168,7 +170,7 @@ BobTest >> test15_StatementContainingQuestionMark [
 	self assert: result equals: 'Whatever.'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test16_NonlettersWithQuestion [
 	| result |
 
@@ -176,7 +178,7 @@ BobTest >> test16_NonlettersWithQuestion [
 	self assert: result equals: 'Sure.'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test17_PrattlingOn [
 	| result |
 
@@ -184,7 +186,7 @@ BobTest >> test17_PrattlingOn [
 	self assert: result equals: 'Sure.'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test18_Silence [
 	| result |
 
@@ -192,7 +194,7 @@ BobTest >> test18_Silence [
 	self assert: result equals: 'Fine. Be that way!'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test19_ProlongedSilence [
 	| result |
 
@@ -200,7 +202,7 @@ BobTest >> test19_ProlongedSilence [
 	self assert: result equals: 'Fine. Be that way!'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test20_AlternateSilence [
 	| result |
 
@@ -208,7 +210,7 @@ BobTest >> test20_AlternateSilence [
 	self assert: result equals: 'Fine. Be that way!'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test21_MultipleLineQuestion [
 	| result |
 
@@ -218,7 +220,7 @@ No.' .
 	self assert: result equals: 'Whatever.'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test22_StartingWithWhitespace [
 	| result |
 
@@ -226,7 +228,7 @@ BobTest >> test22_StartingWithWhitespace [
 	self assert: result equals: 'Whatever.'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test23_EndingWithWhitespace [
 	| result |
 
@@ -234,7 +236,7 @@ BobTest >> test23_EndingWithWhitespace [
 	self assert: result equals: 'Sure.'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test24_OtherWhitespace [
 	| result |
 
@@ -244,7 +246,7 @@ BobTest >> test24_OtherWhitespace [
 	self assert: result equals: 'Fine. Be that way!'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BobTest >> test25_NonquestionEndingWithWhitespace [
 	| result |
 

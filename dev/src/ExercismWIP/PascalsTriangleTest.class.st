@@ -21,33 +21,35 @@ TBD
 
 "
 Class {
-	#name : #PascalsTriangleTest,
-	#superclass : #ExercismTest,
+	#name : 'PascalsTriangleTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'pascalsTriangleCalculator'
 	],
-	#category : #'ExercismWIP-PascalsTriangle'
+	#category : 'ExercismWIP-PascalsTriangle',
+	#package : 'ExercismWIP',
+	#tag : 'PascalsTriangle'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 PascalsTriangleTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'5ed7af2e-b043-0d00-9259-d72102a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 PascalsTriangleTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'1.5.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PascalsTriangleTest >> setUp [
 	super setUp.
 	pascalsTriangleCalculator := PascalsTriangle new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PascalsTriangleTest >> test01_ZeroRows [
 	| result |
 
@@ -55,7 +57,7 @@ PascalsTriangleTest >> test01_ZeroRows [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PascalsTriangleTest >> test02_SingleRow [
 	| result |
 
@@ -63,7 +65,7 @@ PascalsTriangleTest >> test02_SingleRow [
 	self assert: result equals: #(#(1 ) )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PascalsTriangleTest >> test03_TwoRows [
 	| result |
 
@@ -71,7 +73,7 @@ PascalsTriangleTest >> test03_TwoRows [
 	self assert: result equals: #(#(1 ) #(1 1 ) )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PascalsTriangleTest >> test04_ThreeRows [
 	| result |
 
@@ -79,7 +81,7 @@ PascalsTriangleTest >> test04_ThreeRows [
 	self assert: result equals: #(#(1 ) #(1 1 ) #(1 2 1 ) )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PascalsTriangleTest >> test05_FourRows [
 	| result |
 
@@ -87,7 +89,7 @@ PascalsTriangleTest >> test05_FourRows [
 	self assert: result equals: #(#(1 ) #(1 1 ) #(1 2 1 ) #(1 3 3 1 ) )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PascalsTriangleTest >> test06_FiveRows [
 	| result |
 
@@ -95,7 +97,7 @@ PascalsTriangleTest >> test06_FiveRows [
 	self assert: result equals: #(#(1 ) #(1 1 ) #(1 2 1 ) #(1 3 3 1 ) #(1 4 6 4 1 ) )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PascalsTriangleTest >> test07_SixRows [
 	| result |
 
@@ -103,7 +105,7 @@ PascalsTriangleTest >> test07_SixRows [
 	self assert: result equals: #(#(1 ) #(1 1 ) #(1 2 1 ) #(1 3 3 1 ) #(1 4 6 4 1 ) #(1 5 10 10 5 1 ) )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PascalsTriangleTest >> test08_TenRows [
 	| result |
 

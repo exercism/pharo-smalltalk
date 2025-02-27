@@ -39,33 +39,35 @@ TBD
 
 "
 Class {
-	#name : #PalindromeProductsTest,
-	#superclass : #ExercismTest,
+	#name : 'PalindromeProductsTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'palindromeProductsCalculator'
 	],
-	#category : #'ExercismWIP-PalindromeProducts'
+	#category : 'ExercismWIP-PalindromeProducts',
+	#package : 'ExercismWIP',
+	#tag : 'PalindromeProducts'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 PalindromeProductsTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'9acfad2e-b043-0d00-9255-125502a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 PalindromeProductsTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'1.2.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PalindromeProductsTest >> setUp [
 	super setUp.
 	palindromeProductsCalculator := PalindromeProducts new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PalindromeProductsTest >> test01_FindsTheSmallestPalindromeFromSingleDigitFactors [
 	| result |
 
@@ -73,7 +75,7 @@ PalindromeProductsTest >> test01_FindsTheSmallestPalindromeFromSingleDigitFactor
 	self assert: result equals: ((Dictionary new) add: ('factors'->#(#(1 1 ) )); add: ('value'->1); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PalindromeProductsTest >> test02_FindsTheLargestPalindromeFromSingleDigitFactors [
 	| result |
 
@@ -81,7 +83,7 @@ PalindromeProductsTest >> test02_FindsTheLargestPalindromeFromSingleDigitFactors
 	self assert: result equals: ((Dictionary new) add: ('factors'->#(#(1 9 ) #(3 3 ) )); add: ('value'->9); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PalindromeProductsTest >> test03_FindTheSmallestPalindromeFromDoubleDigitFactors [
 	| result |
 
@@ -89,7 +91,7 @@ PalindromeProductsTest >> test03_FindTheSmallestPalindromeFromDoubleDigitFactors
 	self assert: result equals: ((Dictionary new) add: ('factors'->#(#(11 11 ) )); add: ('value'->121); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PalindromeProductsTest >> test04_FindTheLargestPalindromeFromDoubleDigitFactors [
 	| result |
 
@@ -97,7 +99,7 @@ PalindromeProductsTest >> test04_FindTheLargestPalindromeFromDoubleDigitFactors 
 	self assert: result equals: ((Dictionary new) add: ('factors'->#(#(91 99 ) )); add: ('value'->9009); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PalindromeProductsTest >> test05_FindSmallestPalindromeFromTripleDigitFactors [
 	| result |
 
@@ -105,7 +107,7 @@ PalindromeProductsTest >> test05_FindSmallestPalindromeFromTripleDigitFactors [
 	self assert: result equals: ((Dictionary new) add: ('factors'->#(#(101 101 ) )); add: ('value'->10201); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PalindromeProductsTest >> test06_FindTheLargestPalindromeFromTripleDigitFactors [
 	| result |
 
@@ -113,7 +115,7 @@ PalindromeProductsTest >> test06_FindTheLargestPalindromeFromTripleDigitFactors 
 	self assert: result equals: ((Dictionary new) add: ('factors'->#(#(913 993 ) )); add: ('value'->906609); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PalindromeProductsTest >> test07_FindSmallestPalindromeFromFourDigitFactors [
 	| result |
 
@@ -121,7 +123,7 @@ PalindromeProductsTest >> test07_FindSmallestPalindromeFromFourDigitFactors [
 	self assert: result equals: ((Dictionary new) add: ('factors'->#(#(1001 1001 ) )); add: ('value'->1002001); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PalindromeProductsTest >> test08_FindTheLargestPalindromeFromFourDigitFactors [
 	| result |
 
@@ -129,7 +131,7 @@ PalindromeProductsTest >> test08_FindTheLargestPalindromeFromFourDigitFactors [
 	self assert: result equals: ((Dictionary new) add: ('factors'->#(#(9901 9999 ) )); add: ('value'->99000099); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PalindromeProductsTest >> test09_EmptyResultForSmallestIfNoPalindromeInTheRange [
 	| result |
 
@@ -137,7 +139,7 @@ PalindromeProductsTest >> test09_EmptyResultForSmallestIfNoPalindromeInTheRange 
 	self assert: result equals: ((Dictionary new) add: ('factors'->#()); add: ('value'->nil); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PalindromeProductsTest >> test10_EmptyResultForLargestIfNoPalindromeInTheRange [
 	| result |
 
@@ -145,7 +147,7 @@ PalindromeProductsTest >> test10_EmptyResultForLargestIfNoPalindromeInTheRange [
 	self assert: result equals: ((Dictionary new) add: ('factors'->#()); add: ('value'->nil); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PalindromeProductsTest >> test11_ErrorResultForSmallestIfMinIsMoreThanMax [
 	| result |
 
@@ -156,7 +158,7 @@ PalindromeProductsTest >> test11_ErrorResultForSmallestIfMinIsMoreThanMax [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PalindromeProductsTest >> test12_ErrorResultForLargestIfMinIsMoreThanMax [
 	| result |
 

@@ -1,5 +1,6 @@
 Class {
-	#name : #TestOtherClass,
-	#superclass : #Object,
-	#category : #'ExercismTests-ExerciseMany'
+	#name : 'TestOtherClass',
+	#superclass : 'Object',
+	#category : 'ExercismTests-ExerciseMany',
+	#package : 'ExercismTests-ExerciseMany'
 }

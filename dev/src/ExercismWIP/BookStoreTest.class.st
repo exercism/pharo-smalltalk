@@ -74,33 +74,35 @@ TBD
 
 "
 Class {
-	#name : #BookStoreTest,
-	#superclass : #ExercismTest,
+	#name : 'BookStoreTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'bookStoreCalculator'
 	],
-	#category : #'ExercismWIP-BookStore'
+	#category : 'ExercismWIP-BookStore',
+	#package : 'ExercismWIP',
+	#tag : 'BookStore'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 BookStoreTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'872ba32e-b043-0d00-9247-dbee02a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 BookStoreTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'1.4.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 BookStoreTest >> setUp [
 	super setUp.
 	bookStoreCalculator := BookStore new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BookStoreTest >> test01_OnlyASingleBook [
 	| result |
 
@@ -108,7 +110,7 @@ BookStoreTest >> test01_OnlyASingleBook [
 	self assert: result equals: 800
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BookStoreTest >> test02_TwoOfTheSameBook [
 	| result |
 
@@ -116,7 +118,7 @@ BookStoreTest >> test02_TwoOfTheSameBook [
 	self assert: result equals: 1600
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BookStoreTest >> test03_EmptyBasket [
 	| result |
 
@@ -124,7 +126,7 @@ BookStoreTest >> test03_EmptyBasket [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BookStoreTest >> test04_TwoDifferentBooks [
 	| result |
 
@@ -132,7 +134,7 @@ BookStoreTest >> test04_TwoDifferentBooks [
 	self assert: result equals: 1520
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BookStoreTest >> test05_ThreeDifferentBooks [
 	| result |
 
@@ -140,7 +142,7 @@ BookStoreTest >> test05_ThreeDifferentBooks [
 	self assert: result equals: 2160
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BookStoreTest >> test06_FourDifferentBooks [
 	| result |
 
@@ -148,7 +150,7 @@ BookStoreTest >> test06_FourDifferentBooks [
 	self assert: result equals: 2560
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BookStoreTest >> test07_FiveDifferentBooks [
 	| result |
 
@@ -156,7 +158,7 @@ BookStoreTest >> test07_FiveDifferentBooks [
 	self assert: result equals: 3000
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BookStoreTest >> test08_TwoGroupsOfFourIsCheaperThanGroupOfFivePlusGroupOfThree [
 	| result |
 
@@ -164,7 +166,7 @@ BookStoreTest >> test08_TwoGroupsOfFourIsCheaperThanGroupOfFivePlusGroupOfThree 
 	self assert: result equals: 5120
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BookStoreTest >> test09_TwoGroupsOfFourIsCheaperThanGroupsOfFiveAndThree [
 	| result |
 
@@ -172,7 +174,7 @@ BookStoreTest >> test09_TwoGroupsOfFourIsCheaperThanGroupsOfFiveAndThree [
 	self assert: result equals: 5120
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BookStoreTest >> test10_GroupOfFourPlusGroupOfTwoIsCheaperThanTwoGroupsOfThree [
 	| result |
 
@@ -180,7 +182,7 @@ BookStoreTest >> test10_GroupOfFourPlusGroupOfTwoIsCheaperThanTwoGroupsOfThree [
 	self assert: result equals: 4080
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BookStoreTest >> test11_TwoEachOfFirst4BooksAnd1CopyEachOfRest [
 	| result |
 
@@ -188,7 +190,7 @@ BookStoreTest >> test11_TwoEachOfFirst4BooksAnd1CopyEachOfRest [
 	self assert: result equals: 5560
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BookStoreTest >> test12_TwoCopiesOfEachBook [
 	| result |
 
@@ -196,7 +198,7 @@ BookStoreTest >> test12_TwoCopiesOfEachBook [
 	self assert: result equals: 6000
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BookStoreTest >> test13_ThreeCopiesOfFirstBookAnd2EachOfRemaining [
 	| result |
 
@@ -204,7 +206,7 @@ BookStoreTest >> test13_ThreeCopiesOfFirstBookAnd2EachOfRemaining [
 	self assert: result equals: 6800
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BookStoreTest >> test14_ThreeEachOfFirst2BooksAnd2EachOfRemainingBooks [
 	| result |
 
@@ -212,7 +214,7 @@ BookStoreTest >> test14_ThreeEachOfFirst2BooksAnd2EachOfRemainingBooks [
 	self assert: result equals: 7520
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BookStoreTest >> test15_FourGroupsOfFourAreCheaperThanTwoGroupsEachOfFiveAndThree [
 	| result |
 

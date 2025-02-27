@@ -21,33 +21,35 @@ TBD
 
 "
 Class {
-	#name : #DominoesTest,
-	#superclass : #ExercismTest,
+	#name : 'DominoesTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'dominoesCalculator'
 	],
-	#category : #'ExercismWIP-Dominoes'
+	#category : 'ExercismWIP-Dominoes',
+	#package : 'ExercismWIP',
+	#tag : 'Dominoes'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 DominoesTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'30abb92e-b043-0d00-9268-8a4902a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 DominoesTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'2.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DominoesTest >> setUp [
 	super setUp.
 	dominoesCalculator := Dominoes new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DominoesTest >> test01_EmptyInputEqualsEmptyOutput [
 	| result |
 
@@ -55,7 +57,7 @@ DominoesTest >> test01_EmptyInputEqualsEmptyOutput [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DominoesTest >> test02_SingletonInputEqualsSingletonOutput [
 	| result |
 
@@ -63,7 +65,7 @@ DominoesTest >> test02_SingletonInputEqualsSingletonOutput [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DominoesTest >> test03_SingletonThatCantBeChained [
 	| result |
 
@@ -71,7 +73,7 @@ DominoesTest >> test03_SingletonThatCantBeChained [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DominoesTest >> test04_ThreeElements [
 	| result |
 
@@ -79,7 +81,7 @@ DominoesTest >> test04_ThreeElements [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DominoesTest >> test05_CanReverseDominoes [
 	| result |
 
@@ -87,7 +89,7 @@ DominoesTest >> test05_CanReverseDominoes [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DominoesTest >> test06_CantBeChained [
 	| result |
 
@@ -95,7 +97,7 @@ DominoesTest >> test06_CantBeChained [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DominoesTest >> test07_DisconnectedSimple [
 	| result |
 
@@ -103,7 +105,7 @@ DominoesTest >> test07_DisconnectedSimple [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DominoesTest >> test08_DisconnectedDoubleLoop [
 	| result |
 
@@ -111,7 +113,7 @@ DominoesTest >> test08_DisconnectedDoubleLoop [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DominoesTest >> test09_DisconnectedSingleIsolated [
 	| result |
 
@@ -119,7 +121,7 @@ DominoesTest >> test09_DisconnectedSingleIsolated [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DominoesTest >> test10_NeedBacktrack [
 	| result |
 
@@ -127,7 +129,7 @@ DominoesTest >> test10_NeedBacktrack [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DominoesTest >> test11_SeparateLoops [
 	| result |
 
@@ -135,7 +137,7 @@ DominoesTest >> test11_SeparateLoops [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DominoesTest >> test12_NineElements [
 	| result |
 

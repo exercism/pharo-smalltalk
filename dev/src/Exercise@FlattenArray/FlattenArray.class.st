@@ -5,19 +5,20 @@ Mentor notes:
 - can be a recursive solution
 "
 Class {
-	#name : #FlattenArray,
-	#superclass : #Object,
-	#category : #'Exercise@FlattenArray'
+	#name : 'FlattenArray',
+	#superclass : 'Object',
+	#category : 'Exercise@FlattenArray',
+	#package : 'Exercise@FlattenArray'
 }
 
-{ #category : #helper }
+{ #category : 'helper' }
 FlattenArray >> flatten: anObject onto: result [
 	anObject isCollection
 		ifTrue: [ anObject do: [ :item | self flatten: item onto: result ] ]
 		ifFalse: [ anObject ifNotNil: [ result nextPut: anObject ] ]
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 FlattenArray >> flattenArray: aCollection [ 
 	
 	^(OrderedCollection streamContents: [ :s |

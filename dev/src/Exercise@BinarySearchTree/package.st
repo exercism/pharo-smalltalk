@@ -1,1 +1,1 @@
-Package { #name : #'Exercise@BinarySearchTree' }
+Package { #name : 'Exercise@BinarySearchTree' }

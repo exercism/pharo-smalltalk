@@ -19,22 +19,23 @@ Instance Variables
 
 "
 Class {
-	#name : #LuhnNumber,
-	#superclass : #Object,
+	#name : 'LuhnNumber',
+	#superclass : 'Object',
 	#instVars : [
 		'number'
 	],
-	#category : #'Exercise@Luhn'
+	#category : 'Exercise@Luhn',
+	#package : 'Exercise@Luhn'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 LuhnNumber class >> from: aString [ 
 	^ self new 
 		number: aString;
 		yourself 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 LuhnNumber >> isValid [
 	| step1 step2 |
 	
@@ -56,17 +57,17 @@ LuhnNumber >> isValid [
 	^ step2 sum isDivisibleBy: 10
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LuhnNumber >> number [
 	^ number
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LuhnNumber >> number: aString [ 
 	number := aString trimBoth
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 LuhnNumber >> printOn: aStream [
 	super printOn: aStream.
 	aStream << ' (' << number << ')'

@@ -4,17 +4,18 @@ To start your Exercism journey, right click on the Exercise@Welcome package (or 
 Note: Each exercise will have some instructions in its test Comment tab, so be sure to read them when starting a new challenge.
 "
 Class {
-	#name : #WelcomeTest,
-	#superclass : #TestCase,
-	#category : #'Exercise@Welcome'
+	#name : 'WelcomeTest',
+	#superclass : 'TestCase',
+	#category : 'Exercise@Welcome',
+	#package : 'Exercise@Welcome'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 WelcomeTest class >> followedBy [ 
 	^'HelloWorld'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WelcomeTest >> testWelcome [
 	"This is a sample Pharo test fixture. 
 	

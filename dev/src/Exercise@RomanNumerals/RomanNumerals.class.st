@@ -2,15 +2,16 @@
 This is pretty starightforward once you spot how Pharo handles a while loop.
 "
 Class {
-	#name : #RomanNumerals,
-	#superclass : #Object,
+	#name : 'RomanNumerals',
+	#superclass : 'Object',
 	#classVars : [
 		'NumeralsTable'
 	],
-	#category : #'Exercise@RomanNumerals'
+	#category : 'Exercise@RomanNumerals',
+	#package : 'Exercise@RomanNumerals'
 }
 
-{ #category : #constants }
+{ #category : 'constants' }
 RomanNumerals class >> numeralsTable [
 	"Answer a table of arabic to roman numeral conversions."
 	
@@ -32,7 +33,7 @@ RomanNumerals class >> numeralsTable [
 			(1 -> 'I')} asOrderedDictionary ]
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 RomanNumerals >> romanNumber: anInteger [
 	| number |
 	

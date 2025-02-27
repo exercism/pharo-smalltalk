@@ -22,44 +22,46 @@ at `CmdCommand>>#execute`.
 - selectedItem: RPackage, the selected package in the browser context.
 "
 Class {
-	#name : #ClyExercismCommand,
-	#superclass : #SycPackageCommand,
+	#name : 'ClyExercismCommand',
+	#superclass : 'SycPackageCommand',
 	#instVars : [
 		'browser',
 		'selectedItem'
 	],
-	#category : #'ExercismTools-Menus'
+	#category : 'ExercismTools-Menus',
+	#package : 'ExercismTools',
+	#tag : 'Menus'
 }
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyExercismCommand class >> canBeExecutedInContext: aToolContext [
 	^ (super canBeExecutedInContext: aToolContext)
 		and: [ self isExercismTagIn: aToolContext ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 ClyExercismCommand class >> isAbstract [
 	
 	^self == ClyExercismCommand
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 ClyExercismCommand class >> isExercismTagIn: aToolContext [
 	
 	^false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismCommand >> browser [
 	^ browser
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismCommand >> browser: anObject [
 	browser := anObject
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ClyExercismCommand >> prepareFullExecutionInContext: aToolContext [
 	super prepareFullExecutionInContext: aToolContext.
 
@@ -67,17 +69,17 @@ ClyExercismCommand >> prepareFullExecutionInContext: aToolContext [
 	self browser: aToolContext tool
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismCommand >> selectedItem [
 	^ selectedItem
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismCommand >> selectedItem: anObject [
 	selectedItem := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismCommand >> selectedItemIn: aToolContext [
 	^ aToolContext lastSelectedClassGroup
 ]

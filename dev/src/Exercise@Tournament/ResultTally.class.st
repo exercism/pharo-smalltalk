@@ -2,21 +2,22 @@
 I am a simple match result tally, that holds the number of wins, losses and draws for a team.
 "
 Class {
-	#name : #ResultTally,
-	#superclass : #Object,
+	#name : 'ResultTally',
+	#superclass : 'Object',
 	#instVars : [
 		'tallys',
 		'name'
 	],
-	#category : #'Exercise@Tournament'
+	#category : 'Exercise@Tournament',
+	#package : 'Exercise@Tournament'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 ResultTally class >> for: nameString [
 	^self new name: nameString; yourself
 ]
 
-{ #category : #counting }
+{ #category : 'counting' }
 ResultTally >> countOutcome: aString [
 	| tally |
 
@@ -24,32 +25,32 @@ ResultTally >> countOutcome: aString [
 	self tallys at: aString put: tally + 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ResultTally >> draws [
 	^ self tallys at: 'draw' ifAbsent: [ 0 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ResultTally >> losses [
 	^ self tallys at: 'loss' ifAbsent: [ 0 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ResultTally >> matchesPlayed [
 	^ self wins + self losses + self draws
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ResultTally >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ResultTally >> name: nameString [
 	name := nameString
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 ResultTally >> outputResultOn: aWriteStream [
 	aWriteStream
 		nextPutAll: (self name padRightTo: 31);
@@ -64,17 +65,17 @@ ResultTally >> outputResultOn: aWriteStream [
 		cr
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ResultTally >> points [
 	^ self wins * 3 + self draws
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ResultTally >> tallys [
 	^ tallys ifNil: [ tallys := Dictionary new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ResultTally >> wins [
 	^self tallys at: 'win' ifAbsent: [  0 ]
 ]

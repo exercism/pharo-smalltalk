@@ -32,33 +32,35 @@ TBD
 
 "
 Class {
-	#name : #ZebraPuzzleTest,
-	#superclass : #ExercismTest,
+	#name : 'ZebraPuzzleTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'zebraPuzzleCalculator'
 	],
-	#category : #'ExercismWIP-ZebraPuzzle'
+	#category : 'ExercismWIP-ZebraPuzzle',
+	#package : 'ExercismWIP',
+	#tag : 'ZebraPuzzle'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 ZebraPuzzleTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'5aa20717-9d41-0d00-9012-879708866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ZebraPuzzleTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 ZebraPuzzleTest >> setUp [
 	super setUp.
 	zebraPuzzleCalculator := ZebraPuzzle new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ZebraPuzzleTest >> test01_ResidentWhoDrinksWater [
 	| result |
 
@@ -66,7 +68,7 @@ ZebraPuzzleTest >> test01_ResidentWhoDrinksWater [
 	self assert: result equals: 'Norwegian'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ZebraPuzzleTest >> test02_ResidentWhoOwnsZebra [
 	| result |
 

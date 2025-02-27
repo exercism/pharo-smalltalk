@@ -1,1 +1,1 @@
-Package { #name : #'Exercise@FlattenArray' }
+Package { #name : 'Exercise@FlattenArray' }

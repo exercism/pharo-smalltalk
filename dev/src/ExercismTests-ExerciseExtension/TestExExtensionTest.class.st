@@ -1,10 +1,11 @@
 Class {
-	#name : #TestExExtensionTest,
-	#superclass : #ExercismTest,
-	#category : #'ExercismTests-ExerciseExtension'
+	#name : 'TestExExtensionTest',
+	#superclass : 'ExercismTest',
+	#category : 'ExercismTests-ExerciseExtension',
+	#package : 'ExercismTests-ExerciseExtension'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 TestExExtensionTest class >> exercise [
 	^(ExercismExercise for: self)
 		difficulty: 2;
@@ -12,20 +13,20 @@ TestExExtensionTest class >> exercise [
 		yourself
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 TestExExtensionTest class >> isActive [
 	"Answer true if an exercise is active (not deprecated or for testing)"
 	
 	^false
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 TestExExtensionTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'dc7b1fff-f0be-460d-b146-ee84c2acc111'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 TestExExtensionTest class >> version [
 	^'1.0.0'
 ]

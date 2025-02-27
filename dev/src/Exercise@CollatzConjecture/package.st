@@ -1,1 +1,1 @@
-Package { #name : #'Exercise@CollatzConjecture' }
+Package { #name : 'Exercise@CollatzConjecture' }

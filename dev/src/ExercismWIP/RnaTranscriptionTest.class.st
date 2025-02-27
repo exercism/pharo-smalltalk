@@ -25,33 +25,35 @@ TBD
 
 "
 Class {
-	#name : #RnaTranscriptionTest,
-	#superclass : #ExercismTest,
+	#name : 'RnaTranscriptionTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'rnaTranscriptionCalculator'
 	],
-	#category : #'ExercismWIP-RnaTranscription'
+	#category : 'ExercismWIP-RnaTranscription',
+	#package : 'ExercismWIP',
+	#tag : 'RnaTranscription'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 RnaTranscriptionTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'aee2ac16-9d41-0d00-8fce-202108866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 RnaTranscriptionTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.3.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 RnaTranscriptionTest >> setUp [
 	super setUp.
 	rnaTranscriptionCalculator := RnaTranscription new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RnaTranscriptionTest >> test01_EmptyRNASequence [
 	| result |
 
@@ -59,7 +61,7 @@ RnaTranscriptionTest >> test01_EmptyRNASequence [
 	self assert: result equals: ''
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RnaTranscriptionTest >> test02_RNAComplementOfCytosineIsGuanine [
 	| result |
 
@@ -67,7 +69,7 @@ RnaTranscriptionTest >> test02_RNAComplementOfCytosineIsGuanine [
 	self assert: result equals: 'G'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RnaTranscriptionTest >> test03_RNAComplementOfGuanineIsCytosine [
 	| result |
 
@@ -75,7 +77,7 @@ RnaTranscriptionTest >> test03_RNAComplementOfGuanineIsCytosine [
 	self assert: result equals: 'C'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RnaTranscriptionTest >> test04_RNAComplementOfThymineIsAdenine [
 	| result |
 
@@ -83,7 +85,7 @@ RnaTranscriptionTest >> test04_RNAComplementOfThymineIsAdenine [
 	self assert: result equals: 'A'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RnaTranscriptionTest >> test05_RNAComplementOfAdenineIsUracil [
 	| result |
 
@@ -91,7 +93,7 @@ RnaTranscriptionTest >> test05_RNAComplementOfAdenineIsUracil [
 	self assert: result equals: 'U'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RnaTranscriptionTest >> test06_RNAComplement [
 	| result |
 

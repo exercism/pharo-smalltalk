@@ -53,15 +53,16 @@ While readability is preferred over efficiency, there is a solution that avoids 
 
 "
 Class {
-	#name : #EtlTest,
-	#superclass : #ExercismTest,
+	#name : 'EtlTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'etlCalculator'
 	],
-	#category : #'Exercise@Etl'
+	#category : 'Exercise@Etl',
+	#package : 'Exercise@Etl'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 EtlTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -72,25 +73,25 @@ EtlTest class >> exercise [
 
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 EtlTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'5bf981a0-0647-4867-9026-b25021b48a23'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 EtlTest class >> version [
 	"Generated from specification: 22 March 2019"
 	^'1.0.1'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 EtlTest >> setUp [
 	super setUp.
 	etlCalculator := Etl new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EtlTest >> test01_TransformsASingleLetter [
 	| result |
 
@@ -98,7 +99,7 @@ EtlTest >> test01_TransformsASingleLetter [
 	self assert: result equals: ((Dictionary new) add: ('a'->1); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EtlTest >> test02_TransformASingleScoreWithMultipleLetters [
 	| result |
 
@@ -106,7 +107,7 @@ EtlTest >> test02_TransformASingleScoreWithMultipleLetters [
 	self assert: result equals: ((Dictionary new) add: ('i'->1); add: ('e'->1); add: ('a'->1); add: ('u'->1); add: ('o'->1); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EtlTest >> test03_TransformMultipleScoresWithMultipleLetters [
 	| result |
 
@@ -114,7 +115,7 @@ EtlTest >> test03_TransformMultipleScoresWithMultipleLetters [
 	self assert: result equals: ((Dictionary new) add: ('g'->2); add: ('a'->1); add: ('d'->2); add: ('e'->1); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EtlTest >> test04_TransformsMultipleScoresWithDifferingNumbersOfLetters [
 	| result |
 

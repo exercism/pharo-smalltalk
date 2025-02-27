@@ -1,10 +1,11 @@
 Class {
-	#name : #ExampleExtensionMethodTest,
-	#superclass : #ExercismTest,
-	#category : #'Exercise@ExampleExtensionMethod'
+	#name : 'ExampleExtensionMethodTest',
+	#superclass : 'ExercismTest',
+	#category : 'Exercise@ExampleExtensionMethod',
+	#package : 'Exercise@ExampleExtensionMethod'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 ExampleExtensionMethodTest class >> exampleSolutionSourceCode [
 
 	^ 'Extension { #name : #String }
@@ -17,7 +18,7 @@ String >> somethingReturned [
 '
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExampleExtensionMethodTest class >> exampleTestCasesSourceCode [
 
 	^ 'Class {
@@ -33,7 +34,7 @@ ExampleExtensionMethodTest >> testStringExtensionSomethingReturned [
 '
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ExampleExtensionMethodTest class >> exercise [
 	^ (self createExerciseAfter: HelloWorldTest)
 		isCore: true;

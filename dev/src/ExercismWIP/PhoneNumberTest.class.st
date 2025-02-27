@@ -35,33 +35,35 @@ TBD
 
 "
 Class {
-	#name : #PhoneNumberTest,
-	#superclass : #ExercismTest,
+	#name : 'PhoneNumberTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'phoneNumberCalculator'
 	],
-	#category : #'ExercismWIP-PhoneNumber'
+	#category : 'ExercismWIP-PhoneNumber',
+	#package : 'ExercismWIP',
+	#tag : 'PhoneNumber'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 PhoneNumberTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'83c1ac2e-b043-0d00-9253-3e3402a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 PhoneNumberTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'1.7.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PhoneNumberTest >> setUp [
 	super setUp.
 	phoneNumberCalculator := PhoneNumber new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhoneNumberTest >> test01_CleansTheNumber [
 	| result |
 
@@ -69,7 +71,7 @@ PhoneNumberTest >> test01_CleansTheNumber [
 	self assert: result equals: '2234567890'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhoneNumberTest >> test02_CleansNumbersWithDots [
 	| result |
 
@@ -77,7 +79,7 @@ PhoneNumberTest >> test02_CleansNumbersWithDots [
 	self assert: result equals: '2234567890'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhoneNumberTest >> test03_CleansNumbersWithMultipleSpaces [
 	| result |
 
@@ -85,7 +87,7 @@ PhoneNumberTest >> test03_CleansNumbersWithMultipleSpaces [
 	self assert: result equals: '2234567890'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhoneNumberTest >> test04_InvalidWhen9Digits [
 	| result |
 
@@ -96,7 +98,7 @@ PhoneNumberTest >> test04_InvalidWhen9Digits [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhoneNumberTest >> test05_InvalidWhen11DigitsDoesNotStartWithA1 [
 	| result |
 
@@ -107,7 +109,7 @@ PhoneNumberTest >> test05_InvalidWhen11DigitsDoesNotStartWithA1 [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhoneNumberTest >> test06_ValidWhen11DigitsAndStartingWith1 [
 	| result |
 
@@ -115,7 +117,7 @@ PhoneNumberTest >> test06_ValidWhen11DigitsAndStartingWith1 [
 	self assert: result equals: '2234567890'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhoneNumberTest >> test07_ValidWhen11DigitsAndStartingWith1EvenWithPunctuation [
 	| result |
 
@@ -123,7 +125,7 @@ PhoneNumberTest >> test07_ValidWhen11DigitsAndStartingWith1EvenWithPunctuation [
 	self assert: result equals: '2234567890'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhoneNumberTest >> test08_InvalidWhenMoreThan11Digits [
 	| result |
 
@@ -134,7 +136,7 @@ PhoneNumberTest >> test08_InvalidWhenMoreThan11Digits [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhoneNumberTest >> test09_InvalidWithLetters [
 	| result |
 
@@ -145,7 +147,7 @@ PhoneNumberTest >> test09_InvalidWithLetters [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhoneNumberTest >> test10_InvalidWithPunctuations [
 	| result |
 
@@ -156,7 +158,7 @@ PhoneNumberTest >> test10_InvalidWithPunctuations [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhoneNumberTest >> test11_InvalidIfAreaCodeStartsWith0 [
 	| result |
 
@@ -167,7 +169,7 @@ PhoneNumberTest >> test11_InvalidIfAreaCodeStartsWith0 [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhoneNumberTest >> test12_InvalidIfAreaCodeStartsWith1 [
 	| result |
 
@@ -178,7 +180,7 @@ PhoneNumberTest >> test12_InvalidIfAreaCodeStartsWith1 [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhoneNumberTest >> test13_InvalidIfExchangeCodeStartsWith0 [
 	| result |
 
@@ -189,7 +191,7 @@ PhoneNumberTest >> test13_InvalidIfExchangeCodeStartsWith0 [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhoneNumberTest >> test14_InvalidIfExchangeCodeStartsWith1 [
 	| result |
 
@@ -200,7 +202,7 @@ PhoneNumberTest >> test14_InvalidIfExchangeCodeStartsWith1 [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhoneNumberTest >> test15_InvalidIfAreaCodeStartsWith0OnValid11digitNumber [
 	| result |
 
@@ -211,7 +213,7 @@ PhoneNumberTest >> test15_InvalidIfAreaCodeStartsWith0OnValid11digitNumber [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhoneNumberTest >> test16_InvalidIfAreaCodeStartsWith1OnValid11digitNumber [
 	| result |
 
@@ -222,7 +224,7 @@ PhoneNumberTest >> test16_InvalidIfAreaCodeStartsWith1OnValid11digitNumber [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhoneNumberTest >> test17_InvalidIfExchangeCodeStartsWith0OnValid11digitNumber [
 	| result |
 
@@ -233,7 +235,7 @@ PhoneNumberTest >> test17_InvalidIfExchangeCodeStartsWith0OnValid11digitNumber [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhoneNumberTest >> test18_InvalidIfExchangeCodeStartsWith1OnValid11digitNumber [
 	| result |
 

@@ -30,33 +30,35 @@ TBD
 
 "
 Class {
-	#name : #PythagoreanTripletTest,
-	#superclass : #ExercismTest,
+	#name : 'PythagoreanTripletTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'pythagoreanTripletCalculator'
 	],
-	#category : #'ExercismWIP-PythagoreanTriplet'
+	#category : 'ExercismWIP-PythagoreanTriplet',
+	#package : 'ExercismWIP',
+	#tag : 'PythagoreanTriplet'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 PythagoreanTripletTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'e3e8e116-9d41-0d00-8ff8-888108866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 PythagoreanTripletTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.0.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PythagoreanTripletTest >> setUp [
 	super setUp.
 	pythagoreanTripletCalculator := PythagoreanTriplet new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PythagoreanTripletTest >> test01_TripletsWhoseSumIs12 [
 	| result |
 
@@ -64,7 +66,7 @@ PythagoreanTripletTest >> test01_TripletsWhoseSumIs12 [
 	self assert: result equals: #(#(3 4 5 ) )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PythagoreanTripletTest >> test02_TripletsWhoseSumIs108 [
 	| result |
 
@@ -72,7 +74,7 @@ PythagoreanTripletTest >> test02_TripletsWhoseSumIs108 [
 	self assert: result equals: #(#(27 36 45 ) )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PythagoreanTripletTest >> test03_TripletsWhoseSumIs1000 [
 	| result |
 
@@ -80,7 +82,7 @@ PythagoreanTripletTest >> test03_TripletsWhoseSumIs1000 [
 	self assert: result equals: #(#(200 375 425 ) )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PythagoreanTripletTest >> test04_NoMatchingTripletsFor1001 [
 	| result |
 
@@ -88,7 +90,7 @@ PythagoreanTripletTest >> test04_NoMatchingTripletsFor1001 [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PythagoreanTripletTest >> test05_ReturnsAllMatchingTriplets [
 	| result |
 
@@ -96,7 +98,7 @@ PythagoreanTripletTest >> test05_ReturnsAllMatchingTriplets [
 	self assert: result equals: #(#(9 40 41 ) #(15 36 39 ) )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PythagoreanTripletTest >> test06_SeveralMatchingTriplets [
 	| result |
 
@@ -104,7 +106,7 @@ PythagoreanTripletTest >> test06_SeveralMatchingTriplets [
 	self assert: result equals: #(#(40 399 401 ) #(56 390 394 ) #(105 360 375 ) #(120 350 370 ) #(140 336 364 ) #(168 315 357 ) #(210 280 350 ) #(240 252 348 ) )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PythagoreanTripletTest >> test07_TripletsForLargeNumber [
 	| result |
 

@@ -2,23 +2,24 @@
 I represent Simple Cipher, I do simple encoding/decoding based on either supplied or own generated key. I support operations encode, decode with input string parameter. Optionally, key can be passed, based on which encoding/decoding should happen.
 "
 Class {
-	#name : #SimpleCipher,
-	#superclass : #Object,
+	#name : 'SimpleCipher',
+	#superclass : 'Object',
 	#instVars : [
 		'key',
 		'alphabet'
 	],
-	#category : #'Exercise@SimpleCipher'
+	#category : 'Exercise@SimpleCipher',
+	#package : 'Exercise@SimpleCipher'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SimpleCipher >> alphabet [
 	
 	"lowercase alphabet, it is cached since we do not want to create copies for every loop iteration"
 	^ alphabet ifNil: [ alphabet := Character alphabet ]
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 SimpleCipher >> decode: aString [
 	
 	^ aString withIndexCollect: [: char :idx| 
@@ -26,7 +27,7 @@ SimpleCipher >> decode: aString [
 	]
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 SimpleCipher >> decodedIndexOf: aChar atKeyPosition: keyPos [
 	
 		|idx|
@@ -35,7 +36,7 @@ SimpleCipher >> decodedIndexOf: aChar atKeyPosition: keyPos [
 		^ idx
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 SimpleCipher >> encode: aString [ 
 	
 	^ aString withIndexCollect: [: char :idx| 
@@ -43,7 +44,7 @@ SimpleCipher >> encode: aString [
 	]
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 SimpleCipher >> encodedIndexOf: aChar atKeyPosition: keyPos [
 	
 		|idx| 
@@ -52,7 +53,7 @@ SimpleCipher >> encodedIndexOf: aChar atKeyPosition: keyPos [
 		^ idx
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SimpleCipher >> generateRandomKey [
 
 	| aKey |
@@ -61,19 +62,19 @@ SimpleCipher >> generateRandomKey [
 	^ aKey
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SimpleCipher >> key [
 
 	^ key ifNil: [ key := self generateRandomKey ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SimpleCipher >> key: lowerCaseString [
 
 	key := lowerCaseString
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 SimpleCipher >> keyDistanceAt: keyPos [
 		|aPos|
 		"use modulo to wrap index to size of key"

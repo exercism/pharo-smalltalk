@@ -1,20 +1,22 @@
 Class {
-	#name : #ExercismFetchCommand,
-	#superclass : #ExercismHttpCommand,
+	#name : 'ExercismFetchCommand',
+	#superclass : 'ExercismHttpCommand',
 	#instVars : [
 		'parser'
 	],
-	#category : #'ExercismTools-Core'
+	#category : 'ExercismTools-Core',
+	#package : 'ExercismTools',
+	#tag : 'Core'
 }
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismFetchCommand >> fetchExerciseFilesFor: submission [
 
 	submission
 		populateFileContentsWith: [ :filename | self httpClient getResource: filename ]
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismFetchCommand >> fetchLatestSubmission [
 	| response |
 	
@@ -27,7 +29,7 @@ ExercismFetchCommand >> fetchLatestSubmission [
 	^ExercismSubmission data: response
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismFetchCommand >> retrieveLatestData [
 	^self subclassResponsibility 
 ]

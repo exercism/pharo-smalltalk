@@ -4,38 +4,39 @@ Mentor notes:
 
 "
 Class {
-	#name : #Forth,
-	#superclass : #Object,
+	#name : 'Forth',
+	#superclass : 'Object',
 	#instVars : [
 		'stack',
 		'vocabulary',
 		'currentDefinition'
 	],
-	#category : #'Exercise@Forth'
+	#category : 'Exercise@Forth',
+	#package : 'Exercise@Forth'
 }
 
-{ #category : #vocabulary }
+{ #category : 'vocabulary' }
 Forth >> addWord: aString definition: aCollection [
 	^ self vocabulary
 		at: aString
 		put: aCollection
 ]
 
-{ #category : #validating }
+{ #category : 'validating' }
 Forth >> checkStackHas: anInteger [
 	stack size < anInteger ifFalse: [ ^ self ].
 	stack ifEmpty: [ self error: 'empty stack' ].
 	stack size = 1 ifTrue: [ self error: 'only one value on the stack' ]
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 Forth >> compileName: aString [
 	(self isSignedInteger: aString)
 		ifTrue: [ self error: 'illegal operation' ].
 	currentDefinition add: aString
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 Forth >> compileWord: aString [
 	currentDefinition
 		ifEmpty: [ self compileName: aString asLowercase ]
@@ -52,7 +53,7 @@ Forth >> compileWord: aString [
 					^ aString ] ]
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 Forth >> evaluateInstructions: aCollection [
 	aCollection do: [ :string |
 		(string splitOn: Character space)
@@ -60,7 +61,7 @@ Forth >> evaluateInstructions: aCollection [
 	^ stack reverse asArray
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 Forth >> evaluateWord: aString [
 	(self isSignedInteger: aString)
 		ifTrue: [ stack push: aString asInteger ]
@@ -70,7 +71,7 @@ Forth >> evaluateWord: aString [
 			^ aString ]
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 Forth >> finishCompilation [
 	| name definition |
 	
@@ -85,33 +86,33 @@ Forth >> finishCompilation [
 	currentDefinition := nil
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 Forth >> initialize [
 	super initialize.
 	stack := Stack new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Forth >> isSignedInteger: aString [ 
 	^ aString isAllDigits
 		or: [ aString first = $-
 			and: [ aString allButFirst isAllDigits ] ]
 ]
 
-{ #category : #vocabulary }
+{ #category : 'vocabulary' }
 Forth >> lookupWord: aString [
 	^ self vocabulary
 		at: aString
 		ifAbsent: [ self error: 'undefined operation' ]
 ]
 
-{ #category : #'builtin words' }
+{ #category : 'builtin words' }
 Forth >> performAddition [
 	self checkStackHas: 2.
 	^ stack pop + stack pop
 ]
 
-{ #category : #'builtin words' }
+{ #category : 'builtin words' }
 Forth >> performDivision [
 	| a b |
 	self checkStackHas: 2.
@@ -122,58 +123,58 @@ Forth >> performDivision [
 	^ a // b
 ]
 
-{ #category : #'builtin words' }
+{ #category : 'builtin words' }
 Forth >> performDrop [
 	self
 		checkStackHas: 1;
 		primitiveDrop
 ]
 
-{ #category : #'builtin words' }
+{ #category : 'builtin words' }
 Forth >> performDup [
 	self
 		checkStackHas: 1;
 		primitiveDup
 ]
 
-{ #category : #'builtin words' }
+{ #category : 'builtin words' }
 Forth >> performMultiplication [
 	self checkStackHas: 2.
 	^ stack pop * stack pop
 ]
 
-{ #category : #'builtin words' }
+{ #category : 'builtin words' }
 Forth >> performOver [
 	self
 		checkStackHas:2;
 		primitiveOver
 ]
 
-{ #category : #'builtin words' }
+{ #category : 'builtin words' }
 Forth >> performSubtraction [
 	self checkStackHas: 2.
 	self primitiveSwap.
 	^ stack pop - stack pop
 ]
 
-{ #category : #'builtin words' }
+{ #category : 'builtin words' }
 Forth >> performSwap [
 	self
 		checkStackHas:2;
 		primitiveSwap
 ]
 
-{ #category : #primitives }
+{ #category : 'primitives' }
 Forth >> primitiveDrop [
 	stack pop
 ]
 
-{ #category : #primitives }
+{ #category : 'primitives' }
 Forth >> primitiveDup [
 	stack push: stack top
 ]
 
-{ #category : #primitives }
+{ #category : 'primitives' }
 Forth >> primitiveOver [
 	| a b |
 	
@@ -185,7 +186,7 @@ Forth >> primitiveOver [
 		push: b
 ]
 
-{ #category : #primitives }
+{ #category : 'primitives' }
 Forth >> primitiveSwap [
 	| a b |
 	
@@ -196,19 +197,19 @@ Forth >> primitiveSwap [
 		push: b
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 Forth >> processWord: aString [
 	(currentDefinition isNil or: [ aString = ';' ])
 		ifTrue: [ self evaluateWord: aString ]
 		ifFalse: [ self compileWord: aString ]
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 Forth >> startCompilation [
 	currentDefinition := OrderedCollection new
 ]
 
-{ #category : #vocabulary }
+{ #category : 'vocabulary' }
 Forth >> vocabulary [
 	^ vocabulary ifNil: [ vocabulary := {
 		#+ -> (ForthWord new name: #+; definition: [ stack push: self performAddition ]).

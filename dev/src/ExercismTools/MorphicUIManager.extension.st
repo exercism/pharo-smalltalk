@@ -1,6 +1,6 @@
-Extension { #name : #MorphicUIManager }
+Extension { #name : 'MorphicUIManager' }
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 MorphicUIManager >> requestText: formattedText initialAnswer: defaultAnswer title: aTitle [
 	"Derived from #request:initialAnswer:title: but only for formatted text not strings
 	to avoid overriding formatting."

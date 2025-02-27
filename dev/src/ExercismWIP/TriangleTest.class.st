@@ -29,33 +29,35 @@ TBD
 
 "
 Class {
-	#name : #TriangleTest,
-	#superclass : #ExercismTest,
+	#name : 'TriangleTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'triangleCalculator'
 	],
-	#category : #'ExercismWIP-Triangle'
+	#category : 'ExercismWIP-Triangle',
+	#package : 'ExercismWIP',
+	#tag : 'Triangle'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 TriangleTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'51fed216-9d41-0d00-8fed-03f808866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 TriangleTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.2.1'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 TriangleTest >> setUp [
 	super setUp.
 	triangleCalculator := Triangle new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TriangleTest >> test01_EquilateralTriangleAllSidesAreEqual [
 	| result |
 
@@ -63,7 +65,7 @@ TriangleTest >> test01_EquilateralTriangleAllSidesAreEqual [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TriangleTest >> test02_EquilateralTriangleAnySideIsUnequal [
 	| result |
 
@@ -71,7 +73,7 @@ TriangleTest >> test02_EquilateralTriangleAnySideIsUnequal [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TriangleTest >> test03_EquilateralTriangleNoSidesAreEqual [
 	| result |
 
@@ -79,7 +81,7 @@ TriangleTest >> test03_EquilateralTriangleNoSidesAreEqual [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TriangleTest >> test04_EquilateralTriangleAllZeroSidesIsNotATriangle [
 	| result |
 
@@ -87,7 +89,7 @@ TriangleTest >> test04_EquilateralTriangleAllZeroSidesIsNotATriangle [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TriangleTest >> test05_EquilateralTriangleSidesMayBeFloats [
 	| result |
 
@@ -95,7 +97,7 @@ TriangleTest >> test05_EquilateralTriangleSidesMayBeFloats [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TriangleTest >> test06_IsoscelesTriangleLastTwoSidesAreEqual [
 	| result |
 
@@ -103,7 +105,7 @@ TriangleTest >> test06_IsoscelesTriangleLastTwoSidesAreEqual [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TriangleTest >> test07_IsoscelesTriangleFirstTwoSidesAreEqual [
 	| result |
 
@@ -111,7 +113,7 @@ TriangleTest >> test07_IsoscelesTriangleFirstTwoSidesAreEqual [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TriangleTest >> test08_IsoscelesTriangleFirstAndLastSidesAreEqual [
 	| result |
 
@@ -119,7 +121,7 @@ TriangleTest >> test08_IsoscelesTriangleFirstAndLastSidesAreEqual [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TriangleTest >> test09_IsoscelesTriangleEquilateralTrianglesAreAlsoIsosceles [
 	| result |
 
@@ -127,7 +129,7 @@ TriangleTest >> test09_IsoscelesTriangleEquilateralTrianglesAreAlsoIsosceles [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TriangleTest >> test10_IsoscelesTriangleNoSidesAreEqual [
 	| result |
 
@@ -135,7 +137,7 @@ TriangleTest >> test10_IsoscelesTriangleNoSidesAreEqual [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TriangleTest >> test11_IsoscelesTriangleFirstTriangleInequalityViolation [
 	| result |
 
@@ -143,7 +145,7 @@ TriangleTest >> test11_IsoscelesTriangleFirstTriangleInequalityViolation [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TriangleTest >> test12_IsoscelesTriangleSecondTriangleInequalityViolation [
 	| result |
 
@@ -151,7 +153,7 @@ TriangleTest >> test12_IsoscelesTriangleSecondTriangleInequalityViolation [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TriangleTest >> test13_IsoscelesTriangleThirdTriangleInequalityViolation [
 	| result |
 
@@ -159,7 +161,7 @@ TriangleTest >> test13_IsoscelesTriangleThirdTriangleInequalityViolation [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TriangleTest >> test14_IsoscelesTriangleSidesMayBeFloats [
 	| result |
 
@@ -167,7 +169,7 @@ TriangleTest >> test14_IsoscelesTriangleSidesMayBeFloats [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TriangleTest >> test15_ScaleneTriangleNoSidesAreEqual [
 	| result |
 
@@ -175,7 +177,7 @@ TriangleTest >> test15_ScaleneTriangleNoSidesAreEqual [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TriangleTest >> test16_ScaleneTriangleAllSidesAreEqual [
 	| result |
 
@@ -183,7 +185,7 @@ TriangleTest >> test16_ScaleneTriangleAllSidesAreEqual [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TriangleTest >> test17_ScaleneTriangleTwoSidesAreEqual [
 	| result |
 
@@ -191,7 +193,7 @@ TriangleTest >> test17_ScaleneTriangleTwoSidesAreEqual [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TriangleTest >> test18_ScaleneTriangleMayNotViolateTriangleInequality [
 	| result |
 
@@ -199,7 +201,7 @@ TriangleTest >> test18_ScaleneTriangleMayNotViolateTriangleInequality [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TriangleTest >> test19_ScaleneTriangleSidesMayBeFloats [
 	| result |
 

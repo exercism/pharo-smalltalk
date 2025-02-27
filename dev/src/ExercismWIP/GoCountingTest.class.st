@@ -42,33 +42,35 @@ TBD
 
 "
 Class {
-	#name : #GoCountingTest,
-	#superclass : #ExercismTest,
+	#name : 'GoCountingTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'goCountingCalculator'
 	],
-	#category : #'ExercismWIP-GoCounting'
+	#category : 'ExercismWIP-GoCounting',
+	#package : 'ExercismWIP',
+	#tag : 'GoCounting'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 GoCountingTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'af56b82e-b043-0d00-9266-15ec02a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 GoCountingTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'1.0.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 GoCountingTest >> setUp [
 	super setUp.
 	goCountingCalculator := GoCounting new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GoCountingTest >> test01_BlackCornerTerritoryOn5x5Board [
 	| result |
 
@@ -76,7 +78,7 @@ GoCountingTest >> test01_BlackCornerTerritoryOn5x5Board [
 	self assert: result equals: ((Dictionary new) add: ('territory'->#(#(0 0 ) #(0 1 ) #(1 0 ) )); add: ('owner'->'BLACK'); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GoCountingTest >> test02_WhiteCenterTerritoryOn5x5Board [
 	| result |
 
@@ -84,7 +86,7 @@ GoCountingTest >> test02_WhiteCenterTerritoryOn5x5Board [
 	self assert: result equals: ((Dictionary new) add: ('territory'->#(#(2 3 ) )); add: ('owner'->'WHITE'); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GoCountingTest >> test03_OpenCornerTerritoryOn5x5Board [
 	| result |
 
@@ -92,7 +94,7 @@ GoCountingTest >> test03_OpenCornerTerritoryOn5x5Board [
 	self assert: result equals: ((Dictionary new) add: ('territory'->#(#(0 3 ) #(0 4 ) #(1 4 ) )); add: ('owner'->'NONE'); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GoCountingTest >> test04_AStoneAndNotATerritoryOn5x5Board [
 	| result |
 
@@ -100,7 +102,7 @@ GoCountingTest >> test04_AStoneAndNotATerritoryOn5x5Board [
 	self assert: result equals: ((Dictionary new) add: ('territory'->#()); add: ('owner'->'NONE'); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GoCountingTest >> test05_InvalidBecauseXIsTooLowFor5x5Board [
 	| result |
 
@@ -111,7 +113,7 @@ GoCountingTest >> test05_InvalidBecauseXIsTooLowFor5x5Board [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GoCountingTest >> test06_InvalidBecauseXIsTooHighFor5x5Board [
 	| result |
 
@@ -122,7 +124,7 @@ GoCountingTest >> test06_InvalidBecauseXIsTooHighFor5x5Board [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GoCountingTest >> test07_InvalidBecauseYIsTooLowFor5x5Board [
 	| result |
 
@@ -133,7 +135,7 @@ GoCountingTest >> test07_InvalidBecauseYIsTooLowFor5x5Board [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GoCountingTest >> test08_InvalidBecauseYIsTooHighFor5x5Board [
 	| result |
 
@@ -144,7 +146,7 @@ GoCountingTest >> test08_InvalidBecauseYIsTooHighFor5x5Board [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GoCountingTest >> test09_OneTerritoryIsTheWholeBoard [
 	| result |
 
@@ -152,7 +154,7 @@ GoCountingTest >> test09_OneTerritoryIsTheWholeBoard [
 	self assert: result equals: ((Dictionary new) add: ('territoryWhite'->#()); add: ('territoryBlack'->#()); add: ('territoryNone'->#(#(0 0 ) )); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GoCountingTest >> test10_TwoTerritoryRectangularBoard [
 	| result |
 
@@ -160,7 +162,7 @@ GoCountingTest >> test10_TwoTerritoryRectangularBoard [
 	self assert: result equals: ((Dictionary new) add: ('territoryWhite'->#(#(3 0 ) #(3 1 ) )); add: ('territoryBlack'->#(#(0 0 ) #(0 1 ) )); add: ('territoryNone'->#()); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GoCountingTest >> test11_TwoRegionRectangularBoard [
 	| result |
 

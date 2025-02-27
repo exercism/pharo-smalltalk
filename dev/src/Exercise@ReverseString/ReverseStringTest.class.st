@@ -50,15 +50,16 @@ stream contents inspect
 ```
 "
 Class {
-	#name : #ReverseStringTest,
-	#superclass : #ExercismTest,
+	#name : 'ReverseStringTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'reverseStringCalculator'
 	],
-	#category : #'Exercise@ReverseString'
+	#category : 'Exercise@ReverseString',
+	#package : 'Exercise@ReverseString'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 ReverseStringTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -70,25 +71,25 @@ ReverseStringTest class >> exercise [
 				
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ReverseStringTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'bab40685-2f87-4d4f-8886-0a4d21a0d90d'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ReverseStringTest class >> version [
 	"Generated from specification: 25 February 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 ReverseStringTest >> setUp [
 	super setUp.
 	reverseStringCalculator := ReverseString new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ReverseStringTest >> test01_AnEmptyString [
 	| result |
 
@@ -96,7 +97,7 @@ ReverseStringTest >> test01_AnEmptyString [
 	self assert: result equals: ''
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ReverseStringTest >> test02_AWord [
 	| result |
 
@@ -104,7 +105,7 @@ ReverseStringTest >> test02_AWord [
 	self assert: result equals: 'tobor'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ReverseStringTest >> test03_ACapitalizedWord [
 	| result |
 
@@ -112,7 +113,7 @@ ReverseStringTest >> test03_ACapitalizedWord [
 	self assert: result equals: 'nemaR'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ReverseStringTest >> test04_ASentenceWithPunctuation [
 	| result |
 
@@ -120,7 +121,7 @@ ReverseStringTest >> test04_ASentenceWithPunctuation [
 	self assert: result equals: '!yrgnuh m''I'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ReverseStringTest >> test05_APalindrome [
 	| result |
 
@@ -128,7 +129,7 @@ ReverseStringTest >> test05_APalindrome [
 	self assert: result equals: 'racecar'
 ]
 
-{ #category : #extra }
+{ #category : 'extra' }
 ReverseStringTest >> testMisuseOfSelector [
 	self verifySolution: reverseStringCalculator class avoidsSelector: #reverse.
 	self verifySolution: reverseStringCalculator class avoidsSelector: #reversed

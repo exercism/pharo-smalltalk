@@ -43,15 +43,16 @@ Note: this exercise has been slightly modified from the problem-specification, a
 
 "
 Class {
-	#name : #GradeSchoolTest,
-	#superclass : #ExercismTest,
+	#name : 'GradeSchoolTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'gradeSchoolCalculator'
 	],
-	#category : #'Exercise@GradeSchool'
+	#category : 'Exercise@GradeSchool',
+	#package : 'Exercise@GradeSchool'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 GradeSchoolTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -63,7 +64,7 @@ GradeSchoolTest class >> exercise [
 				
 ]
 
-{ #category : #generator }
+{ #category : 'generator' }
 GradeSchoolTest class >> generator [
 	"Potential generator hints"
 	
@@ -71,25 +72,25 @@ GradeSchoolTest class >> generator [
 	('gradeStudents:desiredGrade:' -> #('addStudents:' 'desiredGrade:'))}
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 GradeSchoolTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'eb7d9c26-5188-4271-9d21-952903a5cf19'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 GradeSchoolTest class >> version [
 	"Generated from specification: 15 March 2019"
 	^'1.0.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 GradeSchoolTest >> setUp [
 	super setUp.
 	gradeSchoolCalculator := GradeSchool new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GradeSchoolTest >> test01_AddingAStudentAddsThemToTheSortedRoster [
 	| result |
 
@@ -100,7 +101,7 @@ GradeSchoolTest >> test01_AddingAStudentAddsThemToTheSortedRoster [
 	self assert: result equals: #('Aimee')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GradeSchoolTest >> test02_AddingMoreStudentAddsThemToTheSortedRoster [
 	| result |
 
@@ -111,7 +112,7 @@ GradeSchoolTest >> test02_AddingMoreStudentAddsThemToTheSortedRoster [
 	self assert: result equals: #('Blair' 'James' 'Paul')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GradeSchoolTest >> test03_AddingStudentsToDifferentGradesAddsThemToTheSameSortedRoster [
 	| result |
 
@@ -122,7 +123,7 @@ GradeSchoolTest >> test03_AddingStudentsToDifferentGradesAddsThemToTheSameSorted
 	self assert: result equals: #('Chelsea' 'Logan')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GradeSchoolTest >> test04_RosterReturnsAnEmptyListIfThereAreNoStudentsEnrolled [
 	| result |
 
@@ -133,7 +134,7 @@ GradeSchoolTest >> test04_RosterReturnsAnEmptyListIfThereAreNoStudentsEnrolled [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GradeSchoolTest >> test05_StudentNamesWithGradesAreDisplayedInTheSameSortedRoster [
 	| result |
 
@@ -147,7 +148,7 @@ GradeSchoolTest >> test05_StudentNamesWithGradesAreDisplayedInTheSameSortedRoste
 		equals: #('Anna' 'Barb' 'Charlie' 'Alex' 'Peter' 'Zoe' 'Jim')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GradeSchoolTest >> test06_GradeReturnsTheStudentsInThatGradeInAlphabeticalOrder [
 	| result |
 
@@ -155,7 +156,7 @@ GradeSchoolTest >> test06_GradeReturnsTheStudentsInThatGradeInAlphabeticalOrder 
 	self assert: result equals: #('Bradley' 'Franklin' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GradeSchoolTest >> test07_GradeReturnsAnEmptyListIfThereAreNoStudentsInThatGrade [
 	| result |
 
@@ -166,7 +167,7 @@ GradeSchoolTest >> test07_GradeReturnsAnEmptyListIfThereAreNoStudentsInThatGrade
 	self assert: result equals: #()
 ]
 
-{ #category : #'tests-extra' }
+{ #category : 'tests-extra' }
 GradeSchoolTest >> test100_EnsureDataIsImmutable [
 	| result |
 

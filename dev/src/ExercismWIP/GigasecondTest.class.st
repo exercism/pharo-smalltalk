@@ -12,33 +12,35 @@ TBD
 
 "
 Class {
-	#name : #GigasecondTest,
-	#superclass : #ExercismTest,
+	#name : 'GigasecondTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'gigasecondCalculator'
 	],
-	#category : #'ExercismWIP-Gigasecond'
+	#category : 'ExercismWIP-Gigasecond',
+	#package : 'ExercismWIP',
+	#tag : 'Gigasecond'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 GigasecondTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'a225b12e-b043-0d00-925b-cdc102a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 GigasecondTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'2.0.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 GigasecondTest >> setUp [
 	super setUp.
 	gigasecondCalculator := Gigasecond new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GigasecondTest >> test01_DateOnlySpecificationOfTime [
 	| result |
 
@@ -46,7 +48,7 @@ GigasecondTest >> test01_DateOnlySpecificationOfTime [
 	self assert: result equals: '2043-01-01T01:46:40'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GigasecondTest >> test02_SecondTestForDateOnlySpecificationOfTime [
 	| result |
 
@@ -54,7 +56,7 @@ GigasecondTest >> test02_SecondTestForDateOnlySpecificationOfTime [
 	self assert: result equals: '2009-02-19T01:46:40'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GigasecondTest >> test03_ThirdTestForDateOnlySpecificationOfTime [
 	| result |
 
@@ -62,7 +64,7 @@ GigasecondTest >> test03_ThirdTestForDateOnlySpecificationOfTime [
 	self assert: result equals: '1991-03-27T01:46:40'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GigasecondTest >> test04_FullTimeSpecified [
 	| result |
 
@@ -70,7 +72,7 @@ GigasecondTest >> test04_FullTimeSpecified [
 	self assert: result equals: '2046-10-02T23:46:40'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GigasecondTest >> test05_FullTimeWithDayRollover [
 	| result |
 

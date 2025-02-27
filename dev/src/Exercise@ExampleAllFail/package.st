@@ -1,1 +1,1 @@
-Package { #name : #'Exercise@ExampleAllFail' }
+Package { #name : 'Exercise@ExampleAllFail' }

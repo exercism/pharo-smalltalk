@@ -1,12 +1,12 @@
-Extension { #name : #MCSnapshot }
+Extension { #name : 'MCSnapshot' }
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 MCSnapshot >> classDefinitions [
 
 	^ self definitions select: #isClassDefinition
 ]
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 MCSnapshot >> extensionDefinitions [
 
 	^ (self definitions select: [ :each |

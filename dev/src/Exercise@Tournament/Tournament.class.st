@@ -2,23 +2,24 @@
 I am a simple tournament league table, that maintains a collection of ResultTally's to display match statistics.
 "
 Class {
-	#name : #Tournament,
-	#superclass : #Object,
+	#name : 'Tournament',
+	#superclass : 'Object',
 	#instVars : [
 		'results'
 	],
 	#classVars : [
 		'OutcomeTable'
 	],
-	#category : #'Exercise@Tournament'
+	#category : 'Exercise@Tournament',
+	#package : 'Exercise@Tournament'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 Tournament class >> outcomeInverse [
 	^OutcomeTable ifNil: [ OutcomeTable := { 'win'->'loss'. 'loss'->'win'. 'draw'->'draw'} asDictionary ]
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 Tournament >> addResultFor: teamString outcome: outcomeString [
 	| tally |
 
@@ -29,7 +30,7 @@ Tournament >> addResultFor: teamString outcome: outcomeString [
 	tally countOutcome: outcomeString
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 Tournament >> inverseOutcome: matchStatus [
 	"Answer the opposite outcome string to @matchStatus, e.g. win -> loss"
 
@@ -37,14 +38,14 @@ Tournament >> inverseOutcome: matchStatus [
 	
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 Tournament >> outputResultHeaderOn: aWriteStream [
 	aWriteStream
 		nextPutAll: 'Team                           | MP |  W |  D |  L |  P';
 		cr
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 Tournament >> outputTallyResultsOn: writeStream [
 	| sortedResults |
 
@@ -56,7 +57,7 @@ Tournament >> outputTallyResultsOn: writeStream [
 	sortedResults do: [ :tally | tally outputResultOn: writeStream ]
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 Tournament >> parseMatchLine: aString [
 	"Parse the match line items, seperated by ; and Answer a collection in the form of:
 		#(teamA outcome teamB oppositeOutome)"
@@ -71,12 +72,12 @@ Tournament >> parseMatchLine: aString [
 		with: (self inverseOutcome: parts last)
 ]
 
-{ #category : #acccessing }
+{ #category : 'acccessing' }
 Tournament >> results [
 	^results ifNil: [ results := Dictionary new ]
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 Tournament >> tallyRows: rowCollection [
 	rowCollection
 		do: [ :line | 

@@ -21,33 +21,35 @@ TBD
 
 "
 Class {
-	#name : #MarkdownTest,
-	#superclass : #ExercismTest,
+	#name : 'MarkdownTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'markdownCalculator'
 	],
-	#category : #'ExercismWIP-Markdown'
+	#category : 'ExercismWIP-Markdown',
+	#package : 'ExercismWIP',
+	#tag : 'Markdown'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 MarkdownTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'97c3ae2e-b043-0d00-9257-896802a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 MarkdownTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'1.4.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 MarkdownTest >> setUp [
 	super setUp.
 	markdownCalculator := Markdown new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MarkdownTest >> test01_ParsesNormalTextAsAParagraph [
 	| result |
 
@@ -55,7 +57,7 @@ MarkdownTest >> test01_ParsesNormalTextAsAParagraph [
 	self assert: result equals: '<p>This will be a paragraph</p>'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MarkdownTest >> test02_ParsingItalics [
 	| result |
 
@@ -63,7 +65,7 @@ MarkdownTest >> test02_ParsingItalics [
 	self assert: result equals: '<p><em>This will be italic</em></p>'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MarkdownTest >> test03_ParsingBoldText [
 	| result |
 
@@ -71,7 +73,7 @@ MarkdownTest >> test03_ParsingBoldText [
 	self assert: result equals: '<p><strong>This will be bold</strong></p>'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MarkdownTest >> test04_MixedNormalItalicsAndBoldText [
 	| result |
 
@@ -79,7 +81,7 @@ MarkdownTest >> test04_MixedNormalItalicsAndBoldText [
 	self assert: result equals: '<p>This will <em>be</em> <strong>mixed</strong></p>'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MarkdownTest >> test05_WithH1HeaderLevel [
 	| result |
 
@@ -87,7 +89,7 @@ MarkdownTest >> test05_WithH1HeaderLevel [
 	self assert: result equals: '<h1>This will be an h1</h1>'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MarkdownTest >> test06_WithH2HeaderLevel [
 	| result |
 
@@ -95,7 +97,7 @@ MarkdownTest >> test06_WithH2HeaderLevel [
 	self assert: result equals: '<h2>This will be an h2</h2>'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MarkdownTest >> test07_WithH6HeaderLevel [
 	| result |
 
@@ -103,7 +105,7 @@ MarkdownTest >> test07_WithH6HeaderLevel [
 	self assert: result equals: '<h6>This will be an h6</h6>'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MarkdownTest >> test08_UnorderedLists [
 	| result |
 
@@ -112,7 +114,7 @@ MarkdownTest >> test08_UnorderedLists [
 	self assert: result equals: '<ul><li>Item 1</li><li>Item 2</li></ul>'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MarkdownTest >> test09_WithALittleBitOfEverything [
 	| result |
 
@@ -122,7 +124,7 @@ MarkdownTest >> test09_WithALittleBitOfEverything [
 	self assert: result equals: '<h1>Header!</h1><ul><li><strong>Bold Item</strong></li><li><em>Italic Item</em></li></ul>'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MarkdownTest >> test10_WithMarkdownSymbolsInTheHeaderTextThatShouldNotBeInterpreted [
 	| result |
 
@@ -130,7 +132,7 @@ MarkdownTest >> test10_WithMarkdownSymbolsInTheHeaderTextThatShouldNotBeInterpre
 	self assert: result equals: '<h1>This is a header with # and * in the text</h1>'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MarkdownTest >> test11_WithMarkdownSymbolsInTheListItemTextThatShouldNotBeInterpreted [
 	| result |
 
@@ -139,7 +141,7 @@ MarkdownTest >> test11_WithMarkdownSymbolsInTheListItemTextThatShouldNotBeInterp
 	self assert: result equals: '<ul><li>Item 1 with a # in the text</li><li>Item 2 with * in the text</li></ul>'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MarkdownTest >> test12_WithMarkdownSymbolsInTheParagraphTextThatShouldNotBeInterpreted [
 	| result |
 
@@ -147,7 +149,7 @@ MarkdownTest >> test12_WithMarkdownSymbolsInTheParagraphTextThatShouldNotBeInter
 	self assert: result equals: '<p>This is a paragraph with # and * in the text</p>'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MarkdownTest >> test13_UnorderedListsCloseProperlyWithPrecedingAndFollowingLines [
 	| result |
 

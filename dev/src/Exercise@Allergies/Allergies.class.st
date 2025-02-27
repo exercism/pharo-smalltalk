@@ -2,24 +2,25 @@
 This solution shows how Pharo can access bit sequences to solve this exercise. In this case, Pharo's 1 based indexing works well with an allergy list.
 "
 Class {
-	#name : #Allergies,
-	#superclass : #Object,
-	#category : #'Exercise@Allergies'
+	#name : 'Allergies',
+	#superclass : 'Object',
+	#category : 'Exercise@Allergies',
+	#package : 'Exercise@Allergies'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 Allergies class >> allergyList [
 	"Each item is a successive power of 2, so order is important"
 	
 	^ #('eggs' 'peanuts' 'shellfish' 'strawberries' 'tomatoes' 'chocolate' 'pollen' 'cats')
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 Allergies >> allergicToItem: itemString forScore: anInteger [
 	^ (anInteger bitAt: (self bitIndexFor: itemString)) = 1
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 Allergies >> allergyListForScore: scoringInteger [
 	^ (self class allergyList
 		collectWithIndex: [ :item :index | 
@@ -28,7 +29,7 @@ Allergies >> allergyListForScore: scoringInteger [
 				ifFalse: [ nil ] ]) reject: [ :item | item isNil ]
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 Allergies >> bitIndexFor: aString [
 	^ self class allergyList
 		indexOf: aString

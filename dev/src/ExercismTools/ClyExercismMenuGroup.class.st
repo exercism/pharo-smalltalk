@@ -10,17 +10,19 @@ and `ClyExercismExerciseCommand class >>#tagContextMenuActivation`.
  
 "
 Class {
-	#name : #ClyExercismMenuGroup,
-	#superclass : #CmdMenuGroup,
-	#category : #'ExercismTools-Menus'
+	#name : 'ClyExercismMenuGroup',
+	#superclass : 'CmdMenuGroup',
+	#category : 'ExercismTools-Menus',
+	#package : 'ExercismTools',
+	#tag : 'Menus'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismMenuGroup >> name [
 	^'Exercism'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismMenuGroup >> order [
 	^1
 ]

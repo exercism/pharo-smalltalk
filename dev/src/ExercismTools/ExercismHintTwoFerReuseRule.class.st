@@ -3,17 +3,18 @@ The TwoFer exercise introduces you to calling between methods.
 For practice, your '#who'  method should reuse your  '#who:'  method. 
 "
 Class {
-	#name : #ExercismHintTwoFerReuseRule,
-	#superclass : #ExercismHintRule,
-	#category : #ExercismTools
+	#name : 'ExercismHintTwoFerReuseRule',
+	#superclass : 'ExercismHintRule',
+	#category : 'ExercismTools',
+	#package : 'ExercismTools'
 }
 
-{ #category : #'testing-interest' }
+{ #category : 'testing-interest' }
 ExercismHintTwoFerReuseRule class >> checksMethod [
 	^true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismHintTwoFerReuseRule >> basicCheck: compiledMethod [
 	compiledMethod methodClass name = #TwoFer ifTrue: [ 
 		|literals|
@@ -24,7 +25,7 @@ ExercismHintTwoFerReuseRule >> basicCheck: compiledMethod [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismHintTwoFerReuseRule >> name [
 	^ 'Exercism: Method #who should reuse method #who: '
 ]

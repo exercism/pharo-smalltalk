@@ -18,15 +18,16 @@ Also remember that the Pharo environment is extensively cross referenced. You ca
 
 "
 Class {
-	#name : #SumOfMultiplesTest,
-	#superclass : #ExercismTest,
+	#name : 'SumOfMultiplesTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'sumOfMultiplesCalculator'
 	],
-	#category : #'Exercise@SumOfMultiples'
+	#category : 'Exercise@SumOfMultiples',
+	#package : 'Exercise@SumOfMultiples'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 SumOfMultiplesTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -37,25 +38,25 @@ SumOfMultiplesTest class >> exercise [
 				
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 SumOfMultiplesTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'34b0900f-de21-4fef-b24b-f125b608e65e'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 SumOfMultiplesTest class >> version [
 	"Generated from specification: 25 February 2019"
 	^'1.5.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 SumOfMultiplesTest >> setUp [
 	super setUp.
 	sumOfMultiplesCalculator := SumOfMultiples new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SumOfMultiplesTest >> test01_NoMultiplesWithinLimit [
 	| result |
 
@@ -63,7 +64,7 @@ SumOfMultiplesTest >> test01_NoMultiplesWithinLimit [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SumOfMultiplesTest >> test02_OneFactorHasMultiplesWithinLimit [
 	| result |
 
@@ -71,7 +72,7 @@ SumOfMultiplesTest >> test02_OneFactorHasMultiplesWithinLimit [
 	self assert: result equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SumOfMultiplesTest >> test03_MoreThanOneMultipleWithinLimit [
 	| result |
 
@@ -79,7 +80,7 @@ SumOfMultiplesTest >> test03_MoreThanOneMultipleWithinLimit [
 	self assert: result equals: 9
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SumOfMultiplesTest >> test04_MoreThanOneFactorWithMultiplesWithinLimit [
 	| result |
 
@@ -87,7 +88,7 @@ SumOfMultiplesTest >> test04_MoreThanOneFactorWithMultiplesWithinLimit [
 	self assert: result equals: 23
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SumOfMultiplesTest >> test05_EachMultipleIsOnlyCountedOnce [
 	| result |
 
@@ -95,7 +96,7 @@ SumOfMultiplesTest >> test05_EachMultipleIsOnlyCountedOnce [
 	self assert: result equals: 2318
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SumOfMultiplesTest >> test06_AMuchLargerLimit [
 	| result |
 
@@ -103,7 +104,7 @@ SumOfMultiplesTest >> test06_AMuchLargerLimit [
 	self assert: result equals: 233168
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SumOfMultiplesTest >> test07_ThreeFactors [
 	| result |
 
@@ -111,7 +112,7 @@ SumOfMultiplesTest >> test07_ThreeFactors [
 	self assert: result equals: 51
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SumOfMultiplesTest >> test08_FactorsNotRelativelyPrime [
 	| result |
 
@@ -119,7 +120,7 @@ SumOfMultiplesTest >> test08_FactorsNotRelativelyPrime [
 	self assert: result equals: 30
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SumOfMultiplesTest >> test09_SomePairsOfFactorsRelativelyPrimeAndSomeNot [
 	| result |
 
@@ -127,7 +128,7 @@ SumOfMultiplesTest >> test09_SomePairsOfFactorsRelativelyPrimeAndSomeNot [
 	self assert: result equals: 4419
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SumOfMultiplesTest >> test10_OneFactorIsAMultipleOfAnother [
 	| result |
 
@@ -135,7 +136,7 @@ SumOfMultiplesTest >> test10_OneFactorIsAMultipleOfAnother [
 	self assert: result equals: 275
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SumOfMultiplesTest >> test11_MuchLargerFactors [
 	| result |
 
@@ -143,7 +144,7 @@ SumOfMultiplesTest >> test11_MuchLargerFactors [
 	self assert: result equals: 2203160
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SumOfMultiplesTest >> test12_AllNumbersAreMultiplesOf1 [
 	| result |
 
@@ -151,7 +152,7 @@ SumOfMultiplesTest >> test12_AllNumbersAreMultiplesOf1 [
 	self assert: result equals: 4950
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SumOfMultiplesTest >> test13_NoFactorsMeansAnEmptySum [
 	| result |
 
@@ -159,7 +160,7 @@ SumOfMultiplesTest >> test13_NoFactorsMeansAnEmptySum [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SumOfMultiplesTest >> test14_TheOnlyMultipleOf0Is0 [
 	| result |
 
@@ -167,7 +168,7 @@ SumOfMultiplesTest >> test14_TheOnlyMultipleOf0Is0 [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SumOfMultiplesTest >> test15_TheFactor0DoesNotAffectTheSumOfMultiplesOfOtherFactors [
 	| result |
 
@@ -175,7 +176,7 @@ SumOfMultiplesTest >> test15_TheFactor0DoesNotAffectTheSumOfMultiplesOfOtherFact
 	self assert: result equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SumOfMultiplesTest >> test16_SolutionsUsingIncludeexcludeMustExtendToCardinalityGreaterThan3 [
 	| result |
 

@@ -24,33 +24,35 @@ TBD
 
 "
 Class {
-	#name : #PigLatinTest,
-	#superclass : #ExercismTest,
+	#name : 'PigLatinTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'pigLatinCalculator'
 	],
-	#category : #'ExercismWIP-PigLatin'
+	#category : 'ExercismWIP-PigLatin',
+	#package : 'ExercismWIP',
+	#tag : 'PigLatin'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 PigLatinTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'ce17df16-9d41-0d00-8ff5-fae608866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 PigLatinTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.2.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PigLatinTest >> setUp [
 	super setUp.
 	pigLatinCalculator := PigLatin new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PigLatinTest >> test01_AyIsAddedToWordsThatStartWithVowelsWordBeginningWithA [
 	| result |
 
@@ -58,7 +60,7 @@ PigLatinTest >> test01_AyIsAddedToWordsThatStartWithVowelsWordBeginningWithA [
 	self assert: result equals: 'appleay'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PigLatinTest >> test02_AyIsAddedToWordsThatStartWithVowelsWordBeginningWithE [
 	| result |
 
@@ -66,7 +68,7 @@ PigLatinTest >> test02_AyIsAddedToWordsThatStartWithVowelsWordBeginningWithE [
 	self assert: result equals: 'earay'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PigLatinTest >> test03_AyIsAddedToWordsThatStartWithVowelsWordBeginningWithI [
 	| result |
 
@@ -74,7 +76,7 @@ PigLatinTest >> test03_AyIsAddedToWordsThatStartWithVowelsWordBeginningWithI [
 	self assert: result equals: 'iglooay'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PigLatinTest >> test04_AyIsAddedToWordsThatStartWithVowelsWordBeginningWithO [
 	| result |
 
@@ -82,7 +84,7 @@ PigLatinTest >> test04_AyIsAddedToWordsThatStartWithVowelsWordBeginningWithO [
 	self assert: result equals: 'objectay'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PigLatinTest >> test05_AyIsAddedToWordsThatStartWithVowelsWordBeginningWithU [
 	| result |
 
@@ -90,7 +92,7 @@ PigLatinTest >> test05_AyIsAddedToWordsThatStartWithVowelsWordBeginningWithU [
 	self assert: result equals: 'underay'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PigLatinTest >> test06_AyIsAddedToWordsThatStartWithVowelsWordBeginningWithAVowelAndFollowedByAQu [
 	| result |
 
@@ -98,7 +100,7 @@ PigLatinTest >> test06_AyIsAddedToWordsThatStartWithVowelsWordBeginningWithAVowe
 	self assert: result equals: 'equalay'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PigLatinTest >> test07_FirstLetterAndAyAreMovedToTheEndOfWordsThatStartWithConsonantsWordBeginningWithP [
 	| result |
 
@@ -106,7 +108,7 @@ PigLatinTest >> test07_FirstLetterAndAyAreMovedToTheEndOfWordsThatStartWithConso
 	self assert: result equals: 'igpay'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PigLatinTest >> test08_FirstLetterAndAyAreMovedToTheEndOfWordsThatStartWithConsonantsWordBeginningWithK [
 	| result |
 
@@ -114,7 +116,7 @@ PigLatinTest >> test08_FirstLetterAndAyAreMovedToTheEndOfWordsThatStartWithConso
 	self assert: result equals: 'oalakay'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PigLatinTest >> test09_FirstLetterAndAyAreMovedToTheEndOfWordsThatStartWithConsonantsWordBeginningWithX [
 	| result |
 
@@ -122,7 +124,7 @@ PigLatinTest >> test09_FirstLetterAndAyAreMovedToTheEndOfWordsThatStartWithConso
 	self assert: result equals: 'enonxay'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PigLatinTest >> test10_FirstLetterAndAyAreMovedToTheEndOfWordsThatStartWithConsonantsWordBeginningWithQWithoutAFollowingU [
 	| result |
 
@@ -130,7 +132,7 @@ PigLatinTest >> test10_FirstLetterAndAyAreMovedToTheEndOfWordsThatStartWithConso
 	self assert: result equals: 'atqay'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PigLatinTest >> test11_SomeLetterClustersAreTreatedLikeASingleConsonantWordBeginningWithCh [
 	| result |
 
@@ -138,7 +140,7 @@ PigLatinTest >> test11_SomeLetterClustersAreTreatedLikeASingleConsonantWordBegin
 	self assert: result equals: 'airchay'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PigLatinTest >> test12_SomeLetterClustersAreTreatedLikeASingleConsonantWordBeginningWithQu [
 	| result |
 
@@ -146,7 +148,7 @@ PigLatinTest >> test12_SomeLetterClustersAreTreatedLikeASingleConsonantWordBegin
 	self assert: result equals: 'eenquay'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PigLatinTest >> test13_SomeLetterClustersAreTreatedLikeASingleConsonantWordBeginningWithQuAndAPrecedingConsonant [
 	| result |
 
@@ -154,7 +156,7 @@ PigLatinTest >> test13_SomeLetterClustersAreTreatedLikeASingleConsonantWordBegin
 	self assert: result equals: 'aresquay'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PigLatinTest >> test14_SomeLetterClustersAreTreatedLikeASingleConsonantWordBeginningWithTh [
 	| result |
 
@@ -162,7 +164,7 @@ PigLatinTest >> test14_SomeLetterClustersAreTreatedLikeASingleConsonantWordBegin
 	self assert: result equals: 'erapythay'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PigLatinTest >> test15_SomeLetterClustersAreTreatedLikeASingleConsonantWordBeginningWithThr [
 	| result |
 
@@ -170,7 +172,7 @@ PigLatinTest >> test15_SomeLetterClustersAreTreatedLikeASingleConsonantWordBegin
 	self assert: result equals: 'ushthray'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PigLatinTest >> test16_SomeLetterClustersAreTreatedLikeASingleConsonantWordBeginningWithSch [
 	| result |
 
@@ -178,7 +180,7 @@ PigLatinTest >> test16_SomeLetterClustersAreTreatedLikeASingleConsonantWordBegin
 	self assert: result equals: 'oolschay'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PigLatinTest >> test17_SomeLetterClustersAreTreatedLikeASingleVowelWordBeginningWithYt [
 	| result |
 
@@ -186,7 +188,7 @@ PigLatinTest >> test17_SomeLetterClustersAreTreatedLikeASingleVowelWordBeginning
 	self assert: result equals: 'yttriaay'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PigLatinTest >> test18_SomeLetterClustersAreTreatedLikeASingleVowelWordBeginningWithXr [
 	| result |
 
@@ -194,7 +196,7 @@ PigLatinTest >> test18_SomeLetterClustersAreTreatedLikeASingleVowelWordBeginning
 	self assert: result equals: 'xrayay'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PigLatinTest >> test19_PositionOfYInAWordDeterminesIfItIsAConsonantOrAVowelYIsTreatedLikeAConsonantAtTheBeginningOfAWord [
 	| result |
 
@@ -202,7 +204,7 @@ PigLatinTest >> test19_PositionOfYInAWordDeterminesIfItIsAConsonantOrAVowelYIsTr
 	self assert: result equals: 'ellowyay'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PigLatinTest >> test20_PositionOfYInAWordDeterminesIfItIsAConsonantOrAVowelYIsTreatedLikeAVowelAtTheEndOfAConsonantCluster [
 	| result |
 
@@ -210,7 +212,7 @@ PigLatinTest >> test20_PositionOfYInAWordDeterminesIfItIsAConsonantOrAVowelYIsTr
 	self assert: result equals: 'ythmrhay'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PigLatinTest >> test21_PositionOfYInAWordDeterminesIfItIsAConsonantOrAVowelYAsSecondLetterInTwoLetterWord [
 	| result |
 
@@ -218,7 +220,7 @@ PigLatinTest >> test21_PositionOfYInAWordDeterminesIfItIsAConsonantOrAVowelYAsSe
 	self assert: result equals: 'ymay'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PigLatinTest >> test22_PhrasesAreTranslatedAWholePhrase [
 	| result |
 

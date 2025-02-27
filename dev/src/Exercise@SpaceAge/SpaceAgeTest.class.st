@@ -29,15 +29,16 @@ can browse any of the classes mentioned above live.
 
 "
 Class {
-	#name : #SpaceAgeTest,
-	#superclass : #ExercismTest,
+	#name : 'SpaceAgeTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'spaceAgeCalculator'
 	],
-	#category : #'Exercise@SpaceAge'
+	#category : 'Exercise@SpaceAge',
+	#package : 'Exercise@SpaceAge'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 SpaceAgeTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 
@@ -48,86 +49,86 @@ SpaceAgeTest class >> exercise [
 		
 ]
 
-{ #category : #generator }
+{ #category : 'generator' }
 SpaceAgeTest class >> generator [
 	"Answer code generator aliases/hints"
 
 	^{'planet'->'onPlanet'}
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 SpaceAgeTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'fc8ea53c-72b3-432f-a399-ac9977d0100d'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 SpaceAgeTest class >> version [
 	"Generated from specification: 28 February 2019"
 	^'1.2.0'
 ]
 
-{ #category : #assertions }
+{ #category : 'assertions' }
 SpaceAgeTest >> assert: aNumber closeEnoughTo: aNumber2 [
 	self assert: aNumber closeEnoughTo: aNumber2 by: 2
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 SpaceAgeTest >> setUp [
 	super setUp.
 	spaceAgeCalculator := SpaceAge new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpaceAgeTest >> test01_AgeOnEarth [
 	| result |
 	result := spaceAgeCalculator ageOnPlanet: 'Earth' at: 1000000000.
 	self assert: result closeEnoughTo: 31.69
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpaceAgeTest >> test02_AgeOnMercury [
 	| result |
 	result := spaceAgeCalculator ageOnPlanet: 'Mercury' at: 2134835688.
 	self assert: result closeEnoughTo: 280.88
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpaceAgeTest >> test03_AgeOnVenus [
 	| result |
 	result := spaceAgeCalculator ageOnPlanet: 'Venus' at: 189839836.
 	self assert: result closeEnoughTo: 9.78
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpaceAgeTest >> test04_AgeOnMars [
 	| result |
 	result := spaceAgeCalculator ageOnPlanet: 'Mars' at: 2129871239.
 	self assert: result closeEnoughTo: 35.88
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpaceAgeTest >> test05_AgeOnJupiter [
 	| result |
 	result := spaceAgeCalculator ageOnPlanet: 'Jupiter' at: 901876382.
 	self assert: result closeEnoughTo: 2.41
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpaceAgeTest >> test06_AgeOnSaturn [
 	| result |
 	result := spaceAgeCalculator ageOnPlanet: 'Saturn' at: 2000000000.
 	self assert: result closeEnoughTo: 2.15
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpaceAgeTest >> test07_AgeOnUranus [
 	| result |
 	result := spaceAgeCalculator ageOnPlanet: 'Uranus' at: 1210123456.
 	self assert: result closeEnoughTo: 0.46
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpaceAgeTest >> test08_AgeOnNeptune [
 	| result |
 	result := spaceAgeCalculator ageOnPlanet: 'Neptune' at: 1821023456.

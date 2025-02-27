@@ -5,15 +5,16 @@ Mentor hints:
 
 "
 Class {
-	#name : #SecretHandshake,
-	#superclass : #Object,
+	#name : 'SecretHandshake',
+	#superclass : 'Object',
 	#classVars : [
 		'Secrets'
 	],
-	#category : #'Exercise@SecretHandshake'
+	#category : 'Exercise@SecretHandshake',
+	#package : 'Exercise@SecretHandshake'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SecretHandshake class >> secrets [
 	^ Secrets
 		ifNil: [ Secrets := OrderedDictionary new
@@ -24,7 +25,7 @@ SecretHandshake class >> secrets [
 				yourself ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SecretHandshake >> commandsNumber: anInteger [
 	| handshake |
 	handshake := Array

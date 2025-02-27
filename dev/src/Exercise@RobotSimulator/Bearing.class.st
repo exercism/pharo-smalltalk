@@ -2,18 +2,19 @@
 I am a bearing direction, that knows its immediate left and right bearing
 "
 Class {
-	#name : #Bearing,
-	#superclass : #Object,
+	#name : 'Bearing',
+	#superclass : 'Object',
 	#instVars : [
 		'name'
 	],
 	#classVars : [
 		'Bearings'
 	],
-	#category : #'Exercise@RobotSimulator'
+	#category : 'Exercise@RobotSimulator',
+	#package : 'Exercise@RobotSimulator'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 Bearing class >> bearingData [
 	"Answer bearing names in clockwise order, along with the corresponding delta that would move a point location forward in the correct x/y axis for that bearing"
 	
@@ -24,7 +25,7 @@ Bearing class >> bearingData [
 	('west' -> (-1 @ 0))}
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 Bearing class >> named: directionString [
 	self bearingData
 		detect: [ :data | data key = directionString ]
@@ -35,7 +36,7 @@ Bearing class >> named: directionString [
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 Bearing >> = anObject [
 	"Answer whether the receiver and anObject represent the same object."
 
@@ -46,19 +47,19 @@ Bearing >> = anObject [
 	^ name = anObject name
 ]
 
-{ #category : #query }
+{ #category : 'query' }
 Bearing >> delta [
 	^ (self class bearingData detect: [ :b | b key = self name ]) value
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 Bearing >> hash [
 	"Answer an integer value that is related to the identity of the receiver."
 
 	^ name hash
 ]
 
-{ #category : #query }
+{ #category : 'query' }
 Bearing >> left [
 	| directions |
 	directions := self names.
@@ -66,22 +67,22 @@ Bearing >> left [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Bearing >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Bearing >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Bearing >> names [
 	^ self class bearingData collect: [ :b | b key ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 Bearing >> printOn: aStream [
 	super printOn: aStream.
 	aStream
@@ -90,7 +91,7 @@ Bearing >> printOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : #query }
+{ #category : 'query' }
 Bearing >> right [
 	| directions |
 	directions := self names.

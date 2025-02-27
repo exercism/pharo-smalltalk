@@ -12,33 +12,35 @@ TBD
 
 "
 Class {
-	#name : #PokerTest,
-	#superclass : #ExercismTest,
+	#name : 'PokerTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'pokerCalculator'
 	],
-	#category : #'ExercismWIP-Poker'
+	#category : 'ExercismWIP-Poker',
+	#package : 'ExercismWIP',
+	#tag : 'Poker'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 PokerTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'592eb416-9d41-0d00-8fd4-52f708866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 PokerTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PokerTest >> setUp [
 	super setUp.
 	pokerCalculator := Poker new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test01_SingleHandAlwaysWins [
 	| result |
 
@@ -46,7 +48,7 @@ PokerTest >> test01_SingleHandAlwaysWins [
 	self assert: result equals: #('4S 5S 7H 8D JC' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test02_HighestCardOutOfAllHandsWins [
 	| result |
 
@@ -54,7 +56,7 @@ PokerTest >> test02_HighestCardOutOfAllHandsWins [
 	self assert: result equals: #('3S 4S 5D 6H JH' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test03_ATieHasMultipleWinners [
 	| result |
 
@@ -62,7 +64,7 @@ PokerTest >> test03_ATieHasMultipleWinners [
 	self assert: result equals: #('3S 4S 5D 6H JH' '3H 4H 5C 6C JD' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test04_MultipleHandsWithTheSameHighCardsTieComparesNextHighestRankedDownToLastCard [
 	| result |
 
@@ -70,7 +72,7 @@ PokerTest >> test04_MultipleHandsWithTheSameHighCardsTieComparesNextHighestRanke
 	self assert: result equals: #('3S 5H 6S 8D 7H' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test05_OnePairBeatsHighCard [
 	| result |
 
@@ -78,7 +80,7 @@ PokerTest >> test05_OnePairBeatsHighCard [
 	self assert: result equals: #('2S 4H 6S 4D JH' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test06_HighestPairWins [
 	| result |
 
@@ -86,7 +88,7 @@ PokerTest >> test06_HighestPairWins [
 	self assert: result equals: #('2S 4H 6C 4D JD' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test07_TwoPairsBeatsOnePair [
 	| result |
 
@@ -94,7 +96,7 @@ PokerTest >> test07_TwoPairsBeatsOnePair [
 	self assert: result equals: #('4S 5H 4C 8C 5C' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test08_BothHandsHaveTwoPairsHighestRankedPairWins [
 	| result |
 
@@ -102,7 +104,7 @@ PokerTest >> test08_BothHandsHaveTwoPairsHighestRankedPairWins [
 	self assert: result equals: #('2S 8H 2D 8D 3H' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test09_BothHandsHaveTwoPairsWithTheSameHighestRankedPairTieGoesToLowPair [
 	| result |
 
@@ -110,7 +112,7 @@ PokerTest >> test09_BothHandsHaveTwoPairsWithTheSameHighestRankedPairTieGoesToLo
 	self assert: result equals: #('JD QH JS 8D QC' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test10_BothHandsHaveTwoIdenticallyRankedPairsTieGoesToRemainingCardkicker [
 	| result |
 
@@ -118,7 +120,7 @@ PokerTest >> test10_BothHandsHaveTwoIdenticallyRankedPairsTieGoesToRemainingCard
 	self assert: result equals: #('JD QH JS 8D QC' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test11_ThreeOfAKindBeatsTwoPair [
 	| result |
 
@@ -126,7 +128,7 @@ PokerTest >> test11_ThreeOfAKindBeatsTwoPair [
 	self assert: result equals: #('4S 5H 4C 8S 4H' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test12_BothHandsHaveThreeOfAKindTieGoesToHighestRankedTriplet [
 	| result |
 
@@ -134,7 +136,7 @@ PokerTest >> test12_BothHandsHaveThreeOfAKindTieGoesToHighestRankedTriplet [
 	self assert: result equals: #('4S AH AS 8C AD' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test13_WithMultipleDecksTwoPlayersCanHaveSameThreeOfAKindTiesGoToHighestRemainingCards [
 	| result |
 
@@ -142,7 +144,7 @@ PokerTest >> test13_WithMultipleDecksTwoPlayersCanHaveSameThreeOfAKindTiesGoToHi
 	self assert: result equals: #('4S AH AS 8C AD' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test14_AStraightBeatsThreeOfAKind [
 	| result |
 
@@ -150,7 +152,7 @@ PokerTest >> test14_AStraightBeatsThreeOfAKind [
 	self assert: result equals: #('3S 4D 2S 6D 5C' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test15_AcesCanEndAStraight10JQKA [
 	| result |
 
@@ -158,7 +160,7 @@ PokerTest >> test15_AcesCanEndAStraight10JQKA [
 	self assert: result equals: #('10D JH QS KD AC' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test16_AcesCanStartAStraightA2345 [
 	| result |
 
@@ -166,7 +168,7 @@ PokerTest >> test16_AcesCanStartAStraightA2345 [
 	self assert: result equals: #('4D AH 3S 2D 5C' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test17_BothHandsWithAStraightTieGoesToHighestRankedCard [
 	| result |
 
@@ -174,7 +176,7 @@ PokerTest >> test17_BothHandsWithAStraightTieGoesToHighestRankedCard [
 	self assert: result equals: #('5S 7H 8S 9D 6H' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test18_EvenThoughAnAceIsUsuallyHighA5highStraightIsTheLowestscoringStraight [
 	| result |
 
@@ -182,7 +184,7 @@ PokerTest >> test18_EvenThoughAnAceIsUsuallyHighA5highStraightIsTheLowestscoring
 	self assert: result equals: #('2H 3C 4D 5D 6H' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test19_FlushBeatsAStraight [
 	| result |
 
@@ -190,7 +192,7 @@ PokerTest >> test19_FlushBeatsAStraight [
 	self assert: result equals: #('2S 4S 5S 6S 7S' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test20_BothHandsHaveAFlushTieGoesToHighCardDownToTheLastOneIfNecessary [
 	| result |
 
@@ -198,7 +200,7 @@ PokerTest >> test20_BothHandsHaveAFlushTieGoesToHighCardDownToTheLastOneIfNecess
 	self assert: result equals: #('4H 7H 8H 9H 6H' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test21_FullHouseBeatsAFlush [
 	| result |
 
@@ -206,7 +208,7 @@ PokerTest >> test21_FullHouseBeatsAFlush [
 	self assert: result equals: #('4S 5H 4C 5D 4H' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test22_BothHandsHaveAFullHouseTieGoesToHighestrankedTriplet [
 	| result |
 
@@ -214,7 +216,7 @@ PokerTest >> test22_BothHandsHaveAFullHouseTieGoesToHighestrankedTriplet [
 	self assert: result equals: #('5H 5S 5D 8S 8D' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test23_WithMultipleDecksBothHandsHaveAFullHouseWithTheSameTripletTieGoesToThePair [
 	| result |
 
@@ -222,7 +224,7 @@ PokerTest >> test23_WithMultipleDecksBothHandsHaveAFullHouseWithTheSameTripletTi
 	self assert: result equals: #('5H 5S 5D 9S 9D' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test24_FourOfAKindBeatsAFullHouse [
 	| result |
 
@@ -230,7 +232,7 @@ PokerTest >> test24_FourOfAKindBeatsAFullHouse [
 	self assert: result equals: #('3S 3H 2S 3D 3C' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test25_BothHandsHaveFourOfAKindTieGoesToHighQuad [
 	| result |
 
@@ -238,7 +240,7 @@ PokerTest >> test25_BothHandsHaveFourOfAKindTieGoesToHighQuad [
 	self assert: result equals: #('4S 5H 5S 5D 5C' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test26_WithMultipleDecksBothHandsWithIdenticalFourOfAKindTieDeterminedByKicker [
 	| result |
 
@@ -246,7 +248,7 @@ PokerTest >> test26_WithMultipleDecksBothHandsWithIdenticalFourOfAKindTieDetermi
 	self assert: result equals: #('3S 3H 4S 3D 3C' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test27_StraightFlushBeatsFourOfAKind [
 	| result |
 
@@ -254,7 +256,7 @@ PokerTest >> test27_StraightFlushBeatsFourOfAKind [
 	self assert: result equals: #('7S 8S 9S 6S 10S' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PokerTest >> test28_BothHandsHaveStraightFlushTieGoesToHighestrankedCard [
 	| result |
 

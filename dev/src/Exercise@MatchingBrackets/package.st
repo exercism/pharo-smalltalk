@@ -1,1 +1,1 @@
-Package { #name : #'Exercise@MatchingBrackets' }
+Package { #name : 'Exercise@MatchingBrackets' }

@@ -35,15 +35,16 @@ While referring to methods, its useful to know that a method which has no parame
 There is also a third type of method, binary, which takes only 1 parameter and uses a symbol(s) for a name (typically a mathematical one like: +, -, & etc).
 "
 Class {
-	#name : #TwoFerTest,
-	#superclass : #ExercismTest,
+	#name : 'TwoFerTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'twoFer'
 	],
-	#category : #'Exercise@TwoFer'
+	#category : 'Exercise@TwoFer',
+	#package : 'Exercise@TwoFer'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 TwoFerTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -54,36 +55,36 @@ TwoFerTest class >> exercise [
 	
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 TwoFerTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'9806fcc0-8505-4012-bd64-3f7468014df5'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 TwoFerTest class >> version [
 	"Answer the exercise version number string this test was derived from"
 	
 	^'1.2.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 TwoFerTest >> setUp [
 	super setUp.
 	twoFer := TwoFer new.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwoFerTest >> testANameGiven [
 	self assert: (twoFer who: 'Alice') equals: 'One for Alice, one for me.'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwoFerTest >> testAnotherNameGiven [
 	self assert: (twoFer who: 'Bob') equals: 'One for Bob, one for me.' 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwoFerTest >> testNoNameGiven [
 	self assert: twoFer who equals: 'One for you, one for me.' 
 	

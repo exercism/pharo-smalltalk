@@ -1,6 +1,6 @@
-Extension { #name : #ClassDescription }
+Extension { #name : 'ClassDescription' }
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 ClassDescription >> exPrintOutCategoriesFor: aClass on: aWriteStream [
 
 	aClass methods ifEmpty: [ ^self ].
@@ -20,13 +20,13 @@ ClassDescription >> exPrintOutCategoriesFor: aClass on: aWriteStream [
 			aClass exPrintOutLocalMethodsInCategory: heading on: aWriteStream ]
 ]
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 ClassDescription >> exPrintOutExtensionsFor: aRPackage on: aWriteStream [
 
 	aRPackage exPrintOutExtensionsFor: self on: aWriteStream. 
 ]
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 ClassDescription >> exPrintOutLocalMethodsInCategory: aSymbol on: aWriteStream [
 	"Print out methods for this category."
 
@@ -37,7 +37,7 @@ ClassDescription >> exPrintOutLocalMethodsInCategory: aSymbol on: aWriteStream [
 	
 ]
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 ClassDescription >> exPrintOutMethod: selector on: aWriteStream [
 	"Print the source code for selector onto the WriteStream."
 
@@ -64,7 +64,7 @@ ClassDescription >> exPrintOutMethod: selector on: aWriteStream [
 		cr
 ]
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 ClassDescription >> exPrintOutOn: aWriteStream [
 	"Print a description of the receiver on aWriteStream."
 
@@ -82,12 +82,12 @@ ClassDescription >> exPrintOutOn: aWriteStream [
 	self exPrintOutCategoriesFor: self on: aWriteStream
 ]
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 ClassDescription class >> exTonelClassFilenameFor: aName [
 	^aName, '.class.st'
 ]
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 ClassDescription class >> exTonelExtensionFilenameFor: aName [
 	^aName, '.extension.st'
 ]

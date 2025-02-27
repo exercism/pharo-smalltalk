@@ -1,13 +1,13 @@
-Extension { #name : #String }
+Extension { #name : 'String' }
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 String >> ->> aCollectionOfAssociations [
 	"Similar to -> but converts aCollection to anOrderedDictionary, useful when building JSON structures"
 
 	^self -> aCollectionOfAssociations asOrderedDictionary 
 ]
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 String >> asKebabCase [
 	"Answer a String that converts the CamelCase input to camel-case kebab output 
 	used by exercism"
@@ -21,7 +21,7 @@ String >> asKebabCase [
 					kebabStream nextPut: char asLowercase ] ]
 ]
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 String >> asSentenceCase [
 	"Converts string of selector name to human readable sentence."
 
@@ -33,7 +33,7 @@ String >> asSentenceCase [
 					aStream nextPut: char asLowercase ] ]
 ]
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 String >> encodeDoublingDoubleQuotesOn: s [
 	"Print inside string quotes, doubling inbedded quotes."
 
@@ -44,7 +44,7 @@ String >> encodeDoublingDoubleQuotesOn: s [
 			s << c ]
 ]
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 String >> exPathString [
 	"Answer the receiver as a valid path, with a trailing /"
 
@@ -55,7 +55,7 @@ String >> exPathString [
 				ifFalse: [ s nextPut: $/ ] ]
 ]
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 String >> kebabAsCamelCase [
 	"Answer a String that converts the CamelCase input to camel-case kebab output 
 	used by exercism"

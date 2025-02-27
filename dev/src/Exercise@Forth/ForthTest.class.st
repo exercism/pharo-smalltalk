@@ -32,15 +32,16 @@ It might take several classes and/or instances to model this
 
 "
 Class {
-	#name : #ForthTest,
-	#superclass : #ExercismTest,
+	#name : 'ForthTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'forthCalculator'
 	],
-	#category : #'Exercise@Forth'
+	#category : 'Exercise@Forth',
+	#package : 'Exercise@Forth'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 ForthTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 
@@ -50,25 +51,25 @@ ForthTest class >> exercise [
 		yourself
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ForthTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'1f200fc5-e4de-47c3-8d10-3d6180725e65'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ForthTest class >> version [
 	"Generated from specification: 24 April 2019"
 	^'1.7.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 ForthTest >> setUp [
 	super setUp.
 	forthCalculator := Forth new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test01_ParsingAndNumbersNumbersJustGetPushedOntoTheStack [
 	| result |
 
@@ -76,7 +77,7 @@ ForthTest >> test01_ParsingAndNumbersNumbersJustGetPushedOntoTheStack [
 	self assert: result equals: #(1 2 3 4 5 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test02_AdditionCanAddTwoNumbers [
 	| result |
 
@@ -84,7 +85,7 @@ ForthTest >> test02_AdditionCanAddTwoNumbers [
 	self assert: result equals: #(3 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test03_AdditionErrorsIfThereIsNothingOnTheStack [
 	| result |
 
@@ -95,7 +96,7 @@ ForthTest >> test03_AdditionErrorsIfThereIsNothingOnTheStack [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test04_AdditionErrorsIfThereIsOnlyOneValueOnTheStack [
 	| result |
 
@@ -106,7 +107,7 @@ ForthTest >> test04_AdditionErrorsIfThereIsOnlyOneValueOnTheStack [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test05_SubtractionCanSubtractTwoNumbers [
 	| result |
 
@@ -114,7 +115,7 @@ ForthTest >> test05_SubtractionCanSubtractTwoNumbers [
 	self assert: result equals: #( -1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test06_SubtractionErrorsIfThereIsNothingOnTheStack [
 	| result |
 
@@ -125,7 +126,7 @@ ForthTest >> test06_SubtractionErrorsIfThereIsNothingOnTheStack [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test07_SubtractionErrorsIfThereIsOnlyOneValueOnTheStack [
 	| result |
 
@@ -136,7 +137,7 @@ ForthTest >> test07_SubtractionErrorsIfThereIsOnlyOneValueOnTheStack [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test08_MultiplicationCanMultiplyTwoNumbers [
 	| result |
 
@@ -144,7 +145,7 @@ ForthTest >> test08_MultiplicationCanMultiplyTwoNumbers [
 	self assert: result equals: #(8 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test09_MultiplicationErrorsIfThereIsNothingOnTheStack [
 	| result |
 
@@ -155,7 +156,7 @@ ForthTest >> test09_MultiplicationErrorsIfThereIsNothingOnTheStack [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test10_MultiplicationErrorsIfThereIsOnlyOneValueOnTheStack [
 	| result |
 
@@ -166,7 +167,7 @@ ForthTest >> test10_MultiplicationErrorsIfThereIsOnlyOneValueOnTheStack [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test11_DivisionCanDivideTwoNumbers [
 	| result |
 
@@ -174,7 +175,7 @@ ForthTest >> test11_DivisionCanDivideTwoNumbers [
 	self assert: result equals: #(4 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test12_DivisionPerformsIntegerDivision [
 	| result |
 
@@ -182,7 +183,7 @@ ForthTest >> test12_DivisionPerformsIntegerDivision [
 	self assert: result equals: #(2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test13_DivisionErrorsIfDividingByZero [
 	| result |
 
@@ -193,7 +194,7 @@ ForthTest >> test13_DivisionErrorsIfDividingByZero [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test14_DivisionErrorsIfThereIsNothingOnTheStack [
 	| result |
 
@@ -204,7 +205,7 @@ ForthTest >> test14_DivisionErrorsIfThereIsNothingOnTheStack [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test15_DivisionErrorsIfThereIsOnlyOneValueOnTheStack [
 	| result |
 
@@ -215,7 +216,7 @@ ForthTest >> test15_DivisionErrorsIfThereIsOnlyOneValueOnTheStack [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test16_CombinedArithmeticAdditionAndSubtraction [
 	| result |
 
@@ -223,7 +224,7 @@ ForthTest >> test16_CombinedArithmeticAdditionAndSubtraction [
 	self assert: result equals: #( -1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test17_CombinedArithmeticMultiplicationAndDivision [
 	| result |
 
@@ -231,7 +232,7 @@ ForthTest >> test17_CombinedArithmeticMultiplicationAndDivision [
 	self assert: result equals: #(2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test18_DupCopiesAValueOnTheStack [
 	| result |
 
@@ -239,7 +240,7 @@ ForthTest >> test18_DupCopiesAValueOnTheStack [
 	self assert: result equals: #(1 1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test19_DupCopiesTheTopValueOnTheStack [
 	| result |
 
@@ -247,7 +248,7 @@ ForthTest >> test19_DupCopiesTheTopValueOnTheStack [
 	self assert: result equals: #(1 2 2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test20_DupErrorsIfThereIsNothingOnTheStack [
 	| result |
 
@@ -258,7 +259,7 @@ ForthTest >> test20_DupErrorsIfThereIsNothingOnTheStack [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test21_DropRemovesTheTopValueOnTheStackIfItIsTheOnlyOne [
 	| result |
 
@@ -266,7 +267,7 @@ ForthTest >> test21_DropRemovesTheTopValueOnTheStackIfItIsTheOnlyOne [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test22_DropRemovesTheTopValueOnTheStackIfItIsNotTheOnlyOne [
 	| result |
 
@@ -274,7 +275,7 @@ ForthTest >> test22_DropRemovesTheTopValueOnTheStackIfItIsNotTheOnlyOne [
 	self assert: result equals: #(1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test23_DropErrorsIfThereIsNothingOnTheStack [
 	| result |
 
@@ -285,7 +286,7 @@ ForthTest >> test23_DropErrorsIfThereIsNothingOnTheStack [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test24_SwapSwapsTheTopTwoValuesOnTheStackIfTheyAreTheOnlyOnes [
 	| result |
 
@@ -293,7 +294,7 @@ ForthTest >> test24_SwapSwapsTheTopTwoValuesOnTheStackIfTheyAreTheOnlyOnes [
 	self assert: result equals: #(2 1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test25_SwapSwapsTheTopTwoValuesOnTheStackIfTheyAreNotTheOnlyOnes [
 	| result |
 
@@ -301,7 +302,7 @@ ForthTest >> test25_SwapSwapsTheTopTwoValuesOnTheStackIfTheyAreNotTheOnlyOnes [
 	self assert: result equals: #(1 3 2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test26_SwapErrorsIfThereIsNothingOnTheStack [
 	| result |
 
@@ -312,7 +313,7 @@ ForthTest >> test26_SwapErrorsIfThereIsNothingOnTheStack [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test27_SwapErrorsIfThereIsOnlyOneValueOnTheStack [
 	| result |
 
@@ -323,7 +324,7 @@ ForthTest >> test27_SwapErrorsIfThereIsOnlyOneValueOnTheStack [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test28_OverCopiesTheSecondElementIfThereAreOnlyTwo [
 	| result |
 
@@ -331,7 +332,7 @@ ForthTest >> test28_OverCopiesTheSecondElementIfThereAreOnlyTwo [
 	self assert: result equals: #(1 2 1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test29_OverCopiesTheSecondElementIfThereAreMoreThanTwo [
 	| result |
 
@@ -339,7 +340,7 @@ ForthTest >> test29_OverCopiesTheSecondElementIfThereAreMoreThanTwo [
 	self assert: result equals: #(1 2 3 2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test30_OverErrorsIfThereIsNothingOnTheStack [
 	| result |
 
@@ -350,7 +351,7 @@ ForthTest >> test30_OverErrorsIfThereIsNothingOnTheStack [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test31_OverErrorsIfThereIsOnlyOneValueOnTheStack [
 	| result |
 
@@ -361,7 +362,7 @@ ForthTest >> test31_OverErrorsIfThereIsOnlyOneValueOnTheStack [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test32_UserdefinedWordsCanConsistOfBuiltinWords [
 	| result |
 
@@ -369,7 +370,7 @@ ForthTest >> test32_UserdefinedWordsCanConsistOfBuiltinWords [
 	self assert: result equals: #(1 1 1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test33_UserdefinedWordsExecuteInTheRightOrder [
 	| result |
 
@@ -377,7 +378,7 @@ ForthTest >> test33_UserdefinedWordsExecuteInTheRightOrder [
 	self assert: result equals: #(1 2 3 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test34_UserdefinedWordsCanOverrideOtherUserdefinedWords [
 	| result |
 
@@ -385,7 +386,7 @@ ForthTest >> test34_UserdefinedWordsCanOverrideOtherUserdefinedWords [
 	self assert: result equals: #(1 1 1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test35_UserdefinedWordsCanOverrideBuiltinWords [
 	| result |
 
@@ -393,7 +394,7 @@ ForthTest >> test35_UserdefinedWordsCanOverrideBuiltinWords [
 	self assert: result equals: #(1 1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test36_UserdefinedWordsCanOverrideBuiltinOperators [
 	| result |
 
@@ -401,7 +402,7 @@ ForthTest >> test36_UserdefinedWordsCanOverrideBuiltinOperators [
 	self assert: result equals: #(12 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test37_UserdefinedWordsCanUseDifferentWordsWithTheSameName [
 	| result |
 
@@ -409,7 +410,7 @@ ForthTest >> test37_UserdefinedWordsCanUseDifferentWordsWithTheSameName [
 	self assert: result equals: #(5 6 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test38_UserdefinedWordsCanDefineWordThatUsesWordWithTheSameName [
 	| result |
 
@@ -417,7 +418,7 @@ ForthTest >> test38_UserdefinedWordsCanDefineWordThatUsesWordWithTheSameName [
 	self assert: result equals: #(11 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test39_UserdefinedWordsCannotRedefineNumbers [
 	| result |
 
@@ -428,7 +429,7 @@ ForthTest >> test39_UserdefinedWordsCannotRedefineNumbers [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test40_UserdefinedWordsErrorsIfExecutingANonexistentWord [
 	| result |
 
@@ -439,7 +440,7 @@ ForthTest >> test40_UserdefinedWordsErrorsIfExecutingANonexistentWord [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test41_CaseinsensitivityDUPIsCaseinsensitive [
 	| result |
 
@@ -447,7 +448,7 @@ ForthTest >> test41_CaseinsensitivityDUPIsCaseinsensitive [
 	self assert: result equals: #(1 1 1 1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test42_CaseinsensitivityDROPIsCaseinsensitive [
 	| result |
 
@@ -455,7 +456,7 @@ ForthTest >> test42_CaseinsensitivityDROPIsCaseinsensitive [
 	self assert: result equals: #(1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test43_CaseinsensitivitySWAPIsCaseinsensitive [
 	| result |
 
@@ -463,7 +464,7 @@ ForthTest >> test43_CaseinsensitivitySWAPIsCaseinsensitive [
 	self assert: result equals: #(2 3 4 1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test44_CaseinsensitivityOVERIsCaseinsensitive [
 	| result |
 
@@ -471,7 +472,7 @@ ForthTest >> test44_CaseinsensitivityOVERIsCaseinsensitive [
 	self assert: result equals: #(1 2 1 2 1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test45_CaseinsensitivityUserdefinedWordsAreCaseinsensitive [
 	| result |
 
@@ -479,7 +480,7 @@ ForthTest >> test45_CaseinsensitivityUserdefinedWordsAreCaseinsensitive [
 	self assert: result equals: #(1 1 1 1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ForthTest >> test46_CaseinsensitivityDefinitionsAreCaseinsensitive [
 	| result |
 

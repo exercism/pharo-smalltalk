@@ -35,33 +35,35 @@ TBD
 
 "
 Class {
-	#name : #SatelliteTest,
-	#superclass : #ExercismTest,
+	#name : 'SatelliteTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'satelliteCalculator'
 	],
-	#category : #'ExercismWIP-Satellite'
+	#category : 'ExercismWIP-Satellite',
+	#package : 'ExercismWIP',
+	#tag : 'Satellite'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 SatelliteTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'0ca3c32e-b043-0d00-9275-6ca802a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 SatelliteTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'2.0.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 SatelliteTest >> setUp [
 	super setUp.
 	satelliteCalculator := Satellite new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SatelliteTest >> test01_EmptyTree [
 	| result |
 
@@ -69,7 +71,7 @@ SatelliteTest >> test01_EmptyTree [
 	self assert: result equals: ((Dictionary new))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SatelliteTest >> test02_TreeWithOneItem [
 	| result |
 
@@ -77,7 +79,7 @@ SatelliteTest >> test02_TreeWithOneItem [
 	self assert: result equals: ((Dictionary new) add: ('v'->'a'); add: ('l'->((Dictionary new))); add: ('r'->((Dictionary new))); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SatelliteTest >> test03_TreeWithManyItems [
 	| result |
 
@@ -85,7 +87,7 @@ SatelliteTest >> test03_TreeWithManyItems [
 	self assert: result equals: ((Dictionary new) add: ('v'->'a'); add: ('l'->((Dictionary new) add: ('v'->'i'); add: ('l'->((Dictionary new))); add: ('r'->((Dictionary new))); yourself)); add: ('r'->((Dictionary new) add: ('v'->'x'); add: ('l'->((Dictionary new) add: ('v'->'f'); add: ('l'->((Dictionary new))); add: ('r'->((Dictionary new))); yourself)); add: ('r'->((Dictionary new) add: ('v'->'r'); add: ('l'->((Dictionary new))); add: ('r'->((Dictionary new))); yourself)); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SatelliteTest >> test04_RejectTraversalsOfDifferentLength [
 	| result |
 
@@ -96,7 +98,7 @@ SatelliteTest >> test04_RejectTraversalsOfDifferentLength [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SatelliteTest >> test05_RejectInconsistentTraversalsOfSameLength [
 	| result |
 
@@ -107,7 +109,7 @@ SatelliteTest >> test05_RejectInconsistentTraversalsOfSameLength [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SatelliteTest >> test06_RejectTraversalsWithRepeatedItems [
 	| result |
 

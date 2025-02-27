@@ -2,17 +2,18 @@
 A simple solution to bracket exercise using a Stack
 "
 Class {
-	#name : #MatchingBrackets,
-	#superclass : #Object,
-	#category : #'Exercise@MatchingBrackets'
+	#name : 'MatchingBrackets',
+	#superclass : 'Object',
+	#category : 'Exercise@MatchingBrackets',
+	#package : 'Exercise@MatchingBrackets'
 }
 
-{ #category : #'private-constants' }
+{ #category : 'private-constants' }
 MatchingBrackets >> delimiterPairs [
 	^ #('()' '[]' '{}')
 ]
 
-{ #category : #'private-testing' }
+{ #category : 'private-testing' }
 MatchingBrackets >> is: closeChar closingBracketFor: openChar [
 	^ self delimiterPairs
 		detect: [ :each | each first = openChar & (each last = closeChar) ]
@@ -20,7 +21,7 @@ MatchingBrackets >> is: closeChar closingBracketFor: openChar [
 		ifNone: [ false ]
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 MatchingBrackets >> isPaired: aString [
 	| stack |
 	

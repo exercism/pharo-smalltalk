@@ -2,29 +2,31 @@
 I am  responsible for managing the interaction with the lower level Exercism command line tool.
 "
 Class {
-	#name : #ExercismManager,
-	#superclass : #Object,
+	#name : 'ExercismManager',
+	#superclass : 'Object',
 	#classVars : [
 		'SolutionData'
 	],
-	#category : #'ExercismTools-Core'
+	#category : 'ExercismTools-Core',
+	#package : 'ExercismTools',
+	#tag : 'Core'
 }
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 ExercismManager class >> concepts [
 
 	"no concepts defined so far"
 	^ #()
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 ExercismManager class >> default [
 	"answer a defulat manager"
 	
 	^self new
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 ExercismManager class >> disableStudentCritics [
 
 	ReUtilityMethodsRule enabled: false.
@@ -32,12 +34,12 @@ ExercismManager class >> disableStudentCritics [
 	
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ExercismManager class >> exercisePrefix [
 	^ 'Exercise'
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 ExercismManager class >> isUserMode [
 	"Answer true if exercism is loaded in a clean image with no dev tools"
 	
@@ -48,7 +50,7 @@ ExercismManager class >> isUserMode [
 				ifAbsent: [ nil ]) isNil ]
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ExercismManager class >> legacyExercismPackage [
 	"Answer the default exercism package, or nil if missing"
 	| packageOrganiser |
@@ -59,28 +61,28 @@ ExercismManager class >> legacyExercismPackage [
 		ifAbsent: [ nil ]
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ExercismManager class >> legacyPackagePrefix [
 	^ 'Exercism'
 ]
 
-{ #category : #cache }
+{ #category : 'cache' }
 ExercismManager class >> solutionData [
 	^ SolutionData ifNil: [ SolutionData := Dictionary new ]
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ExercismManager class >> trackId [
 	^'pharo-smalltalk'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ExercismManager class >> trackVersionString [
 
 	^ 2 asString
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 ExercismManager class >> upgrade [
 	"upgrade an environment (called from ugrade instructions)"
 
@@ -88,7 +90,7 @@ ExercismManager class >> upgrade [
 	World closeUnchangedWindows.
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 ExercismManager class >> welcome [
 	"Setup the initial environment for a new user"
 
@@ -107,7 +109,7 @@ ExercismManager class >> welcome [
 		selectMethod: (WelcomeTest methodNamed: #testWelcome)
 ]
 
-{ #category : #'world menu' }
+{ #category : 'world menu' }
 ExercismManager class >> worldMenuCommandOn: aBuilder [
 	<worldMenu>
 	(aBuilder item: #Exercism)
@@ -116,7 +118,7 @@ ExercismManager class >> worldMenuCommandOn: aBuilder [
 		help: 'Tools to support Exercism'
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 ExercismManager >> fetchFromExercismTo: package [
 	"Prompt the user for an exercise to fetch, install it, and if successful, answer the loaded exercise"
 
@@ -135,7 +137,7 @@ ExercismManager >> fetchFromExercismTo: package [
 	^ result
 ]
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 ExercismManager >> parseTokenNamed: tokenName from: aString [ 
 	| parsedTokens exerciseOffset |
 	parsedTokens := aString findTokens: '= '.
@@ -147,7 +149,7 @@ ExercismManager >> parseTokenNamed: tokenName from: aString [
 	^nil
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 ExercismManager >> shareExerciseDPaste: exercise [
 	| source |
 	
@@ -175,7 +177,7 @@ ExercismManager >> shareExerciseDPaste: exercise [
 		post
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 ExercismManager >> shareExerciseStfx: package [
 	| source |
 	package = self class legacyExercismPackage
@@ -198,7 +200,7 @@ ExercismManager >> shareExerciseStfx: package [
 		post
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 ExercismManager >> submitToExercism: packageOrTag [
 		
 	(packageOrTag  = self class legacyExercismPackage) 
@@ -208,7 +210,7 @@ ExercismManager >> submitToExercism: packageOrTag [
 	
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 ExercismManager >> viewOnExercism: packageOrTag [
 	WebBrowser openOn: 'https://exercism.org/tracks/pharo'
 ]

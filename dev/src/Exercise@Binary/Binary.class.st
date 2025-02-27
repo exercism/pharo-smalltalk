@@ -2,12 +2,13 @@
 I convert a binary string to decimal. Of note is the non-binary string check, that passes an error block to evaluate in case of an error vs. doing a boolean if check for an error.
 "
 Class {
-	#name : #Binary,
-	#superclass : #Object,
-	#category : #'Exercise@Binary'
+	#name : 'Binary',
+	#superclass : 'Object',
+	#category : 'Exercise@Binary',
+	#package : 'Exercise@Binary'
 }
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 Binary >> decimalFromBinary: aString [
 	self ifNonBinary: aString then: [ ^ nil ].
 
@@ -16,7 +17,7 @@ Binary >> decimalFromBinary: aString [
 		sumNumbers 
 ]
 
-{ #category : #alternative }
+{ #category : 'alternative' }
 Binary >> decimalFromBinaryAlternative: aString [
 	"This is an alternative solution, done in a slightly longer hand, but potentially more readable fashion?"
 	
@@ -32,7 +33,7 @@ Binary >> decimalFromBinaryAlternative: aString [
 	^ result
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 Binary >> ifNonBinary: aString then: aBlock [	
 	
 	(aString reject: [:c | ($0 to: $1) includes: c]) ifNotEmpty: aBlock.

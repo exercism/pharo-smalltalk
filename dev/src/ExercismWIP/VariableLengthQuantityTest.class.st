@@ -38,33 +38,35 @@ TBD
 
 "
 Class {
-	#name : #VariableLengthQuantityTest,
-	#superclass : #ExercismTest,
+	#name : 'VariableLengthQuantityTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'variableLengthQuantityCalculator'
 	],
-	#category : #'ExercismWIP-VariableLengthQuantity'
+	#category : 'ExercismWIP-VariableLengthQuantity',
+	#package : 'ExercismWIP',
+	#tag : 'VariableLengthQuantity'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 VariableLengthQuantityTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'065da42e-b043-0d00-9248-fda102a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 VariableLengthQuantityTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'1.2.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 VariableLengthQuantityTest >> setUp [
 	super setUp.
 	variableLengthQuantityCalculator := VariableLengthQuantity new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test01_EncodeASeriesOfIntegersProducingASeriesOfBytesZero [
 	| result |
 
@@ -72,7 +74,7 @@ VariableLengthQuantityTest >> test01_EncodeASeriesOfIntegersProducingASeriesOfBy
 	self assert: result equals: #(0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test02_EncodeASeriesOfIntegersProducingASeriesOfBytesArbitrarySingleByte [
 	| result |
 
@@ -80,7 +82,7 @@ VariableLengthQuantityTest >> test02_EncodeASeriesOfIntegersProducingASeriesOfBy
 	self assert: result equals: #(64 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test03_EncodeASeriesOfIntegersProducingASeriesOfBytesLargestSingleByte [
 	| result |
 
@@ -88,7 +90,7 @@ VariableLengthQuantityTest >> test03_EncodeASeriesOfIntegersProducingASeriesOfBy
 	self assert: result equals: #(127 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test04_EncodeASeriesOfIntegersProducingASeriesOfBytesSmallestDoubleByte [
 	| result |
 
@@ -96,7 +98,7 @@ VariableLengthQuantityTest >> test04_EncodeASeriesOfIntegersProducingASeriesOfBy
 	self assert: result equals: #(129 0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test05_EncodeASeriesOfIntegersProducingASeriesOfBytesArbitraryDoubleByte [
 	| result |
 
@@ -104,7 +106,7 @@ VariableLengthQuantityTest >> test05_EncodeASeriesOfIntegersProducingASeriesOfBy
 	self assert: result equals: #(192 0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test06_EncodeASeriesOfIntegersProducingASeriesOfBytesLargestDoubleByte [
 	| result |
 
@@ -112,7 +114,7 @@ VariableLengthQuantityTest >> test06_EncodeASeriesOfIntegersProducingASeriesOfBy
 	self assert: result equals: #(255 127 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test07_EncodeASeriesOfIntegersProducingASeriesOfBytesSmallestTripleByte [
 	| result |
 
@@ -120,7 +122,7 @@ VariableLengthQuantityTest >> test07_EncodeASeriesOfIntegersProducingASeriesOfBy
 	self assert: result equals: #(129 128 0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test08_EncodeASeriesOfIntegersProducingASeriesOfBytesArbitraryTripleByte [
 	| result |
 
@@ -128,7 +130,7 @@ VariableLengthQuantityTest >> test08_EncodeASeriesOfIntegersProducingASeriesOfBy
 	self assert: result equals: #(192 128 0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test09_EncodeASeriesOfIntegersProducingASeriesOfBytesLargestTripleByte [
 	| result |
 
@@ -136,7 +138,7 @@ VariableLengthQuantityTest >> test09_EncodeASeriesOfIntegersProducingASeriesOfBy
 	self assert: result equals: #(255 255 127 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test10_EncodeASeriesOfIntegersProducingASeriesOfBytesSmallestQuadrupleByte [
 	| result |
 
@@ -144,7 +146,7 @@ VariableLengthQuantityTest >> test10_EncodeASeriesOfIntegersProducingASeriesOfBy
 	self assert: result equals: #(129 128 128 0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test11_EncodeASeriesOfIntegersProducingASeriesOfBytesArbitraryQuadrupleByte [
 	| result |
 
@@ -152,7 +154,7 @@ VariableLengthQuantityTest >> test11_EncodeASeriesOfIntegersProducingASeriesOfBy
 	self assert: result equals: #(192 128 128 0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test12_EncodeASeriesOfIntegersProducingASeriesOfBytesLargestQuadrupleByte [
 	| result |
 
@@ -160,7 +162,7 @@ VariableLengthQuantityTest >> test12_EncodeASeriesOfIntegersProducingASeriesOfBy
 	self assert: result equals: #(255 255 255 127 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test13_EncodeASeriesOfIntegersProducingASeriesOfBytesSmallestQuintupleByte [
 	| result |
 
@@ -168,7 +170,7 @@ VariableLengthQuantityTest >> test13_EncodeASeriesOfIntegersProducingASeriesOfBy
 	self assert: result equals: #(129 128 128 128 0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test14_EncodeASeriesOfIntegersProducingASeriesOfBytesArbitraryQuintupleByte [
 	| result |
 
@@ -176,7 +178,7 @@ VariableLengthQuantityTest >> test14_EncodeASeriesOfIntegersProducingASeriesOfBy
 	self assert: result equals: #(143 248 128 128 0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test15_EncodeASeriesOfIntegersProducingASeriesOfBytesMaximum32bitIntegerInput [
 	| result |
 
@@ -184,7 +186,7 @@ VariableLengthQuantityTest >> test15_EncodeASeriesOfIntegersProducingASeriesOfBy
 	self assert: result equals: #(143 255 255 255 127 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test16_EncodeASeriesOfIntegersProducingASeriesOfBytesTwoSinglebyteValues [
 	| result |
 
@@ -192,7 +194,7 @@ VariableLengthQuantityTest >> test16_EncodeASeriesOfIntegersProducingASeriesOfBy
 	self assert: result equals: #(64 127 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test17_EncodeASeriesOfIntegersProducingASeriesOfBytesTwoMultibyteValues [
 	| result |
 
@@ -200,7 +202,7 @@ VariableLengthQuantityTest >> test17_EncodeASeriesOfIntegersProducingASeriesOfBy
 	self assert: result equals: #(129 128 0 200 232 86 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test18_EncodeASeriesOfIntegersProducingASeriesOfBytesManyMultibyteValues [
 	| result |
 
@@ -208,7 +210,7 @@ VariableLengthQuantityTest >> test18_EncodeASeriesOfIntegersProducingASeriesOfBy
 	self assert: result equals: #(192 0 200 232 86 255 255 255 127 0 255 127 129 128 0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test19_DecodeASeriesOfBytesProducingASeriesOfIntegersOneByte [
 	| result |
 
@@ -216,7 +218,7 @@ VariableLengthQuantityTest >> test19_DecodeASeriesOfBytesProducingASeriesOfInteg
 	self assert: result equals: #(127 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test20_DecodeASeriesOfBytesProducingASeriesOfIntegersTwoBytes [
 	| result |
 
@@ -224,7 +226,7 @@ VariableLengthQuantityTest >> test20_DecodeASeriesOfBytesProducingASeriesOfInteg
 	self assert: result equals: #(8192 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test21_DecodeASeriesOfBytesProducingASeriesOfIntegersThreeBytes [
 	| result |
 
@@ -232,7 +234,7 @@ VariableLengthQuantityTest >> test21_DecodeASeriesOfBytesProducingASeriesOfInteg
 	self assert: result equals: #(2097151 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test22_DecodeASeriesOfBytesProducingASeriesOfIntegersFourBytes [
 	| result |
 
@@ -240,7 +242,7 @@ VariableLengthQuantityTest >> test22_DecodeASeriesOfBytesProducingASeriesOfInteg
 	self assert: result equals: #(2097152 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test23_DecodeASeriesOfBytesProducingASeriesOfIntegersMaximum32bitInteger [
 	| result |
 
@@ -248,7 +250,7 @@ VariableLengthQuantityTest >> test23_DecodeASeriesOfBytesProducingASeriesOfInteg
 	self assert: result equals: #(4294967295 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test24_DecodeASeriesOfBytesProducingASeriesOfIntegersIncompleteSequenceCausesError [
 	| result |
 
@@ -259,7 +261,7 @@ VariableLengthQuantityTest >> test24_DecodeASeriesOfBytesProducingASeriesOfInteg
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test25_DecodeASeriesOfBytesProducingASeriesOfIntegersIncompleteSequenceCausesErrorEvenIfValueIsZero [
 	| result |
 
@@ -270,7 +272,7 @@ VariableLengthQuantityTest >> test25_DecodeASeriesOfBytesProducingASeriesOfInteg
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VariableLengthQuantityTest >> test26_DecodeASeriesOfBytesProducingASeriesOfIntegersMultipleValues [
 	| result |
 

@@ -2,37 +2,38 @@
 I am a simple Clock object
 "
 Class {
-	#name : #Clock,
-	#superclass : #Object,
+	#name : 'Clock',
+	#superclass : 'Object',
 	#instVars : [
 		'hour',
 		'minute'
 	],
-	#category : #'Exercise@Clock'
+	#category : 'Exercise@Clock',
+	#package : 'Exercise@Clock'
 }
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 Clock class >> hour: hourInteger minute: minuteInteger [ 
 	^self new 
 		initializeHour: hourInteger minute: minuteInteger;
 		yourself
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 Clock >> + anInteger [
 	"Answer a new instance of the receiver added to anInteger minutes"
 	
 	^ self class hour: self hour minute: self minute + anInteger
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 Clock >> - anInteger [
 	"Answer a new instance of the receiver subtracted by anInteger minutes"
 
 	^ self class hour: self hour minute: self minute - anInteger
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 Clock >> = anObject [
 	"Answer whether the receiver and anObject represent the same object."
 
@@ -43,31 +44,31 @@ Clock >> = anObject [
 	^ minute = anObject minute and: [ hour = anObject hour ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 Clock >> hash [
 	"Answer an integer value that is related to the identity of the receiver."
 
 	^ minute hash bitXor: hour hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Clock >> hour [
 	^ hour
 ]
 
-{ #category : #initializing }
+{ #category : 'initializing' }
 Clock >> initializeHour: hourInteger minute: minuteInteger [
 
 	hour := (minuteInteger // 60 + hourInteger) % 24.
 	minute := minuteInteger % 60
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Clock >> minute [
 	^ minute
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 Clock >> printOn: aStream [
 	"Output the reciever on a Stream for printing, debugging etc."
 

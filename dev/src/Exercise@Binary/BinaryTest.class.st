@@ -37,15 +37,16 @@ The ^ operation in Pharo is expressed as the descriptive keyword message #raised
 
 "
 Class {
-	#name : #BinaryTest,
-	#superclass : #ExercismTest,
+	#name : 'BinaryTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'binaryCalculator'
 	],
-	#category : #'Exercise@Binary'
+	#category : 'Exercise@Binary',
+	#package : 'Exercise@Binary'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 BinaryTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -57,7 +58,7 @@ BinaryTest class >> exercise [
 				
 ]
 
-{ #category : #generator }
+{ #category : 'generator' }
 BinaryTest class >> generator [
 	"Answer code generator aliases/hints"
 	
@@ -66,25 +67,25 @@ BinaryTest class >> generator [
 				
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 BinaryTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'c54688bb-2237-49b1-986f-8e9fc3873ef1'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 BinaryTest class >> version [
 	"Generated from specification: 15 March 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 BinaryTest >> setUp [
 	super setUp.
 	binaryCalculator := Binary new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinaryTest >> test01_Binary0IsDecimal0 [
 	| result |
 
@@ -92,7 +93,7 @@ BinaryTest >> test01_Binary0IsDecimal0 [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinaryTest >> test02_Binary1IsDecimal1 [
 	| result |
 
@@ -100,7 +101,7 @@ BinaryTest >> test02_Binary1IsDecimal1 [
 	self assert: result equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinaryTest >> test03_Binary10IsDecimal2 [
 	| result |
 
@@ -108,7 +109,7 @@ BinaryTest >> test03_Binary10IsDecimal2 [
 	self assert: result equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinaryTest >> test04_Binary11IsDecimal3 [
 	| result |
 
@@ -116,7 +117,7 @@ BinaryTest >> test04_Binary11IsDecimal3 [
 	self assert: result equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinaryTest >> test05_Binary100IsDecimal4 [
 	| result |
 
@@ -124,7 +125,7 @@ BinaryTest >> test05_Binary100IsDecimal4 [
 	self assert: result equals: 4
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinaryTest >> test06_Binary1001IsDecimal9 [
 	| result |
 
@@ -132,7 +133,7 @@ BinaryTest >> test06_Binary1001IsDecimal9 [
 	self assert: result equals: 9
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinaryTest >> test07_Binary11010IsDecimal26 [
 	| result |
 
@@ -140,7 +141,7 @@ BinaryTest >> test07_Binary11010IsDecimal26 [
 	self assert: result equals: 26
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinaryTest >> test08_Binary10001101000IsDecimal1128 [
 	| result |
 
@@ -148,7 +149,7 @@ BinaryTest >> test08_Binary10001101000IsDecimal1128 [
 	self assert: result equals: 1128
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinaryTest >> test09_BinaryIgnoresLeadingZeros [
 	| result |
 
@@ -156,7 +157,7 @@ BinaryTest >> test09_BinaryIgnoresLeadingZeros [
 	self assert: result equals: 31
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinaryTest >> test10_2IsNotAValidBinaryDigit [
 	| result |
 
@@ -164,7 +165,7 @@ BinaryTest >> test10_2IsNotAValidBinaryDigit [
 	self assert: result equals: nil
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinaryTest >> test11_ANumberContainingANonbinaryDigitIsInvalid [
 	| result |
 
@@ -172,7 +173,7 @@ BinaryTest >> test11_ANumberContainingANonbinaryDigitIsInvalid [
 	self assert: result equals: nil
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinaryTest >> test12_ANumberWithTrailingNonbinaryCharactersIsInvalid [
 	| result |
 
@@ -180,7 +181,7 @@ BinaryTest >> test12_ANumberWithTrailingNonbinaryCharactersIsInvalid [
 	self assert: result equals: nil
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinaryTest >> test13_ANumberWithLeadingNonbinaryCharactersIsInvalid [
 	| result |
 
@@ -188,7 +189,7 @@ BinaryTest >> test13_ANumberWithLeadingNonbinaryCharactersIsInvalid [
 	self assert: result equals: nil
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinaryTest >> test14_ANumberWithInternalNonbinaryCharactersIsInvalid [
 	| result |
 
@@ -196,7 +197,7 @@ BinaryTest >> test14_ANumberWithInternalNonbinaryCharactersIsInvalid [
 	self assert: result equals: nil
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinaryTest >> test15_ANumberAndAWordWhitespaceSeparatedIsInvalid [
 	| result |
 

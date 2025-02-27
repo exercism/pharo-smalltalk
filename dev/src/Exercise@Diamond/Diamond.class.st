@@ -3,12 +3,13 @@ As the output is symetrical, you only have to generate the top half and then mir
 
 "
 Class {
-	#name : #Diamond,
-	#superclass : #Object,
-	#category : #'Exercise@Diamond'
+	#name : 'Diamond',
+	#superclass : 'Object',
+	#category : 'Exercise@Diamond',
+	#package : 'Exercise@Diamond'
 }
 
-{ #category : #formatting }
+{ #category : 'formatting' }
 Diamond >> makeRow: char baseChar: baseChar [
 	| maxValue letterValue halfRow |
 
@@ -22,14 +23,14 @@ Diamond >> makeRow: char baseChar: baseChar [
 	^ halfRow , halfRow allButLast reversed
 ]
 
-{ #category : #formatting }
+{ #category : 'formatting' }
 Diamond >> paddingSpaces: anInteger [
 	^ anInteger isZero
 		ifTrue: [ '' ]
 		ifFalse: [ String new: anInteger withAll: Character space ]
 ]
 
-{ #category : #formatting }
+{ #category : 'formatting' }
 Diamond >> rowsLetter: aString [
 	| baseChar topHalf fullGrid |
 

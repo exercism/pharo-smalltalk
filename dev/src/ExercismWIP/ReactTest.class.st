@@ -22,33 +22,35 @@ TBD
 
 "
 Class {
-	#name : #ReactTest,
-	#superclass : #ExercismTest,
+	#name : 'ReactTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'reactCalculator'
 	],
-	#category : #'ExercismWIP-React'
+	#category : 'ExercismWIP-React',
+	#package : 'ExercismWIP',
+	#tag : 'React'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 ReactTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'afe1ff16-9d41-0d00-900c-16f608866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ReactTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'2.0.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 ReactTest >> setUp [
 	super setUp.
 	reactCalculator := React new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ReactTest >> test01_InputCellsHaveAValue [
 	| result |
 
@@ -56,7 +58,7 @@ ReactTest >> test01_InputCellsHaveAValue [
 	self assert: result equals: ((Dictionary new))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ReactTest >> test02_AnInputCellsValueCanBeSet [
 	| result |
 
@@ -64,7 +66,7 @@ ReactTest >> test02_AnInputCellsValueCanBeSet [
 	self assert: result equals: ((Dictionary new))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ReactTest >> test03_ComputeCellsCalculateInitialValue [
 	| result |
 
@@ -72,7 +74,7 @@ ReactTest >> test03_ComputeCellsCalculateInitialValue [
 	self assert: result equals: ((Dictionary new))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ReactTest >> test04_ComputeCellsTakeInputsInTheRightOrder [
 	| result |
 
@@ -80,7 +82,7 @@ ReactTest >> test04_ComputeCellsTakeInputsInTheRightOrder [
 	self assert: result equals: ((Dictionary new))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ReactTest >> test05_ComputeCellsUpdateValueWhenDependenciesAreChanged [
 	| result |
 
@@ -88,7 +90,7 @@ ReactTest >> test05_ComputeCellsUpdateValueWhenDependenciesAreChanged [
 	self assert: result equals: ((Dictionary new))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ReactTest >> test06_ComputeCellsCanDependOnOtherComputeCells [
 	| result |
 
@@ -96,7 +98,7 @@ ReactTest >> test06_ComputeCellsCanDependOnOtherComputeCells [
 	self assert: result equals: ((Dictionary new))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ReactTest >> test07_ComputeCellsFireCallbacks [
 	| result |
 
@@ -104,7 +106,7 @@ ReactTest >> test07_ComputeCellsFireCallbacks [
 	self assert: result equals: ((Dictionary new))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ReactTest >> test08_CallbackCellsOnlyFireOnChange [
 	| result |
 
@@ -112,7 +114,7 @@ ReactTest >> test08_CallbackCellsOnlyFireOnChange [
 	self assert: result equals: ((Dictionary new))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ReactTest >> test09_CallbacksDoNotReportAlreadyReportedValues [
 	| result |
 
@@ -120,7 +122,7 @@ ReactTest >> test09_CallbacksDoNotReportAlreadyReportedValues [
 	self assert: result equals: ((Dictionary new))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ReactTest >> test10_CallbacksCanFireFromMultipleCells [
 	| result |
 
@@ -128,7 +130,7 @@ ReactTest >> test10_CallbacksCanFireFromMultipleCells [
 	self assert: result equals: ((Dictionary new))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ReactTest >> test11_CallbacksCanBeAddedAndRemoved [
 	| result |
 
@@ -136,7 +138,7 @@ ReactTest >> test11_CallbacksCanBeAddedAndRemoved [
 	self assert: result equals: ((Dictionary new))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ReactTest >> test12_RemovingACallbackMultipleTimesDoesntInterfereWithOtherCallbacks [
 	| result |
 
@@ -144,7 +146,7 @@ ReactTest >> test12_RemovingACallbackMultipleTimesDoesntInterfereWithOtherCallba
 	self assert: result equals: ((Dictionary new))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ReactTest >> test13_CallbacksShouldOnlyBeCalledOnceEvenIfMultipleDependenciesChange [
 	| result |
 
@@ -152,7 +154,7 @@ ReactTest >> test13_CallbacksShouldOnlyBeCalledOnceEvenIfMultipleDependenciesCha
 	self assert: result equals: ((Dictionary new))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ReactTest >> test14_CallbacksShouldNotBeCalledIfDependenciesChangeButOutputValueDoesntChange [
 	| result |
 

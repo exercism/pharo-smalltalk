@@ -17,15 +17,16 @@ Write some code to determine whether a number is an Armstrong number.
 Browse the class Integer for some inspiration
 "
 Class {
-	#name : #ArmstrongNumbersTest,
-	#superclass : #ExercismTest,
+	#name : 'ArmstrongNumbersTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'armstrongNumbersCalculator'
 	],
-	#category : #'Exercise@ArmstrongNumbers'
+	#category : 'Exercise@ArmstrongNumbers',
+	#package : 'Exercise@ArmstrongNumbers'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 ArmstrongNumbersTest class >> exercise [
 	^ (self createExerciseAfter: TwoFerTest)
 		difficulty: 2;
@@ -33,25 +34,25 @@ ArmstrongNumbersTest class >> exercise [
 		yourself
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ArmstrongNumbersTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'04c308a8-9794-4b15-9a73-775fca80ce9d'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ArmstrongNumbersTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.0.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 ArmstrongNumbersTest >> setUp [
 	super setUp.
 	armstrongNumbersCalculator := ArmstrongNumbers new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ArmstrongNumbersTest >> test01_SingleDigitNumbersAreArmstrongNumbers [
 	| result |
 
@@ -59,7 +60,7 @@ ArmstrongNumbersTest >> test01_SingleDigitNumbersAreArmstrongNumbers [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ArmstrongNumbersTest >> test02_ThereAreNo2DigitArmstrongNumbers [
 	| result |
 
@@ -67,7 +68,7 @@ ArmstrongNumbersTest >> test02_ThereAreNo2DigitArmstrongNumbers [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ArmstrongNumbersTest >> test03_ThreeDigitNumberThatIsAnArmstrongNumber [
 	| result |
 
@@ -75,7 +76,7 @@ ArmstrongNumbersTest >> test03_ThreeDigitNumberThatIsAnArmstrongNumber [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ArmstrongNumbersTest >> test04_ThreeDigitNumberThatIsNotAnArmstrongNumber [
 	| result |
 
@@ -83,7 +84,7 @@ ArmstrongNumbersTest >> test04_ThreeDigitNumberThatIsNotAnArmstrongNumber [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ArmstrongNumbersTest >> test05_FourDigitNumberThatIsAnArmstrongNumber [
 	| result |
 
@@ -91,7 +92,7 @@ ArmstrongNumbersTest >> test05_FourDigitNumberThatIsAnArmstrongNumber [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ArmstrongNumbersTest >> test06_FourDigitNumberThatIsNotAnArmstrongNumber [
 	| result |
 
@@ -99,7 +100,7 @@ ArmstrongNumbersTest >> test06_FourDigitNumberThatIsNotAnArmstrongNumber [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ArmstrongNumbersTest >> test07_SevenDigitNumberThatIsAnArmstrongNumber [
 	| result |
 
@@ -107,7 +108,7 @@ ArmstrongNumbersTest >> test07_SevenDigitNumberThatIsAnArmstrongNumber [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ArmstrongNumbersTest >> test08_SevenDigitNumberThatIsNotAnArmstrongNumber [
 	| result |
 

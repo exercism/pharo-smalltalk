@@ -2,7 +2,9 @@
 I am a hierarchy of Exercism errors, so its east to catch them
 "
 Class {
-	#name : #ExercismError,
-	#superclass : #Error,
-	#category : #'ExercismTools-Core'
+	#name : 'ExercismError',
+	#superclass : 'Error',
+	#category : 'ExercismTools-Core',
+	#package : 'ExercismTools',
+	#tag : 'Core'
 }

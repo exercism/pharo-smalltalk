@@ -1,6 +1,6 @@
-Extension { #name : #Integer }
+Extension { #name : 'Integer' }
 
-{ #category : #'*Exercise@Minesweeper' }
+{ #category : '*Exercise@Minesweeper' }
 Integer >> asMinesweeperChar [
 	^ self = 0
 		ifTrue: [ Character space ]

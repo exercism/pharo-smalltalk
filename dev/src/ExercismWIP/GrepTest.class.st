@@ -71,33 +71,35 @@ TBD
 
 "
 Class {
-	#name : #GrepTest,
-	#superclass : #ExercismTest,
+	#name : 'GrepTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'grepCalculator'
 	],
-	#category : #'ExercismWIP-Grep'
+	#category : 'ExercismWIP-Grep',
+	#package : 'ExercismWIP',
+	#tag : 'Grep'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 GrepTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'a49edd16-9d41-0d00-8ff4-b39808866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 GrepTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.2.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 GrepTest >> setUp [
 	super setUp.
 	grepCalculator := Grep new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test01_TestGreppingASingleFileOneFileOneMatchNoFlags [
 	| result |
 
@@ -105,7 +107,7 @@ GrepTest >> test01_TestGreppingASingleFileOneFileOneMatchNoFlags [
 	self assert: result equals: #('Of Atreus, Agamemnon, King of men.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test02_TestGreppingASingleFileOneFileOneMatchPrintLineNumbersFlag [
 	| result |
 
@@ -113,7 +115,7 @@ GrepTest >> test02_TestGreppingASingleFileOneFileOneMatchPrintLineNumbersFlag [
 	self assert: result equals: #('2:Of that Forbidden Tree, whose mortal tast' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test03_TestGreppingASingleFileOneFileOneMatchCaseinsensitiveFlag [
 	| result |
 
@@ -121,7 +123,7 @@ GrepTest >> test03_TestGreppingASingleFileOneFileOneMatchCaseinsensitiveFlag [
 	self assert: result equals: #('Of that Forbidden Tree, whose mortal tast' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test04_TestGreppingASingleFileOneFileOneMatchPrintFileNamesFlag [
 	| result |
 
@@ -129,7 +131,7 @@ GrepTest >> test04_TestGreppingASingleFileOneFileOneMatchPrintFileNamesFlag [
 	self assert: result equals: #('paradise-lost.txt' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test05_TestGreppingASingleFileOneFileOneMatchMatchEntireLinesFlag [
 	| result |
 
@@ -137,7 +139,7 @@ GrepTest >> test05_TestGreppingASingleFileOneFileOneMatchMatchEntireLinesFlag [
 	self assert: result equals: #('With loss of Eden, till one greater Man' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test06_TestGreppingASingleFileOneFileOneMatchMultipleFlags [
 	| result |
 
@@ -145,7 +147,7 @@ GrepTest >> test06_TestGreppingASingleFileOneFileOneMatchMultipleFlags [
 	self assert: result equals: #('9:Of Atreus, Agamemnon, King of men.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test07_TestGreppingASingleFileOneFileSeveralMatchesNoFlags [
 	| result |
 
@@ -153,7 +155,7 @@ GrepTest >> test07_TestGreppingASingleFileOneFileSeveralMatchesNoFlags [
 	self assert: result equals: #('Nor how it may concern my modesty,' 'But I beseech your grace that I may know' 'The worst that may befall me in this case,' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test08_TestGreppingASingleFileOneFileSeveralMatchesPrintLineNumbersFlag [
 	| result |
 
@@ -161,7 +163,7 @@ GrepTest >> test08_TestGreppingASingleFileOneFileSeveralMatchesPrintLineNumbersF
 	self assert: result equals: #('3:Nor how it may concern my modesty,' '5:But I beseech your grace that I may know' '6:The worst that may befall me in this case,' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test09_TestGreppingASingleFileOneFileSeveralMatchesMatchEntireLinesFlag [
 	| result |
 
@@ -169,7 +171,7 @@ GrepTest >> test09_TestGreppingASingleFileOneFileSeveralMatchesMatchEntireLinesF
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test10_TestGreppingASingleFileOneFileSeveralMatchesCaseinsensitiveFlag [
 	| result |
 
@@ -177,7 +179,7 @@ GrepTest >> test10_TestGreppingASingleFileOneFileSeveralMatchesCaseinsensitiveFl
 	self assert: result equals: #('Achilles sing, O Goddess! Peleus'' son;' 'The noble Chief Achilles from the son' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test11_TestGreppingASingleFileOneFileSeveralMatchesInvertedFlag [
 	| result |
 
@@ -185,7 +187,7 @@ GrepTest >> test11_TestGreppingASingleFileOneFileSeveralMatchesInvertedFlag [
 	self assert: result equals: #('Brought Death into the World, and all our woe,' 'With loss of Eden, till one greater Man' 'Restore us, and regain the blissful Seat,' 'Sing Heav''nly Muse, that on the secret top' 'That Shepherd, who first taught the chosen Seed' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test12_TestGreppingASingleFileOneFileNoMatchesVariousFlags [
 	| result |
 
@@ -193,7 +195,7 @@ GrepTest >> test12_TestGreppingASingleFileOneFileNoMatchesVariousFlags [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test13_TestGreppingASingleFileOneFileOneMatchFileFlagTakesPrecedenceOverLineFlag [
 	| result |
 
@@ -201,7 +203,7 @@ GrepTest >> test13_TestGreppingASingleFileOneFileOneMatchFileFlagTakesPrecedence
 	self assert: result equals: #('iliad.txt' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test14_TestGreppingASingleFileOneFileSeveralMatchesInvertedAndMatchEntireLinesFlags [
 	| result |
 
@@ -209,7 +211,7 @@ GrepTest >> test14_TestGreppingASingleFileOneFileSeveralMatchesInvertedAndMatchE
 	self assert: result equals: #('Achilles sing, O Goddess! Peleus'' son;' 'His wrath pernicious, who ten thousand woes' 'Caused to Achaia''s host, sent many a soul' 'And Heroes gave (so stood the will of Jove)' 'To dogs and to all ravening fowls a prey,' 'When fierce dispute had separated once' 'The noble Chief Achilles from the son' 'Of Atreus, Agamemnon, King of men.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test15_TestGreppingMultiplesFilesAtOnceMultipleFilesOneMatchNoFlags [
 	| result |
 
@@ -217,7 +219,7 @@ GrepTest >> test15_TestGreppingMultiplesFilesAtOnceMultipleFilesOneMatchNoFlags 
 	self assert: result equals: #('iliad.txt:Of Atreus, Agamemnon, King of men.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test16_TestGreppingMultiplesFilesAtOnceMultipleFilesSeveralMatchesNoFlags [
 	| result |
 
@@ -225,7 +227,7 @@ GrepTest >> test16_TestGreppingMultiplesFilesAtOnceMultipleFilesSeveralMatchesNo
 	self assert: result equals: #('midsummer-night.txt:Nor how it may concern my modesty,' 'midsummer-night.txt:But I beseech your grace that I may know' 'midsummer-night.txt:The worst that may befall me in this case,' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test17_TestGreppingMultiplesFilesAtOnceMultipleFilesSeveralMatchesPrintLineNumbersFlag [
 	| result |
 
@@ -233,7 +235,7 @@ GrepTest >> test17_TestGreppingMultiplesFilesAtOnceMultipleFilesSeveralMatchesPr
 	self assert: result equals: #('midsummer-night.txt:5:But I beseech your grace that I may know' 'midsummer-night.txt:6:The worst that may befall me in this case,' 'paradise-lost.txt:2:Of that Forbidden Tree, whose mortal tast' 'paradise-lost.txt:6:Sing Heav''nly Muse, that on the secret top' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test18_TestGreppingMultiplesFilesAtOnceMultipleFilesOneMatchPrintFileNamesFlag [
 	| result |
 
@@ -241,7 +243,7 @@ GrepTest >> test18_TestGreppingMultiplesFilesAtOnceMultipleFilesOneMatchPrintFil
 	self assert: result equals: #('iliad.txt' 'paradise-lost.txt' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test19_TestGreppingMultiplesFilesAtOnceMultipleFilesSeveralMatchesCaseinsensitiveFlag [
 	| result |
 
@@ -249,7 +251,7 @@ GrepTest >> test19_TestGreppingMultiplesFilesAtOnceMultipleFilesSeveralMatchesCa
 	self assert: result equals: #('iliad.txt:Caused to Achaia''s host, sent many a soul' 'iliad.txt:Illustrious into Ades premature,' 'iliad.txt:And Heroes gave (so stood the will of Jove)' 'iliad.txt:To dogs and to all ravening fowls a prey,' 'midsummer-night.txt:I do entreat your grace to pardon me.' 'midsummer-night.txt:In such a presence here to plead my thoughts;' 'midsummer-night.txt:If I refuse to wed Demetrius.' 'paradise-lost.txt:Brought Death into the World, and all our woe,' 'paradise-lost.txt:Restore us, and regain the blissful Seat,' 'paradise-lost.txt:Sing Heav''nly Muse, that on the secret top' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test20_TestGreppingMultiplesFilesAtOnceMultipleFilesSeveralMatchesInvertedFlag [
 	| result |
 
@@ -257,7 +259,7 @@ GrepTest >> test20_TestGreppingMultiplesFilesAtOnceMultipleFilesSeveralMatchesIn
 	self assert: result equals: #('iliad.txt:Achilles sing, O Goddess! Peleus'' son;' 'iliad.txt:The noble Chief Achilles from the son' 'midsummer-night.txt:If I refuse to wed Demetrius.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test21_TestGreppingMultiplesFilesAtOnceMultipleFilesOneMatchMatchEntireLinesFlag [
 	| result |
 
@@ -265,7 +267,7 @@ GrepTest >> test21_TestGreppingMultiplesFilesAtOnceMultipleFilesOneMatchMatchEnt
 	self assert: result equals: #('midsummer-night.txt:But I beseech your grace that I may know' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test22_TestGreppingMultiplesFilesAtOnceMultipleFilesOneMatchMultipleFlags [
 	| result |
 
@@ -273,7 +275,7 @@ GrepTest >> test22_TestGreppingMultiplesFilesAtOnceMultipleFilesOneMatchMultiple
 	self assert: result equals: #('paradise-lost.txt:4:With loss of Eden, till one greater Man' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test23_TestGreppingMultiplesFilesAtOnceMultipleFilesNoMatchesVariousFlags [
 	| result |
 
@@ -281,7 +283,7 @@ GrepTest >> test23_TestGreppingMultiplesFilesAtOnceMultipleFilesNoMatchesVarious
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test24_TestGreppingMultiplesFilesAtOnceMultipleFilesSeveralMatchesFileFlagTakesPrecedenceOverLineNumberFlag [
 	| result |
 
@@ -289,7 +291,7 @@ GrepTest >> test24_TestGreppingMultiplesFilesAtOnceMultipleFilesSeveralMatchesFi
 	self assert: result equals: #('iliad.txt' 'paradise-lost.txt' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrepTest >> test25_TestGreppingMultiplesFilesAtOnceMultipleFilesSeveralMatchesInvertedAndMatchEntireLinesFlags [
 	| result |
 

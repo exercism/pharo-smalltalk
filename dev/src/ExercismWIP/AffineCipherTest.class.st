@@ -76,33 +76,35 @@ TBD
 
 "
 Class {
-	#name : #AffineCipherTest,
-	#superclass : #ExercismTest,
+	#name : 'AffineCipherTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'affineCipherCalculator'
 	],
-	#category : #'ExercismWIP-AffineCipher'
+	#category : 'ExercismWIP-AffineCipher',
+	#package : 'ExercismWIP',
+	#tag : 'AffineCipher'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 AffineCipherTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'1a14ab2e-b043-0d00-9251-dd7702a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 AffineCipherTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'2.0.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 AffineCipherTest >> setUp [
 	super setUp.
 	affineCipherCalculator := AffineCipher new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AffineCipherTest >> test01_EncodeEncodeYes [
 	| result |
 
@@ -110,7 +112,7 @@ AffineCipherTest >> test01_EncodeEncodeYes [
 	self assert: result equals: 'xbt'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AffineCipherTest >> test02_EncodeEncodeNo [
 	| result |
 
@@ -118,7 +120,7 @@ AffineCipherTest >> test02_EncodeEncodeNo [
 	self assert: result equals: 'fu'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AffineCipherTest >> test03_EncodeEncodeOMG [
 	| result |
 
@@ -126,7 +128,7 @@ AffineCipherTest >> test03_EncodeEncodeOMG [
 	self assert: result equals: 'lvz'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AffineCipherTest >> test04_EncodeEncodeOMG [
 	| result |
 
@@ -134,7 +136,7 @@ AffineCipherTest >> test04_EncodeEncodeOMG [
 	self assert: result equals: 'hjp'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AffineCipherTest >> test05_EncodeEncodeMindblowingly [
 	| result |
 
@@ -142,7 +144,7 @@ AffineCipherTest >> test05_EncodeEncodeMindblowingly [
 	self assert: result equals: 'rzcwa gnxzc dgt'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AffineCipherTest >> test06_EncodeEncodeNumbers [
 	| result |
 
@@ -150,7 +152,7 @@ AffineCipherTest >> test06_EncodeEncodeNumbers [
 	self assert: result equals: 'jqgjc rw123 jqgjc rw'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AffineCipherTest >> test07_EncodeEncodeDeepThought [
 	| result |
 
@@ -158,7 +160,7 @@ AffineCipherTest >> test07_EncodeEncodeDeepThought [
 	self assert: result equals: 'iynia fdqfb ifje'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AffineCipherTest >> test08_EncodeEncodeAllTheLetters [
 	| result |
 
@@ -166,7 +168,7 @@ AffineCipherTest >> test08_EncodeEncodeAllTheLetters [
 	self assert: result equals: 'swxtj npvyk lruol iejdc blaxk swxmh qzglf'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AffineCipherTest >> test09_EncodeEncodeWithANotCoprimeToM [
 	| result |
 
@@ -177,7 +179,7 @@ AffineCipherTest >> test09_EncodeEncodeWithANotCoprimeToM [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AffineCipherTest >> test10_DecodeDecodeExercism [
 	| result |
 
@@ -185,7 +187,7 @@ AffineCipherTest >> test10_DecodeDecodeExercism [
 	self assert: result equals: 'exercism'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AffineCipherTest >> test11_DecodeDecodeASentence [
 	| result |
 
@@ -193,7 +195,7 @@ AffineCipherTest >> test11_DecodeDecodeASentence [
 	self assert: result equals: 'anobstacleisoftenasteppingstone'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AffineCipherTest >> test12_DecodeDecodeNumbers [
 	| result |
 
@@ -201,7 +203,7 @@ AffineCipherTest >> test12_DecodeDecodeNumbers [
 	self assert: result equals: 'testing123testing'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AffineCipherTest >> test13_DecodeDecodeAllTheLetters [
 	| result |
 
@@ -209,7 +211,7 @@ AffineCipherTest >> test13_DecodeDecodeAllTheLetters [
 	self assert: result equals: 'thequickbrownfoxjumpsoverthelazydog'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AffineCipherTest >> test14_DecodeDecodeWithNoSpacesInInput [
 	| result |
 
@@ -217,7 +219,7 @@ AffineCipherTest >> test14_DecodeDecodeWithNoSpacesInInput [
 	self assert: result equals: 'thequickbrownfoxjumpsoverthelazydog'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AffineCipherTest >> test15_DecodeDecodeWithTooManySpaces [
 	| result |
 
@@ -225,7 +227,7 @@ AffineCipherTest >> test15_DecodeDecodeWithTooManySpaces [
 	self assert: result equals: 'jollygreengiant'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AffineCipherTest >> test16_DecodeDecodeWithANotCoprimeToM [
 	| result |
 

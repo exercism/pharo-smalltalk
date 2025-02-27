@@ -72,33 +72,35 @@ TBD
 
 "
 Class {
-	#name : #SgfParsingTest,
-	#superclass : #ExercismTest,
+	#name : 'SgfParsingTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'sgfParsingCalculator'
 	],
-	#category : #'ExercismWIP-SgfParsing'
+	#category : 'ExercismWIP-SgfParsing',
+	#package : 'ExercismWIP',
+	#tag : 'SgfParsing'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 SgfParsingTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'fd10b62e-b043-0d00-9263-55bb02a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 SgfParsingTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'1.2.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 SgfParsingTest >> setUp [
 	super setUp.
 	sgfParsingCalculator := SgfParsing new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SgfParsingTest >> test01_EmptyInput [
 	| result |
 
@@ -109,7 +111,7 @@ SgfParsingTest >> test01_EmptyInput [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SgfParsingTest >> test02_TreeWithNoNodes [
 	| result |
 
@@ -120,7 +122,7 @@ SgfParsingTest >> test02_TreeWithNoNodes [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SgfParsingTest >> test03_NodeWithoutTree [
 	| result |
 
@@ -131,7 +133,7 @@ SgfParsingTest >> test03_NodeWithoutTree [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SgfParsingTest >> test04_NodeWithoutProperties [
 	| result |
 
@@ -139,7 +141,7 @@ SgfParsingTest >> test04_NodeWithoutProperties [
 	self assert: result equals: ((Dictionary new) add: ('properties'->((Dictionary new))); add: ('children'->#()); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SgfParsingTest >> test05_SingleNodeTree [
 	| result |
 
@@ -147,7 +149,7 @@ SgfParsingTest >> test05_SingleNodeTree [
 	self assert: result equals: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('A'->#('B' )); yourself)); add: ('children'->#()); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SgfParsingTest >> test06_MultipleProperties [
 	| result |
 
@@ -155,7 +157,7 @@ SgfParsingTest >> test06_MultipleProperties [
 	self assert: result equals: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('A'->#('b' )); add: ('C'->#('d' )); yourself)); add: ('children'->#()); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SgfParsingTest >> test07_PropertiesWithoutDelimiter [
 	| result |
 
@@ -166,7 +168,7 @@ SgfParsingTest >> test07_PropertiesWithoutDelimiter [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SgfParsingTest >> test08_AllLowercaseProperty [
 	| result |
 
@@ -177,7 +179,7 @@ SgfParsingTest >> test08_AllLowercaseProperty [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SgfParsingTest >> test09_UpperAndLowercaseProperty [
 	| result |
 
@@ -188,7 +190,7 @@ SgfParsingTest >> test09_UpperAndLowercaseProperty [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SgfParsingTest >> test10_TwoNodes [
 	| result |
 
@@ -196,7 +198,7 @@ SgfParsingTest >> test10_TwoNodes [
 	self assert: result equals: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('A'->#('B' )); yourself)); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('B'->#('C' )); yourself)); add: ('children'->#()); yourself); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SgfParsingTest >> test11_TwoChildTrees [
 	| result |
 
@@ -204,7 +206,7 @@ SgfParsingTest >> test11_TwoChildTrees [
 	self assert: result equals: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('A'->#('B' )); yourself)); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('B'->#('C' )); yourself)); add: ('children'->#()); yourself); at: 2 put: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('C'->#('D' )); yourself)); add: ('children'->#()); yourself); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SgfParsingTest >> test12_MultiplePropertyValues [
 	| result |
 
@@ -212,7 +214,7 @@ SgfParsingTest >> test12_MultiplePropertyValues [
 	self assert: result equals: ((Dictionary new) add: ('properties'->((Dictionary new) add: ('A'->#('b' 'c' 'd' )); yourself)); add: ('children'->#()); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SgfParsingTest >> test13_EscapedProperty [
 	| result |
 

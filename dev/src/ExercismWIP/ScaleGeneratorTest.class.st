@@ -55,33 +55,35 @@ TBD
 
 "
 Class {
-	#name : #ScaleGeneratorTest,
-	#superclass : #ExercismTest,
+	#name : 'ScaleGeneratorTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'scaleGeneratorCalculator'
 	],
-	#category : #'ExercismWIP-ScaleGenerator'
+	#category : 'ExercismWIP-ScaleGenerator',
+	#package : 'ExercismWIP',
+	#tag : 'ScaleGenerator'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 ScaleGeneratorTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'cf5dd616-9d41-0d00-8ff0-f57c08866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ScaleGeneratorTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'2.0.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 ScaleGeneratorTest >> setUp [
 	super setUp.
 	scaleGeneratorCalculator := ScaleGenerator new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScaleGeneratorTest >> test01_ChromaticScalesChromaticScaleWithSharps [
 	| result |
 
@@ -89,7 +91,7 @@ ScaleGeneratorTest >> test01_ChromaticScalesChromaticScaleWithSharps [
 	self assert: result equals: #('C' 'C#' 'D' 'D#' 'E' 'F' 'F#' 'G' 'G#' 'A' 'A#' 'B' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScaleGeneratorTest >> test02_ChromaticScalesChromaticScaleWithFlats [
 	| result |
 
@@ -97,7 +99,7 @@ ScaleGeneratorTest >> test02_ChromaticScalesChromaticScaleWithFlats [
 	self assert: result equals: #('F' 'Gb' 'G' 'Ab' 'A' 'Bb' 'B' 'C' 'Db' 'D' 'Eb' 'E' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScaleGeneratorTest >> test03_ScalesWithSpecifiedIntervalsSimpleMajorScale [
 	| result |
 
@@ -105,7 +107,7 @@ ScaleGeneratorTest >> test03_ScalesWithSpecifiedIntervalsSimpleMajorScale [
 	self assert: result equals: #('C' 'D' 'E' 'F' 'G' 'A' 'B' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScaleGeneratorTest >> test04_ScalesWithSpecifiedIntervalsMajorScaleWithSharps [
 	| result |
 
@@ -113,7 +115,7 @@ ScaleGeneratorTest >> test04_ScalesWithSpecifiedIntervalsMajorScaleWithSharps [
 	self assert: result equals: #('G' 'A' 'B' 'C' 'D' 'E' 'F#' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScaleGeneratorTest >> test05_ScalesWithSpecifiedIntervalsMajorScaleWithFlats [
 	| result |
 
@@ -121,7 +123,7 @@ ScaleGeneratorTest >> test05_ScalesWithSpecifiedIntervalsMajorScaleWithFlats [
 	self assert: result equals: #('F' 'G' 'A' 'Bb' 'C' 'D' 'E' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScaleGeneratorTest >> test06_ScalesWithSpecifiedIntervalsMinorScaleWithSharps [
 	| result |
 
@@ -129,7 +131,7 @@ ScaleGeneratorTest >> test06_ScalesWithSpecifiedIntervalsMinorScaleWithSharps [
 	self assert: result equals: #('F#' 'G#' 'A' 'B' 'C#' 'D' 'E' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScaleGeneratorTest >> test07_ScalesWithSpecifiedIntervalsMinorScaleWithFlats [
 	| result |
 
@@ -137,7 +139,7 @@ ScaleGeneratorTest >> test07_ScalesWithSpecifiedIntervalsMinorScaleWithFlats [
 	self assert: result equals: #('Bb' 'C' 'Db' 'Eb' 'F' 'Gb' 'Ab' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScaleGeneratorTest >> test08_ScalesWithSpecifiedIntervalsDorianMode [
 	| result |
 
@@ -145,7 +147,7 @@ ScaleGeneratorTest >> test08_ScalesWithSpecifiedIntervalsDorianMode [
 	self assert: result equals: #('D' 'E' 'F' 'G' 'A' 'B' 'C' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScaleGeneratorTest >> test09_ScalesWithSpecifiedIntervalsMixolydianMode [
 	| result |
 
@@ -153,7 +155,7 @@ ScaleGeneratorTest >> test09_ScalesWithSpecifiedIntervalsMixolydianMode [
 	self assert: result equals: #('Eb' 'F' 'G' 'Ab' 'Bb' 'C' 'Db' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScaleGeneratorTest >> test10_ScalesWithSpecifiedIntervalsLydianMode [
 	| result |
 
@@ -161,7 +163,7 @@ ScaleGeneratorTest >> test10_ScalesWithSpecifiedIntervalsLydianMode [
 	self assert: result equals: #('A' 'B' 'C#' 'D#' 'E' 'F#' 'G#' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScaleGeneratorTest >> test11_ScalesWithSpecifiedIntervalsPhrygianMode [
 	| result |
 
@@ -169,7 +171,7 @@ ScaleGeneratorTest >> test11_ScalesWithSpecifiedIntervalsPhrygianMode [
 	self assert: result equals: #('E' 'F' 'G' 'A' 'B' 'C' 'D' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScaleGeneratorTest >> test12_ScalesWithSpecifiedIntervalsLocrianMode [
 	| result |
 
@@ -177,7 +179,7 @@ ScaleGeneratorTest >> test12_ScalesWithSpecifiedIntervalsLocrianMode [
 	self assert: result equals: #('G' 'Ab' 'Bb' 'C' 'Db' 'Eb' 'F' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScaleGeneratorTest >> test13_ScalesWithSpecifiedIntervalsHarmonicMinor [
 	| result |
 
@@ -185,7 +187,7 @@ ScaleGeneratorTest >> test13_ScalesWithSpecifiedIntervalsHarmonicMinor [
 	self assert: result equals: #('D' 'E' 'F' 'G' 'A' 'Bb' 'Db' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScaleGeneratorTest >> test14_ScalesWithSpecifiedIntervalsOctatonic [
 	| result |
 
@@ -193,7 +195,7 @@ ScaleGeneratorTest >> test14_ScalesWithSpecifiedIntervalsOctatonic [
 	self assert: result equals: #('C' 'D' 'D#' 'F' 'F#' 'G#' 'A' 'B' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScaleGeneratorTest >> test15_ScalesWithSpecifiedIntervalsHexatonic [
 	| result |
 
@@ -201,7 +203,7 @@ ScaleGeneratorTest >> test15_ScalesWithSpecifiedIntervalsHexatonic [
 	self assert: result equals: #('Db' 'Eb' 'F' 'G' 'A' 'B' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScaleGeneratorTest >> test16_ScalesWithSpecifiedIntervalsPentatonic [
 	| result |
 
@@ -209,7 +211,7 @@ ScaleGeneratorTest >> test16_ScalesWithSpecifiedIntervalsPentatonic [
 	self assert: result equals: #('A' 'B' 'C#' 'E' 'F#' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScaleGeneratorTest >> test17_ScalesWithSpecifiedIntervalsEnigmatic [
 	| result |
 

@@ -1,10 +1,11 @@
 Class {
-	#name : #ExampleEmptySolutionClassTest,
-	#superclass : #ExercismTest,
-	#category : #'Exercise@ExampleEmptySolutionClass'
+	#name : 'ExampleEmptySolutionClassTest',
+	#superclass : 'ExercismTest',
+	#category : 'Exercise@ExampleEmptySolutionClass',
+	#package : 'Exercise@ExampleEmptySolutionClass'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 ExampleEmptySolutionClassTest class >> exampleSolutionSourceCode [ 
 	"use only empty class that should overwrite example implementation"
 	^ 'Class {
@@ -15,7 +16,7 @@ ExampleEmptySolutionClassTest class >> exampleSolutionSourceCode [
 '
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExampleEmptySolutionClassTest class >> exampleTestCasesSourceCode [ 
 
 	^ 'Class {
@@ -41,7 +42,7 @@ ExampleEmptySolutionClassTest >> testExampleMethodC [
 '
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ExampleEmptySolutionClassTest class >> exercise [
 	^ (self createExerciseAfter: HelloWorldTest)
 		isCore: true;

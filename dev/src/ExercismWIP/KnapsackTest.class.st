@@ -43,33 +43,35 @@ TBD
 
 "
 Class {
-	#name : #KnapsackTest,
-	#superclass : #ExercismTest,
+	#name : 'KnapsackTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'knapsackCalculator'
 	],
-	#category : #'ExercismWIP-Knapsack'
+	#category : 'ExercismWIP-Knapsack',
+	#package : 'ExercismWIP',
+	#tag : 'Knapsack'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 KnapsackTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'2eccb916-9d41-0d00-8fd8-92d708866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 KnapsackTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.0.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 KnapsackTest >> setUp [
 	super setUp.
 	knapsackCalculator := Knapsack new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 KnapsackTest >> test01_NoItems [
 	| result |
 
@@ -77,7 +79,7 @@ KnapsackTest >> test01_NoItems [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 KnapsackTest >> test02_OneItemTooHeavy [
 	| result |
 
@@ -85,7 +87,7 @@ KnapsackTest >> test02_OneItemTooHeavy [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 KnapsackTest >> test03_FiveItemscannotBeGreedyByWeight [
 	| result |
 
@@ -93,7 +95,7 @@ KnapsackTest >> test03_FiveItemscannotBeGreedyByWeight [
 	self assert: result equals: 21
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 KnapsackTest >> test04_FiveItemscannotBeGreedyByValue [
 	| result |
 
@@ -101,7 +103,7 @@ KnapsackTest >> test04_FiveItemscannotBeGreedyByValue [
 	self assert: result equals: 80
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 KnapsackTest >> test05_ExampleKnapsack [
 	| result |
 
@@ -109,7 +111,7 @@ KnapsackTest >> test05_ExampleKnapsack [
 	self assert: result equals: 90
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 KnapsackTest >> test06_8Items [
 	| result |
 
@@ -117,7 +119,7 @@ KnapsackTest >> test06_8Items [
 	self assert: result equals: 900
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 KnapsackTest >> test07_15Items [
 	| result |
 

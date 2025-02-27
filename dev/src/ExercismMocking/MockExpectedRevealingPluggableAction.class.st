@@ -1,13 +1,14 @@
 Class {
-	#name : #MockExpectedRevealingPluggableAction,
-	#superclass : #MockExpectedPluggableAction,
+	#name : 'MockExpectedRevealingPluggableAction',
+	#superclass : 'MockExpectedPluggableAction',
 	#instVars : [
 		'count'
 	],
-	#category : #ExercismMocking
+	#category : 'ExercismMocking',
+	#package : 'ExercismMocking'
 }
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 MockExpectedRevealingPluggableAction >> executeFor: anOccurredMessage [
 	"Insert a hook to give a better failure for an expectation, that shows the offending method as well as the spec failure. This change also provides an optional final count parameter, which an expection can use to compare sequential calls or customize return results"
 	
@@ -25,7 +26,7 @@ MockExpectedRevealingPluggableAction >> executeFor: anOccurredMessage [
 						yourself) ]
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 MockExpectedRevealingPluggableAction >> initialize [
 	super initialize.
 	count := 0.

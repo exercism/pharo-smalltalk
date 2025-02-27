@@ -6,17 +6,18 @@ Of interest, in this example is that classes can define instance methods with th
 
 "
 Class {
-	#name : #TwoFer,
-	#superclass : #Object,
-	#category : #'Exercise@TwoFer'
+	#name : 'TwoFer',
+	#superclass : 'Object',
+	#category : 'Exercise@TwoFer',
+	#package : 'Exercise@TwoFer'
 }
 
-{ #category : #example }
+{ #category : 'example' }
 TwoFer >> who [
 	^ 'One for you, one for me.'
 ]
 
-{ #category : #example }
+{ #category : 'example' }
 TwoFer >> who: aString [ 
 	^ 'One for ', aString, ', one for me.'
 ]

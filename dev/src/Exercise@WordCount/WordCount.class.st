@@ -2,12 +2,13 @@
 There are several ways of solving this one, however on option (often used in other languages like Ruby and Python) is regex - and so I have demonstrated the Pharo equivalent here. There is an 'alternative' category with a more text processing based solution too.
 "
 Class {
-	#name : #WordCount,
-	#superclass : #Object,
-	#category : #'Exercise@WordCount'
+	#name : 'WordCount',
+	#superclass : 'Object',
+	#category : 'Exercise@WordCount',
+	#package : 'Exercise@WordCount'
 }
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 WordCount >> countWordsSentence: aString [
 	| result |
 	
@@ -21,7 +22,7 @@ WordCount >> countWordsSentence: aString [
 	^ result valuesAndCounts
 ]
 
-{ #category : #alternative }
+{ #category : 'alternative' }
 WordCount >> countWordsSentenceAlternate: aString [
 	"An alternative solution that doesn't use regex"
 	| result |
@@ -36,7 +37,7 @@ WordCount >> countWordsSentenceAlternate: aString [
 	^ result valuesAndCounts
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 WordCount >> findValidWordsIn: aString [
 	"Answer a list of valid lower case words that aren't quoted using a regex"
 		
@@ -44,14 +45,14 @@ WordCount >> findValidWordsIn: aString [
 	
 ]
 
-{ #category : #alternative }
+{ #category : 'alternative' }
 WordCount >> removeQuotesFrom: wordList [
 	"Ansewr a list of words that have 'word' quotes removed"
 	
 	^ wordList collect: [ :word | word trimBoth: [ :c | c = $' ] ]
 ]
 
-{ #category : #alternative }
+{ #category : 'alternative' }
 WordCount >> splitValidWordsIn: aString [
 	"Answer a list of valid lower case words that aren't quoted - without regex"
 	
@@ -66,7 +67,7 @@ WordCount >> splitValidWordsIn: aString [
 	^ self removeQuotesFrom: words
 ]
 
-{ #category : #alternative }
+{ #category : 'alternative' }
 WordCount >> validWordCharacters [
 	^ CharacterSet separators
 		addAll: Character alphabet;
@@ -76,7 +77,7 @@ WordCount >> validWordCharacters [
 		yourself
 ]
 
-{ #category : #alternative }
+{ #category : 'alternative' }
 WordCount >> validWordSeparators [
 	^ CharacterSet separators
 		add: $,;

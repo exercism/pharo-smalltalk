@@ -36,33 +36,35 @@ TBD
 
 "
 Class {
-	#name : #TwoBucketTest,
-	#superclass : #ExercismTest,
+	#name : 'TwoBucketTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'twoBucketCalculator'
 	],
-	#category : #'ExercismWIP-TwoBucket'
+	#category : 'ExercismWIP-TwoBucket',
+	#package : 'ExercismWIP',
+	#tag : 'TwoBucket'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 TwoBucketTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'59d8a316-9d41-0d00-8fc6-78c408866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 TwoBucketTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.4.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 TwoBucketTest >> setUp [
 	super setUp.
 	twoBucketCalculator := TwoBucket new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwoBucketTest >> test01_MeasureUsingBucketOneOfSize3AndBucketTwoOfSize5StartWithBucketOne [
 	| result |
 
@@ -70,7 +72,7 @@ TwoBucketTest >> test01_MeasureUsingBucketOneOfSize3AndBucketTwoOfSize5StartWith
 	self assert: result equals: ((Dictionary new) add: ('goalBucket'->'one'); add: ('otherBucket'->5); add: ('moves'->4); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwoBucketTest >> test02_MeasureUsingBucketOneOfSize3AndBucketTwoOfSize5StartWithBucketTwo [
 	| result |
 
@@ -78,7 +80,7 @@ TwoBucketTest >> test02_MeasureUsingBucketOneOfSize3AndBucketTwoOfSize5StartWith
 	self assert: result equals: ((Dictionary new) add: ('goalBucket'->'two'); add: ('otherBucket'->3); add: ('moves'->8); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwoBucketTest >> test03_MeasureUsingBucketOneOfSize7AndBucketTwoOfSize11StartWithBucketOne [
 	| result |
 
@@ -86,7 +88,7 @@ TwoBucketTest >> test03_MeasureUsingBucketOneOfSize7AndBucketTwoOfSize11StartWit
 	self assert: result equals: ((Dictionary new) add: ('goalBucket'->'one'); add: ('otherBucket'->11); add: ('moves'->14); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwoBucketTest >> test04_MeasureUsingBucketOneOfSize7AndBucketTwoOfSize11StartWithBucketTwo [
 	| result |
 
@@ -94,7 +96,7 @@ TwoBucketTest >> test04_MeasureUsingBucketOneOfSize7AndBucketTwoOfSize11StartWit
 	self assert: result equals: ((Dictionary new) add: ('goalBucket'->'two'); add: ('otherBucket'->7); add: ('moves'->18); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwoBucketTest >> test05_MeasureOneStepUsingBucketOneOfSize1AndBucketTwoOfSize3StartWithBucketTwo [
 	| result |
 
@@ -102,7 +104,7 @@ TwoBucketTest >> test05_MeasureOneStepUsingBucketOneOfSize1AndBucketTwoOfSize3St
 	self assert: result equals: ((Dictionary new) add: ('goalBucket'->'two'); add: ('otherBucket'->0); add: ('moves'->1); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwoBucketTest >> test06_MeasureUsingBucketOneOfSize2AndBucketTwoOfSize3StartWithBucketOneAndEndWithBucketTwo [
 	| result |
 

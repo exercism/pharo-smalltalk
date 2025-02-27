@@ -85,33 +85,35 @@ TBD
 
 "
 Class {
-	#name : #OcrNumbersTest,
-	#superclass : #ExercismTest,
+	#name : 'OcrNumbersTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'ocrNumbersCalculator'
 	],
-	#category : #'ExercismWIP-OcrNumbers'
+	#category : 'ExercismWIP-OcrNumbers',
+	#package : 'ExercismWIP',
+	#tag : 'OcrNumbers'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 OcrNumbersTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'8720d12e-b043-0d00-9286-652802a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 OcrNumbersTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'1.2.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 OcrNumbersTest >> setUp [
 	super setUp.
 	ocrNumbersCalculator := OcrNumbers new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OcrNumbersTest >> test01_Recognizes0 [
 	| result |
 
@@ -119,7 +121,7 @@ OcrNumbersTest >> test01_Recognizes0 [
 	self assert: result equals: '0'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OcrNumbersTest >> test02_Recognizes1 [
 	| result |
 
@@ -127,7 +129,7 @@ OcrNumbersTest >> test02_Recognizes1 [
 	self assert: result equals: '1'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OcrNumbersTest >> test03_UnreadableButCorrectlySizedInputsReturn [
 	| result |
 
@@ -135,7 +137,7 @@ OcrNumbersTest >> test03_UnreadableButCorrectlySizedInputsReturn [
 	self assert: result equals: '?'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OcrNumbersTest >> test04_InputWithANumberOfLinesThatIsNotAMultipleOfFourRaisesAnError [
 	| result |
 
@@ -146,7 +148,7 @@ OcrNumbersTest >> test04_InputWithANumberOfLinesThatIsNotAMultipleOfFourRaisesAn
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OcrNumbersTest >> test05_InputWithANumberOfColumnsThatIsNotAMultipleOfThreeRaisesAnError [
 	| result |
 
@@ -157,7 +159,7 @@ OcrNumbersTest >> test05_InputWithANumberOfColumnsThatIsNotAMultipleOfThreeRaise
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OcrNumbersTest >> test06_Recognizes110101100 [
 	| result |
 
@@ -165,7 +167,7 @@ OcrNumbersTest >> test06_Recognizes110101100 [
 	self assert: result equals: '110101100'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OcrNumbersTest >> test07_GarbledNumbersInAStringAreReplacedWith [
 	| result |
 
@@ -173,7 +175,7 @@ OcrNumbersTest >> test07_GarbledNumbersInAStringAreReplacedWith [
 	self assert: result equals: '11?10?1?0'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OcrNumbersTest >> test08_Recognizes2 [
 	| result |
 
@@ -181,7 +183,7 @@ OcrNumbersTest >> test08_Recognizes2 [
 	self assert: result equals: '2'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OcrNumbersTest >> test09_Recognizes3 [
 	| result |
 
@@ -189,7 +191,7 @@ OcrNumbersTest >> test09_Recognizes3 [
 	self assert: result equals: '3'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OcrNumbersTest >> test10_Recognizes4 [
 	| result |
 
@@ -197,7 +199,7 @@ OcrNumbersTest >> test10_Recognizes4 [
 	self assert: result equals: '4'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OcrNumbersTest >> test11_Recognizes5 [
 	| result |
 
@@ -205,7 +207,7 @@ OcrNumbersTest >> test11_Recognizes5 [
 	self assert: result equals: '5'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OcrNumbersTest >> test12_Recognizes6 [
 	| result |
 
@@ -213,7 +215,7 @@ OcrNumbersTest >> test12_Recognizes6 [
 	self assert: result equals: '6'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OcrNumbersTest >> test13_Recognizes7 [
 	| result |
 
@@ -221,7 +223,7 @@ OcrNumbersTest >> test13_Recognizes7 [
 	self assert: result equals: '7'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OcrNumbersTest >> test14_Recognizes8 [
 	| result |
 
@@ -229,7 +231,7 @@ OcrNumbersTest >> test14_Recognizes8 [
 	self assert: result equals: '8'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OcrNumbersTest >> test15_Recognizes9 [
 	| result |
 
@@ -237,7 +239,7 @@ OcrNumbersTest >> test15_Recognizes9 [
 	self assert: result equals: '9'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OcrNumbersTest >> test16_RecognizesStringOfDecimalNumbers [
 	| result |
 
@@ -245,7 +247,7 @@ OcrNumbersTest >> test16_RecognizesStringOfDecimalNumbers [
 	self assert: result equals: '1234567890'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OcrNumbersTest >> test17_NumbersSeparatedByEmptyLinesAreRecognizedLinesAreJoinedByCommas [
 	| result |
 

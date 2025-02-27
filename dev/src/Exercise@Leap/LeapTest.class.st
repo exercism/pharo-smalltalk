@@ -39,15 +39,16 @@ You may also find something useful trying... `World > Tools > Finder > Examples 
 [demo]: https://github.com/exercism/pharo-smalltalk/raw/master/docs/images/Hint-Finder-Leap.gif
 "
 Class {
-	#name : #LeapTest,
-	#superclass : #ExercismTest,
+	#name : 'LeapTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'leapCalculator'
 	],
-	#category : #'Exercise@Leap'
+	#category : 'Exercise@Leap',
+	#package : 'Exercise@Leap'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 LeapTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -59,25 +60,25 @@ LeapTest class >> exercise [
 				
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 LeapTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'82b07f5c-119c-4250-8c07-a0a7e1a95458'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 LeapTest class >> version [
 	"Generated from specification: 25 February 2019"
 	^'1.5.1'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 LeapTest >> setUp [
 	super setUp.
 	leapCalculator := Leap new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LeapTest >> test01_YearNotDivisibleBy4CommonYear [
 	| result |
 
@@ -85,7 +86,7 @@ LeapTest >> test01_YearNotDivisibleBy4CommonYear [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LeapTest >> test02_YearDivisibleBy2NotDivisibleBy4CommonYear [
 	| result |
 
@@ -93,7 +94,7 @@ LeapTest >> test02_YearDivisibleBy2NotDivisibleBy4CommonYear [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LeapTest >> test03_YearDivisibleBy4NotDivisibleBy100LeapYear [
 	| result |
 
@@ -101,7 +102,7 @@ LeapTest >> test03_YearDivisibleBy4NotDivisibleBy100LeapYear [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LeapTest >> test04_YearDivisibleBy100NotDivisibleBy400CommonYear [
 	| result |
 
@@ -109,7 +110,7 @@ LeapTest >> test04_YearDivisibleBy100NotDivisibleBy400CommonYear [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LeapTest >> test05_YearDivisibleBy400LeapYear [
 	| result |
 
@@ -117,7 +118,7 @@ LeapTest >> test05_YearDivisibleBy400LeapYear [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LeapTest >> test06_YearDivisibleBy200NotDivisibleBy400CommonYear [
 	| result |
 
@@ -125,7 +126,7 @@ LeapTest >> test06_YearDivisibleBy200NotDivisibleBy400CommonYear [
 	self assert: result equals: false
 ]
 
-{ #category : #extra }
+{ #category : 'extra' }
 LeapTest >> testMisuseOfSelector [
 	self verifySolution: leapCalculator class avoidsSelector: #isLeapYear
 ]

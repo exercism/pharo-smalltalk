@@ -24,30 +24,32 @@ On a successful operation I will copy the dpase.com URL to the
 clipboard and open the webbrowser on the URL.
 "
 Class {
-	#name : #ClyExercismShareCommand,
-	#superclass : #ClyExercismExerciseCommand,
+	#name : 'ClyExercismShareCommand',
+	#superclass : 'ClyExercismExerciseCommand',
 	#classVars : [
 		'hasConfirmedSharing'
 	],
-	#category : #'ExercismTools-Menus'
+	#category : 'ExercismTools-Menus',
+	#package : 'ExercismTools',
+	#tag : 'Menus'
 }
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyExercismShareCommand class >> contextMenuOrder [
 		^15
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismShareCommand class >> hasConfirmedSharing [
 	^ hasConfirmedSharing ifNil: [ false ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismShareCommand class >> hasConfirmedSharing: aBoolean [
 	^hasConfirmedSharing := aBoolean
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ClyExercismShareCommand >> confirmSharing [
 	self class hasConfirmedSharing
 		ifTrue: [ ^ true ].
@@ -59,22 +61,22 @@ ClyExercismShareCommand >> confirmSharing [
 		ifFalse: [ false ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismShareCommand >> defaultMenuIconName [
 	^#publish
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismShareCommand >> defaultMenuItemName [
 	^'Share on web...'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismShareCommand >> description [ 
 	^'Create a web link to anonymously share your proposed solution on dpaste.com to discuss with others'
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ClyExercismShareCommand >> execute [
 	| exerciseName result url |
 

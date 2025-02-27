@@ -33,33 +33,35 @@ TBD
 
 "
 Class {
-	#name : #QueenAttackTest,
-	#superclass : #ExercismTest,
+	#name : 'QueenAttackTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'queenAttackCalculator'
 	],
-	#category : #'ExercismWIP-QueenAttack'
+	#category : 'ExercismWIP-QueenAttack',
+	#package : 'ExercismWIP',
+	#tag : 'QueenAttack'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 QueenAttackTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'3d6bb52e-b043-0d00-9262-b3f002a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 QueenAttackTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'2.3.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 QueenAttackTest >> setUp [
 	super setUp.
 	queenAttackCalculator := QueenAttack new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QueenAttackTest >> test01_TestCreationOfQueensWithValidAndInvalidPositionsQueenWithAValidPosition [
 	| result |
 
@@ -67,7 +69,7 @@ QueenAttackTest >> test01_TestCreationOfQueensWithValidAndInvalidPositionsQueenW
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QueenAttackTest >> test02_TestCreationOfQueensWithValidAndInvalidPositionsQueenMustHavePositiveRow [
 	| result |
 
@@ -78,7 +80,7 @@ QueenAttackTest >> test02_TestCreationOfQueensWithValidAndInvalidPositionsQueenM
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QueenAttackTest >> test03_TestCreationOfQueensWithValidAndInvalidPositionsQueenMustHaveRowOnBoard [
 	| result |
 
@@ -89,7 +91,7 @@ QueenAttackTest >> test03_TestCreationOfQueensWithValidAndInvalidPositionsQueenM
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QueenAttackTest >> test04_TestCreationOfQueensWithValidAndInvalidPositionsQueenMustHavePositiveColumn [
 	| result |
 
@@ -100,7 +102,7 @@ QueenAttackTest >> test04_TestCreationOfQueensWithValidAndInvalidPositionsQueenM
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QueenAttackTest >> test05_TestCreationOfQueensWithValidAndInvalidPositionsQueenMustHaveColumnOnBoard [
 	| result |
 
@@ -111,7 +113,7 @@ QueenAttackTest >> test05_TestCreationOfQueensWithValidAndInvalidPositionsQueenM
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QueenAttackTest >> test06_TestTheAbilityOfOneQueenToAttackAnotherCanNotAttack [
 	| result |
 
@@ -119,7 +121,7 @@ QueenAttackTest >> test06_TestTheAbilityOfOneQueenToAttackAnotherCanNotAttack [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QueenAttackTest >> test07_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnSameRow [
 	| result |
 
@@ -127,7 +129,7 @@ QueenAttackTest >> test07_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnSame
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QueenAttackTest >> test08_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnSameColumn [
 	| result |
 
@@ -135,7 +137,7 @@ QueenAttackTest >> test08_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnSame
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QueenAttackTest >> test09_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnFirstDiagonal [
 	| result |
 
@@ -143,7 +145,7 @@ QueenAttackTest >> test09_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnFirs
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QueenAttackTest >> test10_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnSecondDiagonal [
 	| result |
 
@@ -151,7 +153,7 @@ QueenAttackTest >> test10_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnSeco
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QueenAttackTest >> test11_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnThirdDiagonal [
 	| result |
 
@@ -159,7 +161,7 @@ QueenAttackTest >> test11_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnThir
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QueenAttackTest >> test12_TestTheAbilityOfOneQueenToAttackAnotherCanAttackOnFourthDiagonal [
 	| result |
 

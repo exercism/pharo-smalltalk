@@ -2,12 +2,13 @@
 I iterate through a list of associations to check the factor and obtain the correct rain noise.
 "
 Class {
-	#name : #Raindrops,
-	#superclass : #Object,
-	#category : #'Exercise@Raindrops'
+	#name : 'Raindrops',
+	#superclass : 'Object',
+	#category : 'Exercise@Raindrops',
+	#package : 'Exercise@Raindrops'
 }
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 Raindrops >> convertNumber: aNumber [ 
 
 	^ String

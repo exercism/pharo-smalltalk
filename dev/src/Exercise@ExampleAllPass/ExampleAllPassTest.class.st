@@ -1,10 +1,11 @@
 Class {
-	#name : #ExampleAllPassTest,
-	#superclass : #ExercismTest,
-	#category : #'Exercise@ExampleAllPass'
+	#name : 'ExampleAllPassTest',
+	#superclass : 'ExercismTest',
+	#category : 'Exercise@ExampleAllPass',
+	#package : 'Exercise@ExampleAllPass'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 ExampleAllPassTest class >> exampleSolutionSourceCode [ 
 
 	^ 'Class {
@@ -30,7 +31,7 @@ ExampleAllPass >> exerciseMethodC [
 '
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExampleAllPassTest class >> exampleTestCasesSourceCode [ 
 
 	^ 'Class {
@@ -56,7 +57,7 @@ ExampleAllPassTest >> testExampleMethodC [
 '
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ExampleAllPassTest class >> exercise [
 	^ (self createExerciseAfter: HelloWorldTest)
 		isCore: true;

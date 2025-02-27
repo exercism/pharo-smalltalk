@@ -20,33 +20,35 @@ TBD
 
 "
 Class {
-	#name : #LargestSeriesProductTest,
-	#superclass : #ExercismTest,
+	#name : 'LargestSeriesProductTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'largestSeriesProductCalculator'
 	],
-	#category : #'ExercismWIP-LargestSeriesProduct'
+	#category : 'ExercismWIP-LargestSeriesProduct',
+	#package : 'ExercismWIP',
+	#tag : 'LargestSeriesProduct'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 LargestSeriesProductTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'77e0b22e-b043-0d00-925e-07fa02a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 LargestSeriesProductTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'1.2.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 LargestSeriesProductTest >> setUp [
 	super setUp.
 	largestSeriesProductCalculator := LargestSeriesProduct new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LargestSeriesProductTest >> test01_FindsTheLargestProductIfSpanEqualsLength [
 	| result |
 
@@ -54,7 +56,7 @@ LargestSeriesProductTest >> test01_FindsTheLargestProductIfSpanEqualsLength [
 	self assert: result equals: 18
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LargestSeriesProductTest >> test02_CanFindTheLargestProductOf2WithNumbersInOrder [
 	| result |
 
@@ -62,7 +64,7 @@ LargestSeriesProductTest >> test02_CanFindTheLargestProductOf2WithNumbersInOrder
 	self assert: result equals: 72
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LargestSeriesProductTest >> test03_CanFindTheLargestProductOf2 [
 	| result |
 
@@ -70,7 +72,7 @@ LargestSeriesProductTest >> test03_CanFindTheLargestProductOf2 [
 	self assert: result equals: 48
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LargestSeriesProductTest >> test04_CanFindTheLargestProductOf3WithNumbersInOrder [
 	| result |
 
@@ -78,7 +80,7 @@ LargestSeriesProductTest >> test04_CanFindTheLargestProductOf3WithNumbersInOrder
 	self assert: result equals: 504
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LargestSeriesProductTest >> test05_CanFindTheLargestProductOf3 [
 	| result |
 
@@ -86,7 +88,7 @@ LargestSeriesProductTest >> test05_CanFindTheLargestProductOf3 [
 	self assert: result equals: 270
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LargestSeriesProductTest >> test06_CanFindTheLargestProductOf5WithNumbersInOrder [
 	| result |
 
@@ -94,7 +96,7 @@ LargestSeriesProductTest >> test06_CanFindTheLargestProductOf5WithNumbersInOrder
 	self assert: result equals: 15120
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LargestSeriesProductTest >> test07_CanGetTheLargestProductOfABigNumber [
 	| result |
 
@@ -102,7 +104,7 @@ LargestSeriesProductTest >> test07_CanGetTheLargestProductOfABigNumber [
 	self assert: result equals: 23520
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LargestSeriesProductTest >> test08_ReportsZeroIfTheOnlyDigitsAreZero [
 	| result |
 
@@ -110,7 +112,7 @@ LargestSeriesProductTest >> test08_ReportsZeroIfTheOnlyDigitsAreZero [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LargestSeriesProductTest >> test09_ReportsZeroIfAllSpansIncludeZero [
 	| result |
 
@@ -118,7 +120,7 @@ LargestSeriesProductTest >> test09_ReportsZeroIfAllSpansIncludeZero [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LargestSeriesProductTest >> test10_RejectsSpanLongerThanStringLength [
 	| result |
 
@@ -129,7 +131,7 @@ LargestSeriesProductTest >> test10_RejectsSpanLongerThanStringLength [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LargestSeriesProductTest >> test11_Reports1ForEmptyStringAndEmptyProduct0Span [
 	| result |
 
@@ -137,7 +139,7 @@ LargestSeriesProductTest >> test11_Reports1ForEmptyStringAndEmptyProduct0Span [
 	self assert: result equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LargestSeriesProductTest >> test12_Reports1ForNonemptyStringAndEmptyProduct0Span [
 	| result |
 
@@ -145,7 +147,7 @@ LargestSeriesProductTest >> test12_Reports1ForNonemptyStringAndEmptyProduct0Span
 	self assert: result equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LargestSeriesProductTest >> test13_RejectsEmptyStringAndNonzeroSpan [
 	| result |
 
@@ -156,7 +158,7 @@ LargestSeriesProductTest >> test13_RejectsEmptyStringAndNonzeroSpan [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LargestSeriesProductTest >> test14_RejectsInvalidCharacterInDigits [
 	| result |
 
@@ -167,7 +169,7 @@ LargestSeriesProductTest >> test14_RejectsInvalidCharacterInDigits [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LargestSeriesProductTest >> test15_RejectsNegativeSpan [
 	| result |
 

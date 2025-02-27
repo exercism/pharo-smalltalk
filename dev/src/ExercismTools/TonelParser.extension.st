@@ -1,12 +1,12 @@
-Extension { #name : #TonelParser }
+Extension { #name : 'TonelParser' }
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 TonelParser >> documentFrom: aString [
 	self stream: aString readStream.
 	^self document
 ]
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 TonelParser >> try: aBlock onSuccess: successBlock onFailure: failureBlock [
 	| pos |
 

@@ -1,5 +1,6 @@
 Class {
-	#name : #SourceImporter,
-	#superclass : #Object,
-	#category : #ExercismV3
+	#name : 'SourceImporter',
+	#superclass : 'Object',
+	#category : 'ExercismV3',
+	#package : 'ExercismV3'
 }

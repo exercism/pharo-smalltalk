@@ -69,33 +69,35 @@ TBD
 
 "
 Class {
-	#name : #SayTest,
-	#superclass : #ExercismTest,
+	#name : 'SayTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'sayCalculator'
 	],
-	#category : #'ExercismWIP-Say'
+	#category : 'ExercismWIP-Say',
+	#package : 'ExercismWIP',
+	#tag : 'Say'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 SayTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'b12ca82e-b043-0d00-924e-65ac02a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 SayTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'1.2.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 SayTest >> setUp [
 	super setUp.
 	sayCalculator := Say new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SayTest >> test01_Zero [
 	| result |
 
@@ -103,7 +105,7 @@ SayTest >> test01_Zero [
 	self assert: result equals: 'zero'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SayTest >> test02_One [
 	| result |
 
@@ -111,7 +113,7 @@ SayTest >> test02_One [
 	self assert: result equals: 'one'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SayTest >> test03_Fourteen [
 	| result |
 
@@ -119,7 +121,7 @@ SayTest >> test03_Fourteen [
 	self assert: result equals: 'fourteen'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SayTest >> test04_Twenty [
 	| result |
 
@@ -127,7 +129,7 @@ SayTest >> test04_Twenty [
 	self assert: result equals: 'twenty'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SayTest >> test05_Twentytwo [
 	| result |
 
@@ -135,7 +137,7 @@ SayTest >> test05_Twentytwo [
 	self assert: result equals: 'twenty-two'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SayTest >> test06_OneHundred [
 	| result |
 
@@ -143,7 +145,7 @@ SayTest >> test06_OneHundred [
 	self assert: result equals: 'one hundred'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SayTest >> test07_OneHundredTwentythree [
 	| result |
 
@@ -151,7 +153,7 @@ SayTest >> test07_OneHundredTwentythree [
 	self assert: result equals: 'one hundred twenty-three'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SayTest >> test08_OneThousand [
 	| result |
 
@@ -159,7 +161,7 @@ SayTest >> test08_OneThousand [
 	self assert: result equals: 'one thousand'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SayTest >> test09_OneThousandTwoHundredThirtyfour [
 	| result |
 
@@ -167,7 +169,7 @@ SayTest >> test09_OneThousandTwoHundredThirtyfour [
 	self assert: result equals: 'one thousand two hundred thirty-four'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SayTest >> test10_OneMillion [
 	| result |
 
@@ -175,7 +177,7 @@ SayTest >> test10_OneMillion [
 	self assert: result equals: 'one million'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SayTest >> test11_OneMillionTwoThousandThreeHundredFortyfive [
 	| result |
 
@@ -183,7 +185,7 @@ SayTest >> test11_OneMillionTwoThousandThreeHundredFortyfive [
 	self assert: result equals: 'one million two thousand three hundred forty-five'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SayTest >> test12_OneBillion [
 	| result |
 
@@ -191,7 +193,7 @@ SayTest >> test12_OneBillion [
 	self assert: result equals: 'one billion'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SayTest >> test13_ABigNumber [
 	| result |
 
@@ -199,7 +201,7 @@ SayTest >> test13_ABigNumber [
 	self assert: result equals: 'nine hundred eighty-seven billion six hundred fifty-four million three hundred twenty-one thousand one hundred twenty-three'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SayTest >> test14_NumbersBelowZeroAreOutOfRange [
 	| result |
 
@@ -210,7 +212,7 @@ SayTest >> test14_NumbersBelowZeroAreOutOfRange [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SayTest >> test15_NumbersAbove999999999999AreOutOfRange [
 	| result |
 

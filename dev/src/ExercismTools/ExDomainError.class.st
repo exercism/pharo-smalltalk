@@ -1,5 +1,7 @@
 Class {
-	#name : #ExDomainError,
-	#superclass : #ExercismError,
-	#category : #'ExercismTools-Core'
+	#name : 'ExDomainError',
+	#superclass : 'ExercismError',
+	#category : 'ExercismTools-Core',
+	#package : 'ExercismTools',
+	#tag : 'Core'
 }

@@ -1,1 +1,1 @@
-Package { #name : #'Exercise@WordCount' }
+Package { #name : 'Exercise@WordCount' }

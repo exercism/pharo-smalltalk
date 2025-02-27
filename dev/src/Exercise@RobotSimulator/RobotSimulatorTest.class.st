@@ -34,15 +34,16 @@ It's useful to consider having a seperate Robot oject and even write some of you
 
 "
 Class {
-	#name : #RobotSimulatorTest,
-	#superclass : #ExercismTest,
+	#name : 'RobotSimulatorTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'robotSimulator'
 	],
-	#category : #'Exercise@RobotSimulator'
+	#category : 'Exercise@RobotSimulator',
+	#package : 'Exercise@RobotSimulator'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 RobotSimulatorTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -53,7 +54,7 @@ RobotSimulatorTest class >> exercise [
 	
 ]
 
-{ #category : #generator }
+{ #category : 'generator' }
 RobotSimulatorTest class >> generator [
 	"Answer code generator aliases/hints"
 
@@ -64,25 +65,25 @@ RobotSimulatorTest class >> generator [
 	('robotSimulatorCalculator' -> 'robotSimulator')}
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 RobotSimulatorTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'cfb7f615-459b-455c-8528-b79e3eb6091b'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 RobotSimulatorTest class >> version [
 	"Generated from specification: 15 March 2019"
 	^'3.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 RobotSimulatorTest >> setUp [
 	super setUp.
 	robotSimulator := RobotSimulator new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RobotSimulatorTest >> test01_ARobotIsCreatedWithAPositionAndADirectionRobotsAreCreatedWithAPositionAndDirection [
 	| result |
 
@@ -90,7 +91,7 @@ RobotSimulatorTest >> test01_ARobotIsCreatedWithAPositionAndADirectionRobotsAreC
 	self assert: result equals: ((Dictionary new) add: ('direction'->'north'); add: ('position'->((Dictionary new) add: ('x'->0); add: ('y'->0); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RobotSimulatorTest >> test02_ARobotIsCreatedWithAPositionAndADirectionNegativePositionsAreAllowed [
 	| result |
 
@@ -98,7 +99,7 @@ RobotSimulatorTest >> test02_ARobotIsCreatedWithAPositionAndADirectionNegativePo
 	self assert: result equals: ((Dictionary new) add: ('direction'->'south'); add: ('position'->((Dictionary new) add: ('x'-> -1); add: ('y'-> -1); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RobotSimulatorTest >> test03_RotatesTheRobotsDirection90DegreesClockwiseChangesTheDirectionFromNorthToEast [
 	| result |
 
@@ -106,7 +107,7 @@ RobotSimulatorTest >> test03_RotatesTheRobotsDirection90DegreesClockwiseChangesT
 	self assert: result equals: ((Dictionary new) add: ('direction'->'east'); add: ('position'->((Dictionary new) add: ('x'->0); add: ('y'->0); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RobotSimulatorTest >> test04_RotatesTheRobotsDirection90DegreesClockwiseChangesTheDirectionFromEastToSouth [
 	| result |
 
@@ -114,7 +115,7 @@ RobotSimulatorTest >> test04_RotatesTheRobotsDirection90DegreesClockwiseChangesT
 	self assert: result equals: ((Dictionary new) add: ('direction'->'south'); add: ('position'->((Dictionary new) add: ('x'->0); add: ('y'->0); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RobotSimulatorTest >> test05_RotatesTheRobotsDirection90DegreesClockwiseChangesTheDirectionFromSouthToWest [
 	| result |
 
@@ -122,7 +123,7 @@ RobotSimulatorTest >> test05_RotatesTheRobotsDirection90DegreesClockwiseChangesT
 	self assert: result equals: ((Dictionary new) add: ('direction'->'west'); add: ('position'->((Dictionary new) add: ('x'->0); add: ('y'->0); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RobotSimulatorTest >> test06_RotatesTheRobotsDirection90DegreesClockwiseChangesTheDirectionFromWestToNorth [
 	| result |
 
@@ -130,7 +131,7 @@ RobotSimulatorTest >> test06_RotatesTheRobotsDirection90DegreesClockwiseChangesT
 	self assert: result equals: ((Dictionary new) add: ('direction'->'north'); add: ('position'->((Dictionary new) add: ('x'->0); add: ('y'->0); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RobotSimulatorTest >> test07_RotatesTheRobotsDirection90DegreesCounterclockwiseChangesTheDirectionFromNorthToWest [
 	| result |
 
@@ -138,7 +139,7 @@ RobotSimulatorTest >> test07_RotatesTheRobotsDirection90DegreesCounterclockwiseC
 	self assert: result equals: ((Dictionary new) add: ('direction'->'west'); add: ('position'->((Dictionary new) add: ('x'->0); add: ('y'->0); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RobotSimulatorTest >> test08_RotatesTheRobotsDirection90DegreesCounterclockwiseChangesTheDirectionFromWestToSouth [
 	| result |
 
@@ -146,7 +147,7 @@ RobotSimulatorTest >> test08_RotatesTheRobotsDirection90DegreesCounterclockwiseC
 	self assert: result equals: ((Dictionary new) add: ('direction'->'south'); add: ('position'->((Dictionary new) add: ('x'->0); add: ('y'->0); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RobotSimulatorTest >> test09_RotatesTheRobotsDirection90DegreesCounterclockwiseChangesTheDirectionFromSouthToEast [
 	| result |
 
@@ -154,7 +155,7 @@ RobotSimulatorTest >> test09_RotatesTheRobotsDirection90DegreesCounterclockwiseC
 	self assert: result equals: ((Dictionary new) add: ('direction'->'east'); add: ('position'->((Dictionary new) add: ('x'->0); add: ('y'->0); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RobotSimulatorTest >> test10_RotatesTheRobotsDirection90DegreesCounterclockwiseChangesTheDirectionFromEastToNorth [
 	| result |
 
@@ -162,7 +163,7 @@ RobotSimulatorTest >> test10_RotatesTheRobotsDirection90DegreesCounterclockwiseC
 	self assert: result equals: ((Dictionary new) add: ('direction'->'north'); add: ('position'->((Dictionary new) add: ('x'->0); add: ('y'->0); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RobotSimulatorTest >> test11_MovesTheRobotForward1SpaceInTheDirectionItIsPointingIncreasesTheYCoordinateOneWhenFacingNorth [
 	| result |
 
@@ -170,7 +171,7 @@ RobotSimulatorTest >> test11_MovesTheRobotForward1SpaceInTheDirectionItIsPointin
 	self assert: result equals: ((Dictionary new) add: ('direction'->'north'); add: ('position'->((Dictionary new) add: ('x'->0); add: ('y'->1); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RobotSimulatorTest >> test12_MovesTheRobotForward1SpaceInTheDirectionItIsPointingDecreasesTheYCoordinateByOneWhenFacingSouth [
 	| result |
 
@@ -178,7 +179,7 @@ RobotSimulatorTest >> test12_MovesTheRobotForward1SpaceInTheDirectionItIsPointin
 	self assert: result equals: ((Dictionary new) add: ('direction'->'south'); add: ('position'->((Dictionary new) add: ('x'->0); add: ('y'-> -1); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RobotSimulatorTest >> test13_MovesTheRobotForward1SpaceInTheDirectionItIsPointingIncreasesTheXCoordinateByOneWhenFacingEast [
 	| result |
 
@@ -186,7 +187,7 @@ RobotSimulatorTest >> test13_MovesTheRobotForward1SpaceInTheDirectionItIsPointin
 	self assert: result equals: ((Dictionary new) add: ('direction'->'east'); add: ('position'->((Dictionary new) add: ('x'->1); add: ('y'->0); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RobotSimulatorTest >> test14_MovesTheRobotForward1SpaceInTheDirectionItIsPointingDecreasesTheXCoordinateByOneWhenFacingWest [
 	| result |
 
@@ -194,7 +195,7 @@ RobotSimulatorTest >> test14_MovesTheRobotForward1SpaceInTheDirectionItIsPointin
 	self assert: result equals: ((Dictionary new) add: ('direction'->'west'); add: ('position'->((Dictionary new) add: ('x'-> -1); add: ('y'->0); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RobotSimulatorTest >> test15_WhereRTurnRightLTurnLeftAndAAdvanceTheRobotCanFollowASeriesOfInstructionsAndEndUpWithTheCorrectPositionAndDirectionInstructionsToMoveEastAndNorthFromREADME [
 	| result |
 
@@ -202,7 +203,7 @@ RobotSimulatorTest >> test15_WhereRTurnRightLTurnLeftAndAAdvanceTheRobotCanFollo
 	self assert: result equals: ((Dictionary new) add: ('direction'->'west'); add: ('position'->((Dictionary new) add: ('x'->9); add: ('y'->4); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RobotSimulatorTest >> test16_WhereRTurnRightLTurnLeftAndAAdvanceTheRobotCanFollowASeriesOfInstructionsAndEndUpWithTheCorrectPositionAndDirectionInstructionsToMoveWestAndNorth [
 	| result |
 
@@ -210,7 +211,7 @@ RobotSimulatorTest >> test16_WhereRTurnRightLTurnLeftAndAAdvanceTheRobotCanFollo
 	self assert: result equals: ((Dictionary new) add: ('direction'->'west'); add: ('position'->((Dictionary new) add: ('x'-> -4); add: ('y'->1); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RobotSimulatorTest >> test17_WhereRTurnRightLTurnLeftAndAAdvanceTheRobotCanFollowASeriesOfInstructionsAndEndUpWithTheCorrectPositionAndDirectionInstructionsToMoveWestAndSouth [
 	| result |
 
@@ -218,7 +219,7 @@ RobotSimulatorTest >> test17_WhereRTurnRightLTurnLeftAndAAdvanceTheRobotCanFollo
 	self assert: result equals: ((Dictionary new) add: ('direction'->'south'); add: ('position'->((Dictionary new) add: ('x'-> -3); add: ('y'-> -8); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RobotSimulatorTest >> test18_WhereRTurnRightLTurnLeftAndAAdvanceTheRobotCanFollowASeriesOfInstructionsAndEndUpWithTheCorrectPositionAndDirectionInstructionsToMoveEastAndNorth [
 	| result |
 

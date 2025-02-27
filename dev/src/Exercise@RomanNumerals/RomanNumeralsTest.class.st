@@ -49,15 +49,16 @@ This exercise uses techniques from several of the others, but also requires some
 
 "
 Class {
-	#name : #RomanNumeralsTest,
-	#superclass : #ExercismTest,
+	#name : 'RomanNumeralsTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'romanNumeralsCalculator'
 	],
-	#category : #'Exercise@RomanNumerals'
+	#category : 'Exercise@RomanNumerals',
+	#package : 'Exercise@RomanNumerals'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 RomanNumeralsTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -67,25 +68,25 @@ RomanNumeralsTest class >> exercise [
 		yourself
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 RomanNumeralsTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'5cd0c4b3-34e7-4927-8e54-fcd7fdee9075'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 RomanNumeralsTest class >> version [
 	"Generated from specification: 15 March 2019"
 	^'1.2.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 RomanNumeralsTest >> setUp [
 	super setUp.
 	romanNumeralsCalculator := RomanNumerals new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RomanNumeralsTest >> test01_1IsASingleI [
 	| result |
 
@@ -93,7 +94,7 @@ RomanNumeralsTest >> test01_1IsASingleI [
 	self assert: result equals: 'I'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RomanNumeralsTest >> test02_2IsTwoIs [
 	| result |
 
@@ -101,7 +102,7 @@ RomanNumeralsTest >> test02_2IsTwoIs [
 	self assert: result equals: 'II'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RomanNumeralsTest >> test03_3IsThreeIs [
 	| result |
 
@@ -109,7 +110,7 @@ RomanNumeralsTest >> test03_3IsThreeIs [
 	self assert: result equals: 'III'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RomanNumeralsTest >> test04_4Being51IsIV [
 	| result |
 
@@ -117,7 +118,7 @@ RomanNumeralsTest >> test04_4Being51IsIV [
 	self assert: result equals: 'IV'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RomanNumeralsTest >> test05_5IsASingleV [
 	| result |
 
@@ -125,7 +126,7 @@ RomanNumeralsTest >> test05_5IsASingleV [
 	self assert: result equals: 'V'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RomanNumeralsTest >> test06_6Being51IsVI [
 	| result |
 
@@ -133,7 +134,7 @@ RomanNumeralsTest >> test06_6Being51IsVI [
 	self assert: result equals: 'VI'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RomanNumeralsTest >> test07_9Being101IsIX [
 	| result |
 
@@ -141,7 +142,7 @@ RomanNumeralsTest >> test07_9Being101IsIX [
 	self assert: result equals: 'IX'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RomanNumeralsTest >> test08_20IsTwoXs [
 	| result |
 
@@ -149,7 +150,7 @@ RomanNumeralsTest >> test08_20IsTwoXs [
 	self assert: result equals: 'XXVII'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RomanNumeralsTest >> test09_48IsNot502ButRather408 [
 	| result |
 
@@ -157,7 +158,7 @@ RomanNumeralsTest >> test09_48IsNot502ButRather408 [
 	self assert: result equals: 'XLVIII'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RomanNumeralsTest >> test10_49IsNot4054ButRather5010101 [
 	| result |
 
@@ -165,7 +166,7 @@ RomanNumeralsTest >> test10_49IsNot4054ButRather5010101 [
 	self assert: result equals: 'XLIX'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RomanNumeralsTest >> test11_50IsASingleL [
 	| result |
 
@@ -173,7 +174,7 @@ RomanNumeralsTest >> test11_50IsASingleL [
 	self assert: result equals: 'LIX'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RomanNumeralsTest >> test12_90Being10010IsXC [
 	| result |
 
@@ -181,7 +182,7 @@ RomanNumeralsTest >> test12_90Being10010IsXC [
 	self assert: result equals: 'XCIII'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RomanNumeralsTest >> test13_100IsASingleC [
 	| result |
 
@@ -189,7 +190,7 @@ RomanNumeralsTest >> test13_100IsASingleC [
 	self assert: result equals: 'CXLI'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RomanNumeralsTest >> test14_60Being5010IsLX [
 	| result |
 
@@ -197,7 +198,7 @@ RomanNumeralsTest >> test14_60Being5010IsLX [
 	self assert: result equals: 'CLXIII'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RomanNumeralsTest >> test15_400Being500100IsCD [
 	| result |
 
@@ -205,7 +206,7 @@ RomanNumeralsTest >> test15_400Being500100IsCD [
 	self assert: result equals: 'CDII'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RomanNumeralsTest >> test16_500IsASingleD [
 	| result |
 
@@ -213,7 +214,7 @@ RomanNumeralsTest >> test16_500IsASingleD [
 	self assert: result equals: 'DLXXV'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RomanNumeralsTest >> test17_900Being1000100IsCM [
 	| result |
 
@@ -221,7 +222,7 @@ RomanNumeralsTest >> test17_900Being1000100IsCM [
 	self assert: result equals: 'CMXI'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RomanNumeralsTest >> test18_1000IsASingleM [
 	| result |
 
@@ -229,7 +230,7 @@ RomanNumeralsTest >> test18_1000IsASingleM [
 	self assert: result equals: 'MXXIV'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RomanNumeralsTest >> test19_3000IsThreeMs [
 	| result |
 

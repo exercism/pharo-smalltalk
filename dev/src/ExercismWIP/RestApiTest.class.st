@@ -45,33 +45,35 @@ TBD
 
 "
 Class {
-	#name : #RestApiTest,
-	#superclass : #ExercismTest,
+	#name : 'RestApiTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'restApiCalculator'
 	],
-	#category : #'ExercismWIP-RestApi'
+	#category : 'ExercismWIP-RestApi',
+	#package : 'ExercismWIP',
+	#tag : 'RestApi'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 RestApiTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'d5700317-9d41-0d00-9010-b5eb08866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 RestApiTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.1.1'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 RestApiTest >> setUp [
 	super setUp.
 	restApiCalculator := RestApi new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RestApiTest >> test01_UserManagementNoUsers [
 	| result |
 
@@ -79,7 +81,7 @@ RestApiTest >> test01_UserManagementNoUsers [
 	self assert: result equals: ((Dictionary new) add: ('users'->#()); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RestApiTest >> test02_UserManagementAddUser [
 	| result |
 
@@ -87,7 +89,7 @@ RestApiTest >> test02_UserManagementAddUser [
 	self assert: result equals: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Adam'); add: ('owes'->((Dictionary new))); add: ('balance'->0.0); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RestApiTest >> test03_UserManagementGetSingleUser [
 	| result |
 
@@ -95,7 +97,7 @@ RestApiTest >> test03_UserManagementGetSingleUser [
 	self assert: result equals: ((Dictionary new) add: ('users'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Bob'); add: ('owes'->((Dictionary new))); add: ('balance'->0.0); yourself); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RestApiTest >> test04_IouBothUsersHave0Balance [
 	| result |
 
@@ -103,7 +105,7 @@ RestApiTest >> test04_IouBothUsersHave0Balance [
 	self assert: result equals: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Bob'->3.0); yourself)); add: ('name'->'Adam'); add: ('owes'->((Dictionary new))); add: ('balance'->3.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Bob'); add: ('owes'->((Dictionary new) add: ('Adam'->3.0); yourself)); add: ('balance'-> -3.0); yourself); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RestApiTest >> test05_IouBorrowerHasNegativeBalance [
 	| result |
 
@@ -111,7 +113,7 @@ RestApiTest >> test05_IouBorrowerHasNegativeBalance [
 	self assert: result equals: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Bob'->3.0); yourself)); add: ('name'->'Adam'); add: ('owes'->((Dictionary new))); add: ('balance'->3.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Bob'); add: ('owes'->((Dictionary new) add: ('Adam'->3.0); add: ('Chuck'->3.0); yourself)); add: ('balance'-> -6.0); yourself); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RestApiTest >> test06_IouLenderHasNegativeBalance [
 	| result |
 
@@ -119,7 +121,7 @@ RestApiTest >> test06_IouLenderHasNegativeBalance [
 	self assert: result equals: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Adam'); add: ('owes'->((Dictionary new) add: ('Bob'->3.0); yourself)); add: ('balance'-> -3.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Adam'->3.0); yourself)); add: ('name'->'Bob'); add: ('owes'->((Dictionary new) add: ('Chuck'->3.0); yourself)); add: ('balance'->0.0); yourself); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RestApiTest >> test07_IouLenderOwesBorrower [
 	| result |
 
@@ -127,7 +129,7 @@ RestApiTest >> test07_IouLenderOwesBorrower [
 	self assert: result equals: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Adam'); add: ('owes'->((Dictionary new) add: ('Bob'->1.0); yourself)); add: ('balance'-> -1.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Adam'->1.0); yourself)); add: ('name'->'Bob'); add: ('owes'->((Dictionary new))); add: ('balance'->1.0); yourself); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RestApiTest >> test08_IouLenderOwesBorrowerLessThanNewLoan [
 	| result |
 
@@ -135,7 +137,7 @@ RestApiTest >> test08_IouLenderOwesBorrowerLessThanNewLoan [
 	self assert: result equals: ((Dictionary new) add: ('users'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('owed_by'->((Dictionary new) add: ('Bob'->1.0); yourself)); add: ('name'->'Adam'); add: ('owes'->((Dictionary new))); add: ('balance'->1.0); yourself); at: 2 put: ((Dictionary new) add: ('owed_by'->((Dictionary new))); add: ('name'->'Bob'); add: ('owes'->((Dictionary new) add: ('Adam'->1.0); yourself)); add: ('balance'-> -1.0); yourself); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RestApiTest >> test09_IouLenderOwesBorrowerSameAsNewLoan [
 	| result |
 

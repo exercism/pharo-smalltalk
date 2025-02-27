@@ -59,15 +59,16 @@ Extract clear, single purpose methods to keep your solution understandable
 
 "
 Class {
-	#name : #DiamondTest,
-	#superclass : #ExercismTest,
+	#name : 'DiamondTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'diamondCalculator'
 	],
-	#category : #'Exercise@Diamond'
+	#category : 'Exercise@Diamond',
+	#package : 'Exercise@Diamond'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 DiamondTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -78,25 +79,25 @@ DiamondTest class >> exercise [
 	
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 DiamondTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'7615f055-684e-4d04-99b3-25366dbd882a'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 DiamondTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DiamondTest >> setUp [
 	super setUp.
 	diamondCalculator := Diamond new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DiamondTest >> test01_DegenerateCaseWithASingleARow [
 	| result |
 
@@ -104,7 +105,7 @@ DiamondTest >> test01_DegenerateCaseWithASingleARow [
 	self assert: result equals: #('A' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DiamondTest >> test02_DegenerateCaseWithNoRowContaining3DistinctGroupsOfSpaces [
 	| result |
 
@@ -112,7 +113,7 @@ DiamondTest >> test02_DegenerateCaseWithNoRowContaining3DistinctGroupsOfSpaces [
 	self assert: result equals: #(' A ' 'B B' ' A ' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DiamondTest >> test03_SmallestNondegenerateCaseWithOddDiamondSideLength [
 	| result |
 
@@ -120,7 +121,7 @@ DiamondTest >> test03_SmallestNondegenerateCaseWithOddDiamondSideLength [
 	self assert: result equals: #('  A  ' ' B B ' 'C   C' ' B B ' '  A  ' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DiamondTest >> test04_SmallestNondegenerateCaseWithEvenDiamondSideLength [
 	| result |
 
@@ -128,7 +129,7 @@ DiamondTest >> test04_SmallestNondegenerateCaseWithEvenDiamondSideLength [
 	self assert: result equals: #('   A   ' '  B B  ' ' C   C ' 'D     D' ' C   C ' '  B B  ' '   A   ' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DiamondTest >> test05_LargestPossibleDiamond [
 	| result |
 

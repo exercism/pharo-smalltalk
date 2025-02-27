@@ -1,24 +1,24 @@
-Extension { #name : #ExercismTest }
+Extension { #name : 'ExercismTest' }
 
-{ #category : #'*ExercismTestRunnerTests' }
+{ #category : '*ExercismTestRunnerTests' }
 ExercismTest class >> exTonelSourceFilename [
 
 	^ ClassDescription exTonelClassFilenameFor: self exercise exerciseClassName 
 ]
 
-{ #category : #'*ExercismTestRunnerTests' }
+{ #category : '*ExercismTestRunnerTests' }
 ExercismTest class >> exTonelTestFilename [
 
 	^ ClassDescription exTonelClassFilenameFor: self name 
 ]
 
-{ #category : #'*ExercismTestRunnerTests' }
+{ #category : '*ExercismTestRunnerTests' }
 ExercismTest class >> exampleDirName [
 
 	^ self exercise exerciseClassName asKebabCase
 ]
 
-{ #category : #'*ExercismTestRunnerTests' }
+{ #category : '*ExercismTestRunnerTests' }
 ExercismTest class >> prepareExampleSolutionSourceCode [
 
 " this is used for generating STON representation of MCSnapshot, that can be used to generate solution of example (golden test)"
@@ -39,7 +39,7 @@ ExercismTest class >> prepareExampleSolutionSourceCode [
 	^ TonelWriter sourceCodeOf: solutionClass.
 ]
 
-{ #category : #'*ExercismTestRunnerTests' }
+{ #category : '*ExercismTestRunnerTests' }
 ExercismTest class >> prepareExampleTestCasesSourceCode [
 
 " this is used for generating STON representation of MCSnapshot, that can be used to generate solution of example (golden test)"

@@ -1,6 +1,6 @@
-Extension { #name : #ExercismSubmissionTest }
+Extension { #name : 'ExercismSubmissionTest' }
 
-{ #category : #'*ExercismPharo120' }
+{ #category : '*ExercismPharo120' }
 ExercismSubmissionTest class >> mockSnapshotSTON [
 ^	'MCSnapshot {
 	#definitions : OrderedCollection [
@@ -71,7 +71,7 @@ ExercismSubmissionTest class >> mockSnapshotSTON [
 }'
 ]
 
-{ #category : #'*ExercismPharo120' }
+{ #category : '*ExercismPharo120' }
 ExercismSubmissionTest class >> prepareMockPackageWithDependentClasses [
 " this is used for generating STON representation of MCSnapshot (see class side method), we don't need to create classes during test"
 |aClass bClass cClass aPackage|

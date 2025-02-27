@@ -55,15 +55,16 @@ Yo may want to use objects of the same class that represent tree and subtrees (n
 
 "
 Class {
-	#name : #BinarySearchTreeTest,
-	#superclass : #ExercismTest,
+	#name : 'BinarySearchTreeTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'binarySearchTreeCalculator'
 	],
-	#category : #'Exercise@BinarySearchTree'
+	#category : 'Exercise@BinarySearchTree',
+	#package : 'Exercise@BinarySearchTree'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 BinarySearchTreeTest class >> exercise [
 	
 	^(ExercismExercise for: self) 
@@ -72,25 +73,25 @@ BinarySearchTreeTest class >> exercise [
 		yourself
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 BinarySearchTreeTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'4f8a2a30-3bb5-4ed6-9304-5fd7211dd77d'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 BinarySearchTreeTest class >> version [
 	"Generated from specification: 13 September 2023"
 	^'Not specified'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 BinarySearchTreeTest >> setUp [
 	super setUp.
 	binarySearchTreeCalculator := BinarySearchTree new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinarySearchTreeTest >> test01_DataIsRetained [
 	"Tip: Remember to review the class [Comment] tab"
 	<exeTestName: 'data is retained'>
@@ -105,7 +106,7 @@ BinarySearchTreeTest >> test01_DataIsRetained [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinarySearchTreeTest >> test02_InsertDataAtProperNodeSmallerNumberAtLeftNode [
 	<exeTestName: 'smaller number at left node'>
 	<exeTestUUID: '7a95c9e8-69f6-476a-b0c4-4170cb3f7c91'>
@@ -120,7 +121,7 @@ BinarySearchTreeTest >> test02_InsertDataAtProperNodeSmallerNumberAtLeftNode [
 	self assert: result left left isNil.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinarySearchTreeTest >> test03_InsertDataAtProperNodeSameNumberAtLeftNode [
 	<exeTestName: 'same number at left node'>
 	<exeTestUUID: '22b89499-9805-4703-a159-1a6e434c1585'>
@@ -135,7 +136,7 @@ BinarySearchTreeTest >> test03_InsertDataAtProperNodeSameNumberAtLeftNode [
 	self assert: result left left isNil.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinarySearchTreeTest >> test04_InsertDataAtProperNodeGreaterNumberAtRightNode [
 	<exeTestName: 'greater number at right node'>
 	<exeTestUUID: '2e85fdde-77b1-41ed-b6ac-26ce6b663e34'>
@@ -150,7 +151,7 @@ BinarySearchTreeTest >> test04_InsertDataAtProperNodeGreaterNumberAtRightNode [
 	self assert: result left isNil.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinarySearchTreeTest >> test05_CanCreateComplexTree [
 	<exeTestName: 'can create complex tree'>
 	<exeTestUUID: 'dd898658-40ab-41d0-965e-7f145bf66e0b'>
@@ -176,7 +177,7 @@ BinarySearchTreeTest >> test05_CanCreateComplexTree [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinarySearchTreeTest >> test06_CanSortDataCanSortSingleNumber [
 	<exeTestName: 'can sort single number'>
 	<exeTestUUID: '9e0c06ef-aeca-4202-b8e4-97f1ed057d56'>
@@ -187,7 +188,7 @@ BinarySearchTreeTest >> test06_CanSortDataCanSortSingleNumber [
 	self assert: result sortedData equals: #('2')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinarySearchTreeTest >> test07_CanSortDataCanSortIfSecondNumberIsSmallerThanFirst [
 	<exeTestName: 'can sort if second number is smaller than first'>
 	<exeTestUUID: '425e6d07-fceb-4681-a4f4-e46920e380bb'>
@@ -198,7 +199,7 @@ BinarySearchTreeTest >> test07_CanSortDataCanSortIfSecondNumberIsSmallerThanFirs
 	self assert: result sortedData equals: #('1' '2')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinarySearchTreeTest >> test08_CanSortDataCanSortIfSecondNumberIsSameAsFirst [
 	<exeTestName: 'can sort if second number is same as first'>
 	<exeTestUUID: 'bd7532cc-6988-4259-bac8-1d50140079ab'>
@@ -209,7 +210,7 @@ BinarySearchTreeTest >> test08_CanSortDataCanSortIfSecondNumberIsSameAsFirst [
 	self assert: result sortedData equals: #('2' '2')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinarySearchTreeTest >> test09_CanSortDataCanSortIfSecondNumberIsGreaterThanFirst [
 	<exeTestName: 'can sort if second number is greater than first'>
 	<exeTestUUID: 'b6d1b3a5-9d79-44fd-9013-c83ca92ddd36'>
@@ -220,7 +221,7 @@ BinarySearchTreeTest >> test09_CanSortDataCanSortIfSecondNumberIsGreaterThanFirs
 	self assert: result sortedData equals: #('2' '3')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinarySearchTreeTest >> test10_CanSortDataCanSortComplexTree [
 	<exeTestName: 'can sort complex tree'>
 	<exeTestUUID: 'd00ec9bd-1288-4171-b968-d44d0808c1c8'>

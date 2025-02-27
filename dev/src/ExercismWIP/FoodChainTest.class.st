@@ -70,33 +70,35 @@ TBD
 
 "
 Class {
-	#name : #FoodChainTest,
-	#superclass : #ExercismTest,
+	#name : 'FoodChainTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'foodChainCalculator'
 	],
-	#category : #'ExercismWIP-FoodChain'
+	#category : 'ExercismWIP-FoodChain',
+	#package : 'ExercismWIP',
+	#tag : 'FoodChain'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 FoodChainTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'de39d42e-b043-0d00-928a-7ef602a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 FoodChainTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'2.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 FoodChainTest >> setUp [
 	super setUp.
 	foodChainCalculator := FoodChain new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 FoodChainTest >> test01_Fly [
 	| result |
 
@@ -104,7 +106,7 @@ FoodChainTest >> test01_Fly [
 	self assert: result equals: #('I know an old lady who swallowed a fly.' 'I don''t know why she swallowed the fly. Perhaps she''ll die.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 FoodChainTest >> test02_Spider [
 	| result |
 
@@ -112,7 +114,7 @@ FoodChainTest >> test02_Spider [
 	self assert: result equals: #('I know an old lady who swallowed a spider.' 'It wriggled and jiggled and tickled inside her.' 'She swallowed the spider to catch the fly.' 'I don''t know why she swallowed the fly. Perhaps she''ll die.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 FoodChainTest >> test03_Bird [
 	| result |
 
@@ -120,7 +122,7 @@ FoodChainTest >> test03_Bird [
 	self assert: result equals: #('I know an old lady who swallowed a bird.' 'How absurd to swallow a bird!' 'She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.' 'She swallowed the spider to catch the fly.' 'I don''t know why she swallowed the fly. Perhaps she''ll die.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 FoodChainTest >> test04_Cat [
 	| result |
 
@@ -128,7 +130,7 @@ FoodChainTest >> test04_Cat [
 	self assert: result equals: #('I know an old lady who swallowed a cat.' 'Imagine that, to swallow a cat!' 'She swallowed the cat to catch the bird.' 'She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.' 'She swallowed the spider to catch the fly.' 'I don''t know why she swallowed the fly. Perhaps she''ll die.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 FoodChainTest >> test05_Dog [
 	| result |
 
@@ -136,7 +138,7 @@ FoodChainTest >> test05_Dog [
 	self assert: result equals: #('I know an old lady who swallowed a dog.' 'What a hog, to swallow a dog!' 'She swallowed the dog to catch the cat.' 'She swallowed the cat to catch the bird.' 'She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.' 'She swallowed the spider to catch the fly.' 'I don''t know why she swallowed the fly. Perhaps she''ll die.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 FoodChainTest >> test06_Goat [
 	| result |
 
@@ -144,7 +146,7 @@ FoodChainTest >> test06_Goat [
 	self assert: result equals: #('I know an old lady who swallowed a goat.' 'Just opened her throat and swallowed a goat!' 'She swallowed the goat to catch the dog.' 'She swallowed the dog to catch the cat.' 'She swallowed the cat to catch the bird.' 'She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.' 'She swallowed the spider to catch the fly.' 'I don''t know why she swallowed the fly. Perhaps she''ll die.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 FoodChainTest >> test07_Cow [
 	| result |
 
@@ -152,7 +154,7 @@ FoodChainTest >> test07_Cow [
 	self assert: result equals: #('I know an old lady who swallowed a cow.' 'I don''t know how she swallowed a cow!' 'She swallowed the cow to catch the goat.' 'She swallowed the goat to catch the dog.' 'She swallowed the dog to catch the cat.' 'She swallowed the cat to catch the bird.' 'She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.' 'She swallowed the spider to catch the fly.' 'I don''t know why she swallowed the fly. Perhaps she''ll die.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 FoodChainTest >> test08_Horse [
 	| result |
 
@@ -160,7 +162,7 @@ FoodChainTest >> test08_Horse [
 	self assert: result equals: #('I know an old lady who swallowed a horse.' 'She''s dead, of course!' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 FoodChainTest >> test09_MultipleVerses [
 	| result |
 
@@ -168,7 +170,7 @@ FoodChainTest >> test09_MultipleVerses [
 	self assert: result equals: #('I know an old lady who swallowed a fly.' 'I don''t know why she swallowed the fly. Perhaps she''ll die.' '' 'I know an old lady who swallowed a spider.' 'It wriggled and jiggled and tickled inside her.' 'She swallowed the spider to catch the fly.' 'I don''t know why she swallowed the fly. Perhaps she''ll die.' '' 'I know an old lady who swallowed a bird.' 'How absurd to swallow a bird!' 'She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.' 'She swallowed the spider to catch the fly.' 'I don''t know why she swallowed the fly. Perhaps she''ll die.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 FoodChainTest >> test10_FullSong [
 	| result |
 

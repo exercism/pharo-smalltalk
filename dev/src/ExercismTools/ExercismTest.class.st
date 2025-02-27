@@ -2,15 +2,17 @@
 I am the root of Exercism test examples but also provide a hook to specify some simple exercise metadata that can be used to generate the exercism config.json file (used by the platform to unlock exercises for users as they progress).
 "
 Class {
-	#name : #ExercismTest,
-	#superclass : #TestCase,
+	#name : 'ExercismTest',
+	#superclass : 'TestCase',
 	#classInstVars : [
 		'solutionId'
 	],
-	#category : #'ExercismTools-Core'
+	#category : 'ExercismTools-Core',
+	#package : 'ExercismTools',
+	#tag : 'Core'
 }
 
-{ #category : #helper }
+{ #category : 'helper' }
 ExercismTest class >> createExerciseAfter: anotherTestCase [
 	"protocol: #helper"
 
@@ -19,12 +21,12 @@ ExercismTest class >> createExerciseAfter: anotherTestCase [
 	^ ExercismExercise for: self
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ExercismTest class >> customData [
 	^{}
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ExercismTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise
 	e.g.
@@ -40,36 +42,36 @@ ExercismTest class >> exercise [
 				
 ]
 
-{ #category : #generator }
+{ #category : 'generator' }
 ExercismTest class >> generator [
 	"Answer code generator aliases/hints"
 	
 	^{}
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ExercismTest class >> isActive [
 	"Answer true if an exercise is active (not deprecated or for testing)"
 	
 	^true
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ExercismTest class >> isCustom [
 	^self customData notEmpty
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismTest class >> solutionId [
 	^ solutionId ifNil: [ ExSolutionIdError signal: 'Missing exercise solutionId' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismTest class >> solutionId: anObject [
 	solutionId := anObject
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ExercismTest class >> uuid [
 	"Answer a fixed String, the unique UUID for this exercise so the Exercism platform can identify it.
 	The id should be like: 'b5812b5e-2788-4ea6-b948-bfe54edeb0da' "
@@ -77,14 +79,14 @@ ExercismTest class >> uuid [
 	^self subclassResponsibility 
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ExercismTest class >> version [
 	"Answer the exercise version number string this test was derived from"
 	
 	^self subclassResponsibility  
 ]
 
-{ #category : #assertions }
+{ #category : 'assertions' }
 ExercismTest >> assert: aNumber closeEnoughTo: aNumber2 by: decimalPlaces [
 	"Assert that two numbers are the same when rounded to decimalPlaces places"
 
@@ -93,7 +95,7 @@ ExercismTest >> assert: aNumber closeEnoughTo: aNumber2 by: decimalPlaces [
 		equals: (aNumber2 asFloat round: decimalPlaces)
 ]
 
-{ #category : #verify }
+{ #category : 'verify' }
 ExercismTest >> verifySolution: aClass avoidsSelector: aSelector [
 	| badSelector |
  

@@ -1,1 +1,1 @@
-Package { #name : #ExercismTestRunnerTests }
+Package { #name : 'ExercismTestRunnerTests' }
