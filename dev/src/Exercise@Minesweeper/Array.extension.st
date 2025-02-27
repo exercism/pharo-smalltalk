@@ -1,6 +1,6 @@
-Extension { #name : #Array }
+Extension { #name : 'Array' }
 
-{ #category : #'*Exercise@Minesweeper' }
+{ #category : '*Exercise@Minesweeper' }
 Array >> mineAt: aPoint [
 	(aPoint y < 1 or: [ aPoint y > self size ])
 		ifTrue: [ ^ 0 ].

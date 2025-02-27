@@ -37,33 +37,35 @@ TBD
 
 "
 Class {
-	#name : #RotationalCipherTest,
-	#superclass : #ExercismTest,
+	#name : 'RotationalCipherTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'rotationalCipherCalculator'
 	],
-	#category : #'ExercismWIP-RotationalCipher'
+	#category : 'ExercismWIP-RotationalCipher',
+	#package : 'ExercismWIP',
+	#tag : 'RotationalCipher'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 RotationalCipherTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'8fcda02e-b043-0d00-9244-594802a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 RotationalCipherTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'1.2.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 RotationalCipherTest >> setUp [
 	super setUp.
 	rotationalCipherCalculator := RotationalCipher new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RotationalCipherTest >> test01_RotateABy0SameOutputAsInput [
 	| result |
 
@@ -71,7 +73,7 @@ RotationalCipherTest >> test01_RotateABy0SameOutputAsInput [
 	self assert: result equals: 'a'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RotationalCipherTest >> test02_RotateABy1 [
 	| result |
 
@@ -79,7 +81,7 @@ RotationalCipherTest >> test02_RotateABy1 [
 	self assert: result equals: 'b'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RotationalCipherTest >> test03_RotateABy26SameOutputAsInput [
 	| result |
 
@@ -87,7 +89,7 @@ RotationalCipherTest >> test03_RotateABy26SameOutputAsInput [
 	self assert: result equals: 'a'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RotationalCipherTest >> test04_RotateMBy13 [
 	| result |
 
@@ -95,7 +97,7 @@ RotationalCipherTest >> test04_RotateMBy13 [
 	self assert: result equals: 'z'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RotationalCipherTest >> test05_RotateNBy13WithWrapAroundAlphabet [
 	| result |
 
@@ -103,7 +105,7 @@ RotationalCipherTest >> test05_RotateNBy13WithWrapAroundAlphabet [
 	self assert: result equals: 'a'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RotationalCipherTest >> test06_RotateCapitalLetters [
 	| result |
 
@@ -111,7 +113,7 @@ RotationalCipherTest >> test06_RotateCapitalLetters [
 	self assert: result equals: 'TRL'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RotationalCipherTest >> test07_RotateSpaces [
 	| result |
 
@@ -119,7 +121,7 @@ RotationalCipherTest >> test07_RotateSpaces [
 	self assert: result equals: 'T R L'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RotationalCipherTest >> test08_RotateNumbers [
 	| result |
 
@@ -127,7 +129,7 @@ RotationalCipherTest >> test08_RotateNumbers [
 	self assert: result equals: 'Xiwxmrk 1 2 3 xiwxmrk'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RotationalCipherTest >> test09_RotatePunctuation [
 	| result |
 
@@ -135,7 +137,7 @@ RotationalCipherTest >> test09_RotatePunctuation [
 	self assert: result equals: 'Gzo''n zvo, Bmviyhv!'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RotationalCipherTest >> test10_RotateAllLetters [
 	| result |
 

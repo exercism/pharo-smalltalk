@@ -65,33 +65,35 @@ TBD
 
 "
 Class {
-	#name : #TransposeTest,
-	#superclass : #ExercismTest,
+	#name : 'TransposeTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'transposeCalculator'
 	],
-	#category : #'ExercismWIP-Transpose'
+	#category : 'ExercismWIP-Transpose',
+	#package : 'ExercismWIP',
+	#tag : 'Transpose'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 TransposeTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'74e3c916-9d41-0d00-8fe6-f8c308866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 TransposeTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 TransposeTest >> setUp [
 	super setUp.
 	transposeCalculator := Transpose new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TransposeTest >> test01_EmptyString [
 	| result |
 
@@ -99,7 +101,7 @@ TransposeTest >> test01_EmptyString [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TransposeTest >> test02_TwoCharactersInARow [
 	| result |
 
@@ -107,7 +109,7 @@ TransposeTest >> test02_TwoCharactersInARow [
 	self assert: result equals: #('A' '1' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TransposeTest >> test03_TwoCharactersInAColumn [
 	| result |
 
@@ -115,7 +117,7 @@ TransposeTest >> test03_TwoCharactersInAColumn [
 	self assert: result equals: #('A1' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TransposeTest >> test04_Simple [
 	| result |
 
@@ -123,7 +125,7 @@ TransposeTest >> test04_Simple [
 	self assert: result equals: #('A1' 'B2' 'C3' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TransposeTest >> test05_SingleLine [
 	| result |
 
@@ -131,7 +133,7 @@ TransposeTest >> test05_SingleLine [
 	self assert: result equals: #('S' 'i' 'n' 'g' 'l' 'e' ' ' 'l' 'i' 'n' 'e' '.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TransposeTest >> test06_FirstLineLongerThanSecondLine [
 	| result |
 
@@ -139,7 +141,7 @@ TransposeTest >> test06_FirstLineLongerThanSecondLine [
 	self assert: result equals: #('TT' 'hh' 'ee' '  ' 'ff' 'oi' 'uf' 'rt' 'th' 'h ' ' l' 'li' 'in' 'ne' 'e.' '.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TransposeTest >> test07_SecondLineLongerThanFirstLine [
 	| result |
 
@@ -147,7 +149,7 @@ TransposeTest >> test07_SecondLineLongerThanFirstLine [
 	self assert: result equals: #('TT' 'hh' 'ee' '  ' 'fs' 'ie' 'rc' 'so' 'tn' ' d' 'l ' 'il' 'ni' 'en' '.e' ' .' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TransposeTest >> test08_MixedLineLength [
 	| result |
 
@@ -155,7 +157,7 @@ TransposeTest >> test08_MixedLineLength [
 	self assert: result equals: #('TAAA' 'h   ' 'elll' ' ooi' 'lnnn' 'ogge' 'n e.' 'glr' 'ei ' 'snl' 'tei' ' .n' 'l e' 'i .' 'n' 'e' '.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TransposeTest >> test09_Square [
 	| result |
 
@@ -163,7 +165,7 @@ TransposeTest >> test09_Square [
 	self assert: result equals: #('HEART' 'EMBER' 'ABUSE' 'RESIN' 'TREND' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TransposeTest >> test10_Rectangle [
 	| result |
 
@@ -171,7 +173,7 @@ TransposeTest >> test10_Rectangle [
 	self assert: result equals: #('FOBS' 'RULE' 'ATOP' 'CLOT' 'TIME' 'UNIT' 'RENT' 'EDGE' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TransposeTest >> test11_Triangle [
 	| result |
 

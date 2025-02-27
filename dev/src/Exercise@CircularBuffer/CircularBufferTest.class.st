@@ -49,15 +49,16 @@ For error cases during operations, see Error class hierarchy (class side) to fin
 
 "
 Class {
-	#name : #CircularBufferTest,
-	#superclass : #ExercismTest,
+	#name : 'CircularBufferTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'circularBufferCalculator'
 	],
-	#category : #'Exercise@CircularBuffer'
+	#category : 'Exercise@CircularBuffer',
+	#package : 'Exercise@CircularBuffer'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 CircularBufferTest class >> exercise [
 
 	^(ExercismExercise for: self)
@@ -66,25 +67,25 @@ CircularBufferTest class >> exercise [
 		yourself
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 CircularBufferTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'158d4bc4-1002-4612-bdaf-5aa711a4f9a4'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 CircularBufferTest class >> version [
 	"Generated from specification: 7 September 2023"
 	^'Not specified'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 CircularBufferTest >> setUp [
 	super setUp.
 	circularBufferCalculator := CircularBuffer new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CircularBufferTest >> test01_ReadingEmptyBufferShouldFail [
 	"Tip: Remember to review the class [Comment] tab"
 
@@ -94,7 +95,7 @@ CircularBufferTest >> test01_ReadingEmptyBufferShouldFail [
 	self should: [circularBufferCalculator read] raise: Error.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CircularBufferTest >> test02_CanReadAnItemJustWritten [
 
 	<exeTestName: 'can read an item just written'>
@@ -106,7 +107,7 @@ CircularBufferTest >> test02_CanReadAnItemJustWritten [
 	self assert: result equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CircularBufferTest >> test03_EachItemMayOnlyBeReadOnce [
 
 	<exeTestName: 'each item may only be read once'>
@@ -119,7 +120,7 @@ CircularBufferTest >> test03_EachItemMayOnlyBeReadOnce [
 	self should: [circularBufferCalculator read] raise: Error
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CircularBufferTest >> test04_ItemsAreReadInTheOrderTheyAreWritten [
 
 	<exeTestName: 'items are read in the order they are written'>
@@ -137,7 +138,7 @@ CircularBufferTest >> test04_ItemsAreReadInTheOrderTheyAreWritten [
 	self assert: result equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CircularBufferTest >> test05_FullBufferCantBeWrittenTo [
 
 	<exeTestName: 'full buffer can''t be written to'>
@@ -148,7 +149,7 @@ CircularBufferTest >> test05_FullBufferCantBeWrittenTo [
 	self should: [ circularBufferCalculator write: 2 ] raise: Error
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CircularBufferTest >> test06_AReadFreesUpCapacityForAnotherWrite [
 
 	<exeTestName: 'a read frees up capacity for another write'>
@@ -165,7 +166,7 @@ CircularBufferTest >> test06_AReadFreesUpCapacityForAnotherWrite [
 	self assert: result equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CircularBufferTest >> test07_ReadPositionIsMaintainedEvenAcrossMultipleWrites [
 
 	<exeTestName: 'read position is maintained even across multiple writes'>
@@ -188,7 +189,7 @@ CircularBufferTest >> test07_ReadPositionIsMaintainedEvenAcrossMultipleWrites [
 	self assert: result equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CircularBufferTest >> test08_ItemsClearedOutOfBufferCantBeRead [
 
 	<exeTestName: 'items cleared out of buffer can''t be read'>
@@ -201,7 +202,7 @@ CircularBufferTest >> test08_ItemsClearedOutOfBufferCantBeRead [
 	self should: [ circularBufferCalculator read ] raise: Error
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CircularBufferTest >> test09_ClearFreesUpCapacityForAnotherWrite [
 
 	<exeTestName: 'clear frees up capacity for another write'>
@@ -218,7 +219,7 @@ CircularBufferTest >> test09_ClearFreesUpCapacityForAnotherWrite [
 	self assert: result equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CircularBufferTest >> test10_ClearDoesNothingOnEmptyBuffer [
 
 	<exeTestName: 'clear does nothing on empty buffer'>
@@ -233,7 +234,7 @@ CircularBufferTest >> test10_ClearDoesNothingOnEmptyBuffer [
 	self assert: result equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CircularBufferTest >> test11_OverwriteActsLikeWriteOnNonfullBuffer [
 
 	<exeTestName: 'overwrite acts like write on non-full buffer'>
@@ -250,7 +251,7 @@ CircularBufferTest >> test11_OverwriteActsLikeWriteOnNonfullBuffer [
 	self assert: result equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CircularBufferTest >> test12_OverwriteReplacesTheOldestItemOnFullBuffer [
 
 	<exeTestName: 'overwrite replaces the oldest item on full buffer'>
@@ -269,7 +270,7 @@ CircularBufferTest >> test12_OverwriteReplacesTheOldestItemOnFullBuffer [
 	self assert: result equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CircularBufferTest >> test13_OverwriteReplacesTheOldestItemRemainingInBufferFollowingARead [
 
 	<exeTestName: 'overwrite replaces the oldest item remaining in buffer following a read'>
@@ -298,7 +299,7 @@ CircularBufferTest >> test13_OverwriteReplacesTheOldestItemRemainingInBufferFoll
 	self assert: result equals: 5
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CircularBufferTest >> test14_InitialClearDoesNotAffectWrappingAround [
 
 	<exeTestName: 'initial clear does not affect wrapping around'>

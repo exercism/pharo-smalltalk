@@ -6,17 +6,18 @@ These aren't meant to be automated, but give a smoke example to try out all the 
 Run these if you suspect that Exercism has changed its protocol in some way.
 "
 Class {
-	#name : #ExercismHttpClientTest,
-	#superclass : #TestCase,
-	#category : #ExercismSystemTests
+	#name : 'ExercismHttpClientTest',
+	#superclass : 'TestCase',
+	#category : 'ExercismSystemTests',
+	#package : 'ExercismSystemTests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 ExercismHttpClientTest >> setUp [
 	ExercismHttpClient hasToken ifFalse: [ ExercismHttpClient promptForToken ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismHttpClientTest >> testGenericGet [
 	| client response |
 	client := ExercismHttpClient newHost: 'duckduckgo.co.uk'.
@@ -29,7 +30,7 @@ ExercismHttpClientTest >> testGenericGet [
 		description: 'could not find ''pharo.org'' in the response from duckduckgo.co.uk'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismHttpClientTest >> testSolutionGet [
 	"Test against Exercism and ensuring the result format is as expected"
 
@@ -55,7 +56,7 @@ ExercismHttpClientTest >> testSolutionGet [
 		
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExercismHttpClientTest >> testSolutionPatch [
 	"Test against Exercism and submit a solution: WARNING - this destroys your hello world test."
 
@@ -77,7 +78,7 @@ ExercismHttpClientTest >> testSolutionPatch [
 		
 ]
 
-{ #category : #'tests-unit' }
+{ #category : 'tests-unit' }
 ExercismHttpClientTest >> testSolutionPathFor [
 	"A unit test for ensuring the resource path is cleaned up safely"
 	

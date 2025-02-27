@@ -2,15 +2,16 @@
 I model the Grade School problem, by holding Students as an Association in a sorted list. Note: in this implementation I haven't bothered  using any accessor methods and have kept everything strictly private, as well as answering copies of the internal data.
 "
 Class {
-	#name : #GradeSchool,
-	#superclass : #Object,
+	#name : 'GradeSchool',
+	#superclass : 'Object',
 	#instVars : [
 		'students'
 	],
-	#category : #'Exercise@GradeSchool'
+	#category : 'Exercise@GradeSchool',
+	#package : 'Exercise@GradeSchool'
 }
 
-{ #category : #helper }
+{ #category : 'helper' }
 GradeSchool >> addAllStudents: aCollection [
 	"Internal - keep the students in a sorted list, specified by a sortBlock"
 	
@@ -26,17 +27,17 @@ GradeSchool >> addAllStudents: aCollection [
 	^ students
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 GradeSchool >> addName: nameString grade: gradeInteger [ 
 	students add: nameString->gradeInteger
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 GradeSchool >> addStudents: aCollection [
 	^ self formatResult: (self addAllStudents: aCollection)
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 GradeSchool >> desiredGrade: gradeInteger [
 	"Answer the Collection of students filtered by grade, alphabetically"
 	
@@ -45,12 +46,12 @@ GradeSchool >> desiredGrade: gradeInteger [
 			(students select: [ :studentData | studentData value = gradeInteger ])
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 GradeSchool >> formatResult: aCollection [
 	^ (aCollection collect: [ :studentData | studentData key ]) asArray
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 GradeSchool >> roster [
 	"Answer the Collection of student names, sorted by grade, alphabetically"
 	

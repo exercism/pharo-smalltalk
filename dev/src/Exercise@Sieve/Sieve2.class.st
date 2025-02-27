@@ -1,10 +1,12 @@
 Class {
-	#name : #Sieve2,
-	#superclass : #Object,
-	#category : #'Exercise@Sieve-Solution2'
+	#name : 'Sieve2',
+	#superclass : 'Object',
+	#category : 'Exercise@Sieve-Solution2',
+	#package : 'Exercise@Sieve',
+	#tag : 'Solution2'
 }
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 Sieve2 >> primesLimit: anInteger [ 
   | primes marks |
 primes := Stack new.

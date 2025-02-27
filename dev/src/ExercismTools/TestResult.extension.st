@@ -1,6 +1,6 @@
-Extension { #name : #TestResult }
+Extension { #name : 'TestResult' }
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 TestResult >> exercismEnvironmentInfoOn: aStream [
 
 	aStream 
@@ -23,7 +23,7 @@ TestResult >> exercismEnvironmentInfoOn: aStream [
 		 
 ]
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 TestResult >> exercismSummary [
 	^String streamContents: [ :s | s 
 		nextPutAll: 'Tested on: ';

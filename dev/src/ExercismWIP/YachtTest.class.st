@@ -43,33 +43,35 @@ TBD
 
 "
 Class {
-	#name : #YachtTest,
-	#superclass : #ExercismTest,
+	#name : 'YachtTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'yachtCalculator'
 	],
-	#category : #'ExercismWIP-Yacht'
+	#category : 'ExercismWIP-Yacht',
+	#package : 'ExercismWIP',
+	#tag : 'Yacht'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 YachtTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'af6fc316-9d41-0d00-8fe0-bca408866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 YachtTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 YachtTest >> setUp [
 	super setUp.
 	yachtCalculator := Yacht new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test01_Yacht [
 	| result |
 
@@ -77,7 +79,7 @@ YachtTest >> test01_Yacht [
 	self assert: result equals: 50
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test02_NotYacht [
 	| result |
 
@@ -85,7 +87,7 @@ YachtTest >> test02_NotYacht [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test03_Ones [
 	| result |
 
@@ -93,7 +95,7 @@ YachtTest >> test03_Ones [
 	self assert: result equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test04_OnesOutOfOrder [
 	| result |
 
@@ -101,7 +103,7 @@ YachtTest >> test04_OnesOutOfOrder [
 	self assert: result equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test05_NoOnes [
 	| result |
 
@@ -109,7 +111,7 @@ YachtTest >> test05_NoOnes [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test06_Twos [
 	| result |
 
@@ -117,7 +119,7 @@ YachtTest >> test06_Twos [
 	self assert: result equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test07_Fours [
 	| result |
 
@@ -125,7 +127,7 @@ YachtTest >> test07_Fours [
 	self assert: result equals: 8
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test08_YachtCountedAsThrees [
 	| result |
 
@@ -133,7 +135,7 @@ YachtTest >> test08_YachtCountedAsThrees [
 	self assert: result equals: 15
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test09_YachtOf3sCountedAsFives [
 	| result |
 
@@ -141,7 +143,7 @@ YachtTest >> test09_YachtOf3sCountedAsFives [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test10_Sixes [
 	| result |
 
@@ -149,7 +151,7 @@ YachtTest >> test10_Sixes [
 	self assert: result equals: 6
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test11_FullHouseTwoSmallThreeBig [
 	| result |
 
@@ -157,7 +159,7 @@ YachtTest >> test11_FullHouseTwoSmallThreeBig [
 	self assert: result equals: 16
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test12_FullHouseThreeSmallTwoBig [
 	| result |
 
@@ -165,7 +167,7 @@ YachtTest >> test12_FullHouseThreeSmallTwoBig [
 	self assert: result equals: 19
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test13_TwoPairIsNotAFullHouse [
 	| result |
 
@@ -173,7 +175,7 @@ YachtTest >> test13_TwoPairIsNotAFullHouse [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test14_FourOfAKindIsNotAFullHouse [
 	| result |
 
@@ -181,7 +183,7 @@ YachtTest >> test14_FourOfAKindIsNotAFullHouse [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test15_YachtIsNotAFullHouse [
 	| result |
 
@@ -189,7 +191,7 @@ YachtTest >> test15_YachtIsNotAFullHouse [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test16_FourOfAKind [
 	| result |
 
@@ -197,7 +199,7 @@ YachtTest >> test16_FourOfAKind [
 	self assert: result equals: 24
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test17_YachtCanBeScoredAsFourOfAKind [
 	| result |
 
@@ -205,7 +207,7 @@ YachtTest >> test17_YachtCanBeScoredAsFourOfAKind [
 	self assert: result equals: 12
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test18_FullHouseIsNotFourOfAKind [
 	| result |
 
@@ -213,7 +215,7 @@ YachtTest >> test18_FullHouseIsNotFourOfAKind [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test19_LittleStraight [
 	| result |
 
@@ -221,7 +223,7 @@ YachtTest >> test19_LittleStraight [
 	self assert: result equals: 30
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test20_LittleStraightAsBigStraight [
 	| result |
 
@@ -229,7 +231,7 @@ YachtTest >> test20_LittleStraightAsBigStraight [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test21_FourInOrderButNotALittleStraight [
 	| result |
 
@@ -237,7 +239,7 @@ YachtTest >> test21_FourInOrderButNotALittleStraight [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test22_NoPairsButNotALittleStraight [
 	| result |
 
@@ -245,7 +247,7 @@ YachtTest >> test22_NoPairsButNotALittleStraight [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test23_MinimumIs1MaximumIs5ButNotALittleStraight [
 	| result |
 
@@ -253,7 +255,7 @@ YachtTest >> test23_MinimumIs1MaximumIs5ButNotALittleStraight [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test24_BigStraight [
 	| result |
 
@@ -261,7 +263,7 @@ YachtTest >> test24_BigStraight [
 	self assert: result equals: 30
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test25_BigStraightAsLittleStraight [
 	| result |
 
@@ -269,7 +271,7 @@ YachtTest >> test25_BigStraightAsLittleStraight [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test26_Choice [
 	| result |
 
@@ -277,7 +279,7 @@ YachtTest >> test26_Choice [
 	self assert: result equals: 23
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 YachtTest >> test27_YachtAsChoice [
 	| result |
 

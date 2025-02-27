@@ -1,10 +1,11 @@
 Class {
-	#name : #ExampleSyntaxErrorTest,
-	#superclass : #ExercismTest,
-	#category : #'Exercise@ExampleSyntaxError'
+	#name : 'ExampleSyntaxErrorTest',
+	#superclass : 'ExercismTest',
+	#category : 'Exercise@ExampleSyntaxError',
+	#package : 'Exercise@ExampleSyntaxError'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 ExampleSyntaxErrorTest class >> exampleSolutionSourceCode [
 
 	^ 'Class {
@@ -30,7 +31,7 @@ ExampleSyntaxError >> exerciseMethodC [
 '
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExampleSyntaxErrorTest class >> exampleTestCasesSourceCode [
 
 	^ 'Class {
@@ -56,7 +57,7 @@ ExampleSyntaxErrorTest >> testExerciseMethodC [
 '
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ExampleSyntaxErrorTest class >> exercise [
 	^ (self createExerciseAfter: HelloWorldTest)
 		isCore: true;

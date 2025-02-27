@@ -2,28 +2,30 @@
 I am the command for dowloading an exercise and installing it in the image
 "
 Class {
-	#name : #ExercismDownloadCommand,
-	#superclass : #ExercismFetchCommand,
+	#name : 'ExercismDownloadCommand',
+	#superclass : 'ExercismFetchCommand',
 	#instVars : [
 		'exerciseId',
 		'trackName'
 	],
-	#category : #'ExercismTools-Core'
+	#category : 'ExercismTools-Core',
+	#package : 'ExercismTools',
+	#tag : 'Core'
 }
 
-{ #category : #command }
+{ #category : 'command' }
 ExercismDownloadCommand class >> from: aClient track: trackId exercise: exerciseId [
 	^(self client: aClient)
 		track: trackId exercise: exerciseId;
 		yourself
 ]
 
-{ #category : #command }
+{ #category : 'command' }
 ExercismDownloadCommand class >> track: trackId exercise: exerciseId [
 	^ self from: ExercismHttpClient new track: trackId exercise: exerciseId
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ExercismDownloadCommand >> execute [
 	^ self
 		executeCheckingToken: [ | submission |
@@ -36,7 +38,7 @@ ExercismDownloadCommand >> execute [
 			submission ]
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismDownloadCommand >> installExerciseFor: submission [
 	
 	"submission will put sources to memory directory and load definitions from snapshot"
@@ -47,7 +49,7 @@ ExercismDownloadCommand >> installExerciseFor: submission [
 	
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismDownloadCommand >> retrieveLatestData [
 	| responseString |
 		
@@ -55,7 +57,7 @@ ExercismDownloadCommand >> retrieveLatestData [
 	^ STON fromString: responseString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismDownloadCommand >> track: aStringTrackName exercise: aStringExerciseId [
 	trackName := aStringTrackName.
 	exerciseId := aStringExerciseId asKebabCase.

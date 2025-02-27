@@ -2,17 +2,18 @@
 This solution uses inject:into: to sum the runnning interval, as well as extracting the multiples test to a seperate method for clarity
 "
 Class {
-	#name : #SumOfMultiples,
-	#superclass : #Object,
-	#category : #'Exercise@SumOfMultiples'
+	#name : 'SumOfMultiples',
+	#superclass : 'Object',
+	#category : 'Exercise@SumOfMultiples',
+	#package : 'Exercise@SumOfMultiples'
 }
 
-{ #category : #internal }
+{ #category : 'internal' }
 SumOfMultiples >> anyMultiplesOf: aNumber in: aCollection [
 	^ aCollection anySatisfy: [ :multiple | aNumber isDivisibleBy: multiple ]
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 SumOfMultiples >> sumFactors: aCollection limit: anInteger [
 	
 	^ (1 to: anInteger - 1)

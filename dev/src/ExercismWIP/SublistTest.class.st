@@ -24,33 +24,35 @@ TBD
 
 "
 Class {
-	#name : #SublistTest,
-	#superclass : #ExercismTest,
+	#name : 'SublistTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'sublistCalculator'
 	],
-	#category : #'ExercismWIP-Sublist'
+	#category : 'ExercismWIP-Sublist',
+	#package : 'ExercismWIP',
+	#tag : 'Sublist'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 SublistTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'de97f516-9d41-0d00-9004-a58f08866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 SublistTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 SublistTest >> setUp [
 	super setUp.
 	sublistCalculator := Sublist new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SublistTest >> test01_EmptyLists [
 	| result |
 
@@ -58,7 +60,7 @@ SublistTest >> test01_EmptyLists [
 	self assert: result equals: 'equal'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SublistTest >> test02_EmptyListWithinNonEmptyList [
 	| result |
 
@@ -66,7 +68,7 @@ SublistTest >> test02_EmptyListWithinNonEmptyList [
 	self assert: result equals: 'sublist'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SublistTest >> test03_NonEmptyListContainsEmptyList [
 	| result |
 
@@ -74,7 +76,7 @@ SublistTest >> test03_NonEmptyListContainsEmptyList [
 	self assert: result equals: 'superlist'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SublistTest >> test04_ListEqualsItself [
 	| result |
 
@@ -82,7 +84,7 @@ SublistTest >> test04_ListEqualsItself [
 	self assert: result equals: 'equal'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SublistTest >> test05_DifferentLists [
 	| result |
 
@@ -90,7 +92,7 @@ SublistTest >> test05_DifferentLists [
 	self assert: result equals: 'unequal'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SublistTest >> test06_FalseStart [
 	| result |
 
@@ -98,7 +100,7 @@ SublistTest >> test06_FalseStart [
 	self assert: result equals: 'sublist'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SublistTest >> test07_Consecutive [
 	| result |
 
@@ -106,7 +108,7 @@ SublistTest >> test07_Consecutive [
 	self assert: result equals: 'sublist'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SublistTest >> test08_SublistAtStart [
 	| result |
 
@@ -114,7 +116,7 @@ SublistTest >> test08_SublistAtStart [
 	self assert: result equals: 'sublist'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SublistTest >> test09_SublistInMiddle [
 	| result |
 
@@ -122,7 +124,7 @@ SublistTest >> test09_SublistInMiddle [
 	self assert: result equals: 'sublist'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SublistTest >> test10_SublistAtEnd [
 	| result |
 
@@ -130,7 +132,7 @@ SublistTest >> test10_SublistAtEnd [
 	self assert: result equals: 'sublist'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SublistTest >> test11_AtStartOfSuperlist [
 	| result |
 
@@ -138,7 +140,7 @@ SublistTest >> test11_AtStartOfSuperlist [
 	self assert: result equals: 'superlist'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SublistTest >> test12_InMiddleOfSuperlist [
 	| result |
 
@@ -146,7 +148,7 @@ SublistTest >> test12_InMiddleOfSuperlist [
 	self assert: result equals: 'superlist'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SublistTest >> test13_AtEndOfSuperlist [
 	| result |
 
@@ -154,7 +156,7 @@ SublistTest >> test13_AtEndOfSuperlist [
 	self assert: result equals: 'superlist'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SublistTest >> test14_FirstListMissingElementFromSecondList [
 	| result |
 
@@ -162,7 +164,7 @@ SublistTest >> test14_FirstListMissingElementFromSecondList [
 	self assert: result equals: 'unequal'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SublistTest >> test15_SecondListMissingElementFromFirstList [
 	| result |
 
@@ -170,7 +172,7 @@ SublistTest >> test15_SecondListMissingElementFromFirstList [
 	self assert: result equals: 'unequal'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SublistTest >> test16_OrderMattersToAList [
 	| result |
 
@@ -178,7 +180,7 @@ SublistTest >> test16_OrderMattersToAList [
 	self assert: result equals: 'unequal'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SublistTest >> test17_SameDigitsButDifferentNumbers [
 	| result |
 

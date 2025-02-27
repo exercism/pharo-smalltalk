@@ -1,6 +1,6 @@
-Extension { #name : #ExercismTest }
+Extension { #name : 'ExercismTest' }
 
-{ #category : #'*ExercismTestRunner' }
+{ #category : '*ExercismTestRunner' }
 ExercismTest >> exercismTestResultInfo [
 
 	|testResultDict|
@@ -16,7 +16,7 @@ ExercismTest >> exercismTestResultInfo [
 	^ testResultDict 
 ]
 
-{ #category : #'*ExercismTestRunner' }
+{ #category : '*ExercismTestRunner' }
 ExercismTest >> humanReadableName [
 
 	| readName |
@@ -26,7 +26,7 @@ ExercismTest >> humanReadableName [
 	^ readName asSentenceCase trim capitalized
 ]
 
-{ #category : #'*ExercismTestRunner' }
+{ #category : '*ExercismTestRunner' }
 ExercismTest >> resultDebugInfo [
 
 	| writeStream |
@@ -56,7 +56,7 @@ ExercismTest >> resultDebugInfo [
 		^ writeStream contents withUnixLineEndings
 ]
 
-{ #category : #'*ExercismTestRunner' }
+{ #category : '*ExercismTestRunner' }
 ExercismTest >> resultMessage [
 	|errMessageStream|
 	errMessageStream := WriteStream on: ''.
@@ -74,13 +74,13 @@ ExercismTest >> resultMessage [
 	^ errMessageStream contents
 ]
 
-{ #category : #'*ExercismTestRunner' }
+{ #category : '*ExercismTestRunner' }
 ExercismTest >> sourceCodeString [
 	"using LF lineending since it will be bumped to json format"
 	^ (self class compiledMethodAt: self selector) sourceCode withUnixLineEndings
 ]
 
-{ #category : #'*ExercismTestRunner' }
+{ #category : '*ExercismTestRunner' }
 ExercismTest >> statusString [ 
 
 	(self class methodPassed: self selector) ifTrue: [^ 'pass'].

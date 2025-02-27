@@ -35,33 +35,35 @@ TBD
 
 "
 Class {
-	#name : #ComplexNumbersTest,
-	#superclass : #ExercismTest,
+	#name : 'ComplexNumbersTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'complexNumbersCalculator'
 	],
-	#category : #'ExercismWIP-ComplexNumbers'
+	#category : 'ExercismWIP-ComplexNumbers',
+	#package : 'ExercismWIP',
+	#tag : 'ComplexNumbers'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 ComplexNumbersTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'828ee816-9d41-0d00-8ffd-5b4108866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ComplexNumbersTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.3.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 ComplexNumbersTest >> setUp [
 	super setUp.
 	complexNumbersCalculator := ComplexNumbers new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test01_RealPartRealPartOfAPurelyRealNumber [
 	| result |
 
@@ -69,7 +71,7 @@ ComplexNumbersTest >> test01_RealPartRealPartOfAPurelyRealNumber [
 	self assert: result equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test02_RealPartRealPartOfAPurelyImaginaryNumber [
 	| result |
 
@@ -77,7 +79,7 @@ ComplexNumbersTest >> test02_RealPartRealPartOfAPurelyImaginaryNumber [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test03_RealPartRealPartOfANumberWithRealAndImaginaryPart [
 	| result |
 
@@ -85,7 +87,7 @@ ComplexNumbersTest >> test03_RealPartRealPartOfANumberWithRealAndImaginaryPart [
 	self assert: result equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test04_ImaginaryPartImaginaryPartOfAPurelyRealNumber [
 	| result |
 
@@ -93,7 +95,7 @@ ComplexNumbersTest >> test04_ImaginaryPartImaginaryPartOfAPurelyRealNumber [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test05_ImaginaryPartImaginaryPartOfAPurelyImaginaryNumber [
 	| result |
 
@@ -101,7 +103,7 @@ ComplexNumbersTest >> test05_ImaginaryPartImaginaryPartOfAPurelyImaginaryNumber 
 	self assert: result equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test06_ImaginaryPartImaginaryPartOfANumberWithRealAndImaginaryPart [
 	| result |
 
@@ -109,7 +111,7 @@ ComplexNumbersTest >> test06_ImaginaryPartImaginaryPartOfANumberWithRealAndImagi
 	self assert: result equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test07_ImaginaryUnit [
 	| result |
 
@@ -117,7 +119,7 @@ ComplexNumbersTest >> test07_ImaginaryUnit [
 	self assert: result equals: #( -1 0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test08_ArithmeticAdditionAddPurelyRealNumbers [
 	| result |
 
@@ -125,7 +127,7 @@ ComplexNumbersTest >> test08_ArithmeticAdditionAddPurelyRealNumbers [
 	self assert: result equals: #(3 0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test09_ArithmeticAdditionAddPurelyImaginaryNumbers [
 	| result |
 
@@ -133,7 +135,7 @@ ComplexNumbersTest >> test09_ArithmeticAdditionAddPurelyImaginaryNumbers [
 	self assert: result equals: #(0 3 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test10_ArithmeticAdditionAddNumbersWithRealAndImaginaryPart [
 	| result |
 
@@ -141,7 +143,7 @@ ComplexNumbersTest >> test10_ArithmeticAdditionAddNumbersWithRealAndImaginaryPar
 	self assert: result equals: #(4 6 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test11_ArithmeticSubtractionSubtractPurelyRealNumbers [
 	| result |
 
@@ -149,7 +151,7 @@ ComplexNumbersTest >> test11_ArithmeticSubtractionSubtractPurelyRealNumbers [
 	self assert: result equals: #( -1 0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test12_ArithmeticSubtractionSubtractPurelyImaginaryNumbers [
 	| result |
 
@@ -157,7 +159,7 @@ ComplexNumbersTest >> test12_ArithmeticSubtractionSubtractPurelyImaginaryNumbers
 	self assert: result equals: #(0  -1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test13_ArithmeticSubtractionSubtractNumbersWithRealAndImaginaryPart [
 	| result |
 
@@ -165,7 +167,7 @@ ComplexNumbersTest >> test13_ArithmeticSubtractionSubtractNumbersWithRealAndImag
 	self assert: result equals: #( -2  -2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test14_ArithmeticMultiplicationMultiplyPurelyRealNumbers [
 	| result |
 
@@ -173,7 +175,7 @@ ComplexNumbersTest >> test14_ArithmeticMultiplicationMultiplyPurelyRealNumbers [
 	self assert: result equals: #(2 0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test15_ArithmeticMultiplicationMultiplyPurelyImaginaryNumbers [
 	| result |
 
@@ -181,7 +183,7 @@ ComplexNumbersTest >> test15_ArithmeticMultiplicationMultiplyPurelyImaginaryNumb
 	self assert: result equals: #( -2 0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test16_ArithmeticMultiplicationMultiplyNumbersWithRealAndImaginaryPart [
 	| result |
 
@@ -189,7 +191,7 @@ ComplexNumbersTest >> test16_ArithmeticMultiplicationMultiplyNumbersWithRealAndI
 	self assert: result equals: #( -5 10 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test17_ArithmeticDivisionDividePurelyRealNumbers [
 	| result |
 
@@ -197,7 +199,7 @@ ComplexNumbersTest >> test17_ArithmeticDivisionDividePurelyRealNumbers [
 	self assert: result equals: #(0.5 0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test18_ArithmeticDivisionDividePurelyImaginaryNumbers [
 	| result |
 
@@ -205,7 +207,7 @@ ComplexNumbersTest >> test18_ArithmeticDivisionDividePurelyImaginaryNumbers [
 	self assert: result equals: #(0.5 0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test19_ArithmeticDivisionDivideNumbersWithRealAndImaginaryPart [
 	| result |
 
@@ -213,7 +215,7 @@ ComplexNumbersTest >> test19_ArithmeticDivisionDivideNumbersWithRealAndImaginary
 	self assert: result equals: #(0.44 0.08 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test20_AbsoluteValueAbsoluteValueOfAPositivePurelyRealNumber [
 	| result |
 
@@ -221,7 +223,7 @@ ComplexNumbersTest >> test20_AbsoluteValueAbsoluteValueOfAPositivePurelyRealNumb
 	self assert: result equals: 5
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test21_AbsoluteValueAbsoluteValueOfANegativePurelyRealNumber [
 	| result |
 
@@ -229,7 +231,7 @@ ComplexNumbersTest >> test21_AbsoluteValueAbsoluteValueOfANegativePurelyRealNumb
 	self assert: result equals: 5
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test22_AbsoluteValueAbsoluteValueOfAPurelyImaginaryNumberWithPositiveImaginaryPart [
 	| result |
 
@@ -237,7 +239,7 @@ ComplexNumbersTest >> test22_AbsoluteValueAbsoluteValueOfAPurelyImaginaryNumberW
 	self assert: result equals: 5
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test23_AbsoluteValueAbsoluteValueOfAPurelyImaginaryNumberWithNegativeImaginaryPart [
 	| result |
 
@@ -245,7 +247,7 @@ ComplexNumbersTest >> test23_AbsoluteValueAbsoluteValueOfAPurelyImaginaryNumberW
 	self assert: result equals: 5
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test24_AbsoluteValueAbsoluteValueOfANumberWithRealAndImaginaryPart [
 	| result |
 
@@ -253,7 +255,7 @@ ComplexNumbersTest >> test24_AbsoluteValueAbsoluteValueOfANumberWithRealAndImagi
 	self assert: result equals: 5
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test25_ComplexConjugateConjugateAPurelyRealNumber [
 	| result |
 
@@ -261,7 +263,7 @@ ComplexNumbersTest >> test25_ComplexConjugateConjugateAPurelyRealNumber [
 	self assert: result equals: #(5 0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test26_ComplexConjugateConjugateAPurelyImaginaryNumber [
 	| result |
 
@@ -269,7 +271,7 @@ ComplexNumbersTest >> test26_ComplexConjugateConjugateAPurelyImaginaryNumber [
 	self assert: result equals: #(0  -5 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test27_ComplexConjugateConjugateANumberWithRealAndImaginaryPart [
 	| result |
 
@@ -277,7 +279,7 @@ ComplexNumbersTest >> test27_ComplexConjugateConjugateANumberWithRealAndImaginar
 	self assert: result equals: #(1  -1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test28_ComplexExponentialFunctionEulersIdentityformula [
 	| result |
 
@@ -285,7 +287,7 @@ ComplexNumbersTest >> test28_ComplexExponentialFunctionEulersIdentityformula [
 	self assert: result equals: #( -1 0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test29_ComplexExponentialFunctionExponentialOf0 [
 	| result |
 
@@ -293,7 +295,7 @@ ComplexNumbersTest >> test29_ComplexExponentialFunctionExponentialOf0 [
 	self assert: result equals: #(1 0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test30_ComplexExponentialFunctionExponentialOfAPurelyRealNumber [
 	| result |
 
@@ -301,7 +303,7 @@ ComplexNumbersTest >> test30_ComplexExponentialFunctionExponentialOfAPurelyRealN
 	self assert: result equals: #('e' 0 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ComplexNumbersTest >> test31_ComplexExponentialFunctionExponentialOfANumberWithRealAndImaginaryPart [
 	| result |
 

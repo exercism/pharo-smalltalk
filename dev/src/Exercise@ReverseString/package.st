@@ -1,1 +1,1 @@
-Package { #name : #'Exercise@ReverseString' }
+Package { #name : 'Exercise@ReverseString' }

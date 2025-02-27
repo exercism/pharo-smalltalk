@@ -4,16 +4,17 @@ I represent commamand line interface of Exercism test runner interface. I can be
 - I inform about execution on command line standard output stream (stdout) or error stream (stderr).
 "
 Class {
-	#name : #ClapExercismTestRunner,
-	#superclass : #ClapApplication,
+	#name : 'ClapExercismTestRunner',
+	#superclass : 'ClapApplication',
 	#instVars : [
 		'outStream',
 		'errStream'
 	],
-	#category : #ExercismTestRunner
+	#category : 'ExercismTestRunner',
+	#package : 'ExercismTestRunner'
 }
 
-{ #category : #'command line' }
+{ #category : 'command line' }
 ClapExercismTestRunner class >> testRunnerCommand [
 	<commandline>
 	^ (ClapCommand id: #testExercise)
@@ -41,12 +42,12 @@ ClapExercismTestRunner class >> testRunnerCommand [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClapExercismTestRunner >> errStream [
 	^ errStream ifNil: [ errStream := VTermOutputDriver on: arguments context stderr]
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ClapExercismTestRunner >> execute [
 
 	[ 
@@ -72,22 +73,22 @@ ClapExercismTestRunner >> execute [
 		]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClapExercismTestRunner >> inputDir [
 	^ (arguments at: #input) value: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClapExercismTestRunner >> outStream [
 	^ outStream ifNil: [ outStream := VTermOutputDriver on: arguments context stdout ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClapExercismTestRunner >> outputDir [
 	^ (arguments at: #output) value: self
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ClapExercismTestRunner >> printInpuCmdLineArguments [
 
 	self outStream 
@@ -95,7 +96,7 @@ ClapExercismTestRunner >> printInpuCmdLineArguments [
 		nextPutAll: 	OSPlatform current lineEnding 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClapExercismTestRunner >> slugName [
 ^ (arguments at: #slug) value: self
 ]

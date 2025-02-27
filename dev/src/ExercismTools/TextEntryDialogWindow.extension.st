@@ -1,6 +1,6 @@
-Extension { #name : #TextEntryDialogWindow }
+Extension { #name : 'TextEntryDialogWindow' }
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 TextEntryDialogWindow >> formattedText: formattedText [
 	"Set the text."
 	"Derived from MessageDialogWindow>>text: but dont' clear any formating"
@@ -9,7 +9,7 @@ TextEntryDialogWindow >> formattedText: formattedText [
 	self textMorph newContents: formattedText
 ]
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 TextEntryDialogWindow >> newText: aStringOrText [
 	"Answer a new text."
 	"Overrides MessageDialog>>newText, but change from locked to disabled"

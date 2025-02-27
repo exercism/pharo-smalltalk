@@ -1,1 +1,1 @@
-Package { #name : #'Exercise@ExampleEmptySolutionFile' }
+Package { #name : 'Exercise@ExampleEmptySolutionFile' }

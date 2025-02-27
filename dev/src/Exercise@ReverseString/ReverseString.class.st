@@ -4,12 +4,13 @@ This solution shows a linear approach to solving the problem, but also has an ex
 
 "
 Class {
-	#name : #ReverseString,
-	#superclass : #Object,
-	#category : #'Exercise@ReverseString'
+	#name : 'ReverseString',
+	#superclass : 'Object',
+	#category : 'Exercise@ReverseString',
+	#package : 'Exercise@ReverseString'
 }
 
-{ #category : #alternative }
+{ #category : 'alternative' }
 ReverseString >> indexedReverse: aString [
 	| result offset |
 	result := String new: aString size.
@@ -18,14 +19,14 @@ ReverseString >> indexedReverse: aString [
 	^ result
 ]
 
-{ #category : #alternative }
+{ #category : 'alternative' }
 ReverseString >> recursiveReverse: aString [
 	^ aString size > 1
 		ifTrue: [ (self recursiveReverse: aString allButFirst) , (String with: aString first) ]
 		ifFalse: [ aString ]
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 ReverseString >> reverseValue: aString [
 
 	^ String streamContents: [ :stream |

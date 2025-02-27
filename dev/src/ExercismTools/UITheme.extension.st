@@ -1,6 +1,6 @@
-Extension { #name : #UITheme }
+Extension { #name : 'UITheme' }
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 UITheme >> newStaticTextIn: aThemedMorph text: aStringOrText [
 	"Answer a new text."
 	"Derived from newTextIn:text: - changed from locked to disabled"    
@@ -14,7 +14,7 @@ UITheme >> newStaticTextIn: aThemedMorph text: aStringOrText [
 		vResizing: #shrinkWrap
 ]
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 UITheme >> textEntryIn: aThemedMorph formattedText: formattedText title: aString entryText: defaultEntryText [
 	"Answer the result of a text entry dialog (a string or nil if cancelled)
 	with the given label and title."

@@ -327,33 +327,35 @@ TBD
 
 "
 Class {
-	#name : #BeerSongTest,
-	#superclass : #ExercismTest,
+	#name : 'BeerSongTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'beerSongCalculator'
 	],
-	#category : #'ExercismWIP-BeerSong'
+	#category : 'ExercismWIP-BeerSong',
+	#package : 'ExercismWIP',
+	#tag : 'BeerSong'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 BeerSongTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'ebedaf16-9d41-0d00-8fd1-f49208866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 BeerSongTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'2.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 BeerSongTest >> setUp [
 	super setUp.
 	beerSongCalculator := BeerSong new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BeerSongTest >> test01_VerseSingleVerseFirstGenericVerse [
 	| result |
 
@@ -361,7 +363,7 @@ BeerSongTest >> test01_VerseSingleVerseFirstGenericVerse [
 	self assert: result equals: #('99 bottles of beer on the wall, 99 bottles of beer.' 'Take one down and pass it around, 98 bottles of beer on the wall.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BeerSongTest >> test02_VerseSingleVerseLastGenericVerse [
 	| result |
 
@@ -369,7 +371,7 @@ BeerSongTest >> test02_VerseSingleVerseLastGenericVerse [
 	self assert: result equals: #('3 bottles of beer on the wall, 3 bottles of beer.' 'Take one down and pass it around, 2 bottles of beer on the wall.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BeerSongTest >> test03_VerseSingleVerseVerseWith2Bottles [
 	| result |
 
@@ -377,7 +379,7 @@ BeerSongTest >> test03_VerseSingleVerseVerseWith2Bottles [
 	self assert: result equals: #('2 bottles of beer on the wall, 2 bottles of beer.' 'Take one down and pass it around, 1 bottle of beer on the wall.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BeerSongTest >> test04_VerseSingleVerseVerseWith1Bottle [
 	| result |
 
@@ -385,7 +387,7 @@ BeerSongTest >> test04_VerseSingleVerseVerseWith1Bottle [
 	self assert: result equals: #('1 bottle of beer on the wall, 1 bottle of beer.' 'Take it down and pass it around, no more bottles of beer on the wall.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BeerSongTest >> test05_VerseSingleVerseVerseWith0Bottles [
 	| result |
 
@@ -393,7 +395,7 @@ BeerSongTest >> test05_VerseSingleVerseVerseWith0Bottles [
 	self assert: result equals: #('No more bottles of beer on the wall, no more bottles of beer.' 'Go to the store and buy some more, 99 bottles of beer on the wall.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BeerSongTest >> test06_LyricsMultipleVersesFirstTwoVerses [
 	| result |
 
@@ -401,7 +403,7 @@ BeerSongTest >> test06_LyricsMultipleVersesFirstTwoVerses [
 	self assert: result equals: #('99 bottles of beer on the wall, 99 bottles of beer.' 'Take one down and pass it around, 98 bottles of beer on the wall.' '' '98 bottles of beer on the wall, 98 bottles of beer.' 'Take one down and pass it around, 97 bottles of beer on the wall.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BeerSongTest >> test07_LyricsMultipleVersesLastThreeVerses [
 	| result |
 
@@ -409,7 +411,7 @@ BeerSongTest >> test07_LyricsMultipleVersesLastThreeVerses [
 	self assert: result equals: #('2 bottles of beer on the wall, 2 bottles of beer.' 'Take one down and pass it around, 1 bottle of beer on the wall.' '' '1 bottle of beer on the wall, 1 bottle of beer.' 'Take it down and pass it around, no more bottles of beer on the wall.' '' 'No more bottles of beer on the wall, no more bottles of beer.' 'Go to the store and buy some more, 99 bottles of beer on the wall.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BeerSongTest >> test08_LyricsMultipleVersesAllVerses [
 	| result |
 

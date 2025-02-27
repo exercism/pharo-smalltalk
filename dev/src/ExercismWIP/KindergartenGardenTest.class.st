@@ -66,33 +66,35 @@ TBD
 
 "
 Class {
-	#name : #KindergartenGardenTest,
-	#superclass : #ExercismTest,
+	#name : 'KindergartenGardenTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'kindergartenGardenCalculator'
 	],
-	#category : #'ExercismWIP-KindergartenGarden'
+	#category : 'ExercismWIP-KindergartenGarden',
+	#package : 'ExercismWIP',
+	#tag : 'KindergartenGarden'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 KindergartenGardenTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'7ec3ec16-9d41-0d00-9001-63c508866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 KindergartenGardenTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.1.1'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 KindergartenGardenTest >> setUp [
 	super setUp.
 	kindergartenGardenCalculator := KindergartenGarden new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 KindergartenGardenTest >> test01_PartialGardenGardenWithSingleStudent [
 	| result |
 
@@ -101,7 +103,7 @@ GG' .
 	self assert: result equals: #('radishes' 'clover' 'grass' 'grass' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 KindergartenGardenTest >> test02_PartialGardenDifferentGardenWithSingleStudent [
 	| result |
 
@@ -110,7 +112,7 @@ RC' .
 	self assert: result equals: #('violets' 'clover' 'radishes' 'clover' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 KindergartenGardenTest >> test03_PartialGardenGardenWithTwoStudents [
 	| result |
 
@@ -119,7 +121,7 @@ VVRC' .
 	self assert: result equals: #('clover' 'grass' 'radishes' 'clover' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 KindergartenGardenTest >> test04_PartialGardenMultipleStudentsForTheSameGardenWithThreeStudentsSecondStudentsGarden [
 	| result |
 
@@ -128,7 +130,7 @@ VVCCGG' .
 	self assert: result equals: #('clover' 'clover' 'clover' 'clover' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 KindergartenGardenTest >> test05_PartialGardenMultipleStudentsForTheSameGardenWithThreeStudentsThirdStudentsGarden [
 	| result |
 
@@ -137,7 +139,7 @@ VVCCGG' .
 	self assert: result equals: #('grass' 'grass' 'grass' 'grass' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 KindergartenGardenTest >> test06_FullGardenFirstStudentsGarden [
 	| result |
 
@@ -146,7 +148,7 @@ VRCCCGCRRGVCGCRVVCVGCGCV' .
 	self assert: result equals: #('violets' 'radishes' 'violets' 'radishes' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 KindergartenGardenTest >> test07_FullGardenSecondStudentsGarden [
 	| result |
 
@@ -155,7 +157,7 @@ VRCCCGCRRGVCGCRVVCVGCGCV' .
 	self assert: result equals: #('clover' 'grass' 'clover' 'clover' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 KindergartenGardenTest >> test08_FullGardenSecondToLastStudentsGarden [
 	| result |
 
@@ -164,7 +166,7 @@ VRCCCGCRRGVCGCRVVCVGCGCV' .
 	self assert: result equals: #('grass' 'clover' 'clover' 'grass' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 KindergartenGardenTest >> test09_FullGardenLastStudentsGarden [
 	| result |
 

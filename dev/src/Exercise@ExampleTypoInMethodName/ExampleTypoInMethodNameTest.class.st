@@ -1,10 +1,11 @@
 Class {
-	#name : #ExampleTypoInMethodNameTest,
-	#superclass : #ExercismTest,
-	#category : #'Exercise@ExampleTypoInMethodName'
+	#name : 'ExampleTypoInMethodNameTest',
+	#superclass : 'ExercismTest',
+	#category : 'Exercise@ExampleTypoInMethodName',
+	#package : 'Exercise@ExampleTypoInMethodName'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 ExampleTypoInMethodNameTest class >> exampleSolutionSourceCode [ 
 
 	^ 'Class {
@@ -21,7 +22,7 @@ ExampleTypoInMethodNameATYPO >> exerciseMethodA [
 '
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExampleTypoInMethodNameTest class >> exampleTestCasesSourceCode [ 
 
 	^ 'Class {
@@ -37,7 +38,7 @@ ExampleAllPassTest >> testExampleMethodA [
 '
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ExampleTypoInMethodNameTest class >> exercise [
 	^ (self createExerciseAfter: HelloWorldTest)
 		isCore: true;

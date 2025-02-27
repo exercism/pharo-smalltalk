@@ -72,15 +72,16 @@ Read the instructions carefully, if you skim you might miss some important detai
 
 "
 Class {
-	#name : #LuhnTest,
-	#superclass : #ExercismTest,
+	#name : 'LuhnTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'luhnCalculator'
 	],
-	#category : #'Exercise@Luhn'
+	#category : 'Exercise@Luhn',
+	#package : 'Exercise@Luhn'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 LuhnTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -90,25 +91,25 @@ LuhnTest class >> exercise [
 		yourself
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 LuhnTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'5470f2c4-f186-42df-8d0e-27aea57c1b80'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 LuhnTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.5.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 LuhnTest >> setUp [
 	super setUp.
 	luhnCalculator := Luhn new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LuhnTest >> test01_SingleDigitStringsCanNotBeValid [
 	| result |
 
@@ -116,7 +117,7 @@ LuhnTest >> test01_SingleDigitStringsCanNotBeValid [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LuhnTest >> test02_ASingleZeroIsInvalid [
 	| result |
 
@@ -124,7 +125,7 @@ LuhnTest >> test02_ASingleZeroIsInvalid [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LuhnTest >> test03_ASimpleValidSINThatRemainsValidIfReversed [
 	| result |
 
@@ -132,7 +133,7 @@ LuhnTest >> test03_ASimpleValidSINThatRemainsValidIfReversed [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LuhnTest >> test04_ASimpleValidSINThatBecomesInvalidIfReversed [
 	| result |
 
@@ -140,7 +141,7 @@ LuhnTest >> test04_ASimpleValidSINThatBecomesInvalidIfReversed [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LuhnTest >> test05_AValidCanadianSIN [
 	| result |
 
@@ -148,7 +149,7 @@ LuhnTest >> test05_AValidCanadianSIN [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LuhnTest >> test06_InvalidCanadianSIN [
 	| result |
 
@@ -156,7 +157,7 @@ LuhnTest >> test06_InvalidCanadianSIN [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LuhnTest >> test07_InvalidCreditCard [
 	| result |
 
@@ -164,7 +165,7 @@ LuhnTest >> test07_InvalidCreditCard [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LuhnTest >> test08_ValidNumberWithAnEvenNumberOfDigits [
 	| result |
 
@@ -172,7 +173,7 @@ LuhnTest >> test08_ValidNumberWithAnEvenNumberOfDigits [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LuhnTest >> test09_ValidStringsWithANondigitAddedAtTheEndBecomeInvalid [
 	| result |
 
@@ -180,7 +181,7 @@ LuhnTest >> test09_ValidStringsWithANondigitAddedAtTheEndBecomeInvalid [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LuhnTest >> test10_ValidStringsWithPunctuationIncludedBecomeInvalid [
 	| result |
 
@@ -188,7 +189,7 @@ LuhnTest >> test10_ValidStringsWithPunctuationIncludedBecomeInvalid [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LuhnTest >> test11_ValidStringsWithSymbolsIncludedBecomeInvalid [
 	| result |
 
@@ -196,7 +197,7 @@ LuhnTest >> test11_ValidStringsWithSymbolsIncludedBecomeInvalid [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LuhnTest >> test12_SingleZeroWithSpaceIsInvalid [
 	| result |
 
@@ -204,7 +205,7 @@ LuhnTest >> test12_SingleZeroWithSpaceIsInvalid [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LuhnTest >> test13_MoreThanASingleZeroIsValid [
 	| result |
 
@@ -212,7 +213,7 @@ LuhnTest >> test13_MoreThanASingleZeroIsValid [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LuhnTest >> test14_InputDigit9IsCorrectlyConvertedToOutputDigit9 [
 	| result |
 
@@ -220,7 +221,7 @@ LuhnTest >> test14_InputDigit9IsCorrectlyConvertedToOutputDigit9 [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LuhnTest >> test15_UsingAsciiValueForNondoubledNondigitIsntAllowed [
 	| result |
 
@@ -228,7 +229,7 @@ LuhnTest >> test15_UsingAsciiValueForNondoubledNondigitIsntAllowed [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LuhnTest >> test16_UsingAsciiValueForDoubledNondigitIsntAllowed [
 	| result |
 

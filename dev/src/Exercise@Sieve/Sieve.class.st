@@ -2,19 +2,20 @@
 This solution demonstrates the use of a while loop in Pharo. Notice how while is is simply a message send to a BlockClosure and involves no special syntax to achieve this.
 "
 Class {
-	#name : #Sieve,
-	#superclass : #Object,
-	#category : #'Exercise@Sieve'
+	#name : 'Sieve',
+	#superclass : 'Object',
+	#category : 'Exercise@Sieve',
+	#package : 'Exercise@Sieve'
 }
 
-{ #category : #helper }
+{ #category : 'helper' }
 Sieve >> nonPrimesFor: anInteger in: markedList [
 	^(markedList select: [ :i | i \\ anInteger = 0 ])
 
 	
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 Sieve >> primesLimit: anInteger [
 	"Answer the Array of primes up to anInteger"
 	

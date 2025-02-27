@@ -33,33 +33,35 @@ TBD
 
 "
 Class {
-	#name : #MeetupTest,
-	#superclass : #ExercismTest,
+	#name : 'MeetupTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'meetupCalculator'
 	],
-	#category : #'ExercismWIP-Meetup'
+	#category : 'ExercismWIP-Meetup',
+	#package : 'ExercismWIP',
+	#tag : 'Meetup'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 MeetupTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'3cfbf216-9d41-0d00-9002-41e408866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 MeetupTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 MeetupTest >> setUp [
 	super setUp.
 	meetupCalculator := Meetup new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test01_MonteenthOfMay2013 [
 	| result |
 
@@ -67,7 +69,7 @@ MeetupTest >> test01_MonteenthOfMay2013 [
 	self assert: result equals: '2013-05-13'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test02_MonteenthOfAugust2013 [
 	| result |
 
@@ -75,7 +77,7 @@ MeetupTest >> test02_MonteenthOfAugust2013 [
 	self assert: result equals: '2013-08-19'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test03_MonteenthOfSeptember2013 [
 	| result |
 
@@ -83,7 +85,7 @@ MeetupTest >> test03_MonteenthOfSeptember2013 [
 	self assert: result equals: '2013-09-16'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test04_TuesteenthOfMarch2013 [
 	| result |
 
@@ -91,7 +93,7 @@ MeetupTest >> test04_TuesteenthOfMarch2013 [
 	self assert: result equals: '2013-03-19'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test05_TuesteenthOfApril2013 [
 	| result |
 
@@ -99,7 +101,7 @@ MeetupTest >> test05_TuesteenthOfApril2013 [
 	self assert: result equals: '2013-04-16'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test06_TuesteenthOfAugust2013 [
 	| result |
 
@@ -107,7 +109,7 @@ MeetupTest >> test06_TuesteenthOfAugust2013 [
 	self assert: result equals: '2013-08-13'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test07_WednesteenthOfJanuary2013 [
 	| result |
 
@@ -115,7 +117,7 @@ MeetupTest >> test07_WednesteenthOfJanuary2013 [
 	self assert: result equals: '2013-01-16'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test08_WednesteenthOfFebruary2013 [
 	| result |
 
@@ -123,7 +125,7 @@ MeetupTest >> test08_WednesteenthOfFebruary2013 [
 	self assert: result equals: '2013-02-13'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test09_WednesteenthOfJune2013 [
 	| result |
 
@@ -131,7 +133,7 @@ MeetupTest >> test09_WednesteenthOfJune2013 [
 	self assert: result equals: '2013-06-19'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test10_ThursteenthOfMay2013 [
 	| result |
 
@@ -139,7 +141,7 @@ MeetupTest >> test10_ThursteenthOfMay2013 [
 	self assert: result equals: '2013-05-16'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test11_ThursteenthOfJune2013 [
 	| result |
 
@@ -147,7 +149,7 @@ MeetupTest >> test11_ThursteenthOfJune2013 [
 	self assert: result equals: '2013-06-13'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test12_ThursteenthOfSeptember2013 [
 	| result |
 
@@ -155,7 +157,7 @@ MeetupTest >> test12_ThursteenthOfSeptember2013 [
 	self assert: result equals: '2013-09-19'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test13_FriteenthOfApril2013 [
 	| result |
 
@@ -163,7 +165,7 @@ MeetupTest >> test13_FriteenthOfApril2013 [
 	self assert: result equals: '2013-04-19'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test14_FriteenthOfAugust2013 [
 	| result |
 
@@ -171,7 +173,7 @@ MeetupTest >> test14_FriteenthOfAugust2013 [
 	self assert: result equals: '2013-08-16'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test15_FriteenthOfSeptember2013 [
 	| result |
 
@@ -179,7 +181,7 @@ MeetupTest >> test15_FriteenthOfSeptember2013 [
 	self assert: result equals: '2013-09-13'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test16_SaturteenthOfFebruary2013 [
 	| result |
 
@@ -187,7 +189,7 @@ MeetupTest >> test16_SaturteenthOfFebruary2013 [
 	self assert: result equals: '2013-02-16'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test17_SaturteenthOfApril2013 [
 	| result |
 
@@ -195,7 +197,7 @@ MeetupTest >> test17_SaturteenthOfApril2013 [
 	self assert: result equals: '2013-04-13'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test18_SaturteenthOfOctober2013 [
 	| result |
 
@@ -203,7 +205,7 @@ MeetupTest >> test18_SaturteenthOfOctober2013 [
 	self assert: result equals: '2013-10-19'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test19_SunteenthOfMay2013 [
 	| result |
 
@@ -211,7 +213,7 @@ MeetupTest >> test19_SunteenthOfMay2013 [
 	self assert: result equals: '2013-05-19'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test20_SunteenthOfJune2013 [
 	| result |
 
@@ -219,7 +221,7 @@ MeetupTest >> test20_SunteenthOfJune2013 [
 	self assert: result equals: '2013-06-16'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test21_SunteenthOfOctober2013 [
 	| result |
 
@@ -227,7 +229,7 @@ MeetupTest >> test21_SunteenthOfOctober2013 [
 	self assert: result equals: '2013-10-13'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test22_FirstMondayOfMarch2013 [
 	| result |
 
@@ -235,7 +237,7 @@ MeetupTest >> test22_FirstMondayOfMarch2013 [
 	self assert: result equals: '2013-03-04'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test23_FirstMondayOfApril2013 [
 	| result |
 
@@ -243,7 +245,7 @@ MeetupTest >> test23_FirstMondayOfApril2013 [
 	self assert: result equals: '2013-04-01'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test24_FirstTuesdayOfMay2013 [
 	| result |
 
@@ -251,7 +253,7 @@ MeetupTest >> test24_FirstTuesdayOfMay2013 [
 	self assert: result equals: '2013-05-07'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test25_FirstTuesdayOfJune2013 [
 	| result |
 
@@ -259,7 +261,7 @@ MeetupTest >> test25_FirstTuesdayOfJune2013 [
 	self assert: result equals: '2013-06-04'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test26_FirstWednesdayOfJuly2013 [
 	| result |
 
@@ -267,7 +269,7 @@ MeetupTest >> test26_FirstWednesdayOfJuly2013 [
 	self assert: result equals: '2013-07-03'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test27_FirstWednesdayOfAugust2013 [
 	| result |
 
@@ -275,7 +277,7 @@ MeetupTest >> test27_FirstWednesdayOfAugust2013 [
 	self assert: result equals: '2013-08-07'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test28_FirstThursdayOfSeptember2013 [
 	| result |
 
@@ -283,7 +285,7 @@ MeetupTest >> test28_FirstThursdayOfSeptember2013 [
 	self assert: result equals: '2013-09-05'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test29_FirstThursdayOfOctober2013 [
 	| result |
 
@@ -291,7 +293,7 @@ MeetupTest >> test29_FirstThursdayOfOctober2013 [
 	self assert: result equals: '2013-10-03'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test30_FirstFridayOfNovember2013 [
 	| result |
 
@@ -299,7 +301,7 @@ MeetupTest >> test30_FirstFridayOfNovember2013 [
 	self assert: result equals: '2013-11-01'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test31_FirstFridayOfDecember2013 [
 	| result |
 
@@ -307,7 +309,7 @@ MeetupTest >> test31_FirstFridayOfDecember2013 [
 	self assert: result equals: '2013-12-06'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test32_FirstSaturdayOfJanuary2013 [
 	| result |
 
@@ -315,7 +317,7 @@ MeetupTest >> test32_FirstSaturdayOfJanuary2013 [
 	self assert: result equals: '2013-01-05'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test33_FirstSaturdayOfFebruary2013 [
 	| result |
 
@@ -323,7 +325,7 @@ MeetupTest >> test33_FirstSaturdayOfFebruary2013 [
 	self assert: result equals: '2013-02-02'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test34_FirstSundayOfMarch2013 [
 	| result |
 
@@ -331,7 +333,7 @@ MeetupTest >> test34_FirstSundayOfMarch2013 [
 	self assert: result equals: '2013-03-03'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test35_FirstSundayOfApril2013 [
 	| result |
 
@@ -339,7 +341,7 @@ MeetupTest >> test35_FirstSundayOfApril2013 [
 	self assert: result equals: '2013-04-07'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test36_SecondMondayOfMarch2013 [
 	| result |
 
@@ -347,7 +349,7 @@ MeetupTest >> test36_SecondMondayOfMarch2013 [
 	self assert: result equals: '2013-03-11'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test37_SecondMondayOfApril2013 [
 	| result |
 
@@ -355,7 +357,7 @@ MeetupTest >> test37_SecondMondayOfApril2013 [
 	self assert: result equals: '2013-04-08'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test38_SecondTuesdayOfMay2013 [
 	| result |
 
@@ -363,7 +365,7 @@ MeetupTest >> test38_SecondTuesdayOfMay2013 [
 	self assert: result equals: '2013-05-14'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test39_SecondTuesdayOfJune2013 [
 	| result |
 
@@ -371,7 +373,7 @@ MeetupTest >> test39_SecondTuesdayOfJune2013 [
 	self assert: result equals: '2013-06-11'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test40_SecondWednesdayOfJuly2013 [
 	| result |
 
@@ -379,7 +381,7 @@ MeetupTest >> test40_SecondWednesdayOfJuly2013 [
 	self assert: result equals: '2013-07-10'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test41_SecondWednesdayOfAugust2013 [
 	| result |
 
@@ -387,7 +389,7 @@ MeetupTest >> test41_SecondWednesdayOfAugust2013 [
 	self assert: result equals: '2013-08-14'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test42_SecondThursdayOfSeptember2013 [
 	| result |
 
@@ -395,7 +397,7 @@ MeetupTest >> test42_SecondThursdayOfSeptember2013 [
 	self assert: result equals: '2013-09-12'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test43_SecondThursdayOfOctober2013 [
 	| result |
 
@@ -403,7 +405,7 @@ MeetupTest >> test43_SecondThursdayOfOctober2013 [
 	self assert: result equals: '2013-10-10'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test44_SecondFridayOfNovember2013 [
 	| result |
 
@@ -411,7 +413,7 @@ MeetupTest >> test44_SecondFridayOfNovember2013 [
 	self assert: result equals: '2013-11-08'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test45_SecondFridayOfDecember2013 [
 	| result |
 
@@ -419,7 +421,7 @@ MeetupTest >> test45_SecondFridayOfDecember2013 [
 	self assert: result equals: '2013-12-13'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test46_SecondSaturdayOfJanuary2013 [
 	| result |
 
@@ -427,7 +429,7 @@ MeetupTest >> test46_SecondSaturdayOfJanuary2013 [
 	self assert: result equals: '2013-01-12'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test47_SecondSaturdayOfFebruary2013 [
 	| result |
 
@@ -435,7 +437,7 @@ MeetupTest >> test47_SecondSaturdayOfFebruary2013 [
 	self assert: result equals: '2013-02-09'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test48_SecondSundayOfMarch2013 [
 	| result |
 
@@ -443,7 +445,7 @@ MeetupTest >> test48_SecondSundayOfMarch2013 [
 	self assert: result equals: '2013-03-10'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test49_SecondSundayOfApril2013 [
 	| result |
 
@@ -451,7 +453,7 @@ MeetupTest >> test49_SecondSundayOfApril2013 [
 	self assert: result equals: '2013-04-14'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test50_ThirdMondayOfMarch2013 [
 	| result |
 
@@ -459,7 +461,7 @@ MeetupTest >> test50_ThirdMondayOfMarch2013 [
 	self assert: result equals: '2013-03-18'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test51_ThirdMondayOfApril2013 [
 	| result |
 
@@ -467,7 +469,7 @@ MeetupTest >> test51_ThirdMondayOfApril2013 [
 	self assert: result equals: '2013-04-15'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test52_ThirdTuesdayOfMay2013 [
 	| result |
 
@@ -475,7 +477,7 @@ MeetupTest >> test52_ThirdTuesdayOfMay2013 [
 	self assert: result equals: '2013-05-21'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test53_ThirdTuesdayOfJune2013 [
 	| result |
 
@@ -483,7 +485,7 @@ MeetupTest >> test53_ThirdTuesdayOfJune2013 [
 	self assert: result equals: '2013-06-18'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test54_ThirdWednesdayOfJuly2013 [
 	| result |
 
@@ -491,7 +493,7 @@ MeetupTest >> test54_ThirdWednesdayOfJuly2013 [
 	self assert: result equals: '2013-07-17'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test55_ThirdWednesdayOfAugust2013 [
 	| result |
 
@@ -499,7 +501,7 @@ MeetupTest >> test55_ThirdWednesdayOfAugust2013 [
 	self assert: result equals: '2013-08-21'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test56_ThirdThursdayOfSeptember2013 [
 	| result |
 
@@ -507,7 +509,7 @@ MeetupTest >> test56_ThirdThursdayOfSeptember2013 [
 	self assert: result equals: '2013-09-19'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test57_ThirdThursdayOfOctober2013 [
 	| result |
 
@@ -515,7 +517,7 @@ MeetupTest >> test57_ThirdThursdayOfOctober2013 [
 	self assert: result equals: '2013-10-17'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test58_ThirdFridayOfNovember2013 [
 	| result |
 
@@ -523,7 +525,7 @@ MeetupTest >> test58_ThirdFridayOfNovember2013 [
 	self assert: result equals: '2013-11-15'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test59_ThirdFridayOfDecember2013 [
 	| result |
 
@@ -531,7 +533,7 @@ MeetupTest >> test59_ThirdFridayOfDecember2013 [
 	self assert: result equals: '2013-12-20'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test60_ThirdSaturdayOfJanuary2013 [
 	| result |
 
@@ -539,7 +541,7 @@ MeetupTest >> test60_ThirdSaturdayOfJanuary2013 [
 	self assert: result equals: '2013-01-19'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test61_ThirdSaturdayOfFebruary2013 [
 	| result |
 
@@ -547,7 +549,7 @@ MeetupTest >> test61_ThirdSaturdayOfFebruary2013 [
 	self assert: result equals: '2013-02-16'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test62_ThirdSundayOfMarch2013 [
 	| result |
 
@@ -555,7 +557,7 @@ MeetupTest >> test62_ThirdSundayOfMarch2013 [
 	self assert: result equals: '2013-03-17'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test63_ThirdSundayOfApril2013 [
 	| result |
 
@@ -563,7 +565,7 @@ MeetupTest >> test63_ThirdSundayOfApril2013 [
 	self assert: result equals: '2013-04-21'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test64_FourthMondayOfMarch2013 [
 	| result |
 
@@ -571,7 +573,7 @@ MeetupTest >> test64_FourthMondayOfMarch2013 [
 	self assert: result equals: '2013-03-25'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test65_FourthMondayOfApril2013 [
 	| result |
 
@@ -579,7 +581,7 @@ MeetupTest >> test65_FourthMondayOfApril2013 [
 	self assert: result equals: '2013-04-22'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test66_FourthTuesdayOfMay2013 [
 	| result |
 
@@ -587,7 +589,7 @@ MeetupTest >> test66_FourthTuesdayOfMay2013 [
 	self assert: result equals: '2013-05-28'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test67_FourthTuesdayOfJune2013 [
 	| result |
 
@@ -595,7 +597,7 @@ MeetupTest >> test67_FourthTuesdayOfJune2013 [
 	self assert: result equals: '2013-06-25'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test68_FourthWednesdayOfJuly2013 [
 	| result |
 
@@ -603,7 +605,7 @@ MeetupTest >> test68_FourthWednesdayOfJuly2013 [
 	self assert: result equals: '2013-07-24'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test69_FourthWednesdayOfAugust2013 [
 	| result |
 
@@ -611,7 +613,7 @@ MeetupTest >> test69_FourthWednesdayOfAugust2013 [
 	self assert: result equals: '2013-08-28'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test70_FourthThursdayOfSeptember2013 [
 	| result |
 
@@ -619,7 +621,7 @@ MeetupTest >> test70_FourthThursdayOfSeptember2013 [
 	self assert: result equals: '2013-09-26'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test71_FourthThursdayOfOctober2013 [
 	| result |
 
@@ -627,7 +629,7 @@ MeetupTest >> test71_FourthThursdayOfOctober2013 [
 	self assert: result equals: '2013-10-24'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test72_FourthFridayOfNovember2013 [
 	| result |
 
@@ -635,7 +637,7 @@ MeetupTest >> test72_FourthFridayOfNovember2013 [
 	self assert: result equals: '2013-11-22'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test73_FourthFridayOfDecember2013 [
 	| result |
 
@@ -643,7 +645,7 @@ MeetupTest >> test73_FourthFridayOfDecember2013 [
 	self assert: result equals: '2013-12-27'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test74_FourthSaturdayOfJanuary2013 [
 	| result |
 
@@ -651,7 +653,7 @@ MeetupTest >> test74_FourthSaturdayOfJanuary2013 [
 	self assert: result equals: '2013-01-26'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test75_FourthSaturdayOfFebruary2013 [
 	| result |
 
@@ -659,7 +661,7 @@ MeetupTest >> test75_FourthSaturdayOfFebruary2013 [
 	self assert: result equals: '2013-02-23'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test76_FourthSundayOfMarch2013 [
 	| result |
 
@@ -667,7 +669,7 @@ MeetupTest >> test76_FourthSundayOfMarch2013 [
 	self assert: result equals: '2013-03-24'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test77_FourthSundayOfApril2013 [
 	| result |
 
@@ -675,7 +677,7 @@ MeetupTest >> test77_FourthSundayOfApril2013 [
 	self assert: result equals: '2013-04-28'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test78_LastMondayOfMarch2013 [
 	| result |
 
@@ -683,7 +685,7 @@ MeetupTest >> test78_LastMondayOfMarch2013 [
 	self assert: result equals: '2013-03-25'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test79_LastMondayOfApril2013 [
 	| result |
 
@@ -691,7 +693,7 @@ MeetupTest >> test79_LastMondayOfApril2013 [
 	self assert: result equals: '2013-04-29'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test80_LastTuesdayOfMay2013 [
 	| result |
 
@@ -699,7 +701,7 @@ MeetupTest >> test80_LastTuesdayOfMay2013 [
 	self assert: result equals: '2013-05-28'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test81_LastTuesdayOfJune2013 [
 	| result |
 
@@ -707,7 +709,7 @@ MeetupTest >> test81_LastTuesdayOfJune2013 [
 	self assert: result equals: '2013-06-25'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test82_LastWednesdayOfJuly2013 [
 	| result |
 
@@ -715,7 +717,7 @@ MeetupTest >> test82_LastWednesdayOfJuly2013 [
 	self assert: result equals: '2013-07-31'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test83_LastWednesdayOfAugust2013 [
 	| result |
 
@@ -723,7 +725,7 @@ MeetupTest >> test83_LastWednesdayOfAugust2013 [
 	self assert: result equals: '2013-08-28'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test84_LastThursdayOfSeptember2013 [
 	| result |
 
@@ -731,7 +733,7 @@ MeetupTest >> test84_LastThursdayOfSeptember2013 [
 	self assert: result equals: '2013-09-26'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test85_LastThursdayOfOctober2013 [
 	| result |
 
@@ -739,7 +741,7 @@ MeetupTest >> test85_LastThursdayOfOctober2013 [
 	self assert: result equals: '2013-10-31'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test86_LastFridayOfNovember2013 [
 	| result |
 
@@ -747,7 +749,7 @@ MeetupTest >> test86_LastFridayOfNovember2013 [
 	self assert: result equals: '2013-11-29'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test87_LastFridayOfDecember2013 [
 	| result |
 
@@ -755,7 +757,7 @@ MeetupTest >> test87_LastFridayOfDecember2013 [
 	self assert: result equals: '2013-12-27'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test88_LastSaturdayOfJanuary2013 [
 	| result |
 
@@ -763,7 +765,7 @@ MeetupTest >> test88_LastSaturdayOfJanuary2013 [
 	self assert: result equals: '2013-01-26'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test89_LastSaturdayOfFebruary2013 [
 	| result |
 
@@ -771,7 +773,7 @@ MeetupTest >> test89_LastSaturdayOfFebruary2013 [
 	self assert: result equals: '2013-02-23'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test90_LastSundayOfMarch2013 [
 	| result |
 
@@ -779,7 +781,7 @@ MeetupTest >> test90_LastSundayOfMarch2013 [
 	self assert: result equals: '2013-03-31'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test91_LastSundayOfApril2013 [
 	| result |
 
@@ -787,7 +789,7 @@ MeetupTest >> test91_LastSundayOfApril2013 [
 	self assert: result equals: '2013-04-28'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test92_LastWednesdayOfFebruary2012 [
 	| result |
 
@@ -795,7 +797,7 @@ MeetupTest >> test92_LastWednesdayOfFebruary2012 [
 	self assert: result equals: '2012-02-29'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test93_LastWednesdayOfDecember2014 [
 	| result |
 
@@ -803,7 +805,7 @@ MeetupTest >> test93_LastWednesdayOfDecember2014 [
 	self assert: result equals: '2014-12-31'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test94_LastSundayOfFebruary2015 [
 	| result |
 
@@ -811,7 +813,7 @@ MeetupTest >> test94_LastSundayOfFebruary2015 [
 	self assert: result equals: '2015-02-22'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MeetupTest >> test95_FirstFridayOfDecember2012 [
 	| result |
 

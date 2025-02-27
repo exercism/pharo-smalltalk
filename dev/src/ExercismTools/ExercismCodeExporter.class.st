@@ -2,15 +2,17 @@
 I represent code export functionality for given Exercism exercise. Output is in Tonel format (version specific) which is represented as dictionary, where file names are keys, and source code in Tonel format is represented as values in disctionary.
 "
 Class {
-	#name : #ExercismCodeExporter,
-	#superclass : #Object,
+	#name : 'ExercismCodeExporter',
+	#superclass : 'Object',
 	#instVars : [
 		'tonelWriter'
 	],
-	#category : #'ExercismTools-Core'
+	#category : 'ExercismTools-Core',
+	#package : 'ExercismTools',
+	#tag : 'Core'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 ExercismCodeExporter class >> on: directoryReference [
 	
 	^ self basicNew
@@ -18,7 +20,7 @@ ExercismCodeExporter class >> on: directoryReference [
 		yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismCodeExporter >> addClassDefinitionsIn: tonelMap using: collectionOfDefinitions [
 
 	collectionOfDefinitions do: [ :classDef |  
@@ -31,7 +33,7 @@ ExercismCodeExporter >> addClassDefinitionsIn: tonelMap using: collectionOfDefin
 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismCodeExporter >> addExtensionDefinitionsIn: tonelMap using: collectionOfDefinitions [
 
 	collectionOfDefinitions do: [ :methodDef | 
@@ -49,27 +51,27 @@ ExercismCodeExporter >> addExtensionDefinitionsIn: tonelMap using: collectionOfD
 	]
 ]
 
-{ #category : #initialize }
+{ #category : 'initialize' }
 ExercismCodeExporter >> directoryReference: directoryReference [
 	
  	tonelWriter directoryReference: directoryReference
 ]
 
-{ #category : #initialize }
+{ #category : 'initialize' }
 ExercismCodeExporter >> initialize [
 
 	super initialize.
 	tonelWriter := TonelWriter new.
 ]
 
-{ #category : #initialize }
+{ #category : 'initialize' }
 ExercismCodeExporter >> initializeWith: directoryReference [
 	
 	self initialize.
  	self directoryReference: directoryReference
 ]
 
-{ #category : #'API - actions' }
+{ #category : 'API - actions' }
 ExercismCodeExporter >> mappedSnapshot: aSnapshot [
 	"extracted from #writeSnapshot: to customise behavior"
 	
@@ -87,7 +89,7 @@ ExercismCodeExporter >> mappedSnapshot: aSnapshot [
 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismCodeExporter >> writeClass: aClassDefinition on: aStream [
 	"Not clear on whether this is an override and still needed? ~tma~"
 	
@@ -96,7 +98,7 @@ ExercismCodeExporter >> writeClass: aClassDefinition on: aStream [
 	tonelWriter writeInstanceSideMethodDefinitions: aClassDefinition on: aStream 
 ]
 
-{ #category : #'API - actions' }
+{ #category : 'API - actions' }
 ExercismCodeExporter >> writeSnapshot: aSnapshot [
 
 	tonelWriter writeSnapshot: aSnapshot

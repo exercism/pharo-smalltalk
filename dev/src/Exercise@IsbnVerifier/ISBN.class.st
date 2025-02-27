@@ -4,17 +4,18 @@ Should be quite straigt forward.
 More mentor notes to come.
 "
 Class {
-	#name : #ISBN,
-	#superclass : #Object,
+	#name : 'ISBN',
+	#superclass : 'Object',
 	#instVars : [
 		'string',
 		'digits',
 		'control'
 	],
-	#category : #'Exercise@IsbnVerifier'
+	#category : 'Exercise@IsbnVerifier',
+	#package : 'Exercise@IsbnVerifier'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 ISBN class >> fromString: aString [ 
 	^ self basicNew 
 		string: aString;
@@ -22,13 +23,13 @@ ISBN class >> fromString: aString [
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 ISBN class >> isValidControlChar: aCharacter [ 
 	^ (aCharacter between: $0 and: $9)
 		or: [ aCharacter lowercase = $x ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 ISBN >> hasValidChecksum [
 	| acc |
 	
@@ -38,7 +39,7 @@ ISBN >> hasValidChecksum [
 	^ (acc sum + (control digitValue min: 10) % 11) isZero
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 ISBN >> initialize [ 
 	super initialize.
 	digits := string allButLast asOrderedCollection 
@@ -47,7 +48,7 @@ ISBN >> initialize [
 	control := string last.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 ISBN >> isValid [
 	^ (self class isValidControlChar: string last)
 		and: [ (string last = $9) not
@@ -55,7 +56,7 @@ ISBN >> isValid [
 				and: [ self hasValidChecksum ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ISBN >> string: aString [ 
 	string := aString
 ]

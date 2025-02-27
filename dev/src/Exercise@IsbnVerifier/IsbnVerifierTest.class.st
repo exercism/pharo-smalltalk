@@ -48,15 +48,16 @@ Use the lessons from previous exercises, try and keep your methods small
 
 "
 Class {
-	#name : #IsbnVerifierTest,
-	#superclass : #ExercismTest,
+	#name : 'IsbnVerifierTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'isbnVerifierCalculator'
 	],
-	#category : #'Exercise@IsbnVerifier'
+	#category : 'Exercise@IsbnVerifier',
+	#package : 'Exercise@IsbnVerifier'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 IsbnVerifierTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -66,25 +67,25 @@ IsbnVerifierTest class >> exercise [
 		yourself
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 IsbnVerifierTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'9cb67bca-f8db-4bf6-b61e-d43318c821d7'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 IsbnVerifierTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'2.7.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IsbnVerifierTest >> setUp [
 	super setUp.
 	isbnVerifierCalculator := IsbnVerifier new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsbnVerifierTest >> test01_ValidIsbnNumber [
 	| result |
 
@@ -92,7 +93,7 @@ IsbnVerifierTest >> test01_ValidIsbnNumber [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsbnVerifierTest >> test02_InvalidIsbnCheckDigit [
 	| result |
 
@@ -100,7 +101,7 @@ IsbnVerifierTest >> test02_InvalidIsbnCheckDigit [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsbnVerifierTest >> test03_ValidIsbnNumberWithACheckDigitOf10 [
 	| result |
 
@@ -108,7 +109,7 @@ IsbnVerifierTest >> test03_ValidIsbnNumberWithACheckDigitOf10 [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsbnVerifierTest >> test04_CheckDigitIsACharacterOtherThanX [
 	| result |
 
@@ -116,7 +117,7 @@ IsbnVerifierTest >> test04_CheckDigitIsACharacterOtherThanX [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsbnVerifierTest >> test05_InvalidCharacterInIsbn [
 	| result |
 
@@ -124,7 +125,7 @@ IsbnVerifierTest >> test05_InvalidCharacterInIsbn [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsbnVerifierTest >> test06_XIsOnlyValidAsACheckDigit [
 	| result |
 
@@ -132,7 +133,7 @@ IsbnVerifierTest >> test06_XIsOnlyValidAsACheckDigit [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsbnVerifierTest >> test07_ValidIsbnWithoutSeparatingDashes [
 	| result |
 
@@ -140,7 +141,7 @@ IsbnVerifierTest >> test07_ValidIsbnWithoutSeparatingDashes [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsbnVerifierTest >> test08_IsbnWithoutSeparatingDashesAndXAsCheckDigit [
 	| result |
 
@@ -148,7 +149,7 @@ IsbnVerifierTest >> test08_IsbnWithoutSeparatingDashesAndXAsCheckDigit [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsbnVerifierTest >> test09_IsbnWithoutCheckDigitAndDashes [
 	| result |
 
@@ -156,7 +157,7 @@ IsbnVerifierTest >> test09_IsbnWithoutCheckDigitAndDashes [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsbnVerifierTest >> test10_TooLongIsbnAndNoDashes [
 	| result |
 
@@ -164,7 +165,7 @@ IsbnVerifierTest >> test10_TooLongIsbnAndNoDashes [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsbnVerifierTest >> test11_TooShortIsbn [
 	| result |
 
@@ -172,7 +173,7 @@ IsbnVerifierTest >> test11_TooShortIsbn [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsbnVerifierTest >> test12_IsbnWithoutCheckDigit [
 	| result |
 
@@ -180,7 +181,7 @@ IsbnVerifierTest >> test12_IsbnWithoutCheckDigit [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsbnVerifierTest >> test13_CheckDigitOfXShouldNotBeUsedFor0 [
 	| result |
 
@@ -188,7 +189,7 @@ IsbnVerifierTest >> test13_CheckDigitOfXShouldNotBeUsedFor0 [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsbnVerifierTest >> test14_EmptyIsbn [
 	| result |
 
@@ -196,7 +197,7 @@ IsbnVerifierTest >> test14_EmptyIsbn [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsbnVerifierTest >> test15_InputIs9Characters [
 	| result |
 
@@ -204,7 +205,7 @@ IsbnVerifierTest >> test15_InputIs9Characters [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsbnVerifierTest >> test16_InvalidCharactersAreNotIgnored [
 	| result |
 
@@ -212,7 +213,7 @@ IsbnVerifierTest >> test16_InvalidCharactersAreNotIgnored [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsbnVerifierTest >> test17_InputIsTooLongButContainsAValidIsbn [
 	| result |
 

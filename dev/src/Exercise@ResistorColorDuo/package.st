@@ -1,1 +1,1 @@
-Package { #name : #'Exercise@ResistorColorDuo' }
+Package { #name : 'Exercise@ResistorColorDuo' }

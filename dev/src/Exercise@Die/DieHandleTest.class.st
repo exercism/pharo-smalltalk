@@ -1,10 +1,11 @@
 Class {
-	#name : #DieHandleTest,
-	#superclass : #ExercismTest,
-	#category : #'Exercise@Die'
+	#name : 'DieHandleTest',
+	#superclass : 'ExercismTest',
+	#category : 'Exercise@Die',
+	#package : 'Exercise@Die'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 DieHandleTest >> testAddingTwiceTheSameDice [
 	| handle |
 	handle := DieHandle new.
@@ -14,7 +15,7 @@ DieHandleTest >> testAddingTwiceTheSameDice [
 	self assert: handle diceNumber equals: 2.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DieHandleTest >> testCreationAdding [
 	 | handle |
 	handle := DieHandle new
@@ -24,7 +25,7 @@ DieHandleTest >> testCreationAdding [
 	self assert: handle diceNumber equals: 2.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DieHandleTest >> testRoll [
 
 	| handle |
@@ -35,12 +36,12 @@ DieHandleTest >> testRoll [
 	1000 timesRepeat: [ handle roll between: 2 and: 16 ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DieHandleTest >> testSimpleHandle [
 	self assert: 2 d20 diceNumber equals: 2.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DieHandleTest >> testSumming [
 
 	| handle |
@@ -48,7 +49,7 @@ DieHandleTest >> testSumming [
 	self assert: handle diceNumber equals: 5.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DieHandleTest >> testSummingAndRolling [
 
 	| handle |

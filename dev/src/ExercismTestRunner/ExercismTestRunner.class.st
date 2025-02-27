@@ -14,25 +14,26 @@ See api actions method: ExercismTestRunner>>testExercise:importSourcefrom:result
 
 "
 Class {
-	#name : #ExercismTestRunner,
-	#superclass : #Object,
-	#category : #ExercismTestRunner
+	#name : 'ExercismTestRunner',
+	#superclass : 'Object',
+	#category : 'ExercismTestRunner',
+	#package : 'ExercismTestRunner'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 ExercismTestRunner class >> default [
 	"answer a defulat test runner"
 	
 	^ self new
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismTestRunner >> findExercise: slugName [
 
 	^ ExercismExercise find: slugName ifAbsent: [ ExDomainError signal: ('Could not find exercise: {1}.' format: { slugName }) ].
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismTestRunner >> importSourceFilesfrom: importDirectory [
 	| definitions |
 	self validateDirectory: importDirectory.
@@ -48,7 +49,7 @@ ExercismTestRunner >> importSourceFilesfrom: importDirectory [
 	]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismTestRunner >> loadSourceDefinitionsFrom: inputDirectory [
 	|tonelReader|
 	tonelReader := TonelReader fromExerciseDirectory: inputDirectory.
@@ -56,13 +57,13 @@ ExercismTestRunner >> loadSourceDefinitionsFrom: inputDirectory [
 	^ tonelReader definitions
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismTestRunner >> runTestsFor: testClass [
 
 	^ [testClass suite run] on: Error do: [ExDomainError signal: ('Error occured during running tests on test class: {1}.' format: { testClass name})].
 ]
 
-{ #category : #'api actions' }
+{ #category : 'api actions' }
 ExercismTestRunner >> runTestsOnExercise: slugName importSourceFrom: inputDirectory result: outputDirectory [
 
 	"this is Exercism test runner implementation - it will load exercise code and run tests, resulting in json file in output directory"
@@ -90,7 +91,7 @@ ExercismTestRunner >> runTestsOnExercise: slugName importSourceFrom: inputDirect
 	^ testResult 
 ]
 
-{ #category : #'api actions' }
+{ #category : 'api actions' }
 ExercismTestRunner >> setErrorToJson: domainErrorMsg [ 
 	
 	|jsonDict|
@@ -100,19 +101,19 @@ ExercismTestRunner >> setErrorToJson: domainErrorMsg [
 	^ STONJSONWriter streamContentsOf: jsonDict
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismTestRunner >> validateDefinitions: definitionsColl [
 
 	(definitionsColl anySatisfy: [:aDef | aDef isClassDefinition or: [ aDef isMethodDefinition ] ]) ifFalse: [ ExDomainError signal: 'No valid source files to be loaded.']
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismTestRunner >> validateDirectory: importDirectory [
 
 	importDirectory isDirectory ifFalse: [ ExDomainError signal: ('Directory does not exist: {1}.' format: { importDirectory pathString  }) ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExercismTestRunner >> writeJson: jsonData to: anOutputDirectory [
 	
 	|outputFile|

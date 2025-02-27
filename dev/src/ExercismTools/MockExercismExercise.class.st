@@ -12,12 +12,14 @@ which can grow in number. This is to help keep tests fast and predictable.
 Answers a small constant number of exercises.
 "
 Class {
-	#name : #MockExercismExercise,
-	#superclass : #ExercismExercise,
-	#category : #'ExercismTools-Meta'
+	#name : 'MockExercismExercise',
+	#superclass : 'ExercismExercise',
+	#category : 'ExercismTools-Meta',
+	#package : 'ExercismTools',
+	#tag : 'Meta'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockExercismExercise class >> allExercises [ 
 
 	^ { TwoFerTest exercise } asOrderedCollection 

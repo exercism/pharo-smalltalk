@@ -12,15 +12,16 @@ This is a nice exercise to just test drive (TDD), and let each test guide your s
 
 "
 Class {
-	#name : #HighScoresTest,
-	#superclass : #ExercismTest,
+	#name : 'HighScoresTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'highScoresCalculator'
 	],
-	#category : #'Exercise@HighScores'
+	#category : 'Exercise@HighScores',
+	#package : 'Exercise@HighScores'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 HighScoresTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -32,25 +33,25 @@ HighScoresTest class >> exercise [
 				
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 HighScoresTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'74992db6-e8f3-44c3-8798-02c6338a2bc5'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 HighScoresTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'4.0.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 HighScoresTest >> setUp [
 	super setUp.
 	highScoresCalculator := HighScores new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HighScoresTest >> test01_ListOfScores [
 	| result |
 
@@ -59,7 +60,7 @@ HighScoresTest >> test01_ListOfScores [
 	self assert: result equals: #(30 50 20 70 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HighScoresTest >> test02_LatestScore [
 	| result |
 
@@ -68,7 +69,7 @@ HighScoresTest >> test02_LatestScore [
 	self assert: result equals: 30
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HighScoresTest >> test03_PersonalBest [
 	| result |
 
@@ -77,7 +78,7 @@ HighScoresTest >> test03_PersonalBest [
 	self assert: result equals: 100
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HighScoresTest >> test04_Top3ScoresPersonalTopThreeFromAListOfScores [
 	| result |
 
@@ -86,7 +87,7 @@ HighScoresTest >> test04_Top3ScoresPersonalTopThreeFromAListOfScores [
 	self assert: result equals: #(100 90 70 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HighScoresTest >> test05_Top3ScoresPersonalTopHighestToLowest [
 	| result |
 
@@ -95,7 +96,7 @@ HighScoresTest >> test05_Top3ScoresPersonalTopHighestToLowest [
 	self assert: result equals: #(30 20 10 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HighScoresTest >> test06_Top3ScoresPersonalTopWhenThereIsATie [
 	| result |
 
@@ -104,7 +105,7 @@ HighScoresTest >> test06_Top3ScoresPersonalTopWhenThereIsATie [
 	self assert: result equals: #(40 40 30 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HighScoresTest >> test07_Top3ScoresPersonalTopWhenThereAreLessThan3 [
 	| result |
 
@@ -113,7 +114,7 @@ HighScoresTest >> test07_Top3ScoresPersonalTopWhenThereAreLessThan3 [
 	self assert: result equals: #(70 30 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HighScoresTest >> test08_Top3ScoresPersonalTopWhenThereIsOnlyOne [
 	| result |
 
@@ -122,7 +123,7 @@ HighScoresTest >> test08_Top3ScoresPersonalTopWhenThereIsOnlyOne [
 	self assert: result equals: #(40 )
 ]
 
-{ #category : #extra }
+{ #category : 'extra' }
 HighScoresTest >> testLoadMultipleBatchesOfScores [
 
 	highScoresCalculator addScores: #(20 50 40).
@@ -132,7 +133,7 @@ HighScoresTest >> testLoadMultipleBatchesOfScores [
 	self assert: highScoresCalculator personalTopThreeScores equals: #(50 40 30)
 ]
 
-{ #category : #extra }
+{ #category : 'extra' }
 HighScoresTest >> testPersonalBestWithTies [ 
 
 	| result |
@@ -141,7 +142,7 @@ HighScoresTest >> testPersonalBestWithTies [
 	self assert: result equals: 100
 ]
 
-{ #category : #extra }
+{ #category : 'extra' }
 HighScoresTest >> testPersonalTopThreeDoesNotSortStoredScores [
 	"Ensure that the process of returning the top three
  does not alter the order of the stored scores."
@@ -153,7 +154,7 @@ HighScoresTest >> testPersonalTopThreeDoesNotSortStoredScores [
 	self assert: highScoresCalculator latestScore equals: 4
 ]
 
-{ #category : #extra }
+{ #category : 'extra' }
 HighScoresTest >> testScoresAreImmutable [
 	"Ensure that the collection of scores returned is a copy"
 

@@ -37,33 +37,35 @@ TBD
 
 "
 Class {
-	#name : #ConnectTest,
-	#superclass : #ExercismTest,
+	#name : 'ConnectTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'connectCalculator'
 	],
-	#category : #'ExercismWIP-Connect'
+	#category : 'ExercismWIP-Connect',
+	#package : 'ExercismWIP',
+	#tag : 'Connect'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 ConnectTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'9178f616-9d41-0d00-9005-8cc608866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ConnectTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 ConnectTest >> setUp [
 	super setUp.
 	connectCalculator := Connect new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ConnectTest >> test01_AnEmptyBoardHasNoWinner [
 	| result |
 
@@ -71,7 +73,7 @@ ConnectTest >> test01_AnEmptyBoardHasNoWinner [
 	self assert: result equals: ''
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ConnectTest >> test02_XCanWinOnA1x1Board [
 	| result |
 
@@ -79,7 +81,7 @@ ConnectTest >> test02_XCanWinOnA1x1Board [
 	self assert: result equals: 'X'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ConnectTest >> test03_OCanWinOnA1x1Board [
 	| result |
 
@@ -87,7 +89,7 @@ ConnectTest >> test03_OCanWinOnA1x1Board [
 	self assert: result equals: 'O'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ConnectTest >> test04_OnlyEdgesDoesNotMakeAWinner [
 	| result |
 
@@ -95,7 +97,7 @@ ConnectTest >> test04_OnlyEdgesDoesNotMakeAWinner [
 	self assert: result equals: ''
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ConnectTest >> test05_IllegalDiagonalDoesNotMakeAWinner [
 	| result |
 
@@ -103,7 +105,7 @@ ConnectTest >> test05_IllegalDiagonalDoesNotMakeAWinner [
 	self assert: result equals: ''
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ConnectTest >> test06_NobodyWinsCrossingAdjacentAngles [
 	| result |
 
@@ -111,7 +113,7 @@ ConnectTest >> test06_NobodyWinsCrossingAdjacentAngles [
 	self assert: result equals: ''
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ConnectTest >> test07_XWinsCrossingFromLeftToRight [
 	| result |
 
@@ -119,7 +121,7 @@ ConnectTest >> test07_XWinsCrossingFromLeftToRight [
 	self assert: result equals: 'X'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ConnectTest >> test08_OWinsCrossingFromTopToBottom [
 	| result |
 
@@ -127,7 +129,7 @@ ConnectTest >> test08_OWinsCrossingFromTopToBottom [
 	self assert: result equals: 'O'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ConnectTest >> test09_XWinsUsingAConvolutedPath [
 	| result |
 
@@ -135,7 +137,7 @@ ConnectTest >> test09_XWinsUsingAConvolutedPath [
 	self assert: result equals: 'X'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ConnectTest >> test10_XWinsUsingASpiralPath [
 	| result |
 

@@ -33,33 +33,35 @@ TBD
 
 "
 Class {
-	#name : #WordSearchTest,
-	#superclass : #ExercismTest,
+	#name : 'WordSearchTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'wordSearchCalculator'
 	],
-	#category : #'ExercismWIP-WordSearch'
+	#category : 'ExercismWIP-WordSearch',
+	#package : 'ExercismWIP',
+	#tag : 'WordSearch'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 WordSearchTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'1399d32e-b043-0d00-9289-a7b902a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 WordSearchTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'1.2.1'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 WordSearchTest >> setUp [
 	super setUp.
 	wordSearchCalculator := WordSearch new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordSearchTest >> test01_ShouldAcceptAnInitialGameGridAndATargetSearchWord [
 	| result |
 
@@ -67,7 +69,7 @@ WordSearchTest >> test01_ShouldAcceptAnInitialGameGridAndATargetSearchWord [
 	self assert: result equals: ((Dictionary new) add: ('clojure'->nil); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordSearchTest >> test02_ShouldLocateOneWordWrittenLeftToRight [
 	| result |
 
@@ -75,7 +77,7 @@ WordSearchTest >> test02_ShouldLocateOneWordWrittenLeftToRight [
 	self assert: result equals: ((Dictionary new) add: ('clojure'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->7); add: ('row'->1); yourself)); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordSearchTest >> test03_ShouldLocateTheSameWordWrittenLeftToRightInADifferentPosition [
 	| result |
 
@@ -83,7 +85,7 @@ WordSearchTest >> test03_ShouldLocateTheSameWordWrittenLeftToRightInADifferentPo
 	self assert: result equals: ((Dictionary new) add: ('clojure'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->3); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->9); add: ('row'->1); yourself)); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordSearchTest >> test04_ShouldLocateADifferentLeftToRightWord [
 	| result |
 
@@ -91,7 +93,7 @@ WordSearchTest >> test04_ShouldLocateADifferentLeftToRightWord [
 	self assert: result equals: ((Dictionary new) add: ('coffee'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->6); add: ('row'->1); yourself)); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordSearchTest >> test05_ShouldLocateThatDifferentLeftToRightWordInADifferentPosition [
 	| result |
 
@@ -99,7 +101,7 @@ WordSearchTest >> test05_ShouldLocateThatDifferentLeftToRightWordInADifferentPos
 	self assert: result equals: ((Dictionary new) add: ('coffee'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->2); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->7); add: ('row'->1); yourself)); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordSearchTest >> test06_ShouldLocateALeftToRightWordInTwoLineGrid [
 	| result |
 
@@ -107,7 +109,7 @@ WordSearchTest >> test06_ShouldLocateALeftToRightWordInTwoLineGrid [
 	self assert: result equals: ((Dictionary new) add: ('clojure'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->2); add: ('row'->2); yourself)); add: ('end'->((Dictionary new) add: ('column'->8); add: ('row'->2); yourself)); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordSearchTest >> test07_ShouldLocateALeftToRightWordInThreeLineGrid [
 	| result |
 
@@ -115,7 +117,7 @@ WordSearchTest >> test07_ShouldLocateALeftToRightWordInThreeLineGrid [
 	self assert: result equals: ((Dictionary new) add: ('clojure'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->3); yourself)); add: ('end'->((Dictionary new) add: ('column'->7); add: ('row'->3); yourself)); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordSearchTest >> test08_ShouldLocateALeftToRightWordInTenLineGrid [
 	| result |
 
@@ -123,7 +125,7 @@ WordSearchTest >> test08_ShouldLocateALeftToRightWordInTenLineGrid [
 	self assert: result equals: ((Dictionary new) add: ('clojure'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->10); yourself)); add: ('end'->((Dictionary new) add: ('column'->7); add: ('row'->10); yourself)); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordSearchTest >> test09_ShouldLocateThatLeftToRightWordInADifferentPositionInATenLineGrid [
 	| result |
 
@@ -131,7 +133,7 @@ WordSearchTest >> test09_ShouldLocateThatLeftToRightWordInADifferentPositionInAT
 	self assert: result equals: ((Dictionary new) add: ('clojure'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->9); yourself)); add: ('end'->((Dictionary new) add: ('column'->7); add: ('row'->9); yourself)); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordSearchTest >> test10_ShouldLocateADifferentLeftToRightWordInATenLineGrid [
 	| result |
 
@@ -139,7 +141,7 @@ WordSearchTest >> test10_ShouldLocateADifferentLeftToRightWordInATenLineGrid [
 	self assert: result equals: ((Dictionary new) add: ('fortran'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->7); yourself)); add: ('end'->((Dictionary new) add: ('column'->7); add: ('row'->7); yourself)); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordSearchTest >> test11_ShouldLocateMultipleWords [
 	| result |
 
@@ -147,7 +149,7 @@ WordSearchTest >> test11_ShouldLocateMultipleWords [
 	self assert: result equals: ((Dictionary new) add: ('clojure'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->10); yourself)); add: ('end'->((Dictionary new) add: ('column'->7); add: ('row'->10); yourself)); yourself)); add: ('fortran'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->7); yourself)); add: ('end'->((Dictionary new) add: ('column'->7); add: ('row'->7); yourself)); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordSearchTest >> test12_ShouldLocateASingleWordWrittenRightToLeft [
 	| result |
 
@@ -155,7 +157,7 @@ WordSearchTest >> test12_ShouldLocateASingleWordWrittenRightToLeft [
 	self assert: result equals: ((Dictionary new) add: ('elixir'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->6); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->1); add: ('row'->1); yourself)); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordSearchTest >> test13_ShouldLocateMultipleWordsWrittenInDifferentHorizontalDirections [
 	| result |
 
@@ -163,7 +165,7 @@ WordSearchTest >> test13_ShouldLocateMultipleWordsWrittenInDifferentHorizontalDi
 	self assert: result equals: ((Dictionary new) add: ('clojure'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->10); yourself)); add: ('end'->((Dictionary new) add: ('column'->7); add: ('row'->10); yourself)); yourself)); add: ('elixir'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->6); add: ('row'->5); yourself)); add: ('end'->((Dictionary new) add: ('column'->1); add: ('row'->5); yourself)); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordSearchTest >> test14_ShouldLocateWordsWrittenTopToBottom [
 	| result |
 
@@ -171,7 +173,7 @@ WordSearchTest >> test14_ShouldLocateWordsWrittenTopToBottom [
 	self assert: result equals: ((Dictionary new) add: ('clojure'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->10); yourself)); add: ('end'->((Dictionary new) add: ('column'->7); add: ('row'->10); yourself)); yourself)); add: ('elixir'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->6); add: ('row'->5); yourself)); add: ('end'->((Dictionary new) add: ('column'->1); add: ('row'->5); yourself)); yourself)); add: ('ecmascript'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->10); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->10); add: ('row'->10); yourself)); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordSearchTest >> test15_ShouldLocateWordsWrittenBottomToTop [
 	| result |
 
@@ -179,7 +181,7 @@ WordSearchTest >> test15_ShouldLocateWordsWrittenBottomToTop [
 	self assert: result equals: ((Dictionary new) add: ('clojure'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->10); yourself)); add: ('end'->((Dictionary new) add: ('column'->7); add: ('row'->10); yourself)); yourself)); add: ('elixir'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->6); add: ('row'->5); yourself)); add: ('end'->((Dictionary new) add: ('column'->1); add: ('row'->5); yourself)); yourself)); add: ('ecmascript'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->10); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->10); add: ('row'->10); yourself)); yourself)); add: ('rust'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->9); add: ('row'->5); yourself)); add: ('end'->((Dictionary new) add: ('column'->9); add: ('row'->2); yourself)); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordSearchTest >> test16_ShouldLocateWordsWrittenTopLeftToBottomRight [
 	| result |
 
@@ -187,7 +189,7 @@ WordSearchTest >> test16_ShouldLocateWordsWrittenTopLeftToBottomRight [
 	self assert: result equals: ((Dictionary new) add: ('ecmascript'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->10); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->10); add: ('row'->10); yourself)); yourself)); add: ('elixir'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->6); add: ('row'->5); yourself)); add: ('end'->((Dictionary new) add: ('column'->1); add: ('row'->5); yourself)); yourself)); add: ('java'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->4); add: ('row'->4); yourself)); yourself)); add: ('clojure'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->10); yourself)); add: ('end'->((Dictionary new) add: ('column'->7); add: ('row'->10); yourself)); yourself)); add: ('rust'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->9); add: ('row'->5); yourself)); add: ('end'->((Dictionary new) add: ('column'->9); add: ('row'->2); yourself)); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordSearchTest >> test17_ShouldLocateWordsWrittenBottomRightToTopLeft [
 	| result |
 
@@ -195,7 +197,7 @@ WordSearchTest >> test17_ShouldLocateWordsWrittenBottomRightToTopLeft [
 	self assert: result equals: ((Dictionary new) add: ('ecmascript'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->10); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->10); add: ('row'->10); yourself)); yourself)); add: ('elixir'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->6); add: ('row'->5); yourself)); add: ('end'->((Dictionary new) add: ('column'->1); add: ('row'->5); yourself)); yourself)); add: ('java'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->4); add: ('row'->4); yourself)); yourself)); add: ('lua'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->8); add: ('row'->9); yourself)); add: ('end'->((Dictionary new) add: ('column'->6); add: ('row'->7); yourself)); yourself)); add: ('clojure'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->10); yourself)); add: ('end'->((Dictionary new) add: ('column'->7); add: ('row'->10); yourself)); yourself)); add: ('rust'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->9); add: ('row'->5); yourself)); add: ('end'->((Dictionary new) add: ('column'->9); add: ('row'->2); yourself)); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordSearchTest >> test18_ShouldLocateWordsWrittenBottomLeftToTopRight [
 	| result |
 
@@ -203,7 +205,7 @@ WordSearchTest >> test18_ShouldLocateWordsWrittenBottomLeftToTopRight [
 	self assert: result equals: ((Dictionary new) add: ('ecmascript'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->10); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->10); add: ('row'->10); yourself)); yourself)); add: ('elixir'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->6); add: ('row'->5); yourself)); add: ('end'->((Dictionary new) add: ('column'->1); add: ('row'->5); yourself)); yourself)); add: ('java'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->4); add: ('row'->4); yourself)); yourself)); add: ('lua'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->8); add: ('row'->9); yourself)); add: ('end'->((Dictionary new) add: ('column'->6); add: ('row'->7); yourself)); yourself)); add: ('clojure'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->10); yourself)); add: ('end'->((Dictionary new) add: ('column'->7); add: ('row'->10); yourself)); yourself)); add: ('lisp'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->3); add: ('row'->6); yourself)); add: ('end'->((Dictionary new) add: ('column'->6); add: ('row'->3); yourself)); yourself)); add: ('rust'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->9); add: ('row'->5); yourself)); add: ('end'->((Dictionary new) add: ('column'->9); add: ('row'->2); yourself)); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordSearchTest >> test19_ShouldLocateWordsWrittenTopRightToBottomLeft [
 	| result |
 
@@ -211,7 +213,7 @@ WordSearchTest >> test19_ShouldLocateWordsWrittenTopRightToBottomLeft [
 	self assert: result equals: ((Dictionary new) add: ('ecmascript'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->10); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->10); add: ('row'->10); yourself)); yourself)); add: ('elixir'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->6); add: ('row'->5); yourself)); add: ('end'->((Dictionary new) add: ('column'->1); add: ('row'->5); yourself)); yourself)); add: ('java'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->1); yourself)); add: ('end'->((Dictionary new) add: ('column'->4); add: ('row'->4); yourself)); yourself)); add: ('lua'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->8); add: ('row'->9); yourself)); add: ('end'->((Dictionary new) add: ('column'->6); add: ('row'->7); yourself)); yourself)); add: ('ruby'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->8); add: ('row'->6); yourself)); add: ('end'->((Dictionary new) add: ('column'->5); add: ('row'->9); yourself)); yourself)); add: ('clojure'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->1); add: ('row'->10); yourself)); add: ('end'->((Dictionary new) add: ('column'->7); add: ('row'->10); yourself)); yourself)); add: ('lisp'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->3); add: ('row'->6); yourself)); add: ('end'->((Dictionary new) add: ('column'->6); add: ('row'->3); yourself)); yourself)); add: ('rust'->((Dictionary new) add: ('start'->((Dictionary new) add: ('column'->9); add: ('row'->5); yourself)); add: ('end'->((Dictionary new) add: ('column'->9); add: ('row'->2); yourself)); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordSearchTest >> test20_ShouldFailToLocateAWordThatIsNotInThePuzzle [
 	| result |
 

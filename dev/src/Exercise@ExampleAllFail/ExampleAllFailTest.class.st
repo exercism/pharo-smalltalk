@@ -1,10 +1,11 @@
 Class {
-	#name : #ExampleAllFailTest,
-	#superclass : #ExercismTest,
-	#category : #'Exercise@ExampleAllFail'
+	#name : 'ExampleAllFailTest',
+	#superclass : 'ExercismTest',
+	#category : 'Exercise@ExampleAllFail',
+	#package : 'Exercise@ExampleAllFail'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 ExampleAllFailTest class >> exampleSolutionSourceCode [ 
 
 	^ 'Class {
@@ -30,7 +31,7 @@ ExampleAllFail >> exerciseMethodC [
 '
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExampleAllFailTest class >> exampleTestCasesSourceCode [ 
 	
 	^ 'Class {
@@ -56,7 +57,7 @@ ExampleAllFailTest >> testExerciseMethodC [
 '
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ExampleAllFailTest class >> exercise [
 	^ (self createExerciseAfter: HelloWorldTest)
 		isCore: true;
@@ -65,7 +66,7 @@ ExampleAllFailTest class >> exercise [
 		yourself.
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ExampleAllFailTest class >> prepareExampleSolutionSourceCode [
 
 " this is used for generating STON representation of MCSnapshot, that can be used to generate solution of example (golden test)"

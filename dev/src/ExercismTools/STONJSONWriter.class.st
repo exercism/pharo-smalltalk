@@ -15,12 +15,14 @@ String streamContents: [ :stream |
 It is assumed that key order is important and so all Dictionaries are converted to OrderedDictionary when writing out the JSON
 "
 Class {
-	#name : #STONJSONWriter,
-	#superclass : #STONWriter,
-	#category : #'ExercismTools-Core'
+	#name : 'STONJSONWriter',
+	#superclass : 'STONWriter',
+	#category : 'ExercismTools-Core',
+	#package : 'ExercismTools',
+	#tag : 'Core'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 STONJSONWriter class >> on: writeStream [
 	^ (super on: writeStream)
 			jsonMode: true;
@@ -29,7 +31,7 @@ STONJSONWriter class >> on: writeStream [
 			yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 STONJSONWriter class >> streamContentsOf: anObject [
 	"Answer a String, the results of streaming the writer contents for anObject (simple conveniance method)"
 	
@@ -37,7 +39,7 @@ STONJSONWriter class >> streamContentsOf: anObject [
 			(self on: stream) nextPut: anObject ]
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 STONJSONWriter >> newlineIndent [
 	"Override to adopt a json space identation convention"
 
@@ -46,7 +48,7 @@ STONJSONWriter >> newlineIndent [
 			level timesRepeat: [ writeStream space: 2 ] ]
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 STONJSONWriter >> writeAssociation: association [
 	"Overriden to support associations"
 	
@@ -55,7 +57,7 @@ STONJSONWriter >> writeAssociation: association [
 		value: association value
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 STONJSONWriter >> writeObject: anObject do: block [
 	"Overridden to support Collections and Dictionaries"
 	

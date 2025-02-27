@@ -4,38 +4,39 @@ Fairly straightforward implementation:
 
 "
 Class {
-	#name : #AtbashCipher,
-	#superclass : #Object,
+	#name : 'AtbashCipher',
+	#superclass : 'Object',
 	#instVars : [
 		'key'
 	],
-	#category : #'Exercise@AtbashCipher'
+	#category : 'Exercise@AtbashCipher',
+	#package : 'Exercise@AtbashCipher'
 }
 
-{ #category : #encoding }
+{ #category : 'encoding' }
 AtbashCipher >> decodePhrase: aString [
 	^ self transcodePhrase: aString
 ]
 
-{ #category : #encoding }
+{ #category : 'encoding' }
 AtbashCipher >> encodePhrase: aString [
 	^ self splitInGroupsOfFive: (self transcodePhrase: aString)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 AtbashCipher >> initialize [
 	key := Character alphabet reversed
 
 ]
 
-{ #category : #encoding }
+{ #category : 'encoding' }
 AtbashCipher >> sanitizeString: aString [
 	^ aString
 		select: [ :each | each isAlphaNumeric ]
 		thenCollect: #asLowercase
 ]
 
-{ #category : #splitjoin }
+{ #category : 'splitjoin' }
 AtbashCipher >> splitInGroupsOfFive: stringToSplit [
 	|input|
 	input := ReadStream on: stringToSplit.
@@ -46,7 +47,7 @@ AtbashCipher >> splitInGroupsOfFive: stringToSplit [
 
 ]
 
-{ #category : #encoding }
+{ #category : 'encoding' }
 AtbashCipher >> transcodeChar: aCharacter [ 
 	| index |
 	
@@ -54,7 +55,7 @@ AtbashCipher >> transcodeChar: aCharacter [
 	^ key at: index ifAbsent: aCharacter
 ]
 
-{ #category : #encoding }
+{ #category : 'encoding' }
 AtbashCipher >> transcodePhrase: aString [
 	| sanitizedInput transcodedString |
 

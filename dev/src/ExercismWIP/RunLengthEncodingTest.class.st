@@ -30,33 +30,35 @@ TBD
 
 "
 Class {
-	#name : #RunLengthEncodingTest,
-	#superclass : #ExercismTest,
+	#name : 'RunLengthEncodingTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'runLengthEncodingCalculator'
 	],
-	#category : #'ExercismWIP-RunLengthEncoding'
+	#category : 'ExercismWIP-RunLengthEncoding',
+	#package : 'ExercismWIP',
+	#tag : 'RunLengthEncoding'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 RunLengthEncodingTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'1d19c516-9d41-0d00-8fe2-de9208866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 RunLengthEncodingTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 RunLengthEncodingTest >> setUp [
 	super setUp.
 	runLengthEncodingCalculator := RunLengthEncoding new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RunLengthEncodingTest >> test01_RunlengthEncodeAStringEmptyString [
 	| result |
 
@@ -64,7 +66,7 @@ RunLengthEncodingTest >> test01_RunlengthEncodeAStringEmptyString [
 	self assert: result equals: ''
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RunLengthEncodingTest >> test02_RunlengthEncodeAStringSingleCharactersOnlyAreEncodedWithoutCount [
 	| result |
 
@@ -72,7 +74,7 @@ RunLengthEncodingTest >> test02_RunlengthEncodeAStringSingleCharactersOnlyAreEnc
 	self assert: result equals: 'XYZ'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RunLengthEncodingTest >> test03_RunlengthEncodeAStringStringWithNoSingleCharacters [
 	| result |
 
@@ -80,7 +82,7 @@ RunLengthEncodingTest >> test03_RunlengthEncodeAStringStringWithNoSingleCharacte
 	self assert: result equals: '2A3B4C'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RunLengthEncodingTest >> test04_RunlengthEncodeAStringSingleCharactersMixedWithRepeatedCharacters [
 	| result |
 
@@ -88,7 +90,7 @@ RunLengthEncodingTest >> test04_RunlengthEncodeAStringSingleCharactersMixedWithR
 	self assert: result equals: '12WB12W3B24WB'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RunLengthEncodingTest >> test05_RunlengthEncodeAStringMultipleWhitespaceMixedInString [
 	| result |
 
@@ -96,7 +98,7 @@ RunLengthEncodingTest >> test05_RunlengthEncodeAStringMultipleWhitespaceMixedInS
 	self assert: result equals: '2 hs2q q2w2 '
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RunLengthEncodingTest >> test06_RunlengthEncodeAStringLowercaseCharacters [
 	| result |
 
@@ -104,7 +106,7 @@ RunLengthEncodingTest >> test06_RunlengthEncodeAStringLowercaseCharacters [
 	self assert: result equals: '2a3b4c'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RunLengthEncodingTest >> test07_RunlengthDecodeAStringEmptyString [
 	| result |
 
@@ -112,7 +114,7 @@ RunLengthEncodingTest >> test07_RunlengthDecodeAStringEmptyString [
 	self assert: result equals: ''
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RunLengthEncodingTest >> test08_RunlengthDecodeAStringSingleCharactersOnly [
 	| result |
 
@@ -120,7 +122,7 @@ RunLengthEncodingTest >> test08_RunlengthDecodeAStringSingleCharactersOnly [
 	self assert: result equals: 'XYZ'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RunLengthEncodingTest >> test09_RunlengthDecodeAStringStringWithNoSingleCharacters [
 	| result |
 
@@ -128,7 +130,7 @@ RunLengthEncodingTest >> test09_RunlengthDecodeAStringStringWithNoSingleCharacte
 	self assert: result equals: 'AABBBCCCC'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RunLengthEncodingTest >> test10_RunlengthDecodeAStringSingleCharactersWithRepeatedCharacters [
 	| result |
 
@@ -136,7 +138,7 @@ RunLengthEncodingTest >> test10_RunlengthDecodeAStringSingleCharactersWithRepeat
 	self assert: result equals: 'WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RunLengthEncodingTest >> test11_RunlengthDecodeAStringMultipleWhitespaceMixedInString [
 	| result |
 
@@ -144,7 +146,7 @@ RunLengthEncodingTest >> test11_RunlengthDecodeAStringMultipleWhitespaceMixedInS
 	self assert: result equals: '  hsqq qww  '
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RunLengthEncodingTest >> test12_RunlengthDecodeAStringLowerCaseString [
 	| result |
 
@@ -152,7 +154,7 @@ RunLengthEncodingTest >> test12_RunlengthDecodeAStringLowerCaseString [
 	self assert: result equals: 'aabbbcccc'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RunLengthEncodingTest >> test13_EncodeAndThenDecodeEncodeFollowedByDecodeGivesOriginalString [
 	| result |
 

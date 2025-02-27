@@ -23,15 +23,16 @@ This one can be quite simple if you look at ways to iterate over the list of inp
 
 "
 Class {
-	#name : #ProverbTest,
-	#superclass : #ExercismTest,
+	#name : 'ProverbTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'proverbCalculator'
 	],
-	#category : #'Exercise@Proverb'
+	#category : 'Exercise@Proverb',
+	#package : 'Exercise@Proverb'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 ProverbTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -42,25 +43,25 @@ ProverbTest class >> exercise [
 
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ProverbTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'d2fb44f3-76a2-44a7-85b1-eff15a1e16b3'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ProverbTest class >> version [
 	"Generated from specification: 15 March 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 ProverbTest >> setUp [
 	super setUp.
 	proverbCalculator := Proverb new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProverbTest >> test01_ZeroPieces [
 	| result |
 
@@ -68,7 +69,7 @@ ProverbTest >> test01_ZeroPieces [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProverbTest >> test02_OnePiece [
 	| result |
 
@@ -76,7 +77,7 @@ ProverbTest >> test02_OnePiece [
 	self assert: result equals: #('And all for the want of a nail.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProverbTest >> test03_TwoPieces [
 	| result |
 
@@ -84,7 +85,7 @@ ProverbTest >> test03_TwoPieces [
 	self assert: result equals: #('For want of a nail the shoe was lost.' 'And all for the want of a nail.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProverbTest >> test04_ThreePieces [
 	| result |
 
@@ -92,7 +93,7 @@ ProverbTest >> test04_ThreePieces [
 	self assert: result equals: #('For want of a nail the shoe was lost.' 'For want of a shoe the horse was lost.' 'And all for the want of a nail.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProverbTest >> test05_FullProverb [
 	| result |
 
@@ -100,7 +101,7 @@ ProverbTest >> test05_FullProverb [
 	self assert: result equals: #('For want of a nail the shoe was lost.' 'For want of a shoe the horse was lost.' 'For want of a horse the rider was lost.' 'For want of a rider the message was lost.' 'For want of a message the battle was lost.' 'For want of a battle the kingdom was lost.' 'And all for the want of a nail.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProverbTest >> test06_FourPiecesModernized [
 	| result |
 

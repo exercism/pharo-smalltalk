@@ -30,33 +30,35 @@ TBD
 
 "
 Class {
-	#name : #SpiralMatrixTest,
-	#superclass : #ExercismTest,
+	#name : 'SpiralMatrixTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'spiralMatrixCalculator'
 	],
-	#category : #'ExercismWIP-SpiralMatrix'
+	#category : 'ExercismWIP-SpiralMatrix',
+	#package : 'ExercismWIP',
+	#tag : 'SpiralMatrix'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 SpiralMatrixTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'65019b16-9d41-0d00-8fbe-dc9808866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 SpiralMatrixTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 SpiralMatrixTest >> setUp [
 	super setUp.
 	spiralMatrixCalculator := SpiralMatrix new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpiralMatrixTest >> test01_EmptySpiral [
 	| result |
 
@@ -64,7 +66,7 @@ SpiralMatrixTest >> test01_EmptySpiral [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpiralMatrixTest >> test02_TrivialSpiral [
 	| result |
 
@@ -72,7 +74,7 @@ SpiralMatrixTest >> test02_TrivialSpiral [
 	self assert: result equals: #(#(1 ) )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpiralMatrixTest >> test03_SpiralOfSize2 [
 	| result |
 
@@ -80,7 +82,7 @@ SpiralMatrixTest >> test03_SpiralOfSize2 [
 	self assert: result equals: #(#(1 2 ) #(4 3 ) )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpiralMatrixTest >> test04_SpiralOfSize3 [
 	| result |
 
@@ -88,7 +90,7 @@ SpiralMatrixTest >> test04_SpiralOfSize3 [
 	self assert: result equals: #(#(1 2 3 ) #(8 9 4 ) #(7 6 5 ) )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpiralMatrixTest >> test05_SpiralOfSize4 [
 	| result |
 
@@ -96,7 +98,7 @@ SpiralMatrixTest >> test05_SpiralOfSize4 [
 	self assert: result equals: #(#(1 2 3 4 ) #(12 13 14 5 ) #(11 16 15 6 ) #(10 9 8 7 ) )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpiralMatrixTest >> test06_SpiralOfSize5 [
 	| result |
 

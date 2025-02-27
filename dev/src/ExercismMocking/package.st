@@ -1,1 +1,1 @@
-Package { #name : #ExercismMocking }
+Package { #name : 'ExercismMocking' }

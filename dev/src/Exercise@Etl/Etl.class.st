@@ -2,12 +2,13 @@
 I invert the storage of score/letter storage. While efficiency is not always the most crucial aspect of a soution, iterating over the dictionary associations (v.s. just value or just the keys) makes this solution quite trivial.
 "
 Class {
-	#name : #Etl,
-	#superclass : #Object,
-	#category : #'Exercise@Etl'
+	#name : 'Etl',
+	#superclass : 'Object',
+	#category : 'Exercise@Etl',
+	#package : 'Exercise@Etl'
 }
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 Etl >> transformData: tileDictionary [
 	"Iterate over the input score/letter association to avoid an extra dictionary lookup"
 	

@@ -1,26 +1,26 @@
-Extension { #name : #MockExpectedMessage }
+Extension { #name : 'MockExpectedMessage' }
 
-{ #category : #'*ExercismMocking' }
+{ #category : '*ExercismMocking' }
 MockExpectedMessage >> atLeast: aCount [
 	"Mark the expectation as: should be used at least once. Useful when using #expecting"
 	
 	spec usage minCount: aCount
 ]
 
-{ #category : #'*ExercismMocking' }
+{ #category : '*ExercismMocking' }
 MockExpectedMessage >> atLeastOnce [
 	"Mark the expectation as: should be used at least once. Useful when using #expecting"
 	
 	self atLeast: 1
 ]
 
-{ #category : #'*ExercismMocking' }
+{ #category : '*ExercismMocking' }
 MockExpectedMessage >> atMost: numberOfTimes [
 	
 	self use: numberOfTimes 
 ]
 
-{ #category : #'*ExercismMocking' }
+{ #category : '*ExercismMocking' }
 MockExpectedMessage >> exactly: numberOfTimes [
 	"An alias for use:, but grammatical nices when used with #expecting:"
 	
@@ -29,7 +29,7 @@ MockExpectedMessage >> exactly: numberOfTimes [
 		atMost: numberOfTimes
 ]
 
-{ #category : #'*ExercismMocking' }
+{ #category : '*ExercismMocking' }
 MockExpectedMessage >> specifying: aBlock [
 	"Provide a hook for easily specifying state-spec expectations on a mock e.g.:
 		(myMock expect someMessage: Arg) specifying: [ :param :count | 

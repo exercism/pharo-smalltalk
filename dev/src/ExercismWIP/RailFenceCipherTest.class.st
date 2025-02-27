@@ -65,33 +65,35 @@ TBD
 
 "
 Class {
-	#name : #RailFenceCipherTest,
-	#superclass : #ExercismTest,
+	#name : 'RailFenceCipherTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'railFenceCipherCalculator'
 	],
-	#category : #'ExercismWIP-RailFenceCipher'
+	#category : 'ExercismWIP-RailFenceCipher',
+	#package : 'ExercismWIP',
+	#tag : 'RailFenceCipher'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 RailFenceCipherTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'d478f816-9d41-0d00-9008-225d08866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 RailFenceCipherTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 RailFenceCipherTest >> setUp [
 	super setUp.
 	railFenceCipherCalculator := RailFenceCipher new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RailFenceCipherTest >> test01_EncodeEncodeWithTwoRails [
 	| result |
 
@@ -99,7 +101,7 @@ RailFenceCipherTest >> test01_EncodeEncodeWithTwoRails [
 	self assert: result equals: 'XXXXXXXXXOOOOOOOOO'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RailFenceCipherTest >> test02_EncodeEncodeWithThreeRails [
 	| result |
 
@@ -107,7 +109,7 @@ RailFenceCipherTest >> test02_EncodeEncodeWithThreeRails [
 	self assert: result equals: 'WECRLTEERDSOEEFEAOCAIVDEN'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RailFenceCipherTest >> test03_EncodeEncodeWithEndingInTheMiddle [
 	| result |
 
@@ -115,7 +117,7 @@ RailFenceCipherTest >> test03_EncodeEncodeWithEndingInTheMiddle [
 	self assert: result equals: 'ESXIEECSR'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RailFenceCipherTest >> test04_DecodeDecodeWithThreeRails [
 	| result |
 
@@ -123,7 +125,7 @@ RailFenceCipherTest >> test04_DecodeDecodeWithThreeRails [
 	self assert: result equals: 'THEDEVILISINTHEDETAILS'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RailFenceCipherTest >> test05_DecodeDecodeWithFiveRails [
 	| result |
 
@@ -131,7 +133,7 @@ RailFenceCipherTest >> test05_DecodeDecodeWithFiveRails [
 	self assert: result equals: 'EXERCISMISAWESOME'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RailFenceCipherTest >> test06_DecodeDecodeWithSixRails [
 	| result |
 

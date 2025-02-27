@@ -26,17 +26,19 @@ On my class side is `#worldMenuCommandOn:`. This method adds a ""Fetch
 new exercise..."" command to the World menu under the ""Exercism"" section.
 "
 Class {
-	#name : #ClyExercismFetchCommand,
-	#superclass : #ClyExercismExerciseCommand,
-	#category : #'ExercismTools-Menus'
+	#name : 'ClyExercismFetchCommand',
+	#superclass : 'ClyExercismExerciseCommand',
+	#category : 'ExercismTools-Menus',
+	#package : 'ExercismTools',
+	#tag : 'Menus'
 }
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyExercismFetchCommand class >> contextMenuOrder [
 		^5
 ]
 
-{ #category : #'world menu' }
+{ #category : 'world menu' }
 ClyExercismFetchCommand class >> worldMenuCommandOn: aBuilder [
 	<worldMenu>
 	
@@ -58,22 +60,22 @@ ClyExercismFetchCommand class >> worldMenuCommandOn: aBuilder [
 		"withSeparatorAfter"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismFetchCommand >> defaultMenuIconName [
 	^#book
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismFetchCommand >> defaultMenuItemName [
 	^'Fetch new exercise...'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismFetchCommand >> description [ 
 	^'Fetch a named Exercism exercise to begin solving it'
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ClyExercismFetchCommand >> execute [
 	| submission |
 

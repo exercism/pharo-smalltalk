@@ -46,33 +46,35 @@ TBD
 
 "
 Class {
-	#name : #ScrabbleScoreTest,
-	#superclass : #ExercismTest,
+	#name : 'ScrabbleScoreTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'scrabbleScoreCalculator'
 	],
-	#category : #'ExercismWIP-ScrabbleScore'
+	#category : 'ExercismWIP-ScrabbleScore',
+	#package : 'ExercismWIP',
+	#tag : 'ScrabbleScore'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 ScrabbleScoreTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'e206d516-9d41-0d00-8fef-ff4808866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ScrabbleScoreTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 ScrabbleScoreTest >> setUp [
 	super setUp.
 	scrabbleScoreCalculator := ScrabbleScore new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScrabbleScoreTest >> test01_LowercaseLetter [
 	| result |
 
@@ -80,7 +82,7 @@ ScrabbleScoreTest >> test01_LowercaseLetter [
 	self assert: result equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScrabbleScoreTest >> test02_UppercaseLetter [
 	| result |
 
@@ -88,7 +90,7 @@ ScrabbleScoreTest >> test02_UppercaseLetter [
 	self assert: result equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScrabbleScoreTest >> test03_ValuableLetter [
 	| result |
 
@@ -96,7 +98,7 @@ ScrabbleScoreTest >> test03_ValuableLetter [
 	self assert: result equals: 4
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScrabbleScoreTest >> test04_ShortWord [
 	| result |
 
@@ -104,7 +106,7 @@ ScrabbleScoreTest >> test04_ShortWord [
 	self assert: result equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScrabbleScoreTest >> test05_ShortValuableWord [
 	| result |
 
@@ -112,7 +114,7 @@ ScrabbleScoreTest >> test05_ShortValuableWord [
 	self assert: result equals: 12
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScrabbleScoreTest >> test06_MediumWord [
 	| result |
 
@@ -120,7 +122,7 @@ ScrabbleScoreTest >> test06_MediumWord [
 	self assert: result equals: 6
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScrabbleScoreTest >> test07_MediumValuableWord [
 	| result |
 
@@ -128,7 +130,7 @@ ScrabbleScoreTest >> test07_MediumValuableWord [
 	self assert: result equals: 22
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScrabbleScoreTest >> test08_LongMixedcaseWord [
 	| result |
 
@@ -136,7 +138,7 @@ ScrabbleScoreTest >> test08_LongMixedcaseWord [
 	self assert: result equals: 41
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScrabbleScoreTest >> test09_EnglishlikeWord [
 	| result |
 
@@ -144,7 +146,7 @@ ScrabbleScoreTest >> test09_EnglishlikeWord [
 	self assert: result equals: 8
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScrabbleScoreTest >> test10_EmptyInput [
 	| result |
 
@@ -152,7 +154,7 @@ ScrabbleScoreTest >> test10_EmptyInput [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ScrabbleScoreTest >> test11_EntireAlphabetAvailable [
 	| result |
 

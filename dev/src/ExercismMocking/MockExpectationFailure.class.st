@@ -1,10 +1,11 @@
 Class {
-	#name : #MockExpectationFailure,
-	#superclass : #AssertionFailure,
-	#category : #ExercismMocking
+	#name : 'MockExpectationFailure',
+	#superclass : 'AssertionFailure',
+	#category : 'ExercismMocking',
+	#package : 'ExercismMocking'
 }
 
-{ #category : #exceptiondescription }
+{ #category : 'exceptiondescription' }
 MockExpectationFailure >> defaultAction [
 	| triggerContext |
 	

@@ -15,15 +15,16 @@ It pays off to carefully read the exercise description as this can simplify your
 
 "
 Class {
-	#name : #PangramTest,
-	#superclass : #ExercismTest,
+	#name : 'PangramTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'pangramCalculator'
 	],
-	#category : #'Exercise@Pangram'
+	#category : 'Exercise@Pangram',
+	#package : 'Exercise@Pangram'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 PangramTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -34,25 +35,25 @@ PangramTest class >> exercise [
 	
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 PangramTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'948c77bf-da89-4357-93a3-ec5a496ff70a'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 PangramTest class >> version [
 	"Generated from specification: 28 February 2019"
 	^'1.4.1'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PangramTest >> setUp [
 	super setUp.
 	pangramCalculator := Pangram new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PangramTest >> test01_CheckIfTheGivenStringIsAPangramSentenceEmpty [
 	| result |
 
@@ -60,7 +61,7 @@ PangramTest >> test01_CheckIfTheGivenStringIsAPangramSentenceEmpty [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PangramTest >> test02_CheckIfTheGivenStringIsAPangramRecognizesAPerfectLowerCasePangram [
 	| result |
 
@@ -68,7 +69,7 @@ PangramTest >> test02_CheckIfTheGivenStringIsAPangramRecognizesAPerfectLowerCase
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PangramTest >> test03_CheckIfTheGivenStringIsAPangramPangramWithOnlyLowerCase [
 	| result |
 
@@ -76,7 +77,7 @@ PangramTest >> test03_CheckIfTheGivenStringIsAPangramPangramWithOnlyLowerCase [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PangramTest >> test04_CheckIfTheGivenStringIsAPangramMissingCharacterx [
 	| result |
 
@@ -84,7 +85,7 @@ PangramTest >> test04_CheckIfTheGivenStringIsAPangramMissingCharacterx [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PangramTest >> test05_CheckIfTheGivenStringIsAPangramAnotherMissingCharacterEgh [
 	| result |
 
@@ -92,7 +93,7 @@ PangramTest >> test05_CheckIfTheGivenStringIsAPangramAnotherMissingCharacterEgh 
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PangramTest >> test06_CheckIfTheGivenStringIsAPangramPangramWithUnderscores [
 	| result |
 
@@ -100,7 +101,7 @@ PangramTest >> test06_CheckIfTheGivenStringIsAPangramPangramWithUnderscores [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PangramTest >> test07_CheckIfTheGivenStringIsAPangramPangramWithNumbers [
 	| result |
 
@@ -108,7 +109,7 @@ PangramTest >> test07_CheckIfTheGivenStringIsAPangramPangramWithNumbers [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PangramTest >> test08_CheckIfTheGivenStringIsAPangramMissingLettersReplacedByNumbers [
 	| result |
 
@@ -116,7 +117,7 @@ PangramTest >> test08_CheckIfTheGivenStringIsAPangramMissingLettersReplacedByNum
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PangramTest >> test09_CheckIfTheGivenStringIsAPangramPangramWithMixedCaseAndPunctuation [
 	| result |
 
@@ -124,7 +125,7 @@ PangramTest >> test09_CheckIfTheGivenStringIsAPangramPangramWithMixedCaseAndPunc
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PangramTest >> test10_CheckIfTheGivenStringIsAPangramUpperAndLowerCaseVersionsOfTheSameCharacterShouldNotBeCountedSeparately [
 	| result |
 

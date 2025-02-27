@@ -16,15 +16,16 @@ output: [1,2,3,4,5]
 Without using the built-in flattening method, you can easily derive your own, but you will need to differeniate between what is a collection and what is not
 "
 Class {
-	#name : #FlattenArrayTest,
-	#superclass : #ExercismTest,
+	#name : 'FlattenArrayTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'flattenArrayCalculator'
 	],
-	#category : #'Exercis@FlattenArray'
+	#category : 'Exercis@FlattenArray',
+	#package : 'Exercis@FlattenArray'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 FlattenArrayTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 
@@ -35,25 +36,25 @@ FlattenArrayTest class >> exercise [
 		yourself
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 FlattenArrayTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'aa15f716-9d41-0d00-9006-3c7208866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 FlattenArrayTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.2.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 FlattenArrayTest >> setUp [
 	super setUp.
 	flattenArrayCalculator := FlattenArray new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 FlattenArrayTest >> test01_NoNesting [
 	| result |
 
@@ -61,7 +62,7 @@ FlattenArrayTest >> test01_NoNesting [
 	self assert: result equals: #(0 1 2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 FlattenArrayTest >> test02_FlattensArrayWithJustIntegersPresent [
 	| result |
 
@@ -69,7 +70,7 @@ FlattenArrayTest >> test02_FlattensArrayWithJustIntegersPresent [
 	self assert: result equals: #(1 2 3 4 5 6 7 8 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 FlattenArrayTest >> test03_5LevelNesting [
 	| result |
 
@@ -77,7 +78,7 @@ FlattenArrayTest >> test03_5LevelNesting [
 	self assert: result equals: #(0 2 2 3 8 100 4 50  -2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 FlattenArrayTest >> test04_6LevelNesting [
 	| result |
 
@@ -85,7 +86,7 @@ FlattenArrayTest >> test04_6LevelNesting [
 	self assert: result equals: #(1 2 3 4 5 6 7 8 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 FlattenArrayTest >> test05_6LevelNestListWithNullValues [
 	| result |
 
@@ -93,7 +94,7 @@ FlattenArrayTest >> test05_6LevelNestListWithNullValues [
 	self assert: result equals: #(0 2 2 3 8 100  -2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 FlattenArrayTest >> test06_AllValuesInNestedListAreNull [
 	| result |
 
@@ -101,7 +102,7 @@ FlattenArrayTest >> test06_AllValuesInNestedListAreNull [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 FlattenArrayTest >> testMisuseOfSelector [
 	self verifySolution: flattenArrayCalculator class avoidsSelector: #flattened
 ]
