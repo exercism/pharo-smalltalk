@@ -28,7 +28,7 @@ Given a puzzle and a list of words return the location of the first and last let
 
 ## Hint
 
-TBD
+2-dimensional array and Point class might be your friends here. Also, search result needs to be in desired format for unit tests, so separate class definition might be needed for word search results.
 
 "
 Class {
@@ -53,7 +53,8 @@ WordSearchTest class >> exercise [
 { #category : 'config' }
 WordSearchTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'ec22ea65-ceeb-0d00-948e-81f20c5bc578'
+	^'152deac5-8e81-401c-8a6a-b89c2a84c91c'
+	  
 ]
 
 { #category : 'config' }
