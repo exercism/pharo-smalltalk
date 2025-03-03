@@ -74,33 +74,35 @@ TBD
 
 "
 Class {
-	#name : #WordyTest,
-	#superclass : #ExercismTest,
+	#name : 'WordyTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'wordyCalculator'
 	],
-	#category : #'ExercismWIP-Wordy'
+	#category : 'ExercismWIP-Wordy',
+	#package : 'ExercismWIP',
+	#tag : 'Wordy'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 WordyTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'717ac12e-b043-0d00-9272-9da202a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 WordyTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'1.5.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 WordyTest >> setUp [
 	super setUp.
 	wordyCalculator := Wordy new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordyTest >> test01_JustANumber [
 	| result |
 
@@ -108,7 +110,7 @@ WordyTest >> test01_JustANumber [
 	self assert: result equals: 5
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordyTest >> test02_Addition [
 	| result |
 
@@ -116,7 +118,7 @@ WordyTest >> test02_Addition [
 	self assert: result equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordyTest >> test03_MoreAddition [
 	| result |
 
@@ -124,7 +126,7 @@ WordyTest >> test03_MoreAddition [
 	self assert: result equals: 55
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordyTest >> test04_AdditionWithNegativeNumbers [
 	| result |
 
@@ -132,7 +134,7 @@ WordyTest >> test04_AdditionWithNegativeNumbers [
 	self assert: result equals:  -11
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordyTest >> test05_LargeAddition [
 	| result |
 
@@ -140,7 +142,7 @@ WordyTest >> test05_LargeAddition [
 	self assert: result equals: 45801
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordyTest >> test06_Subtraction [
 	| result |
 
@@ -148,7 +150,7 @@ WordyTest >> test06_Subtraction [
 	self assert: result equals: 16
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordyTest >> test07_Multiplication [
 	| result |
 
@@ -156,7 +158,7 @@ WordyTest >> test07_Multiplication [
 	self assert: result equals:  -75
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordyTest >> test08_Division [
 	| result |
 
@@ -164,7 +166,7 @@ WordyTest >> test08_Division [
 	self assert: result equals:  -11
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordyTest >> test09_MultipleAdditions [
 	| result |
 
@@ -172,7 +174,7 @@ WordyTest >> test09_MultipleAdditions [
 	self assert: result equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordyTest >> test10_AdditionAndSubtraction [
 	| result |
 
@@ -180,7 +182,7 @@ WordyTest >> test10_AdditionAndSubtraction [
 	self assert: result equals: 8
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordyTest >> test11_MultipleSubtraction [
 	| result |
 
@@ -188,7 +190,7 @@ WordyTest >> test11_MultipleSubtraction [
 	self assert: result equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordyTest >> test12_SubtractionThenAddition [
 	| result |
 
@@ -196,7 +198,7 @@ WordyTest >> test12_SubtractionThenAddition [
 	self assert: result equals: 14
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordyTest >> test13_MultipleMultiplication [
 	| result |
 
@@ -204,7 +206,7 @@ WordyTest >> test13_MultipleMultiplication [
 	self assert: result equals:  -12
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordyTest >> test14_AdditionAndMultiplication [
 	| result |
 
@@ -212,7 +214,7 @@ WordyTest >> test14_AdditionAndMultiplication [
 	self assert: result equals:  -8
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordyTest >> test15_MultipleDivision [
 	| result |
 
@@ -220,7 +222,7 @@ WordyTest >> test15_MultipleDivision [
 	self assert: result equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordyTest >> test16_UnknownOperation [
 	| result |
 
@@ -231,7 +233,7 @@ WordyTest >> test16_UnknownOperation [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordyTest >> test17_NonMathQuestion [
 	| result |
 
@@ -242,7 +244,7 @@ WordyTest >> test17_NonMathQuestion [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordyTest >> test18_RejectProblemMissingAnOperand [
 	| result |
 
@@ -253,7 +255,7 @@ WordyTest >> test18_RejectProblemMissingAnOperand [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordyTest >> test19_RejectProblemWithNoOperandsOrOperators [
 	| result |
 
@@ -264,7 +266,7 @@ WordyTest >> test19_RejectProblemWithNoOperandsOrOperators [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordyTest >> test20_RejectTwoOperationsInARow [
 	| result |
 
@@ -275,7 +277,7 @@ WordyTest >> test20_RejectTwoOperationsInARow [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordyTest >> test21_RejectTwoNumbersInARow [
 	| result |
 
@@ -286,7 +288,7 @@ WordyTest >> test21_RejectTwoNumbersInARow [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordyTest >> test22_RejectPostfixNotation [
 	| result |
 
@@ -297,7 +299,7 @@ WordyTest >> test22_RejectPostfixNotation [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordyTest >> test23_RejectPrefixNotation [
 	| result |
 

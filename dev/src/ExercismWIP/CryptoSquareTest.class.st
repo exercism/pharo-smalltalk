@@ -79,33 +79,35 @@ TBD
 
 "
 Class {
-	#name : #CryptoSquareTest,
-	#superclass : #ExercismTest,
+	#name : 'CryptoSquareTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'cryptoSquareCalculator'
 	],
-	#category : #'ExercismWIP-CryptoSquare'
+	#category : 'ExercismWIP-CryptoSquare',
+	#package : 'ExercismWIP',
+	#tag : 'CryptoSquare'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 CryptoSquareTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'3bfec016-9d41-0d00-8fde-184c08866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 CryptoSquareTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'3.2.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 CryptoSquareTest >> setUp [
 	super setUp.
 	cryptoSquareCalculator := CryptoSquare new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CryptoSquareTest >> test01_EmptyPlaintextResultsInAnEmptyCiphertext [
 	| result |
 
@@ -113,7 +115,7 @@ CryptoSquareTest >> test01_EmptyPlaintextResultsInAnEmptyCiphertext [
 	self assert: result equals: ''
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CryptoSquareTest >> test02_Lowercase [
 	| result |
 
@@ -121,7 +123,7 @@ CryptoSquareTest >> test02_Lowercase [
 	self assert: result equals: 'a'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CryptoSquareTest >> test03_RemoveSpaces [
 	| result |
 
@@ -129,7 +131,7 @@ CryptoSquareTest >> test03_RemoveSpaces [
 	self assert: result equals: 'b'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CryptoSquareTest >> test04_RemovePunctuation [
 	| result |
 
@@ -137,7 +139,7 @@ CryptoSquareTest >> test04_RemovePunctuation [
 	self assert: result equals: '1'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CryptoSquareTest >> test05_9CharacterPlaintextResultsIn3ChunksOf3Characters [
 	| result |
 
@@ -145,7 +147,7 @@ CryptoSquareTest >> test05_9CharacterPlaintextResultsIn3ChunksOf3Characters [
 	self assert: result equals: 'tsf hiu isn'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CryptoSquareTest >> test06_8CharacterPlaintextResultsIn3ChunksTheLastOneWithATrailingSpace [
 	| result |
 
@@ -153,7 +155,7 @@ CryptoSquareTest >> test06_8CharacterPlaintextResultsIn3ChunksTheLastOneWithATra
 	self assert: result equals: 'clu hlt io '
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CryptoSquareTest >> test07_54CharacterPlaintextResultsIn7ChunksTheLastTwoWithTrailingSpaces [
 	| result |
 

@@ -73,15 +73,16 @@ Take a look at [Diffie-Hellman on Wikipedia][dh] for one of the first implementa
 Try using arithmetic operations like modulo to wrap indexes, when exceeded. Character, String classes are your friends too. 
 "
 Class {
-	#name : #SimpleCipherTest,
-	#superclass : #ExercismTest,
+	#name : 'SimpleCipherTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'simpleCipherCalculator'
 	],
-	#category : #'Exercise@SimpleCipher'
+	#category : 'Exercise@SimpleCipher',
+	#package : 'Exercise@SimpleCipher'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 SimpleCipherTest class >> exercise [
 
 	^(ExercismExercise for: self) 
@@ -90,25 +91,25 @@ SimpleCipherTest class >> exercise [
 		yourself
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 SimpleCipherTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'83b2fe48-3b61-4c08-b711-51fe5b654638'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 SimpleCipherTest class >> version [
 	"Generated from specification: 14 September 2023"
 	^'Not specified'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 SimpleCipherTest >> setUp [
 	super setUp.
 	simpleCipherCalculator := SimpleCipher new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SimpleCipherTest >> test01_RandomKeyCipherCanEncode [
 	"Tip: Remember to review the class [Comment] tab"
 	<exeTestName: 'Can encode'>
@@ -121,7 +122,7 @@ SimpleCipherTest >> test01_RandomKeyCipherCanEncode [
 	self assert: result equals: (simpleCipherCalculator key copyFrom: 1 to: 10).
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SimpleCipherTest >> test02_RandomKeyCipherCanDecode [
 	<exeTestName: 'Can decode'>
 	<exeTestUUID: '3dff7f36-75db-46b4-ab70-644b3f38b81c'>
@@ -133,7 +134,7 @@ SimpleCipherTest >> test02_RandomKeyCipherCanDecode [
 	self assert: result equals: 'aaaaaaaaaa'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SimpleCipherTest >> test03_RandomKeyCipherIsReversibleIeIfYouApplyDecodeInAEncodedResultYouMustSeeTheSamePlaintextEncodeParameterAsAResultOfTheDecodeMethod [
 	<exeTestName: 'Is reversible. I.e., if you apply decode in a encoded result, you must see the same plaintext encode parameter as a result of the decode method'>
 	<exeTestUUID: '8143c684-6df6-46ba-bd1f-dea8fcb5d265'>
@@ -144,7 +145,7 @@ SimpleCipherTest >> test03_RandomKeyCipherIsReversibleIeIfYouApplyDecodeInAEncod
 	self assert: result equals: 'abcdefghij'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SimpleCipherTest >> test04_RandomKeyCipherKeyIsMadeOnlyOfLowercaseLetters [
 	<exeTestName: 'Key is made only of lowercase letters'>
 	<exeTestUUID: 'defc0050-e87d-4840-85e4-51a1ab9dd6aa'>
@@ -153,7 +154,7 @@ SimpleCipherTest >> test04_RandomKeyCipherKeyIsMadeOnlyOfLowercaseLetters [
 	self assert: (simpleCipherCalculator key matchesRegex: '^[a-z]+$').
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SimpleCipherTest >> test05_SubstitutionCipherCanEncode [
 	<exeTestName: 'Can encode'>
 	<exeTestUUID: '565e5158-5b3b-41dd-b99d-33b9f413c39f'>
@@ -164,7 +165,7 @@ SimpleCipherTest >> test05_SubstitutionCipherCanEncode [
 	self assert: result equals: 'abcdefghij'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SimpleCipherTest >> test06_SubstitutionCipherCanDecode [
 	<exeTestName: 'Can decode'>
 	<exeTestUUID: 'd44e4f6a-b8af-4e90-9d08-fd407e31e67b'>
@@ -175,7 +176,7 @@ SimpleCipherTest >> test06_SubstitutionCipherCanDecode [
 	self assert: result equals: 'aaaaaaaaaa'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SimpleCipherTest >> test07_SubstitutionCipherIsReversibleIeIfYouApplyDecodeInAEncodedResultYouMustSeeTheSamePlaintextEncodeParameterAsAResultOfTheDecodeMethod [
 	<exeTestName: 'Is reversible. I.e., if you apply decode in a encoded result, you must see the same plaintext encode parameter as a result of the decode method'>
 	<exeTestUUID: '70a16473-7339-43df-902d-93408c69e9d1'>
@@ -186,7 +187,7 @@ SimpleCipherTest >> test07_SubstitutionCipherIsReversibleIeIfYouApplyDecodeInAEn
 	self assert: (simpleCipherCalculator decode: result) equals: 'abcdefghij'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SimpleCipherTest >> test08_SubstitutionCipherCanDoubleShiftEncode [
 	<exeTestName: 'Can double shift encode'>
 	<exeTestUUID: '69a1458b-92a6-433a-a02d-7beac3ea91f9'>
@@ -197,7 +198,7 @@ SimpleCipherTest >> test08_SubstitutionCipherCanDoubleShiftEncode [
 	self assert: result equals: 'qayaeaagaciai'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SimpleCipherTest >> test09_SubstitutionCipherCanWrapOnEncode [
 	<exeTestName: 'Can wrap on encode'>
 	<exeTestUUID: '21d207c1-98de-40aa-994f-86197ae230fb'>
@@ -208,7 +209,7 @@ SimpleCipherTest >> test09_SubstitutionCipherCanWrapOnEncode [
 	self assert: result equals: 'zabcdefghi'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SimpleCipherTest >> test10_SubstitutionCipherCanWrapOnDecode [
 	<exeTestName: 'Can wrap on decode'>
 	<exeTestUUID: 'a3d7a4d7-24a9-4de6-bdc4-a6614ced0cb3'>
@@ -219,7 +220,7 @@ SimpleCipherTest >> test10_SubstitutionCipherCanWrapOnDecode [
 	self assert: result equals: 'zzzzzzzzzz'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SimpleCipherTest >> test11_SubstitutionCipherCanEncodeMessagesLongerThanTheKey [
 	<exeTestName: 'Can encode messages longer than the key'>
 	<exeTestUUID: 'e31c9b8c-8eb6-45c9-a4b5-8344a36b9641'>
@@ -230,7 +231,7 @@ SimpleCipherTest >> test11_SubstitutionCipherCanEncodeMessagesLongerThanTheKey [
 	self assert: result equals: 'iboaqcnecbfcr'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SimpleCipherTest >> test12_SubstitutionCipherCanDecodeMessagesLongerThanTheKey [
 	<exeTestName: 'Can decode messages longer than the key'>
 	<exeTestUUID: '93cfaae0-17da-4627-9a04-d6d1e1be52e3'>

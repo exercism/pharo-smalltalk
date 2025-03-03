@@ -1,15 +1,16 @@
 Class {
-	#name : #ExercismHintRule,
-	#superclass : #ReAbstractRule,
-	#category : #ExercismTools
+	#name : 'ExercismHintRule',
+	#superclass : 'ReAbstractRule',
+	#category : 'ExercismTools',
+	#package : 'ExercismTools'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismHintRule >> group [
 	^'Exercism Hint'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismHintRule >> severity [
 	^ #warning
 

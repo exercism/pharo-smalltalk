@@ -2,30 +2,31 @@
 A simple solution that seperates the Robot into a new class
 "
 Class {
-	#name : #RobotSimulator,
-	#superclass : #Object,
+	#name : 'RobotSimulator',
+	#superclass : 'Object',
 	#instVars : [
 		'robot'
 	],
-	#category : #'Exercise@RobotSimulator'
+	#category : 'Exercise@RobotSimulator',
+	#package : 'Exercise@RobotSimulator'
 }
 
-{ #category : #internal }
+{ #category : 'internal' }
 RobotSimulator >> currentPosition [
 	^self robot asDictionary
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RobotSimulator >> robot [
 	^ robot
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RobotSimulator >> robot: anObject [
 	robot := anObject
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 RobotSimulator >> sendInstructions: instructionsString [
 	
 	instructionsString
@@ -34,7 +35,7 @@ RobotSimulator >> sendInstructions: instructionsString [
 	^ self currentPosition
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 RobotSimulator >> startFacing: aString atPosition: aDictionary [
 	self robot:
 		((Robot facing: aString)

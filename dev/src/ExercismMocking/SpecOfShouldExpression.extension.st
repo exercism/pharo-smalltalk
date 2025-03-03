@@ -1,6 +1,6 @@
-Extension { #name : #SpecOfShouldExpression }
+Extension { #name : 'SpecOfShouldExpression' }
 
-{ #category : #'*ExercismMocking' }
+{ #category : '*ExercismMocking' }
 SpecOfShouldExpression >> verify [
 	"Verify the current mock, and ensure all of its expectations have been met. This eases the burdon on having to make a series of 'should receive' calls, however some may still be needed (in addition) for more complicated assertions."
 	

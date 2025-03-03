@@ -24,33 +24,35 @@ TBD
 
 "
 Class {
-	#name : #PerfectNumbersTest,
-	#superclass : #ExercismTest,
+	#name : 'PerfectNumbersTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'perfectNumbersCalculator'
 	],
-	#category : #'ExercismWIP-PerfectNumbers'
+	#category : 'ExercismWIP-PerfectNumbers',
+	#package : 'ExercismWIP',
+	#tag : 'PerfectNumbers'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 PerfectNumbersTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'fa43a62e-b043-0d00-924b-c94902a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 PerfectNumbersTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PerfectNumbersTest >> setUp [
 	super setUp.
 	perfectNumbersCalculator := PerfectNumbers new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PerfectNumbersTest >> test01_PerfectNumbersSmallestPerfectNumberIsClassifiedCorrectly [
 	| result |
 
@@ -58,7 +60,7 @@ PerfectNumbersTest >> test01_PerfectNumbersSmallestPerfectNumberIsClassifiedCorr
 	self assert: result equals: 'perfect'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PerfectNumbersTest >> test02_PerfectNumbersMediumPerfectNumberIsClassifiedCorrectly [
 	| result |
 
@@ -66,7 +68,7 @@ PerfectNumbersTest >> test02_PerfectNumbersMediumPerfectNumberIsClassifiedCorrec
 	self assert: result equals: 'perfect'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PerfectNumbersTest >> test03_PerfectNumbersLargePerfectNumberIsClassifiedCorrectly [
 	| result |
 
@@ -74,7 +76,7 @@ PerfectNumbersTest >> test03_PerfectNumbersLargePerfectNumberIsClassifiedCorrect
 	self assert: result equals: 'perfect'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PerfectNumbersTest >> test04_AbundantNumbersSmallestAbundantNumberIsClassifiedCorrectly [
 	| result |
 
@@ -82,7 +84,7 @@ PerfectNumbersTest >> test04_AbundantNumbersSmallestAbundantNumberIsClassifiedCo
 	self assert: result equals: 'abundant'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PerfectNumbersTest >> test05_AbundantNumbersMediumAbundantNumberIsClassifiedCorrectly [
 	| result |
 
@@ -90,7 +92,7 @@ PerfectNumbersTest >> test05_AbundantNumbersMediumAbundantNumberIsClassifiedCorr
 	self assert: result equals: 'abundant'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PerfectNumbersTest >> test06_AbundantNumbersLargeAbundantNumberIsClassifiedCorrectly [
 	| result |
 
@@ -98,7 +100,7 @@ PerfectNumbersTest >> test06_AbundantNumbersLargeAbundantNumberIsClassifiedCorre
 	self assert: result equals: 'abundant'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PerfectNumbersTest >> test07_DeficientNumbersSmallestPrimeDeficientNumberIsClassifiedCorrectly [
 	| result |
 
@@ -106,7 +108,7 @@ PerfectNumbersTest >> test07_DeficientNumbersSmallestPrimeDeficientNumberIsClass
 	self assert: result equals: 'deficient'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PerfectNumbersTest >> test08_DeficientNumbersSmallestNonprimeDeficientNumberIsClassifiedCorrectly [
 	| result |
 
@@ -114,7 +116,7 @@ PerfectNumbersTest >> test08_DeficientNumbersSmallestNonprimeDeficientNumberIsCl
 	self assert: result equals: 'deficient'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PerfectNumbersTest >> test09_DeficientNumbersMediumDeficientNumberIsClassifiedCorrectly [
 	| result |
 
@@ -122,7 +124,7 @@ PerfectNumbersTest >> test09_DeficientNumbersMediumDeficientNumberIsClassifiedCo
 	self assert: result equals: 'deficient'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PerfectNumbersTest >> test10_DeficientNumbersLargeDeficientNumberIsClassifiedCorrectly [
 	| result |
 
@@ -130,7 +132,7 @@ PerfectNumbersTest >> test10_DeficientNumbersLargeDeficientNumberIsClassifiedCor
 	self assert: result equals: 'deficient'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PerfectNumbersTest >> test11_DeficientNumbersEdgeCasenoFactorsOtherThanItselfIsClassifiedCorrectly [
 	| result |
 
@@ -138,7 +140,7 @@ PerfectNumbersTest >> test11_DeficientNumbersEdgeCasenoFactorsOtherThanItselfIsC
 	self assert: result equals: 'deficient'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PerfectNumbersTest >> test12_InvalidInputsZeroIsRejectednotANaturalNumber [
 	| result |
 
@@ -149,7 +151,7 @@ PerfectNumbersTest >> test12_InvalidInputsZeroIsRejectednotANaturalNumber [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PerfectNumbersTest >> test13_InvalidInputsNegativeIntegerIsRejectednotANaturalNumber [
 	| result |
 

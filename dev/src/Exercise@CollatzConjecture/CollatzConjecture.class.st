@@ -2,19 +2,20 @@
 This problem can be solved either by recursion or a simple while loop.
 "
 Class {
-	#name : #CollatzConjecture,
-	#superclass : #Object,
-	#category : #'Exercise@CollatzConjecture'
+	#name : 'CollatzConjecture',
+	#superclass : 'Object',
+	#category : 'Exercise@CollatzConjecture',
+	#package : 'Exercise@CollatzConjecture'
 }
 
-{ #category : #calculating }
+{ #category : 'calculating' }
 CollatzConjecture >> collatzStep: anInteger [
 	^ anInteger even
 		ifTrue: [ anInteger // 2 ]
 		ifFalse: [ anInteger * 3 + 1 ]
 ]
 
-{ #category : #calculating }
+{ #category : 'calculating' }
 CollatzConjecture >> recursiveCollatzStep: steps value: anInteger [
 	^ anInteger = 1
 		ifTrue: [ ^ steps ]
@@ -24,7 +25,7 @@ CollatzConjecture >> recursiveCollatzStep: steps value: anInteger [
 				value: (self collatzStep: anInteger) ]
 ]
 
-{ #category : #calculating }
+{ #category : 'calculating' }
 CollatzConjecture >> stepsFrom: anInteger [
 	anInteger <= 0
 		ifTrue: [ DomainError signal: 'Only positive numbers are allowed' ].

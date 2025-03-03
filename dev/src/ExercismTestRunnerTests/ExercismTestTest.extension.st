@@ -1,6 +1,6 @@
-Extension { #name : #ExercismTestTest }
+Extension { #name : 'ExercismTestTest' }
 
-{ #category : #'*ExercismTestRunnerTests' }
+{ #category : '*ExercismTestRunnerTests' }
 ExercismTestTest >> tearDown [ 
 	|aPackage|
 	aPackage := RPackageOrganizer default packageNamed: 'Exercise@MockRunner' ifAbsent: [nil].
@@ -8,7 +8,7 @@ ExercismTestTest >> tearDown [
 	super tearDown
 ]
 
-{ #category : #'*ExercismTestRunnerTests' }
+{ #category : '*ExercismTestRunnerTests' }
 ExercismTestTest >> testExercismTestResultInfo [
 
 	| testRunnerTest testResult mockTestClass tcInfo|
@@ -37,7 +37,7 @@ ExercismTestTest >> testExercismTestResultInfo [
 	self assert: (tcInfo at: 'output') isNotEmpty.
 ]
 
-{ #category : #'*ExercismTestRunnerTests' }
+{ #category : '*ExercismTestRunnerTests' }
 ExercismTestTest >> testHumanReadableName [
 	
 	|exeTest|
@@ -49,7 +49,7 @@ ExercismTestTest >> testHumanReadableName [
 	self assert: exeTest humanReadableName equals: 'Another name given'.
 ]
 
-{ #category : #'*ExercismTestRunnerTests' }
+{ #category : '*ExercismTestRunnerTests' }
 ExercismTestTest >> testResultDebugInfo [
 	|testCase|
 	testCase := HelloWorldTest new.
@@ -62,7 +62,7 @@ ExercismTestTest >> testResultDebugInfo [
 	self assert: (testCase resultDebugInfo includesSubstring: 'HelloWorldTest(TestCase)>>performTest'). 
 ]
 
-{ #category : #'*ExercismTestRunnerTests' }
+{ #category : '*ExercismTestRunnerTests' }
 ExercismTestTest >> testResultMessage [
 	|testCase|
 	testCase := HelloWorldTest new.
@@ -75,7 +75,7 @@ ExercismTestTest >> testResultMessage [
 	self assert: testCase resultMessage isNotEmpty. 
 ]
 
-{ #category : #'*ExercismTestRunnerTests' }
+{ #category : '*ExercismTestRunnerTests' }
 ExercismTestTest >> testSourceCodeString [
 	|testCase|
 	testCase := HelloWorldTest new.
@@ -85,7 +85,7 @@ ExercismTestTest >> testSourceCodeString [
 	self assert: (testCase sourceCodeString includes:  Character lf). 
 ]
 
-{ #category : #'*ExercismTestRunnerTests' }
+{ #category : '*ExercismTestRunnerTests' }
 ExercismTestTest >> testStatusString [
 
 	| testRunnerTest testResult mockTestClass|

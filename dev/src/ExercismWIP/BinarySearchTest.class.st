@@ -41,33 +41,35 @@ TBD
 
 "
 Class {
-	#name : #BinarySearchTest,
-	#superclass : #ExercismTest,
+	#name : 'BinarySearchTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'binarySearchCalculator'
 	],
-	#category : #'ExercismWIP-BinarySearch'
+	#category : 'ExercismWIP-BinarySearch',
+	#package : 'ExercismWIP',
+	#tag : 'BinarySearch'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 BinarySearchTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'4d1acf2e-b043-0d00-9283-c1b102a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 BinarySearchTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'1.3.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 BinarySearchTest >> setUp [
 	super setUp.
 	binarySearchCalculator := BinarySearch new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinarySearchTest >> test01_FindsAValueInAnArrayWithOneElement [
 	| result |
 
@@ -75,7 +77,7 @@ BinarySearchTest >> test01_FindsAValueInAnArrayWithOneElement [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinarySearchTest >> test02_FindsAValueInTheMiddleOfAnArray [
 	| result |
 
@@ -83,7 +85,7 @@ BinarySearchTest >> test02_FindsAValueInTheMiddleOfAnArray [
 	self assert: result equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinarySearchTest >> test03_FindsAValueAtTheBeginningOfAnArray [
 	| result |
 
@@ -91,7 +93,7 @@ BinarySearchTest >> test03_FindsAValueAtTheBeginningOfAnArray [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinarySearchTest >> test04_FindsAValueAtTheEndOfAnArray [
 	| result |
 
@@ -99,7 +101,7 @@ BinarySearchTest >> test04_FindsAValueAtTheEndOfAnArray [
 	self assert: result equals: 6
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinarySearchTest >> test05_FindsAValueInAnArrayOfOddLength [
 	| result |
 
@@ -107,7 +109,7 @@ BinarySearchTest >> test05_FindsAValueInAnArrayOfOddLength [
 	self assert: result equals: 9
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinarySearchTest >> test06_FindsAValueInAnArrayOfEvenLength [
 	| result |
 
@@ -115,7 +117,7 @@ BinarySearchTest >> test06_FindsAValueInAnArrayOfEvenLength [
 	self assert: result equals: 5
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinarySearchTest >> test07_IdentifiesThatAValueIsNotIncludedInTheArray [
 	| result |
 
@@ -126,7 +128,7 @@ BinarySearchTest >> test07_IdentifiesThatAValueIsNotIncludedInTheArray [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinarySearchTest >> test08_AValueSmallerThanTheArraysSmallestValueIsNotFound [
 	| result |
 
@@ -137,7 +139,7 @@ BinarySearchTest >> test08_AValueSmallerThanTheArraysSmallestValueIsNotFound [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinarySearchTest >> test09_AValueLargerThanTheArraysLargestValueIsNotFound [
 	| result |
 
@@ -148,7 +150,7 @@ BinarySearchTest >> test09_AValueLargerThanTheArraysLargestValueIsNotFound [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinarySearchTest >> test10_NothingIsFoundInAnEmptyArray [
 	| result |
 
@@ -159,7 +161,7 @@ BinarySearchTest >> test10_NothingIsFoundInAnEmptyArray [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinarySearchTest >> test11_NothingIsFoundWhenTheLeftAndRightBoundsCross [
 	| result |
 

@@ -5,12 +5,13 @@ Mentor notes:
 - it is also possible to do something more ""matrix like"" using an Array2D and its row/column manipulations with #at:at:ifInvalid:
 "
 Class {
-	#name : #Minesweeper,
-	#superclass : #Object,
-	#category : #'Exercise@Minesweeper'
+	#name : 'Minesweeper',
+	#superclass : 'Object',
+	#category : 'Exercise@Minesweeper',
+	#package : 'Exercise@Minesweeper'
 }
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 Minesweeper >> annotateMinefield: aCollection [
 	aCollection ifEmpty: [ ^ aCollection ].
 
@@ -22,7 +23,7 @@ Minesweeper >> annotateMinefield: aCollection [
 						ifFalse: [ self neighbourValueIn: aCollection at: (x@y) ] ] ]
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 Minesweeper >> neighbourValueIn: aCollection at: aPoint [
 	^ (aPoint eightNeighbors sum: [ :p | aCollection mineAt: p ])
 		asMinesweeperChar

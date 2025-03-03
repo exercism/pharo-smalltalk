@@ -1,6 +1,6 @@
-Extension { #name : #String }
+Extension { #name : 'String' }
 
-{ #category : #'*ExercismTests-ExerciseExtension' }
+{ #category : '*ExercismTests-ExerciseExtension' }
 String >> exExtensionTest [
 	"Method for testing extensions"
 	

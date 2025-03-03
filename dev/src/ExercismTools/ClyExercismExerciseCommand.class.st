@@ -24,25 +24,27 @@ problem is that the exercise name is misspelled or does not exist in
 the Pharo-Smalltalk language track. 
 "
 Class {
-	#name : #ClyExercismExerciseCommand,
-	#superclass : #ClyExercismCommand,
-	#category : #'ExercismTools-Menus'
+	#name : 'ClyExercismExerciseCommand',
+	#superclass : 'ClyExercismCommand',
+	#category : 'ExercismTools-Menus',
+	#package : 'ExercismTools',
+	#tag : 'Menus'
 }
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyExercismExerciseCommand class >> contextMenuOrder [
 	<classAnnotationDependency>
 	
 		^1
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 ClyExercismExerciseCommand class >> isAbstract [
 	
 	^self == ClyExercismExerciseCommand
 ]
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyExercismExerciseCommand class >> isExercismTagIn: aToolContext [
 	^ aToolContext lastSelectedClassGroup name ~= ExercismManager legacyPackagePrefix
 		and: [ aToolContext lastSelectedClassGroup classes
@@ -54,7 +56,7 @@ ClyExercismExerciseCommand class >> isExercismTagIn: aToolContext [
 				ifNone: [ false ] ]
 ]
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyExercismExerciseCommand class >> packageContextMenuActivation [
 	"We can use a second annotation to give a similar menu to the Package item"
 	<classAnnotation>
@@ -65,7 +67,7 @@ ClyExercismExerciseCommand class >> packageContextMenuActivation [
 		for: RPackage asCalypsoItemContext
 ]
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyExercismExerciseCommand class >> tagContextMenuActivation [
 	<classAnnotation>
 	
@@ -75,7 +77,7 @@ ClyExercismExerciseCommand class >> tagContextMenuActivation [
 		for: ClyTaggedClassGroup asCalypsoItemContext
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ClyExercismExerciseCommand >> reportError: anError for: exerciseId [
 	| msg |
 

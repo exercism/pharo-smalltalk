@@ -13,15 +13,16 @@ As with Isogram, it's worth browsing what data types are already available in th
 
 "
 Class {
-	#name : #AnagramTest,
-	#superclass : #ExercismTest,
+	#name : 'AnagramTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'anagramCalculator'
 	],
-	#category : #'Exercise@Anagram'
+	#category : 'Exercise@Anagram',
+	#package : 'Exercise@Anagram'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 AnagramTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -33,25 +34,25 @@ AnagramTest class >> exercise [
 				
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 AnagramTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'a1edd1c3-bd5c-49cd-bebf-2ef9e1afb23d'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 AnagramTest class >> version [
 	"Generated from specification: 28 February 2019"
 	^'1.4.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 AnagramTest >> setUp [
 	super setUp.
 	anagramCalculator := Anagram new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AnagramTest >> test01_NoMatches [
 	| result |
 
@@ -59,7 +60,7 @@ AnagramTest >> test01_NoMatches [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AnagramTest >> test02_DetectsTwoAnagrams [
 	| result |
 
@@ -67,7 +68,7 @@ AnagramTest >> test02_DetectsTwoAnagrams [
 	self assert: result equals: #('stream' 'maters' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AnagramTest >> test03_DoesNotDetectAnagramSubsets [
 	| result |
 
@@ -75,7 +76,7 @@ AnagramTest >> test03_DoesNotDetectAnagramSubsets [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AnagramTest >> test04_DetectsAnagram [
 	| result |
 
@@ -83,7 +84,7 @@ AnagramTest >> test04_DetectsAnagram [
 	self assert: result equals: #('inlets' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AnagramTest >> test05_DetectsThreeAnagrams [
 	| result |
 
@@ -91,7 +92,7 @@ AnagramTest >> test05_DetectsThreeAnagrams [
 	self assert: result equals: #('gallery' 'regally' 'largely' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AnagramTest >> test06_DoesNotDetectNonanagramsWithIdenticalChecksum [
 	| result |
 
@@ -99,7 +100,7 @@ AnagramTest >> test06_DoesNotDetectNonanagramsWithIdenticalChecksum [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AnagramTest >> test07_DetectsAnagramsCaseinsensitively [
 	| result |
 
@@ -107,7 +108,7 @@ AnagramTest >> test07_DetectsAnagramsCaseinsensitively [
 	self assert: result equals: #('Carthorse' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AnagramTest >> test08_DetectsAnagramsUsingCaseinsensitiveSubject [
 	| result |
 
@@ -115,7 +116,7 @@ AnagramTest >> test08_DetectsAnagramsUsingCaseinsensitiveSubject [
 	self assert: result equals: #('carthorse' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AnagramTest >> test09_DetectsAnagramsUsingCaseinsensitivePossibleMatches [
 	| result |
 
@@ -123,7 +124,7 @@ AnagramTest >> test09_DetectsAnagramsUsingCaseinsensitivePossibleMatches [
 	self assert: result equals: #('Carthorse' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AnagramTest >> test10_DoesNotDetectAnAnagramIfTheOriginalWordIsRepeated [
 	| result |
 
@@ -131,7 +132,7 @@ AnagramTest >> test10_DoesNotDetectAnAnagramIfTheOriginalWordIsRepeated [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AnagramTest >> test11_AnagramsMustUseAllLettersExactlyOnce [
 	| result |
 
@@ -139,7 +140,7 @@ AnagramTest >> test11_AnagramsMustUseAllLettersExactlyOnce [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AnagramTest >> test12_WordsAreNotAnagramsOfThemselvescaseinsensitive [
 	| result |
 

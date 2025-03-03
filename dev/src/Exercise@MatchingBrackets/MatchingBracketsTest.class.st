@@ -12,15 +12,16 @@ Saving state in a useful data type can help here.
 
 "
 Class {
-	#name : #MatchingBracketsTest,
-	#superclass : #ExercismTest,
+	#name : 'MatchingBracketsTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'matchingBracketsCalculator'
 	],
-	#category : #'Exercise@MatchingBrackets'
+	#category : 'Exercise@MatchingBrackets',
+	#package : 'Exercise@MatchingBrackets'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 MatchingBracketsTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -31,32 +32,32 @@ MatchingBracketsTest class >> exercise [
 	
 ]
 
-{ #category : #generator }
+{ #category : 'generator' }
 MatchingBracketsTest class >> generator [
 	"Potential generator hints"
 	
 	^ {('@isPairedValue:' -> #isPaired:)}
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 MatchingBracketsTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'25dfa3ac-8b09-4123-b12b-d130b34af332'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 MatchingBracketsTest class >> version [
 	"Generated from specification: 24 April 2019"
 	^'2.0.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 MatchingBracketsTest >> setUp [
 	super setUp.
 	matchingBracketsCalculator := MatchingBrackets new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatchingBracketsTest >> test01_PairedSquareBrackets [
 	| result |
 
@@ -64,7 +65,7 @@ MatchingBracketsTest >> test01_PairedSquareBrackets [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatchingBracketsTest >> test02_EmptyString [
 	| result |
 
@@ -72,7 +73,7 @@ MatchingBracketsTest >> test02_EmptyString [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatchingBracketsTest >> test03_UnpairedBrackets [
 	| result |
 
@@ -80,7 +81,7 @@ MatchingBracketsTest >> test03_UnpairedBrackets [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatchingBracketsTest >> test04_WrongOrderedBrackets [
 	| result |
 
@@ -88,7 +89,7 @@ MatchingBracketsTest >> test04_WrongOrderedBrackets [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatchingBracketsTest >> test05_WrongClosingBracket [
 	| result |
 
@@ -96,7 +97,7 @@ MatchingBracketsTest >> test05_WrongClosingBracket [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatchingBracketsTest >> test06_PairedWithWhitespace [
 	| result |
 
@@ -104,7 +105,7 @@ MatchingBracketsTest >> test06_PairedWithWhitespace [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatchingBracketsTest >> test07_PartiallyPairedBrackets [
 	| result |
 
@@ -112,7 +113,7 @@ MatchingBracketsTest >> test07_PartiallyPairedBrackets [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatchingBracketsTest >> test08_SimpleNestedBrackets [
 	| result |
 
@@ -120,7 +121,7 @@ MatchingBracketsTest >> test08_SimpleNestedBrackets [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatchingBracketsTest >> test09_SeveralPairedBrackets [
 	| result |
 
@@ -128,7 +129,7 @@ MatchingBracketsTest >> test09_SeveralPairedBrackets [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatchingBracketsTest >> test10_PairedAndNestedBrackets [
 	| result |
 
@@ -136,7 +137,7 @@ MatchingBracketsTest >> test10_PairedAndNestedBrackets [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatchingBracketsTest >> test11_UnopenedClosingBrackets [
 	| result |
 
@@ -144,7 +145,7 @@ MatchingBracketsTest >> test11_UnopenedClosingBrackets [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatchingBracketsTest >> test12_UnpairedAndNestedBrackets [
 	| result |
 
@@ -152,7 +153,7 @@ MatchingBracketsTest >> test12_UnpairedAndNestedBrackets [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatchingBracketsTest >> test13_PairedAndWrongNestedBrackets [
 	| result |
 
@@ -160,7 +161,7 @@ MatchingBracketsTest >> test13_PairedAndWrongNestedBrackets [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatchingBracketsTest >> test14_PairedAndIncompleteBrackets [
 	| result |
 
@@ -168,7 +169,7 @@ MatchingBracketsTest >> test14_PairedAndIncompleteBrackets [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatchingBracketsTest >> test15_TooManyClosingBrackets [
 	| result |
 
@@ -176,7 +177,7 @@ MatchingBracketsTest >> test15_TooManyClosingBrackets [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatchingBracketsTest >> test16_MathExpression [
 	| result |
 
@@ -184,7 +185,7 @@ MatchingBracketsTest >> test16_MathExpression [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatchingBracketsTest >> test17_ComplexLatexExpression [
 	| result |
 

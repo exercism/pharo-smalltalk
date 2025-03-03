@@ -2,37 +2,38 @@
 I am the frame calculations for a bowling throw
 "
 Class {
-	#name : #Frame,
-	#superclass : #Object,
+	#name : 'Frame',
+	#superclass : 'Object',
 	#instVars : [
 		'roll1',
 		'roll2',
 		'bonus'
 	],
-	#category : #'Exercise@Bowling'
+	#category : 'Exercise@Bowling',
+	#package : 'Exercise@Bowling'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Frame >> beSpareBonus [
 	bonus := #spare
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Frame >> beStrikeBonus [
 	bonus := #strike
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 Frame >> initialize [
 	bonus := false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Frame >> isBonus [
 	^ bonus = #spare or: [ bonus = #strike ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Frame >> isFinished [
 	^ self isStrike
 		or: [ self isSpare
@@ -41,7 +42,7 @@ Frame >> isFinished [
 					or: [ (bonus = #strike and: [ roll1 isNotNil & roll2 isNotNil ]) ] ] ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Frame >> isOpen [
 	^ roll1 ~= 10
 		and: [ roll1 isNotNil
@@ -49,7 +50,7 @@ Frame >> isOpen [
 				and: [ roll1 + roll2 ~= 10 ] ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Frame >> isSpare [
 	^ self isBonus not
 		and: [ roll1 ~= 10
@@ -58,13 +59,13 @@ Frame >> isSpare [
 					and: [ roll1 + roll2 = 10 ] ] ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Frame >> isStrike [
 	^ self isBonus not
 		and: [ roll1 = 10 ]
 ]
 
-{ #category : #rolling }
+{ #category : 'rolling' }
 Frame >> roll: anInteger [
 	roll1
 		ifNil: [ roll1 := anInteger ]
@@ -75,7 +76,7 @@ Frame >> roll: anInteger [
 			roll2 := anInteger ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Frame >> rolls [
 	^ roll1
 		ifNil: [ #() ]
@@ -85,7 +86,7 @@ Frame >> rolls [
 				ifNotNil: [ { roll1. roll2 } ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Frame >> score [
 	^ roll1 + (roll2 ifNil: [ 0 ])
 ]

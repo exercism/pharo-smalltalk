@@ -18,15 +18,16 @@ There are several ways to approach this, study class String carefully and take i
 
 "
 Class {
-	#name : #WordCountTest,
-	#superclass : #ExercismTest,
+	#name : 'WordCountTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'wordCountCalculator'
 	],
-	#category : #'Exercise@WordCount'
+	#category : 'Exercise@WordCount',
+	#package : 'Exercise@WordCount'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 WordCountTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -37,25 +38,25 @@ WordCountTest class >> exercise [
 
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 WordCountTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'17380479-b9a2-47be-a3cf-1da100f7ed98'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 WordCountTest class >> version [
 	"Generated from specification: 28 February 2019"
 	^'1.3.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 WordCountTest >> setUp [
 	super setUp.
 	wordCountCalculator := WordCount new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordCountTest >> test01_CountOneWord [
 	| result |
 
@@ -63,7 +64,7 @@ WordCountTest >> test01_CountOneWord [
 	self assert: result equals: ((Dictionary new) add: ('word'->1); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordCountTest >> test02_CountOneOfEachWord [
 	| result |
 
@@ -71,7 +72,7 @@ WordCountTest >> test02_CountOneOfEachWord [
 	self assert: result equals: ((Dictionary new) add: ('of'->1); add: ('each'->1); add: ('one'->1); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordCountTest >> test03_MultipleOccurrencesOfAWord [
 	| result |
 
@@ -79,7 +80,7 @@ WordCountTest >> test03_MultipleOccurrencesOfAWord [
 	self assert: result equals: ((Dictionary new) add: ('blue'->1); add: ('fish'->4); add: ('one'->1); add: ('red'->1); add: ('two'->1); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordCountTest >> test04_HandlesCrampedLists [
 	| result |
 
@@ -87,7 +88,7 @@ WordCountTest >> test04_HandlesCrampedLists [
 	self assert: result equals: ((Dictionary new) add: ('two'->1); add: ('one'->1); add: ('three'->1); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordCountTest >> test05_HandlesExpandedLists [
 	| result |
 
@@ -97,7 +98,7 @@ three' .
 	self assert: result equals: ((Dictionary new) add: ('two'->1); add: ('one'->1); add: ('three'->1); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordCountTest >> test06_IgnorePunctuation [
 	| result |
 
@@ -105,7 +106,7 @@ WordCountTest >> test06_IgnorePunctuation [
 	self assert: result equals: ((Dictionary new) add: ('as'->1); add: ('javascript'->1); add: ('java'->1); add: ('car'->1); add: ('carpet'->1); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordCountTest >> test07_IncludeNumbers [
 	| result |
 
@@ -113,7 +114,7 @@ WordCountTest >> test07_IncludeNumbers [
 	self assert: result equals: ((Dictionary new) add: ('testing'->2); add: ('1'->1); add: ('2'->1); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordCountTest >> test08_NormalizeCase [
 	| result |
 
@@ -121,7 +122,7 @@ WordCountTest >> test08_NormalizeCase [
 	self assert: result equals: ((Dictionary new) add: ('stop'->2); add: ('go'->3); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordCountTest >> test09_WithApostrophes [
 	| result |
 
@@ -129,7 +130,7 @@ WordCountTest >> test09_WithApostrophes [
 	self assert: result equals: ((Dictionary new) add: ('cry'->1); add: ('don''t'->2); add: ('laugh'->1); add: ('first'->1); add: ('then'->1); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordCountTest >> test10_WithQuotations [
 	| result |
 
@@ -137,7 +138,7 @@ WordCountTest >> test10_WithQuotations [
 	self assert: result equals: ((Dictionary new) add: ('large'->2); add: ('joe'->1); add: ('can''t'->1); add: ('and'->1); add: ('tell'->1); add: ('between'->1); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordCountTest >> test11_MultipleSpacesNotDetectedAsAWord [
 	| result |
 
@@ -145,7 +146,7 @@ WordCountTest >> test11_MultipleSpacesNotDetectedAsAWord [
 	self assert: result equals: ((Dictionary new) add: ('multiple'->1); add: ('whitespaces'->1); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 WordCountTest >> test12_AlternatingWordSeparatorsNotDetectedAsAWord [
 	| result |
 

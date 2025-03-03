@@ -3,19 +3,20 @@ I answer the value of a resister with the specified colour coding. Of interest i
 
 "
 Class {
-	#name : #ResistorColorDuo,
-	#superclass : #Object,
-	#category : #'Exercise@ResistorColorDuo'
+	#name : 'ResistorColorDuo',
+	#superclass : 'Object',
+	#category : 'Exercise@ResistorColorDuo',
+	#package : 'Exercise@ResistorColorDuo'
 }
 
-{ #category : #constants }
+{ #category : 'constants' }
 ResistorColorDuo class >> resistorColorsTable [
 	"Answer the table of resister colour values, the 0 based offset of the colour is its value"
 	
 	^ #('black' 'brown' 'red' 'orange' 'yellow' 'green' 'blue' 'violet' 'grey' 'white')
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 ResistorColorDuo >> colorValue: colour [
 	"Find the value of the given colour band, or error if not found."
 	|colourIndex|
@@ -27,7 +28,7 @@ ResistorColorDuo >> colorValue: colour [
 	^ colourIndex - 1
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 ResistorColorDuo >> valueWithColors: coloursCollection [
 	"Answer the value of the resister with colour bands in @coloursCollection"
 	

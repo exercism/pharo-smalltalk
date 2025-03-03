@@ -2,16 +2,17 @@
 I maintain a list of bowling Frames and answer the scoring
 "
 Class {
-	#name : #Bowling,
-	#superclass : #Object,
+	#name : 'Bowling',
+	#superclass : 'Object',
 	#instVars : [
 		'frames',
 		'currentFrame'
 	],
-	#category : #'Exercise@Bowling'
+	#category : 'Exercise@Bowling',
+	#package : 'Exercise@Bowling'
 }
 
-{ #category : #rolling }
+{ #category : 'rolling' }
 Bowling >> checkRoll: anInteger [
 	anInteger < 0
 		ifTrue: [ self error: 'Negative roll is invalid' ].
@@ -21,20 +22,20 @@ Bowling >> checkRoll: anInteger [
 		ifTrue: [ self error: 'Cannot roll after game is over' ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 Bowling >> initialize [
 	currentFrame := Frame new.
 	frames := OrderedCollection new
 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Bowling >> isFinished [
 	^ (frames size = 10 and: [ frames last isOpen ])
 			or: [ (frames size = 11 and: [ frames last isFinished ]) ]
 ]
 
-{ #category : #rolling }
+{ #category : 'rolling' }
 Bowling >> roll: pinCount [
 	self checkRoll: pinCount.
 	currentFrame roll: pinCount.
@@ -52,7 +53,7 @@ Bowling >> roll: pinCount [
 		ifTrue: [ currentFrame beSpareBonus ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Bowling >> score [
 	| result |
 
@@ -75,13 +76,13 @@ Bowling >> score [
 	^ result
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 Bowling >> scoreAfterRolling: countCollection [ 
 	countCollection do: [ :pinCount | self roll: pinCount ].
 	^self score
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 Bowling >> scoreRolling: pinCount after: countCollection [ 
 	^self scoreAfterRolling: (countCollection copyWith: pinCount)
 ]

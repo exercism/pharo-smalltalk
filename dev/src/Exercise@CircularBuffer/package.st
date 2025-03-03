@@ -1,1 +1,1 @@
-Package { #name : #'Exercise@CircularBuffer' }
+Package { #name : 'Exercise@CircularBuffer' }

@@ -14,33 +14,35 @@ TBD
 
 "
 Class {
-	#name : #CustomSetTest,
-	#superclass : #ExercismTest,
+	#name : 'CustomSetTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'customSetCalculator'
 	],
-	#category : #'ExercismWIP-CustomSet'
+	#category : 'ExercismWIP-CustomSet',
+	#package : 'ExercismWIP',
+	#tag : 'CustomSet'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 CustomSetTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'3476d016-9d41-0d00-8feb-6fa208866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 CustomSetTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.3.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 CustomSetTest >> setUp [
 	super setUp.
 	customSetCalculator := CustomSet new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test01_ReturnsTrueIfTheSetContainsNoElementsSetsWithNoElementsAreEmpty [
 	| result |
 
@@ -48,7 +50,7 @@ CustomSetTest >> test01_ReturnsTrueIfTheSetContainsNoElementsSetsWithNoElementsA
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test02_ReturnsTrueIfTheSetContainsNoElementsSetsWithElementsAreNotEmpty [
 	| result |
 
@@ -56,7 +58,7 @@ CustomSetTest >> test02_ReturnsTrueIfTheSetContainsNoElementsSetsWithElementsAre
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test03_SetsCanReportIfTheyContainAnElementNothingIsContainedInAnEmptySet [
 	| result |
 
@@ -64,7 +66,7 @@ CustomSetTest >> test03_SetsCanReportIfTheyContainAnElementNothingIsContainedInA
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test04_SetsCanReportIfTheyContainAnElementWhenTheElementIsInTheSet [
 	| result |
 
@@ -72,7 +74,7 @@ CustomSetTest >> test04_SetsCanReportIfTheyContainAnElementWhenTheElementIsInThe
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test05_SetsCanReportIfTheyContainAnElementWhenTheElementIsNotInTheSet [
 	| result |
 
@@ -80,7 +82,7 @@ CustomSetTest >> test05_SetsCanReportIfTheyContainAnElementWhenTheElementIsNotIn
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test06_ASetIsASubsetIfAllOfItsElementsAreContainedInTheOtherSetEmptySetIsASubsetOfAnotherEmptySet [
 	| result |
 
@@ -88,7 +90,7 @@ CustomSetTest >> test06_ASetIsASubsetIfAllOfItsElementsAreContainedInTheOtherSet
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test07_ASetIsASubsetIfAllOfItsElementsAreContainedInTheOtherSetEmptySetIsASubsetOfNonemptySet [
 	| result |
 
@@ -96,7 +98,7 @@ CustomSetTest >> test07_ASetIsASubsetIfAllOfItsElementsAreContainedInTheOtherSet
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test08_ASetIsASubsetIfAllOfItsElementsAreContainedInTheOtherSetNonemptySetIsNotASubsetOfEmptySet [
 	| result |
 
@@ -104,7 +106,7 @@ CustomSetTest >> test08_ASetIsASubsetIfAllOfItsElementsAreContainedInTheOtherSet
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test09_ASetIsASubsetIfAllOfItsElementsAreContainedInTheOtherSetSetIsASubsetOfSetWithExactSameElements [
 	| result |
 
@@ -112,7 +114,7 @@ CustomSetTest >> test09_ASetIsASubsetIfAllOfItsElementsAreContainedInTheOtherSet
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test10_ASetIsASubsetIfAllOfItsElementsAreContainedInTheOtherSetSetIsASubsetOfLargerSetWithSameElements [
 	| result |
 
@@ -120,7 +122,7 @@ CustomSetTest >> test10_ASetIsASubsetIfAllOfItsElementsAreContainedInTheOtherSet
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test11_ASetIsASubsetIfAllOfItsElementsAreContainedInTheOtherSetSetIsNotASubsetOfSetThatDoesNotContainItsElements [
 	| result |
 
@@ -128,7 +130,7 @@ CustomSetTest >> test11_ASetIsASubsetIfAllOfItsElementsAreContainedInTheOtherSet
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test12_SetsAreDisjointIfTheyShareNoElementsTheEmptySetIsDisjointWithItself [
 	| result |
 
@@ -136,7 +138,7 @@ CustomSetTest >> test12_SetsAreDisjointIfTheyShareNoElementsTheEmptySetIsDisjoin
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test13_SetsAreDisjointIfTheyShareNoElementsEmptySetIsDisjointWithNonemptySet [
 	| result |
 
@@ -144,7 +146,7 @@ CustomSetTest >> test13_SetsAreDisjointIfTheyShareNoElementsEmptySetIsDisjointWi
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test14_SetsAreDisjointIfTheyShareNoElementsNonemptySetIsDisjointWithEmptySet [
 	| result |
 
@@ -152,7 +154,7 @@ CustomSetTest >> test14_SetsAreDisjointIfTheyShareNoElementsNonemptySetIsDisjoin
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test15_SetsAreDisjointIfTheyShareNoElementsSetsAreNotDisjointIfTheyShareAnElement [
 	| result |
 
@@ -160,7 +162,7 @@ CustomSetTest >> test15_SetsAreDisjointIfTheyShareNoElementsSetsAreNotDisjointIf
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test16_SetsAreDisjointIfTheyShareNoElementsSetsAreDisjointIfTheyShareNoElements [
 	| result |
 
@@ -168,7 +170,7 @@ CustomSetTest >> test16_SetsAreDisjointIfTheyShareNoElementsSetsAreDisjointIfThe
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test17_SetsWithTheSameElementsAreEqualEmptySetsAreEqual [
 	| result |
 
@@ -176,7 +178,7 @@ CustomSetTest >> test17_SetsWithTheSameElementsAreEqualEmptySetsAreEqual [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test18_SetsWithTheSameElementsAreEqualEmptySetIsNotEqualToNonemptySet [
 	| result |
 
@@ -184,7 +186,7 @@ CustomSetTest >> test18_SetsWithTheSameElementsAreEqualEmptySetIsNotEqualToNonem
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test19_SetsWithTheSameElementsAreEqualNonemptySetIsNotEqualToEmptySet [
 	| result |
 
@@ -192,7 +194,7 @@ CustomSetTest >> test19_SetsWithTheSameElementsAreEqualNonemptySetIsNotEqualToEm
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test20_SetsWithTheSameElementsAreEqualSetsWithTheSameElementsAreEqual [
 	| result |
 
@@ -200,7 +202,7 @@ CustomSetTest >> test20_SetsWithTheSameElementsAreEqualSetsWithTheSameElementsAr
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test21_SetsWithTheSameElementsAreEqualSetsWithDifferentElementsAreNotEqual [
 	| result |
 
@@ -208,7 +210,7 @@ CustomSetTest >> test21_SetsWithTheSameElementsAreEqualSetsWithDifferentElements
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test22_SetsWithTheSameElementsAreEqualSetIsNotEqualToLargerSetWithSameElements [
 	| result |
 
@@ -216,7 +218,7 @@ CustomSetTest >> test22_SetsWithTheSameElementsAreEqualSetIsNotEqualToLargerSetW
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test23_UniqueElementsCanBeAddedToASetAddToEmptySet [
 	| result |
 
@@ -224,7 +226,7 @@ CustomSetTest >> test23_UniqueElementsCanBeAddedToASetAddToEmptySet [
 	self assert: result equals: #(3 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test24_UniqueElementsCanBeAddedToASetAddToNonemptySet [
 	| result |
 
@@ -232,7 +234,7 @@ CustomSetTest >> test24_UniqueElementsCanBeAddedToASetAddToNonemptySet [
 	self assert: result equals: #(1 2 3 4 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test25_UniqueElementsCanBeAddedToASetAddingAnExistingElementDoesNotChangeTheSet [
 	| result |
 
@@ -240,7 +242,7 @@ CustomSetTest >> test25_UniqueElementsCanBeAddedToASetAddingAnExistingElementDoe
 	self assert: result equals: #(1 2 3 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test26_IntersectionReturnsASetOfAllSharedElementsIntersectionOfTwoEmptySetsIsAnEmptySet [
 	| result |
 
@@ -248,7 +250,7 @@ CustomSetTest >> test26_IntersectionReturnsASetOfAllSharedElementsIntersectionOf
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test27_IntersectionReturnsASetOfAllSharedElementsIntersectionOfAnEmptySetAndNonemptySetIsAnEmptySet [
 	| result |
 
@@ -256,7 +258,7 @@ CustomSetTest >> test27_IntersectionReturnsASetOfAllSharedElementsIntersectionOf
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test28_IntersectionReturnsASetOfAllSharedElementsIntersectionOfANonemptySetAndAnEmptySetIsAnEmptySet [
 	| result |
 
@@ -264,7 +266,7 @@ CustomSetTest >> test28_IntersectionReturnsASetOfAllSharedElementsIntersectionOf
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test29_IntersectionReturnsASetOfAllSharedElementsIntersectionOfTwoSetsWithNoSharedElementsIsAnEmptySet [
 	| result |
 
@@ -272,7 +274,7 @@ CustomSetTest >> test29_IntersectionReturnsASetOfAllSharedElementsIntersectionOf
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test30_IntersectionReturnsASetOfAllSharedElementsIntersectionOfTwoSetsWithSharedElementsIsASetOfTheSharedElements [
 	| result |
 
@@ -280,7 +282,7 @@ CustomSetTest >> test30_IntersectionReturnsASetOfAllSharedElementsIntersectionOf
 	self assert: result equals: #(2 3 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test31_DifferenceorComplementOfASetIsASetOfAllElementsThatAreOnlyInTheFirstSetDifferenceOfTwoEmptySetsIsAnEmptySet [
 	| result |
 
@@ -288,7 +290,7 @@ CustomSetTest >> test31_DifferenceorComplementOfASetIsASetOfAllElementsThatAreOn
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test32_DifferenceorComplementOfASetIsASetOfAllElementsThatAreOnlyInTheFirstSetDifferenceOfEmptySetAndNonemptySetIsAnEmptySet [
 	| result |
 
@@ -296,7 +298,7 @@ CustomSetTest >> test32_DifferenceorComplementOfASetIsASetOfAllElementsThatAreOn
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test33_DifferenceorComplementOfASetIsASetOfAllElementsThatAreOnlyInTheFirstSetDifferenceOfANonemptySetAndAnEmptySetIsTheNonemptySet [
 	| result |
 
@@ -304,7 +306,7 @@ CustomSetTest >> test33_DifferenceorComplementOfASetIsASetOfAllElementsThatAreOn
 	self assert: result equals: #(1 2 3 4 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test34_DifferenceorComplementOfASetIsASetOfAllElementsThatAreOnlyInTheFirstSetDifferenceOfTwoNonemptySetsIsASetOfElementsThatAreOnlyInTheFirstSet [
 	| result |
 
@@ -312,7 +314,7 @@ CustomSetTest >> test34_DifferenceorComplementOfASetIsASetOfAllElementsThatAreOn
 	self assert: result equals: #(1 3 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test35_UnionReturnsASetOfAllElementsInEitherSetUnionOfEmptySetsIsAnEmptySet [
 	| result |
 
@@ -320,7 +322,7 @@ CustomSetTest >> test35_UnionReturnsASetOfAllElementsInEitherSetUnionOfEmptySets
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test36_UnionReturnsASetOfAllElementsInEitherSetUnionOfAnEmptySetAndNonemptySetIsTheNonemptySet [
 	| result |
 
@@ -328,7 +330,7 @@ CustomSetTest >> test36_UnionReturnsASetOfAllElementsInEitherSetUnionOfAnEmptySe
 	self assert: result equals: #(2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test37_UnionReturnsASetOfAllElementsInEitherSetUnionOfANonemptySetAndEmptySetIsTheNonemptySet [
 	| result |
 
@@ -336,7 +338,7 @@ CustomSetTest >> test37_UnionReturnsASetOfAllElementsInEitherSetUnionOfANonempty
 	self assert: result equals: #(1 3 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CustomSetTest >> test38_UnionReturnsASetOfAllElementsInEitherSetUnionOfNonemptySetsContainsAllUniqueElements [
 	| result |
 

@@ -15,33 +15,35 @@ TBD
 
 "
 Class {
-	#name : #NthPrimeTest,
-	#superclass : #ExercismTest,
+	#name : 'NthPrimeTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'nthPrimeCalculator'
 	],
-	#category : #'ExercismWIP-NthPrime'
+	#category : 'ExercismWIP-NthPrime',
+	#package : 'ExercismWIP',
+	#tag : 'NthPrime'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 NthPrimeTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'9097d12e-b043-0d00-9287-620802a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 NthPrimeTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'2.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 NthPrimeTest >> setUp [
 	super setUp.
 	nthPrimeCalculator := NthPrime new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 NthPrimeTest >> test01_FirstPrime [
 	| result |
 
@@ -49,7 +51,7 @@ NthPrimeTest >> test01_FirstPrime [
 	self assert: result equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 NthPrimeTest >> test02_SecondPrime [
 	| result |
 
@@ -57,7 +59,7 @@ NthPrimeTest >> test02_SecondPrime [
 	self assert: result equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 NthPrimeTest >> test03_SixthPrime [
 	| result |
 
@@ -65,7 +67,7 @@ NthPrimeTest >> test03_SixthPrime [
 	self assert: result equals: 13
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 NthPrimeTest >> test04_BigPrime [
 	| result |
 
@@ -73,7 +75,7 @@ NthPrimeTest >> test04_BigPrime [
 	self assert: result equals: 104743
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 NthPrimeTest >> test05_ThereIsNoZerothPrime [
 	| result |
 

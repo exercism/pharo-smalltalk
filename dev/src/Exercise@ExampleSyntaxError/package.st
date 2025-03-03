@@ -1,1 +1,1 @@
-Package { #name : #'Exercise@ExampleSyntaxError' }
+Package { #name : 'Exercise@ExampleSyntaxError' }

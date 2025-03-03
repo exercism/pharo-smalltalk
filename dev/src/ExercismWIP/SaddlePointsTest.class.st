@@ -35,33 +35,35 @@ TBD
 
 "
 Class {
-	#name : #SaddlePointsTest,
-	#superclass : #ExercismTest,
+	#name : 'SaddlePointsTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'saddlePointsCalculator'
 	],
-	#category : #'ExercismWIP-SaddlePoints'
+	#category : 'ExercismWIP-SaddlePoints',
+	#package : 'ExercismWIP',
+	#tag : 'SaddlePoints'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 SaddlePointsTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'2865e616-9d41-0d00-8ffc-52fc08866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 SaddlePointsTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.5.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 SaddlePointsTest >> setUp [
 	super setUp.
 	saddlePointsCalculator := SaddlePoints new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SaddlePointsTest >> test01_CanIdentifySingleSaddlePoint [
 	| result |
 
@@ -69,7 +71,7 @@ SaddlePointsTest >> test01_CanIdentifySingleSaddlePoint [
 	self assert: result equals: ((Array new: 1) at: 1 put: ((Dictionary new) add: ('column'->1); add: ('row'->2); yourself); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SaddlePointsTest >> test02_CanIdentifyThatEmptyMatrixHasNoSaddlePoints [
 	| result |
 
@@ -77,7 +79,7 @@ SaddlePointsTest >> test02_CanIdentifyThatEmptyMatrixHasNoSaddlePoints [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SaddlePointsTest >> test03_CanIdentifyLackOfSaddlePointsWhenThereAreNone [
 	| result |
 
@@ -85,7 +87,7 @@ SaddlePointsTest >> test03_CanIdentifyLackOfSaddlePointsWhenThereAreNone [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SaddlePointsTest >> test04_CanIdentifyMultipleSaddlePointsInAColumn [
 	| result |
 
@@ -93,7 +95,7 @@ SaddlePointsTest >> test04_CanIdentifyMultipleSaddlePointsInAColumn [
 	self assert: result equals: ((Array new: 3) at: 1 put: ((Dictionary new) add: ('column'->2); add: ('row'->1); yourself); at: 2 put: ((Dictionary new) add: ('column'->2); add: ('row'->2); yourself); at: 3 put: ((Dictionary new) add: ('column'->2); add: ('row'->3); yourself); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SaddlePointsTest >> test05_CanIdentifyMultipleSaddlePointsInARow [
 	| result |
 
@@ -101,7 +103,7 @@ SaddlePointsTest >> test05_CanIdentifyMultipleSaddlePointsInARow [
 	self assert: result equals: ((Array new: 3) at: 1 put: ((Dictionary new) add: ('column'->1); add: ('row'->2); yourself); at: 2 put: ((Dictionary new) add: ('column'->2); add: ('row'->2); yourself); at: 3 put: ((Dictionary new) add: ('column'->3); add: ('row'->2); yourself); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SaddlePointsTest >> test06_CanIdentifySaddlePointInBottomRightCorner [
 	| result |
 
@@ -109,7 +111,7 @@ SaddlePointsTest >> test06_CanIdentifySaddlePointInBottomRightCorner [
 	self assert: result equals: ((Array new: 1) at: 1 put: ((Dictionary new) add: ('column'->3); add: ('row'->3); yourself); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SaddlePointsTest >> test07_CanIdentifySaddlePointsInANonSquareMatrix [
 	| result |
 
@@ -117,7 +119,7 @@ SaddlePointsTest >> test07_CanIdentifySaddlePointsInANonSquareMatrix [
 	self assert: result equals: ((Array new: 2) at: 1 put: ((Dictionary new) add: ('column'->3); add: ('row'->1); yourself); at: 2 put: ((Dictionary new) add: ('column'->1); add: ('row'->1); yourself); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SaddlePointsTest >> test08_CanIdentifyThatSaddlePointsInASingleColumnMatrixAreThoseWithTheMinimumValue [
 	| result |
 
@@ -125,7 +127,7 @@ SaddlePointsTest >> test08_CanIdentifyThatSaddlePointsInASingleColumnMatrixAreTh
 	self assert: result equals: ((Array new: 2) at: 1 put: ((Dictionary new) add: ('column'->1); add: ('row'->2); yourself); at: 2 put: ((Dictionary new) add: ('column'->1); add: ('row'->4); yourself); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SaddlePointsTest >> test09_CanIdentifyThatSaddlePointsInASingleRowMatrixAreThoseWithTheMaximumValue [
 	| result |
 

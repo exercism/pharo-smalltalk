@@ -1,1 +1,1 @@
-Package { #name : #'Exercise@ExampleTypoInMethodName' }
+Package { #name : 'Exercise@ExampleTypoInMethodName' }

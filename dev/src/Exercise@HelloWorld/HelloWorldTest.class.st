@@ -29,12 +29,13 @@ You then have the option to press the Create button to add a missing class or me
 Try doing this with your HelloWorld example, by simply running any one of the unit test methods.
 "
 Class {
-	#name : #HelloWorldTest,
-	#superclass : #ExercismTest,
-	#category : #'Exercise@HelloWorld'
+	#name : 'HelloWorldTest',
+	#superclass : 'ExercismTest',
+	#category : 'Exercise@HelloWorld',
+	#package : 'Exercise@HelloWorld'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 HelloWorldTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise.
 	HelloWorld is a special case as it's the first exercise"
@@ -45,20 +46,20 @@ HelloWorldTest class >> exercise [
 		yourself
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 HelloWorldTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'a1812b5e-2788-4ea6-b948-bfe54edeb0da'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 HelloWorldTest class >> version [
 	"Answer the exercise version number string this test was derived from"
 	
 	^'1.1.0'  
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 HelloWorldTest >> testHello [
 	self assert: HelloWorld sayHello equals: 'Hello, World!'
 ]

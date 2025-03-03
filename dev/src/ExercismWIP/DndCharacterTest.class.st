@@ -39,33 +39,35 @@ TBD
 
 "
 Class {
-	#name : #DndCharacterTest,
-	#superclass : #ExercismTest,
+	#name : 'DndCharacterTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'dndCharacterCalculator'
 	],
-	#category : #'ExercismWIP-DndCharacter'
+	#category : 'ExercismWIP-DndCharacter',
+	#package : 'ExercismWIP',
+	#tag : 'DndCharacter'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 DndCharacterTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'ba4ef416-9d41-0d00-9003-fba308866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 DndCharacterTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DndCharacterTest >> setUp [
 	super setUp.
 	dndCharacterCalculator := DndCharacter new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DndCharacterTest >> test01_AbilityModifierAbilityModifierForScore3Is4 [
 	| result |
 
@@ -73,7 +75,7 @@ DndCharacterTest >> test01_AbilityModifierAbilityModifierForScore3Is4 [
 	self assert: result equals:  -4
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DndCharacterTest >> test02_AbilityModifierAbilityModifierForScore4Is3 [
 	| result |
 
@@ -81,7 +83,7 @@ DndCharacterTest >> test02_AbilityModifierAbilityModifierForScore4Is3 [
 	self assert: result equals:  -3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DndCharacterTest >> test03_AbilityModifierAbilityModifierForScore5Is3 [
 	| result |
 
@@ -89,7 +91,7 @@ DndCharacterTest >> test03_AbilityModifierAbilityModifierForScore5Is3 [
 	self assert: result equals:  -3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DndCharacterTest >> test04_AbilityModifierAbilityModifierForScore6Is2 [
 	| result |
 
@@ -97,7 +99,7 @@ DndCharacterTest >> test04_AbilityModifierAbilityModifierForScore6Is2 [
 	self assert: result equals:  -2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DndCharacterTest >> test05_AbilityModifierAbilityModifierForScore7Is2 [
 	| result |
 
@@ -105,7 +107,7 @@ DndCharacterTest >> test05_AbilityModifierAbilityModifierForScore7Is2 [
 	self assert: result equals:  -2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DndCharacterTest >> test06_AbilityModifierAbilityModifierForScore8Is1 [
 	| result |
 
@@ -113,7 +115,7 @@ DndCharacterTest >> test06_AbilityModifierAbilityModifierForScore8Is1 [
 	self assert: result equals:  -1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DndCharacterTest >> test07_AbilityModifierAbilityModifierForScore9Is1 [
 	| result |
 
@@ -121,7 +123,7 @@ DndCharacterTest >> test07_AbilityModifierAbilityModifierForScore9Is1 [
 	self assert: result equals:  -1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DndCharacterTest >> test08_AbilityModifierAbilityModifierForScore10Is0 [
 	| result |
 
@@ -129,7 +131,7 @@ DndCharacterTest >> test08_AbilityModifierAbilityModifierForScore10Is0 [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DndCharacterTest >> test09_AbilityModifierAbilityModifierForScore11Is0 [
 	| result |
 
@@ -137,7 +139,7 @@ DndCharacterTest >> test09_AbilityModifierAbilityModifierForScore11Is0 [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DndCharacterTest >> test10_AbilityModifierAbilityModifierForScore12Is1 [
 	| result |
 
@@ -145,7 +147,7 @@ DndCharacterTest >> test10_AbilityModifierAbilityModifierForScore12Is1 [
 	self assert: result equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DndCharacterTest >> test11_AbilityModifierAbilityModifierForScore13Is1 [
 	| result |
 
@@ -153,7 +155,7 @@ DndCharacterTest >> test11_AbilityModifierAbilityModifierForScore13Is1 [
 	self assert: result equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DndCharacterTest >> test12_AbilityModifierAbilityModifierForScore14Is2 [
 	| result |
 
@@ -161,7 +163,7 @@ DndCharacterTest >> test12_AbilityModifierAbilityModifierForScore14Is2 [
 	self assert: result equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DndCharacterTest >> test13_AbilityModifierAbilityModifierForScore15Is2 [
 	| result |
 
@@ -169,7 +171,7 @@ DndCharacterTest >> test13_AbilityModifierAbilityModifierForScore15Is2 [
 	self assert: result equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DndCharacterTest >> test14_AbilityModifierAbilityModifierForScore16Is3 [
 	| result |
 
@@ -177,7 +179,7 @@ DndCharacterTest >> test14_AbilityModifierAbilityModifierForScore16Is3 [
 	self assert: result equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DndCharacterTest >> test15_AbilityModifierAbilityModifierForScore17Is3 [
 	| result |
 
@@ -185,7 +187,7 @@ DndCharacterTest >> test15_AbilityModifierAbilityModifierForScore17Is3 [
 	self assert: result equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DndCharacterTest >> test16_AbilityModifierAbilityModifierForScore18Is4 [
 	| result |
 
@@ -193,7 +195,7 @@ DndCharacterTest >> test16_AbilityModifierAbilityModifierForScore18Is4 [
 	self assert: result equals: 4
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DndCharacterTest >> test17_RandomAbilityIsWithinRange [
 	| result |
 
@@ -201,7 +203,7 @@ DndCharacterTest >> test17_RandomAbilityIsWithinRange [
 	self assert: result equals: 'score >= 3 && score <= 18'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DndCharacterTest >> test18_RandomCharacterIsValid [
 	| result |
 
@@ -209,7 +211,7 @@ DndCharacterTest >> test18_RandomCharacterIsValid [
 	self assert: result equals: ((Dictionary new) add: ('charisma'->'charisma >= 3 && charisma <= 18'); add: ('intelligence'->'intelligence >= 3 && intelligence <= 18'); add: ('wisdom'->'wisdom >= 3 && wisdom <= 18'); add: ('strength'->'strength >= 3 && strength <= 18'); add: ('constitution'->'constitution >= 3 && constitution <= 18'); add: ('dexterity'->'dexterity >= 3 && dexterity <= 18'); add: ('hitpoints'->'hitpoints == 10 + modifier(constitution)'); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DndCharacterTest >> test19_EachAbilityIsOnlyCalculatedOnce [
 	| result |
 

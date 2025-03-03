@@ -34,33 +34,35 @@ TBD
 
 "
 Class {
-	#name : #ZipperTest,
-	#superclass : #ExercismTest,
+	#name : 'ZipperTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'zipperCalculator'
 	],
-	#category : #'ExercismWIP-Zipper'
+	#category : 'ExercismWIP-Zipper',
+	#package : 'ExercismWIP',
+	#tag : 'Zipper'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 ZipperTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'70f8d716-9d41-0d00-8ff1-cfe608866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ZipperTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 ZipperTest >> setUp [
 	super setUp.
 	zipperCalculator := Zipper new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ZipperTest >> test01_DataIsRetained [
 	| result |
 
@@ -68,7 +70,7 @@ ZipperTest >> test01_DataIsRetained [
 	self assert: result equals: ((Dictionary new) add: ('value'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself)); add: ('type'->'tree'); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ZipperTest >> test02_LeftRightAndValue [
 	| result |
 
@@ -76,7 +78,7 @@ ZipperTest >> test02_LeftRightAndValue [
 	self assert: result equals: ((Dictionary new) add: ('value'->3); add: ('type'->'int'); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ZipperTest >> test03_DeadEnd [
 	| result |
 
@@ -84,7 +86,7 @@ ZipperTest >> test03_DeadEnd [
 	self assert: result equals: ((Dictionary new) add: ('value'->nil); add: ('type'->'zipper'); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ZipperTest >> test04_TreeFromDeepFocus [
 	| result |
 
@@ -92,7 +94,7 @@ ZipperTest >> test04_TreeFromDeepFocus [
 	self assert: result equals: ((Dictionary new) add: ('value'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself)); add: ('type'->'tree'); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ZipperTest >> test05_TraversingUpFromTop [
 	| result |
 
@@ -100,7 +102,7 @@ ZipperTest >> test05_TraversingUpFromTop [
 	self assert: result equals: ((Dictionary new) add: ('value'->nil); add: ('type'->'zipper'); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ZipperTest >> test06_LeftRightAndUp [
 	| result |
 
@@ -108,7 +110,7 @@ ZipperTest >> test06_LeftRightAndUp [
 	self assert: result equals: ((Dictionary new) add: ('value'->3); add: ('type'->'int'); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ZipperTest >> test07_Set_value [
 	| result |
 
@@ -116,7 +118,7 @@ ZipperTest >> test07_Set_value [
 	self assert: result equals: ((Dictionary new) add: ('value'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->5); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself)); add: ('type'->'tree'); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ZipperTest >> test08_Set_valueAfterTraversingUp [
 	| result |
 
@@ -124,7 +126,7 @@ ZipperTest >> test08_Set_valueAfterTraversingUp [
 	self assert: result equals: ((Dictionary new) add: ('value'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->5); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself)); add: ('type'->'tree'); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ZipperTest >> test09_Set_leftWithLeaf [
 	| result |
 
@@ -132,7 +134,7 @@ ZipperTest >> test09_Set_leftWithLeaf [
 	self assert: result equals: ((Dictionary new) add: ('value'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->5); add: ('right'->nil); add: ('left'->nil); yourself)); yourself)); yourself)); add: ('type'->'tree'); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ZipperTest >> test10_Set_rightWithNull [
 	| result |
 
@@ -140,7 +142,7 @@ ZipperTest >> test10_Set_rightWithNull [
 	self assert: result equals: ((Dictionary new) add: ('value'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->nil); add: ('left'->nil); yourself)); yourself)); add: ('type'->'tree'); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ZipperTest >> test11_Set_rightWithSubtree [
 	| result |
 
@@ -148,7 +150,7 @@ ZipperTest >> test11_Set_rightWithSubtree [
 	self assert: result equals: ((Dictionary new) add: ('value'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->6); add: ('right'->((Dictionary new) add: ('value'->8); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->7); add: ('right'->nil); add: ('left'->nil); yourself)); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->3); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself)); add: ('type'->'tree'); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ZipperTest >> test12_Set_valueOnDeepFocus [
 	| result |
 
@@ -156,7 +158,7 @@ ZipperTest >> test12_Set_valueOnDeepFocus [
 	self assert: result equals: ((Dictionary new) add: ('value'->((Dictionary new) add: ('value'->1); add: ('right'->((Dictionary new) add: ('value'->4); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->((Dictionary new) add: ('value'->2); add: ('right'->((Dictionary new) add: ('value'->5); add: ('right'->nil); add: ('left'->nil); yourself)); add: ('left'->nil); yourself)); yourself)); add: ('type'->'tree'); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ZipperTest >> test13_DifferentPathsToSameZipper [
 	| result |
 

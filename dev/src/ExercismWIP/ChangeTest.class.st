@@ -23,33 +23,35 @@ TBD
 
 "
 Class {
-	#name : #ChangeTest,
-	#superclass : #ExercismTest,
+	#name : 'ChangeTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'changeCalculator'
 	],
-	#category : #'ExercismWIP-Change'
+	#category : 'ExercismWIP-Change',
+	#package : 'ExercismWIP',
+	#tag : 'Change'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 ChangeTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'eb88a52e-b043-0d00-924a-1dc202a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ChangeTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'1.3.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 ChangeTest >> setUp [
 	super setUp.
 	changeCalculator := Change new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ChangeTest >> test01_SingleCoinChange [
 	| result |
 
@@ -57,7 +59,7 @@ ChangeTest >> test01_SingleCoinChange [
 	self assert: result equals: #(25 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ChangeTest >> test02_MultipleCoinChange [
 	| result |
 
@@ -65,7 +67,7 @@ ChangeTest >> test02_MultipleCoinChange [
 	self assert: result equals: #(5 10 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ChangeTest >> test03_ChangeWithLilliputianCoins [
 	| result |
 
@@ -73,7 +75,7 @@ ChangeTest >> test03_ChangeWithLilliputianCoins [
 	self assert: result equals: #(4 4 15 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ChangeTest >> test04_ChangeWithLowerElboniaCoins [
 	| result |
 
@@ -81,7 +83,7 @@ ChangeTest >> test04_ChangeWithLowerElboniaCoins [
 	self assert: result equals: #(21 21 21 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ChangeTest >> test05_LargeTargetValues [
 	| result |
 
@@ -89,7 +91,7 @@ ChangeTest >> test05_LargeTargetValues [
 	self assert: result equals: #(2 2 5 20 20 50 100 100 100 100 100 100 100 100 100 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ChangeTest >> test06_PossibleChangeWithoutUnitCoinsAvailable [
 	| result |
 
@@ -97,7 +99,7 @@ ChangeTest >> test06_PossibleChangeWithoutUnitCoinsAvailable [
 	self assert: result equals: #(2 2 2 5 10 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ChangeTest >> test07_AnotherPossibleChangeWithoutUnitCoinsAvailable [
 	| result |
 
@@ -105,7 +107,7 @@ ChangeTest >> test07_AnotherPossibleChangeWithoutUnitCoinsAvailable [
 	self assert: result equals: #(4 4 4 5 5 5 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ChangeTest >> test08_NoCoinsMake0Change [
 	| result |
 
@@ -113,7 +115,7 @@ ChangeTest >> test08_NoCoinsMake0Change [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ChangeTest >> test09_ErrorTestingForChangeSmallerThanTheSmallestOfCoins [
 	| result |
 
@@ -124,7 +126,7 @@ ChangeTest >> test09_ErrorTestingForChangeSmallerThanTheSmallestOfCoins [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ChangeTest >> test10_ErrorIfNoCombinationCanAddUpToTarget [
 	| result |
 
@@ -135,7 +137,7 @@ ChangeTest >> test10_ErrorIfNoCombinationCanAddUpToTarget [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ChangeTest >> test11_CannotFindNegativeChangeValues [
 	| result |
 

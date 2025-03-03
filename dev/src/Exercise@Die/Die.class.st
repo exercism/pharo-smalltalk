@@ -3,38 +3,39 @@ I represent a die. I can have different faces number and roll.
 
 "
 Class {
-	#name : #Die,
-	#superclass : #Object,
+	#name : 'Die',
+	#superclass : 'Object',
 	#instVars : [
 		'faces'
 	],
-	#category : #'Exercise@Die'
+	#category : 'Exercise@Die',
+	#package : 'Exercise@Die'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 Die class >> withFaces: anInteger [ 
 	^ self new faces: anInteger ; yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Die >> faces [
 
 	^ faces
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Die >> faces: aNumber [ 
 
 	faces := aNumber
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 Die >> initialize [
 	super initialize.
 	faces := 6
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 Die >> printOn: aStream [
 	super printOn: aStream.
 	aStream nextPutAll: ' ('.
@@ -43,7 +44,7 @@ Die >> printOn: aStream [
 
 ]
 
-{ #category : #rolling }
+{ #category : 'rolling' }
 Die >> roll [ 
 
 	^ faces atRandom 

@@ -1,16 +1,17 @@
 Class {
-	#name : #ExampleEmptySolutionFileTest,
-	#superclass : #ExercismTest,
-	#category : #'Exercise@ExampleEmptySolutionFile'
+	#name : 'ExampleEmptySolutionFileTest',
+	#superclass : 'ExercismTest',
+	#category : 'Exercise@ExampleEmptySolutionFile',
+	#package : 'Exercise@ExampleEmptySolutionFile'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 ExampleEmptySolutionFileTest class >> exampleSolutionSourceCode [
 
 	^ ''
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExampleEmptySolutionFileTest class >> exampleTestCasesSourceCode [
 
 	^ 'Class {
@@ -36,7 +37,7 @@ ExampleEmptySolutionFileTest >> testExerciseMethodC [
 '
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ExampleEmptySolutionFileTest class >> exercise [
 	^ (self createExerciseAfter: HelloWorldTest)
 		isCore: true;

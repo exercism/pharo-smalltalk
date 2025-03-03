@@ -26,33 +26,35 @@ TBD
 
 "
 Class {
-	#name : #ListOpsTest,
-	#superclass : #ExercismTest,
+	#name : 'ListOpsTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'listOpsCalculator'
 	],
-	#category : #'ExercismWIP-ListOps'
+	#category : 'ExercismWIP-ListOps',
+	#package : 'ExercismWIP',
+	#tag : 'ListOps'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 ListOpsTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'1cdcc816-9d41-0d00-8fe5-82ea08866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ListOpsTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'2.4.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 ListOpsTest >> setUp [
 	super setUp.
 	listOpsCalculator := ListOps new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ListOpsTest >> test01_AppendEntriesToAListAndReturnTheNewListEmptyLists [
 	| result |
 
@@ -60,7 +62,7 @@ ListOpsTest >> test01_AppendEntriesToAListAndReturnTheNewListEmptyLists [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ListOpsTest >> test02_AppendEntriesToAListAndReturnTheNewListEmptyListToList [
 	| result |
 
@@ -68,7 +70,7 @@ ListOpsTest >> test02_AppendEntriesToAListAndReturnTheNewListEmptyListToList [
 	self assert: result equals: #(1 2 3 4 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ListOpsTest >> test03_AppendEntriesToAListAndReturnTheNewListNonemptyLists [
 	| result |
 
@@ -76,7 +78,7 @@ ListOpsTest >> test03_AppendEntriesToAListAndReturnTheNewListNonemptyLists [
 	self assert: result equals: #(1 2 2 3 4 5 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ListOpsTest >> test04_ConcatenateAListOfListsEmptyList [
 	| result |
 
@@ -84,7 +86,7 @@ ListOpsTest >> test04_ConcatenateAListOfListsEmptyList [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ListOpsTest >> test05_ConcatenateAListOfListsListOfLists [
 	| result |
 
@@ -92,7 +94,7 @@ ListOpsTest >> test05_ConcatenateAListOfListsListOfLists [
 	self assert: result equals: #(1 2 3 4 5 6 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ListOpsTest >> test06_ConcatenateAListOfListsListOfNestedLists [
 	| result |
 
@@ -100,7 +102,7 @@ ListOpsTest >> test06_ConcatenateAListOfListsListOfNestedLists [
 	self assert: result equals: #(#(1 ) #(2 ) #(3 ) #() #(4 5 6 ) )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ListOpsTest >> test07_FilterListReturningOnlyValuesThatSatisfyTheFilterFunctionEmptyList [
 	| result |
 
@@ -108,7 +110,7 @@ ListOpsTest >> test07_FilterListReturningOnlyValuesThatSatisfyTheFilterFunctionE
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ListOpsTest >> test08_FilterListReturningOnlyValuesThatSatisfyTheFilterFunctionNonemptyList [
 	| result |
 
@@ -116,7 +118,7 @@ ListOpsTest >> test08_FilterListReturningOnlyValuesThatSatisfyTheFilterFunctionN
 	self assert: result equals: #(1 3 5 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ListOpsTest >> test09_ReturnsTheLengthOfAListEmptyList [
 	| result |
 
@@ -124,7 +126,7 @@ ListOpsTest >> test09_ReturnsTheLengthOfAListEmptyList [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ListOpsTest >> test10_ReturnsTheLengthOfAListNonemptyList [
 	| result |
 
@@ -132,7 +134,7 @@ ListOpsTest >> test10_ReturnsTheLengthOfAListNonemptyList [
 	self assert: result equals: 4
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ListOpsTest >> test11_ReturnAListOfElementsWhoseValuesEqualTheListValueTransformedByTheMappingFunctionEmptyList [
 	| result |
 
@@ -140,7 +142,7 @@ ListOpsTest >> test11_ReturnAListOfElementsWhoseValuesEqualTheListValueTransform
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ListOpsTest >> test12_ReturnAListOfElementsWhoseValuesEqualTheListValueTransformedByTheMappingFunctionNonemptyList [
 	| result |
 
@@ -148,7 +150,7 @@ ListOpsTest >> test12_ReturnAListOfElementsWhoseValuesEqualTheListValueTransform
 	self assert: result equals: #(2 4 6 8 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ListOpsTest >> test13_FoldsreducesTheGivenListFromTheLeftWithAFunctionEmptyList [
 	| result |
 
@@ -156,7 +158,7 @@ ListOpsTest >> test13_FoldsreducesTheGivenListFromTheLeftWithAFunctionEmptyList 
 	self assert: result equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ListOpsTest >> test14_FoldsreducesTheGivenListFromTheLeftWithAFunctionDirectionIndependentFunctionAppliedToNonemptyList [
 	| result |
 
@@ -164,7 +166,7 @@ ListOpsTest >> test14_FoldsreducesTheGivenListFromTheLeftWithAFunctionDirectionI
 	self assert: result equals: 15
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ListOpsTest >> test15_FoldsreducesTheGivenListFromTheLeftWithAFunctionDirectionDependentFunctionAppliedToNonemptyList [
 	| result |
 
@@ -172,7 +174,7 @@ ListOpsTest >> test15_FoldsreducesTheGivenListFromTheLeftWithAFunctionDirectionD
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ListOpsTest >> test16_FoldsreducesTheGivenListFromTheRightWithAFunctionEmptyList [
 	| result |
 
@@ -180,7 +182,7 @@ ListOpsTest >> test16_FoldsreducesTheGivenListFromTheRightWithAFunctionEmptyList
 	self assert: result equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ListOpsTest >> test17_FoldsreducesTheGivenListFromTheRightWithAFunctionDirectionIndependentFunctionAppliedToNonemptyList [
 	| result |
 
@@ -188,7 +190,7 @@ ListOpsTest >> test17_FoldsreducesTheGivenListFromTheRightWithAFunctionDirection
 	self assert: result equals: 15
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ListOpsTest >> test18_FoldsreducesTheGivenListFromTheRightWithAFunctionDirectionDependentFunctionAppliedToNonemptyList [
 	| result |
 
@@ -196,7 +198,7 @@ ListOpsTest >> test18_FoldsreducesTheGivenListFromTheRightWithAFunctionDirection
 	self assert: result equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ListOpsTest >> test19_ReverseTheElementsOfTheListEmptyList [
 	| result |
 
@@ -204,7 +206,7 @@ ListOpsTest >> test19_ReverseTheElementsOfTheListEmptyList [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ListOpsTest >> test20_ReverseTheElementsOfTheListNonemptyList [
 	| result |
 
@@ -212,7 +214,7 @@ ListOpsTest >> test20_ReverseTheElementsOfTheListNonemptyList [
 	self assert: result equals: #(7 5 3 1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ListOpsTest >> test21_ReverseTheElementsOfTheListListOfListsIsNotFlattened [
 	| result |
 

@@ -67,15 +67,16 @@ You will need to store some game state.
 
 "
 Class {
-	#name : #BowlingTest,
-	#superclass : #ExercismTest,
+	#name : 'BowlingTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'bowlingCalculator'
 	],
-	#category : #'Exercise@Bowling'
+	#category : 'Exercise@Bowling',
+	#package : 'Exercise@Bowling'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 BowlingTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -86,7 +87,7 @@ BowlingTest class >> exercise [
 	
 ]
 
-{ #category : #generator }
+{ #category : 'generator' }
 BowlingTest class >> generator [
 	"Potential generator hints"
 	
@@ -94,25 +95,25 @@ BowlingTest class >> generator [
 	('@scorePreviousRolls:' -> #scoreAfterRolling:)}
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 BowlingTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'7af9188a-8e6c-4bb1-902e-cb335173f60e'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 BowlingTest class >> version [
 	"Generated from specification: 1 April 2019"
 	^'1.2.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 BowlingTest >> setUp [
 	super setUp.
 	bowlingCalculator := Bowling new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test01_ShouldBeAbleToScoreAGameWithAllZeros [
 	| result |
 
@@ -120,7 +121,7 @@ BowlingTest >> test01_ShouldBeAbleToScoreAGameWithAllZeros [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test02_ShouldBeAbleToScoreAGameWithNoStrikesOrSpares [
 	| result |
 
@@ -128,7 +129,7 @@ BowlingTest >> test02_ShouldBeAbleToScoreAGameWithNoStrikesOrSpares [
 	self assert: result equals: 90
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test03_ASpareFollowedByZerosIsWorthTenPoints [
 	| result |
 
@@ -136,7 +137,7 @@ BowlingTest >> test03_ASpareFollowedByZerosIsWorthTenPoints [
 	self assert: result equals: 10
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test04_PointsScoredInTheRollAfterASpareAreCountedTwice [
 	| result |
 
@@ -144,7 +145,7 @@ BowlingTest >> test04_PointsScoredInTheRollAfterASpareAreCountedTwice [
 	self assert: result equals: 16
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test05_ConsecutiveSparesEachGetAOneRollBonus [
 	| result |
 
@@ -152,7 +153,7 @@ BowlingTest >> test05_ConsecutiveSparesEachGetAOneRollBonus [
 	self assert: result equals: 31
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test06_ASpareInTheLastFrameGetsAOneRollBonusThatIsCountedOnce [
 	| result |
 
@@ -160,7 +161,7 @@ BowlingTest >> test06_ASpareInTheLastFrameGetsAOneRollBonusThatIsCountedOnce [
 	self assert: result equals: 17
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test07_AStrikeEarnsTenPointsInAFrameWithASingleRoll [
 	| result |
 
@@ -168,7 +169,7 @@ BowlingTest >> test07_AStrikeEarnsTenPointsInAFrameWithASingleRoll [
 	self assert: result equals: 10
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test08_PointsScoredInTheTwoRollsAfterAStrikeAreCountedTwiceAsABonus [
 	| result |
 
@@ -176,7 +177,7 @@ BowlingTest >> test08_PointsScoredInTheTwoRollsAfterAStrikeAreCountedTwiceAsABon
 	self assert: result equals: 26
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test09_ConsecutiveStrikesEachGetTheTwoRollBonus [
 	| result |
 
@@ -184,7 +185,7 @@ BowlingTest >> test09_ConsecutiveStrikesEachGetTheTwoRollBonus [
 	self assert: result equals: 81
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test10_AStrikeInTheLastFrameGetsATwoRollBonusThatIsCountedOnce [
 	| result |
 
@@ -192,7 +193,7 @@ BowlingTest >> test10_AStrikeInTheLastFrameGetsATwoRollBonusThatIsCountedOnce [
 	self assert: result equals: 18
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test11_RollingASpareWithTheTwoRollBonusDoesNotGetABonusRoll [
 	| result |
 
@@ -200,7 +201,7 @@ BowlingTest >> test11_RollingASpareWithTheTwoRollBonusDoesNotGetABonusRoll [
 	self assert: result equals: 20
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test12_StrikesWithTheTwoRollBonusDoNotGetBonusRolls [
 	| result |
 
@@ -208,7 +209,7 @@ BowlingTest >> test12_StrikesWithTheTwoRollBonusDoNotGetBonusRolls [
 	self assert: result equals: 30
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test13_AStrikeWithTheOneRollBonusAfterASpareInTheLastFrameDoesNotGetABonus [
 	| result |
 
@@ -216,7 +217,7 @@ BowlingTest >> test13_AStrikeWithTheOneRollBonusAfterASpareInTheLastFrameDoesNot
 	self assert: result equals: 20
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test14_AllStrikesIsAPerfectGame [
 	| result |
 
@@ -224,7 +225,7 @@ BowlingTest >> test14_AllStrikesIsAPerfectGame [
 	self assert: result equals: 300
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test15_RollsCannotScoreNegativePoints [
 	| result |
 
@@ -235,7 +236,7 @@ BowlingTest >> test15_RollsCannotScoreNegativePoints [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test16_ARollCannotScoreMoreThan10Points [
 	| result |
 
@@ -246,7 +247,7 @@ BowlingTest >> test16_ARollCannotScoreMoreThan10Points [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test17_TwoRollsInAFrameCannotScoreMoreThan10Points [
 	| result |
 
@@ -257,7 +258,7 @@ BowlingTest >> test17_TwoRollsInAFrameCannotScoreMoreThan10Points [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test18_BonusRollAfterAStrikeInTheLastFrameCannotScoreMoreThan10Points [
 	| result |
 
@@ -268,7 +269,7 @@ BowlingTest >> test18_BonusRollAfterAStrikeInTheLastFrameCannotScoreMoreThan10Po
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test19_TwoBonusRollsAfterAStrikeInTheLastFrameCannotScoreMoreThan10Points [
 	| result |
 
@@ -279,7 +280,7 @@ BowlingTest >> test19_TwoBonusRollsAfterAStrikeInTheLastFrameCannotScoreMoreThan
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test20_TwoBonusRollsAfterAStrikeInTheLastFrameCanScoreMoreThan10PointsIfOneIsAStrike [
 	| result |
 
@@ -287,7 +288,7 @@ BowlingTest >> test20_TwoBonusRollsAfterAStrikeInTheLastFrameCanScoreMoreThan10P
 	self assert: result equals: 26
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test21_TheSecondBonusRollsAfterAStrikeInTheLastFrameCannotBeAStrikeIfTheFirstOneIsNotAStrike [
 	| result |
 
@@ -298,7 +299,7 @@ BowlingTest >> test21_TheSecondBonusRollsAfterAStrikeInTheLastFrameCannotBeAStri
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test22_SecondBonusRollAfterAStrikeInTheLastFrameCannotScoreMoreThan10Points [
 	| result |
 
@@ -309,7 +310,7 @@ BowlingTest >> test22_SecondBonusRollAfterAStrikeInTheLastFrameCannotScoreMoreTh
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test23_AnUnstartedGameCannotBeScored [
 	| result |
 
@@ -320,7 +321,7 @@ BowlingTest >> test23_AnUnstartedGameCannotBeScored [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test24_AnIncompleteGameCannotBeScored [
 	| result |
 
@@ -331,7 +332,7 @@ BowlingTest >> test24_AnIncompleteGameCannotBeScored [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test25_CannotRollIfGameAlreadyHasTenFrames [
 	| result |
 
@@ -342,7 +343,7 @@ BowlingTest >> test25_CannotRollIfGameAlreadyHasTenFrames [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test26_BonusRollsForAStrikeInTheLastFrameMustBeRolledBeforeScoreCanBeCalculated [
 	| result |
 
@@ -353,7 +354,7 @@ BowlingTest >> test26_BonusRollsForAStrikeInTheLastFrameMustBeRolledBeforeScoreC
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test27_BothBonusRollsForAStrikeInTheLastFrameMustBeRolledBeforeScoreCanBeCalculated [
 	| result |
 
@@ -364,7 +365,7 @@ BowlingTest >> test27_BothBonusRollsForAStrikeInTheLastFrameMustBeRolledBeforeSc
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test28_BonusRollForASpareInTheLastFrameMustBeRolledBeforeScoreCanBeCalculated [
 	| result |
 
@@ -375,7 +376,7 @@ BowlingTest >> test28_BonusRollForASpareInTheLastFrameMustBeRolledBeforeScoreCan
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test29_CannotRollAfterBonusRollForSpare [
 	| result |
 
@@ -386,7 +387,7 @@ BowlingTest >> test29_CannotRollAfterBonusRollForSpare [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BowlingTest >> test30_CannotRollAfterBonusRollsForStrike [
 	| result |
 

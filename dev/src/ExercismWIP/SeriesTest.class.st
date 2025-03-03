@@ -27,33 +27,35 @@ TBD
 
 "
 Class {
-	#name : #SeriesTest,
-	#superclass : #ExercismTest,
+	#name : 'SeriesTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'seriesCalculator'
 	],
-	#category : #'ExercismWIP-Series'
+	#category : 'ExercismWIP-Series',
+	#package : 'ExercismWIP',
+	#tag : 'Series'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 SeriesTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'164e9e2e-b043-0d00-9241-1e3602a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 SeriesTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'1.0.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 SeriesTest >> setUp [
 	super setUp.
 	seriesCalculator := Series new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SeriesTest >> test01_SlicesOfOneFromOne [
 	| result |
 
@@ -61,7 +63,7 @@ SeriesTest >> test01_SlicesOfOneFromOne [
 	self assert: result equals: #('1' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SeriesTest >> test02_SlicesOfOneFromTwo [
 	| result |
 
@@ -69,7 +71,7 @@ SeriesTest >> test02_SlicesOfOneFromTwo [
 	self assert: result equals: #('1' '2' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SeriesTest >> test03_SlicesOfTwo [
 	| result |
 
@@ -77,7 +79,7 @@ SeriesTest >> test03_SlicesOfTwo [
 	self assert: result equals: #('35' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SeriesTest >> test04_SlicesOfTwoOverlap [
 	| result |
 
@@ -85,7 +87,7 @@ SeriesTest >> test04_SlicesOfTwoOverlap [
 	self assert: result equals: #('91' '14' '42' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SeriesTest >> test05_SlicesCanIncludeDuplicates [
 	| result |
 
@@ -93,7 +95,7 @@ SeriesTest >> test05_SlicesCanIncludeDuplicates [
 	self assert: result equals: #('777' '777' '777' '777' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SeriesTest >> test06_SlicesOfALongSeries [
 	| result |
 
@@ -101,7 +103,7 @@ SeriesTest >> test06_SlicesOfALongSeries [
 	self assert: result equals: #('91849' '18493' '84939' '49390' '93904' '39042' '90424' '04243' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SeriesTest >> test07_SliceLengthIsTooLarge [
 	| result |
 
@@ -112,7 +114,7 @@ SeriesTest >> test07_SliceLengthIsTooLarge [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SeriesTest >> test08_SliceLengthCannotBeZero [
 	| result |
 
@@ -123,7 +125,7 @@ SeriesTest >> test08_SliceLengthCannotBeZero [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SeriesTest >> test09_SliceLengthCannotBeNegative [
 	| result |
 
@@ -134,7 +136,7 @@ SeriesTest >> test09_SliceLengthCannotBeNegative [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SeriesTest >> test10_EmptySeriesIsInvalid [
 	| result |
 

@@ -44,33 +44,35 @@ TBD
 
 "
 Class {
-	#name : #DiffieHellmanTest,
-	#superclass : #ExercismTest,
+	#name : 'DiffieHellmanTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'diffieHellmanCalculator'
 	],
-	#category : #'ExercismWIP-DiffieHellman'
+	#category : 'ExercismWIP-DiffieHellman',
+	#package : 'ExercismWIP',
+	#tag : 'DiffieHellman'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 DiffieHellmanTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'b7b1ca16-9d41-0d00-8fe7-d82108866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 DiffieHellmanTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.0.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DiffieHellmanTest >> setUp [
 	super setUp.
 	diffieHellmanCalculator := DiffieHellman new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DiffieHellmanTest >> test01_PrivateKeyIsInRange1P [
 	| result |
 
@@ -78,7 +80,7 @@ DiffieHellmanTest >> test01_PrivateKeyIsInRange1P [
 	self assert: result equals: ((Dictionary new) add: ('greaterThan'->1); add: ('lessThan'->'p'); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DiffieHellmanTest >> test02_PrivateKeyIsRandom [
 	| result |
 
@@ -86,7 +88,7 @@ DiffieHellmanTest >> test02_PrivateKeyIsRandom [
 	self assert: result equals: ((Dictionary new) add: ('random'->true); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DiffieHellmanTest >> test03_CanCalculatePublicKeyUsingPrivateKey [
 	| result |
 
@@ -94,7 +96,7 @@ DiffieHellmanTest >> test03_CanCalculatePublicKeyUsingPrivateKey [
 	self assert: result equals: 8
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DiffieHellmanTest >> test04_CanCalculateSecretUsingOtherPartysPublicKey [
 	| result |
 
@@ -102,7 +104,7 @@ DiffieHellmanTest >> test04_CanCalculateSecretUsingOtherPartysPublicKey [
 	self assert: result equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DiffieHellmanTest >> test05_KeyExchange [
 	| result |
 

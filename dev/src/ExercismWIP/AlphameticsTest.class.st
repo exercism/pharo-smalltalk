@@ -38,33 +38,35 @@ TBD
 
 "
 Class {
-	#name : #AlphameticsTest,
-	#superclass : #ExercismTest,
+	#name : 'AlphameticsTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'alphameticsCalculator'
 	],
-	#category : #'ExercismWIP-Alphametics'
+	#category : 'ExercismWIP-Alphametics',
+	#package : 'ExercismWIP',
+	#tag : 'Alphametics'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 AlphameticsTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'2aa5bf2e-b043-0d00-926f-453302a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 AlphameticsTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'1.3.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 AlphameticsTest >> setUp [
 	super setUp.
 	alphameticsCalculator := Alphametics new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AlphameticsTest >> test01_PuzzleWithThreeLetters [
 	| result |
 
@@ -72,7 +74,7 @@ AlphameticsTest >> test01_PuzzleWithThreeLetters [
 	self assert: result equals: ((Dictionary new) add: ('L'->0); add: ('I'->1); add: ('B'->9); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AlphameticsTest >> test02_SolutionMustHaveUniqueValueForEachLetter [
 	| result |
 
@@ -80,7 +82,7 @@ AlphameticsTest >> test02_SolutionMustHaveUniqueValueForEachLetter [
 	self assert: result equals: nil
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AlphameticsTest >> test03_LeadingZeroSolutionIsInvalid [
 	| result |
 
@@ -88,7 +90,7 @@ AlphameticsTest >> test03_LeadingZeroSolutionIsInvalid [
 	self assert: result equals: nil
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AlphameticsTest >> test04_PuzzleWithTwoDigitsFinalCarry [
 	| result |
 
@@ -96,7 +98,7 @@ AlphameticsTest >> test04_PuzzleWithTwoDigitsFinalCarry [
 	self assert: result equals: ((Dictionary new) add: ('C'->0); add: ('A'->9); add: ('B'->1); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AlphameticsTest >> test05_PuzzleWithFourLetters [
 	| result |
 
@@ -104,7 +106,7 @@ AlphameticsTest >> test05_PuzzleWithFourLetters [
 	self assert: result equals: ((Dictionary new) add: ('O'->0); add: ('S'->2); add: ('A'->9); add: ('M'->1); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AlphameticsTest >> test06_PuzzleWithSixLetters [
 	| result |
 
@@ -112,7 +114,7 @@ AlphameticsTest >> test06_PuzzleWithSixLetters [
 	self assert: result equals: ((Dictionary new) add: ('A'->0); add: ('O'->4); add: ('T'->9); add: ('N'->7); add: ('L'->1); add: ('E'->2); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AlphameticsTest >> test07_PuzzleWithSevenLetters [
 	| result |
 
@@ -120,7 +122,7 @@ AlphameticsTest >> test07_PuzzleWithSevenLetters [
 	self assert: result equals: ((Dictionary new) add: ('G'->2); add: ('S'->9); add: ('H'->5); add: ('T'->7); add: ('I'->0); add: ('L'->1); add: ('E'->4); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AlphameticsTest >> test08_PuzzleWithEightLetters [
 	| result |
 
@@ -128,7 +130,7 @@ AlphameticsTest >> test08_PuzzleWithEightLetters [
 	self assert: result equals: ((Dictionary new) add: ('S'->9); add: ('O'->0); add: ('M'->1); add: ('D'->7); add: ('R'->8); add: ('N'->6); add: ('Y'->2); add: ('E'->5); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AlphameticsTest >> test09_PuzzleWithTenLetters [
 	| result |
 
@@ -136,7 +138,7 @@ AlphameticsTest >> test09_PuzzleWithTenLetters [
 	self assert: result equals: ((Dictionary new) add: ('D'->3); add: ('F'->7); add: ('R'->1); add: ('O'->2); add: ('T'->9); add: ('E'->4); add: ('N'->0); add: ('G'->8); add: ('S'->6); add: ('A'->5); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AlphameticsTest >> test10_PuzzleWithTenLettersAnd199Addends [
 	| result |
 

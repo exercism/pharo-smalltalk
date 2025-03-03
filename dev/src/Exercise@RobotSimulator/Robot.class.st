@@ -2,8 +2,8 @@
 I am a simple ""turtle"" robot, that maintains a bearing direction and location.
 "
 Class {
-	#name : #Robot,
-	#superclass : #Object,
+	#name : 'Robot',
+	#superclass : 'Object',
 	#instVars : [
 		'bearing',
 		'location'
@@ -11,10 +11,11 @@ Class {
 	#classVars : [
 		'Bearings'
 	],
-	#category : #'Exercise@RobotSimulator'
+	#category : 'Exercise@RobotSimulator',
+	#package : 'Exercise@RobotSimulator'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 Robot class >> facing: directionString [
 
 	^ self new
@@ -22,7 +23,7 @@ Robot class >> facing: directionString [
 		yourself
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 Robot >> asDictionary [
 	^ Dictionary new
 		at: 'direction' put: self bearing name;
@@ -33,17 +34,17 @@ Robot >> asDictionary [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Robot >> bearing [
 	^ bearing
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Robot >> bearing: anObject [
 	bearing := anObject
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 Robot >> execute: instructionCharacter [
 
 	instructionCharacter = $R
@@ -54,28 +55,28 @@ Robot >> execute: instructionCharacter [
 	^ self moveForward
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 Robot >> initialize [
 	super initialize.
 	self location: 0@0
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Robot >> location [
 	^ location
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Robot >> location: aPoint [
 	location := aPoint
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 Robot >> moveForward [
 	self location: self location + self bearing delta
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 Robot >> printOn: aStream [
 	super printOn: aStream.
 	aStream
@@ -84,12 +85,12 @@ Robot >> printOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 Robot >> turnLeft [
 	self bearing: self bearing left
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 Robot >> turnRight [
 	self bearing: self bearing right
 ]

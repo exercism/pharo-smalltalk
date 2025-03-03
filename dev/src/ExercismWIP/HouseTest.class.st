@@ -112,33 +112,35 @@ TBD
 
 "
 Class {
-	#name : #HouseTest,
-	#superclass : #ExercismTest,
+	#name : 'HouseTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'houseCalculator'
 	],
-	#category : #'ExercismWIP-House'
+	#category : 'ExercismWIP-House',
+	#package : 'ExercismWIP',
+	#tag : 'House'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 HouseTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'724ec42e-b043-0d00-9276-8eee02a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 HouseTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'2.2.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 HouseTest >> setUp [
 	super setUp.
 	houseCalculator := House new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HouseTest >> test01_VerseOneTheHouseThatJackBuilt [
 	| result |
 
@@ -146,7 +148,7 @@ HouseTest >> test01_VerseOneTheHouseThatJackBuilt [
 	self assert: result equals: #('This is the house that Jack built.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HouseTest >> test02_VerseTwoTheMaltThatLay [
 	| result |
 
@@ -154,7 +156,7 @@ HouseTest >> test02_VerseTwoTheMaltThatLay [
 	self assert: result equals: #('This is the malt that lay in the house that Jack built.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HouseTest >> test03_VerseThreeTheRatThatAte [
 	| result |
 
@@ -162,7 +164,7 @@ HouseTest >> test03_VerseThreeTheRatThatAte [
 	self assert: result equals: #('This is the rat that ate the malt that lay in the house that Jack built.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HouseTest >> test04_VerseFourTheCatThatKilled [
 	| result |
 
@@ -170,7 +172,7 @@ HouseTest >> test04_VerseFourTheCatThatKilled [
 	self assert: result equals: #('This is the cat that killed the rat that ate the malt that lay in the house that Jack built.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HouseTest >> test05_VerseFiveTheDogThatWorried [
 	| result |
 
@@ -178,7 +180,7 @@ HouseTest >> test05_VerseFiveTheDogThatWorried [
 	self assert: result equals: #('This is the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HouseTest >> test06_VerseSixTheCowWithTheCrumpledHorn [
 	| result |
 
@@ -186,7 +188,7 @@ HouseTest >> test06_VerseSixTheCowWithTheCrumpledHorn [
 	self assert: result equals: #('This is the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HouseTest >> test07_VerseSevenTheMaidenAllForlorn [
 	| result |
 
@@ -194,7 +196,7 @@ HouseTest >> test07_VerseSevenTheMaidenAllForlorn [
 	self assert: result equals: #('This is the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HouseTest >> test08_VerseEightTheManAllTatteredAndTorn [
 	| result |
 
@@ -202,7 +204,7 @@ HouseTest >> test08_VerseEightTheManAllTatteredAndTorn [
 	self assert: result equals: #('This is the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HouseTest >> test09_VerseNineThePriestAllShavenAndShorn [
 	| result |
 
@@ -210,7 +212,7 @@ HouseTest >> test09_VerseNineThePriestAllShavenAndShorn [
 	self assert: result equals: #('This is the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HouseTest >> test10_Verse10TheRoosterThatCrowedInTheMorn [
 	| result |
 
@@ -218,7 +220,7 @@ HouseTest >> test10_Verse10TheRoosterThatCrowedInTheMorn [
 	self assert: result equals: #('This is the rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HouseTest >> test11_Verse11TheFarmerSowingHisCorn [
 	| result |
 
@@ -226,7 +228,7 @@ HouseTest >> test11_Verse11TheFarmerSowingHisCorn [
 	self assert: result equals: #('This is the farmer sowing his corn that kept the rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HouseTest >> test12_Verse12TheHorseAndTheHoundAndTheHorn [
 	| result |
 
@@ -234,7 +236,7 @@ HouseTest >> test12_Verse12TheHorseAndTheHoundAndTheHorn [
 	self assert: result equals: #('This is the horse and the hound and the horn that belonged to the farmer sowing his corn that kept the rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HouseTest >> test13_MultipleVerses [
 	| result |
 
@@ -242,7 +244,7 @@ HouseTest >> test13_MultipleVerses [
 	self assert: result equals: #('This is the cat that killed the rat that ate the malt that lay in the house that Jack built.' 'This is the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.' 'This is the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.' 'This is the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.' 'This is the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HouseTest >> test14_FullRhyme [
 	| result |
 

@@ -26,33 +26,35 @@ TBD
 
 "
 Class {
-	#name : #ResistorColorTest,
-	#superclass : #ExercismTest,
+	#name : 'ResistorColorTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'resistorColorCalculator'
 	],
-	#category : #'ExercismWIP-ResistorColor'
+	#category : 'ExercismWIP-ResistorColor',
+	#package : 'ExercismWIP',
+	#tag : 'ResistorColor'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 ResistorColorTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'8cc3cd16-9d41-0d00-8fea-8efc08866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ResistorColorTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.0.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 ResistorColorTest >> setUp [
 	super setUp.
 	resistorColorCalculator := ResistorColor new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ResistorColorTest >> test01_ColorCodesBlack [
 	| result |
 
@@ -60,7 +62,7 @@ ResistorColorTest >> test01_ColorCodesBlack [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ResistorColorTest >> test02_ColorCodesWhite [
 	| result |
 
@@ -68,7 +70,7 @@ ResistorColorTest >> test02_ColorCodesWhite [
 	self assert: result equals: 9
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ResistorColorTest >> test03_ColorCodesOrange [
 	| result |
 
@@ -76,7 +78,7 @@ ResistorColorTest >> test03_ColorCodesOrange [
 	self assert: result equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ResistorColorTest >> test04_Colors [
 	| result |
 

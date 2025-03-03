@@ -1,1 +1,1 @@
-Package { #name : #'Exercise@AtbashCipher' }
+Package { #name : 'Exercise@AtbashCipher' }

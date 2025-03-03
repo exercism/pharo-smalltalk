@@ -1,12 +1,12 @@
-Extension { #name : #TonelReader }
+Extension { #name : 'TonelReader' }
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 TonelReader >> exerciseDirectory: aDirReference [
 
 	packageDirectory := aDirReference
 ]
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 TonelReader class >> fromExerciseDirectory: aDirectory [
 
 	"set exercise directory where all source files of exercise occur"

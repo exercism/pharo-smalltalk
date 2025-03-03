@@ -29,15 +29,16 @@ You will need some form of lookup table of colours to calculate the value. You d
 
 "
 Class {
-	#name : #ResistorColorDuoTest,
-	#superclass : #ExercismTest,
+	#name : 'ResistorColorDuoTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'resistorColorDuoCalculator'
 	],
-	#category : #'Exercise@ResistorColorDuo'
+	#category : 'Exercise@ResistorColorDuo',
+	#package : 'Exercise@ResistorColorDuo'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 ResistorColorDuoTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -48,32 +49,32 @@ ResistorColorDuoTest class >> exercise [
 		yourself
 ]
 
-{ #category : #generator }
+{ #category : 'generator' }
 ResistorColorDuoTest class >> generator [
 	"Potential generator hints"
 	
 	^ {'valueColours:' -> 'valueWithColours:' }
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ResistorColorDuoTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'4c6e4b89-cea1-45ee-aa7e-c67c30cd1ec6'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ResistorColorDuoTest class >> version [
 	"Generated from specification: 10 April 2019"
 	^'2.0.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 ResistorColorDuoTest >> setUp [
 	super setUp.
 	resistorColorDuoCalculator := ResistorColorDuo new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ResistorColorDuoTest >> test01_BrownAndBlack [
 	"Tip: Remember to review the class [Comment] tab"
 	<exeTestName: 'Brown and black'>
@@ -85,7 +86,7 @@ ResistorColorDuoTest >> test01_BrownAndBlack [
 	self assert: result equals: 10
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ResistorColorDuoTest >> test02_BlueAndGrey [
 	<exeTestName: 'Blue and grey'>
 	<exeTestUUID: '7bf82f7a-af23-48ba-a97d-38d59406a920'>
@@ -96,7 +97,7 @@ ResistorColorDuoTest >> test02_BlueAndGrey [
 	self assert: result equals: 68
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ResistorColorDuoTest >> test03_YellowAndViolet [
 	<exeTestName: 'Yellow and violet'>
 	<exeTestUUID: 'f1886361-fdfd-4693-acf8-46726fe24e0c'>
@@ -107,7 +108,7 @@ ResistorColorDuoTest >> test03_YellowAndViolet [
 	self assert: result equals: 47
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ResistorColorDuoTest >> test04_WhiteAndRed [
 	<exeTestName: 'White and red'>
 	<exeTestUUID: 'b7a6cbd2-ae3c-470a-93eb-56670b305640'>
@@ -118,7 +119,7 @@ ResistorColorDuoTest >> test04_WhiteAndRed [
 	self assert: result equals: 92
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ResistorColorDuoTest >> test05_OrangeAndOrange [
 	<exeTestName: 'Orange and orange'>
 	<exeTestUUID: '77a8293d-2a83-4016-b1af-991acc12b9fe'>
@@ -129,7 +130,7 @@ ResistorColorDuoTest >> test05_OrangeAndOrange [
 	self assert: result equals: 33
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ResistorColorDuoTest >> test06_IgnoreAdditionalColors [
 	<exeTestName: 'Ignore additional colors'>
 	<exeTestUUID: '0c4fb44f-db7c-4d03-afa8-054350f156a8'>
@@ -140,7 +141,7 @@ ResistorColorDuoTest >> test06_IgnoreAdditionalColors [
 	self assert: result equals: 51
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ResistorColorDuoTest >> test07_BlackAndBrownOnedigit [
 	<exeTestName: 'Black and brown, one-digit'>
 	<exeTestUUID: '4a8ceec5-0ab4-4904-88a4-daf953a5e818'>
@@ -151,7 +152,7 @@ ResistorColorDuoTest >> test07_BlackAndBrownOnedigit [
 	self assert: result equals: 1
 ]
 
-{ #category : #extra }
+{ #category : 'extra' }
 ResistorColorDuoTest >> testDetectInvalidColors [
 	"first color"
 	self

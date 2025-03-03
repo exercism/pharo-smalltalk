@@ -1,1 +1,1 @@
-Package { #name : #'Exercise@ExampleExtensionMethod' }
+Package { #name : 'Exercise@ExampleExtensionMethod' }

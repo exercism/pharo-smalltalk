@@ -1,12 +1,12 @@
-Extension { #name : #TestResult }
+Extension { #name : 'TestResult' }
 
-{ #category : #'*ExercismTestRunner' }
+{ #category : '*ExercismTestRunner' }
 TestResult >> exercismTestResults [
 	
 	^ self tests sort: [:a :b | a selector < b selector ]; collect: #exercismTestResultInfo
 ]
 
-{ #category : #'*ExercismTestRunner' }
+{ #category : '*ExercismTestRunner' }
 TestResult >> exercismTestRunnerData [
 	|testResults testRunnerDict|
 	testResults := self exercismTestResults.
@@ -19,7 +19,7 @@ TestResult >> exercismTestRunnerData [
 	^ testRunnerDict 
 ]
 
-{ #category : #'*ExercismTestRunner' }
+{ #category : '*ExercismTestRunner' }
 TestResult >> overallStatus [
 
 	(self errors isEmpty and: [ self failures isEmpty ]) 

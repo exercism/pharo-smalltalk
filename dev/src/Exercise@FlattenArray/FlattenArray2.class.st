@@ -5,12 +5,14 @@ Mentor notes:
 
 "
 Class {
-	#name : #FlattenArray2,
-	#superclass : #Object,
-	#category : #'Exercise@FlattenArray-Solution2'
+	#name : 'FlattenArray2',
+	#superclass : 'Object',
+	#category : 'Exercise@FlattenArray-Solution2',
+	#package : 'Exercise@FlattenArray',
+	#tag : 'Solution2'
 }
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 FlattenArray2 >> flattenArray: aCollection [ 
 	  |stream|
 	

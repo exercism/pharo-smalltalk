@@ -1,17 +1,17 @@
-Extension { #name : #RPackageTag }
+Extension { #name : 'RPackageTag' }
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 RPackageTag >> definedClasses [
 	^ self classes
 ]
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 RPackageTag >> exerciseName [
 	"Provided for legacy compatibility"
 	^self name asString
 ]
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 RPackageTag >> promoteAsExercismRPackage [
 	"This method converts this rpackage tag into an rpackage compatible with exercism"
 	|  tagName pkgName promotedName pkg |
@@ -26,12 +26,12 @@ RPackageTag >> promoteAsExercismRPackage [
 	pkg renameTo: pkgName, '@', tagName
 ]
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 RPackageTag >> root [
 	^self package
 ]
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 RPackageTag >> snapshot [
 	| parentSnapshot |
 	

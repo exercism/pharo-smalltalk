@@ -70,33 +70,35 @@ TBD
 
 "
 Class {
-	#name : #RectanglesTest,
-	#superclass : #ExercismTest,
+	#name : 'RectanglesTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'rectanglesCalculator'
 	],
-	#category : #'ExercismWIP-Rectangles'
+	#category : 'ExercismWIP-Rectangles',
+	#package : 'ExercismWIP',
+	#tag : 'Rectangles'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 RectanglesTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'9d24e116-9d41-0d00-8ff7-3ca508866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 RectanglesTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 RectanglesTest >> setUp [
 	super setUp.
 	rectanglesCalculator := Rectangles new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RectanglesTest >> test01_NoRows [
 	| result |
 
@@ -104,7 +106,7 @@ RectanglesTest >> test01_NoRows [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RectanglesTest >> test02_NoColumns [
 	| result |
 
@@ -112,7 +114,7 @@ RectanglesTest >> test02_NoColumns [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RectanglesTest >> test03_NoRectangles [
 	| result |
 
@@ -120,7 +122,7 @@ RectanglesTest >> test03_NoRectangles [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RectanglesTest >> test04_OneRectangle [
 	| result |
 
@@ -128,7 +130,7 @@ RectanglesTest >> test04_OneRectangle [
 	self assert: result equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RectanglesTest >> test05_TwoRectanglesWithoutSharedParts [
 	| result |
 
@@ -136,7 +138,7 @@ RectanglesTest >> test05_TwoRectanglesWithoutSharedParts [
 	self assert: result equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RectanglesTest >> test06_FiveRectanglesWithSharedParts [
 	| result |
 
@@ -144,7 +146,7 @@ RectanglesTest >> test06_FiveRectanglesWithSharedParts [
 	self assert: result equals: 5
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RectanglesTest >> test07_RectangleOfHeight1IsCounted [
 	| result |
 
@@ -152,7 +154,7 @@ RectanglesTest >> test07_RectangleOfHeight1IsCounted [
 	self assert: result equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RectanglesTest >> test08_RectangleOfWidth1IsCounted [
 	| result |
 
@@ -160,7 +162,7 @@ RectanglesTest >> test08_RectangleOfWidth1IsCounted [
 	self assert: result equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RectanglesTest >> test09_1x1SquareIsCounted [
 	| result |
 
@@ -168,7 +170,7 @@ RectanglesTest >> test09_1x1SquareIsCounted [
 	self assert: result equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RectanglesTest >> test10_OnlyCompleteRectanglesAreCounted [
 	| result |
 
@@ -176,7 +178,7 @@ RectanglesTest >> test10_OnlyCompleteRectanglesAreCounted [
 	self assert: result equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RectanglesTest >> test11_RectanglesCanBeOfDifferentSizes [
 	| result |
 
@@ -184,7 +186,7 @@ RectanglesTest >> test11_RectanglesCanBeOfDifferentSizes [
 	self assert: result equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RectanglesTest >> test12_CornerIsRequiredForARectangleToBeComplete [
 	| result |
 
@@ -192,7 +194,7 @@ RectanglesTest >> test12_CornerIsRequiredForARectangleToBeComplete [
 	self assert: result equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RectanglesTest >> test13_LargeInputWithManyRectangles [
 	| result |
 

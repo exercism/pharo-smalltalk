@@ -2,12 +2,13 @@
 This solution is greatly simplified if you browse the iterators over the collection classes and spot #overlappingPairsDo:
 "
 Class {
-	#name : #Proverb,
-	#superclass : #Object,
-	#category : #'Exercise@Proverb'
+	#name : 'Proverb',
+	#superclass : 'Object',
+	#category : 'Exercise@Proverb',
+	#package : 'Exercise@Proverb'
 }
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 Proverb >> reciteStrings: wordCollection [
 	"Run through the word list with overlapping pairs"
 	| phraseResult |

@@ -2,33 +2,34 @@
 Project baseline to load entire Exercism Pharo track, including all its dependencies
 "
 Class {
-	#name : #BaselineOfExercism,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfExercism
+	#name : 'BaselineOfExercism',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfExercism',
+	#package : 'BaselineOfExercism'
 }
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfExercism class >> exerciseGoldenTestPackageNames [
 	"Answer the list of exercise package names used for golden tests executed by Exercism's test runner"
 
 	^ #('Exercise@ExampleAllFail' 'Exercise@ExampleAllPass' 'Exercise@ExampleAllRaiseError' 'Exercise@ExampleEmptySolutionClass' 'Exercise@ExampleEmptySolutionFile' 'Exercise@ExampleErrorFailPass' 'Exercise@ExampleExtensionMethod' 'Exercise@ExampleSyntaxError' 'Exercise@ExampleTypoInMethodName')
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfExercism class >> exercisePackageNames [
 	"Answer the list of exercise package names (as we don't yet have proper projects)"
 
 	^ #('Exercise@Acronym' 'Exercise@Allergies' 'Exercise@Anagram' 'Exercise@ArmstrongNumbers' 'Exercise@AtbashCipher' 'Exercise@Binary' 'Exercise@BinarySearchTree' 'Exercise@Bowling' 'Exercise@CircularBuffer' 'Exercise@Clock' 'Exercise@CollatzConjecture' 'Exercise@Darts' 'Exercise@Diamond' 'Exercise@Die' 'Exercise@Etl' 'Exercise@FlattenArray' 'Exercise@Forth' 'Exercise@GradeSchool' 'Exercise@Grains' 'Exercise@Hamming' 'Exercise@HelloWorld' 'Exercise@HighScores' 'Exercise@IsbnVerifier' 'Exercise@Isogram' 'Exercise@Leap' 'Exercise@Luhn' 'Exercise@MatchingBrackets' 'Exercise@Matrix' 'Exercise@Minesweeper' 'Exercise@Pangram' 'Exercise@Proverb' 'Exercise@Raindrops' 'Exercise@ResistorColorDuo' 'Exercise@ReverseString' 'Exercise@RobotSimulator' 'Exercise@RomanNumerals' 'Exercise@SecretHandshake' 'Exercise@Sieve' 'Exercise@SimpleCipher' 'Exercise@SpaceAge' 'Exercise@SumOfMultiples' 'Exercise@Tournament' 'Exercise@TwelveDays' 'Exercise@TwoFer' 'Exercise@Welcome' 'Exercise@WordCount')
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfExercism class >> exerciseTestPackageNames [
 	"Answer the list of exercise package names used for testing (as we don't yet have proper projects)"
 
 	^ #('ExercismTests-ExerciseEmpty' 'ExercismTests-ExerciseMany' 'ExercismTests-ExerciseNormal' 'ExercismTests-ExerciseExtension')
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfExercism >> baseline: spec [
 	<baseline>
 	spec
@@ -80,12 +81,12 @@ BaselineOfExercism >> baseline: spec [
 			]
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfExercism >> projectClass [
 	^ MetacelloCypressBaselineProject
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfExercism >> setExercismLogo [
 	| exercismLogo |
 	exercismLogo := (AlphaImageMorph
@@ -100,7 +101,7 @@ BaselineOfExercism >> setExercismLogo [
 	World addMorph: exercismLogo
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfExercism >> setUpDependencies: spec [
 
 	spec 
@@ -120,14 +121,14 @@ BaselineOfExercism >> setUpDependencies: spec [
     	with: [ spec repository: 'github://pavel-krivanek/Ring2'; loads: #(calypso)].
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfExercism >> setUpExercisesFor: spec [
 	self class exercisePackageNames, self class exerciseTestPackageNames 
 		do:
 			[ :name | spec package: name with: [ spec requires: #('ExercismTools') ] ]
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfExercism >> setUpGoldenTestsFor: spec [
 	
 	self class exerciseGoldenTestPackageNames 

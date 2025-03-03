@@ -2,12 +2,13 @@
 I translate the exercism test to a true ISBN object.
 "
 Class {
-	#name : #IsbnVerifier,
-	#superclass : #Object,
-	#category : #'Exercise@IsbnVerifier'
+	#name : 'IsbnVerifier',
+	#superclass : 'Object',
+	#category : 'Exercise@IsbnVerifier',
+	#package : 'Exercise@IsbnVerifier'
 }
 
-{ #category : #verifying }
+{ #category : 'verifying' }
 IsbnVerifier >> isValidIsbn: aString [
 	^ aString
 		ifEmpty: [ false ]

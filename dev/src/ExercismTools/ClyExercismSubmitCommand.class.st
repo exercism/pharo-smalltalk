@@ -15,32 +15,34 @@ If an `ExercismError` is signaled I will report the error with
 
 "
 Class {
-	#name : #ClyExercismSubmitCommand,
-	#superclass : #ClyExercismExerciseCommand,
-	#category : #'ExercismTools-Menus'
+	#name : 'ClyExercismSubmitCommand',
+	#superclass : 'ClyExercismExerciseCommand',
+	#category : 'ExercismTools-Menus',
+	#package : 'ExercismTools',
+	#tag : 'Menus'
 }
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyExercismSubmitCommand class >> contextMenuOrder [
 		^10
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismSubmitCommand >> defaultMenuIconName [
 	^#smallExport
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismSubmitCommand >> defaultMenuItemName [
 	^'Submit exercise...'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyExercismSubmitCommand >> description [ 
 	^'Sumbit your proposed solution to Exercism for mentor review'
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ClyExercismSubmitCommand >> execute [
 	| exerciseName result |
 

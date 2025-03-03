@@ -1,6 +1,6 @@
-Extension { #name : #WorldMorph }
+Extension { #name : 'WorldMorph' }
 
-{ #category : #'*ExercismTools' }
+{ #category : '*ExercismTools' }
 WorldMorph >> openModal: aSystemWindow [
 
 	|modalMorph|

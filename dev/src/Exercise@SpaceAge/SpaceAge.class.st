@@ -2,15 +2,16 @@
 I return ages in planet-years for planets in the solar system. This solution shows how to use a lazy initialized class variable for a simple lookup table.
 "
 Class {
-	#name : #SpaceAge,
-	#superclass : #Object,
+	#name : 'SpaceAge',
+	#superclass : 'Object',
 	#classVars : [
 		'OrbitalPeriods'
 	],
-	#category : #'Exercise@SpaceAge'
+	#category : 'Exercise@SpaceAge',
+	#package : 'Exercise@SpaceAge'
 }
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 SpaceAge class >> orbitalPeriods [
 	"Answer the orbital period table of different planets in seconds.
 	Note: this is the clearest way to define a constant in Pharo although you can also use class #initialize or Pool Dictionaries"
@@ -29,7 +30,7 @@ SpaceAge class >> orbitalPeriods [
 			('Neptune' -> (earthOrbitalPeriod * 164.79132))} asDictionary ]
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 SpaceAge >> ageOnPlanet: aPlanet at: aSeconds [
 	"Return the age in aPlanet's years at aSeconds old"
 

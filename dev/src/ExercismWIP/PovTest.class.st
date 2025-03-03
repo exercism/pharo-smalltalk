@@ -44,33 +44,35 @@ TBD
 
 "
 Class {
-	#name : #PovTest,
-	#superclass : #ExercismTest,
+	#name : 'PovTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'povCalculator'
 	],
-	#category : #'ExercismWIP-Pov'
+	#category : 'ExercismWIP-Pov',
+	#package : 'ExercismWIP',
+	#tag : 'Pov'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 PovTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'bb0da316-9d41-0d00-8fc5-87d008866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 PovTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.3.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PovTest >> setUp [
 	super setUp.
 	povCalculator := Pov new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PovTest >> test01_RerootATreeSoThatItsRootIsTheSpecifiedNodeResultsInTheSameTreeIfTheInputTreeIsASingleton [
 	| result |
 
@@ -78,7 +80,7 @@ PovTest >> test01_RerootATreeSoThatItsRootIsTheSpecifiedNodeResultsInTheSameTree
 	self assert: result equals: ((Dictionary new) add: ('label'->'x'); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PovTest >> test02_RerootATreeSoThatItsRootIsTheSpecifiedNodeCanRerootATreeWithAParentAndOneSibling [
 	| result |
 
@@ -86,7 +88,7 @@ PovTest >> test02_RerootATreeSoThatItsRootIsTheSpecifiedNodeCanRerootATreeWithAP
 	self assert: result equals: ((Dictionary new) add: ('label'->'x'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'sibling'); yourself); yourself)); yourself); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PovTest >> test03_RerootATreeSoThatItsRootIsTheSpecifiedNodeCanRerootATreeWithAParentAndManySiblings [
 	| result |
 
@@ -94,7 +96,7 @@ PovTest >> test03_RerootATreeSoThatItsRootIsTheSpecifiedNodeCanRerootATreeWithAP
 	self assert: result equals: ((Dictionary new) add: ('label'->'x'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('label'->'a'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'b'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'c'); yourself); yourself)); yourself); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PovTest >> test04_RerootATreeSoThatItsRootIsTheSpecifiedNodeCanRerootATreeWithNewRootDeeplyNestedInTree [
 	| result |
 
@@ -102,7 +104,7 @@ PovTest >> test04_RerootATreeSoThatItsRootIsTheSpecifiedNodeCanRerootATreeWithNe
 	self assert: result equals: ((Dictionary new) add: ('label'->'x'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'level-3'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'level-2'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'level-1'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'level-0'); yourself); yourself)); yourself); yourself)); yourself); yourself)); yourself); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PovTest >> test05_RerootATreeSoThatItsRootIsTheSpecifiedNodeMovesChildrenOfTheNewRootToSameLevelAsFormerParent [
 	| result |
 
@@ -110,7 +112,7 @@ PovTest >> test05_RerootATreeSoThatItsRootIsTheSpecifiedNodeMovesChildrenOfTheNe
 	self assert: result equals: ((Dictionary new) add: ('label'->'x'); add: ('children'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('label'->'kid-0'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'kid-1'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'parent'); yourself); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PovTest >> test06_RerootATreeSoThatItsRootIsTheSpecifiedNodeCanRerootAComplexTreeWithCousins [
 	| result |
 
@@ -118,7 +120,7 @@ PovTest >> test06_RerootATreeSoThatItsRootIsTheSpecifiedNodeCanRerootAComplexTre
 	self assert: result equals: ((Dictionary new) add: ('label'->'x'); add: ('children'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('label'->'kid-1'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'kid-0'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'parent'); add: ('children'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('label'->'sibling-0'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'sibling-1'); yourself); at: 3 put: ((Dictionary new) add: ('label'->'grandparent'); add: ('children'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('label'->'uncle'); add: ('children'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('label'->'cousin-0'); yourself); at: 2 put: ((Dictionary new) add: ('label'->'cousin-1'); yourself); yourself)); yourself); yourself)); yourself); yourself)); yourself); yourself)); yourself)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PovTest >> test07_RerootATreeSoThatItsRootIsTheSpecifiedNodeErrorsIfTargetDoesNotExistInASingletonTree [
 	| result |
 
@@ -126,7 +128,7 @@ PovTest >> test07_RerootATreeSoThatItsRootIsTheSpecifiedNodeErrorsIfTargetDoesNo
 	self assert: result equals: nil
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PovTest >> test08_RerootATreeSoThatItsRootIsTheSpecifiedNodeErrorsIfTargetDoesNotExistInALargeTree [
 	| result |
 
@@ -134,7 +136,7 @@ PovTest >> test08_RerootATreeSoThatItsRootIsTheSpecifiedNodeErrorsIfTargetDoesNo
 	self assert: result equals: nil
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PovTest >> test09_GivenTwoNodesFindThePathBetweenThemCanFindPathToParent [
 	| result |
 
@@ -142,7 +144,7 @@ PovTest >> test09_GivenTwoNodesFindThePathBetweenThemCanFindPathToParent [
 	self assert: result equals: #('x' 'parent' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PovTest >> test10_GivenTwoNodesFindThePathBetweenThemCanFindPathToSibling [
 	| result |
 
@@ -150,7 +152,7 @@ PovTest >> test10_GivenTwoNodesFindThePathBetweenThemCanFindPathToSibling [
 	self assert: result equals: #('x' 'parent' 'b' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PovTest >> test11_GivenTwoNodesFindThePathBetweenThemCanFindPathToCousin [
 	| result |
 
@@ -158,7 +160,7 @@ PovTest >> test11_GivenTwoNodesFindThePathBetweenThemCanFindPathToCousin [
 	self assert: result equals: #('x' 'parent' 'grandparent' 'uncle' 'cousin-1' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PovTest >> test12_GivenTwoNodesFindThePathBetweenThemCanFindPathNotInvolvingRoot [
 	| result |
 
@@ -166,7 +168,7 @@ PovTest >> test12_GivenTwoNodesFindThePathBetweenThemCanFindPathNotInvolvingRoot
 	self assert: result equals: #('x' 'parent' 'sibling-1' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PovTest >> test13_GivenTwoNodesFindThePathBetweenThemCanFindPathFromNodesOtherThanX [
 	| result |
 
@@ -174,7 +176,7 @@ PovTest >> test13_GivenTwoNodesFindThePathBetweenThemCanFindPathFromNodesOtherTh
 	self assert: result equals: #('a' 'parent' 'c' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PovTest >> test14_GivenTwoNodesFindThePathBetweenThemErrorsIfDestinationDoesNotExist [
 	| result |
 
@@ -182,7 +184,7 @@ PovTest >> test14_GivenTwoNodesFindThePathBetweenThemErrorsIfDestinationDoesNotE
 	self assert: result equals: nil
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PovTest >> test15_GivenTwoNodesFindThePathBetweenThemErrorsIfSourceDoesNotExist [
 	| result |
 

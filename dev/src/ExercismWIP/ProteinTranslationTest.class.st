@@ -48,33 +48,35 @@ TBD
 
 "
 Class {
-	#name : #ProteinTranslationTest,
-	#superclass : #ExercismTest,
+	#name : 'ProteinTranslationTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'proteinTranslationCalculator'
 	],
-	#category : #'ExercismWIP-ProteinTranslation'
+	#category : 'ExercismWIP-ProteinTranslation',
+	#package : 'ExercismWIP',
+	#tag : 'ProteinTranslation'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 ProteinTranslationTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'a9419f2e-b043-0d00-9242-6e7c02a76407'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 ProteinTranslationTest class >> version [
 	"Generated from specification: 25 April 2019"
 	^'1.1.1'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 ProteinTranslationTest >> setUp [
 	super setUp.
 	proteinTranslationCalculator := ProteinTranslation new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProteinTranslationTest >> test01_MethionineRNASequence [
 	| result |
 
@@ -82,7 +84,7 @@ ProteinTranslationTest >> test01_MethionineRNASequence [
 	self assert: result equals: #('Methionine' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProteinTranslationTest >> test02_PhenylalanineRNASequence1 [
 	| result |
 
@@ -90,7 +92,7 @@ ProteinTranslationTest >> test02_PhenylalanineRNASequence1 [
 	self assert: result equals: #('Phenylalanine' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProteinTranslationTest >> test03_PhenylalanineRNASequence2 [
 	| result |
 
@@ -98,7 +100,7 @@ ProteinTranslationTest >> test03_PhenylalanineRNASequence2 [
 	self assert: result equals: #('Phenylalanine' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProteinTranslationTest >> test04_LeucineRNASequence1 [
 	| result |
 
@@ -106,7 +108,7 @@ ProteinTranslationTest >> test04_LeucineRNASequence1 [
 	self assert: result equals: #('Leucine' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProteinTranslationTest >> test05_LeucineRNASequence2 [
 	| result |
 
@@ -114,7 +116,7 @@ ProteinTranslationTest >> test05_LeucineRNASequence2 [
 	self assert: result equals: #('Leucine' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProteinTranslationTest >> test06_SerineRNASequence1 [
 	| result |
 
@@ -122,7 +124,7 @@ ProteinTranslationTest >> test06_SerineRNASequence1 [
 	self assert: result equals: #('Serine' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProteinTranslationTest >> test07_SerineRNASequence2 [
 	| result |
 
@@ -130,7 +132,7 @@ ProteinTranslationTest >> test07_SerineRNASequence2 [
 	self assert: result equals: #('Serine' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProteinTranslationTest >> test08_SerineRNASequence3 [
 	| result |
 
@@ -138,7 +140,7 @@ ProteinTranslationTest >> test08_SerineRNASequence3 [
 	self assert: result equals: #('Serine' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProteinTranslationTest >> test09_SerineRNASequence4 [
 	| result |
 
@@ -146,7 +148,7 @@ ProteinTranslationTest >> test09_SerineRNASequence4 [
 	self assert: result equals: #('Serine' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProteinTranslationTest >> test10_TyrosineRNASequence1 [
 	| result |
 
@@ -154,7 +156,7 @@ ProteinTranslationTest >> test10_TyrosineRNASequence1 [
 	self assert: result equals: #('Tyrosine' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProteinTranslationTest >> test11_TyrosineRNASequence2 [
 	| result |
 
@@ -162,7 +164,7 @@ ProteinTranslationTest >> test11_TyrosineRNASequence2 [
 	self assert: result equals: #('Tyrosine' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProteinTranslationTest >> test12_CysteineRNASequence1 [
 	| result |
 
@@ -170,7 +172,7 @@ ProteinTranslationTest >> test12_CysteineRNASequence1 [
 	self assert: result equals: #('Cysteine' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProteinTranslationTest >> test13_CysteineRNASequence2 [
 	| result |
 
@@ -178,7 +180,7 @@ ProteinTranslationTest >> test13_CysteineRNASequence2 [
 	self assert: result equals: #('Cysteine' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProteinTranslationTest >> test14_TryptophanRNASequence [
 	| result |
 
@@ -186,7 +188,7 @@ ProteinTranslationTest >> test14_TryptophanRNASequence [
 	self assert: result equals: #('Tryptophan' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProteinTranslationTest >> test15_STOPCodonRNASequence1 [
 	| result |
 
@@ -194,7 +196,7 @@ ProteinTranslationTest >> test15_STOPCodonRNASequence1 [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProteinTranslationTest >> test16_STOPCodonRNASequence2 [
 	| result |
 
@@ -202,7 +204,7 @@ ProteinTranslationTest >> test16_STOPCodonRNASequence2 [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProteinTranslationTest >> test17_STOPCodonRNASequence3 [
 	| result |
 
@@ -210,7 +212,7 @@ ProteinTranslationTest >> test17_STOPCodonRNASequence3 [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProteinTranslationTest >> test18_TranslateRNAStrandIntoCorrectProteinList [
 	| result |
 
@@ -218,7 +220,7 @@ ProteinTranslationTest >> test18_TranslateRNAStrandIntoCorrectProteinList [
 	self assert: result equals: #('Methionine' 'Phenylalanine' 'Tryptophan' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProteinTranslationTest >> test19_TranslationStopsIfSTOPCodonAtBeginningOfSequence [
 	| result |
 
@@ -226,7 +228,7 @@ ProteinTranslationTest >> test19_TranslationStopsIfSTOPCodonAtBeginningOfSequenc
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProteinTranslationTest >> test20_TranslationStopsIfSTOPCodonAtEndOfTwocodonSequence [
 	| result |
 
@@ -234,7 +236,7 @@ ProteinTranslationTest >> test20_TranslationStopsIfSTOPCodonAtEndOfTwocodonSeque
 	self assert: result equals: #('Tryptophan' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProteinTranslationTest >> test21_TranslationStopsIfSTOPCodonAtEndOfThreecodonSequence [
 	| result |
 
@@ -242,7 +244,7 @@ ProteinTranslationTest >> test21_TranslationStopsIfSTOPCodonAtEndOfThreecodonSeq
 	self assert: result equals: #('Methionine' 'Phenylalanine' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProteinTranslationTest >> test22_TranslationStopsIfSTOPCodonInMiddleOfThreecodonSequence [
 	| result |
 
@@ -250,7 +252,7 @@ ProteinTranslationTest >> test22_TranslationStopsIfSTOPCodonInMiddleOfThreecodon
 	self assert: result equals: #('Tryptophan' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ProteinTranslationTest >> test23_TranslationStopsIfSTOPCodonInMiddleOfSixcodonSequence [
 	| result |
 
