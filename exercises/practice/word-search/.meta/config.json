@@ -1,0 +1,15 @@
+{
+  "authors": [],
+  "files": {
+    "solution": [
+      "WordSearch.class.st"
+    ],
+    "test": [
+      "WordSearchTest.class.st"
+    ],
+    "example": [
+      ".meta/solution/WordSearch.class.st"
+    ]
+  },
+  "blurb": "Create a program to solve a word search puzzle."
+}

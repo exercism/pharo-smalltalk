@@ -1,0 +1,1 @@
+2-dimensional array and Point class might be your friends here. Also, search result needs to be in desired format for unit tests, so separate class definition might be needed for word search results.
