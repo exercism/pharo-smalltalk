@@ -1,5 +1,8 @@
 {
-  "authors": [],
+  "authors": [
+    "macta",
+    "Bajger"
+  ],
   "files": {
     "solution": [
       "WordSearch.class.st"
