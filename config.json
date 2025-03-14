@@ -111,7 +111,7 @@
       },
       {
         "slug" : "two-fer",
-        "name" : "Two Fer",
+        "name" : "Two-Fer",
         "uuid" : "9806fcc0-8505-4012-bd64-3f7468014df5",
         "practices" : [ ],
         "prerequisites" : [ ],
@@ -187,7 +187,7 @@
       },
       {
         "slug" : "etl",
-        "name" : "Etl",
+        "name" : "ETL",
         "uuid" : "5bf981a0-0647-4867-9026-b25021b48a23",
         "practices" : [ ],
         "prerequisites" : [ ],
@@ -380,7 +380,7 @@
       },
       {
         "slug" : "isbn-verifier",
-        "name" : "Isbn Verifier",
+        "name" : "ISBN Verifier",
         "uuid" : "9cb67bca-f8db-4bf6-b61e-d43318c821d7",
         "practices" : [ ],
         "prerequisites" : [ ],
@@ -431,7 +431,7 @@
       },
       {
         "slug" : "sum-of-multiples",
-        "name" : "Sum Of Multiples",
+        "name" : "Sum of Multiples",
         "uuid" : "34b0900f-de21-4fef-b24b-f125b608e65e",
         "practices" : [ ],
         "prerequisites" : [ ],
