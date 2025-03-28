@@ -36,8 +36,7 @@ ExampleExtensionMethodTest >> testStringExtensionSomethingReturned [
 
 { #category : 'config' }
 ExampleExtensionMethodTest class >> exercise [
-	^ (self createExerciseAfter: HelloWorldTest)
-		isCore: true;
+	^ (ExercismExercise for: self)
 		difficulty: 1;
 		topics: #(''introduction'');
 		yourself.

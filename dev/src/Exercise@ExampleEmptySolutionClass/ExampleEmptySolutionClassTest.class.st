@@ -44,8 +44,7 @@ ExampleEmptySolutionClassTest >> testExampleMethodC [
 
 { #category : 'config' }
 ExampleEmptySolutionClassTest class >> exercise [
-	^ (self createExerciseAfter: HelloWorldTest)
-		isCore: true;
+	^ (ExercismExercise for: self)
 		difficulty: 1;
 		topics: #(''introduction'');
 		yourself.
