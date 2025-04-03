@@ -62,8 +62,7 @@ Class {
 ReverseStringTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
-	^(self createExerciseAfter: LeapTest)
-		isCore: true;
+	^ (ExercismExercise for: self)
 		difficulty: 1;
 		topics: #('strings' 'iteration');
 		yourself

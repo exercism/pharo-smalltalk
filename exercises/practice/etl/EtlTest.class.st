@@ -65,8 +65,7 @@ Class {
 EtlTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
-	^(self createExerciseAfter: ReverseStringTest)
-		isCore: false;
+	^ (ExercismExercise for: self)
 		difficulty: 2;
 		topics: #('maps' 'iteration' 'transforming');
 		yourself

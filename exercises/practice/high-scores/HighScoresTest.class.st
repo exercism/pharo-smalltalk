@@ -24,8 +24,7 @@ Class {
 HighScoresTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
-	^(self createExerciseAfter: ReverseStringTest)
-		isCore: false;
+	^ (ExercismExercise for: self)
 		difficulty: 2;
 		topics: #('lists' 'sorting' 'filtering');
 		yourself

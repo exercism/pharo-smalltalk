@@ -45,8 +45,7 @@ Class {
 CollatzConjectureTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 
-	^ (self createExerciseAfter: GrainsTest)
-		isCore: false;
+	^ (ExercismExercise for: self)
 		difficulty: 2;
 		topics:
 			#('recursion' 'control_flow' 'math');

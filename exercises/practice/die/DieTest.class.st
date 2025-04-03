@@ -29,9 +29,8 @@ DieTest class >> customData [
 DieTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
-	^(ExercismExercise for: self)
-		isCore: false;
-		difficulty: 1;
+	^ (ExercismExercise for: self)
+		difficulty: 3;
 		topics: #('math');
 		yourself
 	

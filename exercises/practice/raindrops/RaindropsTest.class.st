@@ -36,8 +36,7 @@ Class {
 RaindropsTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
-	^(self createExerciseAfter: LeapTest)
-		isCore: false;
+	^ (ExercismExercise for: self)
 		difficulty: 2;
 		topics: #('strings' 'conditionals' 'logic');
 		yourself

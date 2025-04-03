@@ -86,8 +86,7 @@ Class {
 TournamentTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
-	^(self createExerciseAfter: GradeSchoolTest)
-		isCore: false;
+	^ (ExercismExercise for: self)
 		difficulty: 5;
 		topics: #('sorting' 'filtering' 'iteration' 'parsing' 'transforming' 'object_oriented_programming');
 		yourself

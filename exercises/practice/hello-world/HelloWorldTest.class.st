@@ -39,9 +39,7 @@ HelloWorldTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise.
 	HelloWorld is a special case as it's the first exercise"
 	
-	^(ExercismExercise for: self) 
-		isCore: true;
-		isAutoApproved: true;
+	^ (ExercismExercise for: self)
 		difficulty: 1;
 		topics: #('introduction' 'strings');
 		yourself
