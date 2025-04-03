@@ -76,6 +76,19 @@ Steps to complete exercise:
 2b. Adjust project baseline to include newly completed exercise as part of project.
 3. Commit changes to your repository fork and publish changes by issing PR.
 
+#### TLDR: Quick guide to generate and export practice exercise
+In short: all you need is generate and export exercise from Pharo, execute in Playground:
+```Smalltalk
+"Obtain exercise from problem specification"
+ExercismExerciseGenerator new generateExerciseFrom: 'path-to-problem-specifications/exercises/slug-name' asFileReference.
+
+"Update exercise version within Pharo image  (with updated test cases) to output exercise directory (once you have solution class defined)"
+ExercismGenerator new 
+	exercisesDirReference: 'path-to-local-repository/exercises/practice' asFileReference;
+	generateForExercise: 'slug-name'.
+```
+  > __Note__: More details in steps below. 
+
 ![Workflow to complete Practise exercise](/docs/images/overview-exercism-pharo-contribution.svg)
 
 ### __1. Create new Practise exercise__
