@@ -59,8 +59,7 @@ Class {
 MatrixTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
-	^(self createExerciseAfter: AllergiesTest)
-		isCore: true;
+	^ (ExercismExercise for: self)
 		difficulty: 4;
 		topics: #('matrices' 'parsing');
 		yourself

@@ -47,8 +47,7 @@ Class {
 GrainsTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
-	^(self createExerciseAfter: IsogramTest)
-		isCore: true;
+	^ (ExercismExercise for: self)
 		difficulty: 2;
 		topics: #('math' 'recursion');
 		yourself

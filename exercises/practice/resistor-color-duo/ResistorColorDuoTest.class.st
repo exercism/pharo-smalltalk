@@ -42,8 +42,7 @@ ResistorColorDuoTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
 	
-	^(self createExerciseAfter: TwoFerTest)
-		isCore: false;
+	^ (ExercismExercise for: self)
 		difficulty: 1;
 		topics: #('arrays' 'strings' 'math');
 		yourself

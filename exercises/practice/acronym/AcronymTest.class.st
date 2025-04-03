@@ -24,8 +24,7 @@ Class {
 
 { #category : #config }
 AcronymTest class >> exercise [
-	^(self createExerciseAfter: ReverseStringTest)
-		isCore: false;
+	^ (ExercismExercise for: self)
 		difficulty: 2;
 		topics: #('strings' 'iteration' 'parsing');
 		yourself

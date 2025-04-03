@@ -52,7 +52,7 @@ Class {
 DartsTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 
-	^ (self createExerciseAfter: LeapTest)
+	^ (ExercismExercise for: self)
 		difficulty: 2;
 		topics: #('conditionals' 'math');
 		yourself

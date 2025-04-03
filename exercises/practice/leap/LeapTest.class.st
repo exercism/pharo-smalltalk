@@ -51,8 +51,7 @@ Class {
 LeapTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
-	^(self createExerciseAfter: TwoFerTest)
-		isCore: true;
+	^ (ExercismExercise for: self)
 		difficulty: 1;
 		topics: #('math' 'conditionals' 'logic');
 		yourself

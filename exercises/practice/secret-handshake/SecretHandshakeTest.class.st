@@ -45,8 +45,7 @@ Class {
 
 { #category : #config }
 SecretHandshakeTest class >> exercise [
-	^ (self createExerciseAfter: IsogramTest)
-		isCore: false;
+	^ (ExercismExercise for: self) 
 		difficulty: 2;
 		topics: #('arrays' 'bitwise operations');
 		yourself

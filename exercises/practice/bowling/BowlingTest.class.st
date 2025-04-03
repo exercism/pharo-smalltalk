@@ -79,8 +79,7 @@ Class {
 BowlingTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
-	^(self createExerciseAfter: GradeSchoolTest )
-		isCore: false;
+	^ (ExercismExercise for: self)
 		difficulty: 5;
 		topics: #('conditionals' 'object_oriented_programming' 'algorithms');
 		yourself

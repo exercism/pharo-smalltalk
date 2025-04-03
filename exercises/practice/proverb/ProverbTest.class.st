@@ -35,8 +35,7 @@ Class {
 ProverbTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
-	^(self createExerciseAfter: ReverseStringTest)
-		isCore: false;
+	^ (ExercismExercise for: self)
 		difficulty: 3;
 		topics: #('strings' 'iteration' );
 		yourself

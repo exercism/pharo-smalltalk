@@ -40,8 +40,7 @@ Class {
 
 { #category : #config }
 HammingTest class >> exercise [
-	^(self createExerciseAfter: ReverseStringTest)
-		isCore: false;
+	^ (ExercismExercise for: self)
 		difficulty: 2;
 		topics: #('equality' 'loops' 'strings' 'exception_handling');
 		yourself

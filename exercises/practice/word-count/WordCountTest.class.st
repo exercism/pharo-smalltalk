@@ -30,8 +30,7 @@ Class {
 WordCountTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
-	^(self createExerciseAfter: AllergiesTest)
-		isCore: false;
+	^ (ExercismExercise for: self)
 		difficulty: 3;
 		topics: #('strings' 'iteration' 'pattern_recognition');
 		yourself
