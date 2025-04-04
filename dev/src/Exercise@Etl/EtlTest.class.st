@@ -47,7 +47,7 @@ variety of languages, each with its own unique scoring table. For
 example, an ""E"" is scored at 2 in the Māori-language version of the
 game while being scored at 4 in the Hawaiian-language version.
 
-## Hint
+## Instructions append
 
 While readability is preferred over efficiency, there is a solution that avoids multiple input looksups when solving this.
 

@@ -31,7 +31,7 @@ Binary is similar, but uses powers of 2 rather than powers of 10.
 
 So: `101 => 1*2^2 + 0*2^1 + 1*2^0 => 1*4 + 0*2 + 1*1 => 4 + 1 => 5 base 10`.
 
-## Hint
+## Instructions append
 
 The ^ operation in Pharo is expressed as the descriptive keyword message #raisedTo:
 

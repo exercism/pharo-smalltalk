@@ -28,7 +28,7 @@ direction it is pointing.
 - Say a robot starts at {7, 3} facing north. Then running this stream
   of instructions should leave it at {9, 4} facing west.
 
-## Hint
+## Instructions append
 
 It's useful to consider having a seperate Robot oject and even write some of your own tests for it, possibly using TDD to drive out useful behaviour.
 

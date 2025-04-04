@@ -27,7 +27,7 @@ Starting with n = 12, the steps would be as follows:
 
 Resulting in 9 steps. So for input n = 12, the return value would be 9.
 
-## Hint
+## Instructions append
 
 This is nicely suited for recursion
 
