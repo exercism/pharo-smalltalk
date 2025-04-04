@@ -35,7 +35,7 @@ are some additional things you could try:
 Then please share your thoughts in a comment on the submission. Did this
 experiment make the code better? Worse? Did you learn anything from it?
 
-## Hint
+## Instructions append
 
 It isn't strictly necessary to model students as a seperate object, you can use a convenient internal data strcture as the requirements are quite simple (and as long as it doesn't leak out into the results).
 

@@ -23,9 +23,9 @@ Class {
 	#instVars : [
 		'numberGenerated',
 		'exerciseDirReference',
-		'existingHint',
 		'testJson',
-		'regenerateExisting'
+		'regenerateExisting',
+		'existingAppendInfo'
 	],
 	#classVars : [
 		'DefaultPath'
@@ -161,15 +161,15 @@ ExercismExerciseGenerator >> exerciseVariableName [
 ]
 
 { #category : 'accessing' }
-ExercismExerciseGenerator >> existingHint [
+ExercismExerciseGenerator >> existingAppendInfo [
 
-	^ existingHint ifNil: [ 'TBD' ] ifNotNil: [ existingHint ]
+	^ existingAppendInfo ifNil: [ 'TBD' ] ifNotNil: [ existingAppendInfo ]
 ]
 
 { #category : 'accessing' }
-ExercismExerciseGenerator >> existingHint: aString [
+ExercismExerciseGenerator >> existingAppendInfo: aString [
 
-	existingHint := aString
+	existingAppendInfo := aString
 ]
 
 { #category : 'generation' }
@@ -180,8 +180,8 @@ ExercismExerciseGenerator >> generateExerciseCommentFor: testClass [
 		outStream 
 			<< '# ' << self testNameCamelCased; cr; cr;
 			<< self testDescription; cr;
-			<< '## Hint'; cr; cr;
-			<< self existingHint; cr
+			<< ExercismExercise appendMarker; cr; cr;
+			<< self existingAppendInfo; cr
 	].
 	"write comment to test class"
 	testClass comment: comment.
@@ -204,8 +204,8 @@ ExercismExerciseGenerator >> generateExerciseFrom: aFileSystemReference [
 	self canOverwriteExisting 
 	 ifFalse: [ ^self log: 'exercise test class already exists (skipping).' for: self testClassName ].
 	
-	"before generating test class, read existing hint, in case of re-generation"
-	self setupHintFromExistingTestClass.
+	"before generating test class, read existing append information, in case of re-generation"
+	self setupAppendInfoFromExistingTestClass.
 	
 	testClass := self generateTestClass.					
 	self generateSetupFor: testClass.
@@ -420,17 +420,17 @@ ExercismExerciseGenerator >> regenerateExistingExercisesFrom: filePathReference 
 ]
 
 { #category : 'generation' }
-ExercismExerciseGenerator >> setupHintFromExistingTestClass [
+ExercismExerciseGenerator >> setupAppendInfoFromExistingTestClass [
 	
 	|existingClass|
 	
 	"reset existing hint"
-	self existingHint: nil.
+	self existingAppendInfo: nil.
 	
 	"do not setup anything, if class do not exist"
 	existingClass := self class environment at: self testClassName asSymbol ifAbsent: [^ self].
 	
-	existingClass exercise hintText ifNotEmpty: [:aText | self existingHint: aText ]
+	existingClass exercise appendText ifNotEmpty: [:aText | self existingAppendInfo: aText ]
 ]
 
 { #category : 'internal' }

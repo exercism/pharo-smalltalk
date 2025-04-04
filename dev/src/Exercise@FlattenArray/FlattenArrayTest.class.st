@@ -11,7 +11,7 @@ input: [1,[2,3,null,4],[null],5]
 
 output: [1,2,3,4,5]
 
-## Hint
+## Instructions append
 
 Pharo's extensive class library makes the simplest solution `aCollection flattened select: #isNotNil` too trivial to gain much value.  A better challenge is to derive your own from reviewing how the existing is implemented.  You might discard `nil` before putting items into a standard `WriteStream`, or possibly subclass `WriteStream` to discard `nil` items when they are put into the stream, and use that in your solution instead.
 "

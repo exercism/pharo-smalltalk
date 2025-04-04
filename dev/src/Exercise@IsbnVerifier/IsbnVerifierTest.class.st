@@ -42,7 +42,7 @@ Now, it's even trickier since the check digit of an ISBN-10 may be 'X' (represen
 
 * Generate valid ISBN, maybe even from a given starting ISBN.
 
-## Hint
+## Instructions append
 
 Use the lessons from previous exercises, try and keep your methods small
 

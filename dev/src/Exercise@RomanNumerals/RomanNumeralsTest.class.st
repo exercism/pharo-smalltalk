@@ -43,7 +43,7 @@ In Roman numerals 1990 is MCMXC:
 
 See also: http://www.novaroma.org/via_romana/numbers.html
 
-## Hint
+## Instructions append
 
 This exercise uses techniques from several of the others, but also requires some conditional looping.
 

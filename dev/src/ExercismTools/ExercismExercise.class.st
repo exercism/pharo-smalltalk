@@ -25,6 +25,12 @@ ExercismExercise class >> allExercises [
 		thenCollect: [ :class | class exercise ]
 ]
 
+{ #category : 'accessing' }
+ExercismExercise class >> appendMarker [
+
+	^ '## Instructions append'
+]
+
 { #category : 'instance creation' }
 ExercismExercise class >> conceptExercises [
 	
@@ -79,6 +85,26 @@ ExercismExercise >> = anObject [
 	^ self uuid = anObject uuid
 ]
 
+{ #category : 'accessing' }
+ExercismExercise >> appendMarker [
+	^ self class appendMarker
+]
+
+{ #category : 'accessing' }
+ExercismExercise >> appendText [
+	"Answer the String, that is the instructions append text for exercises (this is the text after the markdown heading ## Instructions append"
+
+	| appendIndex |
+	self testCase comment
+		ifNotNil: [ :comment | 
+			| appendMarker |
+			appendMarker := self appendMarker.
+			appendIndex := comment findString: appendMarker.
+			appendIndex > 0
+				ifTrue: [ ^ (comment allButFirst: appendIndex + appendMarker size) trimBoth ] ].
+	^ ''
+]
+
 { #category : 'converting' }
 ExercismExercise >> asJsonData [
 	"Answer a collection of attributes - v3 version"
@@ -105,7 +131,7 @@ ExercismExercise >> descriptionText [
 
 	| text offset |
 	text := self testCase comment.
-	(offset := text findString: self hintMarker) = 0 ifTrue: [ ^ text ].
+	(offset := text findString: self appendMarker) = 0 ifTrue: [ ^ text ].
 	
 	^(text truncateTo: offset - 1) trimBoth
 	
@@ -157,26 +183,6 @@ ExercismExercise >> hash [
 	"Answer an integer value that is related to the identity of the receiver."
 
 	^ self class hash bitXor: self uuid hash
-]
-
-{ #category : 'accessing' }
-ExercismExercise >> hintMarker [
-	^ '## Hint'
-]
-
-{ #category : 'accessing' }
-ExercismExercise >> hintText [
-	"Answer the String, that is the hint text for exerciems (this is the text afer the markdown heading ## Hint"
-
-	| hintIndex |
-	self testCase comment
-		ifNotNil: [ :comment | 
-			| hintMarker |
-			hintMarker := self hintMarker.
-			hintIndex := comment findString: hintMarker.
-			hintIndex > 0
-				ifTrue: [ ^ (comment allButFirst: hintIndex + hintMarker size) trimBoth ] ].
-	^ ''
 ]
 
 { #category : 'accessing' }

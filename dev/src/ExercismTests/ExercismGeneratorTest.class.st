@@ -82,15 +82,15 @@ ExercismGeneratorTest >> assertExerciseTests [
 ]
 
 { #category : 'asserting' }
-ExercismGeneratorTest >> assertHints [
+ExercismGeneratorTest >> assertInstructionsAppend [
 	
 	| file |
-	file := memoryFileReference / 'two-fer' / '.meta' / 'hints.md'.
+	file := memoryFileReference / 'two-fer' / '.docs' / 'instructions.append.md'.
 	
 	self assert: file exists.
 	self 
 		assert: (file contents withLineEndings: lineEnding) 
-		equals: (self expectedHintsContents withLineEndings: lineEnding)
+		equals: (self expectedInstructionsAppendContents withLineEndings: lineEnding)
 ]
 
 { #category : 'asserting' }
@@ -113,7 +113,7 @@ ExercismGeneratorTest >> assertSolution [
 ]
 
 { #category : 'private' }
-ExercismGeneratorTest >> expectedHintsContents [
+ExercismGeneratorTest >> expectedInstructionsAppendContents [
 
 	^ 'In Pharo, classes are objects that can have instance and class methods, however unlike HelloWorld the tests for TwoFer have been written to call instance methods. Typically class methods are used for constructing new objects (like a contructor in other languages).
 
@@ -234,7 +234,7 @@ ExercismGeneratorTest >> testGenerate [
 	instance generate.
 	
 	self assertExerciseTests.
-	self assertHints.
+	self assertInstructionsAppend.
 	self assertSolution
 ]
 
@@ -261,7 +261,7 @@ ExercismGeneratorTest >> testGenerateForExercise [
 	instance generateForExercise: 'two-fer'.
 	
 	self assertExerciseTests.
-	self assertHints.
+	self assertInstructionsAppend.
 	self assertSolution
 ]
 

@@ -33,7 +33,7 @@ The scoreboard image was created by [habere-et-dispertire][habere-et-dispertire]
 [habere-et-dispertire]: https://exercism.org/profiles/habere-et-dispertire
 [inkscape]: https://en.wikipedia.org/wiki/Inkscape
 
-## Hint
+## Instructions append
 
 The Pythagorean theorem will help.
 

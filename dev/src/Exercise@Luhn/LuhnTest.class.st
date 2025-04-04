@@ -65,7 +65,7 @@ Sum the digits
 
 57 is not evenly divisible by 10, so this number is not valid.
 
-## Hint
+## Instructions append
 
 Read the instructions carefully, if you skim you might miss some important details about direction. 
 

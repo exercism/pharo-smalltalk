@@ -49,7 +49,7 @@ And if we then added 1, 5, and 7, it would look like this
      / \     / \
     1   3   5   7
 
-## Hint
+## Instructions append
 
 Yo may want to use objects of the same class that represent tree and subtrees (nodes). Try to use recursion method for adding and sorting nodes.
 

@@ -187,14 +187,14 @@ ExercismExerciseGeneratorTest >> testPackageNameForTestClass [
 ]
 
 { #category : 'tests' }
-ExercismExerciseGeneratorTest >> testSetupHintFromExistingTestClass [
+ExercismExerciseGeneratorTest >> testSetupAppendInfoFromExistingTestClass [
 
 	|generator|
 	generator := ExercismExerciseGenerator new exerciseDirReference: 'two-fer' asFileReference.
-	generator setupHintFromExistingTestClass.
-	self deny: generator existingHint equals: 'TBD'.
+	generator setupAppendInfoFromExistingTestClass.
+	self deny: generator existingAppendInfo equals: 'TBD'.
 	
 	generator exerciseDirReference: 'mock-exercise' asFileReference.
-	generator setupHintFromExistingTestClass.
-	self assert: generator existingHint equals: 'TBD'.
+	generator setupAppendInfoFromExistingTestClass.
+	self assert: generator existingAppendInfo equals: 'TBD'.
 ]

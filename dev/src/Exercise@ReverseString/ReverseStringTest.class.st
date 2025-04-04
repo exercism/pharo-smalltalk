@@ -7,7 +7,7 @@ For example:
 input: ""cool""
 output: ""looc""
 
-## Hint
+## Instructions append
 
 While there is are `#reversed` and `#reverseDo:` methods for Strings, can you figure out how to do this yourself using lower level character iteration and streams? 
 

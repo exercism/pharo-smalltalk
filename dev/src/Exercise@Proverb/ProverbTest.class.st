@@ -17,7 +17,7 @@ And all for the want of a nail.
 
 Note that the list of inputs may vary; your solution should be able to handle lists of arbitrary length and content. No line of the output text should be a static, unchanging string; all should vary according to the input given.
 
-## Hint
+## Instructions append
 
 This one can be quite simple if you look at ways to iterate over the list of inputs.
 

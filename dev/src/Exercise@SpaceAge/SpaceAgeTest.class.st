@@ -18,7 +18,7 @@ be able to say that they're 31.69 Earth-years old.
 If you're wondering why Pluto didn't make the cut, go watch [this
 youtube video](http://www.youtube.com/watch?v=Z_2gbGXzFbs).
 
-## Hint
+## Instructions append
 
 You might find Pharo dictionaries useful in completing this exercise.
 Pharo has several ways to construct dictionaries, including `Dictionary new: at:put:`

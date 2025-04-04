@@ -10,6 +10,12 @@ Class {
 }
 
 { #category : 'tests' }
+ExercismExerciseTest >> testAppendInfoText [
+	
+	self assert: (HelloWorldTest exercise appendText beginsWith: 'If you are')
+]
+
+{ #category : 'tests' }
 ExercismExerciseTest >> testAsJsonData [
 	|testExerciseDict jsonString |
 	
@@ -85,12 +91,6 @@ ExercismExerciseTest >> testFind [
 	self assert: (ExercismExercise find: 'hello-world' ifAbsent: [nil]) equals: HelloWorldTest exercise.
 	self assert: (ExercismExercise find: 'missing-exercise' ifAbsent: [ 'missing' ]) equals: 'missing'.
 	self assert: (ExercismExercise find: 'missing-exercise' ifAbsent: [ :name | 'missing param' ]) equals: 'missing param' 
-]
-
-{ #category : 'tests' }
-ExercismExerciseTest >> testHintText [
-	
-	self assert: (HelloWorldTest exercise hintText beginsWith: 'If you are')
 ]
 
 { #category : 'tests' }

@@ -26,7 +26,7 @@ enough.)
 
 Words are case-insensitive.
 
-## Hint
+## Instructions append
 
 It might take several classes and/or instances to model this
 

@@ -29,7 +29,7 @@ Given the input 19, the function would return the array
 Notice that the addition of 16 (10000 in binary)
 has caused the array to be reversed.
 
-## Hint
+## Instructions append
 
 The Integer class has a bit manipulation protocol which may be useful.
 

@@ -30,7 +30,7 @@ allergens that score 256, 512, 1024, etc.).  Your program should
 ignore those components of the score.  For example, if the allergy
 score is 257, your program should only report the eggs (1) allergy.
 
-## Hint
+## Instructions append
 
 Notice how each of the items is a power of 2, a property that you should be able to leverage.
 

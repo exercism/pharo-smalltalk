@@ -30,7 +30,7 @@ correct list of primes. A good first test is to check that you do not use
 division or remainder operations (div, /, mod or % depending on the
 language).
 
-## Hint
+## Instructions append
 
 To make your solution readable, try using the refactoring tools to extract any meaningful sub-operation(s), and don't worry about using well named temporary variables.
 
