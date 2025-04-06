@@ -15,7 +15,7 @@ The objectives are simple:
 
 If everything goes well, you will be ready to fetch your first real exercise
 
-## Hint
+## Instructions append
 
 If you are editting this file in a text editor and not in Pharo - 
 please review the [Getting Started](https://exercism.io/tracks/pharo/installation) section. 

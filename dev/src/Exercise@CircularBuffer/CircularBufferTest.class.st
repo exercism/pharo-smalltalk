@@ -44,7 +44,7 @@ Because there is space available, if the client again uses overwrite to store C 
 <!-- prettier-ignore -->
     [C][D][7][8][9][A][B]
 
-## Hint
+## Instructions append
 For error cases during operations, see Error class hierarchy (class side) to find out how to signal exception with given message.
 
 "

@@ -68,7 +68,7 @@ Take a look at [Diffie-Hellman on Wikipedia][dh] for one of the first implementa
 [img-caesar-cipher]: https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Caesar_cipher_left_shift_of_3.svg/320px-Caesar_cipher_left_shift_of_3.svg.png
 [dh]: https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange
 
-## Hint
+## Instructions append
 
 Try using arithmetic operations like modulo to wrap indexes, when exceeded. Character, String classes are your friends too. 
 "

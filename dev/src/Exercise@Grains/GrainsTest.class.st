@@ -27,7 +27,7 @@ are some additional things you could try:
 Then please share your thoughts in a comment on the submission. Did this
 experiment make the code better? Worse? Did you learn anything from it?
 
-## Hint
+## Instructions append
 
 These kinds of problems (where an answer is dependent on a previous) one are often called recursion. There are different ways to code for recursion, it might be worth reasearching if you are not familiar with this. Pharo is well optimised for recursion, and it is a commonly used pattern.
 

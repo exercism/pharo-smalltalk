@@ -252,6 +252,21 @@ ExercismGenerator >> generate [
 ]
 
 { #category : 'helper' }
+ExercismGenerator >> generateAppendInfoFor: anExercismExercise to: destinationDirectory [
+	"Generate markdown instructions append information, that exercism configlet will pickup for .docs files
+	see: https://exercism.org/docs/building/tracks/practice-exercises#h-file-docs-instructions-append-md"
+
+	(destinationDirectory / 'instructions.append.md') ensureCreateFile
+		writeStreamDo: [ :stream | 
+			| appendInfo |
+			(appendInfo := anExercismExercise appendText) = 'TBD'
+				ifTrue: [ 
+					self error: 'Forgot to update Exercise instructions append information for: ', anExercismExercise name ].
+				
+			stream nextPutAll: appendInfo ]
+]
+
+{ #category : 'helper' }
 ExercismGenerator >> generateCustomDataFor: anExercismExercise to: destinationDirectory [
 	"Generate markdown hints, that exercism configlet will pickup for readme.md files
 	see: https://github.com/exercism/docs/blob/master/language-tracks/exercises/anatomy/readmes.md#generating-a-readme"
@@ -327,37 +342,16 @@ ExercismGenerator >> generateForExercise: slugName [
 ]
 
 { #category : 'helper' }
-ExercismGenerator >> generateReadmeHintAndCustomDataOf: testClass to: metaDirectoryRef [
-	
-	self generateReadmeHintFor: testClass exercise to: metaDirectoryRef.
-	testClass isCustom ifTrue: [ self generateCustomDataFor: testClass exercise to: metaDirectoryRef ]
-]
-
-{ #category : 'helper' }
-ExercismGenerator >> generateReadmeHintFor: anExercismExercise to: destinationDirectory [
-	"Generate markdown hints, that exercism configlet will pickup for readme.md files
-	see: https://github.com/exercism/docs/blob/master/language-tracks/exercises/anatomy/readmes.md#generating-a-readme"
-
-	(destinationDirectory / 'hints.md') ensureCreateFile
-		writeStreamDo: [ :stream | 
-			| hint |
-			(hint := anExercismExercise hintText) = 'TBD'
-				ifTrue: [ 
-					self error: 'Forgot to update Exercise hint for: ', anExercismExercise name ].
-				
-			stream nextPutAll: hint ]
-]
-
-{ #category : 'helper' }
 ExercismGenerator >> generateSourceFilesFor: packageOrTag [
 	"Generate the Tonel source files for a package (normally a tag). Answer the exercise directory reference"
 
-	| exerciseDirectoryRef metaDirectoryRef  solutionDirectoryRef testClass exerciseName testClasses |
+	| docsDirectoryRef exerciseDirectoryRef metaDirectoryRef  solutionDirectoryRef testClass exerciseName testClasses |
 
 	exerciseName := self exercismExercise exerciseNameFrom: packageOrTag.
 	exerciseDirectoryRef := self exerciseDirReferenceFrom: exerciseName.
 	metaDirectoryRef :=  exerciseDirectoryRef / '.meta'.
 	solutionDirectoryRef := metaDirectoryRef / 'solution'.
+	docsDirectoryRef := exerciseDirectoryRef / '.docs'.
 	
 	self prepareExerciseDirectory: exerciseDirectoryRef.
 
@@ -375,11 +369,12 @@ ExercismGenerator >> generateSourceFilesFor: packageOrTag [
 	testClasses := self testClassesOfPackage: packageOrTag.	
 	self moveTestClasses: testClasses from: solutionDirectoryRef to: exerciseDirectoryRef.
 	
-	"Generate readme hint and custom metadata"
+	"Generate readme instructions append text and custom metadata"
 	testClass := testClasses detect: [ :tc | tc class includesSelector: #exercise ].
-	self generateReadmeHintAndCustomDataOf: testClass to: metaDirectoryRef.
+	self generateAppendInfoFor: testClass exercise to: docsDirectoryRef.
+	testClass isCustom ifTrue: [ self generateCustomDataFor: testClass exercise to: metaDirectoryRef ].
 	
-	^exerciseDirectoryRef
+	^ exerciseDirectoryRef
 	
 ]
 

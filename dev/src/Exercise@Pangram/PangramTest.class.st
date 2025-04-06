@@ -9,7 +9,7 @@ The best known English pangram is:
 The alphabet used consists of ASCII letters `a` to `z`, inclusive, and is case
 insensitive. Input will not contain non-ASCII symbols.
 
-## Hint
+## Instructions append
 
 It pays off to carefully read the exercise description as this can simplify your solution and make it quite compact.
 

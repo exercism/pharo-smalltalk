@@ -12,7 +12,7 @@ For example:
 
 Write some code to determine whether a number is an Armstrong number.
 
-## Hint
+## Instructions append
 
 Browse the class Integer for some inspiration
 "

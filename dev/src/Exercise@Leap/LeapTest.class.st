@@ -24,7 +24,7 @@ phenomenon, go watch [this youtube video][video].
 
 [video]: http://www.youtube.com/watch?v=xX96xng7sAE
 
-## Hint
+## Instructions append
 
 The tests for this exercise (and future exercises), are prefix numbered like 'test00_'. 
 This is not a normal convention in Pharo, however to ease the study of the language it is 

@@ -29,7 +29,7 @@ things based on word boundaries.
 - Decoding `gvhg` gives `test`
 - Decoding `gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt` gives `thequickbrownfoxjumpsoverthelazydog`
 
-## Hint
+## Instructions append
 
 This is a fun little exercise, just follow the tests.
 

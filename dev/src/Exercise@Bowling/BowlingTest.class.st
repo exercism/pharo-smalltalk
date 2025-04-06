@@ -61,7 +61,7 @@ support two operations:
 * `score() : int` is called only at the very end of the game.  It
   returns the total score for that game.
 
-## Hint
+## Instructions append
 
 You will need to store some game state.
 
