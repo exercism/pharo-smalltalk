@@ -10,6 +10,15 @@ Class {
 }
 
 { #category : 'setup' }
+ExercismExerciseGeneratorTest >> canonicalMetadataSampleToml [
+
+^ 'title = "MOCK Exercise"
+blurb = "Given a mock you obtain mock."
+source = "Inspired by the mock."
+source_url = "https://duckduckgo.com/?t=ffab&q=mock&ia=web"'
+]
+
+{ #category : 'setup' }
 ExercismExerciseGeneratorTest >> canonicalTestSampleJson [
 ^ 
 '{
@@ -79,6 +88,12 @@ ExercismExerciseGeneratorTest >> createMockExerciseDirectory [
 		writeStreamDo: [:aStream |
 			aStream << self canonicalTestSampleJson 
 		].
+	"canonical metadata toml"
+	(exerciseDir / 'metadata.toml')
+		ensureCreateFile;
+		writeStreamDo: [:aStream |
+			aStream << self canonicalMetadataSampleToml.
+		].
 	^ exerciseDir  
 ]
 
@@ -106,6 +121,17 @@ ExercismExerciseGeneratorTest >> testAsValidKeywordOnString [
 	self assert: 'is > 15' asValidKeyword equals: 'isGreaterThan15'.
 	self assert: 'is = 5' asValidKeyword equals: 'isEquals5'.
 	self assert: 'is <= 5' asValidKeyword equals: 'isLessThanOrEqualTo5'
+]
+
+{ #category : 'tests' }
+ExercismExerciseGeneratorTest >> testExerciseTitleString [
+
+	|generator|
+
+	generator := ExercismExerciseGenerator new 
+		exerciseDirReference: self createMockExerciseDirectory;
+		yourself.
+	self assert: generator exerciseTitleString equals: 'MOCK Exercise'.
 ]
 
 { #category : 'tests' }
@@ -151,9 +177,11 @@ ExercismExerciseGeneratorTest >> testGenerateExerciseFrom [
 	classSelectors := aClass class selectors.
 	self assert: (classSelectors includes: #version).
 	self assert: (classSelectors includes: #uuid).
+	self assert: (classSelectors includes: #exerciseTitle).
 	
-
-	
+	self deny: aClass version isEmpty.
+	self deny: aClass uuid isEmpty.
+	self deny: aClass exerciseTitle isEmpty.
 ]
 
 { #category : 'tests' }

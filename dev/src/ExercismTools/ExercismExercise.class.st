@@ -101,7 +101,7 @@ ExercismExercise >> appendText [
 			appendMarker := self appendMarker.
 			appendIndex := comment findString: appendMarker.
 			appendIndex > 0
-				ifTrue: [ ^ (comment allButFirst: appendIndex + appendMarker size) trimBoth ] ].
+				ifTrue: [ ^ (comment allButFirst: appendIndex + appendMarker size) trimBoth withLineEndings: OSPlatform current lineEnding ] ].
 	^ ''
 ]
 
@@ -110,7 +110,7 @@ ExercismExercise >> asJsonData [
 	"Answer a collection of attributes - v3 version"
 	
 	^{ 'slug' -> self name.
-	   'name' -> self name kebabAsCamelCase normalizeCamelCase.
+	   'name' -> self title.
 		'uuid' -> self uuid.
 		'practices' -> self practices.
 		'prerequisites' -> self prerequisites.
@@ -338,6 +338,14 @@ ExercismExercise >> testCase [
 { #category : 'accessing' }
 ExercismExercise >> testCase: anExercismTest [
 	testCase := anExercismTest
+]
+
+{ #category : 'accessing' }
+ExercismExercise >> title [
+
+	^ [ self testCase exerciseTitle ]
+		  on: SubclassResponsibility
+		  do: [ self name kebabAsCamelCase normalizeCamelCase ]
 ]
 
 { #category : 'accessing' }

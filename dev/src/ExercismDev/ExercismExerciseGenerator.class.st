@@ -155,6 +155,15 @@ ExercismExerciseGenerator >> exerciseTestAlreadyExists [
 ]
 
 { #category : 'internal' }
+ExercismExerciseGenerator >> exerciseTitleString [
+
+	| metadataContents |
+	"obtain exercise title string from metadata.toml file of problem specification"
+	metadataContents := (self exerciseDirReference / 'metadata.toml') contents.
+	^ (metadataContents lines first splitOn: '=') second trimBoth copyWithout: $"
+]
+
+{ #category : 'internal' }
 ExercismExerciseGenerator >> exerciseVariableName [
 
 	^ self testNameCamelCased asValidSelector asString
@@ -218,6 +227,20 @@ ExercismExerciseGenerator >> generateExerciseFrom: aFileSystemReference [
 ]
 
 { #category : 'generation' }
+ExercismExerciseGenerator >> generateExerciseTitleFor: testClass [
+	| source |
+	
+	source := String streamContents: [:outStream |
+		outStream 
+			<< 'exerciseTitle'; cr; tab; 
+			<< '"Answer a title of this exercise"'; cr; tab;
+			<< ('^ ''{1}''' format: {self exerciseTitleString}) 
+	].
+	
+	self compile: source for: testClass class selector: #exerciseTitle protocol: 'config'
+]
+
+{ #category : 'generation' }
 ExercismExerciseGenerator >> generateFrom: filePathReference [
 	
 	"set default path from parameter"
@@ -249,8 +272,12 @@ ExercismExerciseGenerator >> generateMetaDataFor: testClass [
 	"compile method with uuid"
 	self generateUUIDMethodFor: testClass.
 	
-	"complie method with version"
-	self generateVersionMethodFor: testClass
+	"compile method with version"
+	self generateVersionMethodFor: testClass.
+	
+	"compile method with title string"
+	self generateExerciseTitleFor: testClass.
+	
 ]
 
 { #category : 'generation' }

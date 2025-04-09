@@ -42,6 +42,14 @@ ExercismTest class >> exercise [
 				
 ]
 
+{ #category : 'config' }
+ExercismTest class >> exerciseTitle [
+
+	"Answer the exercise title string, obtained from metadata.toml"
+	
+	^self subclassResponsibility
+]
+
 { #category : 'generator' }
 ExercismTest class >> generator [
 	"Answer code generator aliases/hints"
