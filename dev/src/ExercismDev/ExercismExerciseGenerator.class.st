@@ -471,8 +471,17 @@ ExercismExerciseGenerator >> testClassName [
 { #category : 'internal' }
 ExercismExerciseGenerator >> testDescription [ 
  
-	^ (self exerciseDirReference / 'description.md') contents
+	| descriptionFile | 
+	descriptionFile := self exerciseDirReference / 'description.md'.
+	descriptionFile isFile ifTrue: [ ^ descriptionFile contents].
 	
+	"if description.md is missing, use introduction.md and instructions.md (new way)"
+	^ String streamContents: [:aStream | 
+		aStream 
+			nextPutAll: (self exerciseDirReference / 'introduction.md') contents;
+			cr;
+			nextPutAll: (self exerciseDirReference / 'instructions.md') contents 
+	]
 ]
 
 { #category : 'internal' }
