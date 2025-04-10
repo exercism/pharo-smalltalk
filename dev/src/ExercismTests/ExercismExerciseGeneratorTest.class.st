@@ -98,6 +98,35 @@ ExercismExerciseGeneratorTest >> createMockExerciseDirectory [
 ]
 
 { #category : 'setup' }
+ExercismExerciseGeneratorTest >> createMockExerciseDirectoryWithInstructions [
+	|memFileRef exerciseDir |
+	memFileRef := FileSystem memory root.
+	exerciseDir := (memFileRef / 'mock-exercise') ensureCreateDirectory.
+	
+	"exercise description"
+	(exerciseDir / 'introduction.md')
+		ensureCreateFile;
+		writeStreamDo: [:aStream |
+			aStream << '# Introduction'; cr; cr.
+			aStream << 'Some introduction.'; cr.
+		].
+		(exerciseDir / 'instructions.md')
+		ensureCreateFile;
+		writeStreamDo: [:aStream |
+			aStream << '# Instructions'; cr; cr.
+			aStream << 'Some instructions.'; cr.
+		].
+	
+	"canonical test cases"
+	(exerciseDir / 'canonical-data.json')
+		ensureCreateFile;
+		writeStreamDo: [:aStream |
+			aStream << self canonicalTestSampleJson 
+		].
+	^ exerciseDir  
+]
+
+{ #category : 'setup' }
 ExercismExerciseGeneratorTest >> mockClassName [
 
 	^ ('mock-exercise' kebabAsCamelCase, 'Test') asSymbol
@@ -225,4 +254,16 @@ ExercismExerciseGeneratorTest >> testSetupAppendInfoFromExistingTestClass [
 	generator exerciseDirReference: 'mock-exercise' asFileReference.
 	generator setupAppendInfoFromExistingTestClass.
 	self assert: generator existingAppendInfo equals: 'TBD'.
+]
+
+{ #category : 'tests' }
+ExercismExerciseGeneratorTest >> testTestDescription [
+
+	|generator|
+	generator := ExercismExerciseGenerator new generateExerciseFrom: self createMockExerciseDirectory; yourself.
+	self assert: (generator testDescription includesSubstring: (String loremIpsum: 100)).
+	
+	generator := ExercismExerciseGenerator new generateExerciseFrom: self createMockExerciseDirectoryWithInstructions; yourself.
+	self assert: (generator testDescription includesSubstring: '# Introduction').
+	self assert: (generator testDescription includesSubstring: '# Instructions').
 ]
