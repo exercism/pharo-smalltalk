@@ -1,6 +1,6 @@
-Extension { #name : #Point }
+Extension { #name : 'Point' }
 
-{ #category : #'*Exercise@Rectangles' }
+{ #category : '*Exercise@Rectangles' }
 Point >> region: aPoint [ 
 	"Answer a Region that encompasses the receiver and aPoint."
 

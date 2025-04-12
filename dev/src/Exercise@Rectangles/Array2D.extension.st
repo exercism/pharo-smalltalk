@@ -1,6 +1,6 @@
-Extension { #name : #Array2D }
+Extension { #name : 'Array2D' }
 
-{ #category : #'*Exercise@Rectangles' }
+{ #category : '*Exercise@Rectangles' }
 Array2D >> isLineAt: aLineSegment [
 	"Answer true, if a LineSegment identifies a valid line in my space. 
 	Lines can be composed of +,-,| characters, anything else is invalid"

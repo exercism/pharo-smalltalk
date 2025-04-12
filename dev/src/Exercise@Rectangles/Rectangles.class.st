@@ -5,12 +5,13 @@ Mentor notes:
 - this solution had to use a new Region object, as Rectangles optimise their coordinates
 "
 Class {
-	#name : #Rectangles,
-	#superclass : #Object,
-	#category : #'Exercise@Rectangles'
+	#name : 'Rectangles',
+	#superclass : 'Object',
+	#category : 'Exercise@Rectangles',
+	#package : 'Exercise@Rectangles'
 }
 
-{ #category : #helper }
+{ #category : 'helper' }
 Rectangles >> getAllRectangleCornersIn: matrix [
 	^ matrix
 		withIndicesInject: OrderedCollection new
@@ -20,7 +21,7 @@ Rectangles >> getAllRectangleCornersIn: matrix [
 			result ]
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 Rectangles >> possibleRectangleRegionsIn: matrix [
 	"Answer all possible Regions in the matrix, where there could be a rectangle"
 
@@ -42,7 +43,7 @@ Rectangles >> possibleRectangleRegionsIn: matrix [
 				yourself ]
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 Rectangles >> potentialLowerCornersFor: topLeftCorner given: corners [
 	^ corners
 		reject: [ :corner | 
@@ -50,7 +51,7 @@ Rectangles >> potentialLowerCornersFor: topLeftCorner given: corners [
 				| (corner y < topLeftCorner y) ]
 ]
 
-{ #category : #exercism }
+{ #category : 'exercism' }
 Rectangles >> rectanglesFromStrings: aCollection [
 	"Answer the number of rectangles recognized in aCollection of Strings"
 	

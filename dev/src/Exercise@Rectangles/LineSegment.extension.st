@@ -1,13 +1,13 @@
-Extension { #name : #LineSegment }
+Extension { #name : 'LineSegment' }
 
-{ #category : #'*Exercise@Rectangles' }
+{ #category : '*Exercise@Rectangles' }
 LineSegment >> isRow [
 	"Answer true if the segment is on the same row (the internal point x@y is storing row@col)"
 	
 	^self start x = self end x
 ]
 
-{ #category : #'*Exercise@Rectangles' }
+{ #category : '*Exercise@Rectangles' }
 LineSegment >> points [
 	"Answer the points either along the same row, or the same column"
 	
