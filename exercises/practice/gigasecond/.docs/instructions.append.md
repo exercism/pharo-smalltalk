@@ -1,0 +1,1 @@
+The Kernel-Chronology package has many useful date and time related classes and protocols. The Date and Time class have useful printing methods which you can use to create your own ISO8601 date and time representation.
