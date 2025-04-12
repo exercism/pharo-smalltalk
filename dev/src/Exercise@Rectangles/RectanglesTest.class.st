@@ -67,7 +67,7 @@ You may assume that the input is always a proper rectangle (i.e. the length of e
 
 ## Instructions append
 
-TBD
+You may be able to use a brute force strategy to solve this one.
 
 "
 Class {
