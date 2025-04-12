@@ -1,5 +1,10 @@
 {
-  "authors": [],
+  "authors": [
+    "macta"
+  ],
+  "contributors": [
+    "Bajger"
+  ],
   "files": {
     "solution": [
       "Rectangles.class.st"
