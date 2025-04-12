@@ -22,18 +22,6 @@ Class {
 	#tag : 'Gigasecond'
 }
 
-{ #category : 'config' }
-GigasecondTest class >> uuid [
-	"Answer a unique id for this exercise"
-	^'a225b12e-b043-0d00-925b-cdc102a76407'
-]
-
-{ #category : 'config' }
-GigasecondTest class >> version [
-	"Generated from specification: 25 April 2019"
-	^'2.0.0'
-]
-
 { #category : 'running' }
 GigasecondTest >> setUp [
 	super setUp.
