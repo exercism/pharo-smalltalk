@@ -48,6 +48,17 @@
         ]
       },
       {
+        "slug" : "gigasecond",
+        "name" : "Gigasecond",
+        "uuid" : "acede85b-815e-4ebf-9bba-1fb945989021",
+        "practices" : [ ],
+        "prerequisites" : [ ],
+        "difficulty" : 1,
+        "topics" : [
+          "time"
+        ]
+      },
+      {
         "slug" : "hello-world",
         "name" : "Hello World",
         "uuid" : "a1812b5e-2788-4ea6-b948-bfe54edeb0da",
