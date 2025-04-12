@@ -69,7 +69,7 @@ GigasecondTest class >> exerciseTitle [
 { #category : 'config' }
 GigasecondTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'5fe9779c-70a7-4b41-aee6-c7a87d414dd2'
+	^'acede85b-815e-4ebf-9bba-1fb945989021'
 ]
 
 { #category : 'config' }
