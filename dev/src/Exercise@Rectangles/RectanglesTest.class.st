@@ -103,7 +103,7 @@ RectanglesTest class >> exerciseTitle [
 { #category : 'config' }
 RectanglesTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'9d24e116-9d41-0d00-8ff7-3ca508866539'
+	^'cc9f9780-a0bf-4b22-865a-d18ab925c2d7'
 ]
 
 { #category : 'config' }
