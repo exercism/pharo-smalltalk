@@ -12,7 +12,7 @@ TBD
 
 "
 Class {
-	#name : 'GigasecondTest',
+	#name : 'AnObsoleteGigasecondTest',
 	#superclass : 'ExercismTest',
 	#instVars : [
 		'gigasecondCalculator'
@@ -22,14 +22,26 @@ Class {
 	#tag : 'Gigasecond'
 }
 
+{ #category : 'config' }
+AnObsoleteGigasecondTest class >> uuid [
+	"Answer a unique id for this exercise"
+	^'a225b12e-b043-0d00-925b-cdc102a76407'
+]
+
+{ #category : 'config' }
+AnObsoleteGigasecondTest class >> version [
+	"Generated from specification: 25 April 2019"
+	^'2.0.0'
+]
+
 { #category : 'running' }
-GigasecondTest >> setUp [
+AnObsoleteGigasecondTest >> setUp [
 	super setUp.
 	gigasecondCalculator := Gigasecond new
 ]
 
 { #category : 'tests' }
-GigasecondTest >> test01_DateOnlySpecificationOfTime [
+AnObsoleteGigasecondTest >> test01_DateOnlySpecificationOfTime [
 	| result |
 
 	result := gigasecondCalculator addMoment: '2011-04-25' .
@@ -37,7 +49,7 @@ GigasecondTest >> test01_DateOnlySpecificationOfTime [
 ]
 
 { #category : 'tests' }
-GigasecondTest >> test02_SecondTestForDateOnlySpecificationOfTime [
+AnObsoleteGigasecondTest >> test02_SecondTestForDateOnlySpecificationOfTime [
 	| result |
 
 	result := gigasecondCalculator addMoment: '1977-06-13' .
@@ -45,7 +57,7 @@ GigasecondTest >> test02_SecondTestForDateOnlySpecificationOfTime [
 ]
 
 { #category : 'tests' }
-GigasecondTest >> test03_ThirdTestForDateOnlySpecificationOfTime [
+AnObsoleteGigasecondTest >> test03_ThirdTestForDateOnlySpecificationOfTime [
 	| result |
 
 	result := gigasecondCalculator addMoment: '1959-07-19' .
@@ -53,7 +65,7 @@ GigasecondTest >> test03_ThirdTestForDateOnlySpecificationOfTime [
 ]
 
 { #category : 'tests' }
-GigasecondTest >> test04_FullTimeSpecified [
+AnObsoleteGigasecondTest >> test04_FullTimeSpecified [
 	| result |
 
 	result := gigasecondCalculator addMoment: '2015-01-24T22:00:00' .
@@ -61,7 +73,7 @@ GigasecondTest >> test04_FullTimeSpecified [
 ]
 
 { #category : 'tests' }
-GigasecondTest >> test05_FullTimeWithDayRollover [
+AnObsoleteGigasecondTest >> test05_FullTimeWithDayRollover [
 	| result |
 
 	result := gigasecondCalculator addMoment: '2015-01-24T23:59:59' .
