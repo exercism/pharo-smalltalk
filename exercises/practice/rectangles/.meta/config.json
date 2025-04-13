@@ -1,0 +1,20 @@
+{
+  "authors": [
+    "macta"
+  ],
+  "contributors": [
+    "Bajger"
+  ],
+  "files": {
+    "solution": [
+      "Rectangles.class.st"
+    ],
+    "test": [
+      "RectanglesTest.class.st"
+    ],
+    "example": [
+      ".meta/solution/Rectangles.class.st"
+    ]
+  },
+  "blurb": "Count the rectangles in an ASCII diagram."
+}

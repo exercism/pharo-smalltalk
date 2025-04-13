@@ -659,6 +659,19 @@
           "extension-methods",
           "points"
         ]
+      },
+      {
+        "slug" : "rectangles",
+        "name" : "Rectangles",
+        "uuid" : "cc9f9780-a0bf-4b22-865a-d18ab925c2d7",
+        "practices" : [ ],
+        "prerequisites" : [ ],
+        "difficulty" : 7,
+        "topics" : [
+          "transforming",
+          "parsing",
+          "pattern_recognition"
+        ]
       }
     ]
   },

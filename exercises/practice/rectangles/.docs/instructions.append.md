@@ -1,0 +1,1 @@
+You may be able to use a brute force strategy to solve this one.
