@@ -74,6 +74,14 @@ EtlTest class >> exercise [
 ]
 
 { #category : 'config' }
+EtlTest class >> exerciseTitle [
+
+	"Answer the exercise title string, obtained from metadata.toml"
+	
+	^ 'OTL'
+]
+
+{ #category : 'config' }
 EtlTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'5bf981a0-0647-4867-9026-b25021b48a23'

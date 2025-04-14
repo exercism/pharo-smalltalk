@@ -39,6 +39,14 @@ SumOfMultiplesTest class >> exercise [
 ]
 
 { #category : 'config' }
+SumOfMultiplesTest class >> exerciseTitle [
+
+	"Answer the exercise title string, obtained from metadata.toml"
+	
+	^ 'Sum of Multiples'
+]
+
+{ #category : 'config' }
 SumOfMultiplesTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'34b0900f-de21-4fef-b24b-f125b608e65e'

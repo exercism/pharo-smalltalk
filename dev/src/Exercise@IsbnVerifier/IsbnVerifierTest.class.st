@@ -68,6 +68,14 @@ IsbnVerifierTest class >> exercise [
 ]
 
 { #category : 'config' }
+IsbnVerifierTest class >> exerciseTitle [
+
+	"Answer the exercise title string, obtained from metadata.toml"
+	
+	^ 'ISBN Verifier'
+]
+
+{ #category : 'config' }
 IsbnVerifierTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'9cb67bca-f8db-4bf6-b61e-d43318c821d7'
