@@ -122,7 +122,7 @@ OcrNumbersTest class >> exerciseTitle [
 { #category : 'config' }
 OcrNumbersTest class >> uuid [
 	"Answer a unique id for this exercise"
-	^'425b38ab-7fee-0d00-bc8f-b32e01817ff2'
+	^'d586e915-466a-4806-8a00-7f325aabd493'
 ]
 
 { #category : 'config' }
