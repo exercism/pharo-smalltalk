@@ -56,6 +56,14 @@ TwoFerTest class >> exercise [
 ]
 
 { #category : 'config' }
+TwoFerTest class >> exerciseTitle [
+
+	"Answer the exercise title string, obtained from metadata.toml"
+	
+	^ 'Two-Fer'
+]
+
+{ #category : 'config' }
 TwoFerTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'9806fcc0-8505-4012-bd64-3f7468014df5'
