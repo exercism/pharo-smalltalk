@@ -38,7 +38,6 @@ BaselineOfExercism >> baseline: spec [
 		do: [ self setExercismLogo.
 			self setUpDependencies: spec.
 			self setUpExercisesFor: spec.
-			self setUpGoldenTestsFor: spec.
 			spec
 				package: 'ExercismTools';
 				package: 'ExercismMocking' with: [ spec requires: #('Mocketry') ];
@@ -56,19 +55,11 @@ BaselineOfExercism >> baseline: spec [
 						requires:
 							#('ExercismTools' 'OSSubprocess' 'OSWinSubprocess')
 								, self class exercisePackageNames	"For shelling out to configlet" ];
-				package: 'ExercismTestRunner'
-					with:
-						[ spec requires: #('ExercismTools') , self class exercisePackageNames ];
-				package: 'ExercismTestRunnerTests'
-					with: [ spec requires: #('ExercismTestRunner' 'ExercismTests') ];
-				package: 'ExercismV3';
+				
 				group: 'default' with: #('ExercismTools' 'Exercise@Welcome');
 				group: 'mentor' with: #('ExercismDev');
 				group: 'dev'
-					with: #('ExercismDev' 'ExercismWIP' 'ExercismSystemTests');
-				group: 'testRunner' with: #('ExercismTestRunner');
-				group: 'testRunnerTests' with: #('ExercismTestRunnerTests'), self class exerciseGoldenTestPackageNames;
-				group: 'v3' with: #('ExercismV3')
+					with: #('ExercismDev' 'ExercismWIP' 'ExercismSystemTests')
 			].
 			spec for: #'pharo11.x' do: [
 				"ExercismTools methods will add methods from compatibility package for Pharo 11"
@@ -125,14 +116,6 @@ BaselineOfExercism >> setUpDependencies: spec [
 { #category : 'baselines' }
 BaselineOfExercism >> setUpExercisesFor: spec [
 	self class exercisePackageNames, self class exerciseTestPackageNames 
-		do:
-			[ :name | spec package: name with: [ spec requires: #('ExercismTools') ] ]
-]
-
-{ #category : 'baselines' }
-BaselineOfExercism >> setUpGoldenTestsFor: spec [
-	
-	self class exerciseGoldenTestPackageNames 
 		do:
 			[ :name | spec package: name with: [ spec requires: #('ExercismTools') ] ]
 ]
