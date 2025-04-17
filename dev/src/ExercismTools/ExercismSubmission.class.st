@@ -69,7 +69,7 @@ ExercismSubmission >> definitionsToLoadFromDirectory [
 	
 	"reader will return definitions to be loaded from directory containing package directory and .st files with classes"
 	| tonelReader | 
-	tonelReader := TonelReader on: self latestExercisePackageSourceDir fileName: self exercisePackageName.
+	tonelReader := ExercismTonelReader on: self latestExercisePackageSourceDir fileName: self exercisePackageName.
 	tonelReader loadDefinitions.
 	^ tonelReader definitions.
 
