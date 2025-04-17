@@ -1,6 +1,14 @@
 Extension { #name : 'TonelReader' }
 
 { #category : '*ExercismTools' }
+TonelReader >> containsCommentsOnly: aFileReference [
+
+	|fileContents|
+	fileContents := aFileReference readStream copy contents.
+	^ (TonelParser new removeComments: fileContents) trimBoth isEmpty
+]
+
+{ #category : '*ExercismTools' }
 TonelReader >> exerciseDirectory: aDirReference [
 
 	packageDirectory := aDirReference
