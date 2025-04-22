@@ -36,7 +36,7 @@ ExercismReviewCommandTest >> testExecuteReview [
 	] 
 	runWithMockSetup: [ 
 		mockHttpClient := ExercismHttpClient asMock.
-		mockReader := TonelReader asMock.
+		mockReader := ExercismTonelReader asMock.
 
 		baseUrl := 'http://data.io/res'.
 		solutionData := ExercismSubmissionTest
@@ -56,7 +56,7 @@ ExercismReviewCommandTest >> testExecuteReview [
 
 		(ExercismExercise stub find: Any ifAbsent: Any) willReturn:
 			HelloWorldTest exercise.
-		(TonelReader stub
+		(ExercismTonelReader stub
 			 on: (Instance of: FileReference)
 			 fileName: 'Exercise@TestExercise') willReturn: mockReader.
 		mockReader stub loadDefinitions willReturnYourself.
