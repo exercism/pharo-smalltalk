@@ -584,7 +584,7 @@ WordSearchTest >> test23_ShouldNotWrapAroundHorizontallyToFindAWord [
 	| result |
 
 	result := wordSearch searchWordsToSearchFor: #('lisp') grid: #('silabcdefp').
-	self assert: (result at: 'list') isNil.
+	self assert: (result at: 'lisp') isNil.
 
 ]
 
