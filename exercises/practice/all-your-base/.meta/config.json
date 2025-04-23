@@ -1,0 +1,17 @@
+{
+  "authors": [
+    "Bajger"
+  ],
+  "files": {
+    "solution": [
+      "AllYourBase.class.st"
+    ],
+    "test": [
+      "AllYourBaseTest.class.st"
+    ],
+    "example": [
+      ".meta/solution/AllYourBase.class.st"
+    ]
+  },
+  "blurb": "Convert a number, represented as a sequence of digits in one base, to any other base."
+}

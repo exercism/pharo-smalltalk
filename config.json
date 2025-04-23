@@ -467,6 +467,21 @@
         ]
       },
       {
+        "slug" : "all-your-base",
+        "name" : "All Your Base",
+        "uuid" : "d7c5ed6b-d42c-406a-9912-9ee952a955ba",
+        "practices" : [ ],
+        "prerequisites" : [ ],
+        "difficulty" : 4,
+        "topics" : [
+          "numbers",
+          "while-loops",
+          "lists",
+          "math-operators",
+          "exceptions"
+        ]
+      },
+      {
         "slug" : "grade-school",
         "name" : "Grade School",
         "uuid" : "eb7d9c26-5188-4271-9d21-952903a5cf19",
