@@ -1,3 +1,5 @@
 # Instructions append
 
-Try and encapsulate your implementation
+## Implementation
+
+Try and encapsulate your implementation.

@@ -1,3 +1,5 @@
 # Instructions append
 
-Extract clear, single purpose methods to keep your solution understandable
+## Note
+
+Extract clear, single purpose methods to keep your solution understandable.

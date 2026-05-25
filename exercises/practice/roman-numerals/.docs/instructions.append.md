@@ -1,3 +1,5 @@
 # Instructions append
 
+## Note
+
 This exercise uses techniques from several of the others, but also requires some conditional looping.

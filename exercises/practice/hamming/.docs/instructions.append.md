@@ -1,3 +1,6 @@
 # Instructions append
 
-In Smalltalk, exceptions are instances of subclasses of Exception. While you can create your own for your domain, if you browse this hierarchy you can choose something appropriate to simplify your solution.
+## Note
+
+In Smalltalk, exceptions are instances of subclasses of Exception.
+While you can create your own for your domain, if you browse this hierarchy you can choose something appropriate to simplify your solution.
