@@ -1,5 +1,7 @@
 # Instructions append
 
+## Note
+
 It isn't strictly necessary to model students as a separate object, you can use a convenient internal data structure as the requirements are quite simple (and as long as it doesn't leak out into the results).
 
 ~~~~exercism/note

@@ -1,1 +1,5 @@
+# Instructions append
+
+## Hint
+
 You may want to explore Number class and its methods in Pharo, and how to add to OrderedCollection in different order.
