@@ -91,3 +91,17 @@ ExercismHttpClientTest >> testSolutionPathFor [
 		
 	
 ]
+
+{ #category : 'tests' }
+ExercismHttpClientTest >> testUserAgentString [
+	| ua expected |
+	ua := ExercismHttpClient new userAgentString.
+	
+	expected := 'github.com/exercism/pharo-smalltalk v{1} ({2}/{3})' format: { 
+		ExercismManager trackVersionString. 
+		OSPlatform current name. 
+		Smalltalk vm architectureName 
+	}.
+	
+	self assert: ua equals: expected
+]
