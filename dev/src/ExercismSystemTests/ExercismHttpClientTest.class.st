@@ -94,8 +94,8 @@ ExercismHttpClientTest >> testSolutionPathFor [
 
 { #category : 'tests' }
 ExercismHttpClientTest >> testUserAgentString [
-	| ua expected |
-	ua := ExercismHttpClient new userAgentString.
+	| header expected |
+	header := ExercismHttpClient new userAgentString.
 	
 	expected := 'github.com/exercism/pharo-smalltalk v{1} ({2}/{3})' format: { 
 		ExercismManager trackVersionString. 
@@ -103,5 +103,5 @@ ExercismHttpClientTest >> testUserAgentString [
 		Smalltalk vm architectureName 
 	}.
 	
-	self assert: ua equals: expected
+	self assert: header equals: expected
 ]
