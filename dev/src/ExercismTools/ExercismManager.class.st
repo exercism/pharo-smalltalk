@@ -79,7 +79,7 @@ ExercismManager class >> trackId [
 { #category : 'config' }
 ExercismManager class >> trackVersionString [
 
-	^ 2 asString
+	^ 3 asString
 ]
 
 { #category : 'exercism' }
