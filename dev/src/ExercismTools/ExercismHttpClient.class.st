@@ -115,6 +115,7 @@ ExercismHttpClient >> createZnClient [
 	^ ZnClient new
 		https;
 		host: self hostName;
+		headerAt: 'User-Agent' put: self userAgentString;
 		yourself
 ]
 
@@ -273,6 +274,15 @@ ExercismHttpClient >> solutionPathFor: aString [
 					(aString first = Path delimiter
 						ifTrue: [ aString allButFirst ]
 						ifFalse: [ aString ]) ]
+]
+
+{ #category : 'options' }
+ExercismHttpClient >> userAgentString [
+	^ 'github.com/exercism/pharo-smalltalk v{1} ({2}/{3})' format: { 
+        ExercismManager trackVersionString. 
+        OSPlatform current name. 
+        Smalltalk vm architectureName 
+    }
 ]
 
 { #category : 'internal' }
