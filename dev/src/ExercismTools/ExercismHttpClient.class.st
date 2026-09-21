@@ -79,7 +79,7 @@ ExercismHttpClient class >> reset [
 
 { #category : 'accessing' }
 ExercismHttpClient class >> solutionPath [
-    ^ '/v{1}/solutions' format: { ExercismManager trackVersionString }
+    ^ '/v1/solutions'
 ]
 
 { #category : 'accessing' }
