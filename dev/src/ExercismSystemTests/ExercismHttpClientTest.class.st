@@ -91,3 +91,17 @@ ExercismHttpClientTest >> testSolutionPathFor [
 		
 	
 ]
+
+{ #category : 'tests' }
+ExercismHttpClientTest >> testUserAgentString [
+	| header expected |
+	header := ExercismHttpClient userAgentString.
+	
+	expected := 'github.com/exercism/pharo-smalltalk v{1} ({2}/{3})' format: { 
+		ExercismManager trackVersionString. 
+		OSPlatform current name. 
+		Smalltalk vm architectureName 
+	}.
+	
+	self assert: header equals: expected
+]

@@ -79,12 +79,21 @@ ExercismHttpClient class >> reset [
 
 { #category : 'accessing' }
 ExercismHttpClient class >> solutionPath [
-    ^'/v1/solutions'
+    ^ '/v1/solutions'
 ]
 
 { #category : 'accessing' }
 ExercismHttpClient class >> token [
 	^ ApiToken ifNil: [  'not-configured' ]
+]
+
+{ #category : 'options' }
+ExercismHttpClient class >> userAgentString [
+	^ 'github.com/exercism/pharo-smalltalk v{1} ({2}/{3})' format: { 
+        ExercismManager trackVersionString. 
+        OSPlatform current name. 
+        Smalltalk vm architectureName 
+    }
 ]
 
 { #category : 'testing' }
@@ -115,6 +124,7 @@ ExercismHttpClient >> createZnClient [
 	^ ZnClient new
 		https;
 		host: self hostName;
+		headerAt: 'User-Agent' put: self class userAgentString;
 		yourself
 ]
 
