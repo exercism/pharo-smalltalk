@@ -95,7 +95,7 @@ ExercismHttpClientTest >> testSolutionPathFor [
 { #category : 'tests' }
 ExercismHttpClientTest >> testUserAgentString [
 	| header expected |
-	header := ExercismHttpClient new userAgentString.
+	header := ExercismHttpClient userAgentString.
 	
 	expected := 'github.com/exercism/pharo-smalltalk v{1} ({2}/{3})' format: { 
 		ExercismManager trackVersionString. 
