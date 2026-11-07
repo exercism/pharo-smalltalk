@@ -1,0 +1,9 @@
+mostCommonWord: aString
+	| counts best |
+	counts := Dictionary new.
+	best := ''.
+	(aString asLowercase substrings: ' ') do: [ :word |
+		counts at: word put: (counts at: word ifAbsent: [ 0 ]) + 1.
+		(counts at: word) > (counts at: best ifAbsent: [ 0 ])
+			ifTrue: [ best := word ] ].
+	^ '"{1}" appears {2} times' format: { best. counts at: best }
