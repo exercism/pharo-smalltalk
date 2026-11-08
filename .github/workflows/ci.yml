@@ -22,3 +22,18 @@ jobs:
       - run: smalltalkci -s ${{ matrix.smalltalk }}
         shell: bash
         timeout-minutes: 15
+
+  tests:
+    name: Tests
+    needs: build
+    if: always()
+    runs-on: ubuntu-26.04
+    steps:
+      - name: Check that every Pharo version passed
+        env:
+          RESULT: ${{ needs.build.result }}
+        run: |
+          if [[ "$RESULT" != "success" ]]; then
+            echo "The exercise tests failed on at least one Pharo version."
+            exit 1
+          fi
